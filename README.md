@@ -14,6 +14,19 @@ For each problem, it answers four questions:
 Most gender data projects stop at "there is a gap." This one names the women
 the data is missing from, so a researcher knows exactly what to go and collect.
 
+**The problem in one sentence:** researchers who want to close the gender
+data gap don't know which data is missing most, or which women it has to
+come from.
+
+## Run it
+
+Open `index.html` — double-click the file, or visit
+<https://minimarina.github.io/women-data-gap-map/>.
+
+There is no build step, no install and no server. Plain HTML, CSS and
+JavaScript with no dependencies: three screens and one seed file do not
+need a framework, and this way nothing can fail to build on submission day.
+
 ## Data
 
 The current version uses **generated demo data**. Problems, datasets and
@@ -27,4 +40,12 @@ Built for the Elevate Women Global Hackathon 2026.
 All work in this repository was done during the Hackathon Period
 (Sep 14–20, 2026). No pre-existing code is used.
 
-Status: day 2, nothing works yet.
+## Accessibility
+
+Built to the rules in `SPEC.md` §8.2: every status carries a colour, a
+shape and a word, so it survives greyscale; the whole flow is keyboard
+reachable with a visible focus ring; body text is 16px at 4.5:1 contrast
+or better; no horizontal scroll at 360px; `prefers-reduced-motion` is
+honoured.
+
+Status: day 3 — the core flow works end to end on demo data.

@@ -40,7 +40,6 @@ body {
 h1, h2, h3 { line-height: 1.25; margin: 0 0 8px; }
 h1 { font-size: 1.75rem; }
 h2 { font-size: 1.25rem; }
-h1:focus { outline: none; }          /* focus moved here by the router, not user-driven */
 
 p { margin: 0 0 12px; }
 
@@ -59,6 +58,12 @@ p { margin: 0 0 12px; }
   outline-offset: 2px;
   border-radius: 2px;
 }
+
+/* The one exception: the screen container. The router focuses it after a
+   navigation so the next Tab starts inside the new screen — it is not a
+   control the user aimed at, and a ring around the whole page would read
+   as noise. Every control inside it keeps the ring above. */
+.screen:focus, .screen:focus-visible { outline: none; }
 
 .skip-link {
   position: absolute;

@@ -64,16 +64,20 @@
 
   var SCREENS = ["screen-problems", "screen-detail", "screen-request"];
 
-  /* Shows one screen and hides the others, then moves focus to its
-     heading so a keyboard user lands in the new content (§12.9, §12.13).
-     No reload and no history API — three screens do not need one. */
+  /* Shows one screen and hides the others, then moves focus into the new
+     screen so a keyboard user lands in the new content (§12.9, §12.13).
+     No reload and no history API — three screens do not need one.
+
+     Focus goes to the section, not its heading: the back button sits
+     above the heading, so focusing the heading would put Back behind the
+     user and out of reach of a forward Tab. The section is labelled by
+     its heading, so a screen reader still announces the screen name. */
   function show(screenId) {
     SCREENS.forEach(function (id) {
       el(id).hidden = (id !== screenId);
     });
 
-    var heading = el(screenId).querySelector("h1");
-    if (heading) { heading.focus(); }
+    el(screenId).focus();
     window.scrollTo(0, 0);
   }
 

@@ -25,8 +25,8 @@
 <main id="main" class="wrap">
 
   <!-- Screen 1 — problem list -->
-  <section id="screen-problems" class="screen" aria-labelledby="problems-heading">
-    <h1 id="problems-heading" tabindex="-1">Problems women face</h1>
+  <section id="screen-problems" class="screen" aria-labelledby="problems-heading" tabindex="-1">
+    <h1 id="problems-heading">Problems women face</h1>
     <p class="lede">
       Each problem lists the data needed to solve it, and what is still
       missing. Open a missing item to see which women that data should
@@ -36,12 +36,12 @@
   </section>
 
   <!-- Screen 2 — problem detail -->
-  <section id="screen-detail" class="screen" aria-labelledby="detail-heading" hidden>
+  <section id="screen-detail" class="screen" aria-labelledby="detail-heading" tabindex="-1" hidden>
     <button type="button" class="back" data-back="screen-problems">
       &larr; All problems
     </button>
     <p class="eyebrow" id="detail-area"></p>
-    <h1 id="detail-heading" tabindex="-1"></h1>
+    <h1 id="detail-heading"></h1>
     <p class="lede" id="detail-summary"></p>
     <p class="affected"><span class="label">Affected women:</span> <span id="detail-affected"></span></p>
 
@@ -51,12 +51,12 @@
   </section>
 
   <!-- Screen 3 — collection request card -->
-  <section id="screen-request" class="screen" aria-labelledby="request-heading" hidden>
+  <section id="screen-request" class="screen" aria-labelledby="request-heading" tabindex="-1" hidden>
     <button type="button" class="back" data-back="screen-detail">
       &larr; Back to problem
     </button>
     <p class="eyebrow" id="request-problem"></p>
-    <h1 id="request-heading" tabindex="-1">Collection request</h1>
+    <h1 id="request-heading">Collection request</h1>
     <div id="request-card" class="request-card"></div>
   </section>
 
