@@ -1,7 +1,14 @@
 /* Seed data — SPEC.md §5 and §9.
  *
- * GENERATED DEMO DATA. Plausible, but not real findings and not sourced.
- * Every record carries is_demo: true and the UI says so on every screen.
+ * SOURCED DATA. Every problem cites a published source, and every
+ * missing or partial data need cites the authority that named the gap.
+ * No record is a placeholder any more: is_demo is false throughout and
+ * the demo banner no longer renders.
+ *
+ * What is NOT sourced, and is labelled as such on screen: the collection
+ * requests. Which women, which variables, which breakdowns and in what
+ * form is this platform's own specification in every record. That is the
+ * product; the citations are its foundation.
  *
  * Loaded by a <script> tag, not fetch(), so the app opens from file://
  * with no server (SPEC §13). Contents stay JSON-shaped and hand-editable:
@@ -23,10 +30,17 @@
  * origin and is_demo are different claims and both stay. is_demo means
  * "placeholder content"; origin means "who identified the gap".
  *
- * Endometriosis is swapped (WHO + NICE NG73 + WERF EPHect). The other
- * four are still demo. The app renders a half-swapped seed correctly and
- * states per record which it is, so the swap proceeds one problem at a
- * time.
+ * Sources, by problem:
+ *   Menopause      WHO menopause fact sheet; HEAF study; NICE NG23
+ *   Maternal       WHO 2022 postnatal guideline; NICE NG194
+ *   Autoimmune     J Rheumatology; Cureus narrative review 2025
+ *   Cardiac        Lancet women and CVD Commission 2021; NICOR MINAP
+ *   Endometriosis  WHO fact sheet; NICE NG73; WERF EPHect
+ *
+ * One data need carries no gap_evidence: maternal-postnatal-unpaid-care.
+ * No published source names that gap, so the record says the assessment
+ * is this platform's own. That is the honest state under §8.1, not an
+ * omission waiting to be filled.
  */
 
 const DATA = {
@@ -37,16 +51,21 @@ const DATA = {
       title: "Menopause symptoms go unmeasured in working life",
       area: "Menopause",
       summary:
-        "Women in their forties and fifties report symptoms that affect " +
-        "concentration, sleep and confidence at work. Symptom severity is " +
-        "recorded in clinical settings, if at all, and almost never " +
-        "alongside what a working day actually demands.",
+        "Most women reach menopause between 45 and 55, and women " +
+        "aged 50 and over were 26% of all women and girls globally " +
+        "in 2021. WHO notes the symptoms can disrupt professional " +
+        "as well as personal life, and that awareness and access to " +
+        "menopause services remain a challenge in most countries. " +
+        "Severity is recorded in clinical settings, if at all, and " +
+        "almost never alongside what a working day actually " +
+        "demands.",
       affected_women:
         "Women aged 40–58 in paid employment, including shift and " +
         "frontline workers",
-      source: "demo",
-      origin: null,
-      is_demo: true,
+      source:
+        "https://www.who.int/news-room/fact-sheets/detail/menopause",
+      origin: "sourced",
+      is_demo: false,
       data_needs: [
         {
           id: "menopause-workplace-symptom-diary",
@@ -58,6 +77,18 @@ const DATA = {
             "interfere with which kinds of work.",
           status: "missing",
           existing_data_note: "",
+          gap_evidence: {
+            source:
+              "https://pmc.ncbi.nlm.nih.gov/articles/PMC9819903/",
+            note:
+              "The HEAF study, one of the largest UK surveys of menopause " +
+              "symptoms at work, found about a third of working women had " +
+              "moderate or severe difficulty coping at work — and states " +
+              "plainly that women were not asked to rate the severity of " +
+              "their symptoms. The link between severity and the working " +
+              "day is missing from the evidence, not from the question.",
+            region: "United Kingdom"
+          },
           collection_request: {
             data_need_id: "menopause-workplace-symptom-diary",
             target_women:
@@ -99,6 +130,18 @@ const DATA = {
             "than which ones sound reasonable.",
           status: "missing",
           existing_data_note: "",
+          gap_evidence: {
+            source:
+              "https://www.who.int/news-room/fact-sheets/detail/menopause",
+            note:
+              "WHO records that awareness of and access to menopause " +
+              "information and services remain a significant challenge in " +
+              "most countries, and that many governments have no health " +
+              "policy covering them. WHO names the policy vacuum; " +
+              "recording which adjustments were asked for, granted or " +
+              "refused is this platform's specification for filling it.",
+            region: "Global"
+          },
           collection_request: {
             data_need_id: "menopause-workplace-adjustments",
             target_women:
@@ -138,6 +181,20 @@ const DATA = {
             "Cohort data exists for several high-income countries. Coverage " +
             "of South Asia, sub-Saharan Africa and Latin America is thin, and " +
             "the age bands used are not comparable between studies.",
+          gap_evidence: {
+            source:
+              "https://www.nice.org.uk/guidance/ng23/chapter/Recommendations-for-research",
+            note:
+              "NICE NG23 research recommendation 9 asks what the impact " +
+              "of HRT is for people from ethnic minority backgrounds — " +
+              "NICE naming, as an open question, that the menopause " +
+              "evidence base is not evenly distributed across " +
+              "populations. WHO separately notes a paucity of data on " +
+              "trans and gender diverse experiences of menopause. The " +
+              "extension to regional coverage of age at onset is this " +
+              "platform's.",
+            region: "United Kingdom"
+          },
           collection_request: {
             data_need_id: "menopause-workplace-prevalence",
             target_women:
@@ -188,16 +245,19 @@ const DATA = {
       title: "Postnatal recovery stops being recorded after six weeks",
       area: "Maternal health",
       summary:
-        "Follow-up after birth is commonly built around a single check at " +
-        "about six weeks. Problems that appear or persist later — pain, " +
-        "incontinence, wound complications — fall outside the window where " +
-        "anyone is writing anything down.",
+        "WHO's 2022 postnatal guideline sets out 63 " +
+        "recommendations, and scopes all of them to the six-week " +
+        "(42-day) period after birth. Problems that appear or " +
+        "persist after that window — pain, incontinence, wound " +
+        "complications — fall outside the period anyone is required " +
+        "to write anything down.",
       affected_women:
         "Women in the first two years after giving birth, in any setting " +
         "with routine postnatal care",
-      source: "demo",
-      origin: null,
-      is_demo: true,
+      source:
+        "https://www.who.int/publications/i/item/9789240045989",
+      origin: "sourced",
+      is_demo: false,
       data_needs: [
         {
           id: "maternal-postnatal-symptoms-12m",
@@ -209,6 +269,18 @@ const DATA = {
             "rather than custom.",
           status: "missing",
           existing_data_note: "",
+          gap_evidence: {
+            source:
+              "https://www.nice.org.uk/guidance/ng194/chapter/Recommendations-for-research",
+            note:
+              "NICE NG194 research recommendation 3 asks which tools for " +
+              "the clinical review of women, including pain scores, are " +
+              "effective during the first 8 weeks after birth. The " +
+              "committee could not identify effective tools even inside " +
+              "that window, and neither NG194 nor the WHO guideline " +
+              "reaches beyond it.",
+            region: "United Kingdom"
+          },
           collection_request: {
             data_need_id: "maternal-postnatal-symptoms-12m",
             target_women:
@@ -300,6 +372,17 @@ const DATA = {
             "Screening after three months happens inconsistently, and where " +
             "it does happen the results are rarely held in a form anyone " +
             "can analyse.",
+          gap_evidence: {
+            source:
+              "https://www.ncbi.nlm.nih.gov/books/NBK579653/",
+            note:
+              "WHO's 2022 postnatal guideline scopes all 63 of its " +
+              "recommendations to the 42 days after birth. Screening " +
+              "later than that is not covered by the global standard, so " +
+              "where it happens it happens without a common instrument or " +
+              "a common schedule.",
+            region: "Global"
+          },
           collection_request: {
             data_need_id: "maternal-postnatal-mental-health",
             target_women:
@@ -333,17 +416,20 @@ const DATA = {
       title: "Years pass between first autoimmune symptom and diagnosis",
       area: "Autoimmune disease",
       summary:
-        "Most autoimmune conditions are far more common in women, and the " +
-        "path to diagnosis often runs through several specialties. What " +
-        "gets recorded is the diagnosis. What happened in the years before " +
-        "it — the visits, the tests, the other explanations offered — " +
-        "usually does not.",
+        "Most autoimmune conditions are far more common in women, " +
+        "and the path to diagnosis often runs through several " +
+        "specialties. Diagnostic delay is described in the " +
+        "rheumatology literature as a global health problem, but " +
+        "what gets recorded is the diagnosis. The years before it — " +
+        "the visits, the tests, the other explanations offered — " +
+        "usually do not.",
       affected_women:
         "Women of any age presenting with fatigue, joint pain or " +
         "neurological symptoms that are not yet explained",
-      source: "demo",
-      origin: null,
-      is_demo: true,
+      source:
+        "https://www.jrheum.org/content/50/12/1528",
+      origin: "sourced",
+      is_demo: false,
       data_needs: [
         {
           id: "autoimmune-pathway",
@@ -356,6 +442,19 @@ const DATA = {
             "the only step a health system can fix.",
           status: "missing",
           existing_data_note: "",
+          gap_evidence: {
+            source:
+              "https://www.jrheum.org/content/50/12/1528",
+            note:
+              "The Journal of Rheumatology argues that current " +
+              "definitions of diagnostic delay are incomplete: they fail " +
+              "to systematically incorporate individual, community, " +
+              "sociocultural and economic factors, and the care-seeking " +
+              "models in use were built for other conditions. The authors " +
+              "call for a model built for rheumatic disease, which needs " +
+              "the pathway recorded before it can be built.",
+            region: "Global"
+          },
           collection_request: {
             data_need_id: "autoimmune-pathway",
             target_women:
@@ -393,6 +492,19 @@ const DATA = {
             "which is what changes clinical training.",
           status: "missing",
           existing_data_note: "",
+          gap_evidence: {
+            source:
+              "https://pmc.ncbi.nlm.nih.gov/articles/PMC12829432/",
+            note:
+              "A 2025 narrative review finds women's symptoms attributed " +
+              "to stress, anxiety or psychosomatic causes rather than " +
+              "organic disease, and notes that diagnostic inequity in " +
+              "young women remains under-synthesised across specialties. " +
+              "It calls for routine disaggregation of diagnostic " +
+              "intervals by sex, age and ethnicity. Recording the " +
+              "explanations verbatim is what makes that countable.",
+            region: "Global"
+          },
           collection_request: {
             data_need_id: "autoimmune-alternative-explanations",
             target_women:
@@ -430,6 +542,18 @@ const DATA = {
             "Many trials enrol women but publish pooled results. The " +
             "underlying data usually exists with the trial sponsor; what is " +
             "missing is the disaggregated reporting, not the collection.",
+          gap_evidence: {
+            source:
+              "https://pmc.ncbi.nlm.nih.gov/articles/PMC5793986/",
+            note:
+              "The SAGER guidelines have defined how sex and gender " +
+              "should be reported in research since 2016, and exist " +
+              "because sex differences are routinely overlooked in " +
+              "design, analysis and reporting. Here the data was " +
+              "collected and the reporting was not done, which is why " +
+              "this request goes to sponsors rather than to women.",
+            region: "Global"
+          },
           collection_request: {
             data_need_id: "autoimmune-sex-disaggregated-trials",
             target_women:
@@ -464,16 +588,20 @@ const DATA = {
       title: "Heart attack symptoms in women are described from male baselines",
       area: "Cardiovascular health",
       summary:
-        "Presentation guidance is built on symptom patterns most studied in " +
-        "men. Women more often report symptoms that fall outside that " +
-        "picture, and those presentations are not systematically recorded " +
-        "in a way that could update the guidance.",
+        "Cardiovascular disease is the leading cause of death in " +
+        "women, and the 2021 Lancet Commission describes it as " +
+        "understudied, under-recognised, underdiagnosed and " +
+        "undertreated. Presentation guidance is built on symptom " +
+        "patterns most studied in men, and the presentations that " +
+        "fall outside that picture are not recorded in a form that " +
+        "could update it.",
       affected_women:
         "Women of all ages presenting with chest, jaw, back or abdominal " +
         "symptoms, and women under 55 in particular",
-      source: "demo",
-      origin: null,
-      is_demo: true,
+      source:
+        "https://www.thelancet.com/journals/lancet/article/PIIS0140-6736(21)00684-X/abstract",
+      origin: "sourced",
+      is_demo: false,
       data_needs: [
         {
           id: "cardiac-presenting-symptoms",
@@ -485,6 +613,18 @@ const DATA = {
             "later classified.",
           status: "missing",
           existing_data_note: "",
+          gap_evidence: {
+            source:
+              "https://www.thelancet.com/journals/lancet/article/PIIS0140-6736(21)00684-X/abstract",
+            note:
+              "The Lancet women and cardiovascular disease Commission " +
+              "identifies knowledge gaps in research, prevention, " +
+              "treatment and access to care for women, and describes the " +
+              "disease in women as under-recognised and underdiagnosed. " +
+              "Capturing the first description in her own words is where " +
+              "recognition either happens or fails.",
+            region: "Global"
+          },
           collection_request: {
             data_need_id: "cardiac-presenting-symptoms",
             target_women:
@@ -521,8 +661,13 @@ const DATA = {
           status: "collected",
           existing_data_note:
             "Hospital systems already timestamp arrival, assessment and " +
-            "treatment, and most national cardiac audits publish this " +
-            "broken down by sex.",
+            "treatment. National cardiac audits publish this broken " +
+            "down by sex \u2014 in England and Wales the Myocardial " +
+            "Ischaemia National Audit Project (MINAP), part of the " +
+            "National Cardiac Audit Programme, has covered every " +
+            "hospital treating acute coronary syndromes since 2002. " +
+            "nicor.org.uk/national-cardiac-audit-programme/" +
+            "heart-attack-audit-minap",
           collection_request: null
         },
         {
@@ -535,6 +680,17 @@ const DATA = {
             "hospital, and it is invisible in hospital data.",
           status: "missing",
           existing_data_note: "",
+          gap_evidence: {
+            source:
+              "https://www.thelancet.com/journals/lancet/article/PIIS0140-6736(21)00684-X/abstract",
+            note:
+              "The same Commission names awareness and recognition among " +
+              "the gaps it sets out to close. A delay that happens at " +
+              "home is invisible in hospital data by construction: no " +
+              "hospital system holds a timestamp for the hours before " +
+              "arrival.",
+            region: "Global"
+          },
           collection_request: {
             data_need_id: "cardiac-pre-hospital-decision",
             target_women:

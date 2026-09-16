@@ -29,10 +29,21 @@ need a framework, and this way nothing can fail to build on submission day.
 
 ## Data
 
-The current version uses **generated demo data**. Problems, datasets and
-gaps shown in the app are illustrative, not real findings.
-Next step: replace them with real problems from published sources
-(WHO, UN and others), with links.
+Every problem in the app cites a published source, and every missing or
+partial data need cites the authority that named the gap — WHO fact
+sheets and guidelines, NICE research recommendations, the Lancet women
+and cardiovascular disease Commission, the SAGER reporting guidelines,
+and peer-reviewed studies. Sources are listed per problem in `SPEC.md`
+§9, and every claim links to its source on the record itself.
+
+One data need carries no gap citation, because no published source names
+it. The app says so on that record rather than leaving it blank.
+
+**What is not sourced, and is labelled as such:** the collection
+requests. Which women to study, which variables to ask for, which
+breakdowns the analysis needs and in what form the data comes back is
+this platform's own specification in every record. The citations are
+the foundation; the specification is the product.
 
 ## Hackathon
 
@@ -48,4 +59,4 @@ reachable with a visible focus ring; body text is 16px at 4.5:1 contrast
 or better; no horizontal scroll at 360px; `prefers-reduced-motion` is
 honoured.
 
-Status: the core flow works end to end on demo data.
+Status: the core flow works end to end on sourced data.
