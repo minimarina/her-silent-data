@@ -10,6 +10,15 @@
     missing: "Missing"
   };
 
+  /* Where the gap claim comes from (SPEC §5a). "sourced" means an
+     authority published the request; "proposed" means this platform
+     inferred it and says so. The wording is deliberately blunt: a judge
+     or a researcher must be able to tell the two apart at a glance. */
+  var ORIGIN_WORD = {
+    sourced: "Published research request",
+    proposed: "Proposed by this platform — unverified"
+  };
+
   /* §8.1 — the app states what it does not know. An empty field says this
      and never guesses, and never renders as a silent blank. */
   var UNKNOWN = "Not established";
@@ -113,6 +122,83 @@
     slot.appendChild(sourceNode(source));
   }
 
+  /* The origin badge. A demo record says so first: while it is a
+     placeholder, its origin is not a claim worth making. Colour is never
+     the only signal — the word carries it (§8.2). */
+  function originWord(problem) {
+    if (problem.is_demo) { return "Demo record"; }
+    return ORIGIN_WORD[problem.origin] || UNKNOWN;
+  }
+
+  function originState(problem) {
+    if (problem.is_demo) { return "demo"; }
+    return ORIGIN_WORD[problem.origin] ? problem.origin : "unknown";
+  }
+
+  function originBadge(problem, tag) {
+    var badge = make(tag || "span", "origin", originWord(problem));
+    badge.setAttribute("data-origin", originState(problem));
+    return badge;
+  }
+
+  /* Evidence that somebody looked and named the hole. A missing need
+     cannot link to data that does not exist, so it cites this instead —
+     a different object, not a weaker version of the same one (§5a).
+     Where nothing names the gap, the §8.1 rule applies and the record
+     says the gap is this platform's own assessment. */
+  function gapEvidenceNode(problem, need, tag) {
+    var box = make(tag || "div", "gap-evidence");
+    box.appendChild(make("span", "label", "Who says it is missing: "));
+
+    /* A placeholder has not been assessed by anyone, so it must not
+       claim to have been assessed here. The three cases are different
+       and the screen says which one it is (§8.1). */
+    if (problem.is_demo) {
+      box.appendChild(make(
+        "span",
+        "unknown",
+        "Nobody yet — this is a demo record, not a real gap claim."
+      ));
+      return box;
+    }
+
+    var evidence = need.gap_evidence;
+    if (!evidence || !hasText(evidence.note)) {
+      box.appendChild(make(
+        "span",
+        "unknown",
+        "No published source names this gap. Assessed by this platform."
+      ));
+      return box;
+    }
+
+    box.appendChild(make("span", null, evidence.note));
+
+    /* §8.1 — the source sits on the record. Inside a button it can only
+       be named, because a link may not be nested in one; everywhere else
+       it is the link a researcher actually follows. */
+    if (isUrl(evidence.source)) {
+      var cite = make("span", "gap-cite");
+      cite.appendChild(make("span", "label", "Read it: "));
+
+      if (box.tagName === "SPAN") {
+        cite.appendChild(make("span", null, sourceLabel(evidence.source)));
+      } else {
+        var link = make("a", null, sourceLabel(evidence.source));
+        link.href = evidence.source;
+        link.target = "_blank";
+        link.rel = "noopener noreferrer";
+        cite.appendChild(link);
+      }
+      box.appendChild(cite);
+    }
+
+    if (hasText(evidence.region)) {
+      box.appendChild(make("span", "region", "Coverage: " + evidence.region));
+    }
+    return box;
+  }
+
   function findProblem(problemId) {
     return DATA.problems.filter(function (p) {
       return p.id === problemId;
@@ -205,6 +291,7 @@
           : makeValue("span", "affected-line", "")
       );
       card.appendChild(make("span", "count", gapSentence(problem)));
+      card.appendChild(originBadge(problem));
       card.appendChild(sourceText(problem.source));
 
       card.addEventListener("click", function () {
@@ -231,6 +318,11 @@
     setValue(el("detail-summary"), problem.summary);
     setValue(el("detail-affected"), problem.affected_women);
     el("detail-count").textContent = gapSentence(problem);
+
+    var originSlot = el("detail-origin");
+    originSlot.textContent = "";
+    originSlot.appendChild(originBadge(problem, "p"));
+
     fillSourceSlot("detail-source", problem.source);
 
     renderNeeds(problem);
@@ -298,6 +390,10 @@
     if (need.status === "partial") {
       button.appendChild(existingDataLine(need, "span"));
     }
+    /* The status badge says "Missing". This says who established that,
+       which is the claim a reader is entitled to challenge. */
+    button.appendChild(gapEvidenceNode(problem, need, "span"));
+
     button.appendChild(
       make("span", "need-action", "See the collection request →")
     );
@@ -332,25 +428,75 @@
     var fields = document.createElement("dl");
     fields.appendChild(field("Which women", request.target_women));
     fields.appendChild(field("How to ask them", request.method));
-    fields.appendChild(field("In what form", request.form));
+    fields.appendChild(field(
+      "In what form", request.form, request.instrument_source
+    ));
     fields.appendChild(field("Why this data matters", need.why_it_matters));
     card.appendChild(fields);
 
-    /* The request is a specification, but it rests on the problem record,
-       so the card carries that record's source (§8.1). */
+    /* The specification below is this platform's own work in every case.
+       What varies is whether the gap it answers was published by someone
+       else or proposed here, so the card states both (§5a, §8.1). */
+    card.appendChild(gapEvidenceNode(problem, need));
+
+    var requestOrigin = el("request-origin");
+    requestOrigin.textContent = "";
+    requestOrigin.appendChild(originBadge(problem, "p"));
+
     fillSourceSlot("request-source", problem.source);
 
     show("screen-request");
   }
 
-  function field(label, value) {
+  /* Where the form names a published instrument, the instrument is
+     linked. Citing a validated tool is a stronger answer than inventing
+     a questionnaire, and the link is how a researcher acts on it. */
+  function field(label, value, instrumentSource) {
     var wrapper = make("div", "request-field");
     wrapper.appendChild(make("dt", null, label));
-    wrapper.appendChild(makeValue("dd", null, value));
+
+    var dd = makeValue("dd", null, value);
+    if (isUrl(instrumentSource)) {
+      var link = make("a", "instrument", sourceLabel(instrumentSource));
+      link.href = instrumentSource;
+      link.target = "_blank";
+      link.rel = "noopener noreferrer";
+      dd.appendChild(make("span", "instrument-label", "Instrument: "));
+      dd.appendChild(link);
+    }
+    wrapper.appendChild(dd);
     return wrapper;
   }
 
   /* ---------- start ---------- */
+
+  /* The banner used to be a fixed sentence claiming every record was
+     demo data. Once one problem is sourced that sentence is false, so it
+     is computed from the seed and disappears when the swap is finished
+     (§8.1: demo data is labelled on every screen, and only while true). */
+  function renderProvenanceSummary() {
+    var total = DATA.problems.length;
+    var demo = DATA.problems.filter(function (p) {
+      return p.is_demo;
+    }).length;
+
+    var banner = el("demo-banner");
+    banner.textContent = "";
+    banner.hidden = (demo === 0);
+
+    if (demo > 0) {
+      banner.appendChild(make("strong", null, "Demo data"));
+      banner.appendChild(make("span", null,
+        " — " + demo + " of " + total + " problems below are illustrative " +
+        "placeholders, not real findings. Each record says which it is."
+      ));
+    }
+
+    el("footer-provenance").textContent = demo === 0
+      ? "Every record is sourced from published research."
+      : demo + " of " + total + " records are generated demo data; the rest " +
+        "cite published sources.";
+  }
 
   function init() {
     document.querySelectorAll("[data-back]").forEach(function (button) {
@@ -367,6 +513,7 @@
       });
     });
 
+    renderProvenanceSummary();
     renderProblemList();
   }
 

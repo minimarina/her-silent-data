@@ -10,8 +10,23 @@
  * Data needs are nested inside their problem instead of being a flat list
  * keyed by problem_id. Same fields as §5, less to keep in sync by hand.
  *
- * Next step (§9): replace with real problems from published sources, set
- * source to a URL and is_demo to false.
+ * Two-tier origin (SPEC §5a). A problem is either:
+ *   origin: "sourced"  — an authority has already published the request
+ *                        that this data is missing, and gap_evidence on
+ *                        each data need cites it.
+ *   origin: "proposed" — the problem is documented, but nobody has said
+ *                        which data would close it. The data needs are
+ *                        this platform's hypothesis, labelled as one.
+ *   origin: null       — not yet assessed. While is_demo is true the
+ *                        record is a placeholder and origin says nothing.
+ *
+ * origin and is_demo are different claims and both stay. is_demo means
+ * "placeholder content"; origin means "who identified the gap".
+ *
+ * Endometriosis is swapped (WHO + NICE NG73 + WERF EPHect). The other
+ * four are still demo. The app renders a half-swapped seed correctly and
+ * states per record which it is, so the swap proceeds one problem at a
+ * time.
  */
 
 const DATA = {
@@ -30,6 +45,7 @@ const DATA = {
         "Women aged 40–58 in paid employment, including shift and " +
         "frontline workers",
       source: "demo",
+      origin: null,
       is_demo: true,
       data_needs: [
         {
@@ -131,6 +147,7 @@ const DATA = {
         "Women in the first two years after giving birth, in any setting " +
         "with routine postnatal care",
       source: "demo",
+      origin: null,
       is_demo: true,
       data_needs: [
         {
@@ -235,6 +252,7 @@ const DATA = {
         "Women of any age presenting with fatigue, joint pain or " +
         "neurological symptoms that are not yet explained",
       source: "demo",
+      origin: null,
       is_demo: true,
       data_needs: [
         {
@@ -327,6 +345,7 @@ const DATA = {
         "Women of all ages presenting with chest, jaw, back or abdominal " +
         "symptoms, and women under 55 in particular",
       source: "demo",
+      origin: null,
       is_demo: true,
       data_needs: [
         {
@@ -396,15 +415,17 @@ const DATA = {
       title: "Endometriosis pain is recorded only at the point of diagnosis",
       area: "Endometriosis",
       summary:
-        "Diagnosis often follows years of symptoms, and the record usually " +
-        "begins at the diagnosis itself. Day-to-day pain, its effect on " +
-        "work and study, and what treatment actually changes are rarely " +
-        "captured over time.",
+        "Endometriosis affects around 10% of women and girls of " +
+        "reproductive age — roughly 190 million people — and diagnosis " +
+        "takes four to twelve years on average. The record usually begins " +
+        "at the diagnosis itself, so the years of symptoms before it, and " +
+        "the day-to-day burden after it, stay largely unwritten.",
       affected_women:
         "Women and girls from menarche onward with cyclical or chronic " +
         "pelvic pain, diagnosed or not",
-      source: "demo",
-      is_demo: true,
+      source: "https://www.who.int/news-room/fact-sheets/detail/endometriosis",
+      origin: "sourced",
+      is_demo: false,
       data_needs: [
         {
           id: "endo-pain-over-cycle",
@@ -416,6 +437,20 @@ const DATA = {
             "across a cycle.",
           status: "missing",
           existing_data_note: "",
+          gap_evidence: {
+            source:
+              "https://www.nice.org.uk/guidance/ng73/chapter/" +
+              "Recommendations-for-research",
+            note:
+              "NICE NG73, research recommendations 1 and 3. The committee " +
+              "found the evidence on managing endometriosis pain small and " +
+              "not clearly generalisable, and identified no high-quality " +
+              "research on whether non-medical approaches reduce pain and " +
+              "fatigue. NICE names the missing outcome evidence; the " +
+              "cycle-anchored longitudinal design below is this platform's " +
+              "specification, not NICE's.",
+            region: "United Kingdom"
+          },
           collection_request: {
             data_need_id: "endo-pain-over-cycle",
             target_women:
@@ -423,8 +458,12 @@ const DATA = {
               "endometriosis, including those not yet under specialist care",
             method: "Daily pain diary on a phone, anchored to cycle day",
             form:
-              "6-month daily log: one pain score, one interference score and " +
-              "cycle day. Under 30 seconds a day."
+              "Enrolment: the WERF EPHect patient questionnaire (EPQ), so " +
+              "the cohort is described in the terms other endometriosis " +
+              "studies already use. Then a 6-month daily log — one pain " +
+              "score, one interference score and cycle day, under 30 " +
+              "seconds a day.",
+            instrument_source: "http://www.ephect.org/"
           }
         },
         {
@@ -439,7 +478,21 @@ const DATA = {
           existing_data_note:
             "Some patient surveys ask about days lost, but they recruit " +
             "through specialist clinics, so they miss undiagnosed women and " +
-            "over-represent severe cases.",
+            "over-represent severe cases. WHO notes that access to early " +
+            "diagnosis is limited in many settings, which means clinic-" +
+            "recruited samples miss much of the affected population.",
+          gap_evidence: {
+            source:
+              "https://www.nice.org.uk/guidance/ng73/chapter/" +
+              "Recommendations-for-research",
+            note:
+              "NICE NG73, research recommendations 3 and 4. Ability to " +
+              "work, quality of life and level of function are named as " +
+              "outcomes endometriosis affects, while the guideline found " +
+              "their effectiveness as measured outcomes untested in the " +
+              "interventions meant to improve them.",
+            region: "United Kingdom"
+          },
           collection_request: {
             data_need_id: "endo-education-work-impact",
             target_women:
@@ -449,7 +502,8 @@ const DATA = {
             method: "Population survey with monthly recall",
             form:
               "12-month study, one 10-question contact per month, online " +
-              "with a phone alternative"
+              "with a phone alternative",
+            instrument_source: ""
           }
         },
         {
@@ -462,6 +516,20 @@ const DATA = {
             "trying options in turn.",
           status: "missing",
           existing_data_note: "",
+          gap_evidence: {
+            source:
+              "https://www.nice.org.uk/guidance/ng73/chapter/" +
+              "Recommendations-for-research",
+            note:
+              "NICE NG73, research recommendation 2, which also records " +
+              "why the existing literature cannot answer it: disease stage " +
+              "is often not sufficiently defined in studies and treatment " +
+              "modalities vary, so outcomes cannot be pooled with " +
+              "certainty. Recommendation 5 adds that the effect of " +
+              "hormonal treatment dose and duration on fertility outcomes " +
+              "is still unknown.",
+            region: "United Kingdom"
+          },
           collection_request: {
             data_need_id: "endo-treatment-response",
             target_women:
@@ -472,8 +540,13 @@ const DATA = {
               "Prospective follow-up using the same pain diary, starting " +
               "before treatment begins",
             form:
-              "Baseline month plus 12 months of the daily log, with a " +
-              "10-question review at 3, 6 and 12 months"
+              "A baseline month plus 12 months of the daily log, with a " +
+              "10-question review at 3, 6 and 12 months. Stage and " +
+              "surgical findings recorded on the WERF EPHect standard " +
+              "surgical form (SSF) and patient questionnaire (EPQ-S), so " +
+              "results pool with other studies — the exact failure NICE " +
+              "identified in the existing literature.",
+            instrument_source: "http://www.ephect.org/"
           }
         }
       ]

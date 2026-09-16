@@ -71,7 +71,8 @@ object (see §13 for why it is `.js` and not `.json`). No database.
 - `summary` (1–3 sentences)
 - `area` (e.g. menopause, maternal health)
 - `affected_women` (short description)
-- `source` (for demo data: `"demo"`)
+- `source` (URL, or `"demo"` while the record is a placeholder)
+- `origin`: `sourced` | `proposed` | `null` — see §5a
 - `is_demo` (true/false)
 
 **DataNeed** (belongs to one Problem; 2–5 per problem)
@@ -81,12 +82,52 @@ object (see §13 for why it is `.js` and not `.json`). No database.
 - `why_it_matters` (1 sentence: how it helps solve the problem)
 - `status`: `collected` | `partial` | `missing`
 - `existing_data_note` (for collected/partial: what exists and its limits)
+- `gap_evidence` (optional; for partial/missing) — `{ source, note, region }`.
+  Who established that this data is missing, and for which population.
 
 **CollectionRequest** (belongs to one DataNeed with status partial/missing)
 - `data_need_id`
 - `target_women` (age range, region, life stage or condition)
 - `method` (e.g. survey, interview, symptom diary, clinical records)
 - `form` (e.g. 10-question online questionnaire, 3-month daily log)
+- `instrument_source` (optional URL) — where `form` names a published
+  instrument, the link to it
+
+## 5a. Where a gap claim comes from
+
+The app makes a claim most tools do not: that data is *missing*. Absence
+needs different evidence from presence, so every problem declares which
+of two kinds it is, and the app shows that on every screen.
+
+**`sourced`.** An authority has already published the request — a James
+Lind Alliance Top 10, a NICE research recommendation, a Cochrane
+"implications for research". `gap_evidence` on each data need cites it.
+The gap is borrowed and attributed.
+
+**`proposed`.** The problem is documented, but nobody has specified which
+data would close it. The data needs are this platform's hypothesis and
+are labelled as one.
+
+**`null`.** Not yet assessed. While `is_demo` is true the record is a
+placeholder and its origin is not a claim worth making.
+
+`origin` and `is_demo` are different claims and both stay. `is_demo`
+means "placeholder content"; `origin` means "who identified the gap".
+
+**What the platform adds in both tiers** is §4 question 4 — which women
+to study, what to find out from them, and in what form the data comes
+back. That layer is original in every record, which is why it must stay
+visibly separate from the borrowed gap claim.
+
+**Sourcing one problem at a time.** The seed may be half swapped. Every
+screen is computed from the records rather than asserted, so the demo
+banner counts placeholders instead of claiming all records are demo, and
+disappears when the last one is replaced.
+
+**Instruments over invented forms.** Where a validated instrument exists
+for a `form` — WERF EPHect's EPQ-S, a standard time-use diary, the same
+screening tool repeated at a later interval — cite and link it rather
+than inventing a questionnaire.
 
 ## 6. Screens
 
@@ -208,9 +249,15 @@ Three principles, each with a concrete rule that can be checked.
 - Every problem has at least one `missing` need.
 - Every record carries `is_demo: true`; the UI shows the demo banner.
 - Content must be plausible but never presented as real findings.
-- Next step (after the core flow works): replace with real problems from
-  published sources (WHO, UN and others), with links. Then `source`
-  becomes a URL and `is_demo` becomes false.
+- Replacement is under way, one problem at a time (§5a). A replaced
+  record sets `source` to a URL, `is_demo` to false and `origin` to
+  `sourced` or `proposed`. **Endometriosis is done** (WHO fact sheet,
+  NICE NG73 research recommendations, WERF EPHect instruments); the
+  other four are still demo.
+- Geographic honesty: global sources carry the problem statement, and
+  national priority-setting sources (NICE, JLA) carry the gap claim, so
+  `gap_evidence.region` states the coverage rather than implying the
+  finding is worldwide.
 
 ## 10. Out of scope (hackathon)
 
@@ -349,8 +396,14 @@ it reads as judgment rather than as a gap.
 
 - [ ] Project name. ("Research intelligence for the gender data gap"
       works as the Kaggle subtitle; the title is still open.)
-- [ ] Problem area: one narrow area or several
 - [ ] Demo day time in PDT (confirm 4:00 vs 16:00 Lisbon in WhatsApp)
+- [ ] **Wording of question 4.** §4 and the request card currently read
+      "how should they be asked" and label `method` as "How to ask them".
+      The intended question is *what to find out from them* — the content
+      of the ask, not its delivery. Changing the label means rewriting
+      `method` across all 12 collection requests, so it is recorded here
+      rather than changed in passing.
 
 Resolved since 0.1: tech stack (§13), hosting and public URL (§13),
-charts (§7.4), AI feature (§11).
+charts (§7.4), AI feature (§11), several problem areas rather than one
+(session 05), two-tier gap provenance (§5a).

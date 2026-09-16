@@ -295,6 +295,114 @@ a:hover { text-decoration: none; }
   border: 2px solid var(--status-missing);
 }
 
+/* ---------- origin badge (§5a) ---------- */
+
+/* Says who identified the gap. Like the status badge, it never rests on
+   colour alone: each state has its own shape as well as its own word,
+   so the distinction survives greyscale (§8.2, §12.11). */
+
+.origin-slot {
+  margin: 0 0 var(--space-card);
+}
+
+.origin {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin: 0;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--navy-ink);
+}
+.origin::before {
+  content: "";
+  width: 12px;
+  height: 12px;
+  flex: 0 0 auto;
+  border-radius: 50%;
+}
+
+/* Filled circle — somebody else published the request. */
+.origin[data-origin="sourced"]::before {
+  background: var(--teal-accent);
+  border: 2px solid var(--teal-accent);
+}
+
+/* Hollow circle — the platform's own hypothesis. */
+.origin[data-origin="proposed"]::before {
+  background: transparent;
+  border: 2px dashed var(--status-partial);
+}
+
+/* Dashed square — a placeholder, not a claim at all. */
+.origin[data-origin="demo"]::before,
+.origin[data-origin="unknown"]::before {
+  background: transparent;
+  border: 2px dashed var(--muted);
+  border-radius: 0;
+}
+.origin[data-origin="demo"],
+.origin[data-origin="unknown"] {
+  color: var(--muted);
+  font-style: italic;
+}
+
+.problem-card .origin {
+  margin-top: 10px;
+}
+
+/* ---------- gap evidence (§5a) ---------- */
+
+/* A missing need cites the authority that named the hole, because it
+   cannot cite data that does not exist. */
+
+/* This is substantive prose, not a caption, so it keeps the §7.2 body
+   floor of 16px. --muted holds 5.9:1 on white (§12.12). */
+.gap-evidence {
+  display: block;
+  margin-top: 10px;
+  padding-left: var(--space-card);
+  border-left: 3px solid var(--border);
+  font-size: 1rem;
+  line-height: 1.5;
+  color: var(--muted);
+}
+
+.gap-evidence .label {
+  font-weight: 600;
+  color: var(--navy-ink);
+}
+
+.gap-evidence .gap-cite {
+  display: block;
+  margin-top: 4px;
+  font-size: 0.875rem;
+}
+
+.gap-evidence .region {
+  display: block;
+  margin-top: 4px;
+  font-size: 0.875rem;
+  font-style: italic;
+}
+
+.gap-evidence .unknown {
+  font-style: italic;
+}
+
+/* ---------- instrument link ---------- */
+
+.instrument-label {
+  display: block;
+  margin-top: 6px;
+  color: var(--muted);
+  font-size: 0.875rem;
+}
+
+a.instrument {
+  font-size: 0.875rem;
+}
+
 /* ---------- screen 3: the collection request card ---------- */
 
 .request-card {

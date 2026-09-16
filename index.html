@@ -18,9 +18,7 @@
   </div>
 </header>
 
-<p class="demo-banner" role="note">
-  <strong>Demo data</strong> &mdash; illustrative, not real findings.
-</p>
+<p class="demo-banner" id="demo-banner" role="note" hidden></p>
 
 <main id="main" class="wrap">
 
@@ -41,6 +39,7 @@
       &larr; All problems
     </button>
     <p class="eyebrow" id="detail-area"></p>
+    <div id="detail-origin" class="origin-slot"></div>
     <h1 id="detail-heading"></h1>
     <p class="lede" id="detail-summary"></p>
     <p class="affected"><span class="label">Affected women:</span> <span id="detail-affected"></span></p>
@@ -59,6 +58,7 @@
     <p class="eyebrow" id="request-problem"></p>
     <h1 id="request-heading">Collection request</h1>
     <div id="request-card" class="request-card"></div>
+    <div id="request-origin" class="origin-slot"></div>
     <div id="request-source" class="provenance-slot"></div>
   </section>
 
@@ -67,7 +67,7 @@
 <footer class="site-footer wrap">
   <p>
     Built for the Elevate Women Global Hackathon 2026.
-    All records in this version are generated demo data.
+    <span id="footer-provenance"></span>
   </p>
 </footer>
 
