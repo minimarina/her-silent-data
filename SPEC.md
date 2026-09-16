@@ -48,7 +48,8 @@ field and is short on time.
 3. She sees the data needed to solve it, each marked
    **collected / partial / missing**.
 4. She opens a missing item and sees the **collection request card**:
-   which women, how to ask them, in what form.
+   which women, what to find out from them, in which breakdowns, and in
+   what form the data comes back.
 
 Everything else is secondary to this flow.
 
@@ -159,14 +160,24 @@ than inventing a questionnaire.
 - Banner: shown only while placeholder records exist, and it counts
   them. With the seed fully sourced it does not render.
 
+- Origin badge on each card (§5a), and the record's source.
+
 **Screen 2 — Problem detail**
 - Problem title, summary, affected women (question 1).
+- Origin badge and the problem's source link.
 - List of data needs (question 2) with status badge (question 3).
+- Each missing or partial need carries its gap evidence: who established
+  that the data is missing, with the coverage region. Where nothing does,
+  the need says the assessment is this platform's own.
+- Each collected or partial need carries its dataset pointer: where the
+  data that does exist lives, and what its coverage limit is.
 - Missing/partial items are visually distinct and clickable.
 
 **Screen 3 — Collection request card** (panel or separate view)
-- Which women, how to ask, in what form (question 4).
+- Which women, what to find out from them, in which breakdowns, in what
+  form (question 4), with the instrument linked where one exists.
 - Why this data matters.
+- The gap evidence and, for partial needs, the dataset pointer.
 - This is the climax of the demo; it gets the most visual care.
 
 ## 7. Design
@@ -226,7 +237,20 @@ What carries the screens instead: status badges, counts framed in words
 ("3 of 5 data needs missing"), and clean tabular layout.
 
 Charts are reconsidered only when real sourced data replaces the demo
-seed and there is enough of it to have a shape. Not this week.
+seed and there is enough of it to have a shape.
+
+**Update, 15 Sep.** The first half of that condition is now met: the seed
+is fully sourced. The second half is not, and the reasoning still holds
+— five problems are not a dataset, and a chart of *findings* over them
+would still be decoration pretending to be analysis.
+
+But the seed now holds something the rule was never written about. 14
+collection requests, roughly 70 variables, stratifiers, statuses,
+coverage regions and sources are a **structure**, even though they are
+not findings. A view of that structure — what is missing, across all
+problems at once — would be an analytical instrument rather than
+decoration, and would not breach §8.1. It is recorded in the product
+backlog rather than built here. Still not this week.
 
 ### 7.5 Responsive
 
