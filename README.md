@@ -48,4 +48,4 @@ reachable with a visible focus ring; body text is 16px at 4.5:1 contrast
 or better; no horizontal scroll at 360px; `prefers-reduced-motion` is
 honoured.
 
-Status: day 3 — the core flow works end to end on demo data.
+Status: the core flow works end to end on demo data.
