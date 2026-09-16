@@ -425,9 +425,22 @@
     heading.appendChild(statusBadge(need.status));
     card.appendChild(heading);
 
+    /* §4 question 4, in the order a study gets designed: who is studied,
+       what is found out from them, in which breakdowns, and in what form
+       the data comes back. "How to ask" was folded into the form: the
+       delivery and the format are one answer, not two. */
     var fields = document.createElement("dl");
     fields.appendChild(field("Which women", request.target_women));
-    fields.appendChild(field("How to ask them", request.method));
+    fields.appendChild(listField(
+      "What to find out from them", request.variables
+    ));
+    fields.appendChild(listField(
+      "Broken down by",
+      request.stratifiers,
+      "Data collected without these cannot show what happens to which " +
+      "women. The missing breakdown is the gap as often as the missing " +
+      "study is."
+    ));
     fields.appendChild(field(
       "In what form", request.form, request.instrument_source
     ));
@@ -446,6 +459,35 @@
     fillSourceSlot("request-source", problem.source);
 
     show("screen-request");
+  }
+
+  /* A field whose value is a list of things to collect. An empty or
+     missing list says so rather than rendering an empty bullet (§8.1).
+     The optional hint explains a label that is not self-evident. */
+  function listField(label, items, hint) {
+    var wrapper = make("div", "request-field");
+    wrapper.appendChild(make("dt", null, label));
+
+    var dd = document.createElement("dd");
+
+    if (!items || !items.length) {
+      dd.appendChild(make("span", "unknown", UNKNOWN));
+      wrapper.appendChild(dd);
+      return wrapper;
+    }
+
+    var list = make("ul", "field-list");
+    items.forEach(function (item) {
+      list.appendChild(makeValue("li", null, item));
+    });
+    dd.appendChild(list);
+
+    if (hasText(hint)) {
+      dd.appendChild(make("p", "field-hint", hint));
+    }
+
+    wrapper.appendChild(dd);
+    return wrapper;
   }
 
   /* Where the form names a published instrument, the instrument is

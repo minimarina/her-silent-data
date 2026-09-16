@@ -295,6 +295,26 @@ a:hover { text-decoration: none; }
   border: 2px solid var(--status-missing);
 }
 
+/* ---------- list fields on the request card ---------- */
+
+.field-list {
+  margin: 0;
+  padding-left: 1.25rem;
+}
+
+.field-list li {
+  margin-bottom: 4px;
+}
+
+/* Why a label exists, not what it contains. Muted and smaller, so it
+   reads as guidance rather than as another data point. */
+.field-hint {
+  margin: 8px 0 0;
+  color: var(--muted);
+  font-size: 0.875rem;
+  font-style: italic;
+}
+
 /* ---------- origin badge (§5a) ---------- */
 
 /* Says who identified the gap. Like the status badge, it never rests on

@@ -64,12 +64,29 @@ const DATA = {
               "Women aged 40–58 in paid employment, mixed sectors, " +
               "including shift workers and those in physically demanding " +
               "roles. Perimenopausal and postmenopausal both included.",
-            method:
-              "Daily self-report diary on a phone, with a short baseline " +
-              "questionnaire at enrolment",
+            variables: [
+              "Hot flush frequency and severity",
+              "Sleep quality the night before",
+              "Concentration and memory difficulty",
+              "Mood",
+              "Joint or muscle pain",
+              "Heavy or unpredictable bleeding",
+              "The day's main work task",
+              "Whether a symptom changed what she did at work that day"
+            ],
+            stratifiers: [
+              "Age band",
+              "Menopausal stage (peri- or post-)",
+              "Sector",
+              "Shift pattern",
+              "Whether HRT or another treatment is in use"
+            ],
             form:
-              "3-month daily log: 6 symptom sliders plus one multiple-choice " +
-              "question on the day's main work task. Under two minutes a day."
+              "A short baseline questionnaire at enrolment, then a " +
+              "3-month daily diary on a phone: six symptom sliders plus " +
+              "one multiple-choice question on the day's main work task. " +
+              "Under two minutes a day.",
+            instrument_source: ""
           }
         },
         {
@@ -85,12 +102,29 @@ const DATA = {
           collection_request: {
             data_need_id: "menopause-workplace-adjustments",
             target_women:
-              "Women aged 40–58 who have disclosed menopause symptoms to an " +
-              "employer, and a comparison group who chose not to disclose",
-            method: "Structured interview, one sitting",
+              "Women aged 40–58 who have disclosed menopause symptoms to " +
+              "an employer, and a comparison group who chose not to " +
+              "disclose.",
+            variables: [
+              "Which adjustments were requested",
+              "Which were granted, refused or left unanswered",
+              "How long the decision took, and who made it",
+              "What changed at work afterwards",
+              "Reasons given for refusal, recorded verbatim",
+              "Reasons for not disclosing at all"
+            ],
+            stratifiers: [
+              "Sector",
+              "Organisation size",
+              "Seniority",
+              "Union presence",
+              "Whether a written menopause policy exists"
+            ],
             form:
-              "45-minute semi-structured interview, 12 fixed questions plus " +
-              "follow-ups, transcribed and coded"
+              "One 45-minute semi-structured interview, 12 fixed " +
+              "questions plus follow-ups, transcribed and coded against a " +
+              "fixed category list.",
+            instrument_source: ""
           }
         },
         {
@@ -108,13 +142,28 @@ const DATA = {
             data_need_id: "menopause-workplace-prevalence",
             target_women:
               "Women aged 35–60 in regions with no existing cohort data, " +
-              "recruited through primary care and community health workers",
-            method:
-              "Cross-sectional survey using the age bands already used by " +
-              "the existing cohorts, so the results can be pooled",
+              "recruited through primary care and community health " +
+              "workers.",
+            variables: [
+              "Age at first symptom",
+              "Which symptom came first",
+              "Age at last menstrual period",
+              "Which symptoms are still present now",
+              "Whether care was sought, and what was offered"
+            ],
+            stratifiers: [
+              "Region",
+              "Urban or rural",
+              "Age band matched to the existing cohorts",
+              "Parity",
+              "Education"
+            ],
             form:
-              "20-question interviewer-administered survey, one contact, " +
-              "available in the local language"
+              "A 20-question interviewer-administered survey, one " +
+              "contact, in the local language. The age bands must match " +
+              "those the existing cohorts already use, or the results " +
+              "cannot be pooled with them.",
+            instrument_source: ""
           }
         },
         {
@@ -164,13 +213,28 @@ const DATA = {
             data_need_id: "maternal-postnatal-symptoms-12m",
             target_women:
               "Women 6 and 12 months after a first or subsequent birth, " +
-              "covering vaginal and caesarean births, recruited at discharge",
-            method:
-              "Two follow-up questionnaires sent by SMS, with a phone option " +
-              "for anyone who prefers it",
+              "covering vaginal and caesarean births, recruited at " +
+              "discharge.",
+            variables: [
+              "Pain, and where it is",
+              "Urinary and faecal continence",
+              "Wound or scar healing",
+              "Pain during sex, and whether sex has resumed",
+              "Fatigue and sleep",
+              "Whether help was sought, and what was offered"
+            ],
+            stratifiers: [
+              "Mode of birth",
+              "Parity",
+              "Perineal trauma or caesarean",
+              "Gestation at birth",
+              "Whether breastfeeding"
+            ],
             form:
-              "Two contacts, 15 questions each, covering pain, continence, " +
-              "wound healing, sexual health and sleep"
+              "Two follow-up questionnaires sent by SMS at 6 and 12 " +
+              "months, 15 questions each, with a phone option for anyone " +
+              "who prefers it.",
+            instrument_source: ""
           }
         },
         {
@@ -199,14 +263,28 @@ const DATA = {
           existing_data_note: "",
           collection_request: {
             data_need_id: "maternal-postnatal-unpaid-care",
-            target_women:
-              "Women in the first year after birth, stratified by household " +
-              "composition and whether other children or dependent adults " +
-              "are at home",
-            method: "Time-use diary, already a standard instrument",
+            target_women: "Women in the first year after giving birth.",
+            variables: [
+              "Hours of infant care",
+              "Hours of care for other children or dependent adults",
+              "Hours of housework",
+              "Hours of paid work",
+              "Hours of uninterrupted sleep",
+              "Longest continuous rest in the day",
+              "Who else was present to help"
+            ],
+            stratifiers: [
+              "Household composition",
+              "Number and ages of other children",
+              "Partner's leave status",
+              "Paid help available",
+              "Whether she has returned to paid work"
+            ],
             form:
-              "Two 24-hour diaries, one weekday and one weekend day, " +
-              "repeated at 3 and 9 months"
+              "Two 24-hour time-use diaries, one weekday and one weekend " +
+              "day, repeated at 3 and 9 months. The time-use diary is an " +
+              "established standard instrument, not a new one.",
+            instrument_source: ""
           }
         },
         {
@@ -225,14 +303,26 @@ const DATA = {
           collection_request: {
             data_need_id: "maternal-postnatal-mental-health",
             target_women:
-              "Women 4–18 months after birth, including those who screened " +
-              "negative at six weeks",
-            method:
-              "Repeat of the same validated screening instrument used at " +
-              "six weeks, so scores are directly comparable",
+              "Women 4–18 months after birth, including those who " +
+              "screened negative at six weeks.",
+            variables: [
+              "The same validated screening score used at six weeks, repeated",
+              "Onset date of any new symptoms",
+              "Whether help was sought",
+              "What treatment was offered, and whether it was taken up"
+            ],
+            stratifiers: [
+              "Six-week screening result",
+              "Parity",
+              "Mode of birth and complications",
+              "History of mental illness before pregnancy"
+            ],
             form:
               "Three contacts at 6, 12 and 18 months, 10 questions each, " +
-              "self-completed online or on paper"
+              "self-completed online or on paper. It must be the same " +
+              "validated instrument used at six weeks, or the scores are " +
+              "not comparable.",
+            instrument_source: ""
           }
         }
       ]
@@ -269,15 +359,28 @@ const DATA = {
           collection_request: {
             data_need_id: "autoimmune-pathway",
             target_women:
-              "Women diagnosed with an autoimmune condition in the last two " +
-              "years, across at least three conditions, recruited through " +
-              "specialist clinics and patient organisations",
-            method:
-              "Retrospective timeline interview, supported by the woman's own " +
-              "records where she consents to share them",
+              "Women diagnosed with an autoimmune condition in the last " +
+              "two years, across at least three conditions, recruited " +
+              "through specialist clinics and patient organisations.",
+            variables: [
+              "Date of first symptom",
+              "Date and specialty of every appointment before diagnosis",
+              "Tests ordered, and their results",
+              "Referrals made, and referrals refused",
+              "Date of diagnosis, and who made it"
+            ],
+            stratifiers: [
+              "Condition",
+              "Age at first symptom",
+              "Sex, against a male comparison group",
+              "Route of first presentation",
+              "Country and health system"
+            ],
             form:
-              "One 60-minute interview producing a dated event timeline, " +
-              "plus optional records release"
+              "One 60-minute retrospective timeline interview producing a " +
+              "dated event timeline, supported by the woman's own records " +
+              "where she consents to release them.",
+            instrument_source: ""
           }
         },
         {
@@ -294,13 +397,24 @@ const DATA = {
             data_need_id: "autoimmune-alternative-explanations",
             target_women:
               "The same diagnosed cohort, with a comparison group of men " +
-              "diagnosed with the same conditions",
-            method:
-              "Open-ended question inside the timeline interview, coded " +
-              "against a fixed category list",
+              "diagnosed with the same conditions.",
+            variables: [
+              "Every explanation offered before diagnosis, recorded verbatim",
+              "Who offered it, and at which visit",
+              "What was advised or prescribed as a result",
+              "Whether she was referred onward"
+            ],
+            stratifiers: [
+              "Sex",
+              "Condition",
+              "Age band",
+              "Specialty of the clinician offering the explanation"
+            ],
             form:
-              "One question with unlimited free text, coded by two " +
-              "independent raters"
+              "One open-ended question inside the timeline interview, " +
+              "unlimited free text, coded against a fixed category list " +
+              "by two independent raters.",
+            instrument_source: ""
           }
         },
         {
@@ -319,14 +433,27 @@ const DATA = {
           collection_request: {
             data_need_id: "autoimmune-sex-disaggregated-trials",
             target_women:
-              "No new participants needed — the request goes to trial " +
-              "sponsors for re-analysis of women already enrolled",
-            method:
-              "Structured data request to sponsors and re-analysis of " +
-              "existing trial datasets",
+              "No new participants. The request goes to trial sponsors " +
+              "for re-analysis of women already enrolled.",
+            variables: [
+              "Primary and secondary outcomes, reported separately by sex",
+              "Adverse events by sex",
+              "Dose and dose adjustments by sex",
+              "Withdrawals, and the reasons for them, by sex"
+            ],
+            stratifiers: [
+              "Sex",
+              "Age band",
+              "Menopausal status where recorded",
+              "Body weight",
+              "Concomitant medication"
+            ],
             form:
-              "Standard reporting template: outcome and adverse events by " +
-              "sex, with age band and menopausal status where recorded"
+              "A structured data request to sponsors, returned on a " +
+              "standard reporting template. The SAGER guidelines already " +
+              "define how sex and gender should be reported; the template " +
+              "follows them.",
+            instrument_source: ""
           }
         }
       ]
@@ -362,14 +489,26 @@ const DATA = {
             data_need_id: "cardiac-presenting-symptoms",
             target_women:
               "Women arriving at emergency departments with any symptom " +
-              "later confirmed as cardiac, across the full adult age range " +
-              "and including women under 55",
-            method:
-              "Verbatim capture of the first description at triage, added to " +
-              "the existing intake form",
+              "later confirmed as cardiac, across the full adult age " +
+              "range and including women under 55.",
+            variables: [
+              "The first description of the symptom in her own words, verbatim",
+              "The words used for location, quality and severity",
+              "Associated symptoms mentioned unprompted",
+              "What she thought was happening",
+              "The triage category assigned"
+            ],
+            stratifiers: [
+              "Age band",
+              "Final diagnosis",
+              "First language",
+              "Whether she arrived by ambulance or self-presented"
+            ],
             form:
-              "One free-text field at triage, plus a 5-item structured " +
-              "checklist, completed at the point of arrival"
+              "One free-text field added to the existing triage intake " +
+              "form, plus a 5-item structured checklist, completed at the " +
+              "point of arrival.",
+            instrument_source: ""
           }
         },
         {
@@ -400,11 +539,27 @@ const DATA = {
             data_need_id: "cardiac-pre-hospital-decision",
             target_women:
               "Women admitted with a confirmed cardiac event, interviewed " +
-              "before discharge, with caregiving responsibilities recorded",
-            method: "Short bedside interview before discharge",
+              "before discharge.",
+            variables: [
+              "Time from first symptom to seeking help",
+              "What she did in between",
+              "Who she told first",
+              "What finally prompted the decision",
+              "Whether caring or work duties delayed her",
+              "What she thought the symptom was"
+            ],
+            stratifiers: [
+              "Age band",
+              "Caregiving responsibilities at home",
+              "Living alone or with others",
+              "Distance to hospital",
+              "Prior cardiac history"
+            ],
             form:
-              "15-minute interview, 8 fixed questions on timing plus two " +
-              "open questions on what prompted the decision to seek help"
+              "One 15-minute bedside interview before discharge: 8 fixed " +
+              "questions on timing, plus two open questions on what " +
+              "prompted the decision to seek help.",
+            instrument_source: ""
           }
         }
       ]
@@ -455,14 +610,28 @@ const DATA = {
             data_need_id: "endo-pain-over-cycle",
             target_women:
               "Women and girls aged 15–45 with suspected or diagnosed " +
-              "endometriosis, including those not yet under specialist care",
-            method: "Daily pain diary on a phone, anchored to cycle day",
+              "endometriosis, including those not yet under specialist " +
+              "care.",
+            variables: [
+              "Pain severity (0–10)",
+              "Cycle day",
+              "Whether pain interfered with the day's activities (0–10)",
+              "Analgesia taken",
+              "Bleeding",
+              "Bowel or bladder pain"
+            ],
+            stratifiers: [
+              "Age band",
+              "Diagnosed or not",
+              "Time since first symptom",
+              "Current treatment",
+              "Whether trying to conceive"
+            ],
             form:
-              "Enrolment: the WERF EPHect patient questionnaire (EPQ), so " +
-              "the cohort is described in the terms other endometriosis " +
-              "studies already use. Then a 6-month daily log — one pain " +
-              "score, one interference score and cycle day, under 30 " +
-              "seconds a day.",
+              "The WERF EPHect patient questionnaire (EPQ) at enrolment, " +
+              "so the cohort is described in the terms other " +
+              "endometriosis studies already use. Then a 6-month daily " +
+              "log on a phone, under 30 seconds a day.",
             instrument_source: "http://www.ephect.org/"
           }
         },
@@ -498,11 +667,24 @@ const DATA = {
             target_women:
               "A general-population sample of women and girls aged 15–45, " +
               "not recruited through clinics, so undiagnosed cases are " +
-              "included",
-            method: "Population survey with monthly recall",
+              "included.",
+            variables: [
+              "Days of school, study or paid work missed",
+              "Days attended while symptomatic",
+              "Tasks dropped or handed to someone else",
+              "Income lost",
+              "Whether a reason was given to the employer or school, and which"
+            ],
+            stratifiers: [
+              "Age band",
+              "Diagnosed, suspected or neither",
+              "Student or employed",
+              "Sector",
+              "Country"
+            ],
             form:
-              "12-month study, one 10-question contact per month, online " +
-              "with a phone alternative",
+              "A 12-month population survey, one 10-question contact per " +
+              "month, online with a phone alternative.",
             instrument_source: ""
           }
         },
@@ -534,11 +716,21 @@ const DATA = {
             data_need_id: "endo-treatment-response",
             target_women:
               "Women starting any endometriosis treatment — hormonal, " +
-              "surgical or pain management — stratified by age, prior " +
-              "treatments and whether they are trying to conceive",
-            method:
-              "Prospective follow-up using the same pain diary, starting " +
-              "before treatment begins",
+              "surgical or pain management.",
+            variables: [
+              "Pain and interference scores carried over from the daily log",
+              "Treatment started, with dose and duration",
+              "Side effects",
+              "Treatments stopped, and why",
+              "Whether conception was attempted, and the outcome"
+            ],
+            stratifiers: [
+              "Disease stage, recorded on the EPHect surgical form",
+              "Age band",
+              "Prior treatments",
+              "Whether trying to conceive",
+              "Comorbid conditions"
+            ],
             form:
               "A baseline month plus 12 months of the daily log, with a " +
               "10-question review at 3, 6 and 12 months. Stage and " +

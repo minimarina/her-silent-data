@@ -1,6 +1,6 @@
 # SPEC — Women's Data Gap (working name)
 
-Version: 0.2 (day 2, demo data)
+Version: 0.3 (endometriosis sourced; four problems still demo)
 Event: Elevate Women Global Hackathon 2026
 Submission deadline: Sep 20, 23:59 Lisbon = **Sep 20, 15:59 PDT**
 
@@ -57,8 +57,8 @@ Everything else is secondary to this flow.
 1. What problem do women face?
 2. What data is needed to solve it?
 3. Has that data already been collected?
-4. If not: which women should it come from, how should they be asked,
-   and in what form?
+4. If not: which women should it come from, what should be found out
+   from them, in which breakdowns, and in what form does it come back?
 
 ## 5. Data model
 
@@ -87,11 +87,25 @@ object (see §13 for why it is `.js` and not `.json`). No database.
 
 **CollectionRequest** (belongs to one DataNeed with status partial/missing)
 - `data_need_id`
-- `target_women` (age range, region, life stage or condition)
-- `method` (e.g. survey, interview, symptom diary, clinical records)
-- `form` (e.g. 10-question online questionnaire, 3-month daily log)
+- `target_women` (who is studied: age range, region, life stage, condition)
+- `variables` (list) — what to find out from them. The list a researcher
+  carries into a study design; this is the answer §4 question 4 exists for.
+- `stratifiers` (list) — the breakdowns the analysis needs (age band,
+  parity, stage, region, comorbidity, socioeconomic status). Kept separate
+  from `target_women` deliberately: see below.
+- `form` (e.g. 10-question online questionnaire, 3-month daily log) —
+  absorbs delivery as well as format. "How it is asked" and "what shape it
+  comes back in" are one answer, and splitting them broke §8.3.
 - `instrument_source` (optional URL) — where `form` names a published
   instrument, the link to it
+
+**Why `stratifiers` is its own field.** The gender data gap is not only
+missing studies, it is missing *breakdowns* — data collected without the
+variables that would make women visible inside it (§11). Holding the
+breakdowns as prose inside `target_women` would make the platform's
+central claim the one thing on the card that cannot be compared between
+records, or shown to be absent. It is also where §11's AI suggestions
+attach when that feature is built.
 
 ## 5a. Where a gap claim comes from
 
@@ -397,13 +411,8 @@ it reads as judgment rather than as a gap.
 - [ ] Project name. ("Research intelligence for the gender data gap"
       works as the Kaggle subtitle; the title is still open.)
 - [ ] Demo day time in PDT (confirm 4:00 vs 16:00 Lisbon in WhatsApp)
-- [ ] **Wording of question 4.** §4 and the request card currently read
-      "how should they be asked" and label `method` as "How to ask them".
-      The intended question is *what to find out from them* — the content
-      of the ask, not its delivery. Changing the label means rewriting
-      `method` across all 12 collection requests, so it is recorded here
-      rather than changed in passing.
 
 Resolved since 0.1: tech stack (§13), hosting and public URL (§13),
 charts (§7.4), AI feature (§11), several problem areas rather than one
-(session 05), two-tier gap provenance (§5a).
+(session 05), two-tier gap provenance (§5a), collection request fields
+and the wording of question 4 (§5).
