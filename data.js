@@ -181,6 +181,16 @@ const DATA = {
             "Cohort data exists for several high-income countries. Coverage " +
             "of South Asia, sub-Saharan Africa and Latin America is thin, and " +
             "the age bands used are not comparable between studies.",
+          dataset_source: {
+            source:
+              "https://www.swanstudy.org/swan-research/data-access/",
+            note:
+              "The Study of Women's Health Across the Nation (SWAN) " +
+              "follows 3,302 women through the menopausal transition, " +
+              "with public-use datasets from baseline to the tenth annual " +
+              "visit available to any registered user. United States " +
+              "only, which is the coverage limit described above."
+          },
           gap_evidence: {
             source:
               "https://www.nice.org.uk/guidance/ng23/chapter/Recommendations-for-research",
@@ -235,6 +245,16 @@ const DATA = {
             "Several national labour-force surveys track employment by age " +
             "and sex, and can be linked to health survey waves. The data " +
             "exists and is usable for this question without new collection.",
+          dataset_source: {
+            source:
+              "https://genderdata.worldbank.org/en/indicators",
+            note:
+              "World Bank Gender Data Portal, labour force participation " +
+              "and employment indicators by sex and age, free to access. " +
+              "These are aggregate indicators; linking employment status " +
+              "to symptom onset at the individual level needs the " +
+              "national labour force surveys behind them."
+          },
           collection_request: null
         }
       ]
@@ -321,6 +341,16 @@ const DATA = {
             "Routinely recorded in hospital delivery records and national " +
             "birth registries in most settings. Available for linkage where " +
             "ethics approval allows it.",
+          dataset_source: {
+            source:
+              "https://www.gov.uk/government/statistics/maternity-services-monthly-statistics-final-january-2026-provisional-february-2026-official-statistics",
+            note:
+              "NHS England publishes Maternity Services Monthly " +
+              "Statistics from the Maternity Services Data Set, a " +
+              "patient-level national collection. Delivery method " +
+              "analysis files are published with each release. England " +
+              "only."
+          },
           collection_request: null
         },
         {
@@ -661,13 +691,21 @@ const DATA = {
           status: "collected",
           existing_data_note:
             "Hospital systems already timestamp arrival, assessment and " +
-            "treatment. National cardiac audits publish this broken " +
-            "down by sex \u2014 in England and Wales the Myocardial " +
-            "Ischaemia National Audit Project (MINAP), part of the " +
-            "National Cardiac Audit Programme, has covered every " +
-            "hospital treating acute coronary syndromes since 2002. " +
-            "nicor.org.uk/national-cardiac-audit-programme/" +
-            "heart-attack-audit-minap",
+            "treatment, and national cardiac registries record " +
+            "patient sex alongside them, so the analysis needs no " +
+            "new collection. Whether a given published summary " +
+            "presents the breakdown is a separate question from " +
+            "whether the registry holds the fields.",
+          dataset_source: {
+            source:
+              "https://www.nicor.org.uk/national-cardiac-audit-programme/heart-attack-audit-minap",
+            note:
+              "The Myocardial Ischaemia National Audit Project (MINAP) " +
+              "records the patient journey from the call to emergency " +
+              "services or arrival at an emergency department through " +
+              "diagnosis and treatment, across hospitals in England and " +
+              "Wales, with public interim and annual reports."
+          },
           collection_request: null
         },
         {

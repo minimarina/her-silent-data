@@ -211,6 +211,44 @@
     })[0];
   }
 
+  /* The other half of provenance. A missing need cites the authority
+     that named the gap; a collected or partial one points at the data
+     itself, which is what a researcher came here to be handed. Same
+     button rule as gap evidence: named inside a button, linked outside. */
+  function datasetNode(need, tag) {
+    var box = make(tag || "div", "dataset");
+    box.appendChild(make("span", "label", "Where the data is: "));
+
+    var ds = need.dataset_source;
+    if (!ds || !hasText(ds.note)) {
+      box.appendChild(make(
+        "span",
+        "unknown",
+        "No public dataset identified on this record."
+      ));
+      return box;
+    }
+
+    box.appendChild(make("span", null, ds.note));
+
+    if (isUrl(ds.source)) {
+      var cite = make("span", "gap-cite");
+      cite.appendChild(make("span", "label", "Go to it: "));
+
+      if (box.tagName === "SPAN") {
+        cite.appendChild(make("span", null, sourceLabel(ds.source)));
+      } else {
+        var link = make("a", null, sourceLabel(ds.source));
+        link.href = ds.source;
+        link.target = "_blank";
+        link.rel = "noopener noreferrer";
+        cite.appendChild(link);
+      }
+      box.appendChild(cite);
+    }
+    return box;
+  }
+
   /* §8.3 — numbers are always framed in words, and always computed from
      the statuses so Screen 1 cannot disagree with Screen 2 (§12.16). */
   function gapSentence(problem) {
@@ -364,6 +402,7 @@
     /* Always shown for a collected need: if the seed does not say what
        exists, the screen says that rather than staying silent (§8.1). */
     item.appendChild(existingDataLine(need));
+    item.appendChild(datasetNode(need));
     item.appendChild(
       make("p", "need-note", "No new collection needed for this item.")
     );
@@ -389,6 +428,7 @@
        A missing need has none, and there is nothing to describe. */
     if (need.status === "partial") {
       button.appendChild(existingDataLine(need, "span"));
+      button.appendChild(datasetNode(need, "span"));
     }
     /* The status badge says "Missing". This says who established that,
        which is the claim a reader is entitled to challenge. */
@@ -450,6 +490,9 @@
     /* The specification below is this platform's own work in every case.
        What varies is whether the gap it answers was published by someone
        else or proposed here, so the card states both (§5a, §8.1). */
+    if (need.status !== "missing") {
+      card.appendChild(datasetNode(need));
+    }
     card.appendChild(gapEvidenceNode(problem, need));
 
     var requestOrigin = el("request-origin");

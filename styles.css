@@ -315,6 +315,34 @@ a:hover { text-decoration: none; }
   font-style: italic;
 }
 
+/* Where existing data lives. Same shape as gap evidence, because they
+   are the two halves of one idea; teal rule rather than grey, because
+   this one is a thing you can go and use. */
+.dataset {
+  display: block;
+  margin-top: 10px;
+  padding-left: var(--space-card);
+  border-left: 3px solid var(--teal-accent);
+  font-size: 1rem;
+  line-height: 1.5;
+  color: var(--muted);
+}
+
+.dataset .label {
+  font-weight: 600;
+  color: var(--navy-ink);
+}
+
+.dataset .gap-cite {
+  display: block;
+  margin-top: 4px;
+  font-size: 0.875rem;
+}
+
+.dataset .unknown {
+  font-style: italic;
+}
+
 /* ---------- origin badge (§5a) ---------- */
 
 /* Says who identified the gap. Like the status badge, it never rests on

@@ -84,6 +84,14 @@ object (see §13 for why it is `.js` and not `.json`). No database.
 - `existing_data_note` (for collected/partial: what exists and its limits)
 - `gap_evidence` (optional; for partial/missing) — `{ source, note, region }`.
   Who established that this data is missing, and for which population.
+- `dataset_source` (optional; for collected/partial) — `{ source, note }`.
+  Where the data that *does* exist lives, and what its coverage limit is.
+
+`gap_evidence` and `dataset_source` are the two halves of provenance, and
+a need's status decides which one carries the weight. A `collected` need
+cannot cite an absence and a `missing` need cannot link to data that does
+not exist; a `partial` need has both. Either may be empty, and the screen
+says so rather than leaving a blank.
 
 **CollectionRequest** (belongs to one DataNeed with status partial/missing)
 - `data_need_id`
