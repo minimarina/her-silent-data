@@ -169,11 +169,21 @@ p { margin: 0 0 12px; }
   background: var(--teal-soft);
 }
 
+/* Buttons may only contain phrasing content, so the lines inside a card
+   are spans. They are laid out as blocks here. */
+.problem-card > span,
+.need-open > span:not(.badge) {
+  display: block;
+}
+
 .problem-card .card-title {
   margin: 4px 0 8px;
   font-size: 1.125rem;
   font-weight: 700;
 }
+
+.problem-card .affected-line { margin-bottom: 8px; }
+.problem-card .count { margin-bottom: 0; }
 
 /* ---------- screen 2: data needs ---------- */
 
@@ -204,9 +214,10 @@ p { margin: 0 0 12px; }
 .need-open:hover { background: var(--teal-soft); }
 .need-open[data-status="partial"] { border-left-color: var(--status-partial); }
 
-.need-description { font-weight: 600; margin-bottom: 6px; }
+.need-description { font-weight: 600; margin: 6px 0; }
 .need-why, .need-note { color: var(--muted); margin-bottom: 0; }
 .need-note { margin-top: 6px; }
+.need-open .need-why, .need-open .need-note { max-width: 70ch; }
 
 .need-action {
   display: inline-block;
