@@ -76,6 +76,41 @@ p { margin: 0 0 12px; }
 }
 .skip-link:focus { left: 8px; top: 8px; }
 
+a {
+  color: var(--teal-accent);
+  text-decoration: underline;
+}
+a:hover { text-decoration: none; }
+
+/* §8.1 — a field the seed does not establish. Italic as well as muted,
+   so the distinction does not rest on colour alone. */
+.unknown {
+  color: var(--muted);
+  font-style: italic;
+}
+
+/* §8.1 provenance — sits on the record, not in a footer. */
+.provenance {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.875rem;
+}
+.provenance-slot {
+  margin-top: var(--space-card);
+  margin-bottom: var(--space-section);
+  padding-top: 12px;
+  border-top: 1px solid var(--border);
+}
+.provenance .is-demo { color: var(--muted); }
+
+/* On a card the source is the last line, and plain text rather than a
+   link, because a link may not sit inside a button. */
+.problem-card .provenance {
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid var(--border);
+}
+
 /* ---------- header, banner, footer ---------- */
 
 .site-header {

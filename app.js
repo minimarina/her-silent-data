@@ -10,6 +10,10 @@
     missing: "Missing"
   };
 
+  /* §8.1 — the app states what it does not know. An empty field says this
+     and never guesses, and never renders as a silent blank. */
+  var UNKNOWN = "Not established";
+
   /* ---------- helpers ---------- */
 
   function el(id) {
@@ -23,6 +27,90 @@
     if (className) { node.className = className; }
     if (text) { node.textContent = text; }
     return node;
+  }
+
+  function hasText(value) {
+    return typeof value === "string" && value.trim() !== "";
+  }
+
+  /* Like make(), but an empty value becomes "Not established" rather than
+     an empty element. Italic as well as muted, so the distinction does not
+     rest on colour alone (§8.2). */
+  function makeValue(tag, className, text) {
+    var node = make(tag, className, hasText(text) ? text : UNKNOWN);
+    if (!hasText(text)) { node.classList.add("unknown"); }
+    return node;
+  }
+
+  /* Same rule, for elements that already exist in the markup. */
+  function setValue(node, text) {
+    node.textContent = hasText(text) ? text : UNKNOWN;
+    node.classList.toggle("unknown", !hasText(text));
+  }
+
+  /* ---------- provenance (§8.1) ---------- */
+
+  /* Every claim shows where it came from, on the record itself rather
+     than in a footer. A record's source is either the string "demo" or a
+     URL, so replacing the seed with real sources is a one-field edit per
+     record and needs no change here. */
+
+  function isUrl(value) {
+    return hasText(value) && /^https?:\/\//i.test(value);
+  }
+
+  function sourceLabel(source) {
+    if (!hasText(source)) { return UNKNOWN; }
+    if (source === "demo") { return "Generated demo data"; }
+    if (isUrl(source)) {
+      try {
+        return new URL(source).hostname.replace(/^www\./, "");
+      } catch (e) {
+        return source;
+      }
+    }
+    return source;
+  }
+
+  /* Plain text version, for use inside a card button: a link may not be
+     nested inside a button. */
+  function sourceText(source) {
+    var span = make("span", "provenance", "Source: " + sourceLabel(source));
+    if (!hasText(source)) { span.classList.add("unknown"); }
+    return span;
+  }
+
+  /* Linked version, for the screens where the record stands alone. */
+  function sourceNode(source) {
+    var line = make("p", "provenance");
+    line.appendChild(make("span", "label", "Source: "));
+
+    if (isUrl(source)) {
+      var link = make("a", null, sourceLabel(source));
+      link.href = source;
+      link.target = "_blank";
+      link.rel = "noopener noreferrer";
+      line.appendChild(link);
+      return line;
+    }
+
+    if (source === "demo") {
+      line.appendChild(make(
+        "span",
+        "is-demo",
+        "Generated demo data — illustrative, not a real finding"
+      ));
+      return line;
+    }
+
+    line.appendChild(makeValue("span", null, source));
+    return line;
+  }
+
+  function fillSourceSlot(slotId, source) {
+    var slot = el(slotId);
+    slot.textContent = "";
+    slot.appendChild(sourceNode(source));
   }
 
   function findProblem(problemId) {
@@ -41,14 +129,27 @@
      the statuses so Screen 1 cannot disagree with Screen 2 (§12.16). */
   function gapSentence(problem) {
     var total = problem.data_needs.length;
-    var missing = problem.data_needs.filter(function (n) {
-      return n.status === "missing";
-    }).length;
+    var missing = countStatus(problem, "missing");
+    var partial = countStatus(problem, "partial");
 
-    if (missing === 0) {
-      return "All " + total + " data needs have data";
+    if (missing > 0) {
+      return missing + " of " + total + " data needs missing";
     }
-    return missing + " of " + total + " data needs missing";
+
+    /* §9 guarantees every problem has a missing need, so the branches
+       below do not show in the seed. They exist because "nothing is
+       missing" and "everything is collected" are different claims, and
+       partial data must not be reported as data in hand. */
+    if (partial > 0) {
+      return "No data needs missing, " + partial + " of " + total + " partial";
+    }
+    return "All " + total + " data needs collected";
+  }
+
+  function countStatus(problem, status) {
+    return problem.data_needs.filter(function (n) {
+      return n.status === status;
+    }).length;
   }
 
   /* Status badge: colour, shape and word together, so the status survives
@@ -96,12 +197,15 @@
       card.type = "button";
       /* Spans, not paragraphs: a button may only contain phrasing
          content. They are laid out as blocks in CSS. */
-      card.appendChild(make("span", "eyebrow", problem.area));
-      card.appendChild(make("span", "card-title", problem.title));
+      card.appendChild(makeValue("span", "eyebrow", problem.area));
+      card.appendChild(makeValue("span", "card-title", problem.title));
       card.appendChild(
-        make("span", "affected-line", "Affected: " + problem.affected_women)
+        hasText(problem.affected_women)
+          ? make("span", "affected-line", "Affected: " + problem.affected_women)
+          : makeValue("span", "affected-line", "")
       );
       card.appendChild(make("span", "count", gapSentence(problem)));
+      card.appendChild(sourceText(problem.source));
 
       card.addEventListener("click", function () {
         openProblem(problem.id);
@@ -122,11 +226,12 @@
 
     currentProblemId = problemId;
 
-    el("detail-area").textContent = problem.area;
-    el("detail-heading").textContent = problem.title;
-    el("detail-summary").textContent = problem.summary;
-    el("detail-affected").textContent = problem.affected_women;
+    setValue(el("detail-area"), problem.area);
+    setValue(el("detail-heading"), problem.title);
+    setValue(el("detail-summary"), problem.summary);
+    setValue(el("detail-affected"), problem.affected_women);
     el("detail-count").textContent = gapSentence(problem);
+    fillSourceSlot("detail-source", problem.source);
 
     renderNeeds(problem);
     show("screen-detail");
@@ -145,20 +250,28 @@
     });
   }
 
+  /* "What exists" for a need that has some data behind it. The label
+     stays outside the value so an unstated note is marked as unknown
+     without the label being swallowed by it. */
+  function existingDataLine(need, tag) {
+    var line = make(tag || "p", "need-note");
+    line.appendChild(make("span", null, "What exists: "));
+    line.appendChild(makeValue("span", null, need.existing_data_note));
+    return line;
+  }
+
   /* A collected need has no collection request and says so plainly
      (§12.7). It is not a button: there is nothing to open. */
   function collectedNeed(need) {
     var item = document.createElement("li");
 
     item.appendChild(statusBadge(need.status));
-    item.appendChild(make("p", "need-description", need.description));
-    item.appendChild(make("p", "need-why", need.why_it_matters));
+    item.appendChild(makeValue("p", "need-description", need.description));
+    item.appendChild(makeValue("p", "need-why", need.why_it_matters));
 
-    if (need.existing_data_note) {
-      item.appendChild(
-        make("p", "need-note", "What exists: " + need.existing_data_note)
-      );
-    }
+    /* Always shown for a collected need: if the seed does not say what
+       exists, the screen says that rather than staying silent (§8.1). */
+    item.appendChild(existingDataLine(need));
     item.appendChild(
       make("p", "need-note", "No new collection needed for this item.")
     );
@@ -177,13 +290,13 @@
 
     /* Spans again — phrasing content only inside a button. */
     button.appendChild(statusBadge(need.status));
-    button.appendChild(make("span", "need-description", need.description));
-    button.appendChild(make("span", "need-why", need.why_it_matters));
+    button.appendChild(makeValue("span", "need-description", need.description));
+    button.appendChild(makeValue("span", "need-why", need.why_it_matters));
 
-    if (need.existing_data_note) {
-      button.appendChild(
-        make("span", "need-note", "What exists: " + need.existing_data_note)
-      );
+    /* A partial need has some data, so what exists is always stated.
+       A missing need has none, and there is nothing to describe. */
+    if (need.status === "partial") {
+      button.appendChild(existingDataLine(need, "span"));
     }
     button.appendChild(
       make("span", "need-action", "See the collection request →")
@@ -206,12 +319,12 @@
 
     var request = need.collection_request;
 
-    el("request-problem").textContent = problem.title;
+    setValue(el("request-problem"), problem.title);
 
     var card = el("request-card");
     card.textContent = "";
 
-    var heading = make("p", "request-need", need.description);
+    var heading = makeValue("p", "request-need", need.description);
     heading.appendChild(document.createElement("br"));
     heading.appendChild(statusBadge(need.status));
     card.appendChild(heading);
@@ -223,13 +336,17 @@
     fields.appendChild(field("Why this data matters", need.why_it_matters));
     card.appendChild(fields);
 
+    /* The request is a specification, but it rests on the problem record,
+       so the card carries that record's source (§8.1). */
+    fillSourceSlot("request-source", problem.source);
+
     show("screen-request");
   }
 
   function field(label, value) {
     var wrapper = make("div", "request-field");
     wrapper.appendChild(make("dt", null, label));
-    wrapper.appendChild(make("dd", null, value));
+    wrapper.appendChild(makeValue("dd", null, value));
     return wrapper;
   }
 
