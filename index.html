@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Women's Data Gap — research intelligence for the gender data gap</title>
+<meta name="description" content="For a given problem women face, which data is missing and which women it should come from.">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <div class="wrap">
+    <p class="site-name">Women&rsquo;s Data Gap</p>
+    <p class="site-tagline">Research intelligence for the gender data gap</p>
+  </div>
+</header>
+
+<p class="demo-banner" role="note">
+  <strong>Demo data</strong> &mdash; illustrative, not real findings.
+</p>
+
+<main id="main" class="wrap">
+
+  <!-- Screen 1 — problem list -->
+  <section id="screen-problems" class="screen" aria-labelledby="problems-heading">
+    <h1 id="problems-heading" tabindex="-1">Problems women face</h1>
+    <p class="lede">
+      Each problem lists the data needed to solve it, and what is still
+      missing. Open a missing item to see which women that data should
+      come from.
+    </p>
+    <ul id="problem-list" class="card-list"></ul>
+  </section>
+
+  <!-- Screen 2 — problem detail -->
+  <section id="screen-detail" class="screen" aria-labelledby="detail-heading" hidden>
+    <button type="button" class="back" data-back="screen-problems">
+      &larr; All problems
+    </button>
+    <p class="eyebrow" id="detail-area"></p>
+    <h1 id="detail-heading" tabindex="-1"></h1>
+    <p class="lede" id="detail-summary"></p>
+    <p class="affected"><span class="label">Affected women:</span> <span id="detail-affected"></span></p>
+
+    <h2 id="needs-heading">Data needed to solve it</h2>
+    <p class="count" id="detail-count"></p>
+    <ul id="need-list" class="need-list" aria-labelledby="needs-heading"></ul>
+  </section>
+
+  <!-- Screen 3 — collection request card -->
+  <section id="screen-request" class="screen" aria-labelledby="request-heading" hidden>
+    <button type="button" class="back" data-back="screen-detail">
+      &larr; Back to problem
+    </button>
+    <p class="eyebrow" id="request-problem"></p>
+    <h1 id="request-heading" tabindex="-1">Collection request</h1>
+    <div id="request-card" class="request-card"></div>
+  </section>
+
+</main>
+
+<footer class="site-footer wrap">
+  <p>
+    Built for the Elevate Women Global Hackathon 2026.
+    All records in this version are generated demo data.
+  </p>
+</footer>
+
+<script src="data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

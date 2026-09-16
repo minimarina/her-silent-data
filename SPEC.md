@@ -41,10 +41,6 @@ women's social issues. The app does not have to sell her the problem —
 she needs the *specifics*. Write every screen for someone who knows the
 field and is short on time.
 
-**Judges are a second audience.** 13 judges, mostly marketing, product
-and CEO backgrounds, one data scientist. Nothing in the demo may require
-domain knowledge to follow.
-
 ## 3. Demo moment (the one thing that must work)
 
 1. Researcher opens the app and sees a list of problems.
