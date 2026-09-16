@@ -1,16 +1,30 @@
-# Women Data Gap Map
+# Women Data Gap Platform
 
-An interactive map of the gender data gap.
+A platform for researchers who want to help close the data gap on women,
+but don't know which data to collect first.
 
-Each pin on the map is one gap, and answers four questions:
+For each problem, it answers four questions:
 
-1. **What problem do women face here?**
-2. **What data is missing that keeps the problem invisible?**
-3. **Who does that data have to come from?** (which women, asked how, by whom)
-4. **Why hasn't it been collected?**
+1. **What problem do women face?**
+2. **What data is needed to solve it?**
+3. **Has that data already been collected?**
+4. **If not: which women should it come from, how should they be asked,
+   and in what form?**
 
-Most gender data projects stop at "there is a gap." This one names the women the data is missing *from* — so the gap becomes something you can actually go and fix.
+Most gender data projects stop at "there is a gap." This one names the women
+the data is missing from, so a researcher knows exactly what to go and collect.
 
-Built for the Elevate Women Global Hackathon.
+## Data
 
-Status: day 1, nothing works yet.
+The current version uses **generated demo data**. Problems, datasets and
+gaps shown in the app are illustrative, not real findings.
+Next step: replace them with real problems from published sources
+(WHO, UN and others), with links.
+
+## Hackathon
+
+Built for the Elevate Women Global Hackathon 2026.
+All work in this repository was done during the Hackathon Period
+(Sep 14–20, 2026). No pre-existing code is used.
+
+Status: day 2, nothing works yet.
