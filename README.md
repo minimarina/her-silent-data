@@ -45,6 +45,21 @@ breakdowns the analysis needs and in what form the data comes back is
 this platform's own specification in every record. The citations are
 the foundation; the specification is the product.
 
+## Third-party assets
+
+One, and only one: the female silhouette on the home screen.
+
+- **Female body silhouette** — OpenClipart #71126, dedicated to the public
+  domain under CC0. <https://freesvg.org/female-body-silhouette>
+
+Its single `<path>` is pasted inline into `index.html` so the app still
+opens from `file://` with no server and no network. The path itself is
+unaltered; only its fill and stroke are set, from the palette in
+`SPEC.md` §7.1.
+
+Everything else — the layout, the markers, the ring, the data and all
+the code — is original work.
+
 ## Hackathon
 
 Built for the Elevate Women Global Hackathon 2026.

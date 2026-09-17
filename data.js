@@ -66,6 +66,7 @@ const DATA = {
         "https://www.who.int/news-room/fact-sheets/detail/menopause",
       origin: "sourced",
       is_demo: false,
+      map_point: { kind: "systemic", x: 334, y: 95, side: "left", label_y: 80 },
       data_needs: [
         {
           id: "menopause-workplace-symptom-diary",
@@ -278,6 +279,7 @@ const DATA = {
         "https://www.who.int/publications/i/item/9789240045989",
       origin: "sourced",
       is_demo: false,
+      map_point: { kind: "site", x: 408, y: 248, side: "left", label_y: 234 },
       data_needs: [
         {
           id: "maternal-postnatal-symptoms-12m",
@@ -460,6 +462,7 @@ const DATA = {
         "https://www.jrheum.org/content/50/12/1528",
       origin: "sourced",
       is_demo: false,
+      map_point: { kind: "systemic", x: 545, y: 518, side: "right", label_y: 506 },
       data_needs: [
         {
           id: "autoimmune-pathway",
@@ -632,6 +635,7 @@ const DATA = {
         "https://www.thelancet.com/journals/lancet/article/PIIS0140-6736(21)00684-X/abstract",
       origin: "sourced",
       is_demo: false,
+      map_point: { kind: "site", x: 447, y: 188, side: "right", label_y: 170 },
       data_needs: [
         {
           id: "cardiac-presenting-symptoms",
@@ -775,6 +779,7 @@ const DATA = {
       source: "https://www.who.int/news-room/fact-sheets/detail/endometriosis",
       origin: "sourced",
       is_demo: false,
+      map_point: { kind: "site", x: 430, y: 283, side: "left", label_y: 372, r: 10.5 },
       data_needs: [
         {
           id: "endo-pain-over-cycle",

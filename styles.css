@@ -484,6 +484,205 @@ a.instrument {
   font-size: 1.0625rem;
 }
 
+/* ---------- body map, home screen ---------- */
+
+.home-hero { margin-bottom: var(--space-section); }
+
+.hero-line {
+  font-size: 1.875rem;
+  max-width: 20ch;
+  margin-bottom: 12px;
+}
+
+.hero-lede { color: var(--muted); }
+
+/* The counts strip. Numbers are always framed in words (§8.3), so the bar
+   is decoration and the key beneath it is the statement. */
+.gap-summary {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 18px;
+  margin-top: 20px;
+}
+
+.summary-count { margin: 0; }
+.summary-count strong { font-size: 1.25rem; }
+
+.summary-bar {
+  display: flex;
+  height: 9px;
+  min-width: 220px;
+  max-width: 300px;
+  flex: 1;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.summary-seg[data-status="missing"]   { background: var(--status-missing); }
+.summary-seg[data-status="partial"]   { background: var(--status-partial); }
+.summary-seg[data-status="collected"] { background: var(--status-collected); }
+
+.summary-key {
+  display: flex;
+  gap: 14px;
+  margin: 0;
+  font-size: 0.8125rem;
+  color: var(--muted);
+}
+
+.summary-key-item[data-status="missing"] strong   { color: var(--status-missing); }
+.summary-key-item[data-status="partial"] strong   { color: var(--status-partial); }
+.summary-key-item[data-status="collected"] strong { color: var(--status-collected); }
+
+.body-map { margin: 0 0 var(--space-section); }
+
+.map-svg { display: block; width: 100%; height: auto; }
+
+/* Systemic problems are not located in one place, so their pins sit on this
+   ring rather than on the body. The caption says so — the two pin types
+   explain themselves without a legend. */
+.map-ring {
+  fill: none;
+  stroke: var(--navy-ink);
+  stroke-opacity: 0.2;
+  stroke-width: 1.2;
+  stroke-dasharray: 4 7;
+  transition: stroke-opacity 0.15s ease;
+}
+
+.map-ring-caption {
+  font-size: 11.5px;
+  letter-spacing: 0.6px;
+  fill: var(--muted);
+}
+
+/* OpenClipart #71126, public domain. stroke-width is in the path's own
+   units, so it is divided by the 0.3469 scale on the group. */
+.map-figure path {
+  fill: var(--teal-soft);
+  stroke: var(--navy-ink);
+  stroke-opacity: 0.32;
+  stroke-width: 4;
+  transition: stroke-opacity 0.15s ease;
+}
+
+.map-mark { cursor: pointer; }
+
+.mark-leader {
+  fill: none;
+  stroke: var(--navy-ink);
+  stroke-opacity: 0.35;
+  stroke-width: 1;
+}
+
+.mark-halo {
+  fill: var(--status-missing);
+  opacity: 0.14;
+  transition: opacity 0.15s ease;
+}
+
+.mark-pin {
+  fill: var(--status-missing);
+  stroke: var(--surface);
+  stroke-width: 2.5;
+  transform-box: fill-box;
+  transform-origin: center;
+  transition: transform 0.15s ease;
+}
+
+.mark-title {
+  font-size: 17px;
+  font-weight: 600;
+  fill: var(--navy-ink);
+}
+
+.mark-count {
+  font-size: 13px;
+  fill: var(--muted);
+}
+
+/* Only shown under 640px, where the labels give way to the legend. */
+.mark-num {
+  font-size: 10px;
+  font-weight: 700;
+  fill: var(--surface);
+  display: none;
+}
+
+.mark-bar rect[data-status="missing"]   { fill: var(--status-missing); }
+.mark-bar rect[data-status="partial"]   { fill: var(--status-partial); }
+.mark-bar rect[data-status="collected"] { fill: var(--status-collected); }
+
+.map-mark:hover .mark-halo,
+.map-mark:focus-visible .mark-halo { opacity: 0.28; }
+
+.map-mark:hover .mark-pin,
+.map-mark:focus-visible .mark-pin { transform: scale(1.18); }
+
+.map-mark:hover .mark-count,
+.map-mark:focus-visible .mark-count { fill: var(--navy-ink); }
+
+/* Hovering a mark pushes the figure back so the pin comes forward. A
+   systemic mark also brings up the ring its pin sits on, which is how the
+   two kinds tell themselves apart on contact. */
+.body-map:has(.map-mark:hover) .map-figure path,
+.body-map:has(.map-mark:focus-visible) .map-figure path { stroke-opacity: 0.18; }
+
+.body-map:has(.map-mark[data-kind="systemic"]:hover) .map-ring,
+.body-map:has(.map-mark[data-kind="systemic"]:focus-visible) .map-ring {
+  stroke-opacity: 0.55;
+}
+
+/* The numbered legend — hidden until the labels are dropped. */
+.map-legend { display: none; }
+
+@media (max-width: 640px) {
+  .mark-leader,
+  .mark-title,
+  .mark-count,
+  .mark-bar { display: none; }
+
+  /* The caption stays: without it, the two ring pins read as stray dots. */
+  .map-ring-caption { font-size: 13px; }
+
+  .mark-num { display: block; }
+
+  .map-legend {
+    display: block;
+    margin: 12px 0 0;
+    padding-left: 1.5rem;
+  }
+
+  .map-legend li { margin-bottom: 8px; }
+
+  .legend-item {
+    display: block;
+    width: 100%;
+    text-align: left;
+    background: none;
+    border: 0;
+    padding: 4px 0;
+    font: inherit;
+    color: inherit;
+    cursor: pointer;
+  }
+
+  .legend-area {
+    display: block;
+    font-weight: 600;
+    color: var(--teal-accent);
+  }
+
+  .legend-count {
+    display: block;
+    font-size: 0.8125rem;
+    color: var(--muted);
+  }
+
+  .hero-line { font-size: 1.5rem; }
+}
+
 /* ---------- responsive floor, 360px (§7.5) ---------- */
 
 @media (max-width: 480px) {

@@ -553,6 +553,258 @@
     return wrapper;
   }
 
+  /* ---------- screen 1a: body map ---------- */
+
+  var SVG_NS = "http://www.w3.org/2000/svg";
+
+  /* make() builds HTML elements. An SVG child created that way is an inert
+     HTMLUnknownElement that never paints, so it needs the namespace. Same
+     shape as make() so the two read alike. */
+  function svgMake(tag, className, text) {
+    var node = document.createElementNS(SVG_NS, tag);
+    if (className) { node.setAttribute("class", className); }
+    if (text) { node.textContent = text; }
+    return node;
+  }
+
+  function attrs(node, map) {
+    Object.keys(map).forEach(function (key) {
+      node.setAttribute(key, map[key]);
+    });
+    return node;
+  }
+
+  /* Totals across every problem, computed from the statuses for the same
+     reason gapSentence() is (§12.16): the strip on screen 1 and the cards
+     below it must not be able to disagree. */
+  function totals() {
+    var sum = { needs: 0, missing: 0, partial: 0, collected: 0 };
+
+    DATA.problems.forEach(function (problem) {
+      sum.needs += problem.data_needs.length;
+      sum.missing += countStatus(problem, "missing");
+      sum.partial += countStatus(problem, "partial");
+      sum.collected += countStatus(problem, "collected");
+    });
+    return sum;
+  }
+
+  function renderGapSummary() {
+    var sum = totals();
+    var slot = el("gap-summary");
+    slot.textContent = "";
+
+    var count = make("p", "summary-count");
+    count.appendChild(make("strong", null, String(sum.needs)));
+    count.appendChild(make("span", null, " data needs across "));
+    count.appendChild(make("strong", null, String(DATA.problems.length)));
+    count.appendChild(make("span", null, " problems"));
+    slot.appendChild(count);
+
+    /* The bar is a proportion at a glance and nothing else, so it is hidden
+       from assistive tech; the key below it carries the same figures as
+       text (§8.2). */
+    var bar = make("div", "summary-bar");
+    bar.setAttribute("aria-hidden", "true");
+
+    ["missing", "partial", "collected"].forEach(function (status) {
+      var seg = make("span", "summary-seg");
+      seg.setAttribute("data-status", status);
+      seg.style.width = (sum[status] / sum.needs * 100) + "%";
+      bar.appendChild(seg);
+    });
+    slot.appendChild(bar);
+
+    var key = make("p", "summary-key");
+    ["missing", "partial", "collected"].forEach(function (status) {
+      var item = make("span", "summary-key-item");
+      item.setAttribute("data-status", status);
+      item.appendChild(make("strong", null, String(sum[status])));
+      item.appendChild(make("span", null, " " + status));
+      key.appendChild(item);
+    });
+    slot.appendChild(key);
+  }
+
+  /* Where a leader line turns before running out to its label. Computed,
+     not stored: only the side varies. */
+  function elbowX(side) { return side === "left" ? 345 : 556; }
+  function labelX(side) { return side === "left" ? 258 : 622; }
+
+  /* The leader starts on the pin's edge rather than its centre, so no line
+     appears to grow out from under the dot. */
+  function leaderStart(point, radius) {
+    var dx = elbowX(point.side) - point.x;
+    var dy = (point.label_y + 6) - point.y;
+    var length = Math.sqrt(dx * dx + dy * dy) || 1;
+    var out = radius + 4;
+
+    return [point.x + dx / length * out, point.y + dy / length * out];
+  }
+
+  /* The three statuses as one 90px bar. Widths come from the same counts as
+     the sentence beside them, so the bar cannot contradict the words. */
+  function statusBar(problem, x, y) {
+    var group = svgMake("g", "mark-bar");
+    var total = problem.data_needs.length;
+    var gap = 2;
+
+    var present = ["missing", "partial", "collected"].filter(function (status) {
+      return countStatus(problem, status) > 0;
+    });
+
+    var span = 90 - gap * Math.max(0, present.length - 1);
+    var offset = 0;
+
+    present.forEach(function (status) {
+      var width = countStatus(problem, status) / total * span;
+      var rect = svgMake("rect");
+
+      attrs(rect, {
+        x: x + offset,
+        y: y,
+        width: width,
+        height: 6,
+        rx: 3,
+        "data-status": status
+      });
+      group.appendChild(rect);
+      offset += width + gap;
+    });
+    return group;
+  }
+
+  /* One group per problem: pin, leader line and label highlight and
+     activate together. Every mark is a real tab stop with a real name, and
+     opens the same screen the problem card below it opens (§12.9). */
+  function renderMap() {
+    var marks = el("map-marks");
+    marks.textContent = "";
+
+    DATA.problems.forEach(function (problem, index) {
+      var point = problem.map_point;
+
+      /* A problem with no point is not an error: it simply is not on the
+         map yet, and the list below still carries it. */
+      if (!point) { return; }
+
+      var radius = point.r || 8;
+      var sentence = gapSentence(problem);
+      var anchor = point.side === "left" ? "end" : "start";
+
+      var mark = svgMake("g", "map-mark");
+      attrs(mark, {
+        role: "button",
+        tabindex: "0",
+        "data-kind": point.kind,
+        "aria-label": problem.area + " — " + sentence
+      });
+
+      var start = leaderStart(point, radius);
+      var leader = svgMake("polyline", "mark-leader");
+      leader.setAttribute("points", [
+        start[0].toFixed(1) + "," + start[1].toFixed(1),
+        elbowX(point.side) + "," + (point.label_y + 6),
+        labelX(point.side) + "," + (point.label_y + 6)
+      ].join(" "));
+      mark.appendChild(leader);
+
+      var halo = svgMake("circle", "mark-halo");
+      attrs(halo, { cx: point.x, cy: point.y, r: radius + 8 });
+      mark.appendChild(halo);
+
+      var pin = svgMake("circle", "mark-pin");
+      attrs(pin, { cx: point.x, cy: point.y, r: radius });
+      mark.appendChild(pin);
+
+      /* Shown only under 640px, where the labels are gone and the numbered
+         legend takes over. */
+      var number = svgMake("text", "mark-num", String(index + 1));
+      attrs(number, {
+        x: point.x, y: point.y + 4, "text-anchor": "middle"
+      });
+      mark.appendChild(number);
+
+      var title = svgMake("text", "mark-title", problem.area);
+      attrs(title, {
+        x: labelX(point.side), y: point.label_y, "text-anchor": anchor
+      });
+      mark.appendChild(title);
+
+      var count = svgMake("text", "mark-count", sentence);
+      attrs(count, {
+        x: labelX(point.side), y: point.label_y + 20, "text-anchor": anchor
+      });
+      mark.appendChild(count);
+
+      mark.appendChild(statusBar(
+        problem,
+        point.side === "left" ? labelX(point.side) - 90 : labelX(point.side),
+        point.label_y + 28
+      ));
+
+      mark.addEventListener("click", function () {
+        openProblem(problem.id);
+      });
+
+      /* A <g> is not a button, so Enter and Space are wired by hand to
+         match what the problem cards get for free. */
+      mark.addEventListener("keydown", function (event) {
+        if (event.key === "Enter" || event.key === " ") {
+          event.preventDefault();
+          openProblem(problem.id);
+        }
+      });
+
+      marks.appendChild(mark);
+    });
+  }
+
+  /* Under 640px the side labels do not fit. The pins carry numbers and this
+     list carries the words — the same sentence, in the same order. */
+  function renderMapLegend() {
+    var list = el("map-legend");
+    list.textContent = "";
+
+    DATA.problems.forEach(function (problem) {
+      if (!problem.map_point) { return; }
+
+      var item = document.createElement("li");
+      var button = make("button", "legend-item");
+      button.type = "button";
+      button.appendChild(make("span", "legend-area", problem.area));
+      button.appendChild(make("span", "legend-count", gapSentence(problem)));
+
+      button.addEventListener("click", function () {
+        openProblem(problem.id);
+      });
+
+      item.appendChild(button);
+      list.appendChild(item);
+    });
+  }
+
+  /* The wide viewBox is built around the label columns either side of the
+     figure. Under 640px those are gone, so the frame crops to the ring —
+     left wide, the figure renders about 90px across and reads as nothing.
+     Kept in JS because a viewBox is an attribute, not a style. */
+  var MAP_WIDE = "0 0 880 672";
+  var MAP_NARROW = "265 15 330 650";
+
+  function fitMap(isNarrow) {
+    var svg = document.querySelector(".map-svg");
+    if (svg) { svg.setAttribute("viewBox", isNarrow ? MAP_NARROW : MAP_WIDE); }
+  }
+
+  function watchMapWidth() {
+    var query = window.matchMedia("(max-width: 640px)");
+
+    fitMap(query.matches);
+    query.addEventListener("change", function (event) {
+      fitMap(event.matches);
+    });
+  }
+
   /* ---------- start ---------- */
 
   /* The banner used to be a fixed sentence claiming every record was
@@ -599,6 +851,10 @@
     });
 
     renderProvenanceSummary();
+    renderGapSummary();
+    renderMap();
+    renderMapLegend();
+    watchMapWidth();
     renderProblemList();
   }
 
