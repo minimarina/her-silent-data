@@ -154,7 +154,21 @@ than inventing a questionnaire.
 
 ## 6. Screens
 
-**Screen 1 — Problem list**
+**Screen 1 — Home: body map, then the problem list**
+
+The screen opens with the gap as a picture and states the totals, then
+gives the same five problems as cards. One screen, not two: the map is a
+second way into the list, never a replacement for it.
+
+- A hero line, and a counts strip over the whole seed: how many data
+  needs exist, and how many are missing, partial and collected.
+- A female silhouette with one marker per problem (§7.6).
+- Each marker carries the area, the same "X of Y data needs missing"
+  sentence the card below carries, and a three-part status bar.
+- A marker opens the same Screen 2 the card opens.
+
+Then, unchanged:
+
 - One card per problem: title, area, affected women.
 - Gap indicator on each card: "X of Y data needs missing".
 - Banner: shown only while placeholder records exist, and it counts
@@ -252,11 +266,65 @@ problems at once — would be an analytical instrument rather than
 decoration, and would not breach §8.1. It is recorded in the product
 backlog rather than built here. Still not this week.
 
+**Update, 17 Sep.** That view now exists, and it is the body map
+(§7.6). It is worth being exact about why it does not breach the rule
+above: it plots *statuses*, which the seed really holds, and not
+*findings*, which it does not. It asserts nothing about endometriosis —
+only that two of the three things we would need to know about it have
+never been collected. That is the structure this section said would be
+an instrument rather than decoration.
+
+The no-charts rule itself stands. There is still no chart in the app.
+
 ### 7.5 Responsive
 
 Works from 360px to desktop. Single column on mobile; the matrix becomes
 per-problem stacked bars. No horizontal scrolling on any screen except
 inside a deliberately scrollable table.
+
+Below 640px the map's side labels do not fit. They are dropped, the
+markers carry numbers instead, and a numbered legend below the figure
+carries the words — the same sentence, in the same order. The `viewBox`
+crops to the ring at that width, because the wide frame is built around
+the label columns and without them the figure renders about 90px across.
+
+### 7.6 The body map
+
+**Decided:** the home screen leads with a figure, because the platform's
+claim is anatomical before it is statistical. Five red markers on a body
+say in one glance what the card list takes a paragraph to say, and the
+same image is what a judge meets as a thumbnail.
+
+**Site markers against ring markers is a claim, not styling.**
+Endometriosis, cardiac and postnatal gaps sit in one place in the body.
+Menopause and autoimmune disease do not — they are whole-body, so their
+markers sit on a dashed ring around the figure, captioned
+`WHOLE-BODY · NOT LOCATED IN ONE PLACE`. Putting a systemic condition on
+a single organ would be a false claim made in pictures, which §8.1
+forbids in words.
+
+**The figure is recognisably a woman's body, by proportion and not by
+detail.** No face, no hair, no anatomical detail. The product's claim is
+that women's bodies were studied as if they were men's; a deliberately
+neutral figure would quietly repeat that.
+
+**Marker coordinates are measured, not estimated.** The silhouette was
+hit-tested with `isPointInFill()` across its height — waist at y 230,
+hips at 300, legs separating at 310. Below 310 the centreline is the gap
+between the legs, not the body, and a pelvic marker placed by eye lands
+in it. Every site marker has its centre and all eight edge points inside
+the fill; both ring markers are fully outside it. The coordinates live in
+`data.js` as `map_point` and are valid only for the transform in
+`index.html` — if that moves, re-measure.
+
+**Nothing on the map is authored twice.** Labels and the counts strip are
+computed from the same `countStatus()` and `gapSentence()` as the cards,
+so the map cannot contradict the list below it (§12.16, §12.19).
+
+**Third-party asset.** The silhouette is OpenClipart #71126, public
+domain under CC0, pasted inline so the app still opens from `file://`
+with no server. Recoloured; the path is otherwise unaltered. It is the
+only third-party asset in the project — see README.
 
 ## 8. Design principles
 
@@ -399,10 +467,25 @@ Design and accessibility:
 16. Every count shown on Screen 1 agrees with the statuses on Screen 2
     for the same problem.
 
+Body map (§7.6). Numbered after the original sixteen on purpose: the
+code cites these by number, so existing criteria keep theirs.
+
+17. Screen 1 shows one marker per problem in the seed, and a problem
+    with no `map_point` is skipped rather than breaking the map.
+18. Every site marker sits on the figure — centre and all eight edge
+    points inside the fill — and every ring marker sits off it.
+19. Each marker's label states the same sentence as that problem's card.
+20. The counts strip totals agree with the sum of the card counts.
+21. A marker opens the same Screen 2 the card opens, by click, Enter
+    and Space alike.
+22. Returning from detail lands on the home screen with the map intact.
+23. Below 640px the labels are gone, the numbered legend is present, and
+    there is no horizontal scroll.
+
 Stretch (only if §11 is built):
 
-17. AI suggestions appear in their own labelled block, marked unverified.
-18. With the AI call disabled or failing, every criterion 1–16 still passes.
+24. AI suggestions appear in their own labelled block, marked unverified.
+25. With the AI call disabled or failing, every criterion 1–23 still passes.
 
 ## 13. Tech
 
@@ -410,7 +493,8 @@ Stretch (only if §11 is built):
 no dependencies.**
 
 ```
-index.html      all three screens, shown and hidden by JS
+index.html      all three screens, shown and hidden by JS; also holds
+                the map's figure and ring, which never change
 styles.css      the §7 tokens as CSS custom properties
 data.js         the seed file (§5, §9) — loaded by <script>, not fetch
 app.js          renders from the seed, handles navigation
