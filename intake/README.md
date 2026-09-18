@@ -15,9 +15,20 @@ the card says so.
 A study design is generated on request, kept in `research-designs.js`,
 and is never part of a record.
 
-**The seed is never written by a machine.** The run writes to
-`candidates.json`. A human reads the citation, confirms the source says
-what the record claims, and merges by hand.
+**No record enters the seed unreviewed.** The run writes to
+`candidates.json` and stops. A human then opens each citation, checks the
+source against what the record claims, and approves or dismisses it one
+at a time with `review.mjs` — which records the decision, and the reason
+for a dismissal, in the ledger.
+
+Only approved records are merged into `data.js`, and the approval is the
+step that matters: it is a person deciding, against the source, that the
+claim is honest. `review.mjs` never writes `data.js` itself; it emits the
+block, and the merge is a separate, deliberate act.
+
+Of the first nine candidates, three were dismissed — each one a paper
+that collected the very data it called missing. That is the review step
+doing its job, and it is why it cannot be automated away.
 
 ## Running it
 

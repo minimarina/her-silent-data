@@ -911,7 +911,17 @@
     "Maternal health":       { kind: "site",     x: 408, y: 248, side: "left",  label_y: 234 },
     "Autoimmune disease":    { kind: "systemic", x: 545, y: 518, side: "right", label_y: 506 },
     "Cardiovascular health": { kind: "site",     x: 447, y: 188, side: "right", label_y: 170 },
-    "Endometriosis":         { kind: "site",     x: 430, y: 283, side: "left",  label_y: 372, r: 10.5 }
+    "Endometriosis":         { kind: "site",     x: 430, y: 283, side: "left",  label_y: 372, r: 10.5 },
+
+    /* Measured the same way as the five above — isPointInFill() against
+       the silhouette path, through the group's translate(284.8, 6.94)
+       scale(0.3469). A "site" point must fall inside the body; a
+       "systemic" one sits on the ring ellipse, because the area is not
+       located in one place. Verified: 38px and 57px clear of the nearest
+       existing pin, and the ring point within 0.3% of the ellipse. */
+    "Pelvic health":         { kind: "site",     x: 405, y: 312, side: "right", label_y: 300 },
+    "Chronic pain":          { kind: "site",     x: 455, y: 340, side: "right", label_y: 390 },
+    "Pharmacology":          { kind: "systemic", x: 334, y: 555, side: "left",  label_y: 545 }
   };
 
   /* A record's own point first, then its area's. Only the first record in
