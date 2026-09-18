@@ -1307,6 +1307,15 @@
       ].join(" "));
       mark.appendChild(leader);
 
+      /* An invisible hit area. The pin renders about 33px across on a
+         phone, which clears WCAG 2.2 AA's 24px floor but is well under the
+         44px Apple and Android both ask for — and on a phone the pins are
+         the only control on the page. fill is a transparent COLOUR rather
+         than "none", because "none" is not hit-tested. */
+      var hit = svgMake("circle", "mark-hit");
+      attrs(hit, { cx: point.x, cy: point.y, r: radius + 16 });
+      mark.appendChild(hit);
+
       var halo = svgMake("circle", "mark-halo");
       attrs(halo, { cx: point.x, cy: point.y, r: radius + 8 });
       mark.appendChild(halo);
@@ -1368,7 +1377,20 @@
   function legendButton(group) {
     var button = make("button", "legend-item");
     button.type = "button";
-    button.appendChild(make("span", "legend-area", group.area));
+
+    var name = make("span", "legend-area", group.area);
+
+    /* A systemic pin sits on the ring rather than on the body, and under
+       640px it has no label — just a number beside the shins on a faint
+       dashed ellipse, which reads as a stray dot. The ring used to carry a
+       caption saying so to everyone all the time; this says it once, to
+       the one area it is about, where the words already are. */
+    var point = MAP_POINTS[group.area];
+    if (point && point.kind === "systemic") {
+      name.appendChild(make("span", "legend-systemic", "whole body"));
+    }
+
+    button.appendChild(name);
     button.appendChild(make("span", "legend-count",
       gapSentenceFor(group.needs)));
 

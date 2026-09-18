@@ -503,12 +503,15 @@ a:hover { text-decoration: none; }
    segments carry percentage widths and may shrink by that gap; over a
    300px bar that is well under one percent, and a visible boundary is
    worth more than the third decimal place of a proportion. */
+/* The bar fills whatever the count and the key leave. It used to stop at
+   300px, so the three items ended 185px short of the content edge inside
+   a row that presents itself as full width — a row that quits a fifth of
+   the way from the right reads as unfinished rather than composed. */
 .summary-bar {
   display: flex;
   gap: 2px;
   height: 9px;
   min-width: 220px;
-  max-width: 300px;
   flex: 1;
   border-radius: 5px;
 }
@@ -536,6 +539,25 @@ a:hover { text-decoration: none; }
 .body-map { margin: 0 0 var(--space-section); }
 
 .map-svg { display: block; width: 100%; height: auto; }
+
+/* The whole point of this screen is to be understood in one look, and at
+   848×626 the figure's lower third fell below the fold on a 1440×900
+   laptop — where the browser leaves about 780px. Capping the height
+   against the viewport keeps the figure, the systemic pin and the hint on
+   screen together; the SVG letterboxes horizontally rather than
+   distorting, because preserveAspectRatio defaults to meet.
+
+   Desktop only. On a phone the map IS the page and scrolling it is
+   expected, so the cap would only make the figure small for no gain. */
+@media (min-width: 641px) {
+  .map-svg {
+    /* 360px is what sits above and below the figure: the header, the hero,
+       the lede, the counts strip, the hint and the screen's own padding.
+       Measured, not guessed — at 330 the hint cleared the fold by 21px. */
+    max-height: min(560px, calc(100vh - 360px));
+    min-height: 340px;
+  }
+}
 
 /* Systemic problems are not located in one place, so their pins sit on this
    ring rather than on the body. The caption says so — the two pin types
@@ -584,6 +606,10 @@ a:hover { text-decoration: none; }
    figure's teal-soft fill, against a 3:1 non-text floor (§8.2), and the
    white stroke keeps the pin off the body at any size. Status is carried
    where it always was: the bar and the sentence beside the label. */
+/* Widens the pin's touch target without widening the pin. A transparent
+   colour, not "none": "none" would not be hit-tested. */
+.mark-hit { fill: rgba(0, 0, 0, 0); }
+
 .mark-halo {
   fill: var(--teal-accent);
   opacity: 0.18;
@@ -653,6 +679,10 @@ a:hover { text-decoration: none; }
 
   .mark-num { display: block; }
 
+  /* The footer's 48px on top of the screen's own 24px left a run of dead
+     space under the last legend item on a phone. */
+  .site-footer { margin-top: var(--space-section); }
+
   .map-legend {
     display: block;
     margin: 12px 0 0;
@@ -678,6 +708,16 @@ a:hover { text-decoration: none; }
     font-weight: 600;
     color: var(--teal-accent);
   }
+
+  /* Why this one pin sits off the body. Muted and lighter than the area
+     name, because it qualifies the name rather than competing with it. */
+  .legend-systemic {
+    margin-left: 8px;
+    font-weight: 400;
+    font-size: 0.8125rem;
+    color: var(--muted);
+  }
+  .legend-systemic::before { content: "· "; }
 
   .legend-count {
     display: block;
@@ -738,7 +778,12 @@ a:hover { text-decoration: none; }
 .header-link {
   flex: 0 0 auto;
   margin-left: auto;
-  padding: 6px 14px;
+  /* 44px tall, which is what Apple and Android ask of a touch target. At
+     6px of padding it rendered 36. */
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 6px 16px;
   background: none;
   border: 1px solid #C9D8E6;   /* 8.3:1 on --navy-deep, same as the tagline */
   border-radius: 4px;
@@ -1187,11 +1232,22 @@ a:hover { text-decoration: none; }
 /* The home screen is the map alone, so an area opens as its own screen
    rather than as a heading in a list below the figure. This is the hint
    that says so, and it is the only prose left on the home screen. */
+/* Left-aligned like everything else on the page. Centred, it read as a
+   stray caption rather than as the instruction it is. */
 .map-hint {
   margin: 12px 0 0;
-  text-align: center;
   font-size: 0.9375rem;
   color: var(--muted);
+}
+
+/* Only true under 640px, where the labels are gone and the pins carry
+   numbers instead. The override sits here rather than in the main mobile
+   block further up the file: same specificity, so whichever comes last
+   wins, and up there this rule would have overruled it at every width. */
+.map-hint-narrow { display: none; }
+
+@media (max-width: 640px) {
+  .map-hint-narrow { display: inline; }
 }
 
 #screen-area .count { margin-bottom: var(--space-section); }

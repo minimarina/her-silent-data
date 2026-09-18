@@ -105,19 +105,25 @@
         <g id="map-marks"></g>
       </svg>
 
+      <!-- Before the legend, not after it. The map is the only way in, so
+           this has to say so once — and a reader who meets the instruction
+           below the list has already scrolled past the thing it describes.
+           The second clause is mobile-only: there the pins carry numbers
+           instead of labels, and nothing otherwise says that those numbers
+           are the list underneath. -->
+      <p class="map-hint">
+        Select an area to see its problems.<span class="map-hint-narrow">
+        The numbers on the figure match the list below.</span>
+      </p>
+
       <!-- Under 640px the side labels do not fit. The pins carry numbers and
-           this list carries the words — the same sentence either way. It
-           also appears at any width for an area with no measured pin, so
-           the map being the only route home can never hide a record. -->
+           this list carries the words — the same sentence either way. -->
       <ol id="map-legend" class="map-legend"></ol>
 
       <!-- Areas with no measured coordinate. Shown at every width, because
            the map is the only route and an unpinned area would otherwise
            be unreachable. Empty and hidden while every area has a pin. -->
       <div id="map-unpinned" class="map-unpinned" hidden></div>
-
-      <!-- The map is the only way in now, so it has to say so once. -->
-      <p class="map-hint">Select an area to see its problems.</p>
     </div>
 
   </section>

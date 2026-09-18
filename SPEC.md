@@ -476,6 +476,28 @@ Works from 360px to desktop. Single column on mobile; the matrix becomes
 per-problem stacked bars. No horizontal scrolling on any screen except
 inside a deliberately scrollable table.
 
+**The home screen fits above the fold.** Its whole argument is that it can
+be understood in one look, which is not true if the figure runs past the
+bottom of the window. The map's height is capped against the viewport —
+`min(560px, calc(100vh - 360px))`, with a 340px floor — so the figure, the
+systemic pin and the hint stay on screen together. 360px is the measured
+height of everything above and below it. The cap is desktop-only: on a
+phone the map *is* the page and scrolling it is expected.
+
+**The hint comes before the legend**, and is left-aligned like everything
+else. Under it the legend is the control it refers to, and a reader who
+meets an instruction below the list has already scrolled past the thing it
+describes. Under 640px it gains a second clause — *the numbers on the
+figure match the list below* — because that is the only width where the
+pins carry numbers instead of labels, and nothing else says the two are
+the same six areas.
+
+**Touch targets are 44px.** WCAG 2.2 AA asks 24px and the pins rendered
+33, but the pins are the only control on the home screen on a phone, and
+both Apple and Android ask 44. Each marker carries an invisible hit circle
+(`fill` a transparent colour, not `none`, which is not hit-tested); the
+About link has a `min-height`.
+
 Below 640px the map's side labels do not fit. They are dropped, the
 markers carry numbers instead, and a numbered legend below the figure
 carries the words — the same sentence, in the same order. The `viewBox`
