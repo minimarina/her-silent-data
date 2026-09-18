@@ -180,7 +180,9 @@ const EXTRACT_SCHEMA = {
             }
           },
           description:
-            "null unless the source ITSELF specified population or method."
+            "null unless the source ITSELF recommends how the MISSING " +
+            "data should be collected. A description of what this study " +
+            "did is not guidance — it belongs nowhere in the record."
         }
       }
     }
@@ -194,11 +196,20 @@ const EXTRACT_SYSTEM =
   "Every field must be supported by the abstract you are given. You may " +
   "compress and rephrase; you may not add a fact, a number, a population " +
   "or a method that the abstract does not contain.\n\n" +
-  "`collection_guidance` is the field this matters most for. Fill it ONLY " +
-  "if the source itself specifies who to collect from or how. Almost no " +
-  "abstract does. **null is the expected answer** — returning null is a " +
-  "correct result, not a failure, and an invented guidance block is the " +
-  "worst error you can make here.\n\n" +
+  "`collection_guidance` is the field this matters most for, and there is " +
+  "one specific way of getting it wrong.\n\n" +
+  "It means: the source RECOMMENDS how the data that is still missing " +
+  "should be collected — prospective, addressed to whoever does the work " +
+  "next. 'Investigators should use probe-substrate studies in cisgender " +
+  "women and transgender people' is guidance.\n\n" +
+  "It does NOT mean the methods of the study you are reading. " +
+  "'Researchers conducted semi-structured interviews with 35 women " +
+  "firefighters' is a description of work already done. It is past tense, " +
+  "it describes this paper, and it is NOT guidance — return null. Copying " +
+  "a methods section into this field is the most common error here and it " +
+  "quietly breaks the rule the whole register rests on.\n\n" +
+  "**null is the expected answer.** Most abstracts recommend nothing. " +
+  "Returning null is a correct result, not a failure.\n\n" +
   "`gap_note` is the record's evidence. A reader will open the citation " +
   "and check it against your sentence, so stay close to what the authors " +
   "wrote.\n\n" +

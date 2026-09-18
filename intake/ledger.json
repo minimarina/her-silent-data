@@ -661,7 +661,8 @@
       "first_seen": "2026-09-18",
       "last_seen": "2026-09-18",
       "title": "Alterations in cognitive function among reproductive-age women with polyendocrine metabolic ovarian syndrome: A systematic review and meta-analysis.",
-      "outcome": "seen"
+      "outcome": "rejected-by-filter",
+      "filter_version": 3
     },
     "10.1016/j.yebeh.2026.111210": {
       "first_seen": "2026-09-18",
@@ -673,13 +674,15 @@
       "first_seen": "2026-09-18",
       "last_seen": "2026-09-18",
       "title": "Barriers to access reproductive and sexual health services among women with disabilities in Australia: a systematic review.",
-      "outcome": "seen"
+      "outcome": "rejected-by-filter",
+      "filter_version": 3
     },
     "10.1016/j.canep.2026.103150": {
       "first_seen": "2026-09-18",
       "last_seen": "2026-09-18",
       "title": "Risk factors associated with breast cancer in Ethiopia: A systematic review and meta-analysis (2000-2025).",
-      "outcome": "seen"
+      "outcome": "rejected-by-filter",
+      "filter_version": 3
     },
     "10.52054/fvvo.2026.363": {
       "first_seen": "2026-09-18",
@@ -691,7 +694,8 @@
       "first_seen": "2026-09-18",
       "last_seen": "2026-09-18",
       "title": "Risk factors for suicidal behaviour in people with dementia: A systematic review and meta-analysis.",
-      "outcome": "seen"
+      "outcome": "rejected-by-filter",
+      "filter_version": 3
     },
     "10.1097/spv.0000000000001880": {
       "first_seen": "2026-09-18",
