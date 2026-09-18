@@ -506,6 +506,9 @@ brackets are new to the map and have hand-measured coordinates.
 | Urinary incontinence decision aids [Pelvic health] | Urogynecology, systematic review | partial |
 | Brucellosis in pregnancy [Maternal] | Rev Inst Med Trop São Paulo | missing |
 | Pelvic neuropathies [Chronic pain] | Facts Views Vis Obgyn, narrative review | partial |
+| Type 2B von Willebrand disease in pregnancy [Maternal] | ISTH SSC guidance | missing |
+| Anterior compartment prolapse surgery [Pelvic health] | Cochrane review | missing |
+| Remifentanil PCA in labour [Maternal] | Obstetric Anaesthetists Association guidance | missing |
 | Advanced therapies in pregnancy [Pharmacology] | J Crohns Colitis / systematic review and meta-analysis | partial |
 | Time-restricted eating and reproductive hormones [Reproductive health] | Systematic review | partial |
 

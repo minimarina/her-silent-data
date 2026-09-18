@@ -221,30 +221,6 @@ const RESEARCH_DESIGNS = {
     "generated_at": "2026-09-18",
     "model": "claude-sonnet-5"
   },
-  "anogenital-warts-treatment-specific-populations": {
-    "target_women": "Recruit 300 pregnant women diagnosed with anogenital warts during antenatal or genitourinary medicine clinic visits across 10-15 collaborating hospitals/clinics over a 24-month enrollment window, including subgroups who are immunocompromised (e.g. HIV-positive, on immunosuppressive therapy) to allow stratified analysis; aim for at least 50 immunocompromised pregnant women within the total sample.",
-    "variables": [
-      "Treatment modality used (e.g. cryotherapy, trichloroacetic acid, surgical excision, imiquimod, podophyllotoxin, no treatment/watchful waiting) and gestational age at initiation",
-      "Wart clearance status and time to clearance from treatment start",
-      "Recurrence occurrence and time to recurrence within 12 months post-treatment or post-partum",
-      "Adverse events related to treatment (maternal and, where applicable, neonatal outcomes such as preterm birth, perinatal transmission/laryngeal papillomatosis)",
-      "Immune status markers (CD4 count or immunosuppressive regimen details) at time of treatment",
-      "Patient-reported symptom burden and psychological distress (anxiety/depression screen) at baseline and follow-up",
-      "Route of delivery and any wart-related complications during delivery"
-    ],
-    "stratifiers": [
-      "Trimester of pregnancy at treatment initiation",
-      "Immunocompromise status (immunocompromised vs immunocompetent) and specific cause where known",
-      "Maternal age band",
-      "HPV vaccination status",
-      "Ethnicity/race",
-      "Parity (first pregnancy vs multiparous)"
-    ],
-    "form": "Prospective multi-site observational cohort using structured case report forms completed by treating clinicians at diagnosis, treatment initiation, and follow-up visits; patient-reported outcome questionnaires administered at baseline, 4-6 weeks post-treatment, and 3, 6, and 12 months postpartum; total study duration 36 months including 24-month recruitment and 12-month follow-up per participant; neonatal outcomes captured via linked birth records up to 12 months of age.",
-    "instrument_source": "Hospital Anxiety and Depression Scale (HADS)",
-    "generated_at": "2026-09-18",
-    "model": "claude-sonnet-5"
-  },
   "anterior-prolapse-surgery-suistress": {
     "target_women": "Recruit approximately 600 women aged 18+ undergoing surgical repair of anterior compartment (anterior vaginal wall) prolapse across 8-12 urogynecology/urology surgical centres, split roughly evenly between those receiving native tissue repair and those receiving biological graft repair, enrolled consecutively over a 2-year recruitment window.",
     "variables": [
@@ -265,52 +241,6 @@ const RESEARCH_DESIGNS = {
     ],
     "form": "Prospective multicentre observational cohort study using clinical case report forms completed at surgery and structured follow-up visits at 6 weeks, 6 months, 12 months, and annually to 3 years; patient-reported outcome questionnaires self-administered at each visit either on paper or via secure online portal.",
     "instrument_source": "International Consultation on Incontinence Questionnaire - Urinary Incontinence Short Form (ICIQ-UI SF), alongside the Pelvic Floor Distress Inventory (PFDI-20) and Pelvic Organ Prolapse Quantification (POP-Q) system for anatomical staging",
-    "generated_at": "2026-09-18",
-    "model": "claude-sonnet-5"
-  },
-  "oral-contraceptives-exercise-evidence-quality": {
-    "target_women": "Recruit 300 healthy, physically active premenopausal women aged 15-40 (150 current combined oral contraceptive users, 150 naturally cycling non-users matched on training volume) from university sports programs, running/cycling clubs, and community gyms across at least four distinct geographic/climatic regions (e.g. Northern Europe, Sub-Saharan Africa, East Asia, Latin America) to capture diversity beyond typical single-site Western samples.",
-    "variables": [
-      "VO2max and submaximal exercise heart rate measured via graded treadmill/cycle ergometer test",
-      "Resting and exercise-induced changes in salivary/serum cortisol and IgA (mucosal immune marker)",
-      "Self-reported and lab-confirmed upper respiratory illness episodes over the study period",
-      "Perceived exertion (Borg scale) and self-reported training load per session",
-      "Menstrual cycle phase or COC pill-cycle day at each testing point",
-      "Resting heart rate variability as a marker of autonomic/cardiovascular adaptation",
-      "Type and dose of combined oral contraceptive (ethinylestradiol dose, progestin type/generation)"
-    ],
-    "stratifiers": [
-      "Age band (15-19, 20-29, 30-40)",
-      "Geographic region/site",
-      "Sport type or training modality (endurance vs mixed/team sport)",
-      "COC formulation category (low-dose vs standard-dose ethinylestradiol; progestin generation)",
-      "Body mass index category"
-    ],
-    "form": "Prospective cohort study over one full year (to capture seasonal training variation), with laboratory testing sessions every 3 months timed to a standardized point in the COC cycle or natural menstrual cycle (early follicular equivalent), plus weekly online diary entries for training load, perceived exertion, and illness symptoms.",
-    "instrument_source": "Borg Rating of Perceived Exertion (RPE) Scale",
-    "generated_at": "2026-09-18",
-    "model": "claude-sonnet-5"
-  },
-  "breast-arterial-calcification-cvd-risk-standardized-ascertainment": {
-    "target_women": "Recruit 600 women aged 40-74 presenting for routine screening mammography at 3-4 participating breast imaging centers (mix of academic and community sites), oversampling to ensure at least 150 women per decade of age band and adequate representation of Black, Hispanic, and Asian women to allow subgroup comparison.",
-    "variables": [
-      " cardiologist inaccessible",
-      "Presence and severity of breast arterial calcification (BAC) as reported independently by: (a) the clinical radiologist's routine mammography report, (b) a blinded second radiologist using a standardized semi-quantitative BAC scoring scale, and (c) an AI/deep-learning algorithm applied to the same mammogram image",
-      "Densitometric BAC quantification (calcium mass/area) derived from the digital mammogram using calibrated software",
-      "Traditional cardiovascular risk score (ASCVD Pooled Cohort Equations) calculated from chart-derived risk factors at time of mammogram",
-      "Presence of established cardiometabolic conditions at baseline: hypertension, diabetes, dyslipidemia, chronic kidney disease (from chart review)",
-      "Incident major adverse cardiovascular events (myocardial infarction, stroke, coronary revascularization, cardiovascular death) ascertained via chart review and administrative claims linkage at 5 years",
-      "Inter-rater and inter-method agreement statistics (kappa, correlation) between radiologist-reported, AI-derived, and densitometric BAC measures"
-    ],
-    "stratifiers": [
-      "Age band (40-49, 50-59, 60-69, 70-74)",
-      "Race/ethnicity (Black, Hispanic, White, Asian, other)",
-      "Baseline ASCVD risk category (low, borderline, intermediate, high)",
-      "Mammography equipment vendor/model (to assess measurement consistency across hardware)",
-      "Presence vs absence of baseline diabetes or chronic kidney disease"
-    ],
-    "form": "Cross-sectional ascertainment of BAC by three methods at the time of a single screening mammogram, followed by structured chart review and claims-linkage follow-up for cardiovascular events annually for 5 years; data captured via a standardized case report form completed by study radiologists and abstracted from electronic health records.",
-    "instrument_source": null,
     "generated_at": "2026-09-18",
     "model": "claude-sonnet-5"
   },
@@ -335,29 +265,6 @@ const RESEARCH_DESIGNS = {
     ],
     "form": "Prospective observational cohort study with continuous maternal monitoring (pulse oximetry, sedation scoring) during remifentanil PCA use, data recorded on a structured case report form by attending midwives at fixed intervals (every 30 minutes) throughout labour, with a single follow-up questionnaire completed by the woman within 48 hours postpartum; total study duration 24 months of recruitment plus 3 months follow-up and analysis.",
     "instrument_source": "Pasero Opioid-induced Sedation Scale (POSS)",
-    "generated_at": "2026-09-18",
-    "model": "claude-sonnet-5"
-  },
-  "oral-contraceptives-depression-heterogeneity": {
-    "target_women": "Recruit 600 healthy women aged 16-35 with no prior psychiatric or gynaecological diagnosis, starting a new oral contraceptive prescription for the first time (or after a break of 12+ months), from primary care and university health clinics across 3-4 sites in different countries/healthcare systems, to allow comparison of population and prescribing context.",
-    "variables": [
-      "Baseline depressive symptom score before starting the pill",
-      "Depressive symptom score at each follow-up point",
-      "Specific pill formulation and hormone dose (progestin type, ethinylestradiol dose)",
-      "Personal and family history of mood disorder or PMDD",
-      "Life stressors occurring during the study period (relationship, work, financial)",
-      "Discontinuation of the pill and stated reason",
-      "Baseline and follow-up measures of sleep quality and menstrual cycle-related mood pattern before pill start"
-    ],
-    "stratifiers": [
-      "Age band (16-19, 20-24, 25-29, 30-35)",
-      "Pill formulation type (combined vs progestin-only, and generation of progestin)",
-      "Family or personal history of mood disorder (yes/no)",
-      "Socioeconomic status/income band",
-      "Country/healthcare system site"
-    ],
-    "form": "Prospective cohort with monthly online surveys for 12 months, starting before the first pill dose (true baseline) and continuing through months 1,2,3,6,9,12; validated symptom scale plus a short custom log of stressors, sleep, and side effects; data collected via a secure app or web survey with SMS/email reminders.",
-    "instrument_source": "Patient Health Questionnaire-9 (PHQ-9)",
     "generated_at": "2026-09-18",
     "model": "claude-sonnet-5"
   }

@@ -45,16 +45,19 @@ const wanted = process.argv.slice(2).find(
 const approving = process.argv.includes("--approve");
 const dismissing = process.argv.includes("--dismiss");
 
-if (records.length === 0) {
-  console.log("No candidates waiting. Run: node intake/run.mjs --limit=4");
-  process.exit(0);
-}
-
 const areas = mappableAreas();
 
 /* ---------- the list ---------- */
 
 function list() {
+  if (records.length === 0) {
+    console.log("No candidates waiting. Run: node intake/run.mjs --limit=4");
+    /* Still checked, and especially here: an empty queue is exactly when
+       a stranded entry goes unnoticed. */
+    reportStrandedCandidates();
+    return;
+  }
+
   console.log("");
   console.log(records.length + " candidate" + (records.length === 1 ? "" : "s") +
               " waiting in intake/candidates.json");
@@ -76,6 +79,34 @@ function list() {
   });
 
   console.log("Read one in full:  node intake/review.mjs 1");
+  reportStrandedCandidates();
+}
+
+/* "candidate" in the ledger means "waiting in candidates.json". A run
+   that is interrupted between marking the ledger and writing the file
+   leaves an entry that says waiting when nothing is, and because
+   ledgerJudged counts candidate as judged, that paper is never offered
+   again. Two sat stranded that way until they were found by hand. */
+function reportStrandedCandidates() {
+  const ledger = loadLedger();
+  const held = new Set(
+    records.map((record) => record.paper && String(record.paper.doi || "").toLowerCase())
+  );
+
+  const stranded = Object.entries(ledger.entries)
+    .filter(([doi, entry]) => entry.outcome === "candidate" && !held.has(doi));
+
+  if (stranded.length === 0) { return; }
+
+  console.log("");
+  console.log("⚠ " + stranded.length + " ledger entr" +
+              (stranded.length === 1 ? "y is" : "ies are") +
+              " marked candidate but waiting nowhere:");
+  stranded.forEach(([doi, entry]) => {
+    console.log("    " + doi + "  " + (entry.title || "").slice(0, 52));
+  });
+  console.log("  They will never be offered again while they say that.");
+  console.log("  Decide them, or set the outcome back to seen.");
 }
 
 /* ---------- one candidate, in full ---------- */

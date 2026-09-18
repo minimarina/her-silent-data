@@ -440,5 +440,137 @@ const DATA = {
         }
       ]
     },
+
+    {
+      id: "type-2b-vwd-pregnancy",
+      title:
+        "Women with type 2B von Willebrand disease face high bleeding risk and unclear management during pregnancy and postpartum",
+      area: "Maternal health",
+      summary:
+        "Type 2B von Willebrand disease is a rare qualitative variant affecting platelet-VWF interaction, causing enhanced clearance of VWF multimers and platelets. During pregnancy and postpartum, women with this condition face complex hemostatic abnormalities and high bleeding risk, with no evidence-based guidelines to manage them until this consensus effort.",
+      affected_women:
+        "Women with type 2B von Willebrand disease during pregnancy and the postpartum period",
+      source:
+        "https://doi.org/10.1016/j.jtha.2026.05.032",
+      origin: "sourced",
+      is_demo: false,
+      data_needs: [
+        {
+          id: "type-2b-vwd-pregnancy-clinical-evidence",
+          problem_id: "type-2b-vwd-pregnancy",
+          description:
+            "Evidence-based data on early diagnosis, prenatal counseling, pregnancy monitoring, and peripartum management for type 2B VWD",
+          why_it_matters:
+            "Without this evidence, clinicians rely on expert consensus rather than data, which can leave gaps in standardized, optimal care and increase risk of bleeding complications for mother and infant.",
+          status: "missing",
+          existing_data_note: "",
+          gap_evidence: {
+            source:
+              "https://doi.org/10.1016/j.jtha.2026.05.032",
+            note:
+              "The abstract states a systematic review, international registry analysis, and global physician survey 'highlighted several unmet clinical needs in this population, including gaps in early diagnosis, prenatal counseling, pregnancy monitoring, and peripartum management,' and that there is 'a lack of evidence-based guidelines' for this condition in pregnancy and postpartum.",
+            region: null,
+            claimed_date: "2026-06-04"
+          },
+          dataset_source: null,
+          collection_guidance: null,
+          verification: {
+            checked_at: "2026-09-18",
+            method: "web search",
+            findings:
+              "A search attempt did not return results confirming that a dedicated evidence-based dataset (cohort, registry, or trial) specifically on early diagnosis, prenatal counseling, pregnancy monitoring, and peripartum management for type 2B von Willebrand disease has been established since the cited review. No such registry-based or cohort study output could be identified. The gap identified by the systematic review, international registry analysis, and physician survey appears to remain unaddressed by a subsequent dedicated evidence-based study.",
+            sources: ["https://onlinelibrary.wiley.com/doi/full/10.1111/hae.14953","https://www.researchgate.net/publication/322780262_How_I_treat_type_2B_von_Willebrand_disease","https://www.sciencedirect.com/science/article/pii/S1538783622071896","https://pubmed.ncbi.nlm.nih.gov/42248413/","https://www.sciencedirect.com/science/article/pii/S1538783626003569","https://pubmed.ncbi.nlm.nih.gov/36695378/","https://www.ncbi.nlm.nih.gov/pmc/articles/PMC12858306/","https://pmc.ncbi.nlm.nih.gov/articles/PMC12974098/","https://pubmed.ncbi.nlm.nih.gov/25431025/"]
+          }
+        }
+      ]
+    },
+
+    {
+      id: "anterior-prolapse-surgery",
+      title:
+        "Women with anterior compartment prolapse face uncertain comparative outcomes across different surgical repair techniques",
+      area: "Pelvic health",
+      summary:
+        "Anterior compartment prolapse is the most common type of pelvic organ prolapse and is treated with various surgical techniques. A Cochrane review of 41 randomised trials in 4531 women found that native tissue repair is more likely to result in recurrence and repeat surgery compared with biological graft or permanent mesh, while permanent mesh carries other risks. Many transvaginal permanent meshes tested have since been removed from the market due to complications.",
+      affected_women:
+        "Women undergoing surgery for anterior compartment (anterior vaginal wall) prolapse",
+      source:
+        "https://doi.org/10.1002/14651858.cd004014.pub7",
+      origin: "sourced",
+      is_demo: false,
+      data_needs: [
+        {
+          id: "anterior-prolapse-surgery-suistress",
+          problem_id: "anterior-prolapse-surgery",
+          description:
+            "Data on outcomes of surgery for stress urinary incontinence following anterior native tissue repair versus biological graft repair",
+          why_it_matters:
+            "Without this data, clinicians and women cannot weigh the risk of needing incontinence surgery when choosing between these two prolapse repair techniques.",
+          status: "missing",
+          existing_data_note: "",
+          gap_evidence: {
+            source:
+              "https://doi.org/10.1002/14651858.cd004014.pub7",
+            note:
+              "The abstract states plainly under the native tissue vs biological graft comparison that 'Surgery for stress urinary incontinence was not reported,' and the authors' conclusions reiterate 'We found no data for surgery for stress urinary incontinence.'",
+            region: null,
+            claimed_date: "2026-04-24"
+          },
+          dataset_source: null,
+          collection_guidance: null,
+          verification: {
+            checked_at: "2026-09-18",
+            method: "web search",
+            findings:
+              "The most recent (2026) update of the Cochrane review on surgery for anterior compartment prolapse still explicitly states 'We found no data for surgery for stress urinary incontinence' when comparing native tissue repair versus biological graft repair. A search of related trials (e.g., mesh vs native tissue RCTs, retrospective studies) found data on prolapse recurrence, mesh exposure, and subjective outcomes like PGI-I, but none specifically reporting surgery for stress urinary incontinence as an outcome for the native tissue vs biological graft comparison.",
+            sources: ["https://www.cochranelibrary.com/cdsr/doi/10.1002/14651858.CD004014.pub7/full","https://www.ncbi.nlm.nih.gov/pmc/articles/PMC10287778/","https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8580999/","https://pmc.ncbi.nlm.nih.gov/articles/PMC13314773/","https://www.cochrane.org/zh-hant/evidence/CD004014_surgical-management-pelvic-organ-prolapse-women","https://pmc.ncbi.nlm.nih.gov/articles/PMC6464975","https://www.cochrane.org/evidence/CD004014_surgical-management-pelvic-organ-prolapse-women","https://pmc.ncbi.nlm.nih.gov/articles/PMC6489145","https://eprints.ncl.ac.uk/297526"]
+          }
+        }
+      ]
+    },
+
+    {
+      id: "remifentanil-pca-labour",
+      title:
+        "Lack of standardised evidence on safe use of remifentanil patient-controlled analgesia for labour pain, especially when neuraxial analgesia is not possible",
+      area: "Maternal health",
+      summary:
+        "Remifentanil PCA is used for labour analgesia when neuraxial techniques are contraindicated or declined, but its use varies widely between maternity units due to safety and staffing concerns. An expert working group reviewed the literature and used a modified Delphi process to develop recommendations, most of which had only low or moderate certainty due to limited evidence. The guidance highlights that data on higher-risk maternal and foetal groups is lacking.",
+      affected_women:
+        "Women in labour who are unable to receive or decline neuraxial analgesia, including higher-risk maternal and foetal groups",
+      source:
+        "https://doi.org/10.1097/eja.0000000000002373",
+      origin: "sourced",
+      is_demo: false,
+      data_needs: [
+        {
+          id: "remifentanil-pca-labour-highrisk-groups",
+          problem_id: "remifentanil-pca-labour",
+          description:
+            "Evidence on the safety and effectiveness of remifentanil PCA use in higher-risk maternal and foetal groups during labour",
+          why_it_matters:
+            "Without this evidence, clinicians cannot make well-supported decisions for higher-risk women, and guidance for these groups remains based on low-certainty statements rather than robust data.",
+          status: "missing",
+          existing_data_note: "",
+          gap_evidence: {
+            source:
+              "https://doi.org/10.1097/eja.0000000000002373",
+            note:
+              "The abstract states recommendations were 'generally assigned a low or moderate level of certainty' and concludes 'there is a lack of data for remifentanil PCA use in higher-risk maternal and foetal groups; this is an area of research priority.'",
+            region: "United Kingdom",
+            claimed_date: "2026-05-06"
+          },
+          dataset_source: null,
+          collection_guidance: null,
+          verification: {
+            checked_at: "2026-09-18",
+            method: "web search",
+            findings:
+              "This search found the exact OAA guidance article that made the original 'lack of data' statement (PubMed, indexed with a 2026 date but reflecting the same publication), confirming the gap still stands as of the guidance's own conclusions. Other retrieved studies (RESPITE RCT, dose-finding trials, a small maternal/neonatal side-effect study, and an ongoing remote-monitoring trial NCT07167498) address remifentanil PCA safety/efficacy generally or in specific dosing questions, but none focus on higher-risk maternal or fetal subgroups (e.g. obesity, preterm, multiple pregnancy, cardiac/respiratory comorbidity). No UK cohort, registry, or trial specifically targeting higher-risk groups for remifentanil PCA was found.",
+            sources: ["https://clinicaltrials.gov/study/NCT07167498","https://pmc.ncbi.nlm.nih.gov/articles/PMC10378612/","https://pubmed.ncbi.nlm.nih.gov/42080744/","https://www.thelancet.com/journals/lancet/article/PIIS0140-6736(18)31613-1/fulltext","https://pubmed.ncbi.nlm.nih.gov/16113038/","https://www.dovepress.com/remifentanil-at-a-relatively-elevated-dose-in-active-phase-is-safe-and-peer-reviewed-fulltext-article-JPR","https://www.mdpi.com/1648-9144/61/9/1550","http://www.actaanaesthesiologica.be/assets/437/ActaAnaesthBelg-76-279.pdf","https://www.ncbi.nlm.nih.gov/books/NBK596254/"]
+          }
+        }
+      ]
+    },
   ]
 };
