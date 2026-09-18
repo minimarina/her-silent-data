@@ -922,11 +922,26 @@
     var slot = el("gap-summary");
     slot.textContent = "";
 
+    /* Areas are the denominator, because they are what the map shows. The
+       problem count is named only when it differs from the number of data
+       needs — records from the intake run carry one need each, and "11
+       data needs across 11 problems" says the same number twice. */
+    var problems = DATA.problems.length;
+    var areas = areaGroups().length;
+
     var count = make("p", "summary-count");
     count.appendChild(make("strong", null, String(sum.needs)));
-    count.appendChild(make("span", null, " data needs across "));
-    count.appendChild(make("strong", null, String(DATA.problems.length)));
-    count.appendChild(make("span", null, " problems"));
+
+    if (sum.needs === problems) {
+      count.appendChild(make("span", null, " data needs across "));
+    } else {
+      count.appendChild(make("span", null, " data needs in "));
+      count.appendChild(make("strong", null, String(problems)));
+      count.appendChild(make("span", null, " problems, across "));
+    }
+
+    count.appendChild(make("strong", null, String(areas)));
+    count.appendChild(make("span", null, areas === 1 ? " area" : " areas"));
     slot.appendChild(count);
 
     /* The bar is a proportion at a glance and nothing else, so it is hidden
