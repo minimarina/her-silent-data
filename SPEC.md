@@ -1,6 +1,6 @@
 # SPEC — Women's Data Gap (working name)
 
-Version: 0.5 (About screen)
+Version: 0.6 (intake pipeline built; nothing invented and stored)
 Event: Elevate Women Global Hackathon 2026
 Submission deadline: Sep 20, 23:59 Lisbon = **Sep 20, 15:59 PDT**
 
@@ -25,9 +25,11 @@ The gap is historical and structural, so it does not close on its own: it
 closes only when individual studies are designed to fill named holes.
 
 **What the platform does about it:** it turns "there is a gap" into a
-study someone can design. It identifies where female health and social
-data is missing, and specifies the data points a new study would need to
-collect.
+study someone can design. It records where female health and social data
+has been named as missing, checks whether it has been collected since,
+and — on request — drafts the data points a new study would need. The
+record is borrowed and cited; the draft is generated, labelled, and kept
+out of the record (§5a, §11).
 
 ## 2. Users
 
@@ -47,9 +49,11 @@ field and is short on time.
 2. She opens one problem.
 3. She sees the data needed to solve it, each marked
    **collected / partial / missing**.
-4. She opens a missing item and sees the **collection request card**:
-   which women, what to find out from them, in which breakdowns, and in
-   what form the data comes back.
+4. She opens a missing item and sees **what the source said, when it said
+   it, and when the platform last checked whether the data exists now**.
+5. She presses **Generate research design** and watches a possible study
+   design appear — which women, what to find out from them, in which
+   breakdowns, in what form — labelled AI-generated and unverified.
 
 Everything else is secondary to this flow.
 
@@ -83,10 +87,19 @@ object (see §13 for why it is `.js` and not `.json`). No database.
 - `why_it_matters` (1 sentence: how it helps solve the problem)
 - `status`: `collected` | `partial` | `missing`
 - `existing_data_note` (for collected/partial: what exists and its limits)
-- `gap_evidence` (optional; for partial/missing) — `{ source, note, region }`.
-  Who established that this data is missing, and for which population.
+- `gap_evidence` (optional; for partial/missing) —
+  `{ source, note, region, claimed_date }`. Who established that this data
+  is missing, for which population, and **when**. `claimed_date` exists
+  because a gap named years ago may have been filled since; the intake
+  run rejects a claim older than the window in `intake/lib.mjs`.
 - `dataset_source` (optional; for collected/partial) — `{ source, note }`.
   Where the data that *does* exist lives, and what its coverage limit is.
+- `verification` — `{ checked_at, method, findings, sources }`. The
+  record of a search for data collected since `claimed_date`. Every
+  record carries one; the validator rejects a record nobody checked.
+- `collection_guidance` — `{ note, source }` **or `null`**. Present only
+  where the source itself said how and from whom to collect. `null` is
+  the normal case. See §5a.
 
 `gap_evidence` and `dataset_source` are the two halves of provenance, and
 a need's status decides which one carries the weight. A `collected` need
@@ -94,8 +107,18 @@ cannot cite an absence and a `missing` need cannot link to data that does
 not exist; a `partial` need has both. Either may be empty, and the screen
 says so rather than leaving a blank.
 
-**CollectionRequest** (belongs to one DataNeed with status partial/missing)
-- `data_need_id`
+**ResearchDesign** — *not part of a record.* Generated per data need,
+kept in `research-designs.js`, loaded by its own `<script>` tag, and
+never merged into `data.js`. The app works fully with the file absent.
+Revealed only when a researcher presses **Generate research design**, and
+labelled *AI-generated study design — unverified* with its date.
+
+This entity was once `CollectionRequest` and lived inside the record.
+Moving it out is the rule the register rests on: **nothing is invented
+and stored.** A generated design is an answer to a question, so it can
+never be mistaken for something an authority said.
+
+- `data_need_id` (the key it is stored under)
 - `target_women` (who is studied: age range, region, life stage, condition)
 - `variables` (list) — what to find out from them. The list a researcher
   carries into a study design; this is the answer §4 question 4 exists for.
@@ -113,8 +136,9 @@ missing studies, it is missing *breakdowns* — data collected without the
 variables that would make women visible inside it (§11). Holding the
 breakdowns as prose inside `target_women` would make the platform's
 central claim the one thing on the card that cannot be compared between
-records, or shown to be absent. It is also where §11's AI suggestions
-attach when that feature is built.
+records, or shown to be absent. A generated design (§11) fills the same
+field, which is why the shape is worth keeping even though the design
+itself no longer lives inside the record.
 
 ## 5a. Where a gap claim comes from
 
@@ -137,10 +161,35 @@ placeholder and its origin is not a claim worth making.
 `origin` and `is_demo` are different claims and both stay. `is_demo`
 means "placeholder content"; `origin` means "who identified the gap".
 
-**What the platform adds in both tiers** is §4 question 4 — which women
-to study, what to find out from them, and in what form the data comes
-back. That layer is original in every record, which is why it must stay
-visibly separate from the borrowed gap claim.
+**Nothing is invented and stored.** This replaces the earlier rule, under
+which §4 question 4 — which women to study, what to find out from them,
+in what form — was the platform's own specification written into every
+record and labelled unverified.
+
+It no longer is. A record carries what its source said and nothing more.
+Where the source itself specified population or method, that is recorded
+as `collection_guidance`, because it is sourced; otherwise the field is
+`null`, and `null` is the normal case. The validator rejects a guidance
+block with no source URL, so the rule is enforced in code rather than
+promised in prose.
+
+The answer to question 4 is still offered — generated on request as a
+**ResearchDesign** (§5), kept outside the register, and labelled
+AI-generated. Generation moved out of storage and into the request, which
+is what makes it impossible to mistake for data.
+
+**Every record carries a check.** A gap claim is a statement about a
+moment in time, so `gap_evidence.claimed_date` records when it was made
+and `verification.checked_at` records when the platform last searched for
+data collected since. Finding data does not discard the record: the
+status becomes `partial` or `collected` and the card says where the data
+is, which is more useful than silence.
+
+**No search proves a negative.** A `missing` record asserts that a search
+of published sources found nothing — never that the data does not exist.
+Unpublished registries, national statistics, industry cohorts and data
+behind access agreements are invisible to it, and every affected card
+says so and invites a correction.
 
 **Sourcing one problem at a time.** The seed may be half swapped. Every
 screen is computed from the records rather than asserted, so the demo
@@ -393,13 +442,22 @@ Three principles, each with a concrete rule that can be checked.
 
 ## 9. Seed data rules
 
-**The swap is done.** All five problems are sourced, `is_demo` is false
+**The swap is done.** Every problem is sourced, `is_demo` is false
 throughout, and the demo banner no longer renders. The rules below now
 govern sourced records; the demo rules they replace are kept in git
 history, not here.
 
-- 4–6 problems, each with 2–5 data needs.
-- Every problem has at least one `missing` need.
+The seed has **two generations**, and they are visibly different:
+
+- **Five hand-sourced problems**, each with 2–5 data needs, written
+  before the intake run existed.
+- **Six intake records**, one data need each, produced by
+  `intake/run.mjs` and approved one at a time against the citation.
+  These carry `claimed_date` and a `verification` block; the older five
+  do not, and the card says "Not established" rather than inventing one.
+
+Rules that hold for every record:
+
 - Every problem carries a real `source` URL and `origin: "sourced"`.
 - Every `missing` or `partial` need carries `gap_evidence` **or** the
   screen says no published source names that gap. One need is in the
@@ -407,6 +465,13 @@ history, not here.
   state, not a hole to be filled.
 - `is_demo` and the banner stay in the code. They cost nothing, and a
   future problem added faster than it can be sourced needs them.
+
+**The "at least one `missing` need per problem" rule no longer holds, on
+purpose.** Three intake records came back `partial`: the verify step
+searched, found overlapping data, and said what it does not cover. A rule
+requiring every problem to show a gap would have meant overriding a check
+that did its job. The map's counts strip and `gapSentence()` already
+handle a problem with no missing need, which is why the rule could go.
 
 **Sources by problem**
 
@@ -418,13 +483,30 @@ history, not here.
 | Cardiac recognition | Lancet CVD Commission 2021 | Lancet CVD Commission |
 | Endometriosis | WHO endometriosis fact sheet | NICE NG73 |
 
+**Sources from the intake run.** Each is a systematic or narrative review
+published within the last twelve months, found by searching for the
+sentences a review writes when it looked and found nothing. Areas in
+brackets are new to the map and have hand-measured coordinates.
+
+| Record | Source | Status after the check |
+|---|---|---|
+| High-altitude cardiometabolic [Cardiovascular] | Int J Mol Sci review | partial |
+| Androgens and drug metabolism [Pharmacology] | Expert Opin Drug Metab Toxicol | missing |
+| Epilepsy and infertility treatment [Maternal] | Epilepsy & Behavior, systematic review | missing |
+| Urinary incontinence decision aids [Pelvic health] | Urogynecology, systematic review | partial |
+| Brucellosis in pregnancy [Maternal] | Rev Inst Med Trop São Paulo | missing |
+| Pelvic neuropathies [Chronic pain] | Facts Views Vis Obgyn, narrative review | partial |
+
 - Geographic honesty: global sources carry the problem statement, and
   national priority-setting sources (NICE) carry the gap claim, so
   `gap_evidence.region` states the coverage rather than implying the
   finding is worldwide.
-- What is **not** sourced, and is labelled as such: the collection
-  requests. Which women, which variables, which breakdowns and in what
-  form is this platform's own specification in every record.
+- **Nothing in a record is unsourced.** The five hand-written problems
+  predate that rule and carry `collection_request` blocks labelled as
+  this platform's own specification; they are history from before the
+  rule rather than an exception to it, and the card says which they are.
+  No record produced by the intake run may carry unsourced guidance —
+  the validator rejects it.
 
 ## 10. Out of scope (hackathon)
 
@@ -436,38 +518,38 @@ history, not here.
   (system parts 4–6: pitch material only)
 - Search, filters, editing data in the UI
 
-## 11. Later — AI variable suggestion (NOT for this hackathon)
+## 11. AI-generated research design — BUILT
 
-**Decided: not in v1. Not built this week.** It is recorded here because
-it is the right next feature, and it goes in the write-up as Development
-Potential. It gets built only if the core is finished, frozen and
-demo-ready with hours to spare — and that is not the expected outcome.
+**Status: built, 18 Sep.** This section described a feature that was
+explicitly not for this hackathon. It was built, in a different and
+better form than the one planned below, and the old text is kept in git
+history rather than here.
 
-Nothing in sections 1–10 or 12 may depend on it.
+**What it does:** on a data need, **Generate research design** reveals a
+possible study design — which women to recruit and how many, what to
+measure, the breakdowns the analysis needs, over what period, and a named
+validated instrument where one exists. It is labelled *AI-generated study
+design — unverified*, with the date it was generated.
 
-**What it does:** on a problem detail screen, a "Suggest missing
-variables" action sends the problem and its listed data needs to a model,
-which returns 2–3 *additional* variables a study on this problem commonly
-omits — typically stratifiers (age band, parity, life stage, comorbidity,
-socioeconomic status, region, ethnicity) or under-recorded outcomes.
-Each suggestion comes with one line on why it matters.
+**Where it runs.** The app is static, opens from `file://`, and has no
+backend, so it cannot hold an API key (§13). Designs are therefore
+generated during the intake run, on the maintainer's machine, and stored
+in `research-designs.js`. The button is real and the output is real model
+output; it was produced at intake time rather than at click time. This is
+the only option that keeps §13, and it is stated here rather than
+implied.
 
-**Why it belongs here:** the gender data gap is not only missing studies,
-it is missing *breakdowns* — data collected without the variables that
-would make women visible inside it. Suggesting those variables is the
-same job as the rest of the app, one level deeper.
+**Why it is not part of a record.** A design is an answer, not a
+finding. Keeping generation out of storage is what makes it impossible
+for a generated design to be mistaken for something an authority said —
+see §5a.
 
-**Non-negotiable constraints:**
-- Output is labelled **"AI suggestion — unverified"** wherever it appears.
-- Suggestions are visually separate from seed data; they never merge into
-  the data needs list.
-- Suggestions are not saved as findings and not exported as fact.
-- The app works fully with this feature switched off, offline, or failing.
-  A failed call shows a plain message, never a broken screen.
-
-**Why it can be dropped without cost:** the Kaggle brief asks for a
-product built with vibe-coding tools *or* with AI integrated. The build
-itself already satisfies that. Nothing is lost by leaving this out.
+**Also built, and not planned here:** the verification step. A live web
+search checks whether data called missing has been collected since, and
+sets the status from what it finds. It is the answer to the question this
+product is most vulnerable to — *how do you know the data isn't already
+out there?* — and on the first record it produced, it caught the platform
+about to publish a gap that the cited paper had itself just filled.
 
 ## 12. Acceptance criteria
 
@@ -479,9 +561,12 @@ Core flow:
 3. Each card shows the correct count of missing data needs.
 4. Clicking a card opens Screen 2 for that problem.
 5. Each data need shows exactly one status badge matching the seed file.
-6. Clicking a missing or partial need shows its collection request card
-   with all three fields filled.
-7. A collected need has no collection request card and says so clearly.
+6. Clicking a need shows what its source said, the date the gap was
+   claimed, and the date the platform last checked — or "Not established"
+   where a record predates those fields.
+7. A `missing` need carries the disclaimer that the check was a search of
+   published sources and is not proof, with a link to report data the
+   check missed.
 8. The demo banner renders on every screen while any record is a
    placeholder, and does not render when none is. It states the count.
 9. Returning from detail to the list works without reloading.
@@ -514,13 +599,16 @@ code cites these by number, so existing criteria keep theirs.
 23. Below 640px the labels are gone, the numbered legend is present, and
     there is no horizontal scroll.
 
-Stretch (only if §11 is built):
+Generated research design (§11). Reserved as a stretch pair; both now
+pass.
 
-24. AI suggestions appear in their own labelled block, marked unverified.
-25. With the AI call disabled or failing, every criterion 1–23 still passes.
+24. The design appears in its own labelled block, marked AI-generated and
+    unverified, with the date it was generated.
+25. With `research-designs.js` deleted, every criterion 1–23 still passes
+    and the button is absent rather than broken.
 
-About screen (§6, Screen 4). Appended after the stretch pair rather than
-before it: 24–25 are reserved for §11 and are not renumbered.
+About screen (§6, Screen 4). Appended after that pair rather than before
+it: 24–25 belong to §11 and are not renumbered.
 
 26. The header link opens the About screen by mouse and by keyboard, with
     a visible focus ring on the link.
@@ -528,7 +616,7 @@ before it: 24–25 are reserved for §11 and are not renumbered.
     cards intact.
 28. The home screen is still what loads first; About is hidden until it is
     asked for.
-29. The five system stages and the five intake steps are present as list
+29. The five system stages and the seven intake steps are present as list
     text, not only inside the SVG.
 30. The stage 1 disclosure opens and closes by Enter and by Space, and
     `aria-expanded` matches the panel's state at every point. It is
@@ -595,18 +683,40 @@ it reads as judgment rather than as a gap.
 - The Writeup becomes public under CC BY 4.0 — paraphrase and link
   sources, never paste their text, charts or images. Gallery image must
   be my own.
+- **AI use, stated plainly.** Claude Code wrote most of the application
+  code, pair-programmed. Inside the product, the Anthropic API is used at
+  intake time for four steps — filter, extract, verify, design — and the
+  models used are named in `intake/model.mjs`. Every study design shown
+  in the app is model output and is labelled *AI-generated —
+  unverified* on screen with its generation date. No gap claim is ever
+  model-authored: claims are quoted from cited sources, and each record
+  was approved by a person against that source before entering `data.js`.
+- **The limit stated on the product itself:** no search proves a
+  negative. A `missing` record reports that a search of published sources
+  found nothing, not that the data does not exist.
 
 ## 15. Open decisions
 
 - [ ] Project name. ("Research intelligence for the gender data gap"
       works as the Kaggle subtitle; the title is still open.)
 - [ ] Demo day time in PDT (confirm 4:00 vs 16:00 Lisbon in WhatsApp)
+- [ ] Whether to retire the five hand-written `collection_request`
+      blocks. They predate the "nothing invented and stored" rule (§5a)
+      and are labelled as this platform's own specification. Honest as
+      history; inconsistent with the rule as a design.
 
 Resolved since 0.1: tech stack (§13), hosting and public URL (§13),
-charts (§7.4), AI feature (§11), several problem areas rather than one
+charts (§7.4), several problem areas rather than one
 (session 05), two-tier gap provenance (§5a), collection request fields
 and the wording of question 4 (§5), and where the disclosures go — inside
 the product, on Screen 4 (§6). That last one was never written down here
 as an open item; it was tracked outside the repo, and it is recorded as
 resolved here because §14 requires the built-before / built-during split
 to be stated somewhere and this is now that somewhere.
+
+Resolved since 0.5: the AI feature (§11) — built, as a generated research
+design rather than the variable suggester planned; where a generated
+design lives (§5, §11) — outside the record, because the app has no
+backend to hold a key; and what a record may contain (§5a) — nothing
+invented and stored, enforced by `intake/validate.mjs` rather than
+promised.

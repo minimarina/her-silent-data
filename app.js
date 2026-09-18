@@ -29,17 +29,19 @@
      gets built is one edit in this object and nothing else. §8.1: nothing
      is marked built unless it is in this repository and running. */
   var BUILD_STATUS = {
-    stage1: "partly",
+    stage1: "built",
     stage2: "built",
     stage3: "planned",
     stage4: "planned",
     stage5: "planned",
 
     discover: "built",
-    filter:   "planned",
-    extract:  "planned",
+    filter:   "built",
+    extract:  "built",
+    verify:   "built",
+    design:   "built",
     validate: "built",
-    review:   "planned"
+    review:   "built"
   };
 
   /* The word is the carrier; the colour and the border style repeat it
@@ -612,7 +614,7 @@
     return item;
   }
 
-  /* Missing and partial needs open the collection request card. */
+  /* Missing and partial needs open the data-need card. */
   function openableNeed(problem, need) {
     var item = document.createElement("li");
     item.className = "is-open";
@@ -648,7 +650,7 @@
     return item;
   }
 
-  /* ---------- screen 3: collection request card ---------- */
+  /* ---------- screen 3: the data need ---------- */
 
   function openRequest(problemId, needId) {
     var problem = findProblem(problemId);

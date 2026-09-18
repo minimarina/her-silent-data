@@ -102,7 +102,8 @@
     <ul id="need-list" class="need-list" aria-labelledby="needs-heading"></ul>
   </section>
 
-  <!-- Screen 3 — collection request card -->
+  <!-- Screen 3 — the data need: what the source said, the check,
+       and the generated design on request -->
   <section id="screen-request" class="screen" aria-labelledby="request-heading" tabindex="-1" hidden>
     <button type="button" class="back" data-back="screen-detail">
       &larr; Back to problem
@@ -213,8 +214,10 @@
         <h3>Gaps are collected</h3>
         <p class="build-chip" data-build="stage1"></p>
         <p>
-          Published research recommendations naming data that is missing
-          about women are found, extracted and added to the platform.
+          Published reviews and guidelines naming data that is missing
+          about women are found, checked against the live web to see
+          whether it has been collected since, and added to the platform
+          once a person has confirmed the claim against its source.
         </p>
 
         <button type="button" class="intake-toggle" id="intake-toggle"
@@ -225,7 +228,8 @@
 
         <div class="intake-panel" id="intake-panel" hidden>
           <p class="intake-lede">
-            Five steps. A record passes all five before it is in the seed.
+            Seven steps. A record passes all seven before it reaches the
+            seed, and the last one is a person.
           </p>
 
           <ol class="intake-steps">
@@ -233,18 +237,22 @@
               <h4>Discover</h4>
               <p class="build-chip" data-build="discover"></p>
               <p>
-                Query source APIs for research recommendations in
-                women&rsquo;s health &mdash; Europe PMC, PubMed,
-                ClinicalTrials.gov, NICE research recommendations, Cochrane
-                &ldquo;implications for research&rdquo;.
+                Europe PMC is searched for the sentences a systematic
+                review writes when it looked and found nothing &mdash;
+                &ldquo;no studies met the inclusion criteria&rdquo;,
+                &ldquo;insufficient evidence to determine&rdquo; &mdash;
+                restricted to reviews and guidelines, and to the last
+                twelve months. Searching what an introduction says instead
+                finds gaps the paper itself is about to close.
               </p>
             </li>
             <li>
               <h4>Filter</h4>
               <p class="build-chip" data-build="filter"></p>
               <p>
-                A cheap model answers one yes/no question: is this a research
-                recommendation about women&rsquo;s health?
+                A cheap model answers one yes/no question per abstract: does
+                this name missing data about women that the paper does not
+                itself go on to collect?
               </p>
             </li>
             <li>
@@ -254,6 +262,28 @@
                 Structured output strictly against the <code>data.js</code>
                 schema. Anything the source text does not support comes back
                 <code>null</code>, not a guess.
+              </p>
+            </li>
+            <li>
+              <h4>Verify</h4>
+              <p class="build-chip" data-build="verify"></p>
+              <p>
+                A live web search asks whether the data has been collected
+                since the gap was named. Finding it does not discard the
+                record &mdash; the status becomes <code>partial</code> or
+                <code>collected</code> and the card says where the data
+                is. The check is dated, and no search proves a negative,
+                which every <code>missing</code> record says on its face.
+              </p>
+            </li>
+            <li>
+              <h4>Design</h4>
+              <p class="build-chip" data-build="design"></p>
+              <p>
+                A possible study design for the data need, generated and
+                kept out of the register. It is an answer, not a record: it
+                never reaches <code>data.js</code>, and it is labelled
+                AI-generated and unverified wherever it appears.
               </p>
             </li>
             <li>
@@ -269,10 +299,13 @@
               <h4>Review</h4>
               <p class="build-chip" data-build="review"></p>
               <p>
-                The run stops. The record waits until a human opens the
-                citation and confirms the source says what the record
-                claims, then merges it by hand. Approved or rejected, the
-                paper is logged and never offered again.
+                The run stops. The record waits until a person opens the
+                citation and decides, against the source, whether the
+                claim is honest. Only approved records are merged. Of the
+                first nine candidates three were dismissed &mdash; each a
+                paper that collected the very data it called missing
+                &mdash; and every decision, with its reason, is logged so
+                the paper is never offered again.
               </p>
             </li>
           </ol>
@@ -281,11 +314,12 @@
             <p>
               Most tools point a model at a problem and let it generate the
               answer. This one inverts that. Where the data gap is, is a
-              claim, and every claim here comes from a published research
-              recommendation. AI is used for finding, extracting and matching
-              &mdash; never for making the claim. What the platform adds on
-              top of the borrowed claim is labelled as its own on every
-              screen.
+              claim, and every claim here is borrowed from a published
+              source and attributed. AI is used for finding, extracting and
+              checking &mdash; never for making the claim. Nothing the
+              model composes is stored as a record: a study design is
+              generated when a researcher asks for one, labelled
+              AI-generated, and kept out of the register entirely.
             </p>
           </blockquote>
         </div>
@@ -295,9 +329,9 @@
         <h3>The platform shows what is missing</h3>
         <p class="build-chip" data-build="stage2"></p>
         <p>
-          For each problem: which data is needed, what status it has, and a
-          collection request saying which women, which variables, which
-          breakdowns, in what form.
+          For each problem: which data is needed, what status it has,
+          who said it was missing and when, and when the platform last
+          checked whether it has been collected since.
         </p>
       </li>
 
@@ -340,10 +374,12 @@
         opens by double-clicking <code>index.html</code>.
       </li>
       <li>
-        <strong>Two-tier provenance.</strong> The gap claim is borrowed and
-        cited; the collection request &mdash; which women, which variables,
-        which breakdowns, in what form &mdash; is this platform&rsquo;s own
-        specification in every record.
+        <strong>Nothing is invented and stored.</strong> A record carries
+        what its source said and nothing more, and the validator rejects
+        one that does not. A study design &mdash; which women, which
+        variables, which breakdowns, in what form &mdash; is generated
+        when a researcher asks for it, labelled AI-generated, and never
+        becomes a record.
       </li>
       <li>
         <strong>Disclosure.</strong> Everything in this repository was

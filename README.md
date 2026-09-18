@@ -8,11 +8,13 @@ For each problem, it answers four questions:
 1. **What problem do women face?**
 2. **What data is needed to solve it?**
 3. **Has that data already been collected?**
-4. **If not: which women should it come from, how should they be asked,
-   and in what form?**
+4. **Has anyone collected it since the gap was named?**
+5. **If not: which women should it come from, what should be found out
+   from them, and in what form?**
 
-Most gender data projects stop at "there is a gap." This one names the women
-the data is missing from, so a researcher knows exactly what to go and collect.
+Most gender data projects stop at "there is a gap." This one cites who
+named the gap, searches the live web to see whether it has been closed
+since, and — on request — drafts the study that would close it.
 
 **The problem in one sentence:** researchers who want to close the gender
 data gap don't know which data is missing most, or which women it has to
@@ -29,21 +31,40 @@ need a framework, and this way nothing can fail to build on submission day.
 
 ## Data
 
-Every problem in the app cites a published source, and every missing or
-partial data need cites the authority that named the gap — WHO fact
-sheets and guidelines, NICE research recommendations, the Lancet women
-and cardiovascular disease Commission, the SAGER reporting guidelines,
-and peer-reviewed studies. Sources are listed per problem in `SPEC.md`
-§9, and every claim links to its source on the record itself.
+Every problem cites a published source, and every missing or partial data
+need cites the authority that named the gap — WHO fact sheets and
+guidelines, NICE research recommendations, the Lancet women and
+cardiovascular disease Commission, the SAGER reporting guidelines, and
+peer-reviewed systematic reviews. Sources are listed per problem in
+`SPEC.md` §9, and every claim links to its source on the record itself.
 
 One data need carries no gap citation, because no published source names
 it. The app says so on that record rather than leaving it blank.
 
-**What is not sourced, and is labelled as such:** the collection
-requests. Which women to study, which variables to ask for, which
-breakdowns the analysis needs and in what form the data comes back is
-this platform's own specification in every record. The citations are
-the foundation; the specification is the product.
+**The rule the register rests on: nothing is invented and stored.** A
+record carries what its source said and nothing more. Where a source
+itself specified how and from whom to collect, that is recorded and
+cited; otherwise the field is `null`, which is the normal case. The
+validator rejects a guidance block with no source, so the rule is
+enforced in code rather than promised here.
+
+**What the platform generates, it labels and keeps out of the register.**
+Pressing *Generate research design* reveals a possible study design —
+who to recruit, what to measure, the breakdowns, the instrument — marked
+*AI-generated study design — unverified* with the date. It is an answer,
+not a finding: it lives in `research-designs.js`, never in `data.js`, and
+deleting that file leaves the app fully working.
+
+**Every record carries a check, and states its limit.** A gap claim is
+dated, and a live web search records whether the data has been collected
+since. Finding it does not discard the record — the status becomes
+`partial` or `collected` and the card says where the data is. No search
+proves a negative, so a `missing` record says on its face that this was a
+search of published sources, not proof, and invites a correction from
+anyone who knows of data it missed.
+
+Five problems were sourced by hand before the intake pipeline existed;
+six came from it. Both are visible as such in the app.
 
 ## Third-party assets
 
@@ -74,4 +95,12 @@ reachable with a visible focus ring; body text is 16px at 4.5:1 contrast
 or better; no horizontal scroll at 360px; `prefers-reduced-motion` is
 honoured.
 
-Status: the core flow works end to end on sourced data.
+## How records arrive
+
+`intake/` holds the pipeline: discover, filter, extract, verify, design,
+validate, review. It is not part of the app — `index.html` loads nothing
+from it — and the app still opens from `file://` with no server and no
+dependencies. See `intake/README.md`.
+
+Status: the core flow works end to end on sourced data, and the intake
+pipeline is built and has produced records now in the seed.

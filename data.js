@@ -2,13 +2,8 @@
  *
  * SOURCED DATA. Every problem cites a published source, and every
  * missing or partial data need cites the authority that named the gap.
- * No record is a placeholder any more: is_demo is false throughout and
- * the demo banner no longer renders.
- *
- * What is NOT sourced, and is labelled as such on screen: the collection
- * requests. Which women, which variables, which breakdowns and in what
- * form is this platform's own specification in every record. That is the
- * product; the citations are its foundation.
+ * No record is a placeholder: is_demo is false throughout and the demo
+ * banner no longer renders.
  *
  * Loaded by a <script> tag, not fetch(), so the app opens from file://
  * with no server (SPEC §13). Contents stay JSON-shaped and hand-editable:
@@ -17,25 +12,44 @@
  * Data needs are nested inside their problem instead of being a flat list
  * keyed by problem_id. Same fields as §5, less to keep in sync by hand.
  *
+ * TWO GENERATIONS, and they are not identical in shape.
+ *
+ * 1. Five problems sourced by hand, before the intake pipeline existed.
+ *    They carry collection_request blocks — this platform's own
+ *    specification of which women, which variables and in what form,
+ *    labelled unverified on screen. Those blocks predate the rule below
+ *    and are kept as history, not as a model to follow. They have no
+ *    claimed_date and no verification block, and the card says "Not
+ *    established" rather than inventing one.
+ *
+ * 2. Six records from intake/run.mjs, approved one at a time against the
+ *    cited abstract. Each carries gap_evidence.claimed_date, a
+ *    verification block with the date of a live web search, and
+ *    collection_guidance that is either sourced or null.
+ *
+ * THE RULE, from SPEC §5a: nothing is invented and stored. A record
+ * carries what its source said and nothing more. A study design is
+ * generated on request, kept in research-designs.js, and never enters
+ * this file. intake/validate.mjs enforces this rather than trusting it.
+ *
  * Two-tier origin (SPEC §5a). A problem is either:
- *   origin: "sourced"  — an authority has already published the request
- *                        that this data is missing, and gap_evidence on
- *                        each data need cites it.
+ *   origin: "sourced"  — an authority has published the claim that this
+ *                        data is missing, and gap_evidence cites it.
  *   origin: "proposed" — the problem is documented, but nobody has said
- *                        which data would close it. The data needs are
- *                        this platform's hypothesis, labelled as one.
- *   origin: null       — not yet assessed. While is_demo is true the
- *                        record is a placeholder and origin says nothing.
+ *                        which data would close it.
+ *   origin: null       — not yet assessed.
  *
  * origin and is_demo are different claims and both stay. is_demo means
  * "placeholder content"; origin means "who identified the gap".
  *
- * Sources, by problem:
+ * Sources for the five hand-sourced problems:
  *   Menopause      WHO menopause fact sheet; HEAF study; NICE NG23
  *   Maternal       WHO 2022 postnatal guideline; NICE NG194
  *   Autoimmune     J Rheumatology; Cureus narrative review 2025
  *   Cardiac        Lancet women and CVD Commission 2021; NICOR MINAP
  *   Endometriosis  WHO fact sheet; NICE NG73; WERF EPHect
+ * The six intake records cite their own source on each card, and they
+ * are listed in SPEC §9.
  *
  * One data need carries no gap_evidence: maternal-postnatal-unpaid-care.
  * No published source names that gap, so the record says the assessment
