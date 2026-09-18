@@ -58,11 +58,10 @@ const GAP_PHRASES = [
      abstracts in 12,000, because researchers rarely write the whole
      sentence that way. Short fragments are what they actually write.
 
-     Included: phrasings that assert ABSENCE.
-     Excluded, deliberately: the "limited evidence" (116), "few studies"
-     (78), "limited data" (67) and "insufficient evidence" (34) family.
-     Those mean data exists and is sparse, which is status "partial".
-     They were the whole reason earlier runs returned partial records. */
+     Two families, and the order matters. ABSENCE first — these produce
+     status "missing", the stronger claim. SPARSE second, at the end of
+     the list — these produce "partial", and are there because the gap a
+     woman would recognise is usually of that kind. */
 
   "no studies",                    /* 82 */
   "none of the studies",           /* 21 */
@@ -88,7 +87,30 @@ const GAP_PHRASES = [
   /* Women left out of the studies that produced the evidence base now
      used to treat them. Rare, and worth having when it appears. */
   "women were excluded",
-  "pregnant women were excluded"
+  "pregnant women were excluded",
+
+  /* SPARSE, not absent. These produce status "partial": data exists and
+     does not cover what it should. They were removed on 18 Sep for
+     flooding the register with partial records, and brought back the same
+     evening for a better reason than they were dropped.
+
+     The gap they find is the one closest to this platform's problem
+     statement — menopause at work, postnatal follow-up, cardiac symptoms
+     are all topics where the data exists and women are invisible inside
+     it. Filter criterion 2b is what makes them safe to include: a paper
+     with sparse data on a rare disease is now rejected, while a paper
+     with sparse data BECAUSE women were excluded or never analysed
+     separately is exactly what this register is for.
+
+     Kept last so their order in the list matches their standing: a
+     "missing" record is the stronger claim, and these must earn their
+     place through the filter. */
+  "limited evidence",              /* 116 */
+  "few studies",                   /*  78 */
+  "limited data",                  /*  67 */
+  "insufficient evidence",         /*  34 */
+  "limited research",              /*  23 */
+  "insufficient data"              /*  15 */
 
   /* Dropped after measuring: the sex-disaggregation phrases. Two reasons.
      They barely occur in this corpus, and mechanically they would produce
@@ -505,9 +527,19 @@ writeJson(CANDIDATES, {
 
 writeJson(DESIGNS_JSON, designs);
 
-writeFileSync(DESIGNS_JS, renderDesigns(
-  publishableDesigns(designs, seed, { records })
-), "utf8");
+const published = publishableDesigns(designs, seed, { records });
+writeFileSync(DESIGNS_JS, renderDesigns(published), "utf8");
+
+/* The distribution is worth printing: a run returning mostly "collected"
+   or "partial" means the phrases are finding sparse data rather than
+   absence, which is the failure this pipeline is most prone to. */
+const byStatus = {};
+const byArea = {};
+for (const record of records) {
+  const need = record.data_need;
+  byStatus[need.status] = (byStatus[need.status] || 0) + 1;
+  byArea[need.area] = (byArea[need.area] || 0) + 1;
+}
 
 console.log("");
 console.log("Status: " + (Object.entries(byStatus)
@@ -516,7 +548,8 @@ console.log("Areas:  " + (Object.keys(byArea).length + " — " +
   Object.keys(byArea).join(", ")));
 console.log("");
 console.log("Wrote " + records.length + " records to intake/candidates.json");
-console.log("Wrote " + Object.keys(designs).length + " designs to research-designs.js");
+console.log("Wrote " + Object.keys(published).length + " designs to research-designs.js" +
+            " (" + Object.keys(designs).length + " in the archive)");
 console.log("Spend: " + spendLine());
 console.log("");
 console.log("Nothing has been written to data.js. Open each citation, confirm");

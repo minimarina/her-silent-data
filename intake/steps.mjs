@@ -33,7 +33,7 @@ export const AREAS = [...mappableAreas()];
 /* Bump this whenever the prompt below changes in a way that would change
    a verdict. Rejections carry the version that produced them, and a
    rejection from an older version is reopened — see ledgerJudged. */
-export const FILTER_VERSION = 3;
+export const FILTER_VERSION = 4;
 
 /* Spelled out because "Maternal health" alone is not enough to judge
    membership by: version 1 filed a paper about bacterial vaginosis under
@@ -64,6 +64,25 @@ const FILTER_SYSTEM =
   "that matters, not the subject of the paper. A paper about a condition " +
   "in men, noting that the evidence was extrapolated from studies of " +
   "women, is a NO — the gap it names is a gap in data about men.\n\n" +
+  "2b. THE DATA IS MISSING BECAUSE THE SUBJECTS ARE WOMEN. This is the " +
+  "criterion that decides whether a record belongs in a register of the " +
+  "GENDER data gap rather than a list of understudied topics, and it is " +
+  "the one most often got wrong.\n\n" +
+  "   Apply this test: **would the gap still exist, in the same form, if " +
+  "the patients were men?** If yes, and nothing about being a woman " +
+  "explains the absence, answer NO. A rare disease nobody has studied is " +
+  "a gap in medicine, not a gender data gap, and it stays a NO even when " +
+  "the patients in the paper happen to be female.\n\n" +
+  "   Answer YES when the absence is explained by one of these:\n" +
+  "   - women, or pregnant or breastfeeding women, were EXCLUDED from " +
+  "the studies that produced the evidence now used to treat them;\n" +
+  "   - results exist but were NOT ANALYSED OR REPORTED BY SEX, so women " +
+  "are invisible inside data that was collected;\n" +
+  "   - the condition, or its presentation, diagnosis or treatment, " +
+  "DIFFERS IN WOMEN and the evidence base reflects men;\n" +
+  "   - the subject is a female-specific condition or life stage — " +
+  "menstruation, pregnancy, the postnatal period, menopause — that has " +
+  "simply not been measured.\n\n" +
   "3. The subject is women's health, anywhere in it. These areas are " +
   "already in the register:\n" +
   AREAS.map((area) => "   - " + area + ": " + (AREA_GLOSS[area] || "")).join("\n") +

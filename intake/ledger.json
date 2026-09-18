@@ -664,8 +664,7 @@
       "first_seen": "2026-09-18",
       "last_seen": "2026-09-18",
       "title": "Alterations in cognitive function among reproductive-age women with polyendocrine metabolic ovarian syndrome: A systematic review and meta-analysis.",
-      "outcome": "rejected-by-filter",
-      "filter_version": 3
+      "outcome": "seen"
     },
     "10.1016/j.yebeh.2026.111210": {
       "first_seen": "2026-09-18",
@@ -1545,13 +1544,13 @@
       "first_seen": "2026-09-18",
       "last_seen": "2026-09-18",
       "title": "2024 recommendations for the therapeutic management of anogenital warts.",
-      "outcome": "seen"
+      "outcome": "candidate"
     },
     "10.1002/14651858.cd004014.pub7": {
       "first_seen": "2026-09-18",
       "last_seen": "2026-09-18",
       "title": "Surgery for women with anterior compartment prolapse.",
-      "outcome": "seen"
+      "outcome": "candidate"
     },
     "10.3389/fphys.2026.1728032": {
       "first_seen": "2026-09-18",
@@ -1803,6 +1802,216 @@
       "first_seen": "2026-09-18",
       "last_seen": "2026-09-18",
       "title": "Calcium supplementation during pregnancy for preventing hypertensive disorders and related problems.",
+      "outcome": "seen"
+    },
+    "10.1016/j.ejogrb.2026.115312": {
+      "first_seen": "2026-09-18",
+      "last_seen": "2026-09-18",
+      "title": "Belgian guidance 2026 on management of pregnancy and breastfeeding in women living with HIV and their infants.",
+      "outcome": "seen"
+    },
+    "10.1016/j.autrev.2026.104135": {
+      "first_seen": "2026-09-18",
+      "last_seen": "2026-09-18",
+      "title": "Altered reproductive hormone profiles in systemic lupus erythematosus - A systematic review and meta-analysis.",
+      "outcome": "seen"
+    },
+    "10.1002/14651858.cd009881.pub3": {
+      "first_seen": "2026-09-18",
+      "last_seen": "2026-09-18",
+      "title": "Progesterone receptor modulators for endometriosis.",
+      "outcome": "seen"
+    },
+    "10.1016/j.midw.2026.104960": {
+      "first_seen": "2026-09-18",
+      "last_seen": "2026-09-18",
+      "title": "Exploring the dose-response relationship between prenatal exercise and postpartum depression: A systematic review and meta-analysis of randomized controlled trials.",
+      "outcome": "seen"
+    },
+    "10.1080/13697137.2025.2548805": {
+      "first_seen": "2026-09-18",
+      "last_seen": "2026-09-18",
+      "title": "Androgen therapy in midlife and older women: a position statement of the Latin American Association of Gynecological Endocrinology (ALEG).",
+      "outcome": "seen"
+    },
+    "10.3389/fendo.2026.1741198": {
+      "first_seen": "2026-09-18",
+      "last_seen": "2026-09-18",
+      "title": "Evidence-based interventions to restore or improve female fertility in women aged 30-42 years: a systematic review by etiology and evidence level.",
+      "outcome": "seen"
+    },
+    "10.3389/fpsyt.2026.1782372": {
+      "first_seen": "2026-09-18",
+      "last_seen": "2026-09-18",
+      "title": "Exercise modalities and dose-response associations with anxiety and depression in postmenopausal women: a network meta-analysis and model-based dose-response study.",
+      "outcome": "seen"
+    },
+    "10.1002/14651858.cd007876.pub3": {
+      "first_seen": "2026-09-18",
+      "last_seen": "2026-09-18",
+      "title": "Culture media for human pre-implantation embryos in assisted reproductive technology cycles.",
+      "outcome": "seen"
+    },
+    "10.1002/14651858.cd000402.pub5": {
+      "first_seen": "2026-09-18",
+      "last_seen": "2026-09-18",
+      "title": "Hormone therapy in postmenopausal women and risk of endometrial hyperplasia or endometrial cancer.",
+      "outcome": "seen"
+    },
+    "10.1186/s12905-026-04359-5": {
+      "first_seen": "2026-09-18",
+      "last_seen": "2026-09-18",
+      "title": "Effects of concurrent training on body composition, metabolic, and inflammatory in postmenopausal women: a meta-analysis.",
+      "outcome": "seen"
+    },
+    "10.1186/s12891-026-10286-1": {
+      "first_seen": "2026-09-18",
+      "last_seen": "2026-09-18",
+      "title": "Associated factors of nerve injury post-total hip arthroplasty: a meta-analysis.",
+      "outcome": "seen"
+    },
+    "10.3390/nu18152429": {
+      "first_seen": "2026-09-18",
+      "last_seen": "2026-09-18",
+      "title": "Effects of Acute Caffeine Supplementation on Physical, Sport-Specific, Physiological, Perceptual, and Cognitive Outcomes in Female Team-Sport Athletes: A Three-Level Meta-Analysis.",
+      "outcome": "seen"
+    },
+    "10.1080/20533691.2026.2690376": {
+      "first_seen": "2026-09-18",
+      "last_seen": "2026-09-18",
+      "title": "Systematic review- hormone replacement therapy in postmenopausal women with medical co-morbidities.",
+      "outcome": "seen"
+    },
+    "10.3389/fimmu.2025.1627514": {
+      "first_seen": "2026-09-18",
+      "last_seen": "2026-09-18",
+      "title": "Comparing the circulating immune profile of women with and without recurrent implantation failure: a systematic review and meta-analysis.",
+      "outcome": "seen"
+    },
+    "10.1007/s40266-026-01323-8": {
+      "first_seen": "2026-09-18",
+      "last_seen": "2026-09-18",
+      "title": "Management of Urinary Retention in Older Women.",
+      "outcome": "seen"
+    },
+    "10.1186/s12884-026-08808-9": {
+      "first_seen": "2026-09-18",
+      "last_seen": "2026-09-18",
+      "title": "Sleep disturbances and assisted reproduction outcomes in women undergoing IVF/ICSI: a systematic review and meta-analysis.",
+      "outcome": "seen"
+    },
+    "10.55563/clinexprheumatol/28g31m": {
+      "first_seen": "2026-09-18",
+      "last_seen": "2026-09-18",
+      "title": "The impact of Sjögren's disease on ovarian reserve: a systematic review and meta-analysis.",
+      "outcome": "seen"
+    },
+    "10.1371/journal.pmed.1005114": {
+      "first_seen": "2026-09-18",
+      "last_seen": "2026-09-18",
+      "title": "Differences in tuberculosis prevalence by sex in low- and middle-income countries over 1993-2025: A systematic review and meta-analysis.",
+      "outcome": "seen"
+    },
+    "10.3389/fnut.2026.1818813": {
+      "first_seen": "2026-09-18",
+      "last_seen": "2026-09-18",
+      "title": "The effects of intermittent fasting on BMI, fasting blood glucose, and blood pressure in women with overweight or obesity: a systematic review and meta-analysis with dose-response relationships.",
+      "outcome": "seen"
+    },
+    "10.1097/ju.0000000000004691": {
+      "first_seen": "2026-09-18",
+      "last_seen": "2026-09-18",
+      "title": "Vaginal Lasers for Treating Stress Urinary Incontinence in Women: An Abridged Cochrane Systematic Review and Meta-Analysis.",
+      "outcome": "seen"
+    },
+    "10.1002/14651858.cd015376.pub2": {
+      "first_seen": "2026-09-18",
+      "last_seen": "2026-09-18",
+      "title": "Interventions for treating urinary incontinence in older women: a network meta-analysis.",
+      "outcome": "seen"
+    },
+    "10.1038/s41416-025-03266-0": {
+      "first_seen": "2026-09-18",
+      "last_seen": "2026-09-18",
+      "title": "Sex and gender influence on adverse events for melanoma patients: a comprehensive review and meta-analysis.",
+      "outcome": "seen"
+    },
+    "10.1177/03635465251376649": {
+      "first_seen": "2026-09-18",
+      "last_seen": "2026-09-18",
+      "title": "Anterior Cruciate Ligament Reconstruction With a Quadriceps Tendon Autograft in Female Patients Shows Equivalent Graft Failure But Lower Activity Scores and Slower Quadriceps Strength Recovery Compared With Male Patients: A Systematic Review and Meta-analysis.",
+      "outcome": "seen"
+    },
+    "10.29063/ajrh2026/v30i9.12": {
+      "first_seen": "2026-09-18",
+      "last_seen": "2026-09-18",
+      "title": "Evaluation of the effects of probiotic supplementation on the ecology and inflammatory factors of female vaginal flora: a systematic review and meta-analysis.",
+      "outcome": "seen"
+    },
+    "10.1177/08903344261425147": {
+      "first_seen": "2026-09-18",
+      "last_seen": "2026-09-18",
+      "title": "Aflatoxin M1 in Human Milk in Türkiye: A Systematic Review, Meta-Analysis, and Meta-Regression.",
+      "outcome": "seen"
+    },
+    "10.1038/s41433-026-04648-1": {
+      "first_seen": "2026-09-18",
+      "last_seen": "2026-09-18",
+      "title": "Functional visual loss: a systematic review and meta-analysis of epidemiology, prognosis and treatment.",
+      "outcome": "seen"
+    },
+    "10.1002/ijgo.70760": {
+      "first_seen": "2026-09-18",
+      "last_seen": "2026-09-18",
+      "title": "Clitoral reconstructive surgery in women and girls living with female genital mutilation: A systematic review.",
+      "outcome": "seen"
+    },
+    "10.1007/s00415-026-13969-w": {
+      "first_seen": "2026-09-18",
+      "last_seen": "2026-09-18",
+      "title": "Cerebral amyloid angiopathy-related inflammation (CAA-ri): an updated systematic review and meta-analysis.",
+      "outcome": "seen"
+    },
+    "10.1186/s12889-026-27920-1": {
+      "first_seen": "2026-09-18",
+      "last_seen": "2026-09-18",
+      "title": "Prevalence of elder abuse among community-dwelling older adults in South Asia: a systematic review and meta-analysis.",
+      "outcome": "seen"
+    },
+    "10.22074/ijfs.2025.2047467.1794": {
+      "first_seen": "2026-09-18",
+      "last_seen": "2026-09-18",
+      "title": "The Effectiveness of Pelvic Floor Physiotherapy on Endometrial Thickness during Embryo Transfer in Infertile Women: A Systematic Review and Meta-analysis.",
+      "outcome": "seen"
+    },
+    "10.1186/s12877-026-06984-z": {
+      "first_seen": "2026-09-18",
+      "last_seen": "2026-09-18",
+      "title": "Association between sociodemographic factors and mobility among older adults: a systematic review and meta-analysis.",
+      "outcome": "seen"
+    },
+    "10.3389/fnut.2026.1880118": {
+      "first_seen": "2026-09-18",
+      "last_seen": "2026-09-18",
+      "title": "Effects of acute caffeine supplementation on physical, physiological, and sport-specific performance in female volleyball players: a systematic review and three-level meta-analysis.",
+      "outcome": "seen"
+    },
+    "10.1093/eurjpc/zwaf150": {
+      "first_seen": "2026-09-18",
+      "last_seen": "2026-09-18",
+      "title": "Effects of cardiac rehabilitation on the severity of angina, health-related quality of life, and exercise capacity among adults living with microvascular angina: a systematic review and meta-analysis.",
+      "outcome": "seen"
+    },
+    "10.1016/j.midw.2025.104696": {
+      "first_seen": "2026-09-18",
+      "last_seen": "2026-09-18",
+      "title": "Association between previous perinatal death and subsequent pregnancy outcomes in Low-and Middle-Income Countries: A systematic review and meta-analysis.",
+      "outcome": "seen"
+    },
+    "10.1016/j.ijgc.2025.102747": {
+      "first_seen": "2026-09-18",
+      "last_seen": "2026-09-18",
+      "title": "European Society of Gynaecological Oncology resource-stratified guidelines for the management of patients with cervical cancer.",
       "outcome": "seen"
     }
   }

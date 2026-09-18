@@ -4,29 +4,22 @@
   "query_window_years": 1,
   "hit_count": 20081,
   "scanned": 1000,
-  "phrase_matched": 48,
-  "unseen": 47,
+  "phrase_matched": 91,
+  "unseen": 88,
   "papers": [
     {
-      "title": "Management of women with type 2B von Willebrand disease during pregnancy and postpartum: guidance from ISTH SSC subcommittees on von Willebrand factor and women's health issues in thrombosis and hemostasis.",
-      "doi": "10.1016/j.jtha.2026.05.032",
-      "url": "https://doi.org/10.1016/j.jtha.2026.05.032",
+      "title": "Belgian guidance 2026 on management of pregnancy and breastfeeding in women living with HIV and their infants.",
+      "doi": "10.1016/j.ejogrb.2026.115312",
+      "url": "https://doi.org/10.1016/j.ejogrb.2026.115312",
       "year": "2026",
-      "journal": "Journal of thrombosis and haemostasis : JTH"
+      "journal": "European journal of obstetrics, gynecology, and reproductive biology"
     },
     {
-      "title": "2024 recommendations for the therapeutic management of anogenital warts.",
-      "doi": "10.1016/j.annder.2026.103510",
-      "url": "https://doi.org/10.1016/j.annder.2026.103510",
+      "title": "Alterations in cognitive function among reproductive-age women with polyendocrine metabolic ovarian syndrome: A systematic review and meta-analysis.",
+      "doi": "10.1111/jne.70225",
+      "url": "https://doi.org/10.1111/jne.70225",
       "year": "2026",
-      "journal": "Annales de dermatologie et de venereologie"
-    },
-    {
-      "title": "Surgery for women with anterior compartment prolapse.",
-      "doi": "10.1002/14651858.cd004014.pub7",
-      "url": "https://doi.org/10.1002/14651858.cd004014.pub7",
-      "year": "2026",
-      "journal": "The Cochrane database of systematic reviews"
+      "journal": "Journal of neuroendocrinology"
     },
     {
       "title": "Effect of oral contraceptive use on cardiorespiratory and immune function in premenopausal women involved in exercise: a systematic review and meta-analysis.",
@@ -41,6 +34,13 @@
       "url": "https://doi.org/10.1016/j.diabres.2026.113335",
       "year": "2026",
       "journal": "Diabetes research and clinical practice"
+    },
+    {
+      "title": "Psychosocial interventions for supporting women to stop smoking in pregnancy.",
+      "doi": "10.1002/14651858.cd001055.pub6",
+      "url": "https://doi.org/10.1002/14651858.cd001055.pub6",
+      "year": "2026",
+      "journal": "The Cochrane database of systematic reviews"
     },
     {
       "title": "Breast Arterial Calcification on Mammography and Cardiovascular Outcomes in Women: A Meta-analysis.",
@@ -71,11 +71,32 @@
       "journal": "European journal of obstetrics, gynecology, and reproductive biology"
     },
     {
+      "title": "Altered reproductive hormone profiles in systemic lupus erythematosus - A systematic review and meta-analysis.",
+      "doi": "10.1016/j.autrev.2026.104135",
+      "url": "https://doi.org/10.1016/j.autrev.2026.104135",
+      "year": "2026",
+      "journal": "Autoimmunity reviews"
+    },
+    {
+      "title": "Ultra-processed food consumption and risk of infertility in adults: a systematic review and meta-analysis.",
+      "doi": "10.3389/fpubh.2026.1906808",
+      "url": "https://doi.org/10.3389/fpubh.2026.1906808",
+      "year": "2026",
+      "journal": "Frontiers in public health"
+    },
+    {
       "title": "Urinary Incontinence in Women Athletes: Umbrella Review and Meta-analysis of Sport-Related Factors.",
       "doi": "10.1007/s40279-026-02438-z",
       "url": "https://doi.org/10.1007/s40279-026-02438-z",
       "year": "2026",
       "journal": "Sports medicine (Auckland, N.Z.)"
+    },
+    {
+      "title": "Progesterone receptor modulators for endometriosis.",
+      "doi": "10.1002/14651858.cd009881.pub3",
+      "url": "https://doi.org/10.1002/14651858.cd009881.pub3",
+      "year": "2026",
+      "journal": "The Cochrane database of systematic reviews"
     },
     {
       "title": "GLP-1 receptor agonist treatment in women with polycystic ovary syndrome-a systematic review and meta-analysis.",
@@ -85,6 +106,27 @@
       "journal": "European journal of endocrinology"
     },
     {
+      "title": "Exploring the dose-response relationship between prenatal exercise and postpartum depression: A systematic review and meta-analysis of randomized controlled trials.",
+      "doi": "10.1016/j.midw.2026.104960",
+      "url": "https://doi.org/10.1016/j.midw.2026.104960",
+      "year": "2026",
+      "journal": "Midwifery"
+    },
+    {
+      "title": "Sexual and reproductive health and maternal welfare among Afghan refugee women in Pakistan: a systematic review.",
+      "doi": "10.3389/fgwh.2026.1645605",
+      "url": "https://doi.org/10.3389/fgwh.2026.1645605",
+      "year": "2026",
+      "journal": "Frontiers in global women's health"
+    },
+    {
+      "title": "Efficacy and safety of tumour necrosis factor inhibitors in unexplained recurrent spontaneous abortion: A systematic review and meta-analysis.",
+      "doi": "10.1016/j.jri.2026.104956",
+      "url": "https://doi.org/10.1016/j.jri.2026.104956",
+      "year": "2026",
+      "journal": "Journal of reproductive immunology"
+    },
+    {
       "title": "Cervical cancer screening among transgender and gender diverse individuals: a systematic review and meta-analysis.",
       "doi": "10.1016/j.ijgc.2026.104850",
       "url": "https://doi.org/10.1016/j.ijgc.2026.104850",
@@ -92,11 +134,25 @@
       "journal": "International journal of gynecological cancer : official journal of the International Gynecological Cancer Society"
     },
     {
+      "title": "Androgen therapy in midlife and older women: a position statement of the Latin American Association of Gynecological Endocrinology (ALEG).",
+      "doi": "10.1080/13697137.2025.2548805",
+      "url": "https://doi.org/10.1080/13697137.2025.2548805",
+      "year": "2025",
+      "journal": "Climacteric : the journal of the International Menopause Society"
+    },
+    {
       "title": "Individual Participant Data Meta-Analysis (IPDMA) of long-term COVID-19 outcomes in a systematic review-informed, international, multidisciplinary database.",
       "doi": "10.3310/gjma0602",
       "url": "https://doi.org/10.3310/gjma0602",
       "year": "2026",
       "journal": "Health and social care delivery research"
+    },
+    {
+      "title": "Evidence-based interventions to restore or improve female fertility in women aged 30-42 years: a systematic review by etiology and evidence level.",
+      "doi": "10.3389/fendo.2026.1741198",
+      "url": "https://doi.org/10.3389/fendo.2026.1741198",
+      "year": "2026",
+      "journal": "Frontiers in endocrinology"
     },
     {
       "title": "Endogenous sex steroid hormones, sex hormone binding globulin and risk of all-cause and cardiovascular mortality in patients with established cardiovascular diseases: a systematic review and meta-analysis of prospective studies.",
@@ -113,6 +169,13 @@
       "journal": "African health sciences"
     },
     {
+      "title": "Exercise modalities and dose-response associations with anxiety and depression in postmenopausal women: a network meta-analysis and model-based dose-response study.",
+      "doi": "10.3389/fpsyt.2026.1782372",
+      "url": "https://doi.org/10.3389/fpsyt.2026.1782372",
+      "year": "2026",
+      "journal": "Frontiers in psychiatry"
+    },
+    {
       "title": "Deinfibulation for improving obstetric, neonatal, gynecologic, and sexual health outcomes in women and girls with type III female genital mutilation: A systematic review and meta-analysis.",
       "doi": "10.1002/ijgo.70759",
       "url": "https://doi.org/10.1002/ijgo.70759",
@@ -127,6 +190,41 @@
       "journal": "Journal of behavioral addictions"
     },
     {
+      "title": "Culture media for human pre-implantation embryos in assisted reproductive technology cycles.",
+      "doi": "10.1002/14651858.cd007876.pub3",
+      "url": "https://doi.org/10.1002/14651858.cd007876.pub3",
+      "year": "2026",
+      "journal": "The Cochrane database of systematic reviews"
+    },
+    {
+      "title": "Hormone therapy in postmenopausal women and risk of endometrial hyperplasia or endometrial cancer.",
+      "doi": "10.1002/14651858.cd000402.pub5",
+      "url": "https://doi.org/10.1002/14651858.cd000402.pub5",
+      "year": "2025",
+      "journal": "The Cochrane database of systematic reviews"
+    },
+    {
+      "title": "Effects of concurrent training on body composition, metabolic, and inflammatory in postmenopausal women: a meta-analysis.",
+      "doi": "10.1186/s12905-026-04359-5",
+      "url": "https://doi.org/10.1186/s12905-026-04359-5",
+      "year": "2026",
+      "journal": "BMC women's health"
+    },
+    {
+      "title": "Associated factors of nerve injury post-total hip arthroplasty: a meta-analysis.",
+      "doi": "10.1186/s12891-026-10286-1",
+      "url": "https://doi.org/10.1186/s12891-026-10286-1",
+      "year": "2026",
+      "journal": "BMC musculoskeletal disorders"
+    },
+    {
+      "title": "Prevalence of Cam and Pincer Morphology in the Young Athlete's Hip: A Systematic Review With Meta-Analysis.",
+      "doi": "10.2519/jospt.2026.13606",
+      "url": "https://doi.org/10.2519/jospt.2026.13606",
+      "year": "2026",
+      "journal": "The Journal of orthopaedic and sports physical therapy"
+    },
+    {
       "title": "Premature ovarian insufficiency in patients with systemic lupus erythematosus on cyclophosphamide: a systematic review and meta-analysis.",
       "doi": "10.3389/fendo.2026.1775060",
       "url": "https://doi.org/10.3389/fendo.2026.1775060",
@@ -139,6 +237,27 @@
       "url": "https://doi.org/10.1002/ijgo.70977",
       "year": "2026",
       "journal": "International journal of gynaecology and obstetrics: the official organ of the International Federation of Gynaecology and Obstetrics"
+    },
+    {
+      "title": "Effects of Acute Caffeine Supplementation on Physical, Sport-Specific, Physiological, Perceptual, and Cognitive Outcomes in Female Team-Sport Athletes: A Three-Level Meta-Analysis.",
+      "doi": "10.3390/nu18152429",
+      "url": "https://doi.org/10.3390/nu18152429",
+      "year": "2026",
+      "journal": "Nutrients"
+    },
+    {
+      "title": "Systematic review- hormone replacement therapy in postmenopausal women with medical co-morbidities.",
+      "doi": "10.1080/20533691.2026.2690376",
+      "url": "https://doi.org/10.1080/20533691.2026.2690376",
+      "year": "2026",
+      "journal": "Post reproductive health"
+    },
+    {
+      "title": "Comparing the circulating immune profile of women with and without recurrent implantation failure: a systematic review and meta-analysis.",
+      "doi": "10.3389/fimmu.2025.1627514",
+      "url": "https://doi.org/10.3389/fimmu.2025.1627514",
+      "year": "2025",
+      "journal": "Frontiers in immunology"
     },
     {
       "title": "Vaginal lasers for treating stress urinary incontinence in women.",
@@ -169,6 +288,20 @@
       "journal": "Human reproduction update"
     },
     {
+      "title": "Management of Urinary Retention in Older Women.",
+      "doi": "10.1007/s40266-026-01323-8",
+      "url": "https://doi.org/10.1007/s40266-026-01323-8",
+      "year": "2026",
+      "journal": "Drugs & aging"
+    },
+    {
+      "title": "Sleep disturbances and assisted reproduction outcomes in women undergoing IVF/ICSI: a systematic review and meta-analysis.",
+      "doi": "10.1186/s12884-026-08808-9",
+      "url": "https://doi.org/10.1186/s12884-026-08808-9",
+      "year": "2026",
+      "journal": "BMC pregnancy and childbirth"
+    },
+    {
       "title": "Trial of Labor After Cesarean and Vaginal Birth After Cesarean: A Systematic Review and Meta-Analysis of Maternal and Neonatal Outcomes.",
       "doi": "10.3390/medicina62071286",
       "url": "https://doi.org/10.3390/medicina62071286",
@@ -181,6 +314,20 @@
       "url": "https://doi.org/10.1016/j.neubiorev.2026.106828",
       "year": "2026",
       "journal": "Neuroscience and biobehavioral reviews"
+    },
+    {
+      "title": "The impact of Sjögren's disease on ovarian reserve: a systematic review and meta-analysis.",
+      "doi": "10.55563/clinexprheumatol/28g31m",
+      "url": "https://doi.org/10.55563/clinexprheumatol/28g31m",
+      "year": "2026",
+      "journal": "Clinical and experimental rheumatology"
+    },
+    {
+      "title": "Differences in tuberculosis prevalence by sex in low- and middle-income countries over 1993-2025: A systematic review and meta-analysis.",
+      "doi": "10.1371/journal.pmed.1005114",
+      "url": "https://doi.org/10.1371/journal.pmed.1005114",
+      "year": "2026",
+      "journal": "PLoS medicine"
     },
     {
       "title": "Congenital long QT syndrome in the pregnant women: a systematic review.",
@@ -197,11 +344,46 @@
       "journal": "Diabetes research and clinical practice"
     },
     {
+      "title": "Prevalence of Insomnia by Sex in U.S. Service Members: A Systematic Review and Meta-Analysis.",
+      "doi": "10.1093/milmed/usaf516",
+      "url": "https://doi.org/10.1093/milmed/usaf516",
+      "year": "2026",
+      "journal": "Military medicine"
+    },
+    {
       "title": "Interventions for fertility preservation in women with cancer undergoing chemotherapy.",
       "doi": "10.1002/14651858.cd012891.pub2",
       "url": "https://doi.org/10.1002/14651858.cd012891.pub2",
       "year": "2025",
       "journal": "The Cochrane database of systematic reviews"
+    },
+    {
+      "title": "The effects of intermittent fasting on BMI, fasting blood glucose, and blood pressure in women with overweight or obesity: a systematic review and meta-analysis with dose-response relationships.",
+      "doi": "10.3389/fnut.2026.1818813",
+      "url": "https://doi.org/10.3389/fnut.2026.1818813",
+      "year": "2026",
+      "journal": "Frontiers in nutrition"
+    },
+    {
+      "title": "Vaginal Lasers for Treating Stress Urinary Incontinence in Women: An Abridged Cochrane Systematic Review and Meta-Analysis.",
+      "doi": "10.1097/ju.0000000000004691",
+      "url": "https://doi.org/10.1097/ju.0000000000004691",
+      "year": "2025",
+      "journal": "The Journal of urology"
+    },
+    {
+      "title": "Interventions for treating urinary incontinence in older women: a network meta-analysis.",
+      "doi": "10.1002/14651858.cd015376.pub2",
+      "url": "https://doi.org/10.1002/14651858.cd015376.pub2",
+      "year": "2025",
+      "journal": "The Cochrane database of systematic reviews"
+    },
+    {
+      "title": "Supplemental imaging modalities for breast cancer screening in women with dense breasts: A systematic review with economic considerations.",
+      "doi": "10.1016/j.breast.2025.104668",
+      "url": "https://doi.org/10.1016/j.breast.2025.104668",
+      "year": "2026",
+      "journal": "Breast (Edinburgh, Scotland)"
     },
     {
       "title": "Progestogen for preventing miscarriage in women with recurrent miscarriage of unclear etiology.",
@@ -218,11 +400,25 @@
       "journal": "Frontiers in physiology"
     },
     {
+      "title": "Sex and gender influence on adverse events for melanoma patients: a comprehensive review and meta-analysis.",
+      "doi": "10.1038/s41416-025-03266-0",
+      "url": "https://doi.org/10.1038/s41416-025-03266-0",
+      "year": "2026",
+      "journal": "British journal of cancer"
+    },
+    {
       "title": "Conization With Lymph Node Assessment in Early-Stage Cervical Cancer: A Systematic Review and Meta-Analysis.",
       "doi": "10.1111/jog.70411",
       "url": "https://doi.org/10.1111/jog.70411",
       "year": "2026",
       "journal": "The journal of obstetrics and gynaecology research"
+    },
+    {
+      "title": "Anterior Cruciate Ligament Reconstruction With a Quadriceps Tendon Autograft in Female Patients Shows Equivalent Graft Failure But Lower Activity Scores and Slower Quadriceps Strength Recovery Compared With Male Patients: A Systematic Review and Meta-analysis.",
+      "doi": "10.1177/03635465251376649",
+      "url": "https://doi.org/10.1177/03635465251376649",
+      "year": "2026",
+      "journal": "The American journal of sports medicine"
     },
     {
       "title": "The effect of pelvic floor exercises on the quality of life in postmenopausal women: a meta-analysis of randomized controlled trials.",
@@ -239,11 +435,46 @@
       "journal": "Acta obstetricia et gynecologica Scandinavica"
     },
     {
+      "title": "Evaluation of the effects of probiotic supplementation on the ecology and inflammatory factors of female vaginal flora: a systematic review and meta-analysis.",
+      "doi": "10.29063/ajrh2026/v30i9.12",
+      "url": "https://doi.org/10.29063/ajrh2026/v30i9.12",
+      "year": "2026",
+      "journal": "African journal of reproductive health"
+    },
+    {
+      "title": "Aflatoxin M1 in Human Milk in Türkiye: A Systematic Review, Meta-Analysis, and Meta-Regression.",
+      "doi": "10.1177/08903344261425147",
+      "url": "https://doi.org/10.1177/08903344261425147",
+      "year": "2026",
+      "journal": "Journal of human lactation : official journal of International Lactation Consultant Association"
+    },
+    {
       "title": "Physical activity for the management of obesity in children up to the age of 9 years.",
       "doi": "10.1002/14651858.cd015988",
       "url": "https://doi.org/10.1002/14651858.cd015988",
       "year": "2026",
       "journal": "The Cochrane database of systematic reviews"
+    },
+    {
+      "title": "Functional visual loss: a systematic review and meta-analysis of epidemiology, prognosis and treatment.",
+      "doi": "10.1038/s41433-026-04648-1",
+      "url": "https://doi.org/10.1038/s41433-026-04648-1",
+      "year": "2026",
+      "journal": "Eye (London, England)"
+    },
+    {
+      "title": "Clitoral reconstructive surgery in women and girls living with female genital mutilation: A systematic review.",
+      "doi": "10.1002/ijgo.70760",
+      "url": "https://doi.org/10.1002/ijgo.70760",
+      "year": "2026",
+      "journal": "International journal of gynaecology and obstetrics: the official organ of the International Federation of Gynaecology and Obstetrics"
+    },
+    {
+      "title": "Cerebral amyloid angiopathy-related inflammation (CAA-ri): an updated systematic review and meta-analysis.",
+      "doi": "10.1007/s00415-026-13969-w",
+      "url": "https://doi.org/10.1007/s00415-026-13969-w",
+      "year": "2026",
+      "journal": "Journal of neurology"
     },
     {
       "title": "Associations of modifiable preconception, pregnancy and postpartum factors with health outcomes for women with type 2 diabetes and their children: A systematic review and meta-analysis of observational studies.",
@@ -267,6 +498,20 @@
       "journal": "Archives of gerontology and geriatrics"
     },
     {
+      "title": "Prevalence of elder abuse among community-dwelling older adults in South Asia: a systematic review and meta-analysis.",
+      "doi": "10.1186/s12889-026-27920-1",
+      "url": "https://doi.org/10.1186/s12889-026-27920-1",
+      "year": "2026",
+      "journal": "BMC public health"
+    },
+    {
+      "title": "The Effectiveness of Pelvic Floor Physiotherapy on Endometrial Thickness during Embryo Transfer in Infertile Women: A Systematic Review and Meta-analysis.",
+      "doi": "10.22074/ijfs.2025.2047467.1794",
+      "url": "https://doi.org/10.22074/ijfs.2025.2047467.1794",
+      "year": "2026",
+      "journal": "International journal of fertility & sterility"
+    },
+    {
       "title": "Vasodilators for women undergoing fertility treatment.",
       "doi": "10.1002/14651858.cd010001.pub4",
       "url": "https://doi.org/10.1002/14651858.cd010001.pub4",
@@ -281,11 +526,25 @@
       "journal": "Critical reviews in clinical laboratory sciences"
     },
     {
+      "title": "Association between sociodemographic factors and mobility among older adults: a systematic review and meta-analysis.",
+      "doi": "10.1186/s12877-026-06984-z",
+      "url": "https://doi.org/10.1186/s12877-026-06984-z",
+      "year": "2026",
+      "journal": "BMC geriatrics"
+    },
+    {
       "title": "The association between body image and depressive symptoms in pregnant and postpartum women: a meta-analysis.",
       "doi": "10.3389/fpubh.2025.1655639",
       "url": "https://doi.org/10.3389/fpubh.2025.1655639",
       "year": "2025",
       "journal": "Frontiers in public health"
+    },
+    {
+      "title": "Current evidence on the prospective predictors and trajectories of posttraumatic growth and depreciation in adult women with breast cancer: a systematic review of longitudinal studies.",
+      "doi": "10.1007/s00520-026-11095-x",
+      "url": "https://doi.org/10.1007/s00520-026-11095-x",
+      "year": "2026",
+      "journal": "Supportive care in cancer : official journal of the Multinational Association of Supportive Care in Cancer"
     },
     {
       "title": "Prevalence of restless legs syndrome in Pakistan: a systematic review and meta-analysis across diverse study populations.",
@@ -309,6 +568,20 @@
       "journal": "JBRA assisted reproduction"
     },
     {
+      "title": "Effects of acute caffeine supplementation on physical, physiological, and sport-specific performance in female volleyball players: a systematic review and three-level meta-analysis.",
+      "doi": "10.3389/fnut.2026.1880118",
+      "url": "https://doi.org/10.3389/fnut.2026.1880118",
+      "year": "2026",
+      "journal": "Frontiers in nutrition"
+    },
+    {
+      "title": "Effects of cardiac rehabilitation on the severity of angina, health-related quality of life, and exercise capacity among adults living with microvascular angina: a systematic review and meta-analysis.",
+      "doi": "10.1093/eurjpc/zwaf150",
+      "url": "https://doi.org/10.1093/eurjpc/zwaf150",
+      "year": "2026",
+      "journal": "European journal of preventive cardiology"
+    },
+    {
       "title": "Global incidence and risk factors of pregnancy-related stroke: a systematic review and meta-analysis of over 270 million women.",
       "doi": "10.1186/s12884-025-08404-3",
       "url": "https://doi.org/10.1186/s12884-025-08404-3",
@@ -328,6 +601,20 @@
       "url": "https://doi.org/10.1002/14651858.cd009252.pub2",
       "year": "2025",
       "journal": "The Cochrane database of systematic reviews"
+    },
+    {
+      "title": "Association between previous perinatal death and subsequent pregnancy outcomes in Low-and Middle-Income Countries: A systematic review and meta-analysis.",
+      "doi": "10.1016/j.midw.2025.104696",
+      "url": "https://doi.org/10.1016/j.midw.2025.104696",
+      "year": "2026",
+      "journal": "Midwifery"
+    },
+    {
+      "title": "European Society of Gynaecological Oncology resource-stratified guidelines for the management of patients with cervical cancer.",
+      "doi": "10.1016/j.ijgc.2025.102747",
+      "url": "https://doi.org/10.1016/j.ijgc.2025.102747",
+      "year": "2026",
+      "journal": "International journal of gynecological cancer : official journal of the International Gynecological Cancer Society"
     },
     {
       "title": "Calcium supplementation during pregnancy for preventing hypertensive disorders and related problems.",

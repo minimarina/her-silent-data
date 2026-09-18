@@ -220,5 +220,52 @@ const RESEARCH_DESIGNS = {
     "instrument_source": null,
     "generated_at": "2026-09-18",
     "model": "claude-sonnet-5"
+  },
+  "anogenital-warts-treatment-specific-populations": {
+    "target_women": "Recruit 300 pregnant women diagnosed with anogenital warts during antenatal or genitourinary medicine clinic visits across 10-15 collaborating hospitals/clinics over a 24-month enrollment window, including subgroups who are immunocompromised (e.g. HIV-positive, on immunosuppressive therapy) to allow stratified analysis; aim for at least 50 immunocompromised pregnant women within the total sample.",
+    "variables": [
+      "Treatment modality used (e.g. cryotherapy, trichloroacetic acid, surgical excision, imiquimod, podophyllotoxin, no treatment/watchful waiting) and gestational age at initiation",
+      "Wart clearance status and time to clearance from treatment start",
+      "Recurrence occurrence and time to recurrence within 12 months post-treatment or post-partum",
+      "Adverse events related to treatment (maternal and, where applicable, neonatal outcomes such as preterm birth, perinatal transmission/laryngeal papillomatosis)",
+      "Immune status markers (CD4 count or immunosuppressive regimen details) at time of treatment",
+      "Patient-reported symptom burden and psychological distress (anxiety/depression screen) at baseline and follow-up",
+      "Route of delivery and any wart-related complications during delivery"
+    ],
+    "stratifiers": [
+      "Trimester of pregnancy at treatment initiation",
+      "Immunocompromise status (immunocompromised vs immunocompetent) and specific cause where known",
+      "Maternal age band",
+      "HPV vaccination status",
+      "Ethnicity/race",
+      "Parity (first pregnancy vs multiparous)"
+    ],
+    "form": "Prospective multi-site observational cohort using structured case report forms completed by treating clinicians at diagnosis, treatment initiation, and follow-up visits; patient-reported outcome questionnaires administered at baseline, 4-6 weeks post-treatment, and 3, 6, and 12 months postpartum; total study duration 36 months including 24-month recruitment and 12-month follow-up per participant; neonatal outcomes captured via linked birth records up to 12 months of age.",
+    "instrument_source": "Hospital Anxiety and Depression Scale (HADS)",
+    "generated_at": "2026-09-18",
+    "model": "claude-sonnet-5"
+  },
+  "anterior-prolapse-surgery-suistress": {
+    "target_women": "Recruit approximately 600 women aged 18+ undergoing surgical repair of anterior compartment (anterior vaginal wall) prolapse across 8-12 urogynecology/urology surgical centres, split roughly evenly between those receiving native tissue repair and those receiving biological graft repair, enrolled consecutively over a 2-year recruitment window.",
+    "variables": [
+      "Type of anterior repair performed (native tissue vs biological graft, and graft material used)",
+      "Occurrence and date of subsequent stress urinary incontinence (SUI) surgery post-prolapse repair",
+      "Patient-reported urinary incontinence symptoms and severity at each follow-up",
+      "Prolapse recurrence (anatomical stage and/or reoperation) at each follow-up",
+      "Baseline preoperative SUI status and prior incontinence surgery history",
+      "Surgical and postoperative complications (mesh/graft exposure, infection, voiding dysfunction)",
+      "Patient-reported quality of life and sexual function scores"
+    ],
+    "stratifiers": [
+      "Age band (under 50, 50-64, 65-74, 75+)",
+      "Baseline SUI status (none, occult/latent, overt)",
+      "Parity and prior pelvic floor surgery history",
+      "Body mass index category",
+      "Menopausal status"
+    ],
+    "form": "Prospective multicentre observational cohort study using clinical case report forms completed at surgery and structured follow-up visits at 6 weeks, 6 months, 12 months, and annually to 3 years; patient-reported outcome questionnaires self-administered at each visit either on paper or via secure online portal.",
+    "instrument_source": "International Consultation on Incontinence Questionnaire - Urinary Incontinence Short Form (ICIQ-UI SF), alongside the Pelvic Floor Distress Inventory (PFDI-20) and Pelvic Organ Prolapse Quantification (POP-Q) system for anatomical staging",
+    "generated_at": "2026-09-18",
+    "model": "claude-sonnet-5"
   }
 };
