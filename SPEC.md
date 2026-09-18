@@ -1,6 +1,6 @@
 # SPEC — Women's Data Gap (working name)
 
-Version: 0.4 (all five problems sourced)
+Version: 0.5 (About screen)
 Event: Elevate Women Global Hackathon 2026
 Submission deadline: Sep 20, 23:59 Lisbon = **Sep 20, 15:59 PDT**
 
@@ -193,6 +193,38 @@ Then, unchanged:
 - Why this data matters.
 - The gap evidence and, for partial needs, the dataset pointer.
 - This is the climax of the demo; it gets the most visual care.
+
+**Screen 4 — About**
+
+Reached only from a link in the site header, and it returns to the home
+screen. **It never precedes the map.** §3 and criterion 10 hold because
+the first thing seen is still the body map; a header link and a back
+route to home are what keep that true. The screen reads nothing from
+`data.js` and cannot break the demo.
+
+- Block 1, the main content: how the whole system works. Five stages, of
+  which this platform is stage 2, drawn as a loop — the arrow from stage
+  5 back to stage 2 is the point of the diagram, not decoration.
+- Each stage carries **Built** or **Planned**. Stage 1 is partly built.
+- Stage 1 expands, in place, to the five-step intake pipeline (discover,
+  filter, extract, validate, review) and the rule that pipeline exists to
+  protect: AI finds, extracts and matches, and never makes the gap claim.
+  A disclosure with `aria-expanded`, not a fifth screen.
+- Block 2: who built it and how — author, stack and why no framework
+  (§13), the two-tier provenance method (§5a), the §14 disclosures and
+  the third-party asset credit (§7.6), and the repository link.
+
+**The build labels live in one place.** `BUILD_STATUS` at the top of
+`app.js` holds every Built/Planned string; the text list and the diagram
+both read it, so they cannot contradict each other and flipping a part
+that gets built is one edit. Nothing is labelled built unless it is in
+this repository and running (§8.1).
+
+**The two status vocabularies stay apart.** Built/Planned uses
+`navy-deep` and `muted`, never the `collected`/`partial`/`missing`
+colours: those mean the status of *data* everywhere else and must keep
+meaning only that. Each carries its own word and its own border style as
+well as its own colour (§8.2).
 
 ## 7. Design
 
@@ -487,6 +519,26 @@ Stretch (only if §11 is built):
 24. AI suggestions appear in their own labelled block, marked unverified.
 25. With the AI call disabled or failing, every criterion 1–23 still passes.
 
+About screen (§6, Screen 4). Appended after the stretch pair rather than
+before it: 24–25 are reserved for §11 and are not renumbered.
+
+26. The header link opens the About screen by mouse and by keyboard, with
+    a visible focus ring on the link.
+27. Back returns to the home screen with the map, the counts strip and the
+    cards intact.
+28. The home screen is still what loads first; About is hidden until it is
+    asked for.
+29. The five system stages and the five intake steps are present as list
+    text, not only inside the SVG.
+30. The stage 1 disclosure opens and closes by Enter and by Space, and
+    `aria-expanded` matches the panel's state at every point. It is
+    collapsed on load.
+31. No horizontal scroll at 360px, including the diagram.
+32. The §14 disclosure paragraph — built during the Hackathon Period, no
+    pre-existing code, AI-assisted with Claude Code — is on the screen.
+33. Built and Planned are identifiable in greyscale, and use none of the
+    three data-status colours.
+
 ## 13. Tech
 
 **Decided: plain HTML, CSS and JavaScript. No framework, no build step,
@@ -553,4 +605,8 @@ it reads as judgment rather than as a gap.
 Resolved since 0.1: tech stack (§13), hosting and public URL (§13),
 charts (§7.4), AI feature (§11), several problem areas rather than one
 (session 05), two-tier gap provenance (§5a), collection request fields
-and the wording of question 4 (§5).
+and the wording of question 4 (§5), and where the disclosures go — inside
+the product, on Screen 4 (§6). That last one was never written down here
+as an open item; it was tracked outside the repo, and it is recorded as
+resolved here because §14 requires the built-before / built-during split
+to be stated somewhere and this is now that somewhere.
