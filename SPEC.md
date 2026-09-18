@@ -1,4 +1,4 @@
-# SPEC — Women's Data Gap (working name)
+# SPEC — Her Silent Data
 
 Version: 0.6 (intake pipeline built; nothing invented and stored)
 Event: Elevate Women Global Hackathon 2026
