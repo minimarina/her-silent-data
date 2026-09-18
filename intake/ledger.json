@@ -970,7 +970,8 @@
       "first_seen": "2026-09-18",
       "last_seen": "2026-09-18",
       "title": "Ultra-processed food consumption and risk of infertility in adults: a systematic review and meta-analysis.",
-      "outcome": "candidate"
+      "outcome": "dismissed",
+      "reason": "verify found the data collected: a 2025 prospective couple-based cohort covers it, and the gap named is sex-specific studies for both sexes"
     },
     "10.1186/s12889-026-28037-1": {
       "first_seen": "2026-09-18",
@@ -1608,7 +1609,7 @@
       "first_seen": "2026-09-18",
       "last_seen": "2026-09-18",
       "title": "GLP-1 receptor agonist treatment in women with polycystic ovary syndrome-a systematic review and meta-analysis.",
-      "outcome": "candidate"
+      "outcome": "approved"
     },
     "10.1016/j.ijgc.2026.104850": {
       "first_seen": "2026-09-18",
@@ -1825,7 +1826,8 @@
       "first_seen": "2026-09-18",
       "last_seen": "2026-09-18",
       "title": "Altered reproductive hormone profiles in systemic lupus erythematosus - A systematic review and meta-analysis.",
-      "outcome": "candidate"
+      "outcome": "dismissed",
+      "reason": "the verification search did not complete; the status was assigned without a check"
     },
     "10.1002/14651858.cd009881.pub3": {
       "first_seen": "2026-09-18",
@@ -2025,6 +2027,12 @@
       "last_seen": "2026-09-18",
       "title": "European Society of Gynaecological Oncology resource-stratified guidelines for the management of patients with cervical cancer.",
       "outcome": "seen"
+    },
+    "10.1002/art.22510": {
+      "first_seen": "2026-09-18",
+      "last_seen": "2026-09-18",
+      "title": "Reproductive and menopausal factors and risk of systemic lupus erythematosus in women.",
+      "outcome": "candidate"
     }
   }
 }

@@ -534,5 +534,28 @@
     "instrument_source": "PCOSQ (Polycystic Ovary Syndrome Quality of Life Questionnaire) for quality of life; Patient Health Questionnaire-9 (PHQ-9) for depression; Generalized Anxiety Disorder 7-item scale (GAD-7) for anxiety; modified Ferriman-Gallwey scale for hirsutism",
     "generated_at": "2026-09-18",
     "model": "claude-sonnet-5"
+  },
+  "lupus-hormonal-risk-mechanism-data": {
+    "target_women": "Recruit 300 women aged 25-55 split into three groups of 100: (1) women newly diagnosed with SLE within the past 12 months, (2) women with a diagnosed hormonally-linked autoimmune risk profile but no SLE (early menarche before age 11, surgical menopause, or current hormone therapy) but no SLE, and (3) age-matched healthy controls with average hormonal histories. Recruit through rheumatology clinics and reproductive health clinics affiliated with academic medical centers, supplemented by a sub-sample invitation to participants already enrolled in the Nurses' Health Study 3 cohort.",
+    "variables": [
+      "Serum estradiol, progesterone, and prolactin levels measured at time of blood draw",
+      "Peripheral blood mononuclear cell interferon-stimulated gene expression score",
+      "Circulating autoantibody titers (anti-dsDNA, ANA, anti-Ro/La)",
+      "Self-reported reproductive history: age at menarche, contraceptive type and duration of use, parity, menopause type and age at onset, hormone therapy type and duration",
+      "Estrogen receptor alpha and beta expression in isolated B cells and T cells",
+      "Circulating levels of key inflammatory cytokines (IL-6, IL-10, BAFF, IFN-alpha)",
+      "Disease activity score (SLEDAI) at each visit for SLE cases"
+    ],
+    "stratifiers": [
+      "Age band (25-34, 35-44, 45-55)",
+      "Menopause status and type (natural, surgical, premature ovarian insufficiency)",
+      "Current or past exogenous hormone use (oral contraceptives vs hormone replacement therapy vs none)",
+      "Race and ethnicity (Black, White, Hispanic, Asian, Other)",
+      "Family history of autoimmune disease"
+    ],
+    "form": "Longitudinal biospecimen collection with clinical and self-report survey at baseline, then every 6 months for 24 months (5 total visits). Each visit includes a fasting blood draw, structured reproductive history questionnaire, and clinical assessment; SLE cases also complete SLEDAI disease activity scoring at each visit.",
+    "instrument_source": "SLEDAI (Systemic Lupus Erythematosus Disease Activity Index)",
+    "generated_at": "2026-09-18",
+    "model": "claude-sonnet-5"
   }
 }

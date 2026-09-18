@@ -2,273 +2,103 @@
   "run_at": "2026-09-18",
   "stage": "full",
   "query_window_years": 1,
-  "hit_count": 20081,
-  "scanned": 1000,
-  "phrase_matched": 91,
-  "unseen": 77,
+  "hit_count": 1,
+  "phrase_matched": 1,
+  "unseen": 1,
   "passed_filter": 1,
   "records": [
     {
       "paper": {
-        "title": "Altered reproductive hormone profiles in systemic lupus erythematosus - A systematic review and meta-analysis.",
-        "doi": "10.1016/j.autrev.2026.104135",
-        "url": "https://doi.org/10.1016/j.autrev.2026.104135",
-        "year": "2026",
-        "journal": "Autoimmunity reviews",
-        "abstract": "<h4>Background</h4>Systemic lupus erythematosus (SLE) shows a marked female predominance during reproductive years, possibly suggesting hormonal factors in its pathogenesis. However, evidence regarding reproductive hormone alterations in SLE remains inconsistent.<h4>Objectives</h4>To systematically review studies assessing reproductive hormone levels in adult SLE patients compared with healthy controls and across disease activity states.<h4>Methods</h4>Following PRISMA guidelines and a pre-registered protocol (PROSPERO CRD42024544730), PubMed and Scopus were searched (May 2024). Eligible observational studies reported estradiol, testosterone, progesterone, prolactin, FSH, LH, DHEA-S, DHEA or androstenedione in SLE patients versus controls or by disease activity. Random-effects meta-analyses were conducted.<h4>Results</h4>Eighty-three studies were included (5389 individuals for SLE vs. controls; 2067 for active vs. inactive SLE). Prolactin was consistently higher in SLE (MD 8.07 ng/mL; 95% CI 4.69-11.45; p < 0.001) and even more during flare (MD 5.83 ng/mL; 95% CI 3.88-7.78; p < 0.001). Estradiol showed non-significant overall elevations but was significantly higher in women with active disease (MD 8.55 pg/mL; 95% CI 1.37-15.73; p = 0.03). DHEA-S was found to be significantly lower in SLE (MD -1.00 μg/mL; 95% CI -1.5 to -0.50; p = 0.002) but too few studies evaluated its dynamics during flares. FSH and LH were significantly higher in men with SLE. Other hormones were inconsistent. Only three small heterogeneous studies evaluated hormonal changes during flares.<h4>Conclusions</h4>Prolactin excess and androgen deficiency are consistent features of SLE, particularly in women, while elevated gonadotropins are mainly seen in men. Estradiol is higher during active disease but other data are inconsistent. Longitudinal studies are limited, with prolactin the only hormone consistently linked to disease activity and full hormonal profiles during flares are largely unstudied."
+        "title": "Reproductive and menopausal factors and risk of systemic lupus erythematosus in women.",
+        "doi": "10.1002/art.22510",
+        "url": "https://doi.org/10.1002/art.22510",
+        "year": "2007",
+        "journal": "Arthritis and rheumatism",
+        "abstract": "<h4>Objective</h4>Systemic lupus erythematosus (SLE) occurs predominantly in women, and hormones may play a role in its etiology. This study was carried out to examine associations between female reproductive and menopausal factors and the development of SLE.<h4>Methods</h4>A cohort of 238,308 women was prospectively examined. Subjects were older women (ages 30-55 years at start) and younger women (ages 25-42 years at start) from the Nurses' Health Study (NHS) and NHSII cohorts. Incident SLE diagnosed between 1976 and 2003 was confirmed by medical record review. The relative risk (RR) of SLE was estimated separately in each cohort using Cox proportional hazards models, and then pooled using meta-analysis random effects models.<h4>Results</h4>Two hundred sixty-two incident cases of SLE were confirmed among the women. In multivariable models adjusted for reproductive and other risk factors, age<or=10 years at menarche (pooled RR 2.1, 95% confidence interval [95% CI] 1.4-3.2), oral contraceptive use (pooled RR 1.5, 95% CI 1.1-2.1), and use of postmenopausal hormones (RR 1.9, 95% CI 1.2-3.1) significantly increased the risk of SLE. An elevation of SLE risk was observed among postmenopausal women primarily after surgical menopause (RR 2.3, 95% CI 1.2-4.5), and also among women with earlier age at natural menopause (P for trend<0.05). Menstrual irregularity was associated with an increased risk of SLE among women in the younger (NHSII) cohort. Age at first birth, parity, and total duration of breastfeeding were not associated with SLE.<h4>Conclusion</h4>Early age at menarche, oral contraceptive use, early age at menopause, surgical menopause, and postmenopausal use of hormones were each associated with an increased risk of SLE. These associations may point to the mechanisms underlying the pathogenesis of SLE."
       },
       "problem": {
-        "id": "sle-hormone-profiles",
-        "title": "Reproductive hormone alterations in systemic lupus erythematosus are poorly understood, especially during disease flares",
+        "id": "lupus-hormonal-risk",
+        "title": "Reproductive and menopausal hormonal factors are linked to increased risk of systemic lupus erythematosus in women",
         "area": "Reproductive health",
-        "summary": "Systemic lupus erythematosus (SLE) disproportionately affects women of reproductive age, suggesting a hormonal role in its pathogenesis. A meta-analysis of 83 studies found prolactin excess and androgen (DHEA-S) deficiency were consistent features in SLE, while estradiol was elevated during active disease, but most other hormone findings were inconsistent across studies.",
-        "affected_women": "Women of reproductive age with systemic lupus erythematosus",
-        "source": "https://doi.org/10.1016/j.autrev.2026.104135",
+        "summary": "Systemic lupus erythematosus occurs predominantly in women, suggesting a hormonal role in its cause. A large prospective study found that early menarche, oral contraceptive use, surgical menopause, earlier natural menopause, and postmenopausal hormone use were each associated with increased risk of SLE. Age at first birth, parity, and breastfeeding duration showed no association.",
+        "affected_women": "Women aged 25-55 in the Nurses' Health Study cohorts, particularly those with early menarche, oral contraceptive use, surgical or early menopause, or postmenopausal hormone use",
+        "source": "https://doi.org/10.1002/art.22510",
         "origin": "sourced",
         "is_demo": false
       },
       "data_need": {
-        "id": "sle-hormone-profiles-flare-longitudinal",
-        "problem_id": "sle-hormone-profiles",
+        "id": "lupus-hormonal-risk-mechanism-data",
+        "problem_id": "lupus-hormonal-risk",
         "area": "Reproductive health",
-        "description": "Longitudinal data on full reproductive hormone profiles during SLE flares, tracked over time in the same patients",
-        "why_it_matters": "Without longitudinal flare data, it is unclear whether hormonal changes drive disease activity or merely accompany it, limiting the ability to use hormones for monitoring or treatment.",
-        "status": "missing",
+        "description": "Data on the biological mechanisms linking hormonal exposures (menarche timing, contraceptive use, menopause type, hormone therapy) to SLE pathogenesis is missing",
+        "why_it_matters": "Without understanding the underlying mechanisms, it is harder to identify which women are most at risk or to design preventive interventions targeting hormonal pathways.",
+        "status": "partial",
         "existing_data_note": "",
         "gap_evidence": {
-          "source": "https://doi.org/10.1016/j.autrev.2026.104135",
-          "note": "The abstract states that 'Only three small heterogeneous studies evaluated hormonal changes during flares' and concludes that 'full hormonal profiles during flares are largely unstudied,' indicating a clear absence of longitudinal evidence.",
+          "source": "https://doi.org/10.1002/art.22510",
+          "note": "The authors state that these associations 'may point to the mechanisms underlying the pathogenesis of SLE,' indicating the mechanisms themselves are not established by this study and remain a gap in current understanding.",
           "region": null,
-          "claimed_date": "2026-07-06"
+          "claimed_date": "2007-04-01"
         },
-        "dataset_source": null,
+        "dataset_source": {
+          "note": "Covers narrative/mechanistic review synthesis and large-cohort epidemiological associations between hormone therapy/menopause and SLE risk, but does not provide definitive experimental or mechanistic (molecular/cellular pathway) proof linking specific hormonal exposures like menarche timing or contraceptive use to SLE pathogenesis; mechanistic causality remains largely inferential.",
+          "source": "https://www.frontiersin.org/journals/medicine/articles/10.3389/fmed.2022.906475/full"
+        },
         "collection_guidance": null,
         "verification": {
           "checked_at": "2026-09-18",
           "method": "web search",
-          "findings": "My single search attempt failed due to a tool error (server search limit exceeded), so no results could be reviewed. I cannot confirm or deny whether new longitudinal data on full reproductive hormone profiles during SLE flares has been collected since the source publication.",
+          "search_outcome": "reviewed",
+          "findings": "A search finds a 2022 Frontiers in Medicine review, 'Sex hormones affect the pathogenesis and clinical characteristics of systemic lupus erythematosus,' which synthesizes known immunological and receptor-level mechanisms (estrogen receptor signaling on B/T cells, effects of OCs and HRT) linking hormonal exposures to SLE. There are also newer epidemiological cohort studies, such as a 2024 nationwide Korean cohort study on menopausal hormone therapy and SLE risk and a population-based nested case-control study on HRT and SLE/systemic sclerosis risk. However, these largely quantify associations rather than establishing definitive causal biological pathways, and the review itself notes many relationships (e.g., HRT and disease flare mechanisms) 'have not yet been clarified.'",
           "sources": [
+            {
+              "url": "https://www.frontiersin.org/journals/medicine/articles/10.3389/fmed.2022.906475/full",
+              "title": "Frontiers | Sex hormones affect the pathogenesis and clinical characteristics of systemic lupus erythematosus"
+            },
             {
               "url": "https://onlinelibrary.wiley.com/doi/10.1002/art.22510",
               "title": "Reproductive and menopausal factors and risk of systemic lupus erythematosus in women - Costenbader - 2007 - Arthritis & Rheumatism - Wiley Online Library"
             },
             {
-              "url": "https://www.frontiersin.org/journals/immunology/articles/10.3389/fimmu.2026.1755060/full",
-              "title": "Frontiers | Serum steroid hormone profiles in reproductive-age women with systemic lupus erythematosus: associations with clinical manifestations and disease activity"
+              "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5883329/",
+              "title": "Endogenous and exogenous sex steroid hormones in asthma and allergy in females: A systematic review and meta-analysis"
             },
             {
-              "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13143959/",
-              "title": "Serum steroid hormone profiles in reproductive-age women with systemic lupus erythematosus: associations with clinical manifestations and disease activity - PMC"
+              "url": "https://www.medscape.com/viewarticle/775536_6",
+              "title": "Effects of Menopause on Autoimmune Diseases - Page 6"
             },
             {
-              "url": "https://www.medrxiv.org/content/10.1101/2024.11.17.24317460.full.pdf",
-              "title": "Phenome-wide causal proteomics enhance systemic lupus erythematosus flare prediction: A study in Asian populations"
+              "url": "https://pubmed.ncbi.nlm.nih.gov/39919486/",
+              "title": "The effects of menopausal hormone therapy for the risk of systemic lupus erythematosus: A nationwide cohort study in Korea - PubMed"
             },
             {
-              "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC12518249/",
-              "title": "Impact of telitacicept on gonadal function in adult female patients with systemic lupus erythematosus: a prospective cohort study"
+              "url": "https://www.sciencedirect.com/science/chapter/handbook/abs/pii/S157150780700219X",
+              "title": "Chapter 19 Estrogen in Systemic Lupus Erythematosus: Lessons from the SELENA Study - ScienceDirect"
             },
             {
-              "url": "https://pubmed.ncbi.nlm.nih.gov/42409298/",
-              "title": "Altered reproductive hormone profiles in systemic lupus erythematosus - A systematic review and meta-analysis - PubMed"
+              "url": "https://www.sciencedirect.com/science/article/abs/pii/S0378512200001183",
+              "title": "Menopause, oestrogens and arthritis - ScienceDirect"
             },
             {
-              "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC10207823/",
-              "title": "Predictors of severe lupus flare: a prospective follow-up study"
+              "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC12107026/",
+              "title": "Menopausal hormone therapy and the risk of systemic lupus erythematosus and systemic sclerosis: a population-based nested case-control study"
             },
             {
-              "url": "https://www.explorationpub.com/Journals/ei/Article/100355",
-              "title": "The influence of reproductive hormones on systemic lupus erythematosus"
+              "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3219200/",
+              "title": "The association of polymorphisms in hormone metabolism pathway genes, menopausal hormone therapy, and breast cancer risk: a nested case-control study in the California Teachers Study cohort"
             },
             {
-              "url": "https://www.frontiersin.org/journals/immunology/articles/10.3389/fimmu.2026.1755060/xml",
-              "title": "Objective"
+              "url": "https://www.mdpi.com/1422-0067/25/15/8167",
+              "title": "The Dual Faces of Oestrogen: The Impact of Exogenous Oestrogen on the Physiological and Pathophysiological Functions of Tissues and Organs"
             }
           ]
         }
       },
       "validation": {
-        "ok": true,
-        "errors": [],
-        "warnings": []
-      }
-    },
-    {
-      "paper": {
-        "title": "Ultra-processed food consumption and risk of infertility in adults: a systematic review and meta-analysis.",
-        "doi": "10.3389/fpubh.2026.1906808",
-        "url": "https://doi.org/10.3389/fpubh.2026.1906808",
-        "year": "2026",
-        "journal": "Frontiers in public health",
-        "abstract": "<h4>Background</h4>Ultra-processed foods (UPFs) have been linked to multiple adverse health outcomes; however, their association with infertility remains unclear. We conducted a systematic review and meta-analysis to evaluate the relationship between UPF consumption and infertility risk in adults.<h4>Methods</h4>PubMed, Web of Science, and Scopus were searched from inception to May 31, 2026. Eligible studies assessed UPF intake using validated dietary assessment tools based on the NOVA classification and reported infertility outcomes among adults aged ≥18 years. Two reviewers independently conducted study selection, data extraction, and risk of bias assessment using the Newcastle-Ottawa Scale and the Joanna Briggs Institute checklist. Pooled relative risks (RRs) with 95% confidence intervals (CIs) were estimated using random-effects models. Heterogeneity was assessed using the <i>I<sup>2</sup></i> statistic.<h4>Results</h4>Four studies providing five independent effect estimates and including 8,769 participants (8,118 women and 651 men) were included. In the random-effects model, higher UPF consumption was not significantly associated with infertility risk (RR = 1.26, 95% CI: 0.94-1.69), although the point estimate suggested a positive direction of association. Substantial between-study heterogeneity was present (<i>I<sup>2</sup></i>  = 72.0%, <i>p</i> = 0.006). In sex-stratified analyses, no significant association was observed among women (RR = 1.26, 95% CI: 0.79-2.00; <i>I<sup>2</sup></i>  = 68.4%). Subgroup analyses by study design and exposure assessment yielded no statistically significant associations under random-effects models.<h4>Conclusion</h4>Current evidence does not show a statistically robust association between UPF consumption and infertility under random-effects models, although estimates consistently suggest a positive trend. Evidence remains limited by few studies, substantial heterogeneity, and self-reported outcomes. Larger prospective, sex-specific studies are needed."
-      },
-      "problem": {
-        "id": "upf-infertility",
-        "title": "It is unclear whether eating more ultra-processed food raises the risk of infertility",
-        "area": "Reproductive health",
-        "summary": "A systematic review and meta-analysis of four studies examined whether ultra-processed food (UPF) consumption is linked to infertility risk in adults. Pooled results showed a positive but statistically non-significant association overall and among women, with substantial heterogeneity between studies. The authors conclude current evidence does not robustly establish this link.",
-        "affected_women": "Adult women assessed for infertility outcomes in dietary studies, comprising most of the study population (8,118 of 8,769 participants)",
-        "source": "https://doi.org/10.3389/fpubh.2026.1906808",
-        "origin": "sourced",
-        "is_demo": false
-      },
-      "data_need": {
-        "id": "upf-infertility-sex-specific-prospective-data",
-        "problem_id": "upf-infertility",
-        "area": "Reproductive health",
-        "description": "Larger, prospective, sex-specific studies on UPF consumption and infertility risk",
-        "why_it_matters": "Without more and better-designed studies, it remains uncertain whether reducing UPF intake could lower infertility risk, particularly for women, who made up the vast majority of participants in existing data.",
-        "status": "collected",
-        "existing_data_note": "",
-        "gap_evidence": {
-          "source": "https://doi.org/10.3389/fpubh.2026.1906808",
-          "note": "The abstract states evidence remains limited by few studies, substantial heterogeneity, and self-reported outcomes, and concludes 'Larger prospective, sex-specific studies are needed.'",
-          "region": null,
-          "claimed_date": "2026-08-12"
-        },
-        "dataset_source": {
-          "note": "The Human Reproduction periconceptional cohort study (also on PMC) is a prospective, couple-based study including both women's and men's UPF consumption in relation to fertility and early embryo development, addressing the sex-specificity gap; it is limited to couples undergoing infertility treatment/planning conception rather than a general population cohort, and male-specific prospective data overall remains far more limited than female data.",
-          "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13139660/"
-        },
-        "collection_guidance": {
-          "note": "The authors state that larger, prospective, sex-specific studies are needed to clarify the relationship between UPF consumption and infertility.",
-          "source": "https://doi.org/10.3389/fpubh.2026.1906808"
-        },
-        "verification": {
-          "checked_at": "2026-09-18",
-          "method": "web search",
-          "findings": "A new prospective study, \"Periconceptional ultra-processed food consumption in women and men, fertility, and early embryonic development\" (Human Reproduction, 2025), directly addresses this gap by examining UPF intake in both members of couples (not just women) in relation to fertility and embryonic development outcomes. A subsequent 2025/2026 systematic review and meta-analysis of UPF and infertility risk in adults found only four studies (8,769 participants total) and noted that only one prospective cohort estimate exists for male infertility, showing evidence is still sparse but growing and increasingly sex-specific.",
-          "sources": [
-            {
-              "url": "https://www.frontiersin.org/journals/public-health/articles/10.3389/fpubh.2025.1597910/full",
-              "title": "Frontiers | Consumption of ultra-processed foods and female infertility: a cross-sectional study"
-            },
-            {
-              "url": "https://academic.oup.com/humrep/advance-article/doi/10.1093/humrep/deag023/8537945",
-              "title": "Periconceptional ultra-processed food consumption in women and men, fertility, and early embryonic development | Human Reproduction | Oxford Academic"
-            },
-            {
-              "url": "https://doi.org/10.1093/humrep/deag023",
-              "title": "Periconceptional ultra-processed food consumption in women and men, fertility, and early embryonic development | Human Reproduction | Oxford Academic"
-            },
-            {
-              "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13139660/",
-              "title": "Periconceptional ultra-processed food consumption in women and men, fertility, and early embryonic development - PMC"
-            },
-            {
-              "url": "https://pubmed.ncbi.nlm.nih.gov/42656424/",
-              "title": "Ultra-processed food consumption and risk of infertility in adults: a systematic review and meta-analysis - PubMed"
-            },
-            {
-              "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13506803/",
-              "title": "Ultra-processed food consumption and risk of infertility in adults: a systematic review and meta-analysis - PMC"
-            },
-            {
-              "url": "https://www.frontiersin.org/journals/public-health/articles/10.3389/fpubh.2026.1906808/full",
-              "title": "Frontiers | Ultra-processed food consumption and risk of infertility in adults: a systematic review and meta-analysis"
-            },
-            {
-              "url": "https://d-nb.info/1375792733/34",
-              "title": "Association between ultra-processed foods and female ..."
-            },
-            {
-              "url": "https://clinicaltrials.gov/study/NCT07175701",
-              "title": "Ultra-processed Food-reducing Intervention and Continuous Glucose Monitoring"
-            }
-          ]
-        }
-      },
-      "validation": {
-        "ok": true,
-        "errors": [],
-        "warnings": []
-      }
-    },
-    {
-      "paper": {
-        "title": "GLP-1 receptor agonist treatment in women with polycystic ovary syndrome-a systematic review and meta-analysis.",
-        "doi": "10.1093/ejendo/lvag033",
-        "url": "https://doi.org/10.1093/ejendo/lvag033",
-        "year": "2026",
-        "journal": "European journal of endocrinology",
-        "abstract": "<h4>Objective</h4>To assess the effect of treatment with glucagon-like peptide-1 receptor agonists (GLP1-RAs) on weight-related, metabolic, and reproductive outcomes and health economics in women with polycystic ovary syndrome (PCOS).<h4>Design</h4>Systematic review and meta-analysis, Prospero CRD42024535096.<h4>Methods</h4>Cochrane Library, EMBASE, and Medline were searched on September 20, 2024 for studies including women with PCOS, comparing GLP1-RAs with no treatment, placebo, lifestyle intervention, combined oral contraceptives, antiandrogenic drugs, or metformin in randomized controlled trials (RCTs).<h4>Results</h4>A total of 9654 studies were identified, 365 read in full text and 11 RCTs were included. GLP1-RAs as an add-on showed a reduction in BMI compared to the control group, mean difference (95% CI), -1.38 (-2.39 to -0.38) kg/m2 (low certainty). For LDL cholesterol and triglycerides, no difference was noted between the groups (low certainty), whereas evidence was insufficient to draw conclusion regarding glucose, insulin, hirsutism, and menstrual regularity. No studies were identified assessing quality of life, mental health, or cost-effectiveness outcomes.<h4>Conclusion</h4>GLP-1-RAs are associated with modest short-term weight loss in women with PCOS and overweight or obesity. Evidence for benefits on metabolic, reproductive, or psychological outcomes remains uncertain due to low-quality data, and no studies have evaluated cost-effectiveness.<h4>Trial registration</h4>The protocol for the systematic review was registered prospectively in Prospero, CRD42024535096."
-      },
-      "problem": {
-        "id": "pcos-glp1-treatment",
-        "title": "Uncertainty about whether GLP-1 receptor agonists improve metabolic, reproductive, and psychological health in women with PCOS",
-        "area": "Reproductive health",
-        "summary": "A systematic review and meta-analysis of 11 RCTs found GLP-1 receptor agonists led to modest weight loss when added to other treatments in women with PCOS and overweight or obesity. However, evidence on metabolic markers like glucose and insulin, reproductive outcomes like hirsutism and menstrual regularity, and psychological outcomes was insufficient or missing entirely. No studies evaluated cost-effectiveness.",
-        "affected_women": "Women with polycystic ovary syndrome (PCOS) who have overweight or obesity",
-        "source": "https://doi.org/10.1093/ejendo/lvag033",
-        "origin": "sourced",
-        "is_demo": false
-      },
-      "data_need": {
-        "id": "pcos-glp1-treatment-outcomes",
-        "problem_id": "pcos-glp1-treatment",
-        "area": "Reproductive health",
-        "description": "Data on the effects of GLP-1 receptor agonists on quality of life, mental health, cost-effectiveness, glucose, insulin, hirsutism, and menstrual regularity in women with PCOS",
-        "why_it_matters": "Without this evidence, clinicians and patients cannot judge whether GLP-1 receptor agonists meaningfully improve the reproductive, psychological, and economic aspects of living with PCOS, beyond short-term weight loss.",
-        "status": "partial",
-        "existing_data_note": "",
-        "gap_evidence": {
-          "source": "https://doi.org/10.1093/ejendo/lvag033",
-          "note": "The abstract states 'evidence was insufficient to draw conclusion regarding glucose, insulin, hirsutism, and menstrual regularity' and adds 'No studies were identified assessing quality of life, mental health, or cost-effectiveness outcomes.'",
-          "region": null,
-          "claimed_date": "2026-03-01"
-        },
-        "dataset_source": {
-          "note": "Covers glucose/insulin (HOMA-IR) and menstrual cycle outcomes from GLP-1RA RCTs in PCOS women via meta-analysis of 11 RCTs (search through Sept 2024) and a companion 2025 narrative review; does NOT address quality of life, mental health, cost-effectiveness, or hirsutism outcomes.",
-          "source": "https://doi.org/10.1093/ejendo/lvag033"
-        },
-        "collection_guidance": null,
-        "verification": {
-          "checked_at": "2026-09-18",
-          "method": "web search",
-          "findings": "Newer systematic reviews and meta-analyses (2024–2025) now report on glucose, insulin resistance (HOMA-IR), and menstrual cycle regularity in PCOS patients treated with GLP-1 receptor agonists, with a 2025 EJE systematic review/meta-analysis of 11 RCTs and a 2025 Endocrine Connections narrative review both describing improved glucose homeostasis and menstrual cycles, plus reduced BMI and testosterone. However, none of these newer sources report quality of life, mental health, or cost-effectiveness outcomes, and hirsutism data still appear limited or absent, so the original gap for those specific outcomes remains largely unfilled.",
-          "sources": [
-            {
-              "url": "https://doi.org/10.1093/ejendo/lvag033",
-              "title": "GLP-1 receptor agonist treatment in women with polycystic ovary syndrome—a systematic review and meta-analysis | European Journal of Endocrinology | Oxford Academic"
-            },
-            {
-              "url": "https://academic.oup.com/ejendo/article/194/3/S25/8488941",
-              "title": "GLP-1 receptor agonist treatment in women with polycystic ovary syndrome—a systematic review and meta-analysis | European Journal of Endocrinology | Oxford Academic"
-            },
-            {
-              "url": "https://pubmed.ncbi.nlm.nih.gov/41701618/",
-              "title": "GLP-1 receptor agonist treatment in women with polycystic ovary syndrome-a systematic review and meta-analysis - PubMed"
-            },
-            {
-              "url": "https://ec.bioscientifica.com/view/journals/ec/14/5/EC-24-0529.xml",
-              "title": "Endocrine and metabolic effects of GLP-1 receptor agonists on women with PCOS, a narrative review in: Endocrine Connections Volume 14 Issue 5 (2025)"
-            },
-            {
-              "url": "https://www.nature.com/articles/s41598-025-99622-4",
-              "title": "Efficacy and safety of GLP-1 receptor agonists on weight management and metabolic parameters in PCOS women: a meta-analysis of randomized controlled trials | Scientific Reports"
-            },
-            {
-              "url": "https://clinicaltrials.gov/study/NCT07120815",
-              "title": "Optimizing Metformin Use in Polycystic Ovary Syndrome"
-            },
-            {
-              "url": "https://academic.oup.com/ejendo/article-pdf/194/3/25/66964647/lvag033.pdf",
-              "title": "GLP-1 receptor agonist treatment in women with polycystic ..."
-            },
-            {
-              "url": "https://trial.medpath.com/news/glp-1-receptor-agonists-show-promise-for-pcos-treatment-in-early-studies",
-              "title": "GLP-1 Receptor Agonists Show Promise for PCOS ..."
-            },
-            {
-              "url": "https://pubmed.ncbi.nlm.nih.gov/40366681/",
-              "title": "Glucagon-Like Peptide 1 Receptor Agonists and Mental Health: A Systematic Review and Meta-Analysis"
-            }
-          ]
-        }
-      },
-      "validation": {
-        "ok": true,
-        "errors": [],
+        "ok": false,
+        "errors": [
+          "claimed_date is older than 1 years (2007)."
+        ],
         "warnings": []
       }
     }

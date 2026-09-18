@@ -268,49 +268,26 @@ const RESEARCH_DESIGNS = {
     "generated_at": "2026-09-18",
     "model": "claude-sonnet-5"
   },
-  "sle-hormone-profiles-flare-longitudinal": {
-    "target_women": "Recruit 150 women aged 18-45 with a confirmed SLE diagnosis (ACR/EULAR criteria), regular menstrual cycles (not on hormonal contraception or GnRH therapy), followed at 3-5 lupus/rheumatology clinics, enrolled regardless of current disease activity so both flare and quiescent periods can be captured over follow-up.",
+  "lupus-hormonal-risk-mechanism-data": {
+    "target_women": "Recruit 300 women aged 25-55 split into three groups of 100: (1) women newly diagnosed with SLE within the past 12 months, (2) women with a diagnosed hormonally-linked autoimmune risk profile but no SLE (early menarche before age 11, surgical menopause, or current hormone therapy) but no SLE, and (3) age-matched healthy controls with average hormonal histories. Recruit through rheumatology clinics and reproductive health clinics affiliated with academic medical centers, supplemented by a sub-sample invitation to participants already enrolled in the Nurses' Health Study 3 cohort.",
     "variables": [
-      "Serum estradiol, progesterone, LH, FSH, prolactin, and DHEA levels",
-      "SLEDAI-2K disease activity score at each visit",
-      "Timing of blood draw relative to menstrual cycle day",
-      "Occurrence, date, and severity of clinically defined flare (per treating physician and standardized flare criteria)",
-      "Current medications including corticosteroid dose and immunosuppressants",
-      "Complement levels (C3, C4) and anti-dsDNA titer",
-      "Self-reported menstrual cycle regularity and symptoms"
+      "Serum estradiol, progesterone, and prolactin levels measured at time of blood draw",
+      "Peripheral blood mononuclear cell interferon-stimulated gene expression score",
+      "Circulating autoantibody titers (anti-dsDNA, ANA, anti-Ro/La)",
+      "Self-reported reproductive history: age at menarche, contraceptive type and duration of use, parity, menopause type and age at onset, hormone therapy type and duration",
+      "Estrogen receptor alpha and beta expression in isolated B cells and T cells",
+      "Circulating levels of key inflammatory cytokines (IL-6, IL-10, BAFF, IFN-alpha)",
+      "Disease activity score (SLEDAI) at each visit for SLE cases"
     ],
     "stratifiers": [
-      "Age band (18-25, 26-35, 36-45)",
-      "Race/ethnicity",
-      "Lupus nephritis status (renal vs non-renal involvement)",
-      "Baseline disease duration (new-onset vs established >5 years)",
-      "Current corticosteroid/immunosuppressant use"
+      "Age band (25-34, 35-44, 45-55)",
+      "Menopause status and type (natural, surgical, premature ovarian insufficiency)",
+      "Current or past exogenous hormone use (oral contraceptives vs hormone replacement therapy vs none)",
+      "Race and ethnicity (Black, White, Hispanic, Asian, Other)",
+      "Family history of autoimmune disease"
     ],
-    "form": "Prospective cohort study with monthly blood draws and clinical assessments for 12 months, with additional unscheduled visits within 72 hours of any physician-confirmed flare; blood samples timed to a known menstrual cycle day using urinary LH tracking; data collected via structured clinic visit forms plus a daily symptom/menstrual diary app.",
-    "instrument_source": "SLEDAI-2K (Systemic Lupus Erythematosus Disease Activity Index 2000)",
-    "generated_at": "2026-09-18",
-    "model": "claude-sonnet-5"
-  },
-  "pcos-glp1-treatment-outcomes": {
-    "target_women": "Recruit 240 women aged 18-40 with PCOS (Rotterdam criteria) and BMI ≥27 kg/m2, from outpatient endocrinology/gynecology and reproductive medicine clinics across 4-6 sites, plus referrals from primary care; exclude those on fertility treatment seeking pregnancy within 6 months or already on GLP-1 agonists.",
-    "variables": [
-      "Fasting glucose and insulin levels (mg/dL, HOMA-IR calculated)",
-      "Menstrual cycle regularity (self-reported cycle length and frequency of periods over prior 3 months, tracked monthly)",
-      "Hirsutism severity (modified Ferriman-Gallwey score)",
-      "Health-related quality of life score",
-      "Depression and anxiety symptom scores",
-      "Direct medical costs and out-of-pocket spending on PCOS-related care (drug cost, visits, labs) over the study period",
-      "Body weight and BMI"
-    ],
-    "stratifiers": [
-      "Baseline BMI category (overweight vs obesity class I/II/III)",
-      "Age band (18-25, 26-32, 33-40)",
-      "Ethnicity/race",
-      "Household income or insurance coverage type",
-      "Baseline insulin resistance status (HOMA-IR above/below clinical threshold)"
-    ],
-    "form": "Prospective observational cohort (or pragmatic trial if feasible) comparing women newly started on a GLP-1 receptor agonist versus matched women on standard PCOS care (metformin/lifestyle only); data collected at baseline, 3, 6, and 12 months via clinic visits (labs, exam for hirsutism) and self-administered questionnaires (quality of life, mental health, menstrual diary, cost diary); total duration 12 months per participant with staggered enrollment over 18 months.",
-    "instrument_source": "PCOSQ (Polycystic Ovary Syndrome Quality of Life Questionnaire) for quality of life; Patient Health Questionnaire-9 (PHQ-9) for depression; Generalized Anxiety Disorder 7-item scale (GAD-7) for anxiety; modified Ferriman-Gallwey scale for hirsutism",
+    "form": "Longitudinal biospecimen collection with clinical and self-report survey at baseline, then every 6 months for 24 months (5 total visits). Each visit includes a fasting blood draw, structured reproductive history questionnaire, and clinical assessment; SLE cases also complete SLEDAI disease activity scoring at each visit.",
+    "instrument_source": "SLEDAI (Systemic Lupus Erythematosus Disease Activity Index)",
     "generated_at": "2026-09-18",
     "model": "claude-sonnet-5"
   }

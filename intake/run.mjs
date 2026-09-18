@@ -283,6 +283,25 @@ if (onlyDoi) {
     console.log("Europe PMC has no record with that DOI.");
     process.exit(1);
   }
+
+  /* Checked before anything is spent. A DOI typed by hand is easy to get
+     wrong — a search result copied instead of the paper it was found for,
+     say — and the validator only catches that after extract, verify and
+     design have been paid for. */
+  const paper = found.papers[0];
+  const floor = new Date().getFullYear() - YEARS_BACK;
+  const year = Number(String(paper.date || paper.year || "").slice(0, 4));
+
+  console.log("  " + (paper.title || "").slice(0, 70));
+  console.log("  published " + (paper.date || paper.year || "unknown"));
+
+  if (!year || year < floor) {
+    console.log("");
+    console.log("That paper is outside the " + YEARS_BACK + "-year window, so a " +
+                "record from it would be");
+    console.log("rejected by the validator. Nothing has been spent.");
+    process.exit(1);
+  }
 } else {
   console.log("Query window: last " + YEARS_BACK + " years");
   console.log("Phrases:      " + GAP_PHRASES.length);
