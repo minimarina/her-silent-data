@@ -277,6 +277,178 @@
     return box;
   }
 
+  /* ---------- the check, the guidance, and the generated design ---------- */
+
+  /* Where a correction goes. No backend exists, so a reader who knows of
+     data the check missed is sent to a prefilled issue: free to run, and
+     the correction history ends up public, which is better provenance
+     than a form that mails one person. */
+  var REPO_ISSUES =
+    "https://github.com/minimarina/women-data-gap-map/issues/new";
+
+  function issueUrl(problem, need) {
+    return REPO_ISSUES +
+      "?title=" + encodeURIComponent("Data exists: " + need.id) +
+      "&body=" + [
+        encodeURIComponent("Record: " + need.id),
+        encodeURIComponent("Problem: " + problem.title),
+        encodeURIComponent("Data need: " + need.description),
+        "",
+        encodeURIComponent("Where the data is (link):")
+      ].join("%0A");
+  }
+
+  /* Did anyone collect it after the gap was named? A record that has not
+     been checked says so — §8.1 applied to time, because a gap claim from
+     four years ago may simply have been answered since. */
+  function verificationNode(need, tag) {
+    var box = make(tag || "div", "verification");
+    box.appendChild(make("span", "label", "Checked for existing data: "));
+
+    var check = need.verification;
+    if (!check || !hasText(check.checked_at)) {
+      box.appendChild(make(
+        "span",
+        "unknown",
+        "Not checked against literature published since."
+      ));
+      return box;
+    }
+
+    box.appendChild(make(
+      "span",
+      null,
+      hasText(check.findings) ? check.findings : "Nothing found."
+    ));
+
+    box.appendChild(make("span", "region",
+      "Searched " + check.checked_at +
+      (hasText(check.method) ? " — " + check.method : "")));
+
+    return box;
+  }
+
+  /* The limit of the check, stated rather than implied. A search of
+     published literature cannot prove a negative, and saying so is the
+     same rule as §5a: the platform reports what an authority claimed and
+     what it could reach, and never asserts that data does not exist. */
+  function shallowCheckNote(problem, need) {
+    var box = make("div", "check-note");
+
+    box.appendChild(make("p", null,
+      "This was a search of published literature, not proof. Data can " +
+      "exist in unpublished registries, national statistics, industry " +
+      "cohorts or behind access agreements, and none of that is visible " +
+      "from here."));
+
+    var link = make("a", "check-invite", "Know of data we missed? Send a link →");
+    link.href = issueUrl(problem, need);
+    link.target = "_blank";
+    link.rel = "noopener noreferrer";
+    box.appendChild(link);
+
+    return box;
+  }
+
+  /* What the source itself said about collecting the data. Present only
+     when the published text specifies a population or a method; null is
+     the normal case, and the screen says so plainly rather than filling
+     the space with the platform's own invention. */
+  function guidanceNode(need) {
+    var box = make("div", "guidance");
+    box.appendChild(make(
+      "span", "label", "What the source says about collecting it: "
+    ));
+
+    var guidance = need.collection_guidance;
+    if (!guidance || !hasText(guidance.note)) {
+      box.appendChild(make(
+        "span",
+        "unknown",
+        "The source does not say. Nothing is invented here."
+      ));
+      return box;
+    }
+
+    box.appendChild(make("span", null, guidance.note));
+
+    if (isUrl(guidance.source)) {
+      var cite = make("span", "gap-cite");
+      cite.appendChild(make("span", "label", "Read it: "));
+      var link = make("a", null, sourceLabel(guidance.source));
+      link.href = guidance.source;
+      link.target = "_blank";
+      link.rel = "noopener noreferrer";
+      cite.appendChild(link);
+      box.appendChild(cite);
+    }
+    return box;
+  }
+
+  /* A study design is an answer, not a record. It is never part of a data
+     need, never stored in the seed, and it is revealed only when asked
+     for — so it cannot be mistaken for something an authority said.
+     §11: the app works fully with the file absent. */
+  function designs() {
+    return (typeof RESEARCH_DESIGNS === "object" && RESEARCH_DESIGNS) || {};
+  }
+
+  function designNode(need) {
+    var design = designs()[need.id];
+    if (!design) { return null; }
+
+    var wrap = make("div", "design");
+    var panelId = "design-panel-" + need.id;
+
+    var button = make("button", "design-toggle", "Generate research design");
+    button.type = "button";
+    button.setAttribute("aria-expanded", "false");
+    button.setAttribute("aria-controls", panelId);
+
+    var panel = make("div", "design-panel");
+    panel.id = panelId;
+    panel.hidden = true;
+
+    var badge = make("p", "origin design-origin",
+      "AI-generated study design — unverified" +
+      (hasText(design.generated_at)
+        ? ", generated " + design.generated_at
+        : ""));
+    badge.setAttribute("data-origin", "proposed");
+    panel.appendChild(badge);
+
+    var fields = document.createElement("dl");
+    fields.appendChild(field("Which women", design.target_women));
+    fields.appendChild(listField(
+      "What to find out from them", design.variables
+    ));
+    fields.appendChild(listField(
+      "Broken down by",
+      design.stratifiers,
+      "Data collected without these cannot show what happens to which " +
+      "women. The missing breakdown is the gap as often as the missing " +
+      "study is."
+    ));
+    fields.appendChild(field(
+      "In what form", design.form, design.instrument_source
+    ));
+    panel.appendChild(fields);
+
+    panel.appendChild(make("p", "design-caveat",
+      "A starting point for a researcher, not a protocol and not a " +
+      "finding. Nobody has reviewed it. You decide what to collect."));
+
+    button.addEventListener("click", function () {
+      var open = button.getAttribute("aria-expanded") === "true";
+      button.setAttribute("aria-expanded", open ? "false" : "true");
+      panel.hidden = open;
+    });
+
+    wrap.appendChild(button);
+    wrap.appendChild(panel);
+    return wrap;
+  }
+
   /* §8.3 — numbers are always framed in words, and always computed from
      the statuses so Screen 1 cannot disagree with Screen 2 (§12.16). */
   function gapSentence(problem) {
@@ -465,7 +637,7 @@
     button.appendChild(gapEvidenceNode(problem, need, "span"));
 
     button.appendChild(
-      make("span", "need-action", "See the collection request →")
+      make("span", "need-action", "See what it would take →")
     );
 
     button.addEventListener("click", function () {
@@ -481,9 +653,7 @@
   function openRequest(problemId, needId) {
     var problem = findProblem(problemId);
     var need = problem && findNeed(problem, needId);
-    if (!need || !need.collection_request) { return; }
-
-    var request = need.collection_request;
+    if (!need) { return; }
 
     setValue(el("request-problem"), problem.title);
 
@@ -495,35 +665,58 @@
     heading.appendChild(statusBadge(need.status));
     card.appendChild(heading);
 
-    /* §4 question 4, in the order a study gets designed: who is studied,
-       what is found out from them, in which breakdowns, and in what form
-       the data comes back. "How to ask" was folded into the form: the
-       delivery and the format are one answer, not two. */
-    var fields = document.createElement("dl");
-    fields.appendChild(field("Which women", request.target_women));
-    fields.appendChild(listField(
-      "What to find out from them", request.variables
-    ));
-    fields.appendChild(listField(
-      "Broken down by",
-      request.stratifiers,
-      "Data collected without these cannot show what happens to which " +
-      "women. The missing breakdown is the gap as often as the missing " +
-      "study is."
-    ));
-    fields.appendChild(field(
-      "In what form", request.form, request.instrument_source
-    ));
-    fields.appendChild(field("Why this data matters", need.why_it_matters));
-    card.appendChild(fields);
+    var why = document.createElement("dl");
+    why.appendChild(field("Why this data matters", need.why_it_matters));
+    card.appendChild(why);
 
-    /* The specification below is this platform's own work in every case.
-       What varies is whether the gap it answers was published by someone
-       else or proposed here, so the card states both (§5a, §8.1). */
-    if (need.status !== "missing") {
+    /* Provenance in the order a reader challenges it: who said the data is
+       missing, then whether anyone has collected it since, then the limit
+       of that check. */
+    card.appendChild(gapEvidenceNode(problem, need));
+    card.appendChild(verificationNode(need));
+
+    if (need.status === "missing") {
+      card.appendChild(shallowCheckNote(problem, need));
+    } else {
       card.appendChild(datasetNode(need));
     }
-    card.appendChild(gapEvidenceNode(problem, need));
+
+    /* What the source said about collecting it, which is usually nothing.
+       An empty answer here is the honest one and is never filled in. */
+    card.appendChild(guidanceNode(need));
+
+    /* Records written before the rule changed carry a collection request
+       specified by this platform rather than by a source. It stays
+       labelled as the platform's own, and it leaves with the old seed. */
+    if (need.collection_request) {
+      var request = need.collection_request;
+
+      var legacy = make(
+        "p", "origin legacy-origin", "Specified by this platform — unverified"
+      );
+      legacy.setAttribute("data-origin", "proposed");
+      card.appendChild(legacy);
+
+      var fields = document.createElement("dl");
+      fields.appendChild(field("Which women", request.target_women));
+      fields.appendChild(listField(
+        "What to find out from them", request.variables
+      ));
+      fields.appendChild(listField(
+        "Broken down by",
+        request.stratifiers,
+        "Data collected without these cannot show what happens to which " +
+        "women. The missing breakdown is the gap as often as the missing " +
+        "study is."
+      ));
+      fields.appendChild(field(
+        "In what form", request.form, request.instrument_source
+      ));
+      card.appendChild(fields);
+    }
+
+    var design = designNode(need);
+    if (design) { card.appendChild(design); }
 
     var requestOrigin = el("request-origin");
     requestOrigin.textContent = "";

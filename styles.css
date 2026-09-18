@@ -406,7 +406,9 @@ a:hover { text-decoration: none; }
 
 /* This is substantive prose, not a caption, so it keeps the §7.2 body
    floor of 16px. --muted holds 5.9:1 on white (§12.12). */
-.gap-evidence {
+.gap-evidence,
+.verification,
+.guidance {
   display: block;
   margin-top: 10px;
   padding-left: var(--space-card);
@@ -416,25 +418,31 @@ a:hover { text-decoration: none; }
   color: var(--muted);
 }
 
-.gap-evidence .label {
+.gap-evidence .label,
+.verification .label,
+.guidance .label {
   font-weight: 600;
   color: var(--navy-ink);
 }
 
-.gap-evidence .gap-cite {
+.gap-evidence .gap-cite,
+.guidance .gap-cite {
   display: block;
   margin-top: 4px;
   font-size: 0.875rem;
 }
 
-.gap-evidence .region {
+.gap-evidence .region,
+.verification .region {
   display: block;
   margin-top: 4px;
   font-size: 0.875rem;
   font-style: italic;
 }
 
-.gap-evidence .unknown {
+.gap-evidence .unknown,
+.verification .unknown,
+.guidance .unknown {
   font-style: italic;
 }
 
@@ -1018,3 +1026,67 @@ a.instrument {
     scroll-behavior: auto !important;
   }
 }
+
+/* ---------- the check, its limit, and the generated design ---------- */
+
+/* The disclaimer is not a footnote. A reader deciding whether to run a
+   study has to see the limit of the check at the same moment as its
+   result, so it sits directly under it and is not quieter than it. */
+.check-note {
+  margin-top: 10px;
+  padding: 12px var(--space-card);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: var(--muted);
+}
+
+.check-note p { margin: 0; }
+
+.check-invite {
+  display: inline-block;
+  margin-top: 8px;
+  font-weight: 600;
+  color: var(--teal-accent);
+}
+
+/* The one place a model writes on a screen. Set apart from every record
+   block above it, because what it holds is an answer, not data. */
+.design {
+  margin-top: var(--space-section);
+  padding-top: var(--space-card);
+  border-top: 1px solid var(--border);
+}
+
+.design-toggle {
+  display: inline-block;
+  padding: 8px 14px;
+  background: var(--teal-accent);
+  border: 0;
+  border-radius: 4px;
+  color: var(--surface);
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.design-toggle:hover { background: var(--navy-deep); }
+
+.design-panel {
+  margin-top: var(--space-card);
+  animation: intake-in 150ms ease;
+}
+
+.design-origin { margin: 0 0 var(--space-card); }
+
+.design-caveat {
+  margin: var(--space-card) 0 0;
+  font-size: 0.875rem;
+  font-style: italic;
+  line-height: 1.5;
+  color: var(--muted);
+}
+
+.legacy-origin { margin: var(--space-section) 0 var(--space-card); }
