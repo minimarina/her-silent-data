@@ -1,158 +1,696 @@
 {
   "run_at": "2026-09-18",
-  "stage": "full",
-  "query_window_years": 5,
-  "hit_count": 15331,
+  "stage": "discover-only",
+  "query_window_years": 1,
+  "hit_count": 4772,
   "fetched": 100,
-  "unseen": 86,
-  "passed_filter": 1,
-  "records": [
+  "unseen": 98,
+  "papers": [
     {
-      "paper": {
-        "title": "Role of the penile microbiome in female sex partner risk of bacterial vaginosis and sexually transmitted infections: a narrative review.",
-        "doi": "10.1128/cmr.00331-25",
-        "url": "https://doi.org/10.1128/cmr.00331-25",
-        "year": "2026",
-        "journal": "Clinical microbiology reviews"
-      },
-      "problem": {
-        "id": "penile-microbiome-bv-risk",
-        "title": "Bacteria on the penis linked to bacterial vaginosis are associated with higher risk of bacterial vaginosis and sexually transmitted infections in female sex partners, yet what counts as a healthy penile microbiome is undefined.",
-        "area": "Maternal health",
-        "summary": "The penile microbiome can be dominated by skin bacteria or by anaerobic bacteria associated with bacterial vaginosis (BV), and is shaped by circumcision, condom use, antibiotics and the partner's vaginal microbiome. In the few studies examining both partners at once, specific bacteria are highly correlated and appear to pass in both directions, and BV-associated penile bacteria are linked to higher BV and STI risk in female partners. Early trials suggest treating men with antimicrobials reduces penile anaerobic bacteria and lowers female partners' risk of BV recurrence.",
-        "affected_women": "Female sex partners of men, who face BV recurrence and sexually transmitted infections linked to their partner's penile bacteria.",
-        "source": "https://doi.org/10.1128/cmr.00331-25",
-        "origin": "sourced",
-        "is_demo": false
-      },
-      "data_need": {
-        "id": "penile-microbiome-bv-risk-exchange-and-definition-data",
-        "problem_id": "penile-microbiome-bv-risk",
-        "area": "Maternal health",
-        "description": "Data defining optimal and non-optimal penile microbiome states, and on how, how durably, and under what conditions bacteria are exchanged between penis and vagina.",
-        "why_it_matters": "Without these data there is no basis for screening assays, for monitoring after treatment in men and their female partners, or for treatment and counselling guidelines that could prevent repeated BV and STIs in women.",
-        "status": "partial",
-        "existing_data_note": "",
-        "gap_evidence": {
-          "source": "https://doi.org/10.1128/cmr.00331-25",
-          "note": "The review states that data are lacking on factors influencing penile-vaginal bacterial exchangeability, the durability of bacterial exchange, and the conditions under which exchange leads to increased risk of adverse outcomes in the index person or partner; optimal and non-optimal penile microbiomes have not been defined; assessment of penile microbiome composition and function across the life course is needed; association with intrinsic host factors such as genetics and endogenous hormones is lacking, and association with behavioural and lifestyle factors is limited.",
-          "region": null,
-          "claimed_date": "2026-06-03"
-        },
-        "dataset_source": {
-          "note": "Published couples-based and partner-treatment studies (e.g. Mehta et al.'s Kenyan penile-microbiome/incident-BV cohort; StepUp male partner BV treatment trial with penile microbiota sampling) provide partial evidence that penile anaerobes predict BV in female partners. They do NOT define optimal/non-optimal penile community state types, do not measure durability or directionality of bacterial exchange over time, do not cover the life course, and lack linkage to host genetics or endogenous hormones. Geographic coverage is narrow (mainly Kenya, Uganda, Australia, US). Because live search failed, this citation is from memory and the specific record should be confirmed via the PubMed query link before use.",
-          "source": "https://pubmed.ncbi.nlm.nih.gov/?term=penile+microbiome+bacterial+vaginosis+partner"
-        },
-        "collection_guidance": null,
-        "verification": {
-          "checked_at": "2026-09-18",
-          "method": "web search",
-          "findings": "Live web search was unavailable during this check (the search tool returned a usage-limit error on every attempt), so this answer rests on published literature I can name but could not re-verify today — treat it as provisional. Relevant work does exist and partially overlaps the gap: Mehta and colleagues' Kenyan couples cohort linked penile microbiota composition (notably anaerobes such as Sneathia, Prevotella, Dialister) to incident bacterial vaginosis in female partners, and Plummer/Vodstrcil and colleagues have characterised penile microbiota in men whose partners have BV, with the StepUp randomised trial (Melbourne) testing concurrent male-partner antimicrobial treatment and including penile microbiota sampling. None of these, to my knowledge, has produced a consensus definition of optimal versus non-optimal penile microbiome states, nor systematic data on durability of penile-vaginal bacterial exchange, life-course composition, or associations with host genetics and endogenous hormones.",
-          "sources": [
-            {
-              "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13112776/",
-              "title": "Post-coital dynamics of the penile and cervico-vaginal genital microbiome - PMC"
-            },
-            {
-              "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4835890/",
-              "title": "Bacterial communities in penile skin, male urethra, and vaginas of heterosexual couples with and without bacterial vaginosis"
-            },
-            {
-              "url": "https://journals.asm.org/doi/10.1128/mbio.02323-21",
-              "title": "A Prospective, Open-Label Pilot Study of Concurrent Male Partner Treatment for Bacterial Vaginosis | mBio"
-            },
-            {
-              "url": "https://link.springer.com/article/10.1186/s40168-016-0161-6",
-              "title": "Bacterial communities in penile skin, male urethra, and vaginas of heterosexual couples with and without bacterial vaginosis | Microbiome | Springer Nature Link"
-            },
-            {
-              "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6799447/",
-              "title": "2408 Genital microbiomes of women with recurrent bacterial vaginosis and their regular male sexual partner - PMC"
-            },
-            {
-              "url": "https://www.frontiersin.org/journals/cellular-and-infection-microbiology/articles/10.3389/fcimb.2020.00433/full",
-              "title": "Frontiers | The Microbiome Composition of a Man's Penis Predicts Incident Bacterial Vaginosis in His Female Sex Partner With High Accuracy"
-            },
-            {
-              "url": "https://www.news-medical.net/news/20200804/Penis-microbiome-is-reservoir-for-bacterial-vaginosis-associated-bacteria.aspx",
-              "title": "Penis microbiome is reservoir for bacterial vaginosis-associated bacteria"
-            },
-            {
-              "url": "https://pubmed.ncbi.nlm.nih.gov/40043236/",
-              "title": "Male-Partner Treatment to Prevent Recurrence of Bacterial Vaginosis - PubMed"
-            },
-            {
-              "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4835890",
-              "title": "pmc.ncbi.nlm.nih.gov"
-            },
-            {
-              "url": "https://www.frontiersin.org/articles/916437",
-              "title": "Frontiers | Longitudinal Changes in the Composition of the Penile Microbiome Are Associated With Circumcision Status, HIV and HSV-2 Status, Sexual Practices, and Female Partner Microbiome Composition"
-            },
-            {
-              "url": "https://www.tandfonline.com/doi/full/10.1080/14787210.2025.2541712",
-              "title": "Full article: Penile microbiomes have important implications for HIV susceptibility and broader reproductive health"
-            },
-            {
-              "url": "https://www.medrxiv.org/content/10.1101/2024.04.08.24305448.full.pdf",
-              "title": "Factors shaping vaginal microbiota long-term community dynamics in young adult women"
-            },
-            {
-              "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10139050/",
-              "title": "Human Male Genital Tract Microbiota - PMC - NIH"
-            },
-            {
-              "url": "https://image-ppubs.uspto.gov/dirsearch-public/print/downloadPdf/12083304",
-              "title": "Kits for topical, isotonic compositions"
-            },
-            {
-              "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7617500/",
-              "title": "Factors shaping vaginal microbiota long-term community dynamics in young adult women"
-            },
-            {
-              "url": "https://www.frontiersin.org/journals/medicine/articles/10.3389/fmed.2020.00383/full",
-              "title": "Frontiers | The Penile Microbiota in Uncircumcised and Circumcised Men: Relationships With HIV and Human Papillomavirus Infections and Cervicovaginal Microbiota"
-            },
-            {
-              "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10964427/",
-              "title": "Sexual transmission of urogenital bacteria: whole metagenome sequencing evidence from a sexual network study - PMC"
-            },
-            {
-              "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11305963/",
-              "title": "Penile Microbiome: Decoding its Impact on HIV Risk - PMC"
-            },
-            {
-              "url": "https://www.rbmojournal.com/article/S1472-6483(24)00896-4/fulltext",
-              "title": "The complementary seminovaginal microbiome in health and disease - Reproductive BioMedicine Online"
-            },
-            {
-              "url": "https://www.fsigenetics.com/article/S1872-4973(25)00046-8/abstract",
-              "title": "Forensic insights from shotgun metagenomics: Tracing microbial exchange during sexual intercourse - Forensic Science International: Genetics"
-            },
-            {
-              "url": "https://pubmed.ncbi.nlm.nih.gov/38358269/",
-              "title": "Sexual transmission of urogenital bacteria: whole metagenome sequencing evidence from a sexual network study - PubMed"
-            },
-            {
-              "url": "https://academic.oup.com/jid/article/223/Supplement_3/S222/6134102",
-              "title": "Protection and Risk: Male and Female Genital Microbiota and Sexually Transmitted Infections | The Journal of Infectious Diseases | Oxford Academic"
-            },
-            {
-              "url": "https://www.sciencedirect.com/science/article/pii/S1472648325002639",
-              "title": "Genital microbiota in infertile couples - ScienceDirect"
-            },
-            {
-              "url": "https://doaj.org/article/f5cf681f8643492e97fca1bbfe0b1431",
-              "title": "mSphere (Mar 2024)"
-            }
-          ]
-        }
-      },
-      "validation": {
-        "ok": true,
-        "errors": [],
-        "warnings": []
-      }
+      "title": "Women with firearm injuries: A multicenter mixed-methods study.",
+      "doi": "10.1016/j.amjsurg.2026.117119",
+      "url": "https://doi.org/10.1016/j.amjsurg.2026.117119",
+      "year": "2026",
+      "journal": "American journal of surgery"
+    },
+    {
+      "title": "Cardiometabolic Risk Factors in Women Exposed to High Altitude.",
+      "doi": "10.3390/ijms27146349",
+      "url": "https://doi.org/10.3390/ijms27146349",
+      "year": "2026",
+      "journal": "International journal of molecular sciences"
+    },
+    {
+      "title": "\"It should be called WOMEN-opause\": Perceptions, experiences and knowledge of menopause voiced by women with intellectual disabilities.",
+      "doi": "10.1016/j.maturitas.2026.109108",
+      "url": "https://doi.org/10.1016/j.maturitas.2026.109108",
+      "year": "2026",
+      "journal": "Maturitas"
+    },
+    {
+      "title": "Female sexual dysfunction among foreign and Australian-born women: a cross-sectional study.",
+      "doi": "10.3389/frph.2026.1855626",
+      "url": "https://doi.org/10.3389/frph.2026.1855626",
+      "year": "2026",
+      "journal": "Frontiers in reproductive health"
+    },
+    {
+      "title": "Diabetes Type 2 in Women: The Impact of EndogenousOestrogen, A Population-Based Study With About 2 Decades of Follow-Up.",
+      "doi": "10.1002/edm2.70267",
+      "url": "https://doi.org/10.1002/edm2.70267",
+      "year": "2026",
+      "journal": "Endocrinology, diabetes & metabolism"
+    },
+    {
+      "title": "Sources of joy among older African American women: A qualitative analysis.",
+      "doi": "10.1080/08952841.2026.2703635",
+      "url": "https://doi.org/10.1080/08952841.2026.2703635",
+      "year": "2026",
+      "journal": "Journal of women & aging"
+    },
+    {
+      "title": "Women Victimization Information Exposure and Chinese Unmarried Women's Marital Intention: The Mediating Role of Safety Anxiety.",
+      "doi": "10.1080/0092623x.2026.2720163",
+      "url": "https://doi.org/10.1080/0092623x.2026.2720163",
+      "year": "2026",
+      "journal": "Journal of sex & marital therapy"
+    },
+    {
+      "title": "Recent and Lifetime Prevalence of Sexual and Intimate Partner Violence Among Women in Substance Use Treatment.",
+      "doi": "10.1080/10826084.2026.2725880",
+      "url": "https://doi.org/10.1080/10826084.2026.2725880",
+      "year": "2026",
+      "journal": "Substance use & misuse"
+    },
+    {
+      "title": "Correlates of Mammogram Screening Among Brazilian Immigrant Women in the United States: Analysis of 2020 Cross-Sectional Survey Data. ",
+      "doi": "10.1007/s40615-026-03170-0",
+      "url": "https://doi.org/10.1007/s40615-026-03170-0",
+      "year": "2026",
+      "journal": "Journal of racial and ethnic health disparities"
+    },
+    {
+      "title": "Experiences of Healthcare Support and Access Among Women Who Use Performance and Image-Enhancing Drugs.",
+      "doi": "10.1111/dar.70227",
+      "url": "https://doi.org/10.1111/dar.70227",
+      "year": "2026",
+      "journal": "Drug and alcohol review"
+    },
+    {
+      "title": "Knee health and associations with female-specific health, physical, psychological and social-gendered factors in women runners: the TRAIL-W cohort study protocol.",
+      "doi": "10.1136/bmjsem-2025-003132",
+      "url": "https://doi.org/10.1136/bmjsem-2025-003132",
+      "year": "2026",
+      "journal": "BMJ open sport & exercise medicine"
+    },
+    {
+      "title": "Sociodemographic and Behavioral Characteristics and HIV and Syphilis Prevalence Among Partners of Transgender Women in Buenos Aires, Argentina.",
+      "doi": "10.1007/s10461-026-05172-9",
+      "url": "https://doi.org/10.1007/s10461-026-05172-9",
+      "year": "2026",
+      "journal": "AIDS and behavior"
+    },
+    {
+      "title": "Long-Term Oncological Implications of Hormone Replacement Therapy in Women With Hypogonadotropic Hypogonadism: A Propensity-Matched Study.",
+      "doi": "10.7759/cureus.111721",
+      "url": "https://doi.org/10.7759/cureus.111721",
+      "year": "2026",
+      "journal": "Cureus"
+    },
+    {
+      "title": "The effect of bariatric surgery on patient reported outcomes of heart failure in women: a pilot study.",
+      "doi": "10.1016/j.soard.2026.06.019",
+      "url": "https://doi.org/10.1016/j.soard.2026.06.019",
+      "year": "2026",
+      "journal": "Surgery for obesity and related diseases : official journal of the American Society for Bariatric Surgery"
+    },
+    {
+      "title": "Sex differences in persistent decline in neurological function after modeling repetitive sport-related mild head injuries in young mice.",
+      "doi": "10.1016/j.expneurol.2026.115848",
+      "url": "https://doi.org/10.1016/j.expneurol.2026.115848",
+      "year": "2026",
+      "journal": "Experimental neurology"
+    },
+    {
+      "title": "Associations between second-trimester maternal physical activity and neonatal body composition: findings from the ORIGINS birth cohort.",
+      "doi": "10.1017/s2040174426100750",
+      "url": "https://doi.org/10.1017/s2040174426100750",
+      "year": "2026",
+      "journal": "Journal of developmental origins of health and disease"
+    },
+    {
+      "title": "The effects of androgens on drug metabolism and transport: clinical pharmacologic considerations for people assigned female at birth.",
+      "doi": "10.1080/17425255.2026.2726547",
+      "url": "https://doi.org/10.1080/17425255.2026.2726547",
+      "year": "2026",
+      "journal": "Expert opinion on drug metabolism & toxicology"
+    },
+    {
+      "title": "Emotion Dysregulation Modulates the Association Between Cigarette Use and HPA-Axis Functioning Among Women Currently Experiencing Intimate Partner Violence.",
+      "doi": "10.1080/10826084.2026.2727142",
+      "url": "https://doi.org/10.1080/10826084.2026.2727142",
+      "year": "2026",
+      "journal": "Substance use & misuse"
+    },
+    {
+      "title": "Aging Strong: Lifelong Attitudes to Activity and Late-Life Function in Fit and Active Women From the Czech Republic.",
+      "doi": "10.1177/07334648261452738",
+      "url": "https://doi.org/10.1177/07334648261452738",
+      "year": "2026",
+      "journal": "Journal of applied gerontology : the official journal of the Southern Gerontological Society"
+    },
+    {
+      "title": "High adherence to a Mediterranean diet is associated with a diverse faecal microbiome and reduced systemic inflammation in a cohort of pregnant women.",
+      "doi": "10.1038/s41598-026-55564-z",
+      "url": "https://doi.org/10.1038/s41598-026-55564-z",
+      "year": "2026",
+      "journal": "Scientific reports"
+    },
+    {
+      "title": "Perspectives of women who receive an increased chance result on non-invasive prenatal testing or combined first trimester screening: a qualitative study.",
+      "doi": "10.1016/j.midw.2026.104827",
+      "url": "https://doi.org/10.1016/j.midw.2026.104827",
+      "year": "2026",
+      "journal": "Midwifery"
+    },
+    {
+      "title": "Exploring Home-Based Breathing-Training Experiences and Device Needs of Women with Postpartum Stress Urinary Incontinence: A Qualitative Study.",
+      "doi": "10.1007/s00192-026-06779-1",
+      "url": "https://doi.org/10.1007/s00192-026-06779-1",
+      "year": "2026",
+      "journal": "International urogynecology journal"
+    },
+    {
+      "title": "Trauma-associated sleep disturbances among women in a nationwide study.",
+      "doi": "10.1038/s43856-026-01698-0",
+      "url": "https://doi.org/10.1038/s43856-026-01698-0",
+      "year": "2026",
+      "journal": "Communications medicine"
+    },
+    {
+      "title": "Systemic Inflammation and Subclinical Hepatic Synthetic Dysfunction Following Doxorubicin-Cyclophosphamide Chemotherapy in Ethiopian Women With Breast Cancer: A Prospective Cohort Study.",
+      "doi": "10.1002/hsr2.73236",
+      "url": "https://doi.org/10.1002/hsr2.73236",
+      "year": "2026",
+      "journal": "Health science reports"
+    },
+    {
+      "title": "Mental Health Outcomes among Palestinian Women in the Context of Community Violence: The Moderating Role of Perceived Social Support and Self-Efficacy.",
+      "doi": "10.1177/10778012261429101",
+      "url": "https://doi.org/10.1177/10778012261429101",
+      "year": "2026",
+      "journal": "Violence against women"
+    },
+    {
+      "title": "Experiences of Discrimination and DNA Methylation Among Black Nulliparous Women.",
+      "doi": "10.1007/s40615-026-03063-2",
+      "url": "https://doi.org/10.1007/s40615-026-03063-2",
+      "year": "2026",
+      "journal": "Journal of racial and ethnic health disparities"
+    },
+    {
+      "title": "Factors contributing to the use of traditional herbal medicine among hospitalised high-risk pregnant women in Namibia.",
+      "doi": "10.4102/hsag.v31i0.3508",
+      "url": "https://doi.org/10.4102/hsag.v31i0.3508",
+      "year": "2026",
+      "journal": "Health SA = SA Gesondheid"
+    },
+    {
+      "title": "Fertility desires and utilization of an integrated HIV care and family planning services among young women living with HIV in semi-rural Uganda: A cross sectional study.",
+      "doi": "10.1371/journal.pone.0349072",
+      "url": "https://doi.org/10.1371/journal.pone.0349072",
+      "year": "2026",
+      "journal": "PloS one"
+    },
+    {
+      "title": "Association of stress urinary incontinence with stress, sleep quality, and health-related quality of life in nulligravid college women.",
+      "doi": "10.1038/s41598-026-55774-5",
+      "url": "https://doi.org/10.1038/s41598-026-55774-5",
+      "year": "2026",
+      "journal": "Scientific reports"
+    },
+    {
+      "title": "Beyond symptom reduction: The longitudinal relationship between eating disorder symptoms and mental wellbeing in young women.",
+      "doi": "10.1111/bjc.70082",
+      "url": "https://doi.org/10.1111/bjc.70082",
+      "year": "2026",
+      "journal": "The British journal of clinical psychology"
+    },
+    {
+      "title": "Relationship Between Perceived Stress, Resilience, Mental Health, and Pain in Women with Migraines, a Case-Control Study.",
+      "doi": "10.2147/jpr.s487780",
+      "url": "https://doi.org/10.2147/jpr.s487780",
+      "year": "2025",
+      "journal": "Journal of pain research"
+    },
+    {
+      "title": "Investigating Paedo-Hebepho-Ephebophilic Sexual Interests and Underlying Correlates Among Women in a Community Sample From the UK, Canada and USA.",
+      "doi": "10.1177/0306624x261464481",
+      "url": "https://doi.org/10.1177/0306624x261464481",
+      "year": "2026",
+      "journal": "International journal of offender therapy and comparative criminology"
+    },
+    {
+      "title": "Effect of Parity and β-Amyloid on Cognition and Hippocampal Volume in Postmenopausal Women.",
+      "doi": "10.1212/wnl.0000000000218153",
+      "url": "https://doi.org/10.1212/wnl.0000000000218153",
+      "year": "2026",
+      "journal": "Neurology"
+    },
+    {
+      "title": "Morning peak and high prevalence of pulmonary embolism and psychiatric disorders in women with sudden cardiac arrest: results from the ReCaPTa study.",
+      "doi": "10.1016/j.resplu.2026.101416",
+      "url": "https://doi.org/10.1016/j.resplu.2026.101416",
+      "year": "2026",
+      "journal": "Resuscitation plus"
+    },
+    {
+      "title": "Factors Influencing Contraceptive Use Among Women With Serious Mental Illness Residing in Pennsylvania.",
+      "doi": "10.1111/psrh.70067",
+      "url": "https://doi.org/10.1111/psrh.70067",
+      "year": "2026",
+      "journal": "Perspectives on sexual and reproductive health"
+    },
+    {
+      "title": "Long-term psychological consequences of multiple war-related loss among women survivors of Srebrenica and other Eastern Bosnia regions: a qualitative focus group study.",
+      "doi": "10.1080/20008066.2026.2686479",
+      "url": "https://doi.org/10.1080/20008066.2026.2686479",
+      "year": "2026",
+      "journal": "European journal of psychotraumatology"
+    },
+    {
+      "title": "Expectations and experiences of yoga in women with breast cancer receiving endocrine therapy: a qualitative study.",
+      "doi": "10.1007/s00520-026-11063-5",
+      "url": "https://doi.org/10.1007/s00520-026-11063-5",
+      "year": "2026",
+      "journal": "Supportive care in cancer : official journal of the Multinational Association of Supportive Care in Cancer"
+    },
+    {
+      "title": "Anti-Müllerian hormone decreased in women with superficial peritoneal endometriosis and associated with an elevated inflammatory profile.",
+      "doi": "10.1530/raf-25-0127",
+      "url": "https://doi.org/10.1530/raf-25-0127",
+      "year": "2026",
+      "journal": "Reproduction & fertility"
+    },
+    {
+      "title": "Psychological Health, Polysocial Risk, and Cardiovascular Health Among Women of Reproductive Age.",
+      "doi": "10.1016/j.jacadv.2026.102796",
+      "url": "https://doi.org/10.1016/j.jacadv.2026.102796",
+      "year": "2026",
+      "journal": "JACC. Advances"
+    },
+    {
+      "title": "Dual Energy X-Ray Absorptiometry Reveals Differential Glycemic Implications of Adiposity in Underweight, Normal Weight, and Overweight South African Women With Newly-Diagnosed Diabetes.",
+      "doi": "10.1111/dom.71333",
+      "url": "https://doi.org/10.1111/dom.71333",
+      "year": "2026",
+      "journal": "Diabetes, obesity & metabolism"
+    },
+    {
+      "title": "Citizenship Status and Contraceptive Method Use Among Latinx, Asian and Pacific Islander (API) Women in California.",
+      "doi": "10.1007/s10903-026-01978-w",
+      "url": "https://doi.org/10.1007/s10903-026-01978-w",
+      "year": "2026",
+      "journal": "Journal of immigrant and minority health"
+    },
+    {
+      "title": "Gestational diabetes in South African women with HIV and HIV-seronegative women: results from the ORCHID cohort.",
+      "doi": "10.1210/clinem/dgag111",
+      "url": "https://doi.org/10.1210/clinem/dgag111",
+      "year": "2026",
+      "journal": "The Journal of clinical endocrinology and metabolism"
+    },
+    {
+      "title": "Sexual Experiences of Women with Pelvic Organ Prolapse: A Qualitative Study.",
+      "doi": "10.1007/s00192-026-06744-y",
+      "url": "https://doi.org/10.1007/s00192-026-06744-y",
+      "year": "2026",
+      "journal": "International urogynecology journal"
+    },
+    {
+      "title": "\"Heartbreak and Frustration'' experiences of healthcare providers caring for pregnant women with sickle cell disease in Uganda.",
+      "doi": "10.1371/journal.pone.0355018",
+      "url": "https://doi.org/10.1371/journal.pone.0355018",
+      "year": "2026",
+      "journal": "PloS one"
+    },
+    {
+      "title": "Factors that impede women's contraceptive care needs during and immediately after incarceration in New South Wales, Australian. Qualitative perspectives of professional staff working with incarcerated women.",
+      "doi": "10.1371/journal.pone.0355277",
+      "url": "https://doi.org/10.1371/journal.pone.0355277",
+      "year": "2026",
+      "journal": "PloS one"
+    },
+    {
+      "title": "Silent struggles and stigmatised lives: a qualitative study among infertile married women in Kpandai District, Ghana.",
+      "doi": "10.1136/bmjph-2025-004082",
+      "url": "https://doi.org/10.1136/bmjph-2025-004082",
+      "year": "2026",
+      "journal": "BMJ public health"
+    },
+    {
+      "title": "\"Left Out at the Kitchen Table\": Exploring Peer Support Needs Among Women Firefighters.",
+      "doi": "10.1002/ajim.70094",
+      "url": "https://doi.org/10.1002/ajim.70094",
+      "year": "2026",
+      "journal": "American journal of industrial medicine"
+    },
+    {
+      "title": "Prevalence of Hepatitis E Virus Infection Among Pregnant Women in Tunisia: Findings from a Large Cohort Study.",
+      "doi": "10.3390/pathogens15050549",
+      "url": "https://doi.org/10.3390/pathogens15050549",
+      "year": "2026",
+      "journal": "Pathogens (Basel, Switzerland)"
+    },
+    {
+      "title": "Mass spectrometry-based quantitation of cervicovaginal progesterone and steroids in women at high risk of preterm birth.",
+      "doi": "10.1093/molehr/gaag045",
+      "url": "https://doi.org/10.1093/molehr/gaag045",
+      "year": "2026",
+      "journal": "Molecular human reproduction"
+    },
+    {
+      "title": "Health and Health Care Access Among Afghan Refugee Women in the United States.",
+      "doi": "10.1001/jamanetworkopen.2026.27727",
+      "url": "https://doi.org/10.1001/jamanetworkopen.2026.27727",
+      "year": "2026",
+      "journal": "JAMA network open"
+    },
+    {
+      "title": "Association of proximity to greenspaces and back pain in older men and women: Analysis of data from two cohort studies.",
+      "doi": "10.1002/pmrj.70200",
+      "url": "https://doi.org/10.1002/pmrj.70200",
+      "year": "2026",
+      "journal": "PM & R : the journal of injury, function, and rehabilitation"
+    },
+    {
+      "title": "Gut Microbiome Associations With Depressive Symptoms in Women With Gynecologic Cancer: A Longitudinal Study.",
+      "doi": "10.1177/10998004261461549",
+      "url": "https://doi.org/10.1177/10998004261461549",
+      "year": "2026",
+      "journal": "Biological research for nursing"
+    },
+    {
+      "title": "Decision-Making About Abortion in an Abortion-Restricted Setting: A Qualitative Study of Young Women in Namibia.",
+      "doi": "10.1002/hsr2.72852",
+      "url": "https://doi.org/10.1002/hsr2.72852",
+      "year": "2026",
+      "journal": "Health science reports"
+    },
+    {
+      "title": "Social support and cognitive function in postmenopausal women.",
+      "doi": "10.1097/gme.0000000000002877",
+      "url": "https://doi.org/10.1097/gme.0000000000002877",
+      "year": "2026",
+      "journal": "Menopause (New York, N.Y.)"
+    },
+    {
+      "title": "Looking through different lenses at meeting places in disadvantaged Dutch neighbourhoods: A qualitative participatory study assessing needs, barriers and success elements for women with non-Western migration backgrounds and teenage girls.",
+      "doi": "10.1371/journal.pone.0356072",
+      "url": "https://doi.org/10.1371/journal.pone.0356072",
+      "year": "2026",
+      "journal": "PloS one"
+    },
+    {
+      "title": "Examining the work experiences of women in healthcare leadership in Canada: a cross-sectional study.",
+      "doi": "10.1108/jhom-01-2026-0075",
+      "url": "https://doi.org/10.1108/jhom-01-2026-0075",
+      "year": "2026",
+      "journal": "Journal of health organization and management"
+    },
+    {
+      "title": "Association of microRNA SNP variations and SNP-SNP interactions with breast cancer in Yemeni women.",
+      "doi": "10.1080/17410541.2026.2725756",
+      "url": "https://doi.org/10.1080/17410541.2026.2725756",
+      "year": "2026",
+      "journal": "Personalized medicine"
+    },
+    {
+      "title": "Anxiety during perimenopause: a qualitative study of lived experiences.",
+      "doi": "10.1097/gme.0000000000002744",
+      "url": "https://doi.org/10.1097/gme.0000000000002744",
+      "year": "2026",
+      "journal": "Menopause (New York, N.Y.)"
+    },
+    {
+      "title": "Outbreak preparedness for women and girls in low- and middle-income countries: a qualitative study.",
+      "doi": "10.1186/s44263-026-00305-7",
+      "url": "https://doi.org/10.1186/s44263-026-00305-7",
+      "year": "2026",
+      "journal": "BMC global and public health"
+    },
+    {
+      "title": "Social comparison target selections as health information preferences: exploring contextual influences among women in midlife with elevated risk for cardiovascular disease.",
+      "doi": "10.1080/21642850.2026.2721026",
+      "url": "https://doi.org/10.1080/21642850.2026.2721026",
+      "year": "2026",
+      "journal": "Health psychology and behavioral medicine"
+    },
+    {
+      "title": "Physical Activity, Sitting Time, and Sleep Among Postpartum Women During the COVID-19 Pandemic.",
+      "doi": "10.1111/birt.70086",
+      "url": "https://doi.org/10.1111/birt.70086",
+      "year": "2026",
+      "journal": "Birth (Berkeley, Calif.)"
+    },
+    {
+      "title": "Male breast cancer: from extrapolated practice to evidence-based care.",
+      "doi": "10.1093/oncolo/oyag318",
+      "url": "https://doi.org/10.1093/oncolo/oyag318",
+      "year": "2026",
+      "journal": "The oncologist"
+    },
+    {
+      "title": "Hurting together: The gendered embodiment of pain in women ultrarunners.",
+      "doi": "10.1016/j.psychsport.2026.103142",
+      "url": "https://doi.org/10.1016/j.psychsport.2026.103142",
+      "year": "2026",
+      "journal": "Psychology of sport and exercise"
+    },
+    {
+      "title": "From dissociation to embodied memory through voice: music therapists' perspectives on vocal music therapy with women survivors of sexualized trauma.",
+      "doi": "10.3389/fpsyt.2026.1852780",
+      "url": "https://doi.org/10.3389/fpsyt.2026.1852780",
+      "year": "2026",
+      "journal": "Frontiers in psychiatry"
+    },
+    {
+      "title": "Cardiovascular Health in Women-Across the Lifespan.",
+      "doi": "10.1111/cen.70027",
+      "url": "https://doi.org/10.1111/cen.70027",
+      "year": "2026",
+      "journal": "Clinical endocrinology"
+    },
+    {
+      "title": "Differences in cortisol responding and post-stress affiliation among women who are naturally cycling, using oral contraceptives, and using IUDs.",
+      "doi": "10.1016/j.psyneuen.2026.107875",
+      "url": "https://doi.org/10.1016/j.psyneuen.2026.107875",
+      "year": "2026",
+      "journal": "Psychoneuroendocrinology"
+    },
+    {
+      "title": "Impact of fertility preservation on quality of life, recurrence and reproductive success in young female cancer survivors: a Korean prospective multicentre cohort study protocol (LIFE-Repro).",
+      "doi": "10.1136/bmjopen-2026-118696",
+      "url": "https://doi.org/10.1136/bmjopen-2026-118696",
+      "year": "2026",
+      "journal": "BMJ open"
+    },
+    {
+      "title": "Cannabis, Cocaine and Crack Before or During Sex and Inconsistent Condom Use with Casual Partners Among Transgender Women in Brazil: A Cross-Sectional Study.",
+      "doi": "10.1080/10826084.2026.2709655",
+      "url": "https://doi.org/10.1080/10826084.2026.2709655",
+      "year": "2026",
+      "journal": "Substance use & misuse"
+    },
+    {
+      "title": "Women's Experiences With Telemedicine: Predictors of Satisfaction in Ambulatory Care.",
+      "doi": "10.1097/jac.0000000000000563",
+      "url": "https://doi.org/10.1097/jac.0000000000000563",
+      "year": "2026",
+      "journal": "The Journal of ambulatory care management"
+    },
+    {
+      "title": "Clinical and Psychological Impacts of Social Media and Filtered Self-Images on Body Image Perception and Patient Satisfaction Following Aesthetic Procedures Among Jordanian Women: A Cross Sectional Study.",
+      "doi": "10.1007/s00266-026-05972-3",
+      "url": "https://doi.org/10.1007/s00266-026-05972-3",
+      "year": "2026",
+      "journal": "Aesthetic plastic surgery"
+    },
+    {
+      "title": "Engagement With Online Sexual Trauma-Related Content Among Women Who Have Experienced Sexual Trauma.",
+      "doi": "10.1002/jclp.70153",
+      "url": "https://doi.org/10.1002/jclp.70153",
+      "year": "2026",
+      "journal": "Journal of clinical psychology"
+    },
+    {
+      "title": "Urinary phthalate metabolite concentrations and oxidative stress biomarkers in pre- and perimenopausal women from the Midlife Women's Health Study.",
+      "doi": "10.1016/j.reprotox.2026.109287",
+      "url": "https://doi.org/10.1016/j.reprotox.2026.109287",
+      "year": "2026",
+      "journal": "Reproductive toxicology (Elmsford, N.Y.)"
+    },
+    {
+      "title": "Sexual experiences of women during and after pregnancy: a survey-based study.",
+      "doi": "10.1186/s12884-026-09648-3",
+      "url": "https://doi.org/10.1186/s12884-026-09648-3",
+      "year": "2026",
+      "journal": "BMC pregnancy and childbirth"
+    },
+    {
+      "title": "Accessing perinatal education in the Australian health system: A mixed-methods exploration of the experiences of migrant and refugee women.",
+      "doi": "10.1177/2752535x261456538",
+      "url": "https://doi.org/10.1177/2752535x261456538",
+      "year": "2026",
+      "journal": "Community health equity research & policy"
+    },
+    {
+      "title": "Risk factors for multimorbidity of cardiovascular diseases in the prospective Million Women Study.",
+      "doi": "10.1136/openhrt-2025-003950",
+      "url": "https://doi.org/10.1136/openhrt-2025-003950",
+      "year": "2026",
+      "journal": "Open heart"
+    },
+    {
+      "title": "A Comparison of College Women and Men on Types and Risks of Sexual Assault.",
+      "doi": "10.1891/vv-2024-0126",
+      "url": "https://doi.org/10.1891/vv-2024-0126",
+      "year": "2025",
+      "journal": "Violence and victims"
+    },
+    {
+      "title": "Poverty in the residential and surrounding counties and its impact on mortality in women with breast cancer.",
+      "doi": "10.1002/cncr.70414",
+      "url": "https://doi.org/10.1002/cncr.70414",
+      "year": "2026",
+      "journal": "Cancer"
+    },
+    {
+      "title": "Differences in physiological response to an oral glucose tolerance test in adult Maasai men and women.",
+      "doi": "10.1007/s00592-026-02710-8",
+      "url": "https://doi.org/10.1007/s00592-026-02710-8",
+      "year": "2026",
+      "journal": "Acta diabetologica"
+    },
+    {
+      "title": "Si po ndiheni?: Social media, body image, and mental health among Albanian young women.",
+      "doi": "10.1016/j.bodyim.2026.102132",
+      "url": "https://doi.org/10.1016/j.bodyim.2026.102132",
+      "year": "2026",
+      "journal": "Body image"
+    },
+    {
+      "title": "A longitudinal network analysis of pain, psychological processes and psychological and sexual distress in women with endometriosis.",
+      "doi": "10.1111/bjhp.70071",
+      "url": "https://doi.org/10.1111/bjhp.70071",
+      "year": "2026",
+      "journal": "British journal of health psychology"
+    },
+    {
+      "title": "There is no way back home: A phenomenological study of the fears and future uncertainty of Afghan female medical students in Iran.",
+      "doi": "10.1111/medu.70248",
+      "url": "https://doi.org/10.1111/medu.70248",
+      "year": "2026",
+      "journal": "Medical education"
+    },
+    {
+      "title": "Sphingosine-1-Phosphate Receptor and Kinase Expression in the Reproductive Tract Is Associated with HIV Infection and Preterm Birth in a Cohort of Pregnant Women in Zambia.",
+      "doi": "10.3390/v18050559",
+      "url": "https://doi.org/10.3390/v18050559",
+      "year": "2026",
+      "journal": "Viruses"
+    },
+    {
+      "title": "A Pilot Study to Describe Cardiometabolic Health Indicators and Prescription Medication Use in Postmenopausal Women with a Self-Reported History of PMOS.",
+      "doi": "10.3390/jcm15145533",
+      "url": "https://doi.org/10.3390/jcm15145533",
+      "year": "2026",
+      "journal": "Journal of clinical medicine"
+    },
+    {
+      "title": "Navigating sexual and reproductive health among Venezuelan women sex workers in Peru: Qualitative explorations of structural vulnerability and resistance.",
+      "doi": "10.1371/journal.pgph.0006906",
+      "url": "https://doi.org/10.1371/journal.pgph.0006906",
+      "year": "2026",
+      "journal": "PLOS global public health"
+    },
+    {
+      "title": "Digital health among forcibly displaced women in the MENA region: Risks of reproducing traumatic experiences through technological mediation.",
+      "doi": "10.1016/j.socscimed.2026.119274",
+      "url": "https://doi.org/10.1016/j.socscimed.2026.119274",
+      "year": "2026",
+      "journal": "Social science & medicine (1982)"
+    },
+    {
+      "title": "Delayed maturation of the milk microbiome in women with type 1 diabetes.",
+      "doi": "10.1007/s00125-026-06791-6",
+      "url": "https://doi.org/10.1007/s00125-026-06791-6",
+      "year": "2026",
+      "journal": "Diabetologia"
+    },
+    {
+      "title": "Trends and socioeconomic-spatial inequalities in hypertension among Muslim women in India, 2015-2021: evidence from the National Family Health Surveys.",
+      "doi": "10.3389/fpubh.2026.1828079",
+      "url": "https://doi.org/10.3389/fpubh.2026.1828079",
+      "year": "2026",
+      "journal": "Frontiers in public health"
+    },
+    {
+      "title": "Objects of Desire: The Role of Sexual Arousal in the Sexual Objectification of Women by Men.",
+      "doi": "10.1080/00224499.2026.2658752",
+      "url": "https://doi.org/10.1080/00224499.2026.2658752",
+      "year": "2026",
+      "journal": "Journal of sex research"
+    },
+    {
+      "title": "The Mediating Role of Sexual Assertiveness in the Relationship Between Sexual Mindfulness and Relational Quality in Married Iranian Women.",
+      "doi": "10.1080/0092623x.2026.2636277",
+      "url": "https://doi.org/10.1080/0092623x.2026.2636277",
+      "year": "2026",
+      "journal": "Journal of sex & marital therapy"
+    },
+    {
+      "title": "Protocol for a multicentre survey of sexual and reproductive health and fertility among unmarried women living in China's megacities.",
+      "doi": "10.1136/bmjopen-2025-113405",
+      "url": "https://doi.org/10.1136/bmjopen-2025-113405",
+      "year": "2026",
+      "journal": "BMJ open"
+    },
+    {
+      "title": "Interventions to Improve Breast Screening Uptake for Black African Women in High Income Countries: A Systematic Review.",
+      "doi": "10.1007/s40615-026-02999-9",
+      "url": "https://doi.org/10.1007/s40615-026-02999-9",
+      "year": "2026",
+      "journal": "Journal of racial and ethnic health disparities"
+    },
+    {
+      "title": "Gut microbiota dysbiosis in Indian women with PCOS may be linked to metabolic and hormonal dysregulation.",
+      "doi": "10.1080/17460913.2026.2634572",
+      "url": "https://doi.org/10.1080/17460913.2026.2634572",
+      "year": "2026",
+      "journal": "Future microbiology"
+    },
+    {
+      "title": "Wanting, Yet Doubting: Moderating Role of Gender on the Relationship Between Ambivalence and Childbearing Desires.",
+      "doi": "10.1002/ijop.70264",
+      "url": "https://doi.org/10.1002/ijop.70264",
+      "year": "2026",
+      "journal": "International journal of psychology : Journal international de psychologie"
+    },
+    {
+      "title": "Recurrent Cervical HPV16 DNA Detection in Unvaccinated Women According to Presumed HPV16 Exposure Based on IgG and IgM Seroreactivity.",
+      "doi": "10.1002/jmv.70889",
+      "url": "https://doi.org/10.1002/jmv.70889",
+      "year": "2026",
+      "journal": "Journal of medical virology"
+    },
+    {
+      "title": "Trends and projections of chronic obstructive pulmonary disease burden in postmenopausal women: a comparative study of four Western Pacific countries, 1990-2050.",
+      "doi": "10.1080/07853890.2026.2656516",
+      "url": "https://doi.org/10.1080/07853890.2026.2656516",
+      "year": "2026",
+      "journal": "Annals of medicine"
+    },
+    {
+      "title": "Women expert gamers: portrait of an understudied population.",
+      "doi": "10.3389/fpsyg.2025.1601425",
+      "url": "https://doi.org/10.3389/fpsyg.2025.1601425",
+      "year": "2025",
+      "journal": "Frontiers in psychology"
+    },
+    {
+      "title": "Feasibility of the \"Take Action\" Cognitive-Functional Program During Active Chemotherapy in Women With Breast Cancer.",
+      "doi": "10.1177/15394492261466170",
+      "url": "https://doi.org/10.1177/15394492261466170",
+      "year": "2026",
+      "journal": "OTJR : occupation, participation and health"
+    },
+    {
+      "title": "Non-Veterans Affairs primary care staff knowledge and attitudes regarding women veterans' cardiovascular health.",
+      "doi": "10.1080/08998280.2025.2559492",
+      "url": "https://doi.org/10.1080/08998280.2025.2559492",
+      "year": "2026",
+      "journal": "Proceedings (Baylor University. Medical Center)"
     }
   ]
 }

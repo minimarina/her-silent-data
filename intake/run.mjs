@@ -13,7 +13,7 @@ import { join } from "node:path";
 import { writeFileSync } from "node:fs";
 import {
   HERE, REPO, today, writeJson, readJson, loadSeed, seedUrls,
-  loadLedger, saveLedger, ledgerJudged, ledgerNote
+  loadLedger, saveLedger, ledgerJudged, ledgerNote, YEARS_BACK
 } from "./lib.mjs";
 import {
   filterAbstract, extractRecord, verifyRecord, designFor, FILTER_VERSION
@@ -48,11 +48,6 @@ const GAP_PHRASES = [
   "evidence is lacking",
   "no data exist"
 ];
-
-/* Five years. A gap named a decade ago has usually either been filled or
-   stopped being the question, and a stale claim is the one failure that
-   costs a researcher real work. */
-const YEARS_BACK = 5;
 
 function europePmcQuery() {
   const year = new Date().getFullYear();
@@ -93,7 +88,7 @@ async function discover(pageSize) {
       year: paper.pubYear || null,
       /* When the gap was named. Taken from the index rather than from the
          model: a date is a fact about the paper, and the validator rejects
-         anything older than five years, so a guessed one would be a bug
+         a claim older than the window, so a guessed one would be a bug
          with consequences. */
       date: paper.firstPublicationDate ||
             (paper.pubYear ? paper.pubYear + "-01-01" : null),

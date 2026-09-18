@@ -11,6 +11,16 @@ export const REPO = join(HERE, "..");
 
 export const today = () => new Date().toISOString().slice(0, 10);
 
+/* How far back a gap claim may have been made. One year: a gap named
+   within the last twelve months is much less likely to have been quietly
+   filled, which is the failure this register most has to avoid. It also
+   shrinks what the search returns, so the filter sees fresher papers.
+
+   Both the search window and the validator's staleness check read this,
+   so the thing that is collected and the thing that is accepted cannot
+   disagree. */
+export const YEARS_BACK = 1;
+
 export function readJson(path, fallback) {
   if (!existsSync(path)) { return fallback; }
   return JSON.parse(readFileSync(path, "utf8"));

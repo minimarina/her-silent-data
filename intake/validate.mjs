@@ -12,10 +12,8 @@ import { readFileSync } from "node:fs";
 import { join } from "node:path";
 import { pathToFileURL } from "node:url";
 import {
-  HERE, REPO, loadSeed, seedUrls, loadLedger, ledgerHas, readJson
+  HERE, REPO, loadSeed, seedUrls, loadLedger, ledgerHas, readJson, YEARS_BACK
 } from "./lib.mjs";
-
-const YEARS_BACK = 5;
 
 /* The areas that have a hand-measured coordinate. Read out of app.js so
    the two cannot drift: adding an area there is what makes it mappable,
@@ -203,7 +201,7 @@ function selfTest() {
 
   const stale = base();
   stale.data_need.gap_evidence.claimed_date = "2014-01-01";
-  cases.push(["a claim older than five years is rejected", stale, false]);
+  cases.push(["a claim older than the window is rejected", stale, false]);
 
   const sourced = base();
   sourced.data_need.collection_guidance = {

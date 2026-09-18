@@ -10,15 +10,22 @@ const ENDPOINT = "https://api.anthropic.com/v1/messages";
 const VERSION = "2023-06-01";
 
 /* Filtering is a yes/no read of an abstract — the cheapest model that can
-   do it is the right one. Everything that has to be accurate about a
-   claim, or that searches the live web, runs on Opus. */
+   do it is the right one.
+
+   The rest ran on claude-opus-5 and now runs on Sonnet 5, at $2/$10 per
+   million rather than $5/$25. The judgement that suffers most from this
+   is verify's: deciding whether a loosely related study counts as the
+   missing data is the call the register's credibility rests on. Every
+   record is read by a human before it enters data.js, which is what makes
+   the trade acceptable. Put claude-opus-5 back here to undo it. */
 export const FILTER_MODEL = "claude-haiku-4-5";
-export const WORK_MODEL = "claude-opus-5";
+export const WORK_MODEL = "claude-sonnet-5";
 
 /* Per-million-token list prices, for the running total the script prints.
    An estimate for steering the run, not an invoice. */
 const PRICES = {
   "claude-haiku-4-5": { input: 1.00, output: 5.00 },
+  "claude-sonnet-5": { input: 2.00, output: 10.00 },
   "claude-opus-5": { input: 5.00, output: 25.00 }
 };
 
@@ -48,6 +55,7 @@ const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
    otherwise take the whole run down. `fallbacks: "default"` lets the API
    route the request rather than stop. */
 const FALLBACK_BETA = "server-side-fallback-2026-07-01";
+const SUPPORTS_FALLBACKS = new Set(["claude-opus-5", "claude-fable-5-1"]);
 
 /* One request, with retries on the failures that are worth retrying.
    429 and 5xx are transient; 400 and 401 are bugs and must surface. */
@@ -89,7 +97,11 @@ export async function callModel({
     "content-type": "application/json"
   };
 
-  if (model === WORK_MODEL) {
+  /* Server-side fallbacks are an Opus-tier feature, so this is gated on
+     the model rather than on "whatever WORK_MODEL happens to be" — the
+     parameter would be rejected on Sonnet. The refusal check below still
+     runs for every model. */
+  if (SUPPORTS_FALLBACKS.has(model)) {
     headers["anthropic-beta"] = FALLBACK_BETA;
     body.fallbacks = "default";
   }
