@@ -690,6 +690,324 @@ a.instrument {
   .request-card { padding: var(--space-card); }
 }
 
+/* ---------- screen 4: about ---------- */
+
+/* The header link is the only route in. The name keeps its own line and
+   the tagline and the link share the next one, so nothing has to be
+   restructured and nothing wraps badly at 360px. */
+.site-header .wrap {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 8px 16px;
+}
+.site-name { flex: 1 0 100%; }
+.site-tagline { flex: 1 1 auto; margin-top: 0; }
+
+.header-link {
+  flex: 0 0 auto;
+  padding: 6px 14px;
+  background: none;
+  border: 1px solid #C9D8E6;   /* 8.3:1 on --navy-deep, same as the tagline */
+  border-radius: 4px;
+  color: #C9D8E6;
+  font: inherit;
+  font-size: 0.9375rem;
+  cursor: pointer;
+  transition: background-color 150ms ease, color 150ms ease;
+}
+.header-link:hover {
+  background: var(--surface);
+  color: var(--navy-deep);
+}
+
+/* The global ring is teal-accent on white. On --navy-deep teal holds only
+   2.3:1, which is under the 3:1 non-text floor (§8.2), so the same teal
+   ring is laid on a white backing rather than swapped for another colour. */
+.header-link:focus-visible {
+  outline: 2px solid var(--teal-accent);
+  outline-offset: 2px;
+  box-shadow: 0 0 0 2px var(--surface);
+}
+
+/* Built or planned. Deliberately not the three data-status colours: those
+   mean the status of *data* on every other screen and must keep meaning
+   only that. Word, colour and shape all carry it (§8.2, §12.11). */
+.build-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0 0 10px;
+  padding: 3px 10px 3px 8px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+.build-chip::before {
+  content: "";
+  width: 12px;
+  height: 12px;
+  flex: 0 0 auto;
+}
+
+/* Filled square, solid edge — it exists and is running. */
+.build-chip[data-build-state="built"] {
+  color: var(--navy-deep);
+  border-style: solid;
+  border-color: var(--navy-deep);
+}
+.build-chip[data-build-state="built"]::before {
+  background: var(--navy-deep);
+  border: 2px solid var(--navy-deep);
+}
+
+/* Half-filled square, solid edge — some of it is running and the sub-steps
+   below say which. Same half-square idiom as a partial data need. */
+.build-chip[data-build-state="partly"] {
+  color: var(--navy-deep);
+  border-style: solid;
+  border-color: var(--navy-deep);
+}
+.build-chip[data-build-state="partly"]::before {
+  background: linear-gradient(to right,
+              var(--navy-deep) 0 50%, transparent 50% 100%);
+  border: 2px solid var(--navy-deep);
+}
+
+/* Open square, dashed edge — designed, not built. */
+.build-chip[data-build-state="planned"] {
+  color: var(--muted);
+  border-style: dashed;
+  border-color: var(--muted);
+}
+.build-chip[data-build-state="planned"]::before {
+  background: transparent;
+  border: 2px dashed var(--muted);
+}
+
+/* The diagram. Under 640px it is dropped and the list below is the
+   diagram, stacked — a five-node loop at 360px reads as nothing. */
+.about-svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin: 0 0 var(--space-section);
+}
+
+.about-node rect {
+  fill: var(--surface);
+  stroke-width: 2;
+}
+.about-node rect[data-build-state="built"] {
+  fill: var(--teal-soft);
+  stroke: var(--navy-deep);
+}
+.about-node rect[data-build-state="partly"] {
+  fill: var(--teal-soft);
+  stroke: var(--navy-deep);
+  stroke-dasharray: 16 7;
+}
+.about-node rect[data-build-state="planned"] {
+  stroke: var(--muted);
+  stroke-dasharray: 4 6;
+}
+
+.about-node-num {
+  font-size: 14px;
+  font-weight: 700;
+  fill: var(--muted);
+}
+.about-node-title {
+  font-size: 17px;
+  font-weight: 600;
+  fill: var(--navy-ink);
+}
+.about-node-status { font-size: 13px; font-weight: 600; }
+.about-node-status[data-build-state="built"],
+.about-node-status[data-build-state="partly"] { fill: var(--navy-deep); }
+.about-node-status[data-build-state="planned"] { fill: var(--muted); }
+
+.about-flow {
+  stroke: var(--navy-ink);
+  stroke-opacity: 0.55;
+  stroke-width: 1.5;
+  marker-end: url(#about-arrow);
+}
+#about-arrow path { fill: var(--navy-ink); fill-opacity: 0.55; }
+
+/* The return arrow is the point of the diagram, so it is the one line in
+   the accent colour and the one drawn heavier. */
+.about-flow-loop {
+  stroke: var(--teal-accent);
+  stroke-width: 2.5;
+  marker-end: url(#about-arrow-loop);
+}
+#about-arrow-loop path { fill: var(--teal-accent); }
+
+.about-loop-label {
+  font-size: 13px;
+  font-weight: 600;
+  fill: var(--teal-accent);
+}
+
+/* The five stages as text — the version screen readers get, and the
+   version that survives below 640px. */
+.system-stages {
+  list-style: none;
+  margin: 0 0 44px;
+  padding: 0;
+  counter-reset: stage;
+}
+
+.system-stages > li {
+  position: relative;
+  counter-increment: stage;
+  margin-bottom: 30px;
+  padding: var(--space-card) var(--space-card) var(--space-card) 56px;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+}
+
+.system-stages > li::before {
+  content: counter(stage);
+  position: absolute;
+  top: var(--space-card);
+  left: var(--space-card);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: var(--navy-deep);
+  color: var(--surface);
+  font-size: 0.875rem;
+  font-weight: 700;
+}
+
+.system-stages > li::after {
+  content: "\2193";
+  position: absolute;
+  left: 50%;
+  bottom: -25px;
+  transform: translateX(-50%);
+  color: var(--muted);
+  font-size: 18px;
+  line-height: 1;
+}
+
+/* Stage 5 does not point at nothing: it points back at stage 2. */
+.system-stages > li:last-child::after {
+  content: "\21BA  the loop returns to stage 2";
+  left: 0;
+  bottom: -28px;
+  transform: none;
+  color: var(--teal-accent);
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+.system-stages h3 {
+  margin: 2px 0 8px;
+  font-size: 1.0625rem;
+}
+.system-stages p { max-width: 70ch; }
+.system-stages > li > p:last-child { margin-bottom: 0; }
+
+/* Stage 1 expands. A disclosure inside the screen, not a fourth route. */
+.intake-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 4px;
+  padding: 6px 0;
+  background: none;
+  border: 0;
+  color: var(--teal-accent);
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+  text-align: left;
+}
+.intake-toggle:hover { text-decoration: underline; }
+
+.intake-toggle-mark {
+  width: 0;
+  height: 0;
+  flex: 0 0 auto;
+  border-left: 6px solid currentColor;
+  border-top: 5px solid transparent;
+  border-bottom: 5px solid transparent;
+  transition: transform 150ms ease;
+  transform-origin: 30% 50%;
+}
+.intake-toggle[aria-expanded="true"] .intake-toggle-mark {
+  transform: rotate(90deg);
+}
+
+.intake-panel {
+  margin-top: var(--space-card);
+  padding: var(--space-card) 0 4px;
+  border-top: 1px solid var(--border);
+  animation: intake-in 150ms ease;
+}
+
+@keyframes intake-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.intake-lede { color: var(--muted); }
+
+.intake-steps {
+  margin: 0 0 var(--space-card);
+  padding-left: 1.5rem;
+}
+.intake-steps > li { margin-bottom: var(--space-card); }
+.intake-steps h4 {
+  margin: 0 0 6px;
+  font-size: 1rem;
+  line-height: 1.25;
+}
+.intake-steps p { max-width: 70ch; margin-bottom: 0; }
+.intake-steps .build-chip { margin-bottom: 8px; }
+
+/* The design rule the pipeline exists to protect. */
+.intake-principle {
+  margin: 0;
+  padding: var(--space-card);
+  background: var(--teal-soft);
+  border-left: 3px solid var(--teal-accent);
+  border-radius: 0 4px 4px 0;
+}
+.intake-principle p { max-width: 70ch; margin: 0; }
+
+.about-facts {
+  margin: 0;
+  padding-left: 1.25rem;
+}
+.about-facts > li {
+  max-width: 70ch;
+  margin-bottom: 12px;
+}
+
+.system-stages code, .about-facts code {
+  font-size: 0.9375rem;
+  background: var(--teal-soft);
+  padding: 1px 4px;
+  border-radius: 3px;
+}
+
+@media (max-width: 640px) {
+  /* The list below already carries every stage, in order, with its status.
+     The loop itself is stated by stage 5's connector. */
+  .about-svg { display: none; }
+
+  .system-stages > li { padding-left: var(--space-card); padding-top: 52px; }
+  .system-stages > li::before { top: var(--space-card); }
+}
+
 /* ---------- §7.3 motion ---------- */
 
 @media (prefers-reduced-motion: reduce) {

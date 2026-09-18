@@ -23,6 +23,34 @@
      and never guesses, and never renders as a silent blank. */
   var UNKNOWN = "Not established";
 
+  /* Whether each part of the system on the About screen exists today.
+     Every Built/Planned label on that screen — the chips in the list and
+     the words inside the diagram alike — is read from here, so a part that
+     gets built is one edit in this object and nothing else. §8.1: nothing
+     is marked built unless it is in this repository and running. */
+  var BUILD_STATUS = {
+    stage1: "partly",
+    stage2: "built",
+    stage3: "planned",
+    stage4: "planned",
+    stage5: "planned",
+
+    discover: "planned",
+    filter:   "planned",
+    extract:  "planned",
+    validate: "planned",
+    review:   "planned"
+  };
+
+  /* The word is the carrier; the colour and the border style repeat it
+     (§8.2). Deliberately none of the three data-status colours: those mean
+     the status of data everywhere else and must keep meaning only that. */
+  var BUILD_WORD = {
+    built:   "Built",
+    partly:  "Partly built",
+    planned: "Planned"
+  };
+
   /* ---------- helpers ---------- */
 
   function el(id) {
@@ -287,7 +315,9 @@
 
   /* ---------- navigation ---------- */
 
-  var SCREENS = ["screen-problems", "screen-detail", "screen-request"];
+  var SCREENS = [
+    "screen-problems", "screen-detail", "screen-request", "screen-about"
+  ];
 
   /* Shows one screen and hides the others, then moves focus into the new
      screen so a keyboard user lands in the new content (§12.9, §12.13).
@@ -551,6 +581,53 @@
     }
     wrapper.appendChild(dd);
     return wrapper;
+  }
+
+  /* ---------- screen 4: about ---------- */
+
+  /* The About screen is static markup and reads nothing from the seed. The
+     one thing it does not hold is its own Built/Planned labels: those are
+     stamped in from BUILD_STATUS so the list and the diagram cannot drift
+     apart, and so tonight's flip is one edit.
+
+     Two hooks, because two kinds of element need the status: [data-build]
+     takes the word as text, [data-build-shape] is a shape with no text of
+     its own (the diagram's node boxes) and takes only the state. Both end
+     up carrying data-build-state, which is what the CSS hangs the colour
+     and the border style on. */
+  function applyBuildStatus() {
+    document.querySelectorAll("[data-build]").forEach(function (node) {
+      var state = BUILD_STATUS[node.getAttribute("data-build")] || "planned";
+
+      node.textContent = BUILD_WORD[state];
+      node.setAttribute("data-build-state", state);
+    });
+
+    document.querySelectorAll("[data-build-shape]").forEach(function (node) {
+      var key = node.getAttribute("data-build-shape");
+
+      node.setAttribute("data-build-state", BUILD_STATUS[key] || "planned");
+    });
+  }
+
+  /* Stage 1 expands to the intake pipeline. A disclosure inside the screen
+     and not a fourth route: the router does not hear about it.
+
+     It is a real <button>, so Enter and Space arrive for free and the focus
+     ring comes from the global rule; all this adds is aria-expanded and the
+     panel's hidden attribute, kept in step with each other (§8.2). */
+  function setupDisclosure() {
+    var toggle = el("intake-toggle");
+    var panel = el("intake-panel");
+
+    if (!toggle || !panel) { return; }
+
+    toggle.addEventListener("click", function () {
+      var open = toggle.getAttribute("aria-expanded") === "true";
+
+      toggle.setAttribute("aria-expanded", open ? "false" : "true");
+      panel.hidden = open;
+    });
   }
 
   /* ---------- screen 1a: body map ---------- */
@@ -849,6 +926,18 @@
         show(target);
       });
     });
+
+    /* The header link, and anything else that opens a screen outright.
+       Mirrors the [data-back] wiring above rather than adding a second
+       navigation idea. */
+    document.querySelectorAll("[data-goto]").forEach(function (button) {
+      button.addEventListener("click", function () {
+        show(button.getAttribute("data-goto"));
+      });
+    });
+
+    applyBuildStatus();
+    setupDisclosure();
 
     renderProvenanceSummary();
     renderGapSummary();

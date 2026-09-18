@@ -15,6 +15,13 @@
   <div class="wrap">
     <p class="site-name">Women&rsquo;s Data Gap</p>
     <p class="site-tagline">Research intelligence for the gender data gap</p>
+
+    <!-- The only way to Screen 4. About is never in front of the demo flow,
+         so it is a header link rather than anything on the home screen.
+         Wired in app.js, because show() lives inside its IIFE. -->
+    <button type="button" class="header-link" data-goto="screen-about">
+      About
+    </button>
   </div>
 </header>
 
@@ -105,6 +112,254 @@
     <div id="request-card" class="request-card"></div>
     <div id="request-origin" class="origin-slot"></div>
     <div id="request-source" class="provenance-slot"></div>
+  </section>
+
+  <!-- Screen 4 — About. Reached only from the header link; it never stands
+       in front of the demo flow, and it reads nothing from data.js.
+       No Built/Planned string is written here: every one of them comes from
+       BUILD_STATUS at the top of app.js, so flipping one is a single edit. -->
+  <section id="screen-about" class="screen" aria-labelledby="about-heading" tabindex="-1" hidden>
+    <button type="button" class="back" data-back="screen-problems">
+      &larr; Back to the map
+    </button>
+
+    <h1 id="about-heading">About this platform</h1>
+    <p class="lede">
+      What the whole system is, which parts of it exist today, and who
+      built it.
+    </p>
+
+    <h2 id="about-system-heading">How the system works</h2>
+    <p class="lede">
+      The platform is one stage of a loop, not the whole of it. The loop is
+      drawn below, and each stage says whether it is built or planned.
+    </p>
+
+    <!-- The diagram. role="img" with a label, so assistive technology gets
+         the summary and then the real <ol> below it, which carries every
+         stage as text. Under 640px the SVG is dropped and that list is the
+         diagram, stacked vertically. -->
+    <svg class="about-svg" viewBox="0 0 880 400" role="img"
+         aria-label="A loop of five stages. Gaps are collected, which feeds the platform, which shows what is missing. A researcher picks up a request, women on the platform join the study, and the collected data closes the gap, which returns to the platform and starts the loop again.">
+      <defs>
+        <marker id="about-arrow" viewBox="0 0 10 10" refX="9" refY="5"
+                markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M0,0 L10,5 L0,10 z"/>
+        </marker>
+        <marker id="about-arrow-loop" viewBox="0 0 10 10" refX="9" refY="5"
+                markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M0,0 L10,5 L0,10 z"/>
+        </marker>
+      </defs>
+
+      <!-- 1 — feeds the loop -->
+      <g class="about-node">
+        <rect x="10" y="40" width="200" height="120" rx="6" data-build-shape="stage1"/>
+        <text class="about-node-num" x="30" y="70">1</text>
+        <text class="about-node-title" x="30" y="112">Gaps are collected</text>
+        <text class="about-node-status" x="30" y="146" data-build="stage1"></text>
+      </g>
+
+      <!-- 2 — this app -->
+      <g class="about-node">
+        <rect x="250" y="40" width="280" height="120" rx="6" data-build-shape="stage2"/>
+        <text class="about-node-num" x="270" y="70">2</text>
+        <text class="about-node-title" x="270" y="102">The platform shows</text>
+        <text class="about-node-title" x="270" y="122">what is missing</text>
+        <text class="about-node-status" x="270" y="146" data-build="stage2"></text>
+      </g>
+
+      <!-- 3 -->
+      <g class="about-node">
+        <rect x="580" y="40" width="280" height="120" rx="6" data-build-shape="stage3"/>
+        <text class="about-node-num" x="600" y="70">3</text>
+        <text class="about-node-title" x="600" y="102">A researcher picks</text>
+        <text class="about-node-title" x="600" y="122">up a request</text>
+        <text class="about-node-status" x="600" y="146" data-build="stage3"></text>
+      </g>
+
+      <!-- 4 -->
+      <g class="about-node">
+        <rect x="580" y="240" width="280" height="120" rx="6" data-build-shape="stage4"/>
+        <text class="about-node-num" x="600" y="270">4</text>
+        <text class="about-node-title" x="600" y="302">Women on the platform</text>
+        <text class="about-node-title" x="600" y="322">join the study</text>
+        <text class="about-node-status" x="600" y="346" data-build="stage4"></text>
+      </g>
+
+      <!-- 5 -->
+      <g class="about-node">
+        <rect x="250" y="240" width="280" height="120" rx="6" data-build-shape="stage5"/>
+        <text class="about-node-num" x="270" y="270">5</text>
+        <text class="about-node-title" x="270" y="302">The collected data</text>
+        <text class="about-node-title" x="270" y="322">closes the gap</text>
+        <text class="about-node-status" x="270" y="346" data-build="stage5"></text>
+      </g>
+
+      <line class="about-flow" x1="214" y1="100" x2="242" y2="100"/>
+      <line class="about-flow" x1="534" y1="100" x2="572" y2="100"/>
+      <line class="about-flow" x1="720" y1="164" x2="720" y2="232"/>
+      <line class="about-flow" x1="576" y1="300" x2="538" y2="300"/>
+
+      <!-- The return. Stage 5 goes back to stage 2, and that arrow is the
+           point of the diagram, so it is the one line in the accent colour. -->
+      <line class="about-flow-loop" x1="390" y1="236" x2="390" y2="168"/>
+      <text class="about-loop-label" x="406" y="196">The record&rsquo;s status changes.</text>
+      <text class="about-loop-label" x="406" y="216">The loop returns to stage 2.</text>
+    </svg>
+
+    <ol class="system-stages">
+      <li>
+        <h3>Gaps are collected</h3>
+        <p class="build-chip" data-build="stage1"></p>
+        <p>
+          Published research recommendations naming data that is missing
+          about women are found, extracted and added to the platform.
+        </p>
+
+        <button type="button" class="intake-toggle" id="intake-toggle"
+                aria-expanded="false" aria-controls="intake-panel">
+          <span class="intake-toggle-mark" aria-hidden="true"></span>
+          How a record enters the system
+        </button>
+
+        <div class="intake-panel" id="intake-panel" hidden>
+          <p class="intake-lede">
+            Five steps. A record passes all five before it is in the seed.
+          </p>
+
+          <ol class="intake-steps">
+            <li>
+              <h4>Discover</h4>
+              <p class="build-chip" data-build="discover"></p>
+              <p>
+                Query source APIs for research recommendations in
+                women&rsquo;s health &mdash; Europe PMC, PubMed,
+                ClinicalTrials.gov, NICE research recommendations, Cochrane
+                &ldquo;implications for research&rdquo;.
+              </p>
+            </li>
+            <li>
+              <h4>Filter</h4>
+              <p class="build-chip" data-build="filter"></p>
+              <p>
+                A cheap model answers one yes/no question: is this a research
+                recommendation about women&rsquo;s health?
+              </p>
+            </li>
+            <li>
+              <h4>Extract</h4>
+              <p class="build-chip" data-build="extract"></p>
+              <p>
+                Structured output strictly against the <code>data.js</code>
+                schema. Anything the source text does not support comes back
+                <code>null</code>, not a guess.
+              </p>
+            </li>
+            <li>
+              <h4>Validate</h4>
+              <p class="build-chip" data-build="validate"></p>
+              <p>
+                Ordinary JavaScript, no model: schema, status against the
+                presence of <code>gap_evidence</code>, duplicates by DOI.
+              </p>
+            </li>
+            <li>
+              <h4>Review</h4>
+              <p class="build-chip" data-build="review"></p>
+              <p>
+                A pull request with a diff of <code>data.js</code>. A human
+                merges.
+              </p>
+            </li>
+          </ol>
+
+          <blockquote class="intake-principle">
+            <p>
+              Most tools point a model at a problem and let it generate the
+              answer. This one inverts that. Where the data gap is, is a
+              claim, and every claim here comes from a published research
+              recommendation. AI is used for finding, extracting and matching
+              &mdash; never for making the claim. What the platform adds on
+              top of the borrowed claim is labelled as its own on every
+              screen.
+            </p>
+          </blockquote>
+        </div>
+      </li>
+
+      <li>
+        <h3>The platform shows what is missing</h3>
+        <p class="build-chip" data-build="stage2"></p>
+        <p>
+          For each problem: which data is needed, what status it has, and a
+          collection request saying which women, which variables, which
+          breakdowns, in what form.
+        </p>
+      </li>
+
+      <li>
+        <h3>A researcher picks up a request</h3>
+        <p class="build-chip" data-build="stage3"></p>
+        <p>
+          And designs a study from it. The platform ends exactly where study
+          design begins.
+        </p>
+      </li>
+
+      <li>
+        <h3>Women on the platform join the study</h3>
+        <p class="build-chip" data-build="stage4"></p>
+        <p>
+          Women who want the gap in their own problem closed take part in
+          it.
+        </p>
+      </li>
+
+      <li>
+        <h3>The collected data closes the gap</h3>
+        <p class="build-chip" data-build="stage5"></p>
+        <p>
+          And the record&rsquo;s status changes. The loop returns to stage 2.
+        </p>
+      </li>
+    </ol>
+
+    <h2 id="about-built-heading">Who built it, and how</h2>
+    <ul class="about-facts">
+      <li>
+        Built by Marina, solo, for the Elevate Women Global Hackathon 2026.
+      </li>
+      <li>
+        Plain HTML, CSS and JavaScript. No framework, no build step, no
+        dependencies &mdash; three screens and one seed file do not need one,
+        and a build is one more thing that can fail on submission day. It
+        opens by double-clicking <code>index.html</code>.
+      </li>
+      <li>
+        <strong>Two-tier provenance.</strong> The gap claim is borrowed and
+        cited; the collection request &mdash; which women, which variables,
+        which breakdowns, in what form &mdash; is this platform&rsquo;s own
+        specification in every record.
+      </li>
+      <li>
+        <strong>Disclosure.</strong> Everything in this repository was
+        written during the Hackathon Period, 14&ndash;20 September 2026. No
+        pre-existing code was used; an earlier personal project by the same
+        author shares no code with this one. Development was AI-assisted
+        throughout, using Claude Code; the git history is the record.
+      </li>
+      <li>
+        <strong>Third-party asset.</strong> The female silhouette is
+        OpenClipart #71126, public domain under CC0, recoloured and
+        otherwise unaltered.
+      </li>
+      <li>
+        Repository:
+        <a href="https://github.com/minimarina/women-data-gap-map"
+           target="_blank" rel="noopener noreferrer">github.com/minimarina/women-data-gap-map</a>
+      </li>
+    </ul>
   </section>
 
 </main>
