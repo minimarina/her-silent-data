@@ -2,9 +2,95 @@
   "run_at": "2026-09-18",
   "stage": "full",
   "query_window_years": 1,
-  "hit_count": 1487,
-  "fetched": 100,
-  "unseen": 92,
-  "passed_filter": 3,
-  "records": []
+  "hit_count": 20081,
+  "scanned": 1000,
+  "phrase_matched": 48,
+  "unseen": 47,
+  "passed_filter": 1,
+  "records": [
+    {
+      "paper": {
+        "title": "Management of women with type 2B von Willebrand disease during pregnancy and postpartum: guidance from ISTH SSC subcommittees on von Willebrand factor and women's health issues in thrombosis and hemostasis.",
+        "doi": "10.1016/j.jtha.2026.05.032",
+        "url": "https://doi.org/10.1016/j.jtha.2026.05.032",
+        "year": "2026",
+        "journal": "Journal of thrombosis and haemostasis : JTH"
+      },
+      "problem": {
+        "id": "type-2b-vwd-pregnancy",
+        "title": "Women with type 2B von Willebrand disease face high bleeding risk and unclear management during pregnancy and postpartum",
+        "area": "Maternal health",
+        "summary": "Type 2B von Willebrand disease is a rare qualitative variant affecting platelet-VWF interaction, causing enhanced clearance of VWF multimers and platelets. During pregnancy and postpartum, women with this condition face complex hemostatic abnormalities and high bleeding risk, with no evidence-based guidelines to manage them until this consensus effort.",
+        "affected_women": "Women with type 2B von Willebrand disease during pregnancy and the postpartum period",
+        "source": "https://doi.org/10.1016/j.jtha.2026.05.032",
+        "origin": "sourced",
+        "is_demo": false
+      },
+      "data_need": {
+        "id": "type-2b-vwd-pregnancy-clinical-evidence",
+        "problem_id": "type-2b-vwd-pregnancy",
+        "area": "Maternal health",
+        "description": "Evidence-based data on early diagnosis, prenatal counseling, pregnancy monitoring, and peripartum management for type 2B VWD",
+        "why_it_matters": "Without this evidence, clinicians rely on expert consensus rather than data, which can leave gaps in standardized, optimal care and increase risk of bleeding complications for mother and infant.",
+        "status": "missing",
+        "existing_data_note": "",
+        "gap_evidence": {
+          "source": "https://doi.org/10.1016/j.jtha.2026.05.032",
+          "note": "The abstract states a systematic review, international registry analysis, and global physician survey 'highlighted several unmet clinical needs in this population, including gaps in early diagnosis, prenatal counseling, pregnancy monitoring, and peripartum management,' and that there is 'a lack of evidence-based guidelines' for this condition in pregnancy and postpartum.",
+          "region": null,
+          "claimed_date": "2026-06-04"
+        },
+        "dataset_source": null,
+        "collection_guidance": null,
+        "verification": {
+          "checked_at": "2026-09-18",
+          "method": "web search",
+          "findings": "A search attempt did not return results confirming that a dedicated evidence-based dataset (cohort, registry, or trial) specifically on early diagnosis, prenatal counseling, pregnancy monitoring, and peripartum management for type 2B von Willebrand disease has been established since the cited review. No such registry-based or cohort study output could be identified. The gap identified by the systematic review, international registry analysis, and physician survey appears to remain unaddressed by a subsequent dedicated evidence-based study.",
+          "sources": [
+            {
+              "url": "https://onlinelibrary.wiley.com/doi/full/10.1111/hae.14953",
+              "title": "Targeting a higher plasma VWF level at time of delivery in pregnant individuals with von Willebrand disease: Outcomes at a single‐institution cohort study - Lim - 2024 - Haemophilia - Wiley Online Library"
+            },
+            {
+              "url": "https://www.researchgate.net/publication/322780262_How_I_treat_type_2B_von_Willebrand_disease",
+              "title": "How I treat type 2B von Willebrand disease"
+            },
+            {
+              "url": "https://www.sciencedirect.com/science/article/pii/S1538783622071896",
+              "title": "Challenges in the management of women with type 2B von Willebrand disease during pregnancy and the postpartum period: evidence from literature and data from an international registry and physicians’ survey—communication from the Scientific and Standardization Committees of the International Society on Thrombosis and Haemostasis - ScienceDirect"
+            },
+            {
+              "url": "https://pubmed.ncbi.nlm.nih.gov/42248413/",
+              "title": "Management of women with type 2B von Willebrand disease during pregnancy and postpartum: guidance from ISTH SSC subcommittees on von Willebrand factor and women's health issues in thrombosis and hemostasis - PubMed"
+            },
+            {
+              "url": "https://www.sciencedirect.com/science/article/pii/S1538783626003569",
+              "title": "Management of Women with type 2B von Willebrand Disease During Pregnancy and Postpartum: Guidance from ISTH SSC Subcommittees on von Willebrand Factor and Women’s Health Issues in Thrombosis and Haemostasis - ScienceDirect"
+            },
+            {
+              "url": "https://pubmed.ncbi.nlm.nih.gov/36695378/",
+              "title": "Challenges in the management of women with type 2B von Willebrand disease during pregnancy and the postpartum period: evidence from literature and data from an international registry and physicians' survey-communication from the Scientific and Standardization Committees of the International Society on Thrombosis and Haemostasis - PubMed"
+            },
+            {
+              "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC12858306/",
+              "title": "Landscape and Spectrum of VWF Variants in Type 2 Von Willebrand Disease: Insights from a German Patient Cohort"
+            },
+            {
+              "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12974098/",
+              "title": "Pregnancy outcomes in women with Von Willebrand disease: a statewide cohort study - PMC"
+            },
+            {
+              "url": "https://pubmed.ncbi.nlm.nih.gov/25431025/",
+              "title": "Management of pregnancy in type 2B von Willebrand disease: case report and literature review - PubMed"
+            }
+          ]
+        }
+      },
+      "validation": {
+        "ok": true,
+        "errors": [],
+        "warnings": []
+      }
+    }
+  ]
 }

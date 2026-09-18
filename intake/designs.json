@@ -325,5 +325,28 @@
     "instrument_source": "Ferriman-Gallwey score for hirsutism",
     "generated_at": "2026-09-18",
     "model": "claude-sonnet-5"
+  },
+  "type-2b-vwd-pregnancy-clinical-evidence": {
+    "target_women": "Pregnant women aged 18-45 with laboratory-confirmed type 2B von Willebrand disease, recruited from hemophilia treatment centers and high-risk obstetric clinics in a multi-site network (target n=100-150, given rarity, over a 3-4 year enrollment window, ideally coordinated internationally through existing bleeding disorder registries).",
+    "variables": [
+      "VWF:RCo, VWF:Ag, FVIII, and platelet count measured each trimester and at delivery",
+      "Platelet count trend across pregnancy (to capture thrombocytopenia typical of 2B VWD)",
+      "Use and type of prophylactic treatment (e.g., VWF concentrate, DDAVP avoidance, platelet transfusion) before and during delivery",
+      "Mode of delivery and use of neuraxial anesthesia",
+      "Postpartum blood loss volume and clinical postpartum hemorrhage occurrence (yes/no, and severity by transfusion or intervention needed)",
+      "Neonatal bleeding events and neonatal platelet count in first week of life",
+      "Time from delivery to normalization of maternal platelet count and VWF levels"
+    ],
+    "stratifiers": [
+      "Trimester/timepoint of measurement",
+      "Parity (first pregnancy vs. multiparous)",
+      "Severity of baseline thrombocytopenia (mild vs. moderate/severe)",
+      "Delivery mode (vaginal vs. cesarean)",
+      "Use vs. non-use of prophylactic VWF concentrate"
+    ],
+    "form": "Prospective observational cohort with structured case report forms completed at each prenatal visit (approximately every 4 weeks), at hospital admission for delivery, at delivery, and at 6 weeks postpartum; laboratory values drawn at standard visits plus delivery admission; data pooled across participating hemophilia treatment centers into a shared registry database over 3-4 years.",
+    "instrument_source": null,
+    "generated_at": "2026-09-18",
+    "model": "claude-sonnet-5"
   }
 }

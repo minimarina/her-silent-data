@@ -13,7 +13,8 @@ import { join } from "node:path";
 import { writeFileSync } from "node:fs";
 import {
   HERE, REPO, today, writeJson, readJson, loadSeed, seedUrls,
-  loadLedger, saveLedger, ledgerJudged, ledgerNote, YEARS_BACK
+  loadLedger, saveLedger, ledgerJudged, ledgerNote, YEARS_BACK,
+  publishableDesigns, renderDesigns
 } from "./lib.mjs";
 import {
   filterAbstract, extractRecord, verifyRecord, designFor, FILTER_VERSION
@@ -504,32 +505,9 @@ writeJson(CANDIDATES, {
 
 writeJson(DESIGNS_JSON, designs);
 
-/* research-designs.js is a script, not a module, so the app can load it
-   from file:// with no fetch — the same shape as data.js. */
-writeFileSync(
-  DESIGNS_JS,
-  "/* AI-generated study designs. NOT part of the register.\n" +
-  " *\n" +
-  " * Written by intake/run.mjs, one entry per data need id. A design is\n" +
-  " * an answer, not a record: it is never merged into data.js, and the\n" +
-  " * app works fully with this file absent (SPEC §11).\n" +
-  " *\n" +
-  " * Every entry is model output and is labelled unverified on screen.\n" +
-  " */\n\n" +
-  "const RESEARCH_DESIGNS = " + JSON.stringify(designs, null, 2) + ";\n",
-  "utf8"
-);
-
-/* The distribution is worth printing: a run that returns mostly
-   "collected" means the filter is picking up papers that fill their own
-   gap, which is the failure mode this pipeline is most prone to. */
-const byStatus = {};
-const byArea = {};
-for (const record of records) {
-  const need = record.data_need;
-  byStatus[need.status] = (byStatus[need.status] || 0) + 1;
-  byArea[need.area] = (byArea[need.area] || 0) + 1;
-}
+writeFileSync(DESIGNS_JS, renderDesigns(
+  publishableDesigns(designs, seed, { records })
+), "utf8");
 
 console.log("");
 console.log("Status: " + (Object.entries(byStatus)

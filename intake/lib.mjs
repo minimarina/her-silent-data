@@ -114,3 +114,56 @@ export function ledgerNote(ledger, doi, outcome, title, filterVersion) {
 
   ledger.entries[key] = entry;
 }
+
+/* What the app is allowed to load.
+
+   designs.json is an archive: it keeps every design ever generated, so a
+   record that comes back for review does not have to be paid for twice.
+   research-designs.js is not an archive — it is published, and it should
+   carry designs for records that exist. A design whose record was
+   dismissed is dead weight on the public site, and dismissals include
+   papers rejected as out of scope, whose designs have no business being
+   served from a register of gaps in women's health. */
+export function publishableDesigns(designs, seed, candidates) {
+  const live = new Set();
+
+  for (const problem of seed.problems) {
+    for (const need of problem.data_needs || []) { live.add(need.id); }
+  }
+  /* Records waiting for a decision are included, so that approving one
+     and merging it does not need another run to render its design. */
+  for (const record of (candidates && candidates.records) || []) {
+    live.add(record.data_need.id);
+  }
+
+  const kept = {};
+  for (const id of Object.keys(designs)) {
+    if (live.has(id)) { kept[id] = designs[id]; }
+  }
+  return kept;
+}
+
+/* research-designs.js is a script, not a module, so the app can load it
+   from file:// with no fetch — the same shape as data.js. Built from an
+   array of lines: a heredoc and a \n escape do not survive each other,
+   and this file has been broken that way twice. */
+export function renderDesigns(designs) {
+  const header = [
+    "/* AI-generated study designs. NOT part of the register.",
+    " *",
+    " * Written by intake/run.mjs, one entry per data need id. A design is",
+    " * an answer, not a record: it is never merged into data.js, and the",
+    " * app works fully with this file absent (SPEC 11).",
+    " *",
+    " * Only designs whose record is live are published here. The full",
+    " * archive, including designs for records that were dismissed, stays",
+    " * in intake/designs.json.",
+    " *",
+    " * Every entry is model output and is labelled unverified on screen.",
+    " */",
+    ""
+  ];
+
+  return header.join("\n") + "\n" +
+    "const RESEARCH_DESIGNS = " + JSON.stringify(designs, null, 2) + ";\n";
+}
