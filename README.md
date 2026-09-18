@@ -3,7 +3,7 @@
 A platform for researchers who want to help close the data gap on women,
 but don't know which data to collect first.
 
-For each problem, it answers four questions:
+For each problem, it answers five questions:
 
 1. **What problem do women face?**
 2. **What data is needed to solve it?**
@@ -45,11 +45,23 @@ validator rejects a guidance block with no source, so the rule is
 enforced in code rather than promised here.
 
 **What the platform generates, it labels and keeps out of the register.**
-Pressing *Generate research design* reveals a possible study design —
+Pressing *Show research design* reveals a possible study design —
 who to recruit, what to measure, the breakdowns, the instrument — marked
 *AI-generated study design — unverified* with the date. It is an answer,
 not a finding: it lives in `research-designs.js`, never in `data.js`, and
 deleting that file leaves the app fully working.
+
+It says *Show* and not *Generate* because the design was generated during
+the intake run, not when you click. The app is static and holds no API key
+(`SPEC.md` §13), so a button promising generation would be the one place
+the product overstated itself.
+
+**A design can be carried out of the app.** *Copy this design* puts it on
+the clipboard as plain text, together with the data need, the gap claim,
+its source and date, and what the check found. The provenance travels with
+it on purpose: a design pasted somewhere without the claim it answers is
+orphaned model output, which is the thing this whole project exists not to
+produce.
 
 **Every record carries a check, and states its limit.** A gap claim is
 dated, and a live web search records whether the data has been collected
@@ -94,9 +106,10 @@ All work in this repository was done during the Hackathon Period
 
 Built to the rules in `SPEC.md` §8.2: every status carries a colour, a
 shape and a word, so it survives greyscale; the whole flow is keyboard
-reachable with a visible focus ring; body text is 16px at 4.5:1 contrast
-or better; no horizontal scroll at 360px; `prefers-reduced-motion` is
-honoured.
+reachable with a visible focus ring; body text is 16px, captions and
+field hints 14px, and every one of them was measured at 4.5:1 contrast or
+better against its own background; no horizontal scroll at 360px;
+`prefers-reduced-motion` is honoured.
 
 ## How records arrive
 

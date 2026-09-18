@@ -455,7 +455,10 @@ a:hover { text-decoration: none; }
   font-size: 0.875rem;
 }
 
-a.instrument {
+/* Both forms: a linked instrument and a named one. The model answers this
+   field with a name far more often than with a URL, and the two must not
+   render at different sizes. */
+.instrument {
   font-size: 0.875rem;
 }
 
@@ -1090,6 +1093,73 @@ a.instrument {
 }
 
 .legacy-origin { margin: var(--space-section) 0 var(--space-card); }
+
+/* ---------- copy the design out ---------- */
+
+/* The platform ends where study design begins, so the last thing on the
+   card is the way to carry it there. Secondary to Show research design:
+   an outline button, because it is the second action and not the first. */
+.design-copy {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 12px;
+  margin-top: var(--space-card);
+  padding-top: var(--space-card);
+  border-top: 1px solid var(--border);
+}
+
+.copy-button {
+  padding: 7px 13px;
+  background: var(--surface);
+  border: 1px solid var(--teal-accent);
+  border-radius: 4px;
+  color: var(--teal-accent);
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 150ms ease, color 150ms ease;
+}
+
+.copy-button:hover {
+  background: var(--teal-accent);
+  color: var(--surface);
+}
+
+/* The word carries the result, not the colour (§8.2). */
+.copy-status {
+  font-size: 0.875rem;
+  color: var(--teal-accent);
+}
+
+/* Deliberately not the clay of `missing`: those three colours mean the
+   status of DATA everywhere else and must keep meaning only that (§6).
+   The sentence carries the failure, and it carries an instruction. */
+.copy-status.copy-failed {
+  color: var(--muted);
+  font-style: italic;
+}
+
+/* ---------- the rest of a long check ---------- */
+
+/* The verdict is visible and the working is one keystroke away. A text
+   button, so it reads as "more of this paragraph" rather than as an
+   action of its own. */
+.check-toggle {
+  display: block;
+  margin-top: 6px;
+  padding: 2px 0;
+  background: none;
+  border: 0;
+  color: var(--teal-accent);
+  font: inherit;
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.check-toggle:hover { color: var(--navy-deep); }
 
 /* ---------- areas on the home screen ---------- */
 

@@ -51,7 +51,7 @@ field and is short on time.
    **collected / partial / missing**.
 4. She opens a missing item and sees **what the source said, when it said
    it, and when the platform last checked whether the data exists now**.
-5. She presses **Generate research design** and watches a possible study
+5. She presses **Show research design** and watches a possible study
    design appear — which women, what to find out from them, in which
    breakdowns, in what form — labelled AI-generated and unverified.
 
@@ -110,7 +110,7 @@ says so rather than leaving a blank.
 **ResearchDesign** — *not part of a record.* Generated per data need,
 kept in `research-designs.js`, loaded by its own `<script>` tag, and
 never merged into `data.js`. The app works fully with the file absent.
-Revealed only when a researcher presses **Generate research design**, and
+Revealed only when a researcher presses **Show research design**, and
 labelled *AI-generated study design — unverified* with its date.
 
 This entity was once `CollectionRequest` and lived inside the record.
@@ -128,8 +128,13 @@ never be mistaken for something an authority said.
 - `form` (e.g. 10-question online questionnaire, 3-month daily log) —
   absorbs delivery as well as format. "How it is asked" and "what shape it
   comes back in" are one answer, and splitting them broke §8.3.
-- `instrument_source` (optional URL) — where `form` names a published
-  instrument, the link to it
+- `instrument_source` (optional) — where `form` names a published
+  instrument, the instrument. A URL where the model returns one; far more
+  often it returns the instrument's **name** ("Lake Louise AMS Score",
+  "DN4", "ICIQ-UI SF"). Both are shown — a name is printed, a URL is
+  linked. Gating the field on "is this a URL" silently threw the answer
+  away on seven of eleven designs, which is the one place the
+  instruments-over-invented-forms rule in §5a is visible to a reader.
 
 **Why `stratifiers` is its own field.** The gender data gap is not only
 missing studies, it is missing *breakdowns* — data collected without the
@@ -208,8 +213,10 @@ than inventing a questionnaire.
 **Screen 1 — Home: body map, then the problem list**
 
 The screen opens with the gap as a picture and states the totals, then
-gives the same five problems as cards. One screen, not two: the map is a
-second way into the list, never a replacement for it.
+gives the same problems as cards, grouped by area. One screen, not two:
+the map is a second way into the list, never a replacement for it. The
+count is whatever the seed holds — eleven at the time of writing — and
+every figure on the screen is computed from it, never written here.
 
 - A hero line, and a counts strip over the whole seed: how many data
   needs exist, and how many are missing, partial and collected.
@@ -238,12 +245,33 @@ Then, unchanged:
   data that does exist lives, and what its coverage limit is.
 - Missing/partial items are visually distinct and clickable.
 
-**Screen 3 — Collection request card** (panel or separate view)
+**Screen 3 — The data need** (panel or separate view)
 - Which women, what to find out from them, in which breakdowns, in what
-  form (question 4), with the instrument linked where one exists.
+  form (question 4), with the instrument named or linked where one exists.
 - Why this data matters.
 - The gap evidence and, for partial needs, the dataset pointer.
 - This is the climax of the demo; it gets the most visual care.
+
+**The check is summarised, not dumped.** The verify step writes 150 words
+and more. The first sentences carry the verdict and the rest sits behind
+*Show the full check*, a disclosure with `aria-expanded`. This is not a
+breach of §8.1: that rule is about never hiding what the platform knows,
+and nothing here is removed or truncated on the record — it is one
+keystroke away, and the alternative is a paragraph nobody finishes on the
+one screen that has to land.
+
+**The design can be carried out of the app.** *Copy this design* puts the
+whole thing on the clipboard as plain text: the design, the data need, the
+gap claim, its source and date, what the check found, and the
+AI-generated-and-unverified label. Plain text because the destination is a
+protocol document or an email.
+
+The provenance travels with it deliberately. A design pasted without the
+claim it answers is orphaned model output, which is the exact thing §5a
+exists to prevent — the rule cannot stop at the edge of the screen. This
+is also the cheapest thing the register can do for stage 3 of the loop
+(§6, Screen 4): the platform ends where study design begins, and until now
+it ended by asking the reader to retype it.
 
 **Screen 4 — About**
 
@@ -256,11 +284,12 @@ route to home are what keep that true. The screen reads nothing from
 - Block 1, the main content: how the whole system works. Five stages, of
   which this platform is stage 2, drawn as a loop — the arrow from stage
   5 back to stage 2 is the point of the diagram, not decoration.
-- Each stage carries **Built** or **Planned**. Stage 1 is partly built.
-- Stage 1 expands, in place, to the five-step intake pipeline (discover,
-  filter, extract, validate, review) and the rule that pipeline exists to
-  protect: AI finds, extracts and matches, and never makes the gap claim.
-  A disclosure with `aria-expanded`, not a fifth screen.
+- Each stage carries **Built** or **Planned**, from `BUILD_STATUS`.
+- Stage 1 expands, in place, to the seven-step intake pipeline (discover,
+  filter, extract, verify, design, validate, review) and the rule that
+  pipeline exists to protect: AI finds, extracts and checks, and never
+  makes the gap claim. A disclosure with `aria-expanded`, not a fifth
+  screen. Criterion 29 counts the same seven.
 - Block 2: who built it and how — author, stack and why no framework
   (§13), the two-tier provenance method (§5a), the §14 disclosures and
   the third-party asset credit (§7.6), and the repository link.
@@ -488,10 +517,19 @@ from the verify step means the candidate is not a gap and is not merged.
 The capability stays visible on `partial` records, which name the dataset
 that does exist and say what it does not cover.
 
-**There is no "every problem has a missing need" rule.** Three records
-are `partial`: the verify step searched, found overlapping data, and said
+**There is no "every problem has a missing need" rule.** Six records are
+`partial`: the verify step searched, found overlapping data, and said
 what it does not cover. A rule requiring every problem to show a gap
 would mean overriding a check that did its job.
+
+The sixth arrived by re-check rather than by intake. The androgen record
+was written `missing` on 18 Sep from a search that never ran — the model
+reported its tools unavailable and answered from prior knowledge, and
+nothing downstream could tell, because `search_outcome` is set by the
+verify step and a merged record no longer carries the candidate that
+would have failed. Re-run on the same day, the check completed and found
+the gap partly filled. The record now carries `search_outcome:
+"reviewed"`; the other ten predate the field and do not.
 
 **Sources from the intake run.** Each is a systematic or narrative review
 published within the last twelve months, found by searching for the
@@ -501,7 +539,7 @@ brackets are new to the map and have hand-measured coordinates.
 | Record | Source | Status after the check |
 |---|---|---|
 | High-altitude cardiometabolic [Cardiovascular] | Int J Mol Sci review | partial |
-| Androgens and drug metabolism [Pharmacology] | Expert Opin Drug Metab Toxicol | missing |
+| Androgens and drug metabolism [Pharmacology] | Expert Opin Drug Metab Toxicol | partial (re-checked 18 Sep) |
 | Epilepsy and infertility treatment [Maternal] | Epilepsy & Behavior, systematic review | missing |
 | Urinary incontinence decision aids [Pelvic health] | Urogynecology, systematic review | partial |
 | Brucellosis in pregnancy [Maternal] | Rev Inst Med Trop São Paulo | missing |
@@ -530,7 +568,7 @@ explicitly not for this hackathon. It was built, in a different and
 better form than the one planned below, and the old text is kept in git
 history rather than here.
 
-**What it does:** on a data need, **Generate research design** reveals a
+**What it does:** on a data need, **Show research design** reveals a
 possible study design — which women to recruit and how many, what to
 measure, the breakdowns the analysis needs, over what period, and a named
 validated instrument where one exists. It is labelled *AI-generated study
@@ -543,6 +581,15 @@ in `research-designs.js`. The button is real and the output is real model
 output; it was produced at intake time rather than at click time. This is
 the only option that keeps §13, and it is stated here rather than
 implied.
+
+**The button says *Show*, not *Generate*.** It said Generate until 18 Sep,
+which described the pipeline rather than the click: by the time anyone
+presses it the design has been in `research-designs.js` for days. The
+paragraph above was always here, so the product was never lying in its
+documentation — but the label was the one place it overstated itself on
+screen, and a judge who read §13 and then clicked Generate would have
+caught it. Changed everywhere at once: `app.js`, this file, the README and
+the demo script.
 
 **Why it is not part of a record.** A design is an answer, not a
 finding. Keeping generation out of storage is what makes it impossible
@@ -632,6 +679,26 @@ it: 24–25 belong to §11 and are not renumbered.
     pre-existing code, AI-assisted with Claude Code — is on the screen.
 33. Built and Planned are identifiable in greyscale, and use none of the
     three data-status colours.
+
+Carrying the design out, and the summarised check (§6, Screen 3). Appended
+after 33 for the same reason as every block before it: nothing is
+renumbered.
+
+34. The design block's button reads **Show research design**, and no
+    screen or document calls it *Generate*.
+35. *Copy this design* puts the design on the clipboard together with the
+    data need, the gap claim, its source and `claimed_date`, what the
+    check found, and the AI-generated-and-unverified label. A design never
+    leaves the app without the claim it answers.
+36. The copy result is announced in words through a live region, not by
+    colour alone, and a failure says what to do instead. It works from
+    `file://`, where `navigator.clipboard` may be unavailable.
+37. Where the check is long, the verdict is visible and the rest is behind
+    *Show the full check*, with `aria-expanded` matching the panel at
+    every point and collapsed on load. Where it is short, no disclosure
+    appears at all.
+38. An instrument named but not linked is shown as text, at the same size
+    as a linked one.
 
 ## 13. Tech
 

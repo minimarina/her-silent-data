@@ -98,12 +98,25 @@
     return hasText(value) && /^https?:\/\//i.test(value);
   }
 
+  /* A hostname is the wrong label for a DOI. Every record in the seed
+     cites doi.org, so eleven cards all read "Source: doi.org", which tells
+     a researcher nothing and makes the citations look duplicated. A DOI is
+     the identifier she actually reads, so it is shown instead of the host
+     it resolves through; everything else keeps its hostname. */
+  var DOI_HOSTS = /^(dx\.)?doi\.org$/i;
+
   function sourceLabel(source) {
     if (!hasText(source)) { return UNKNOWN; }
     if (source === "demo") { return "Generated demo data"; }
     if (isUrl(source)) {
       try {
-        return new URL(source).hostname.replace(/^www\./, "");
+        var url = new URL(source);
+        var host = url.hostname.replace(/^www\./, "");
+
+        if (DOI_HOSTS.test(host)) {
+          return "doi " + decodeURIComponent(url.pathname).replace(/^\//, "");
+        }
+        return host;
       } catch (e) {
         return source;
       }
@@ -317,17 +330,80 @@
       return box;
     }
 
-    box.appendChild(make(
-      "span",
-      null,
-      hasText(check.findings) ? check.findings : "Nothing found."
-    ));
+    /* The verify step writes 150 words and more, and this is the climax of
+       the demo (§6, screen 3), not a place to put an essay. The first
+       sentences carry the verdict; the rest is the working, and a reader
+       who wants to challenge the claim can open it. Nothing is removed —
+       §8.1 is about not hiding what the platform knows, and a disclosure
+       hides nothing a reader cannot open in one keystroke. */
+    var findings = hasText(check.findings) ? check.findings : "Nothing found.";
+    var split = splitFindings(findings);
+
+    box.appendChild(make("span", null, split[0]));
+
+    if (split[1]) {
+      var moreId = "check-more-" + need.id;
+
+      var ellipsis = make("span", "check-ellipsis", "…");
+      box.appendChild(ellipsis);
+
+      var more = make("span", "check-more", " " + split[1]);
+      more.id = moreId;
+      more.hidden = true;
+      box.appendChild(more);
+
+      var toggle = make("button", "check-toggle", "Show the full check");
+      toggle.type = "button";
+      toggle.setAttribute("aria-expanded", "false");
+      toggle.setAttribute("aria-controls", moreId);
+
+      toggle.addEventListener("click", function () {
+        var open = toggle.getAttribute("aria-expanded") === "true";
+
+        toggle.setAttribute("aria-expanded", open ? "false" : "true");
+        more.hidden = open;
+        ellipsis.hidden = !open;
+        toggle.textContent = open ? "Show the full check" : "Show less";
+      });
+      box.appendChild(toggle);
+    }
 
     box.appendChild(make("span", "region",
       "Searched " + check.checked_at +
       (hasText(check.method) ? " — " + check.method : "")));
 
     return box;
+  }
+
+  /* Cut at the end of a sentence so the visible half is never a fragment,
+     and never cut at all to save a line or two — a disclosure holding one
+     sentence costs the reader more than it saves. */
+  var FINDINGS_LIMIT = 240;
+  var FINDINGS_MIN_REST = 80;
+
+  function splitFindings(text) {
+    if (text.length <= FINDINGS_LIMIT + FINDINGS_MIN_REST) { return [text, ""]; }
+
+    var cut = -1;
+    var boundary = /[.!?]["'’”)]?\s/g;
+    var match;
+
+    while ((match = boundary.exec(text)) !== null) {
+      if (match.index >= FINDINGS_LIMIT) { break; }
+      cut = match.index + match[0].length - 1;
+    }
+
+    /* No sentence ended in range — one very long opening sentence. Fall
+       back to a word boundary rather than splitting mid-word. */
+    if (cut === -1) {
+      cut = text.lastIndexOf(" ", FINDINGS_LIMIT);
+      if (cut === -1) { return [text, ""]; }
+    }
+
+    var rest = text.slice(cut).trim();
+    if (rest.length < FINDINGS_MIN_REST) { return [text, ""]; }
+
+    return [text.slice(0, cut).trim(), rest];
   }
 
   /* The limit of the check, stated rather than implied. A search of
@@ -395,14 +471,20 @@
     return (typeof RESEARCH_DESIGNS === "object" && RESEARCH_DESIGNS) || {};
   }
 
-  function designNode(need) {
+  function designNode(problem, need) {
     var design = designs()[need.id];
     if (!design) { return null; }
 
     var wrap = make("div", "design");
     var panelId = "design-panel-" + need.id;
 
-    var button = make("button", "design-toggle", "Generate research design");
+    /* "Show", not "Generate". The app is static and holds no API key
+       (§13), so every design was generated during the intake run and is
+       already in research-designs.js by the time anyone clicks. The
+       button used to say Generate, which described the pipeline rather
+       than the click, and was the one place the product overstated
+       itself. §11 says so in prose; the label now says it too. */
+    var button = make("button", "design-toggle", "Show research design");
     button.type = "button";
     button.setAttribute("aria-expanded", "false");
     button.setAttribute("aria-controls", panelId);
@@ -440,6 +522,14 @@
       "A starting point for a researcher, not a protocol and not a " +
       "finding. Nobody has reviewed it. You decide what to collect."));
 
+    /* The platform ends where study design begins (§6, stage 3), and until
+       now it ended by asking the reader to retype it. This hands the whole
+       thing over — design, the claim it answers, and the citations — as
+       text she can paste into a protocol, a grant application or an email.
+       It is the cheapest thing the register can do to make the next stage
+       of the loop actually happen. */
+    panel.appendChild(copyRow(problem, need, design));
+
     button.addEventListener("click", function () {
       var open = button.getAttribute("aria-expanded") === "true";
       button.setAttribute("aria-expanded", open ? "false" : "true");
@@ -449,6 +539,129 @@
     wrap.appendChild(button);
     wrap.appendChild(panel);
     return wrap;
+  }
+
+  /* Plain text, because the destination is a protocol document or an email
+     and neither wants markup. The provenance travels with the design: a
+     design pasted without the claim it answers is exactly the orphaned
+     model output this whole project exists not to produce. */
+  function designAsText(problem, need, design) {
+    var lines = [];
+    var add = function (label, value) {
+      if (hasText(value)) { lines.push(label + ": " + value); }
+    };
+    var addList = function (label, items) {
+      if (!items || !items.length) { return; }
+      lines.push(label + ":");
+      items.forEach(function (item) { lines.push("  - " + item); });
+    };
+
+    lines.push("RESEARCH DESIGN — AI-GENERATED, UNVERIFIED");
+    if (hasText(design.generated_at)) {
+      lines.push("Generated " + design.generated_at +
+        (hasText(design.model) ? " by " + design.model : ""));
+    }
+    lines.push("");
+    add("Problem", problem.title);
+    add("Data need", need.description);
+    add("Status", STATUS_WORD[need.status]);
+    add("Why it matters", need.why_it_matters);
+    lines.push("");
+    add("Which women", design.target_women);
+    addList("What to find out from them", design.variables);
+    addList("Broken down by", design.stratifiers);
+    add("In what form", design.form);
+    add("Instrument", design.instrument_source);
+    lines.push("");
+
+    if (need.gap_evidence && hasText(need.gap_evidence.note)) {
+      add("Who says it is missing", need.gap_evidence.note);
+      add("Source", need.gap_evidence.source);
+      add("Gap claimed", need.gap_evidence.claimed_date);
+    }
+    if (need.verification && hasText(need.verification.checked_at)) {
+      add("Checked for existing data", need.verification.checked_at);
+      add("What the check found", need.verification.findings);
+    }
+    if (need.dataset_source && hasText(need.dataset_source.note)) {
+      add("Where existing data is", need.dataset_source.note);
+      add("Dataset source", need.dataset_source.source);
+    }
+
+    lines.push("");
+    lines.push("This design is model output and has not been reviewed. " +
+      "The gap claim above is quoted from its cited source. A search of " +
+      "published literature is not proof that data does not exist.");
+    lines.push("From Women's Data Gap — " + SITE_URL);
+
+    return lines.join("\n");
+  }
+
+  var SITE_URL = "https://minimarina.github.io/women-data-gap-map/";
+
+  /* navigator.clipboard is unavailable in some file:// contexts, and the
+     app is built to open from file:// (§13). The textarea fallback is the
+     old execCommand path: deprecated, still universally supported, and the
+     only thing that works where the modern API is blocked.
+
+     The fallback runs when writeText REJECTS as well as when the API is
+     missing. Those are different failures — a blocked permission, a
+     document without transient activation, a non-secure context — and an
+     earlier version only handled the missing case, so every one of them
+     reported "could not copy" without ever trying the path that works. */
+  function copyText(text) {
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      return navigator.clipboard.writeText(text).catch(function () {
+        return legacyCopy(text);
+      });
+    }
+    return legacyCopy(text);
+  }
+
+  function legacyCopy(text) {
+    return new Promise(function (resolve, reject) {
+      var area = document.createElement("textarea");
+      area.value = text;
+      area.setAttribute("readonly", "");
+      area.style.position = "fixed";
+      area.style.top = "-1000px";
+      document.body.appendChild(area);
+      area.select();
+
+      var ok = false;
+      try { ok = document.execCommand("copy"); } catch (e) { ok = false; }
+      document.body.removeChild(area);
+
+      if (ok) { resolve(); } else { reject(new Error("copy unavailable")); }
+    });
+  }
+
+  function copyRow(problem, need, design) {
+    var row = make("div", "design-copy");
+
+    var button = make("button", "copy-button", "Copy this design");
+    button.type = "button";
+
+    /* The result has to be announced, not only coloured: a copy that
+       silently succeeded and a copy that silently failed look identical
+       (§8.2 — never colour alone, and never nothing at all). */
+    var status = make("span", "copy-status");
+    status.setAttribute("role", "status");
+    status.setAttribute("aria-live", "polite");
+
+    button.addEventListener("click", function () {
+      copyText(designAsText(problem, need, design)).then(function () {
+        status.textContent = "Copied — design, claim and citations.";
+        status.classList.remove("copy-failed");
+      }, function () {
+        status.textContent = "Could not copy. Select the text above instead.";
+        status.classList.add("copy-failed");
+      });
+    });
+
+    row.appendChild(button);
+    row.appendChild(status);
+    return row;
   }
 
   /* §8.3 — numbers are always framed in words, and always computed from
@@ -642,11 +855,23 @@
 
   /* "What exists" for a need that has some data behind it. The label
      stays outside the value so an unstated note is marked as unknown
-     without the label being swallowed by it. */
+     without the label being swallowed by it.
+
+     Returns null when the field is empty, and the caller drops the line.
+     The intake run writes existing_data_note as "" on every record, so
+     rendering it unconditionally put "What exists: Not established"
+     directly above "Where the data is:" and a full paragraph describing
+     exactly what exists — the screen contradicting itself on every
+     partial record. §8.1 asks that the app never leave a silent blank,
+     not that it say "not established" about something the next line
+     answers: datasetNode() always renders and says so itself when there
+     is no dataset either. Nothing goes unstated by dropping this. */
   function existingDataLine(need, tag) {
+    if (!hasText(need.existing_data_note)) { return null; }
+
     var line = make(tag || "p", "need-note");
     line.appendChild(make("span", null, "What exists: "));
-    line.appendChild(makeValue("span", null, need.existing_data_note));
+    line.appendChild(make("span", null, need.existing_data_note));
     return line;
   }
 
@@ -659,9 +884,10 @@
     item.appendChild(makeValue("p", "need-description", need.description));
     item.appendChild(makeValue("p", "need-why", need.why_it_matters));
 
-    /* Always shown for a collected need: if the seed does not say what
-       exists, the screen says that rather than staying silent (§8.1). */
-    item.appendChild(existingDataLine(need));
+    /* Shown only where the seed says something. Where it does not,
+       datasetNode() below carries the answer and says so itself (§8.1). */
+    var exists = existingDataLine(need);
+    if (exists) { item.appendChild(exists); }
     item.appendChild(datasetNode(need));
     item.appendChild(
       make("p", "need-note", "No new collection needed for this item.")
@@ -684,10 +910,11 @@
     button.appendChild(makeValue("span", "need-description", need.description));
     button.appendChild(makeValue("span", "need-why", need.why_it_matters));
 
-    /* A partial need has some data, so what exists is always stated.
-       A missing need has none, and there is nothing to describe. */
+    /* A partial need has some data, so where it is gets stated. A missing
+       need has none, and there is nothing to describe. */
     if (need.status === "partial") {
-      button.appendChild(existingDataLine(need, "span"));
+      var exists = existingDataLine(need, "span");
+      if (exists) { button.appendChild(exists); }
       button.appendChild(datasetNode(need, "span"));
     }
     /* The status badge says "Missing". This says who established that,
@@ -773,7 +1000,7 @@
       card.appendChild(fields);
     }
 
-    var design = designNode(need);
+    var design = designNode(problem, need);
     if (design) { card.appendChild(design); }
 
     var requestOrigin = el("request-origin");
@@ -817,18 +1044,29 @@
   /* Where the form names a published instrument, the instrument is
      linked. Citing a validated tool is a stronger answer than inventing
      a questionnaire, and the link is how a researcher acts on it. */
+  /* The model answers this field with the instrument's NAME far more often
+     than with a URL — "Lake Louise AMS Score", "DN4", "ICIQ-UI SF". Gating
+     the whole line on isUrl() therefore threw away the answer on seven of
+     the eleven designs, which is the one place §5a's "instruments over
+     invented forms" rule is visible to a reader. A name is linked where it
+     is a URL and printed where it is not; either way it is shown. */
   function field(label, value, instrumentSource) {
     var wrapper = make("div", "request-field");
     wrapper.appendChild(make("dt", null, label));
 
     var dd = makeValue("dd", null, value);
-    if (isUrl(instrumentSource)) {
-      var link = make("a", "instrument", sourceLabel(instrumentSource));
-      link.href = instrumentSource;
-      link.target = "_blank";
-      link.rel = "noopener noreferrer";
+    if (hasText(instrumentSource)) {
       dd.appendChild(make("span", "instrument-label", "Instrument: "));
-      dd.appendChild(link);
+
+      if (isUrl(instrumentSource)) {
+        var link = make("a", "instrument", sourceLabel(instrumentSource));
+        link.href = instrumentSource;
+        link.target = "_blank";
+        link.rel = "noopener noreferrer";
+        dd.appendChild(link);
+      } else {
+        dd.appendChild(make("span", "instrument", instrumentSource));
+      }
     }
     wrapper.appendChild(dd);
     return wrapper;
@@ -950,10 +1188,15 @@
     var bar = make("div", "summary-bar");
     bar.setAttribute("aria-hidden", "true");
 
+    /* An empty seed divides by zero and paints every segment "NaN%". The
+       seed is never empty today, but the banner and the counts strip are
+       the two things written to survive one. */
     ["missing", "partial", "collected"].forEach(function (status) {
       var seg = make("span", "summary-seg");
       seg.setAttribute("data-status", status);
-      seg.style.width = (sum[status] / sum.needs * 100) + "%";
+      seg.style.width = sum.needs
+        ? (sum[status] / sum.needs * 100) + "%"
+        : "0%";
       bar.appendChild(seg);
     });
     slot.appendChild(bar);
@@ -987,11 +1230,34 @@
   var MAP_POINTS = {
     "Maternal health":       { kind: "site",     x: 408, y: 248, side: "left",  label_y: 234 },
     "Cardiovascular health": { kind: "site",     x: 447, y: 188, side: "right", label_y: 170 },
-    "Pelvic health":         { kind: "site",     x: 405, y: 312, side: "right", label_y: 300 },
-    "Chronic pain":          { kind: "site",     x: 455, y: 340, side: "right", label_y: 390 },
+    "Pelvic health":         { kind: "site",     x: 400, y: 306, side: "right", label_y: 265 },
+    "Chronic pain":          { kind: "site",     x: 455, y: 340, side: "right", label_y: 340 },
     "Pharmacology":          { kind: "systemic", x: 334, y: 555, side: "left",  label_y: 545 },
-    "Reproductive health":   { kind: "site",     x: 480, y: 300, side: "right", label_y: 460 }
+    "Reproductive health":   { kind: "site",     x: 436, y: 312, side: "left",  label_y: 325 }
   };
+
+  /* Re-measured 18 Sep. Two markers had been placed by eye and failed the
+     rule above. Reproductive health sat at x 480, which at hip height is
+     the empty gap between the torso and the arm — a site marker floating
+     off the body, which is the false claim §7.6 forbids. Pelvic health sat
+     at 405, close enough to a notch in the outline that two of its eight
+     edge points fell outside. Both were moved to points whose centre and
+     all eight edges hit-test inside the fill, and no two pins are now
+     closer than their halos.
+
+     Hit-testing is only valid at the WIDE viewBox: getCTM() folds in the
+     viewBox transform, so the same coordinates measured under MAP_NARROW
+     come back wrong. Measure at 880×672 or not at all.
+
+     Moving a pin moves its leader line, and a leader is as capable of
+     running straight through a neighbouring pin as a pin is of sitting
+     off the body. The first attempt at this fix did exactly that, twice.
+     So label_y is measured too: every leader now clears every other pin's
+     centre by at least 13px, against a pin radius of 8. Reproductive
+     health sits on the left column rather than the right because that is
+     what clears Chronic pain — its pin is on the centreline, so neither
+     side is a claim about the body. Re-check both rules together after
+     any change here. */
 
   /* Where a leader line turns before running out to its label. Computed,
      not stored: only the side varies. */

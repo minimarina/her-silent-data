@@ -1609,7 +1609,8 @@
       "first_seen": "2026-09-18",
       "last_seen": "2026-09-18",
       "title": "GLP-1 receptor agonist treatment in women with polycystic ovary syndrome-a systematic review and meta-analysis.",
-      "outcome": "approved"
+      "outcome": "dismissed",
+      "reason": "dataset_source cites the gap paper itself; approved before that rule existed and never merged"
     },
     "10.1016/j.ijgc.2026.104850": {
       "first_seen": "2026-09-18",

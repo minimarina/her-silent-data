@@ -55,6 +55,22 @@ collected the very data it called missing, which the search finds because
 a paper's introduction names a gap in order to justify the study that
 closes it.
 
+**A second correction, found 18 Sep by reconciling the ledger against the
+seed.** One paper — GLP-1 receptor agonists in PCOS,
+`10.1093/ejendo/lvag033` — was marked `approved` in the ledger but never
+appeared in `data.js`. Its block is in `approved-blocks.js`, and running
+it through the current validator says why it never landed: `partial`, with
+`dataset_source` pointing back at the same paper as the gap claim. It was
+approved before that rule existed and the merge quietly stopped there.
+
+The ledger has been corrected to `dismissed`, with that reason. It matters
+because `approved` is permanent — the validator refuses a DOI already
+approved — so a wrong `approved` would have silently barred the paper
+forever while claiming a record existed that did not. The ledger and the
+seed now reconcile: eleven approvals, eleven records, nothing on one side
+missing from the other. That reconciliation is worth re-running after any
+merge.
+
 **One correction to the record.** A fourth dismissal was made in error —
 index-based commands renumbered the list as records were removed, so the
 wrong record was dismissed. It was recovered by reprocessing its DOI, and

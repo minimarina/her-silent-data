@@ -50,9 +50,11 @@
          being built in JS. Silhouette: OpenClipart #71126, public domain
          (CC0) — recoloured, otherwise unaltered. See README.
 
-         The pin coordinates in data.js are MEASURED against this exact
-         transform. If the transform moves, re-measure them: below y=310 the
-         centreline is the empty gap between the legs, not the body. -->
+         The pin coordinates in MAP_POINTS (app.js) are MEASURED against this
+         exact transform, at the WIDE viewBox. If the transform moves,
+         re-measure them: below y=310 the centreline is the empty gap between
+         the legs, not the body, and at hip height there is a gap between the
+         torso and the arm that a marker placed by eye lands in. -->
     <div id="body-map" class="body-map">
       <svg class="map-svg" viewBox="0 0 880 672" role="group"
            aria-label="Where the gaps are, by area of the body">

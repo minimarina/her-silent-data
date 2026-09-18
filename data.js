@@ -117,7 +117,7 @@ const DATA = {
             "Clinical pharmacology data on how testosterone and androgen-rich conditions affect drug-metabolizing enzymes and transporters in people assigned female at birth",
           why_it_matters:
             "Without this data, clinicians lack evidence to guide drug dosing and safety for cisgender women and transgender people exposed to exogenous testosterone or androgen-rich conditions.",
-          status: "missing",
+          status: "partial",
           existing_data_note: "",
           gap_evidence: {
             source:
@@ -127,19 +127,30 @@ const DATA = {
             region: null,
             claimed_date: "2026-09-02"
           },
-          dataset_source: null,
+          dataset_source: {
+            note:
+              "Prospective pharmacokinetic study measuring CYP3A and P-glycoprotein activity (via midazolam and digoxin probes) in transgender adults receiving gender-affirming testosterone therapy; does not cover other CYP/UGT enzymes, other transporters, cisgender women, or endogenous androgen-rich conditions like PCOS.",
+            source:
+              "https://accpjournals.onlinelibrary.wiley.com/doi/10.1002/phar.70093"
+          },
           collection_guidance: {
             note:
               "Investigators should use well-designed probe-substrate studies when feasible, and use prescribed medications as clinical probes of relevant drug-metabolizing enzymes and transporters, in cisgender women and transgender people.",
             source:
               "https://doi.org/10.1080/17425255.2026.2726547"
           },
+          /* Re-verified 18 Sep. The first check on this record was written
+             from a search that never ran — the model reported its tools
+             unavailable and answered from prior knowledge, and the status
+             "missing" rested on it. The second check completed, and found
+             the gap partly filled. search_outcome records that it ran. */
           verification: {
             checked_at: "2026-09-18",
             method: "web search",
+            search_outcome: "reviewed",
             findings:
-              "Web search tools were unavailable for this query in this session (repeated tool-limit errors prevented any live search from completing), so no confirmed new dataset can be verified. Based on prior knowledge of the field, dedicated clinical pharmacology studies systematically probing how testosterone or androgen-rich states (e.g., PCOS, gender-affirming hormone therapy) alter CYP450 enzyme activity or drug transporter function specifically in people assigned female at birth remain sparse and fragmented; most existing work on gender-affirming hormone therapy pharmacology focuses on hormone levels themselves rather than their downstream effects on other drugs' metabolism. No comprehensive, well-designed probe-substrate dataset addressing this exact gap could be identified or confirmed.",
-            sources: ["https://pmc.ncbi.nlm.nih.gov/articles/PMC12863264/","https://www.cell.com/trends/pharmacological-sciences/abstract/S0165-6147(22)00056-6","https://accpjournals.onlinelibrary.wiley.com/doi/10.1002/phar.70093","https://doi.org/10.1080/17425255.2026.2726547","https://www.sciencedirect.com/science/article/abs/pii/S0165614722000566","https://pubmed.ncbi.nlm.nih.gov/35487786/","https://pubmed.ncbi.nlm.nih.gov/37439842/","https://ascpt.onlinelibrary.wiley.com/doi/10.1111/cts.70396","https://ascpt.onlinelibrary.wiley.com/doi/10.1002/cpt.2234","https://www.tandfonline.com/doi/full/10.1080/17425255.2025.2481891","https://www.biorxiv.org/content/10.1101/2020.01.24.918920.full.pdf","https://www.biorxiv.org/content/10.1101/2024.10.01.616176.full.pdf","https://clinicaltrials.gov/study/NCT06939608","https://www.medrxiv.org/content/10.1101/2021.03.13.21253531.full.pdf","https://pubmed.ncbi.nlm.nih.gov/41452771/","https://www.ncbi.nlm.nih.gov/pmc/articles/PMC11975601/","https://doi.org/10.1089/andro.2020.0002","https://clinicaltrials.gov/study/NCT04593680","https://myadlm.org/cln/articles/2020/september/laboratory-monitoring-in-transgender-people","https://pmc.ncbi.nlm.nih.gov/articles/PMC12438667/"]
+              "A new clinical pharmacokinetic study has since been published: Hunter et al. (Pharmacotherapy, 2026) directly measured CYP3A and P-glycoprotein activity in transgender adults on gender-affirming testosterone therapy using midazolam and digoxin probe substrates, finding no significant effect on these pathways. However, this covers only two specific enzyme/transporter systems in transgender adults on testosterone therapy, not the broader range of CYP/UGT enzymes and transporters, and does not address cisgender women or other androgen-rich conditions (e.g., PCOS) as noted in a related 2022 review calling for more transgender-focused pharmacokinetic data. The gap for androgen-rich endogenous conditions and other drug-metabolizing pathways remains largely unaddressed.",
+            sources: ["https://pmc.ncbi.nlm.nih.gov/articles/PMC12863264/","https://www.cell.com/trends/pharmacological-sciences/abstract/S0165-6147(22)00056-6","https://doi.org/10.1080/17425255.2026.2726547","https://accpjournals.onlinelibrary.wiley.com/doi/10.1002/phar.70093","https://pubmed.ncbi.nlm.nih.gov/41452771/","https://pmc.ncbi.nlm.nih.gov/articles/PMC9913858/","https://ascpt.onlinelibrary.wiley.com/doi/10.1111/cts.70396","https://www.sciencedirect.com/science/article/abs/pii/S0165614722000566","https://pubmed.ncbi.nlm.nih.gov/35487786/"]
           }
         }
       ]
@@ -202,8 +213,6 @@ const DATA = {
         "https://doi.org/10.1097/spv.0000000000001880",
       origin: "sourced",
       is_demo: false,
-      /* No MAP_POINTS entry for this area yet. Add one in
-         app.js, or this problem lists without a pin. */
       data_needs: [
         {
           id: "urinary-incontinence-decision-aids-care-continuum",
