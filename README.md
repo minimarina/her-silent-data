@@ -1,6 +1,6 @@
 # Her Silent Data
 
-**The gender data gap, turned into your next study.**
+**From a gap in women's data to a study design.**
 
 A platform for researchers who want to help close the data gap on women,
 but don't know which data to collect first. The name is the subject: data
