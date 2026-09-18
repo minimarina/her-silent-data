@@ -29,6 +29,26 @@ export function mappableAreas() {
 const has = (value) => typeof value === "string" && value.trim() !== "";
 const isUrl = (value) => has(value) && /^https?:/i.test(value.trim());
 
+/* Punctuation, case and markup differ between a quotation and the source
+   it came from, and none of those differences change what was said. */
+export function normalise(text) {
+  return String(text || "")
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, " ")
+    .trim();
+}
+
+/* Straight and curly quotes both, because the model uses either. A span
+   shorter than 20 characters is a phrase, not a quotation, and would
+   match almost any abstract by accident. */
+const QUOTE = /['"‘’“”]([^'"‘’“”]{20,}?)['"‘’“”]/g;
+
+export function quotedSpans(text) {
+  return [...String(text || "").matchAll(QUOTE)]
+    .map((match) => normalise(match[1]))
+    .filter((span) => span.length >= 20);
+}
+
 export function validateRecord(record, context) {
   const ctx = context || {};
   const areas = ctx.areas || new Set();
@@ -92,6 +112,36 @@ export function validateRecord(record, context) {
   }
   if (!isUrl(evidence && evidence.source)) {
     errors.push("gap_evidence.source is not a URL.");
+  }
+
+  /* --- the claim must carry the source's own words --- */
+
+  /* Checked against the abstract the record was extracted from, while it
+     is still on the candidate. Three of four records rejected by hand on
+     18 Sep would have failed here: two quoted nothing at all and stated
+     the extractor's own reading, and one quoted correctly but inverted
+     the meaning — "concordant findings" turned into a claim that
+     measurement varies. The middle case is the one a human misses,
+     because a quotation mark reads as provenance.
+
+     A record already merged into data.js carries no abstract, so the
+     rule applies where it can be enforced: before a human sees it. */
+  const abstract = record.paper && record.paper.abstract;
+  if (has(abstract) && evidence && has(evidence.note)) {
+    const spans = quotedSpans(evidence.note);
+    const source = normalise(abstract);
+
+    if (spans.length === 0) {
+      errors.push(
+        "gap_evidence.note quotes nothing. The claim must carry the " +
+        "source's own words in quotation marks, so a reader can check it."
+      );
+    } else if (!spans.some((span) => source.includes(span))) {
+      errors.push(
+        "gap_evidence.note quotes text that is not in the abstract. " +
+        "Quoted: " + JSON.stringify(spans[0].slice(0, 70))
+      );
+    }
   }
   if (!has(evidence && evidence.claimed_date)) {
     errors.push("gap_evidence.claimed_date is missing.");
@@ -209,6 +259,34 @@ function selfTest() {
     source: "https://example.org/guideline"
   };
   cases.push(["guidance that cites its source passes", sourced, true]);
+
+  /* The quotation rule. Only bites where the abstract is on the record,
+     which is exactly where it can be enforced: before a human sees it. */
+  const ABSTRACT =
+    "We searched four databases through March 2026. No studies reported " +
+    "outcomes beyond six weeks postpartum, and the certainty of evidence " +
+    "was low throughout.";
+
+  const quoted = base();
+  quoted.paper.abstract = ABSTRACT;
+  quoted.data_need.gap_evidence.note =
+    "The review states that 'no studies reported outcomes beyond six " +
+    "weeks postpartum', which is the gap this record carries forward.";
+  cases.push(["a note quoting the abstract passes", quoted, true]);
+
+  const unquoted = base();
+  unquoted.paper.abstract = ABSTRACT;
+  unquoted.data_need.gap_evidence.note =
+    "The review suggests that follow-up after birth is probably too " +
+    "short to detect the outcomes that matter to women over a year.";
+  cases.push(["a note that quotes nothing is rejected", unquoted, false]);
+
+  const misquoted = base();
+  misquoted.paper.abstract = ABSTRACT;
+  misquoted.data_need.gap_evidence.note =
+    "The review states that 'no studies measured symptoms at twelve " +
+    "months or later', which is the gap this record carries forward.";
+  cases.push(["a quotation not in the abstract is rejected", misquoted, false]);
 
   let failed = 0;
   for (const entry of cases) {

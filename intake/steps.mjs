@@ -178,10 +178,14 @@ const EXTRACT_SCHEMA = {
         gap_note: {
           type: "string",
           description:
-            "At least 80 characters. State what THIS source says is " +
-            "missing, closely following its own wording. This is the " +
-            "record's evidence, so it must be defensible against the " +
-            "abstract."
+            "At least 80 characters, and it MUST contain at least one " +
+            "span of 20 characters or more copied WORD FOR WORD from the " +
+            "abstract, inside single quotation marks. A validator checks " +
+            "the quoted text against the abstract and rejects the record " +
+            "if it is not there, so do not paraphrase inside the quotes. " +
+            "Quote the sentence that states the absence, and make sure it " +
+            "means what you say it means: a sentence reporting that " +
+            "methods agreed is not evidence that they vary."
         },
         region: {
           type: ["string", "null"],

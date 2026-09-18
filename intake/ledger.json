@@ -664,7 +664,8 @@
       "first_seen": "2026-09-18",
       "last_seen": "2026-09-18",
       "title": "Alterations in cognitive function among reproductive-age women with polyendocrine metabolic ovarian syndrome: A systematic review and meta-analysis.",
-      "outcome": "seen"
+      "outcome": "rejected-by-filter",
+      "filter_version": 4
     },
     "10.1016/j.yebeh.2026.111210": {
       "first_seen": "2026-09-18",
@@ -1100,7 +1101,8 @@
       "first_seen": "2026-09-18",
       "last_seen": "2026-09-18",
       "title": "Psychosocial interventions for supporting women to stop smoking in pregnancy.",
-      "outcome": "seen"
+      "outcome": "rejected-by-filter",
+      "filter_version": 4
     },
     "10.1038/s41598-026-36763-0": {
       "first_seen": "2026-09-18",
@@ -1538,55 +1540,61 @@
       "first_seen": "2026-09-18",
       "last_seen": "2026-09-18",
       "title": "Management of women with type 2B von Willebrand disease during pregnancy and postpartum: guidance from ISTH SSC subcommittees on von Willebrand factor and women's health issues in thrombosis and hemostasis.",
-      "outcome": "candidate"
+      "outcome": "approved"
     },
     "10.1016/j.annder.2026.103510": {
       "first_seen": "2026-09-18",
       "last_seen": "2026-09-18",
       "title": "2024 recommendations for the therapeutic management of anogenital warts.",
-      "outcome": "candidate"
+      "outcome": "dismissed",
+      "reason": "the gap is in data on special populations generally, not because the patients are women"
     },
     "10.1002/14651858.cd004014.pub7": {
       "first_seen": "2026-09-18",
       "last_seen": "2026-09-18",
       "title": "Surgery for women with anterior compartment prolapse.",
-      "outcome": "candidate"
+      "outcome": "approved"
     },
     "10.3389/fphys.2026.1728032": {
       "first_seen": "2026-09-18",
       "last_seen": "2026-09-18",
       "title": "Effect of oral contraceptive use on cardiorespiratory and immune function in premenopausal women involved in exercise: a systematic review and meta-analysis.",
-      "outcome": "seen"
+      "outcome": "dismissed",
+      "reason": "the claim is about study quality and risk of bias, not about data that is missing"
     },
     "10.1016/j.diabres.2026.113335": {
       "first_seen": "2026-09-18",
       "last_seen": "2026-09-18",
       "title": "The effects of dietary and physical exercise interventions among women with a history of gestational diabetes mellitus on cardiometabolic risk: A systematic review and meta-analysis.",
-      "outcome": "seen"
+      "outcome": "rejected-by-filter",
+      "filter_version": 4
     },
     "10.1016/j.amjcard.2026.03.046": {
       "first_seen": "2026-09-18",
       "last_seen": "2026-09-18",
       "title": "Breast Arterial Calcification on Mammography and Cardiovascular Outcomes in Women: A Meta-analysis.",
-      "outcome": "seen"
+      "outcome": "dismissed",
+      "reason": "misreads the source: concordant findings means the methods agreed, not that measurement varies"
     },
     "10.1530/raf-25-0191": {
       "first_seen": "2026-09-18",
       "last_seen": "2026-09-18",
       "title": "Gonadotropin-releasing hormone agonists during cyclophosphamide for ovarian protection in systemic lupus erythematosus.",
-      "outcome": "seen"
+      "outcome": "rejected-by-filter",
+      "filter_version": 4
     },
     "10.1097/eja.0000000000002373": {
       "first_seen": "2026-09-18",
       "last_seen": "2026-09-18",
       "title": "Remifentanil patient-controlled analgesia for labour analgesia: guidance from the obstetric anaesthetists' association: Recommendations for well tolerated provision of remifentanil PCA for labour analgesia.",
-      "outcome": "seen"
+      "outcome": "approved"
     },
     "10.1016/j.ejogrb.2026.115144": {
       "first_seen": "2026-09-18",
       "last_seen": "2026-09-18",
       "title": "Association of oral contraceptives with depression symptoms, diagnosis, and treatment in healthy women: A meta-analysis.",
-      "outcome": "seen"
+      "outcome": "dismissed",
+      "reason": "unexplained statistical heterogeneity is not a gap in what has been collected"
     },
     "10.1007/s40279-026-02438-z": {
       "first_seen": "2026-09-18",
@@ -1808,7 +1816,8 @@
       "first_seen": "2026-09-18",
       "last_seen": "2026-09-18",
       "title": "Belgian guidance 2026 on management of pregnancy and breastfeeding in women living with HIV and their infants.",
-      "outcome": "seen"
+      "outcome": "rejected-by-filter",
+      "filter_version": 4
     },
     "10.1016/j.autrev.2026.104135": {
       "first_seen": "2026-09-18",

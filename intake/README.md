@@ -115,6 +115,26 @@ search is therefore the cost dial for the whole run.
 `research-designs.js` is written to the repository root, next to
 `data.js`, because the app loads it with its own `<script>` tag.
 
+## What the validator enforces
+
+Rules the platform states about itself are checked in code rather than
+promised. `node intake/validate.mjs --self-test` runs them as nine
+acceptance tests.
+
+- **A claim must quote its source.** `gap_evidence.note` has to contain a
+  span of 20 characters or more that appears **verbatim in the abstract
+  the record was extracted from**. A note that states the extractor's own
+  reading, or quotes text that is not there, is rejected. Measured
+  against seven real candidates on 18 Sep: it caught two of the four that
+  were rejected by hand, and passed all three that were approved. It
+  cannot catch the third kind of error — a quotation that is accurate and
+  misread — which is why the human step stays.
+- Guidance with no source URL is rejected. Sourced, or null.
+- A record with no `verification.checked_at` is rejected.
+- `collected` or `partial` without a `dataset_source` is rejected.
+- A claim older than the window is rejected.
+- A DOI already in `data.js` or approved in the ledger is rejected.
+
 ## The ledger
 
 `ledger.json` is the table that stops the run reprocessing what it has

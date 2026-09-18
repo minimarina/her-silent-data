@@ -450,7 +450,12 @@ for (const paper of passed) {
         doi: paper.doi,
         url: paper.url,
         year: paper.year,
-        journal: paper.journal
+        journal: paper.journal,
+        /* Kept on the candidate so the validator can check the record's
+           quotation against the text it came from. It is dropped when the
+           record is merged: data.js cites the source, it does not mirror
+           it. */
+        abstract: paper.abstract
       },
       problem: {
         id: extracted.problem.id,
