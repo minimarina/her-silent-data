@@ -547,10 +547,11 @@
        quotation above it — whose whole content was that there is nothing
        here. The sentence stays, because §8.1 asks the app to say what it
        does not know; it no longer looks like a finding. */
-    if (!guidance || !hasText(guidance.note)) {
-      return make("p", "guidance-none",
-        "The source does not say how to collect it. Nothing is invented here.");
-    }
+    /* Nothing per need. The answer is "there is nothing" on eight of the
+       eleven records, and a labelled block saying so in every card was the
+       same sentence given the weight of a finding. renderNeeds() puts it
+       once, as a footnote at the foot of the screen. */
+    if (!guidance || !hasText(guidance.note)) { return null; }
 
     var box = make("div", "guidance");
     box.appendChild(make(
@@ -615,11 +616,16 @@
     panel.id = panelId;
     panel.hidden = true;
 
+    /* One line, not two. This and the paragraph that used to follow the
+       fields carried the same warning twice; the clause that was only in
+       the second one is folded in here, where it is read first rather than
+       after nine hundred words of study design. */
     var badge = make("p", "origin design-origin",
       "AI-generated study design — unverified" +
       (hasText(design.generated_at)
         ? ", generated " + design.generated_at
-        : ""));
+        : "") +
+      ". Nobody has reviewed it; you decide what to collect.");
     badge.setAttribute("data-origin", "proposed");
     panel.appendChild(badge);
 
@@ -639,10 +645,6 @@
       "In what form", design.form, design.instrument_source
     ));
     panel.appendChild(fields);
-
-    panel.appendChild(make("p", "design-caveat",
-      "A starting point for a researcher, not a protocol and not a " +
-      "finding. Nobody has reviewed it. You decide what to collect."));
 
     /* The platform ends where study design begins (§6, stage 3), and until
        now it ended by asking the reader to retype it. This hands the whole
@@ -1134,19 +1136,23 @@
     back.textContent = currentArea
       ? "← Back to the area" : "← Back to the map";
 
-    setValue(el("detail-area"), problem.area);
     setValue(el("detail-heading"), problem.title);
     setValue(el("detail-summary"), problem.summary);
     setValue(el("detail-affected"), problem.affected_women);
-    /* Same rule one level down: with a single need the badge on the block
-       below says this, and it was the third place on the screen to do so. */
-    var detailCount = el("detail-count");
-    detailCount.hidden = problem.data_needs.length === 1;
-    detailCount.textContent = detailCount.hidden ? "" : gapSentence(problem);
 
+    /* The badge marks the exception, which is the rule the cards have always
+       followed and this screen did not: every record in the seed is
+       "sourced", so it printed the same five words on all eleven, directly
+       above the heading, and the footer says it once for the whole seed
+       anyway. A placeholder or a gap this platform inferred still carries
+       its warning here. */
     var originSlot = el("detail-origin");
     originSlot.textContent = "";
-    originSlot.appendChild(originBadge(problem, "p"));
+    originSlot.hidden = !flaggedOrigin(problem);
+
+    if (!originSlot.hidden) {
+      originSlot.appendChild(originBadge(problem, "p"));
+    }
 
     fillSourceSlot("detail-source", problem.source);
 
@@ -1166,26 +1172,89 @@
      A problem may carry several needs (§5), and several stack here as
      blocks rather than becoming a menu. Reading three in a row is less
      work than opening and closing three screens. */
-  function renderNeeds(problem) {
-    var list = el("need-list");
-    list.textContent = "";
+  /* One need is not a list, and it was being given the scaffolding of one:
+     a section heading, a count line, a <ul>, and a bordered card inside it —
+     four levels of nesting around a single item, on all eleven records. The
+     level appears when it has something to hold, which is the same rule the
+     area screen and the removed screen 3 are now built on.
 
-    problem.data_needs.forEach(function (need) {
-      list.appendChild(needBlock(problem, need));
-    });
+     The card frame goes with it. Status still carries colour, shape and word
+     (8.2) on the badge, which is where it was always carried; what the
+     card's coloured edge added was a second frame for the eye to enter. */
+  function renderNeeds(problem) {
+    var slot = el("need-list");
+    var needs = problem.data_needs;
+
+    slot.textContent = "";
+
+    if (needs.length === 1) {
+      slot.className = "need-flat";
+      renderNeed(slot, problem, needs[0], true);
+    } else {
+      slot.className = "need-several";
+      slot.appendChild(make("h2", null, "Data needed to solve it"));
+      slot.appendChild(make("p", "count", gapSentence(problem)));
+
+      var list = make("ul", "need-list-items");
+
+      needs.forEach(function (need) {
+        var item = document.createElement("li");
+
+        item.className = "need-block";
+        item.setAttribute("data-status", need.status);
+        renderNeed(item, problem, need, false);
+        list.appendChild(item);
+      });
+      slot.appendChild(list);
+    }
+
+    renderGuidanceFootnote(problem);
   }
 
-  function needBlock(problem, need) {
-    var item = document.createElement("li");
-    item.className = "need-block";
-    item.setAttribute("data-status", need.status);
+  /* Said once, at the foot of the screen, and only while it is true of
+     something on it. 8.1 asks the app to state what it does not know; it
+     does not ask it to say so in every card. */
+  function renderGuidanceFootnote(problem) {
+    var slot = el("detail-footnote");
+    var silent = problem.data_needs.filter(function (need) {
+      return !need.collection_guidance ||
+        !hasText(need.collection_guidance.note);
+    }).length;
 
+    slot.textContent = "";
+    slot.hidden = silent === 0;
+
+    if (silent === 0) { return; }
+
+    slot.appendChild(make("p", null,
+      problem.data_needs.length === 1
+        ? "The source does not say how to collect this data. Nothing is invented here."
+        : silent + " of these data needs cite a source that does not say how to collect them. Nothing is invented here."));
+  }
+
+  /* One need's contents, appended into whatever holds them. `flat` means
+     the record carries a single need, so this IS the second half of the
+     screen and its description is the heading for it; otherwise it is one
+     card among several and the description is a heading inside that card.
+
+     The description is the data need — the field this whole register is
+     about — so it is never dropped. What was dropped is the generic
+     heading that used to sit above it saying "Data needed to solve it",
+     which is what made the screen state its thesis twice: an h1 naming the
+     problem and, eighty pixels lower, an h3 naming the same thing again
+     under a heading that named neither. */
+  function renderNeed(item, problem, need, flat) {
     item.appendChild(statusBadge(need.status));
-    item.appendChild(makeValue("h3", "need-description", need.description));
+    item.appendChild(makeValue(
+      flat ? "h2" : "h3", "need-description", need.description
+    ));
 
-    var why = document.createElement("dl");
-    why.appendChild(field("Why this data matters", need.why_it_matters));
-    item.appendChild(why);
+    /* Plain prose. It was the only field in a <dl> at this level, under an
+       uppercase letterspaced <dt> — the second of three such captions on
+       one screen, each at a different depth and meaning something else. */
+    if (hasText(need.why_it_matters)) {
+      item.appendChild(make("p", "need-why", need.why_it_matters));
+    }
 
     /* A collected need has no gap to answer for: the data exists, and the
        only thing worth saying is where. */
@@ -1196,7 +1265,7 @@
       item.appendChild(
         make("p", "need-note", "No new collection needed for this item.")
       );
-      return item;
+      return;
     }
 
     /* Provenance in the order a reader challenges it: who said the data is
@@ -1222,14 +1291,14 @@
       item.appendChild(datasetNode(need));
     }
 
-    /* What the source said about collecting it, which is usually nothing.
-       An empty answer here is the honest one and is never filled in. */
-    item.appendChild(guidanceNode(problem, need));
+    /* What the source said about collecting it, on the three records where
+       it said anything. The other eight are answered once, in the footnote
+       renderNeeds() puts at the foot of the screen. */
+    var guidance = guidanceNode(problem, need);
+    if (guidance) { item.appendChild(guidance); }
 
     var design = designNode(problem, need);
     if (design) { item.appendChild(design); }
-
-    return item;
   }
 
   /* "What exists" for a need that has some data behind it. The label

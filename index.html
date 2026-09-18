@@ -158,16 +158,25 @@
     <button type="button" id="detail-back" class="back" data-back="screen-area">
       &larr; Back to the area
     </button>
-    <p class="eyebrow" id="detail-area"></p>
-    <div id="detail-origin" class="origin-slot"></div>
+    <!-- The area used to be named here as well. The Back button above says
+         it, the map you came from showed it, and it was the first of three
+         uppercase captions on this screen, each at a different depth. -->
+    <div id="detail-origin" class="origin-slot" hidden></div>
     <h1 id="detail-heading"></h1>
     <p class="lede" id="detail-summary"></p>
     <p class="affected"><span class="label">Affected women:</span> <span id="detail-affected"></span></p>
     <div id="detail-source" class="provenance-slot"></div>
 
-    <h2 id="needs-heading">Data needed to solve it</h2>
-    <p class="count" id="detail-count"></p>
-    <ul id="need-list" class="need-list" aria-labelledby="needs-heading"></ul>
+    <!-- The heading, the count and the list were scaffolding for a record
+         carrying several data needs. All eleven carry one, so renderNeeds()
+         builds them only when there is more than one thing to hold; with one
+         the need's own description is the heading for the second half of the
+         screen. -->
+    <div id="need-list" class="need-flat"></div>
+
+    <!-- What the source said about collecting the data, for the records
+         where it said nothing. Once, here, rather than in every card. -->
+    <div id="detail-footnote" class="record-footnote" hidden></div>
   </section>
 
   <!-- There was a Screen 3 here until 18 Sep: one data need, with its

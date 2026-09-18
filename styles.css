@@ -43,8 +43,12 @@ h2 { font-size: 1.25rem; }
 
 p { margin: 0 0 12px; }
 
-/* Prose measure — §7.2, about 70 characters */
-.lede, .site-footer p { max-width: 70ch; }
+/* Prose measure — §7.2, about 70 characters. It holds where prose is the
+   screen: the record's summary, the About screen's ledes. It does not hold
+   on the home screen or in the footer, where a 70ch block sat 240px short
+   of a counts strip and a map that both run the full column, and the page
+   read as text that had been clipped rather than as a measure. */
+.lede { max-width: 70ch; }
 
 .wrap {
   max-width: 880px;
@@ -176,7 +180,7 @@ a:hover { text-decoration: none; }
 
 /* ---------- screen 1: problem cards ---------- */
 
-.card-list, .need-list {
+.card-list, .need-list-items {
   list-style: none;
   margin: 0;
   padding: 0;
@@ -221,6 +225,9 @@ a:hover { text-decoration: none; }
 /* Each need is a block, not a summary that opens a screen of its own. The
    status keeps its coloured left edge, which is what made a need scannable
    when these were buttons and still does when several stack. */
+/* A card only where there are several. With one data need the record has
+   no list to frame, and the frame was a second box for the eye to enter:
+   see .need-flat below. */
 .need-block {
   padding: var(--space-card) var(--space-section);
   border: 1px solid var(--border);
@@ -236,8 +243,21 @@ a:hover { text-decoration: none; }
   border-left-color: var(--status-collected);
 }
 
-/* The need's own heading. Bigger than the prose under it, because with
-   the level above gone this is the title of what the reader came for. */
+/* The second half of the record, at page level: no card, no section
+   heading, no count line. The rule and the space above it are what mark the
+   turn from the problem to the data it needs — the job the frame was doing,
+   done by one line instead of a box inside a list inside a heading. */
+.need-flat {
+  margin-top: var(--space-section);
+  padding-top: var(--space-section);
+  border-top: 1px solid var(--border);
+}
+
+.need-several { margin-top: var(--space-section); }
+
+/* The need's own heading. Where the record carries one need this is an h2
+   and the title of the screen's second half; inside a card it is an h3 and
+   sits under the card's own badge. */
 .need-description {
   margin: 8px 0 var(--space-card);
   font-size: 1.125rem;
@@ -246,7 +266,21 @@ a:hover { text-decoration: none; }
   max-width: 70ch;
 }
 
-.need-why, .need-note { color: var(--muted); margin-bottom: 0; max-width: 70ch; }
+.need-flat > .need-description {
+  font-size: 1.375rem;
+  font-weight: 700;
+  margin: 10px 0 var(--space-card);
+}
+
+/* Why the data is needed. Prose, in ink, because it is an argument and not
+   a caption — it used to be the only field of a <dl>, under an uppercase
+   letterspaced <dt>. */
+.need-why {
+  margin-bottom: 0;
+  max-width: 70ch;
+}
+
+.need-note { color: var(--muted); margin-bottom: 0; max-width: 70ch; }
 .need-note { margin-top: 6px; }
 
 /* status badge — colour + shape + word (§8.2) */
@@ -441,16 +475,6 @@ a:hover { text-decoration: none; }
    use. After the rule above, which sets the border it replaces. */
 .dataset { border-left-color: var(--teal-accent); }
 
-/* Usually there is no guidance, and saying so took a labelled block with a
-   left rule — the same weight as the quotation above it, on 8 of the 11
-   records. The sentence is kept, because §8.1 asks the app to state what it
-   does not know; it is no longer given the shape of a finding. */
-.guidance-none {
-  margin: 12px 0 0;
-  color: var(--muted);
-  font-size: 0.875rem;
-  font-style: italic;
-}
 
 /* When the gap was named. The check below says when the platform last
    looked; without this line "collected since" has no since. */
@@ -525,13 +549,25 @@ a:hover { text-decoration: none; }
    the block has one right edge and the rag looks deliberate. Still capped
    rather than full-width: §7.2 keeps prose around 70 characters, and a
    30px line running the whole column would be worse than either. */
+/* Full column. 34ch put the hero and the lede on one right edge, which was
+   the right instinct about those two lines and the wrong one about the
+   screen: everything below them — the counts strip, the bar, the figure —
+   is 848px wide, and two blocks ending at 604 made the top of the page look
+   unfinished. The edge they share now is the content edge. */
 .hero-line {
-  font-size: 1.875rem;
-  max-width: 34ch;
+  /* 32px, not 30. On one line the sentence measured 733px against an 848px
+     column; at 32 it measures 782 and ends within 50px of the lede beneath
+     it, so the two read as one block against the same edge. Not larger:
+     34px measures 831 and would wrap to a line and a half on any machine
+     whose font stack sets it a touch wider. */
+  font-size: 2rem;
   margin-bottom: 12px;
 }
 
-.hero-lede { color: var(--muted); }
+.hero-lede {
+  color: var(--muted);
+  max-width: none;
+}
 
 /* The counts strip. Numbers are always framed in words (§8.3), so the bar
    is decoration and the key beneath it is the statement. */
@@ -579,7 +615,7 @@ a:hover { text-decoration: none; }
   display: flex;
   gap: 14px;
   margin: 0;
-  font-size: 0.8125rem;
+  font-size: 0.9375rem;
   color: var(--muted);
 }
 
@@ -600,15 +636,13 @@ a:hover { text-decoration: none; }
 
    Desktop only. On a phone the map IS the page and scrolling it is
    expected, so the cap would only make the figure small for no gain. */
-@media (min-width: 641px) {
-  .map-svg {
-    /* 360px is what sits above and below the figure: the header, the hero,
-       the lede, the counts strip, the hint and the screen's own padding.
-       Measured, not guessed — at 330 the hint cleared the fold by 21px. */
-    max-height: min(560px, calc(100vh - 360px));
-    min-height: 340px;
-  }
-}
+/* No height cap. There used to be one, to keep the figure, the systemic pin
+   and the hint above the fold on a 1440x900 laptop. It worked, and it cost
+   more than it bought: preserveAspectRatio letterboxes rather than
+   distorting, so capping the height shrank the whole drawing — the figure,
+   its labels and its status bars all — and left gutters either side of an
+   848px column. A figure that has to be scrolled to is better than one that
+   is too small to read. */
 
 /* Systemic problems are not located in one place, so their pins sit on this
    ring rather than on the body. The caption says so — the two pin types
@@ -1227,12 +1261,22 @@ a:hover { text-decoration: none; }
 
 .design-origin { margin: 0 0 var(--space-card); }
 
-.design-caveat {
-  margin: var(--space-card) 0 0;
+/* A footnote, and set like one: what the source said about collecting the
+   data, on the records where it said nothing. It was a labelled block with a
+   rule in every card, which gave "there is nothing here" the weight of a
+   finding on eight records out of eleven. */
+.record-footnote {
+  margin-top: var(--space-section);
+  padding-top: 12px;
+  border-top: 1px solid var(--border);
+}
+
+.record-footnote p {
+  margin: 0;
+  max-width: 70ch;
+  color: var(--muted);
   font-size: 0.875rem;
   font-style: italic;
-  line-height: 1.5;
-  color: var(--muted);
 }
 
 .legacy-origin { margin: var(--space-section) 0 var(--space-card); }
@@ -1315,6 +1359,13 @@ a:hover { text-decoration: none; }
   margin: 12px 0 0;
   font-size: 0.9375rem;
   color: var(--muted);
+}
+
+/* Centred under the figure, which is centred. Only where that is true: below
+   640px this line introduces a left-aligned numbered list and belongs on the
+   same edge as it. */
+@media (min-width: 641px) {
+  .map-hint { text-align: center; }
 }
 
 /* Only true under 640px, where the labels are gone and the pins carry
