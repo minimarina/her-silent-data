@@ -491,6 +491,8 @@ brackets are new to the map and have hand-measured coordinates.
 | Urinary incontinence decision aids [Pelvic health] | Urogynecology, systematic review | partial |
 | Brucellosis in pregnancy [Maternal] | Rev Inst Med Trop São Paulo | missing |
 | Pelvic neuropathies [Chronic pain] | Facts Views Vis Obgyn, narrative review | partial |
+| Advanced therapies in pregnancy [Pharmacology] | J Crohns Colitis / systematic review and meta-analysis | partial |
+| Time-restricted eating and reproductive hormones [Reproductive health] | Systematic review | partial |
 
 
 ## 10. Out of scope (hackathon)

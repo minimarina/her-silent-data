@@ -925,7 +925,8 @@
     "Cardiovascular health": { kind: "site",     x: 447, y: 188, side: "right", label_y: 170 },
     "Pelvic health":         { kind: "site",     x: 405, y: 312, side: "right", label_y: 300 },
     "Chronic pain":          { kind: "site",     x: 455, y: 340, side: "right", label_y: 390 },
-    "Pharmacology":          { kind: "systemic", x: 334, y: 555, side: "left",  label_y: 545 }
+    "Pharmacology":          { kind: "systemic", x: 334, y: 555, side: "left",  label_y: 545 },
+    "Reproductive health":   { kind: "site",     x: 480, y: 300, side: "right", label_y: 460 }
   };
 
   /* A record's own point first, then its area's. Only the first record in

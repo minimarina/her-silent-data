@@ -2,9 +2,9 @@
   "run_at": "2026-09-18",
   "stage": "full",
   "query_window_years": 1,
-  "hit_count": 1,
-  "fetched": 1,
-  "unseen": 1,
-  "passed_filter": 1,
+  "hit_count": 1487,
+  "fetched": 100,
+  "unseen": 92,
+  "passed_filter": 3,
   "records": []
 }

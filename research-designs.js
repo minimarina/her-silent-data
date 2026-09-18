@@ -263,5 +263,76 @@ const RESEARCH_DESIGNS = {
     "instrument_source": "DN4 (Douleur Neuropathique 4 Questions)",
     "generated_at": "2026-09-18",
     "model": "claude-sonnet-5"
+  },
+  "parturition-pain-observer-tools": {
+    "target_women": "400 nulliparous and multiparous women in spontaneous (non-induced) labour at term, recruited consecutively from 4-6 hospital labour wards across at least two countries, excluding those with epidural analgesia administered before enrollment or elective caesarean planned.",
+    "variables": [
+      "Self-reported pain intensity score at fixed labour stages (early, active, transition, second stage) using a 0-10 numeric rating scale",
+      "Multidimensional pain descriptors (sensory, affective, cognitive components) recorded via structured questionnaire at same timepoints",
+      "Observed behavioural pain indicators (vocalization, facial grimacing, body positioning/restlessness) coded by trained observer from video at matched timepoints",
+      "Physiological correlates (heart rate, blood pressure, salivary cortisol) sampled at same labour stages",
+      "Analgesic requests and administration timing relative to reported pain scores",
+      "Cervical dilation and station at each pain assessment timepoint",
+      "Duration of each labour stage"
+    ],
+    "stratifiers": [
+      "Parity (nulliparous vs multiparous)",
+      "Maternal age band (under 25, 25-34, 35+)",
+      "Ethnicity/self-identified racial group",
+      "Body mass index category",
+      "Presence of labour augmentation (oxytocin use) vs unaugmented labour",
+      "Socioeconomic/income status"
+    ],
+    "form": "Prospective observational cohort with repeated within-labour measurement: self-report pain scale and structured questionnaire administered by a bedside research midwife at four predefined labour stages, continuous video recording for blinded behavioural coding, and physiological sampling (HR/BP continuously via standard monitors, saliva cortisol at each stage); data collection per participant spans full duration of labour (typically 6-18 hours), with a parallel arm design allowing eventual cross-species comparison against similarly timed behavioural/physiological sampling in labouring goats and sows in a companion veterinary study using the same coding scheme.",
+    "instrument_source": "McGill Pain Questionnaire",
+    "generated_at": "2026-09-18",
+    "model": "claude-sonnet-5"
+  },
+  "advanced-therapies-pregnancy-highquality-data": {
+    "target_women": "Recruit 600 pregnant women (aiming for at least 100 per drug class exposure group) with immune-mediated inflammatory disease (Crohn's disease, ulcerative colitis, rheumatoid arthritis, psoriasis/psoriatic arthritis, or axial spondyloarthritis) who are exposed to an advanced therapy other than anti-TNF agents (e.g. IL-23 inhibitors such as risankizumab/guselkumab, IL-17 inhibitors, JAK inhibitors such as upadacitinib/tofacitinib, ustekinumab, vedolizumab) at any point from conception through delivery. Recruit through multi-site gastroenterology, rheumatology and dermatology clinics, obstetric medicine referral networks, and national pregnancy exposure registries, over a 3-year enrollment window across at least 15 participating centers in multiple countries.",
+    "variables": [
+      "Drug name, dose, and trimester(s) of exposure, including last dose before delivery",
+      "Gestational age and birthweight at delivery, and preterm birth (<37 weeks) status",
+      "Congenital anomalies identified at birth or within first 12 months, by organ system",
+      "Rate of spontaneous miscarriage and stillbirth",
+      "Serious neonatal infection or hospitalization within first year of life",
+      "Maternal disease activity/flare during each trimester and postpartum",
+      "Breastfeeding status and infant drug exposure via breast milk"
+    ],
+    "stratifiers": [
+      "Drug class (IL-23 inhibitor, IL-17 inhibitor, JAK inhibitor, ustekinumab, vedolizumab, combination therapy)",
+      "Underlying maternal disease (IBD vs rheumatologic vs dermatologic)",
+      "Trimester of last exposure (first, second, third, none after conception)",
+      "Maternal age band (<25, 25-34, 35+)",
+      "Concomitant corticosteroid or immunosuppressant use"
+    ],
+    "form": "Prospective observational cohort with enrollment as early as possible in pregnancy (ideally first trimester), structured telephone or electronic questionnaires administered each trimester and at 6 weeks, 6 months, and 12 months postpartum, plus linkage to medical records and delivery/neonatal charts for objective outcome confirmation; total follow-up 12 months post-delivery per participant, study conducted over 5 years to allow full recruitment and follow-up.",
+    "instrument_source": null,
+    "generated_at": "2026-09-18",
+    "model": "claude-sonnet-5"
+  },
+  "tre-reproductive-hormones-rct-pcos": {
+    "target_women": "Recruit 160 women aged 18-40 (80 with PCOS per Rotterdam criteria, 80 with obesity but no PCOS as comparator) from endocrinology and gynaecology clinics, reproductive health centres, and community advertising in 3-4 cities, via referral from primary care and social media screening.",
+    "variables": [
+      "Serum total and free testosterone",
+      "Serum LH and FSH, and LH:FSH ratio",
+      "Sex hormone-binding globulin (SHBG)",
+      "Menstrual cycle regularity and length (self-logged)",
+      "Body weight and waist circumference",
+      "Insulin resistance (HOMA-IR) and fasting glucose",
+      "Self-reported adherence to eating window (hours/day)",
+      "Hirsutism score and acne severity"
+    ],
+    "stratifiers": [
+      "PCOS phenotype (classic vs ovulatory vs non-hyperandrogenic)",
+      "Baseline BMI category (obese class I/II/III)",
+      "Age band (18-25, 26-32, 33-40)",
+      "Ethnicity",
+      "Baseline insulin resistance status"
+    ],
+    "form": "Two-arm parallel randomised controlled trial: intervention group follows an 8-hour daily eating window (e.g. 12pm-8pm) with no calorie counting; control group follows usual eating pattern with matched dietary advice. Duration 12 months, with hormone panels, weight, and cycle data collected at baseline, 3, 6, and 12 months; menstrual cycle and adherence logged weekly via app or diary.",
+    "instrument_source": "Ferriman-Gallwey score for hirsutism",
+    "generated_at": "2026-09-18",
+    "model": "claude-sonnet-5"
   }
 };

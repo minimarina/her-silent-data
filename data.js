@@ -338,5 +338,109 @@ const DATA = {
         }
       ]
     },
+
+    {
+      id: "advanced-therapies-pregnancy",
+      title:
+        "Pregnant women with immune-mediated inflammatory diseases lack reliable safety data on advanced (non-anti-TNF) therapies",
+      area: "Pharmacology",
+      summary:
+        "A systematic review and meta-analysis assessed pregnancy and neonatal outcomes in women with immune-mediated inflammatory diseases treated with advanced therapies other than anti-TNF drugs. Most available data concerned ustekinumab and vedolizumab, while data on other biologics and JAK inhibitors were very limited. The overall certainty of evidence was very low, relying mainly on small observational studies and case reports.",
+      affected_women:
+        "Pregnant women with immune-mediated inflammatory diseases treated with advanced therapies such as ustekinumab, vedolizumab, other biologics, or JAK inhibitors",
+      source:
+        "https://doi.org/10.1093/ecco-jcc/jjag045",
+      origin: "sourced",
+      is_demo: false,
+      map_point: { kind: "systemic", x: 334, y: 95, side: "left",  label_y: 80 },
+      data_needs: [
+        {
+          id: "advanced-therapies-pregnancy-highquality-data",
+          problem_id: "advanced-therapies-pregnancy",
+          description:
+            "Large, high-quality studies on pregnancy and neonatal outcomes for women exposed to advanced therapies (beyond ustekinumab and vedolizumab) for immune-mediated inflammatory diseases",
+          why_it_matters:
+            "Without robust data, clinicians and patients cannot confidently assess the safety of these drugs during pregnancy, leaving treatment decisions based on very low certainty evidence from case reports and small cohorts.",
+          status: "partial",
+          existing_data_note: "",
+          gap_evidence: {
+            source:
+              "https://doi.org/10.1093/ecco-jcc/jjag045",
+            note:
+              "The review found that 'data on other biologics and JAK inhibitors were very limited' and that most evidence came from case series and case reports with 'critical risk of bias,' resulting in an overall 'very low' level of evidence; the authors conclude that 'larger, high-quality studies are needed.'",
+            region: null,
+            claimed_date: "2026-05-01"
+          },
+          dataset_source: {
+            note:
+              "A global multicenter cohort study on JAK inhibitor (tofacitinib, upadacitinib, filgotinib) exposure during pregnancy in IBD, and a large US health-system retrospective cohort on IMID maternal-fetal outcomes; these improve on prior case-report-level evidence but do not yet cover most other advanced biologics (e.g., risankizumab, guselkumab, other JAK inhibitors) with comparably large, high-quality cohorts.",
+            source:
+              "https://academic.oup.com/ecco-jcc/article/20/Supplement_1/jjaf231.078/8432705"
+          },
+          collection_guidance: null,
+          verification: {
+            checked_at: "2026-09-18",
+            method: "web search",
+            findings:
+              "Since the review, newer studies have emerged but they remain limited compared to the ustekinumab/vedolizumab evidence base. A 2025 global multicenter cohort study of JAK inhibitor exposure in IBD pregnancies (55 patients on tofacitinib/upadacitinib/filgotinib) provides more systematic data, and a 2024 large US retrospective cohort (eClinicalMedicine) examined maternal-fetal outcomes across IMID patients on various immunomodulators. However, other advanced therapies like risankizumab and other JAK inhibitors are still mostly represented by small case series (e.g., a 3-patient case series, small case series of risankizumab), so robust, high-quality data for the full range of newer biologics/JAK inhibitors beyond ustekinumab and vedolizumab remains sparse and inconsistent across drugs.",
+            sources: ["https://www.ncbi.nlm.nih.gov/pmc/articles/PMC12900871/","https://academic.oup.com/ecco-jcc/article/20/Supplement_1/jjaf231.078/8432705","https://www.medrxiv.org/content/10.64898/2026.01.21.26344506.full.pdf","https://pubmed.ncbi.nlm.nih.gov/38586478/","https://pubmed.ncbi.nlm.nih.gov/39141986/","https://www.jrheum.org/content/52/Suppl_2/51.1","https://www.ncbi.nlm.nih.gov/pmc/articles/PMC11807636/","https://pubmed.ncbi.nlm.nih.gov/42103443/","https://www.ncbi.nlm.nih.gov/pmc/articles/PMC10872036/","https://link.springer.com/article/10.1007/s00404-022-06463-x"]
+          }
+        }
+      ]
+    },
+
+    {
+      id: "tre-reproductive-hormones",
+      title:
+        "Uncertain effects of time-restricted eating on reproductive hormones and androgens in women",
+      area: "Reproductive health",
+      summary:
+        "A systematic review found that time-restricted eating (TRE) does not significantly affect testosterone, oestrogen, progesterone, luteinising hormone, cortisol, DHEA or SHBG in women with general obesity, based on randomised controlled trials. Non-randomised studies in women with PCOS suggested beneficial hormonal changes, but these may be confounded by weight loss. Only six studies met inclusion criteria, and evidence is described as inconclusive.",
+      affected_women:
+        "Adult women with general obesity and adult women with polycystic ovary syndrome (PCOS)",
+      source:
+        "https://doi.org/10.1177/02601060261467643",
+      origin: "sourced",
+      is_demo: false,
+      data_needs: [
+        {
+          id: "tre-reproductive-hormones-rct-pcos",
+          problem_id: "tre-reproductive-hormones",
+          description:
+            "Rigorous, long-term randomised controlled trials on TRE's hormonal effects in women, especially those with PCOS",
+          why_it_matters:
+            "Without such trials, it remains unclear whether TRE can be safely or effectively recommended as a therapeutic strategy for hormonal conditions like PCOS, beyond its weight-loss effects.",
+          status: "partial",
+          existing_data_note: "",
+          gap_evidence: {
+            source:
+              "https://doi.org/10.1177/02601060261467643",
+            note:
+              "The review concludes that 'the current evidence on TRE's impact on female hormones is inconclusive and varies significantly by population and study design' and states 'more rigorous, long-term RCTs are needed to establish its therapeutic role, in particular for conditions like PCOS.'",
+            region: null,
+            claimed_date: "2026-07-10"
+          },
+          dataset_source: {
+            note:
+              "RCTs and a meta-analysis of RCTs on TRE in women with PCOS/PMOS, covering weight, metabolic (HOMA-IR), and some reproductive/hormonal outcomes over ~6-month trial durations; does not cover multi-year long-term hormonal safety/efficacy or broader female populations without PCOS.",
+            source:
+              "https://www.nature.com/articles/s41591-026-04316-7"
+          },
+          collection_guidance: {
+            note:
+              "The authors call for more rigorous, long-term randomised controlled trials to establish TRE's therapeutic role for female reproductive hormones, particularly in women with PCOS.",
+            source:
+              "https://doi.org/10.1177/02601060261467643"
+          },
+          verification: {
+            checked_at: "2026-09-18",
+            method: "web search",
+            findings:
+              "Since the review, several RCTs specifically in women with PCOS have appeared. A 2026 Nature Medicine RCT compared TRE vs. calorie restriction vs. no-intervention control in PCOS for body-weight and metabolic outcomes, a PLOS One/PMC protocol describes a 6-month RCT (96 overweight/obese PCOS women) assessing reproductive recovery and hormonal effects, and a 2026 systematic review/meta-analysis pooled four RCTs (216 women with polycystic/polyendocrine metabolic ovarian syndrome) finding TRE improved HOMA-IR versus calorie restriction or ad libitum eating. These studies fill much of the gap but are still only ~6 months in duration (not truly 'long-term' by chronic-disease standards) and sample sizes remain modest, so long-term (multi-year) hormonal outcome data in PCOS are still lacking.",
+            sources: ["https://pmc.ncbi.nlm.nih.gov/articles/PMC11717230/","https://www.ncbi.nlm.nih.gov/pmc/articles/PMC11717230/","https://pubmed.ncbi.nlm.nih.gov/42451100/","https://www.news-medical.net/news/20260330/Time-restricted-eating-improves-hormone-levels-in-women-with-PCOS.aspx","https://journals.plos.org/plosone/article?id=10.1371%2Fjournal.pone.0316333","https://www.nature.com/articles/s41591-026-04316-7","https://clinicaltrials.gov/study/NCT05629858","https://pubmed.ncbi.nlm.nih.gov/41896647/","https://news.feinberg.northwestern.edu/2026/05/12/time-restricted-eating-supports-weight-loss-in-women-with-pcos/"]
+          }
+        }
+      ]
+    },
   ]
 };

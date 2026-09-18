@@ -710,55 +710,62 @@
       "first_seen": "2026-09-18",
       "last_seen": "2026-09-18",
       "title": "How Do Women and Domestic Animals Share Parturition Pain? A Systematic Review.",
-      "outcome": "seen"
+      "outcome": "dismissed",
+      "reason": "the gap named is in data about domestic animals, not women"
     },
     "10.3389/fendo.2026.1885823": {
       "first_seen": "2026-09-18",
       "last_seen": "2026-09-18",
       "title": "Sociodemographic and clinical predictors of malignancy in thyroid nodules: a systematic review and meta-analysis.",
-      "outcome": "seen"
+      "outcome": "rejected-by-filter",
+      "filter_version": 3
     },
     "10.3389/fmed.2026.1912483": {
       "first_seen": "2026-09-18",
       "last_seen": "2026-09-18",
       "title": "Leptin, adiponectin levels and their ratios in women with polyendocrine metabolic ovarian syndrome: a systematic review and meta-analysis.",
-      "outcome": "seen"
+      "outcome": "rejected-by-filter",
+      "filter_version": 3
     },
     "10.3389/fpubh.2026.1876038": {
       "first_seen": "2026-09-18",
       "last_seen": "2026-09-18",
       "title": "Which exercise strategies improve postpartum depression? A systematic review and meta-analysis of randomized controlled trials.",
-      "outcome": "seen"
+      "outcome": "rejected-by-filter",
+      "filter_version": 3
     },
     "10.1001/jamasurg.2025.5929": {
       "first_seen": "2026-09-18",
       "last_seen": "2026-09-18",
       "title": "Risk-Reducing Bilateral Mastectomy and Mortality in Carriers of BRCA1 and BRCA2 Variants: A Systematic Review and Meta-Analysis.",
-      "outcome": "seen"
+      "outcome": "rejected-by-filter",
+      "filter_version": 3
     },
     "10.1093/ecco-jcc/jjag045": {
       "first_seen": "2026-09-18",
       "last_seen": "2026-09-18",
       "title": "Safety of advanced therapies during pregnancy in women with immune-mediated inflammatory diseases: a systematic review and meta-analysis.",
-      "outcome": "seen"
+      "outcome": "approved"
     },
     "10.1016/j.jcpo.2026.100783": {
       "first_seen": "2026-09-18",
       "last_seen": "2026-09-18",
       "title": "Awareness is not enough: global evidence on breast cancer knowledge and self- screening practices among young women.",
-      "outcome": "seen"
+      "outcome": "rejected-by-filter",
+      "filter_version": 3
     },
     "10.1186/s12939-026-02848-5": {
       "first_seen": "2026-09-18",
       "last_seen": "2026-09-18",
       "title": "Understanding equity-oriented maternity care for women of refugee background in high-income countries: a qualitative systematic review.",
-      "outcome": "seen"
+      "outcome": "rejected-by-filter",
+      "filter_version": 3
     },
     "10.1177/02601060261467643": {
       "first_seen": "2026-09-18",
       "last_seen": "2026-09-18",
       "title": "Impact of time-restricted eating on reproductive hormones and androgen markers in adult females: A systematic review.",
-      "outcome": "seen"
+      "outcome": "approved"
     },
     "10.1002/jcsm.70331": {
       "first_seen": "2026-09-18",
