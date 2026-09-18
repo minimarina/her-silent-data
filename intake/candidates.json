@@ -2,10 +2,10 @@
   "run_at": "2026-09-18",
   "stage": "full",
   "query_window_years": 1,
-  "hit_count": 4772,
+  "hit_count": 1487,
   "fetched": 100,
-  "unseen": 98,
-  "passed_filter": 6,
+  "unseen": 100,
+  "passed_filter": 4,
   "records": [
     {
       "paper": {
@@ -140,128 +140,6 @@
             {
               "url": "https://www.frontiersin.org/journals/cardiovascular-medicine/articles/10.3389/fcvm.2022.1024263/pdf",
               "title": "www.frontiersin.org"
-            }
-          ]
-        }
-      },
-      "validation": {
-        "ok": true,
-        "errors": [],
-        "warnings": []
-      }
-    },
-    {
-      "paper": {
-        "title": "Knee health and associations with female-specific health, physical, psychological and social-gendered factors in women runners: the TRAIL-W cohort study protocol.",
-        "doi": "10.1136/bmjsem-2025-003132",
-        "url": "https://doi.org/10.1136/bmjsem-2025-003132",
-        "year": "2026",
-        "journal": "BMJ open sport & exercise medicine"
-      },
-      "problem": {
-        "id": "knee-health-women-runners",
-        "title": "Women runners face higher risk of knee injury and worse outcomes after knee surgery than men, but the reasons are poorly understood.",
-        "area": "Cardiovascular health",
-        "summary": "Women runners are more likely than men to sustain running-related injuries such as bone stress and knee injuries, and after serious knee injury and surgery they experience worse knee and health-related outcomes. Little is known about how female-specific health, physical, psychological and social-gendered factors intersect with knee health in women runners, with or without a history of knee surgery.",
-        "affected_women": "Women runners, including those with and without a history of knee surgery.",
-        "source": "https://doi.org/10.1136/bmjsem-2025-003132",
-        "origin": "sourced",
-        "is_demo": false
-      },
-      "data_need": {
-        "id": "knee-health-women-runners-factors",
-        "problem_id": "knee-health-women-runners",
-        "area": "Cardiovascular health",
-        "description": "Data on how female-specific health, physical, psychological and social-gendered factors relate to knee symptoms, structural knee features, running load and running-related pain in women runners.",
-        "why_it_matters": "Without this data, clinicians and researchers cannot explain why women runners have higher injury rates and worse post-surgical outcomes, limiting the ability to design effective prevention or treatment approaches tailored to women.",
-        "status": "partial",
-        "existing_data_note": "",
-        "gap_evidence": {
-          "source": "https://doi.org/10.1136/bmjsem-2025-003132",
-          "note": "The abstract states that 'little is known about the intersection of female-specific health, physical, psychological and social-gendered factors with knee health in women runners with and without a history of knee surgery,' and that the study aims to 'address critical research gaps by describing and exploring the diverse factors that may influence women runners' knee health.'",
-          "region": null,
-          "claimed_date": "2026-03-11"
-        },
-        "dataset_source": {
-          "note": "TRAIL-W is a protocol for a nested cohort study within the TRAIL (TRAjectory of knee heaLth in runners) prospective cohort in Australia, designed to comprehensively collect the needed female-specific and gendered factors alongside knee health, running load and pain data in women runners. It covers only TRAIL cohort participants (Australia-based recruitment) and, as of the search, only the study protocol has been published — actual results/data analyses addressing the research questions had not yet appeared in the literature.",
-          "source": "https://pubmed.ncbi.nlm.nih.gov/41835327/"
-        },
-        "collection_guidance": {
-          "note": "Data to be collected from active TRAIL cohort female (and male, for comparison) participants via a once-off TRAIL-W survey covering psychological, social gendered and, for women, female-specific health factors, plus a laboratory assessment measuring body composition, bone mineral density and blood biomarkers, and qualitative interviews with a subset of women runners.",
-          "source": "https://doi.org/10.1136/bmjsem-2025-003132"
-        },
-        "verification": {
-          "checked_at": "2026-09-18",
-          "method": "web search",
-          "findings": "The exact gap has been addressed by the launch of the TRAIL-W cohort study protocol (published in BMJ Open Sport & Exercise Medicine), a nested study within the existing TRAIL prospective cohort of runners, explicitly designed to collect data on 'female-specific health, physical, psychological and social gendered' factors alongside knee symptoms, structural knee features, device-measured running load and running-related pain in women runners. This is the same research group's follow-up to the gap they identified, meaning data collection is now underway or planned via TRAIL-W's nested surveys and imaging alongside TRAIL's 6-monthly assessments, but this is a study protocol paper, not yet a results/findings paper, so the actual dataset and analysed findings are not yet published.",
-          "sources": [
-            {
-              "url": "https://pubmed.ncbi.nlm.nih.gov/41835327/",
-              "title": "Knee health and associations with female-specific health, physical, psychological and social-gendered factors in women runners: the TRAIL-W cohort study protocol - PubMed"
-            },
-            {
-              "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC12654048/",
-              "title": "The Immediate Effects of Instrument-Assisted Soft Tissue Mobilization on Pain and Function in Female Runners with Patellofemoral Pain"
-            },
-            {
-              "url": "https://cognit.ca/en/article/706600",
-              "title": "\"Knee health and associations with female-specific health, physical, psychological and social-gendered factors in women runners: the TRAIL-W cohort study protocol\""
-            },
-            {
-              "url": "https://www.sciencedirect.com/science/article/abs/pii/S0968016022000151",
-              "title": "Knee biomechanical factors associated with patellofemoral pain in recreational runners - ScienceDirect"
-            },
-            {
-              "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7073658/",
-              "title": "Analysis of Running-Related Injuries: The Vienna Study"
-            },
-            {
-              "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9923264/",
-              "title": "Trajectory of knee health in runners with and without heightened osteoarthritis risk: the TRAIL prospective cohort study protocol - PMC"
-            },
-            {
-              "url": "https://doi.org/10.1177/23259671261444314",
-              "title": "Common Risk Factors for Knee Injuries in Runners: A Systematic Review - Krithika Senthil, Sarah Whitaker, Muzaffar Nazarov, Benjamin Cassidy, Carl Edge, John Cyrus, Conor O’Neill, Jonathan Goodloe, 2026"
-            },
-            {
-              "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11822029/",
-              "title": "Comparative analysis of the effects of gender on lower extremity kinematics following a 5 km running time trial in collegiate recreational runners - PMC"
-            },
-            {
-              "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9539551/",
-              "title": "Sex-specific differences in biomechanics among runners: A systematic review with meta-analysis - PMC"
-            },
-            {
-              "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12481359/",
-              "title": "Cohort profile: trajectory of knee health in runners with and without heightened osteoarthritis risk (TRAIL) in Australia—prospective cohort study - PMC"
-            },
-            {
-              "url": "https://pubmed.ncbi.nlm.nih.gov/39566445/",
-              "title": "Incidence, severity, and risk factors for injuries in female trail runners - A retrospective cross-sectional study - PubMed"
-            },
-            {
-              "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC12481359/",
-              "title": "Cohort profile: trajectory of knee health in runners with and without heightened osteoarthritis risk (TRAIL) in Australia—prospective cohort study"
-            },
-            {
-              "url": "https://www.researchgate.net/publication/325326778_A_2-Year_Prospective_Cohort_Study_of_Overuse_Running_Injuries_The_Runners_and_Injury_Longitudinal_Study_TRAILS",
-              "title": "A 2-Year Prospective Cohort Study of Overuse Running Injuries: The Runners and Injury Longitudinal Study (TRAILS) | Request PDF"
-            },
-            {
-              "url": "https://pubmed.ncbi.nlm.nih.gov/29791183/",
-              "title": "A 2-Year Prospective Cohort Study of Overuse Running Injuries: The Runners and Injury Longitudinal Study (TRAILS) - PubMed"
-            },
-            {
-              "url": "https://www.researchgate.net/scientific-contributions/Indiana-Cooper-2212321166",
-              "title": "Indiana Cooper's research works | La Trobe University, Melbourne and other places"
-            },
-            {
-              "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC12862602/",
-              "title": "Female trail running: a systematic scoping review"
-            },
-            {
-              "url": "https://www.oarsijournal.com/article/S1063-4584(24)00434-5/pdf",
-              "title": "Methods: One-hundred-and-thirty-five runners (46% female, 18-50"
             }
           ]
         }
@@ -519,104 +397,251 @@
     },
     {
       "paper": {
-        "title": "Health and Health Care Access Among Afghan Refugee Women in the United States.",
-        "doi": "10.1001/jamanetworkopen.2026.27727",
-        "url": "https://doi.org/10.1001/jamanetworkopen.2026.27727",
+        "title": "Infertility treatment in women with epilepsy: A systematic review.",
+        "doi": "10.1016/j.yebeh.2026.111210",
+        "url": "https://doi.org/10.1016/j.yebeh.2026.111210",
         "year": "2026",
-        "journal": "JAMA network open"
+        "journal": "Epilepsy & behavior : E&B"
       },
       "problem": {
-        "id": "afghan-refugee-womens-health",
-        "title": "Afghan refugee women in the US face multilayered barriers to health and health care access after resettlement",
+        "id": "epilepsy-fertility-treatment",
+        "title": "The effect of infertility treatments on seizure control in women with epilepsy is not well understood.",
         "area": "Maternal health",
-        "summary": "Afghan refugee women face compounded health risks from sociocultural restrictions, low literacy, forced displacement, and limited health care access, yet little is known about their experiences with health care after resettlement in the US. A qualitative study found barriers including inadequate interpretation, patriarchal norms limiting autonomy, structural barriers leading to home remedy use, sociocultural barriers to sexual and reproductive health, and unmet mental health needs.",
-        "affected_women": "Afghan refugee women resettled in the US, in this study aged 19-55 and residing in the San Francisco Bay Area",
-        "source": "https://doi.org/10.1001/jamanetworkopen.2026.27727",
+        "summary": "A systematic review found only four studies, totaling 16 women, examining how assisted reproductive technologies (ART) such as IVF, ovulation induction, and hormonal therapies affect seizure control in women with epilepsy. Seizure control was generally stable, but hormonal therapy and lowered antiseizure medication levels were linked to some seizure exacerbations. The review concludes larger prospective studies are needed to define drug-specific effects.",
+        "affected_women": "Women with epilepsy aged 25-46 undergoing infertility treatment involving IVF, ovulation induction, or hormonal therapy.",
+        "source": "https://doi.org/10.1016/j.yebeh.2026.111210",
         "origin": "sourced",
         "is_demo": false
       },
       "data_need": {
-        "id": "afghan-refugee-womens-health-experience-data",
-        "problem_id": "afghan-refugee-womens-health",
+        "id": "epilepsy-fertility-treatment-larger-studies",
+        "problem_id": "epilepsy-fertility-treatment",
         "area": "Maternal health",
-        "description": "Systematic data on Afghan refugee women's health care experiences and access barriers after US resettlement is missing",
-        "why_it_matters": "Without understanding these barriers, culturally sensitive and linguistically appropriate interventions cannot be designed, leaving structural deficiencies in access unaddressed.",
-        "status": "partial",
+        "description": "Lack of larger prospective studies on how ART and hormonal therapies affect seizure control and antiseizure medication levels in women with epilepsy.",
+        "why_it_matters": "Without this evidence, clinicians cannot reliably predict which hormonal treatments or ASM regimens carry higher seizure risk during fertility treatment, limiting safe, individualized care.",
+        "status": "missing",
         "existing_data_note": "",
         "gap_evidence": {
-          "source": "https://doi.org/10.1001/jamanetworkopen.2026.27727",
-          "note": "The abstract states that 'yet little is known about their experiences with health care after resettlement in the US,' motivating this qualitative exploration of health and health care access issues among Afghan refugee women.",
-          "region": "United States (San Francisco Bay Area, California)",
-          "claimed_date": "2026-08-03"
+          "source": "https://doi.org/10.1016/j.yebeh.2026.111210",
+          "note": "The review identified only four eligible studies with a total of 16 women, described as case reports, a case series, and one cohort study; the authors state that 'larger prospective studies are needed to better define ASM-specific effects and optimize care.'",
+          "region": null,
+          "claimed_date": "2026-07-23"
         },
-        "dataset_source": {
-          "note": "CDC's Afghan refugee health guidance/profile and RAND Corporation surveys of Afghan evacuees cover general refugee health and resettlement experiences, including some health system contact points, but do not provide the qualitative, gender-specific data on Afghan women's health care experiences, cultural/linguistic access barriers, or maternal health needs that the original study sought to fill. They are broader population surveys, not focused qualitative research on women's care-seeking barriers.",
-          "source": "https://www.cdc.gov/immigrantrefugeehealth/guidance/afghan-refugee-health.html"
-        },
-        "collection_guidance": {
-          "note": "Semistructured interviews in Dari or English with self-identified Afghan women born outside the US, aged 18 or older, recruited via convenience and purposive sampling through refugee-serving community organizations and word of mouth until data saturation was reached; Dari interviews interpreted and validated by bilingual investigators and reviewed with an Afghan immigrant community member for accuracy.",
-          "source": "https://doi.org/10.1001/jamanetworkopen.2026.27727"
-        },
+        "dataset_source": null,
+        "collection_guidance": null,
         "verification": {
           "checked_at": "2026-09-18",
           "method": "web search",
-          "findings": "A fresh web search could not be completed in this session due to a tool-use limit, so this answer relies on knowledge of publicly known post-2021 resettlement research rather than a live confirmed search. Following the 2021 Operation Allies Welcome evacuation, RAND Corporation and other resettlement-focused organizations produced broader surveys (e.g., RAND's 'Life After Resettlement' work on Afghan evacuees) and CDC published an Afghan refugee health profile/screening guidance, but these are largely quantitative or clinical-screening focused rather than qualitative studies specifically on Afghan refugee women's health care experiences and access barriers. No dataset specifically replicating or systematically extending the qualitative Bay Area study on Afghan refugee women's health care access barriers was confirmed.",
+          "findings": "The single search result is the very systematic review that identified this gap (PubMed 42492305), confirming only four small studies (16 women total) exist and explicitly calling for larger prospective studies. No newer or larger prospective cohort/registry study on ART/hormonal therapy effects on seizure control and ASM levels in women with epilepsy was found.",
           "sources": [
             {
-              "url": "https://www.eurekalert.org/news-releases/1139038",
-              "title": "Health and health care access among Afghan refugee women in the united states | EurekAlert!"
+              "url": "https://pubmed.ncbi.nlm.nih.gov/42492305/",
+              "title": "Infertility treatment in women with epilepsy: A systematic review - PubMed"
             },
             {
-              "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13451972/",
-              "title": "Health and Health Care Access Among Afghan Refugee Women in the United States - PMC"
+              "url": "https://pubmed.ncbi.nlm.nih.gov/37596834/",
+              "title": "Seizure control in women with epilepsy undergoing assisted reproductive technology - PubMed"
             },
             {
-              "url": "https://pubmed.ncbi.nlm.nih.gov/42566213/",
-              "title": "Health and Health Care Access Among Afghan Refugee Women in the United States - PubMed"
+              "url": "https://doi.org/10.1177/15357597241235782",
+              "title": "The Positive Assistance of Assisted Reproductive Technology - Danielle A. Becker, 2024"
             },
             {
-              "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11251342/",
-              "title": "“It’s different here” Afghan refugee maternal health experiences in the United States - PMC"
+              "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11185206/",
+              "title": "The Positive Assistance of Assisted Reproductive Technology - PMC"
             },
             {
-              "url": "https://www.facebook.com/JAMANetworkOpen/posts/in-this-qualitative-study-afghan-refugee-women-in-the-us-describe-barriers-spann/1575844554552483/",
-              "title": "In this qualitative study, Afghan refugee women in the US describe barriers spanning language, autonomy, mental health, and reproductive care, and what and how systems must change to improve refugee health."
+              "url": "https://onlinelibrary.wiley.com/doi/full/10.1111/epi.17862",
+              "title": "Letter regarding “Seizure control in women with epilepsy undergoing assisted reproductive technology” - Decker - 2024 - Epilepsia - Wiley Online Library"
             },
             {
-              "url": "https://jamanetwork.com/journals/jamanetworkopen/fullarticle/2852535",
-              "title": "Health and Health Care Access Among Afghan Refugee Women in the United States | Equity, Diversity, and Inclusion | JAMA Network Open | JAMA Network"
+              "url": "https://www.sciencedirect.com/science/article/abs/pii/S1059131125002870",
+              "title": "The intersection of epilepsy and assisted reproduction: A review of therapeutic approaches and considerations - ScienceDirect"
             },
             {
-              "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC11329121/",
-              "title": "A qualitative study exploring the factors influencing maternal healthcare access and utilization among Muslim refugee women resettled in the United States"
+              "url": "https://www.seizure-journal.com/article/S1059-1311(25)00287-0/abstract",
+              "title": "The intersection of epilepsy and assisted reproduction: A review of therapeutic approaches and considerations - Seizure - European Journal of Epilepsy"
             },
             {
-              "url": "https://www.miragenews.com/afghan-refugee-womens-health-access-in-us-1723901/",
-              "title": "Afghan Refugee Women's Health Access in U.S | Mirage News"
+              "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC12194816/",
+              "title": "Effects of Antiseizure Medications on Second-Trimester Prenatal Screening Test Parameters: A Retrospective Cohort Study"
             },
             {
-              "url": "https://bioengineer.org/afghan-refugee-women-in-u-s-face-health-and-healthcare-access-challenges/",
-              "title": "Afghan Refugee Women in U.S. Face Health and Healthcare Access Challenges"
+              "url": "https://www.aan.com/msa/Public/Events/AbstractDetails/62192",
+              "title": "Abstract Details"
+            }
+          ]
+        }
+      },
+      "validation": {
+        "ok": true,
+        "errors": [],
+        "warnings": []
+      }
+    },
+    {
+      "paper": {
+        "title": "Patient Decision Aids for Women With Urinary Incontinence: A Systematic Review.",
+        "doi": "10.1097/spv.0000000000001880",
+        "url": "https://doi.org/10.1097/spv.0000000000001880",
+        "year": "2026",
+        "journal": "Urogynecology (Philadelphia, Pa.)"
+      },
+      "problem": {
+        "id": "urinary-incontinence-decision-aids",
+        "title": "Women with urinary incontinence lack decision support tools covering the full care journey, from deciding to seek care through choosing treatment.",
+        "area": "Bone and joint health",
+        "summary": "A systematic review found only 9 studies of patient decision aids for women with stress, urgency, or mixed urinary incontinence, covering 956 women. All existing decision aids addressed treatment selection in specialty care only, none addressed the initial decision to seek care or primary care settings. Evidence that these aids improve knowledge, communication, or satisfaction was lacking, and studies had high risk of bias due to nonrandomized designs.",
+        "affected_women": "Women with stress, urgency, or mixed urinary incontinence, mean age 48-69 years, in specialty care settings.",
+        "source": "https://doi.org/10.1097/spv.0000000000001880",
+        "origin": "sourced",
+        "is_demo": false
+      },
+      "data_need": {
+        "id": "urinary-incontinence-decision-aids-care-continuum",
+        "problem_id": "urinary-incontinence-decision-aids",
+        "area": "Bone and joint health",
+        "description": "Rigorously evaluated patient decision aids covering the whole urinary incontinence care continuum, including the decision to seek care and primary care settings.",
+        "why_it_matters": "Without decision aids addressing whether to seek care or supporting decisions in primary care, women may face unaddressed uncertainty earlier in their care journey, and existing tools' benefits for knowledge, communication, and satisfaction remain unproven.",
+        "status": "partial",
+        "existing_data_note": "",
+        "gap_evidence": {
+          "source": "https://doi.org/10.1097/spv.0000000000001880",
+          "note": "The review states that all identified PDAs focused on treatment selection in specialty care; none addressed care-seeking decisions or occurred in primary care, and evidence for improved knowledge, patient-clinician communication, or satisfaction was lacking, with high risk of bias due to nonrandomized designs.",
+          "region": null,
+          "claimed_date": "2026-09-01"
+        },
+        "dataset_source": {
+          "note": "OUTPACE (Outcomes of Urinary Incontinence Treatment in Primary Care) is a multi-site cluster-randomized trial measuring UI care quality, patient knowledge, and shared decision-making in primary care, and a companion project is building EHR-based clinical decision support tools for PCPs; neither is a validated patient decision aid, and neither addresses the initial 'whether to seek care' decision point.",
+          "source": "https://pubmed.ncbi.nlm.nih.gov/40268237/"
+        },
+        "collection_guidance": null,
+        "verification": {
+          "checked_at": "2026-09-18",
+          "method": "web search",
+          "findings": "A very recent systematic review and meta-analysis (PubMed, searched through Feb 2026) confirms this gap still stands: existing PDAs for women with UI \"focus on reducing uncertainty about treatment selection in specialty care\" and do not address the decision to seek care nor occur in primary care. However, related but non-equivalent efforts are underway: the OUTPACE pragmatic trial (UCSD/UCLA/KU) is testing primary-care UI management strategies and measuring shared decision-making and patient knowledge outcomes, and a separate initiative is developing clinical decision support (CDS) tools embedded in EHRs for PCPs managing UI. Neither of these constitutes a rigorously evaluated patient decision aid spanning the full care-seeking-through-treatment continuum, so the specific gap identified by the source review has not been closed.",
+          "sources": [
+            {
+              "url": "https://clinicaltrials.ucsd.edu/trial/NCT06040645",
+              "title": "UCSD Urinary Incontinence Trial → Outcomes of Urinary Incontinence Treatment in Primary Care: APP Co-Management and Electronic Consult"
             },
             {
-              "url": "https://pubmed.ncbi.nlm.nih.gov/39150938/",
-              "title": "A qualitative study exploring the factors influencing maternal healthcare access and utilization among Muslim refugee women resettled in the United States - PubMed"
+              "url": "https://www.auajournals.org/doi/10.1097/JU.0000000000003275.09",
+              "title": "MP37-09 DEVELOPMENT OF URINARY INCONTINENCE CLINICAL DECISION SUPPORT TOOLS FOR USE IN PRIMARY CARE | Journal of Urology"
             },
             {
-              "url": "https://link.springer.com/article/10.1186/s12884-024-06678-7",
-              "title": "“It’s different here” Afghan refugee maternal health experiences in the United States | BMC Pregnancy and Childbirth | Springer Nature Link"
+              "url": "https://pubmed.ncbi.nlm.nih.gov/40268237/",
+              "title": "OUTPACE: Outcomes of urinary incontinence treatment in primary care - APP co-management and electronic consult - PubMed"
             },
             {
-              "url": "https://bmcpregnancychildbirth.biomedcentral.com/articles/10.1186/s12884-024-06678-7",
-              "title": "“It’s different here” Afghan refugee maternal health experiences in the United States | BMC Pregnancy and Childbirth | Full Text"
+              "url": "https://pubmed.ncbi.nlm.nih.gov/33499824/",
+              "title": "Construction of a patient decision aid for the treatment of uncomplicated urinary tract infection in primary care - PubMed"
             },
             {
-              "url": "https://pubmed.ncbi.nlm.nih.gov/39014313/",
-              "title": "\"It's different here\" Afghan refugee maternal health experiences in the United States - PubMed"
+              "url": "https://pubmed.ncbi.nlm.nih.gov/42165445/",
+              "title": "Patient Decision Aids for Women With Urinary Incontinence: A Systematic Review - PubMed"
             },
             {
-              "url": "https://ouci.dntb.gov.ua/en/works/4arOw3Ql/",
-              "title": "“It’s different here” Afghan refugee maternal health experiences in the United States"
+              "url": "https://clinicaltrials.gov/study/NCT05534412",
+              "title": "A Practice-Based Intervention To Improve Care for a Diverse Population Of Women With Urinary Incontinence"
+            },
+            {
+              "url": "https://clinicaltrials.gov/study/NCT04504084",
+              "title": "Influence of Patient Decision-Making Aids for Patients With Unilateral Ureteral Stone: A Randomized-Controlled Trial"
+            },
+            {
+              "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3751736/",
+              "title": "Shared decision making for patients with type 2 diabetes: a randomized trial in primary care"
+            },
+            {
+              "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9328108/",
+              "title": "Prediction model study focusing on eHealth in the management of urinary incontinence: the Personalised Advantage Index as a decision-making aid - PMC"
+            }
+          ]
+        }
+      },
+      "validation": {
+        "ok": true,
+        "errors": [],
+        "warnings": [
+          "Area \"Bone and joint health\" has no measured map coordinate. The record will list but not pin until one is added to MAP_POINTS."
+        ]
+      }
+    },
+    {
+      "paper": {
+        "title": "Treatment of brucellosis in pregnant women: a systematic review and analysis of current gaps and future perspectives.",
+        "doi": "10.1590/s1678-9946202668032",
+        "url": "https://doi.org/10.1590/s1678-9946202668032",
+        "year": "2026",
+        "journal": "Revista do Instituto de Medicina Tropical de Sao Paulo"
+      },
+      "problem": {
+        "id": "brucellosis-pregnancy-treatment",
+        "title": "There is no standardized, well-evidenced drug treatment for brucellosis in pregnant women",
+        "area": "Maternal health",
+        "summary": "A systematic review of therapeutic interventions for brucellosis in pregnant women found only six studies covering 403 women, with highly variable treatment regimens. Sulfamethoxazole-trimethoprim plus rifampicin was the most common combination, but adverse obstetric outcomes such as abortion, preterm birth and low birth weight remained frequent. The authors conclude there is no standardized treatment protocol for this condition in pregnancy.",
+        "affected_women": "Pregnant women diagnosed with brucellosis",
+        "source": "https://doi.org/10.1590/s1678-9946202668032",
+        "origin": "sourced",
+        "is_demo": false
+      },
+      "data_need": {
+        "id": "brucellosis-pregnancy-treatment-controlled-trials",
+        "problem_id": "brucellosis-pregnancy-treatment",
+        "area": "Maternal health",
+        "description": "Controlled studies establishing safe and effective treatment protocols for brucellosis during pregnancy",
+        "why_it_matters": "Without controlled evidence, clinicians rely on heterogeneous, inconsistently reported regimens while adverse obstetric outcomes like abortion and preterm birth remain common.",
+        "status": "missing",
+        "existing_data_note": "",
+        "gap_evidence": {
+          "source": "https://doi.org/10.1590/s1678-9946202668032",
+          "note": "The review states there is no standardized treatment for brucellosis during pregnancy, that heterogeneity in outcomes and definitions limited comparability across the six included studies, and that controlled studies are needed to establish safe and effective therapeutic protocols.",
+          "region": null,
+          "claimed_date": "2026-05-18"
+        },
+        "dataset_source": null,
+        "collection_guidance": null,
+        "verification": {
+          "checked_at": "2026-09-18",
+          "method": "web search",
+          "findings": "No controlled trials (RCTs or comparative cohort studies) specifically evaluating brucellosis treatment protocols in pregnant women were found. General brucellosis RCTs and meta-analyses of therapeutic regimens exist for the non-pregnant population, but a recent case report explicitly notes 'no randomized trials exist for the treatment of brucellosis in pregnancy'. Search results also returned an unrelated mHealth behavioral intervention RCT for brucellosis patients, which does not address treatment protocols or pregnancy outcomes.",
+          "sources": [
+            {
+              "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12646887/",
+              "title": "Protocol for a randomized controlled trial on the impact of a health action process approach model-based mobile health intervention via WeChat on health behaviors of brucellosis patients - PMC"
+            },
+            {
+              "url": "https://www.frontiersin.org/journals/public-health/articles/10.3389/fpubh.2025.1619608/full",
+              "title": "Frontiers | Protocol for a randomized controlled trial on the impact of a health action process approach model-based mobile health intervention via WeChat on health behaviors of brucellosis patients"
+            },
+            {
+              "url": "https://www.frontiersin.org/journals/public-health/articles/10.3389/fpubh.2025.1619608/pdf",
+              "title": "Protocol for a randomized controlled trial on the impact of ..."
+            },
+            {
+              "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3290537/",
+              "title": "Systematic Review and Meta-Analysis of Randomized Clinical Trials in the Treatment of Human Brucellosis"
+            },
+            {
+              "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC11340890/",
+              "title": "Updated therapeutic options for human brucellosis: A systematic review and network meta-analysis of randomized controlled trials"
+            },
+            {
+              "url": "https://acr.amegroups.org/article/view/10072/html",
+              "title": "Brucellosis in pregnancy: a case report - Dunn - AME Case Reports"
+            },
+            {
+              "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13185525/",
+              "title": "Treatment of brucellosis in pregnant women: a systematic review and analysis of current gaps and future perspectives - PMC"
+            },
+            {
+              "url": "https://pubmed.ncbi.nlm.nih.gov/42154841/",
+              "title": "Treatment of brucellosis in pregnant women: a systematic review and analysis of current gaps and future perspectives - PubMed"
+            },
+            {
+              "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC2276295",
+              "title": "pmc.ncbi.nlm.nih.gov"
             }
           ]
         }

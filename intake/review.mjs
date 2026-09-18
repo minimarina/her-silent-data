@@ -30,7 +30,13 @@ function arg(name) {
   return hit ? hit.slice(("--" + name + "=").length) : null;
 }
 
-const wanted = process.argv.find((a) => /^\d+$/.test(a));
+/* A number OR a record id. The number is convenient for reading; the id
+   is what a decision should use, because removing a record renumbers
+   everything after it — a list of index-based commands run in sequence
+   acts on the wrong records, which is not a hypothetical. */
+const wanted = process.argv.slice(2).find(
+  (a) => /^\d+$/.test(a) || (!a.startsWith("--") && a.includes("-"))
+);
 const approving = process.argv.includes("--approve");
 const dismissing = process.argv.includes("--dismiss");
 
@@ -310,12 +316,27 @@ function decide(record, index, outcome) {
 if (!wanted) {
   list();
 } else {
-  const index = Number(wanted) - 1;
+  const index = /^\d+$/.test(wanted)
+    ? Number(wanted) - 1
+    : records.findIndex((r) => r.data_need.id === wanted);
   const record = records[index];
 
   if (!record) {
-    console.log("There is no candidate " + wanted + ". " +
-                records.length + " are waiting.");
+    console.log("No candidate matches " + JSON.stringify(wanted) + ". " +
+                records.length + " are waiting:");
+    records.forEach((r) => console.log("  " + r.data_need.id));
+    process.exit(1);
+  }
+
+  if (/^\d+$/.test(wanted) && (approving || dismissing)) {
+    console.log("");
+    console.log("Deciding by number is unsafe — every removal renumbers the");
+    console.log("rest, so a sequence of commands acts on the wrong records.");
+    console.log("Use the id instead:");
+    console.log("");
+    console.log("  node intake/review.mjs " + record.data_need.id +
+                (approving ? " --approve" : " --dismiss --why=\"...\""));
+    console.log("");
     process.exit(1);
   }
 

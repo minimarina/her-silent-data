@@ -67,7 +67,8 @@
       "first_seen": "2026-09-18",
       "last_seen": "2026-09-18",
       "title": "Knee health and associations with female-specific health, physical, psychological and social-gendered factors in women runners: the TRAIL-W cohort study protocol.",
-      "outcome": "candidate"
+      "outcome": "dismissed",
+      "reason": "study protocol for the research that fills this gap"
     },
     "10.1007/s10461-026-05172-9": {
       "first_seen": "2026-09-18",
@@ -350,7 +351,8 @@
       "first_seen": "2026-09-18",
       "last_seen": "2026-09-18",
       "title": "Health and Health Care Access Among Afghan Refugee Women in the United States.",
-      "outcome": "candidate"
+      "outcome": "dismissed",
+      "reason": "the paper is the qualitative study that collected this data"
     },
     "10.1002/pmrj.70200": {
       "first_seen": "2026-09-18",
@@ -668,7 +670,7 @@
       "first_seen": "2026-09-18",
       "last_seen": "2026-09-18",
       "title": "Infertility treatment in women with epilepsy: A systematic review.",
-      "outcome": "seen"
+      "outcome": "candidate"
     },
     "10.1071/py26035": {
       "first_seen": "2026-09-18",
@@ -684,12 +686,6 @@
       "outcome": "rejected-by-filter",
       "filter_version": 3
     },
-    "10.52054/fvvo.2026.363": {
-      "first_seen": "2026-09-18",
-      "last_seen": "2026-09-18",
-      "title": "Aetiology of pelvic neuropathies in women: a narrative review.",
-      "outcome": "seen"
-    },
     "10.1016/j.jad.2026.122050": {
       "first_seen": "2026-09-18",
       "last_seen": "2026-09-18",
@@ -701,13 +697,13 @@
       "first_seen": "2026-09-18",
       "last_seen": "2026-09-18",
       "title": "Patient Decision Aids for Women With Urinary Incontinence: A Systematic Review.",
-      "outcome": "seen"
+      "outcome": "candidate"
     },
     "10.1590/s1678-9946202668032": {
       "first_seen": "2026-09-18",
       "last_seen": "2026-09-18",
       "title": "Treatment of brucellosis in pregnant women: a systematic review and analysis of current gaps and future perspectives.",
-      "outcome": "seen"
+      "outcome": "candidate"
     },
     "10.3390/ani16162473": {
       "first_seen": "2026-09-18",

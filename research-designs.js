@@ -147,5 +147,98 @@ const RESEARCH_DESIGNS = {
     "instrument_source": "Health Care Access Barriers (HCAB) Model survey instrument",
     "generated_at": "2026-09-18",
     "model": "claude-sonnet-5"
+  },
+  "epilepsy-fertility-treatment-larger-studies": {
+    "target_women": "Recruit 250 women aged 25-46 with a confirmed epilepsy diagnosis who are beginning infertility treatment (ovulation induction, IUI, or IVF with hormonal stimulation) at reproductive endocrinology and epilepsy clinics across 8-10 collaborating fertility and neurology centers; enroll consecutively over 18 months.",
+    "variables": [
+      "Seizure frequency and type per treatment cycle, recorded via patient seizure diary",
+      "Antiseizure medication (ASM) type, dose, and any dose adjustments during treatment",
+      "Serum ASM levels drawn at baseline and at each hormonal stimulation phase",
+      "Specific fertility protocol used (drug names, doses, duration of hormonal exposure)",
+      "Serum estradiol and progesterone levels at each treatment phase",
+      "Sleep disruption and stress/anxiety levels (self-reported) during treatment cycles",
+      "Pregnancy outcome and any peripartum seizure events if conception occurs"
+    ],
+    "stratifiers": [
+      "Epilepsy syndrome type (focal vs generalized)",
+      "ASM regimen category (enzyme-inducing vs non-enzyme-inducing vs newer ASMs)",
+      "Type of infertility treatment (ovulation induction vs IUI vs IVF)",
+      "Age band (25-34 vs 35-46)",
+      "Baseline seizure control status (well-controlled vs breakthrough seizures in prior year)"
+    ],
+    "form": "Prospective longitudinal cohort study using structured seizure diaries (paper or app-based) completed daily by participants, clinic-administered structured interviews at each treatment visit, and blood draws for ASM and hormone levels timed to each phase of the fertility protocol (baseline, stimulation, post-trigger/retrieval, luteal phase); follow-up continues through one full treatment cycle and, if pregnancy occurs, through delivery, over a total study duration of 24 months to allow for staggered enrollment and follow-up.",
+    "instrument_source": "Seizure frequency diary methodology as used in the Epilepsy Birth Control Registry and MONEAD (Maternal Outcomes and Neurodevelopmental Effects of Antiepileptic Drugs) study",
+    "generated_at": "2026-09-18",
+    "model": "claude-sonnet-5"
+  },
+  "pelvic-neuropathy-standardised-diagnosis": {
+    "target_women": "Recruit 300 women aged 18-65 presenting with chronic pelvic pain (>6 months) at 6-8 pelvic pain, gynaecology, and pain clinics across mixed urban/rural sites, including subgroups with known iatrogenic nerve injury, endometriosis, obstetric history, trauma, or structural compression, plus a comparison group with chronic pelvic pain of non-neuropathic origin.",
+    "variables": [
+      "Presence and distribution of neuropathic pain descriptors (burning, shooting, allodynia, numbness) mapped to dermatomal/nerve territory",
+      "Score on a validated neuropathic pain screening tool administered at baseline",
+      "Time from symptom onset to neuropathic pain diagnosis (in months)",
+      "Suspected causal category (iatrogenic, endometriosis-related, obstetric/childbirth, tumour, trauma, structural compression, unknown)",
+      "Results of confirmatory nerve-specific testing where performed (diagnostic nerve block response, imaging findings, electrophysiology)",
+      "Treatments received before correct diagnosis and their reported effectiveness",
+      "Pain intensity and interference with daily function over follow-up"
+    ],
+    "stratifiers": [
+      "Age band (18-30, 31-45, 46-65)",
+      "Suspected etiological category (iatrogenic, endometriosis, obstetric, trauma, tumour, structural compression)",
+      "Ethnicity",
+      "Prior number of clinicians consulted before referral to specialist pain service",
+      "Presence of comorbid pelvic conditions (endometriosis, pelvic floor dysfunction, prior pelvic surgery)"
+    ],
+    "form": "Prospective multi-site cohort study: structured baseline clinical interview and validated screening questionnaire at enrolment, followed by clinician-confirmed diagnostic workup (nerve blocks/imaging/electrophysiology as clinically indicated) within 3 months, then follow-up questionnaires at 6 and 12 months to track diagnostic pathway timing and treatment response; total study duration 18 months including analysis.",
+    "instrument_source": "Douleur Neuropathique 4 (DN4) questionnaire",
+    "generated_at": "2026-09-18",
+    "model": "claude-sonnet-5"
+  },
+  "urinary-incontinence-decision-aids-care-continuum": {
+    "target_women": "Recruit approximately 300 women aged 40-75 presenting with symptoms of stress, urgency, or mixed urinary incontinence in primary care clinics (not yet referred to urogynecology or urology), sampled from 8-10 primary care practices across urban, suburban, and rural sites, oversampling women who have not yet decided whether to seek formal care.",
+    "variables": [
+      "Decisional conflict score before and after exposure to the decision aid",
+      "Knowledge of urinary incontinence causes, treatment options, and expected outcomes (test score)",
+      "Stated intention to seek care and actual care-seeking behavior at 3 months",
+      "Treatment option chosen (watchful waiting, pelvic floor therapy, medication, surgery referral) and whether it matches stated values",
+      "Patient-reported satisfaction with the decision-making process",
+      "Patient-clinician communication quality during the visit",
+      "Time spent deliberating and number of clarifying questions asked of the clinician"
+    ],
+    "stratifiers": [
+      "Age band (40-54 vs 55-69 vs 70+)",
+      "Type of incontinence (stress, urgency, mixed)",
+      "Symptom severity (mild/moderate/severe by validated score)",
+      "Race/ethnicity",
+      "Health literacy level",
+      "Prior treatment history (treatment-naive vs previously treated)"
+    ],
+    "form": "A pragmatic randomized controlled trial: women are randomized to receive a new primary-care-stage decision aid (a short video plus printed values-clarification worksheet, used before or during the primary care visit) versus usual care. Outcomes measured at baseline, immediately post-visit, and at 3-month follow-up via phone or online survey; total study duration 18 months including recruitment, intervention, and follow-up.",
+    "instrument_source": "Decisional Conflict Scale (O'Connor, 1995); ICIQ-UI Short Form for symptom severity",
+    "generated_at": "2026-09-18",
+    "model": "claude-sonnet-5"
+  },
+  "brucellosis-pregnancy-treatment-controlled-trials": {
+    "target_women": "Recruit 300 pregnant women (aiming for ~50-60 per treatment arm across at least 5 sites) diagnosed with active brucellosis (positive blood culture or serology consistent with acute infection, e.g. Rose Bengal plus SAT titer ≥1:160) from obstetric and infectious disease clinics in brucellosis-endemic regions (e.g. rural Middle East, Central Asia, Mediterranean basin), recruited at first antenatal presentation with confirmed diagnosis, any gestational age at enrollment.",
+    "variables": [
+      "Maternal clearance of Brucella infection (repeat blood culture/serology negativity at 3 and 6 months post-treatment)",
+      "Relapse of brucellosis within 12 months postpartum",
+      "Pregnancy loss (spontaneous abortion before 20 weeks, stillbirth after 20 weeks)",
+      "Preterm birth (delivery before 37 weeks gestation)",
+      "Birth weight and Apgar score at delivery",
+      "Maternal adverse drug reactions by organ system and severity (graded using CTCAE)",
+      "Congenital anomalies or neonatal infection with Brucella at birth and 6-week follow-up"
+    ],
+    "stratifiers": [
+      "Gestational age at treatment initiation (first, second, third trimester)",
+      "Antibiotic regimen assigned (e.g. rifampicin monotherapy vs rifampicin+trimethoprim-sulfamethoxazole vs other combination)",
+      "Maternal age band (under 20, 20-34, 35+)",
+      "Rural vs urban residence and access to antenatal care",
+      "Presence of comorbid conditions (anemia, diabetes, prior pregnancy loss)"
+    ],
+    "form": "A multi-site randomized controlled trial comparing at least two antibiotic regimens considered plausibly safe in pregnancy, with women followed from enrollment through 6 weeks postpartum via structured antenatal visits every 4 weeks, telephone symptom check-ins every 2 weeks during treatment, and a structured delivery/neonatal outcome form completed at birth; total study duration approximately 3 years to allow for recruitment, follow-up, and staggered enrollment across sites.",
+    "instrument_source": null,
+    "generated_at": "2026-09-18",
+    "model": "claude-sonnet-5"
   }
 };

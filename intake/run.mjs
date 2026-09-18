@@ -88,10 +88,10 @@ function europePmcQuery() {
   ].join(" ");
 }
 
-async function discover(pageSize) {
+async function search(query, pageSize) {
   const url = "https://www.ebi.ac.uk/europepmc/webservices/rest/search" +
     "?format=json&resultType=core&pageSize=" + pageSize +
-    "&query=" + encodeURIComponent(europePmcQuery());
+    "&query=" + encodeURIComponent(query);
 
   const response = await fetch(url);
   if (!response.ok) {
@@ -125,6 +125,13 @@ async function discover(pageSize) {
   };
 }
 
+const discover = (pageSize) => search(europePmcQuery(), pageSize);
+
+/* One named paper, straight past discovery and the filter. For putting
+   back a record that was dismissed by mistake, and for re-running a
+   single paper after a prompt change without paying for a whole run. */
+const fetchByDoi = (doi) => search('DOI:"' + doi + '"', 1);
+
 /* ---------- main ---------- */
 
 function arg(name, fallback) {
@@ -140,21 +147,38 @@ const pageSize = Number(arg("page-size", 100));
    read as a map — and it is a spend control as much as a scope one. */
 const limit = Number(arg("limit", 6));
 
+/* --doi=... reprocesses one named paper and skips discovery and the
+   filter entirely. It is the recovery path: a dismissal is meant to be
+   permanent, but a dismissal made in error is just an error. */
+const onlyDoi = arg("doi", null);
+
 const seed = loadSeed();
 const known = seedUrls(seed);
 const ledger = loadLedger();
 
-console.log("Query window: last " + YEARS_BACK + " years");
-console.log("Phrases:      " + GAP_PHRASES.length);
+let found;
 
-const found = await discover(pageSize);
-console.log("Europe PMC:   " + found.hitCount + " total, " +
-            found.papers.length + " fetched");
+if (onlyDoi) {
+  console.log("Single paper:  " + onlyDoi);
+  found = await fetchByDoi(onlyDoi);
+
+  if (found.papers.length === 0) {
+    console.log("Europe PMC has no record with that DOI.");
+    process.exit(1);
+  }
+} else {
+  console.log("Query window: last " + YEARS_BACK + " years");
+  console.log("Phrases:      " + GAP_PHRASES.length);
+
+  found = await discover(pageSize);
+  console.log("Europe PMC:   " + found.hitCount + " total, " +
+              found.papers.length + " fetched");
+}
 
 /* Anything already on a card, or already judged in a previous run, is
    dropped before a single token is spent on it. Merely "seen" is not
    judged — see ledgerJudged. */
-const fresh = found.papers.filter((paper) => {
+const fresh = onlyDoi ? found.papers : found.papers.filter((paper) => {
   if (!paper.doi) { return false; }
   if (ledgerJudged(ledger, paper.doi, FILTER_VERSION)) { return false; }
   if (known.has(("https://doi.org/" + paper.doi).toLowerCase())) { return false; }
@@ -162,8 +186,10 @@ const fresh = found.papers.filter((paper) => {
   return true;
 });
 
-console.log("Unseen:       " + fresh.length +
-            " (" + (found.papers.length - fresh.length) + " already known)");
+if (!onlyDoi) {
+  console.log("Unseen:       " + fresh.length +
+              " (" + (found.papers.length - fresh.length) + " already known)");
+}
 
 /* A run that finds nothing must not erase what is still waiting to be
    reviewed. The ledger still records that the papers were looked at. */
@@ -201,10 +227,16 @@ if (discoverOnly) {
 
 /* ---------- 2 · filter ---------- */
 
+const passed = [];
+
+/* A named DOI has already been judged worth processing by the person who
+   named it. Screening it again would only be able to disagree. */
+if (onlyDoi) {
+  passed.push(fresh[0]);
+} else {
+
 console.log("");
 console.log("Filtering " + fresh.length + " abstracts on " + FILTER_MODEL + "…");
-
-const passed = [];
 
 for (const paper of fresh) {
   let keep = false;
@@ -229,6 +261,8 @@ for (const paper of fresh) {
 
 console.log("Passed:       " + passed.length +
             (passed.length >= limit ? " (stopped at --limit=" + limit + ")" : ""));
+
+}
 
 /* The ledger is saved before the expensive steps: a crash in extract must
    not make the run re-screen everything it already rejected. */
