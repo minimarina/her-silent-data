@@ -385,17 +385,48 @@ a:hover { text-decoration: none; }
    sceptic came to read. The label is now the caption and the evidence is
    the text, which is also the one convention the whole app uses: every
    label on a record is muted, every value is ink. */
+/* Three kinds of thing sit under a data need, and all of them shared one
+   grey left rule — so four in a row read as a single undifferentiated
+   column with bold words scattered through it. Each now gets the container
+   its content deserves: a quotation, a check, and a note. */
 .gap-evidence,
 .verification,
 .guidance,
 .dataset {
   display: block;
-  margin-top: 10px;
-  padding-left: var(--space-card);
-  border-left: 3px solid var(--border);
   font-size: 1rem;
   line-height: 1.5;
   color: var(--navy-ink);
+}
+
+/* Borrowed words, in the app's own quoted-panel idiom (.intake-principle),
+   because that is exactly what this is: something a published source said,
+   set apart from everything the platform says for itself. */
+.gap-evidence {
+  margin-top: var(--space-card);
+  padding: 14px var(--space-card);
+  background: var(--teal-soft);
+  border-left: 3px solid var(--teal-accent);
+  border-radius: 0 4px 4px 0;
+}
+
+/* What the platform did, and what that check cannot show. One box, because
+   a reader deciding whether to run a study has to weigh the result and its
+   limit together — they used to be two containers stacked on a third. */
+.check-block {
+  margin-top: var(--space-card);
+  padding: 14px var(--space-card);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+}
+
+/* Notes hanging off the record. These keep the left rule the others gave
+   up, which is what makes the two containers above read as containers. */
+.guidance,
+.dataset {
+  margin-top: 10px;
+  padding-left: var(--space-card);
+  border-left: 3px solid var(--border);
 }
 
 .gap-evidence .label,
@@ -407,7 +438,7 @@ a:hover { text-decoration: none; }
 }
 
 /* Teal rather than grey, because existing data is a thing you can go and
-   use. After the shared rule above, which sets the border it replaces. */
+   use. After the rule above, which sets the border it replaces. */
 .dataset { border-left-color: var(--teal-accent); }
 
 /* Usually there is no guidance, and saying so took a labelled block with a
@@ -601,7 +632,9 @@ a:hover { text-decoration: none; }
   transition: stroke-opacity 0.15s ease;
 }
 
-.map-mark { cursor: pointer; }
+/* Only where it is a control: under 640px the marks are not buttons, and
+   every interactive rule below is scoped the same way. */
+.map-mark[role="button"] { cursor: pointer; }
 
 .mark-leader {
   fill: none;
@@ -678,23 +711,26 @@ a:hover { text-decoration: none; }
 .mark-bar rect[data-status="partial"]   { fill: var(--status-partial); }
 .mark-bar rect[data-status="collected"] { fill: var(--status-collected); }
 
-.map-mark:hover .mark-halo,
-.map-mark:focus-visible .mark-halo { opacity: 0.28; }
+.map-mark[role="button"]:hover .mark-halo,
+.map-mark[role="button"]:focus-visible .mark-halo { opacity: 0.28; }
 
-.map-mark:hover .mark-pin,
-.map-mark:focus-visible .mark-pin { transform: scale(1.18); }
+.map-mark[role="button"]:hover .mark-pin,
+.map-mark[role="button"]:focus-visible .mark-pin { transform: scale(1.18); }
 
-.map-mark:hover .mark-count,
-.map-mark:focus-visible .mark-count { fill: var(--navy-ink); }
+.map-mark[role="button"]:hover .mark-count,
+.map-mark[role="button"]:focus-visible .mark-count { fill: var(--navy-ink); }
 
 /* Hovering a mark pushes the figure back so the pin comes forward. A
    systemic mark also brings up the ring its pin sits on, which is how the
    two kinds tell themselves apart on contact. */
-.body-map:has(.map-mark:hover) .map-figure path,
-.body-map:has(.map-mark:focus-visible) .map-figure path { stroke-opacity: 0.18; }
+.body-map:has(.map-mark[role="button"]:hover) .map-figure path,
+.body-map:has(.map-mark[role="button"]:focus-visible) .map-figure path {
+  stroke-opacity: 0.18;
+}
 
-.body-map:has(.map-mark[data-kind="systemic"]:hover) .map-ring,
-.body-map:has(.map-mark[data-kind="systemic"]:focus-visible) .map-ring {
+.body-map:has(.map-mark[data-kind="systemic"][role="button"]:hover) .map-ring,
+.body-map:has(.map-mark[data-kind="systemic"][role="button"]:focus-visible)
+  .map-ring {
   stroke-opacity: 0.55;
 }
 
@@ -721,13 +757,19 @@ a:hover { text-decoration: none; }
 
   .map-legend li { margin-bottom: 8px; }
 
+  /* The only control on the page at this width, so it carries the 44px
+     target Apple and Android both ask for — which is the target the pins
+     could not be given without overlapping each other. */
   .legend-item {
-    display: block;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     width: 100%;
+    min-height: 44px;
     text-align: left;
     background: none;
     border: 0;
-    padding: 4px 0;
+    padding: 6px 0;
     font: inherit;
     color: inherit;
     cursor: pointer;
@@ -1133,12 +1175,11 @@ a:hover { text-decoration: none; }
 /* The disclaimer is not a footnote. A reader deciding whether to run a
    study has to see the limit of the check at the same moment as its
    result, so it sits directly under it and is not quieter than it. */
+/* Inside .check-block now, under a rule rather than in a box of its own. */
 .check-note {
-  margin-top: 10px;
-  padding: 12px var(--space-card);
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 4px;
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid var(--border);
   font-size: 1rem;
   line-height: 1.5;
   color: var(--navy-ink);
@@ -1281,9 +1322,11 @@ a:hover { text-decoration: none; }
    block further up the file: same specificity, so whichever comes last
    wins, and up there this rule would have overruled it at every width. */
 .map-hint-narrow { display: none; }
+.map-hint-wide { display: inline; }
 
 @media (max-width: 640px) {
   .map-hint-narrow { display: inline; }
+  .map-hint-wide { display: none; }
 }
 
 #screen-area .count { margin-bottom: var(--space-section); }

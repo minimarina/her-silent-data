@@ -108,12 +108,18 @@
       <!-- Before the legend, not after it. The map is the only way in, so
            this has to say so once — and a reader who meets the instruction
            below the list has already scrolled past the thing it describes.
-           The second clause is mobile-only: there the pins carry numbers
-           instead of labels, and nothing otherwise says that those numbers
-           are the list underneath. -->
+
+           Two sentences, because at the two widths the control is not the
+           same thing. Above 640px the pins are buttons and the instruction
+           points at the figure. Below it the pins cannot be given touch
+           targets that do not overlap, so they are a picture and the
+           numbered list is what you press — and the instruction has to say
+           so, or it points at the one part of the screen that will not
+           answer. -->
       <p class="map-hint">
-        Select an area to see its problems.<span class="map-hint-narrow">
-        The numbers on the figure match the list below.</span>
+        <span class="map-hint-wide">Select an area to see its
+        problems.</span><span class="map-hint-narrow">Select an area from the
+        list below. The numbers on the figure match it.</span>
       </p>
 
       <!-- Under 640px the side labels do not fit. The pins carry numbers and
@@ -146,7 +152,10 @@
        with its claim, its check, what the source said about collecting it
        and the generated design. Nothing below this screen. -->
   <section id="screen-detail" class="screen" aria-labelledby="detail-heading" tabindex="-1" hidden>
-    <button type="button" class="back" data-back="screen-area">
+    <!-- The wording is set in openProblem(): a record reached through an
+         area returns to it, and one opened straight off a pin — which is
+         what a one-problem area now does — returns to the map. -->
+    <button type="button" id="detail-back" class="back" data-back="screen-area">
       &larr; Back to the area
     </button>
     <p class="eyebrow" id="detail-area"></p>

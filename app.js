@@ -295,6 +295,40 @@
     return box;
   }
 
+  /* Titles in the seed run to 155 characters, because a gap claim is a
+     sentence. That is right on the record, where it is the heading of the
+     thing the reader came for, and wrong on a card in a list of four - the
+     spec (2) describes this reader as someone who knows the field and is
+     short on time, and hands her four sentences to skim.
+
+     The card shows the first clause; the record keeps the sentence. The cut
+     falls on a clause boundary where there is one and a word boundary where
+     there is not, and nowhere else: this shortens a claim, so it must not be
+     able to change one. The full sentence stays the button's accessible
+     name, so nothing is hidden from a reader who cannot see the card. */
+  var TITLE_KEEP = 105;
+  var TITLE_MAX = 115;
+  var TITLE_MIN = 45;
+  var CLAUSE = /,\s|;\s|\s—\s|:\s/g;
+
+  function cardTitle(title) {
+    if (!hasText(title) || title.length <= TITLE_KEEP) { return title; }
+
+    var cut = -1;
+    var match;
+
+    CLAUSE.lastIndex = 0;
+    while ((match = CLAUSE.exec(title)) !== null) {
+      if (match.index > TITLE_MAX) { break; }
+      if (match.index >= TITLE_MIN) { cut = match.index; }
+    }
+
+    if (cut === -1) { cut = title.lastIndexOf(" ", TITLE_KEEP - 15); }
+    if (cut < TITLE_MIN) { return title; }
+
+    return title.slice(0, cut) + "…";
+  }
+
   function findProblem(problemId) {
     return DATA.problems.filter(function (p) {
       return p.id === problemId;
@@ -683,7 +717,11 @@
     lines.push("This design is model output and has not been reviewed. " +
       "The gap claim above is quoted from its cited source. A search of " +
       "published literature is not proof that data does not exist.");
-    lines.push("From Women's Data Gap — " + SITE_URL);
+    /* The address of the record itself, not of the site. A design pasted
+       into a protocol or an email now carries the way back to the claim it
+       answers, which is what the provenance rule was reaching for. */
+    lines.push("From Women's Data Gap — " + SITE_URL +
+      recordRoute(problem));
 
     return lines.join("\n");
   }
@@ -847,6 +885,111 @@
     return badge;
   }
 
+  /* ---------- routes ---------- */
+
+  /* The hash is the state, so every record has an address. That is this
+     register's own argument turned on itself: a claim you can check is a
+     claim you can point at, and until now "Copy this design" handed a
+     researcher the provenance with nowhere to come back to. Browser Back,
+     and the back gesture on a phone, left the site from every screen too.
+
+     A hash and not pushState, because the app is built to open from file://
+     as well as from Pages (13), and a path route has no server to answer it
+     on either. Back and Forward come free with the hash. */
+
+  var ROUTE_HOME = "#/";
+
+  function recordRoute(problem) {
+    return "#/record/" + encodeURIComponent(problem.id);
+  }
+
+  function areaRoute(area) {
+    return "#/area/" + encodeURIComponent(area);
+  }
+
+  /* An area holding one problem has no list to show, so its address is the
+     record's. See openProblem. */
+  function groupRoute(group) {
+    return group.problems.length === 1
+      ? recordRoute(group.problems[0])
+      : areaRoute(group.area);
+  }
+
+  function currentRoute() {
+    var hash = window.location.hash || ROUTE_HOME;
+    var parts = hash.replace(/^#\/?/, "").split("/");
+
+    return {
+      name: parts[0] || "",
+      value: decodeURIComponent(parts.slice(1).join("/"))
+    };
+  }
+
+  /* Setting the hash fires hashchange, which renders. Setting it to what it
+     already holds fires nothing, so that case renders directly. */
+  function go(hash) {
+    if (window.location.hash === hash) { renderRoute(); return; }
+    window.location.hash = hash;
+  }
+
+  /* Correcting the address without adding a history entry: a Back that
+     returned to a route the app had just redirected away from would bounce
+     the reader forwards again. replaceState throws on file:// in some
+     browsers, and the app has to open from there (13). */
+  function replaceHash(hash) {
+    if (window.location.hash === hash) { return; }
+
+    if (window.history && window.history.replaceState) {
+      try {
+        window.history.replaceState(null, "", hash);
+        return;
+      } catch (e) { /* fall through to the hash, which always works */ }
+    }
+    window.location.hash = hash;
+  }
+
+  /* An address naming something the seed does not hold - a record that was
+     dismissed, a mistyped link, a link made against an older seed - lands on
+     the map rather than on a blank screen. */
+  function renderRoute() {
+    var route = currentRoute();
+
+    if (route.name === "about") { show("screen-about"); return; }
+
+    if (route.name === "record") {
+      var problem = findProblem(route.value);
+
+      if (problem) { openProblem(problem.id); return; }
+    }
+
+    if (route.name === "area") {
+      var group = findArea(route.value);
+
+      if (group) {
+        if (group.problems.length === 1) {
+          replaceHash(recordRoute(group.problems[0]));
+          openProblem(group.problems[0].id);
+          return;
+        }
+        openArea(route.value);
+        return;
+      }
+    }
+
+    show("screen-problems");
+  }
+
+  /* Which route a Back or a header button stands for. The detail screen's is
+     the one that varies: it returns to the area when there is an area worth
+     returning to, and to the map when the record was opened off a pin. */
+  function routeForScreen(screenId) {
+    if (screenId === "screen-about") { return "#/about"; }
+    if (screenId === "screen-area" && currentArea) {
+      return areaRoute(currentArea);
+    }
+    return ROUTE_HOME;
+  }
+
   /* ---------- navigation ---------- */
 
   var SCREENS = [
@@ -894,6 +1037,9 @@
      be nested in one. §8.1 asks that every claim show where it came from,
      and the claim is the record, not the card that points at it. */
 
+  /* The area the reader is inside, or null when the record was opened
+     straight from a pin. Set by openArea and openProblem rather than by
+     their callers, so the route and the Back button cannot disagree. */
   var currentArea = null;
 
   function findArea(area) {
@@ -936,7 +1082,9 @@
 
       /* Spans, not paragraphs: a button may only contain phrasing
          content. They are laid out as blocks in CSS. */
-      card.appendChild(makeValue("span", "card-title", problem.title));
+      card.appendChild(
+        makeValue("span", "card-title", cardTitle(problem.title))
+      );
       card.appendChild(make("span", "count", gapSentence(problem)));
 
       /* The badge marks the exception rather than the rule. Every record
@@ -948,8 +1096,17 @@
         card.appendChild(originBadge(problem));
       }
 
+      /* The visible title is shortened; the button's name is not, so a
+         reader who cannot see the card still gets the claim in full, with
+         the status and any warning that belongs with it. */
+      card.setAttribute("aria-label", [
+        problem.title,
+        gapSentence(problem),
+        flaggedOrigin(problem) ? originWord(problem) : ""
+      ].filter(hasText).join(" — "));
+
       card.addEventListener("click", function () {
-        openProblem(problem.id);
+        go(recordRoute(problem));
       });
 
       item.appendChild(card);
@@ -965,6 +1122,17 @@
   function openProblem(problemId) {
     var problem = findProblem(problemId);
     if (!problem) { return; }
+
+    /* Where Back goes. An area holding one problem is a screen showing one
+       card whose two lines this screen then opens with - the same list of
+       one that screen 3 was, before it was removed on 18 Sep. So a pin on
+       such an area opens the record, and the way back from it is the map. */
+    var group = findArea(problem.area);
+    currentArea = (group && group.problems.length > 1) ? problem.area : null;
+
+    var back = el("detail-back");
+    back.textContent = currentArea
+      ? "← Back to the area" : "← Back to the map";
 
     setValue(el("detail-area"), problem.area);
     setValue(el("detail-heading"), problem.title);
@@ -1035,11 +1203,20 @@
        missing, then whether anyone has collected it since, then the limit
        of that check. */
     item.appendChild(gapEvidenceNode(problem, need));
-    item.appendChild(verificationNode(need));
+
+    /* The check and the limit of the check are one idea, and they were two
+       containers stacked on a third. A reader deciding whether to run a
+       study has to weigh what the search found and what it could not see at
+       the same moment, so they share a box. */
+    var check = make("div", "check-block");
+    check.appendChild(verificationNode(need));
 
     if (need.status === "missing") {
-      item.appendChild(shallowCheckNote(problem, need));
-    } else {
+      check.appendChild(shallowCheckNote(problem, need));
+    }
+    item.appendChild(check);
+
+    if (need.status !== "missing") {
       var note = existingDataLine(need);
       if (note) { item.appendChild(note); }
       item.appendChild(datasetNode(need));
@@ -1397,7 +1574,7 @@
      in Maternal health are one pin reading "2 of 2 data needs missing",
      not two pins with the same name. Every mark is a real tab stop.
      Activating it reveals that area's problems in the list below. */
-  function renderMap() {
+  function renderMap(isNarrow) {
     var marks = el("map-marks");
     marks.textContent = "";
 
@@ -1412,13 +1589,28 @@
       var count = group.problems.length;
 
       var mark = svgMake("g", "map-mark");
-      attrs(mark, {
-        role: "button",
-        tabindex: "0",
-        "data-kind": point.kind,
-        "aria-label": group.area + " — " + count +
-          (count === 1 ? " problem, " : " problems, ") + sentence
-      });
+      mark.setAttribute("data-kind", point.kind);
+
+      /* Under 640px the figure is a picture and the numbered legend below it
+         is the control. Six areas cannot each be given a 48px touch target
+         on a 330px-wide torso without moving pins off the body parts they
+         name, which 7.6 forbids - Pelvic health and Reproductive health sit
+         36.5px apart, Reproductive health and Chronic pain 33.8px, against
+         hit circles 48px across. Overlapping targets are worse than none:
+         the sibling drawn last silently takes the tap, so pressing Pelvic
+         health opened Reproductive health over much of its own pin.
+
+         The clearance rule measured at MAP_POINTS guarded the 16-unit halo,
+         not the 24-unit hit circle this function adds, which is how the two
+         came to disagree. */
+      if (!isNarrow) {
+        attrs(mark, {
+          role: "button",
+          tabindex: "0",
+          "aria-label": group.area + " — " + count +
+            (count === 1 ? " problem, " : " problems, ") + sentence
+        });
+      }
 
       var start = leaderStart(point, radius);
       var leader = svgMake("polyline", "mark-leader");
@@ -1434,9 +1626,11 @@
          44px Apple and Android both ask for — and on a phone the pins are
          the only control on the page. fill is a transparent COLOUR rather
          than "none", because "none" is not hit-tested. */
-      var hit = svgMake("circle", "mark-hit");
-      attrs(hit, { cx: point.x, cy: point.y, r: radius + 16 });
-      mark.appendChild(hit);
+      if (!isNarrow) {
+        var hit = svgMake("circle", "mark-hit");
+        attrs(hit, { cx: point.x, cy: point.y, r: radius + 16 });
+        mark.appendChild(hit);
+      }
 
       var halo = svgMake("circle", "mark-halo");
       attrs(halo, { cx: point.x, cy: point.y, r: radius + 8 });
@@ -1479,16 +1673,20 @@
         point.label_y + 28
       ));
 
-      mark.addEventListener("click", function () { openArea(group.area); });
+      if (!isNarrow) {
+        mark.addEventListener("click", function () {
+          go(groupRoute(group));
+        });
 
-      /* A <g> is not a button, so Enter and Space are wired by hand to
-         match what the problem cards get for free. */
-      mark.addEventListener("keydown", function (event) {
-        if (event.key === "Enter" || event.key === " ") {
-          event.preventDefault();
-          openArea(group.area);
-        }
-      });
+        /* A <g> is not a button, so Enter and Space are wired by hand to
+           match what the problem cards get for free. */
+        mark.addEventListener("keydown", function (event) {
+          if (event.key === "Enter" || event.key === " ") {
+            event.preventDefault();
+            go(groupRoute(group));
+          }
+        });
+      }
 
       marks.appendChild(mark);
     });
@@ -1525,7 +1723,7 @@
     button.appendChild(make("span", "legend-count",
       gapSentenceFor(group.needs)));
 
-    button.addEventListener("click", function () { openArea(group.area); });
+    button.addEventListener("click", function () { go(groupRoute(group)); });
     return button;
   }
 
@@ -1588,7 +1786,21 @@
 
   function fitMap(isNarrow) {
     var svg = document.querySelector(".map-svg");
-    if (svg) { svg.setAttribute("viewBox", isNarrow ? MAP_NARROW : MAP_WIDE); }
+
+    if (svg) {
+      svg.setAttribute("viewBox", isNarrow ? MAP_NARROW : MAP_WIDE);
+
+      /* Where the legend is the control, the figure is taken out of the
+         accessibility tree rather than reading every area name twice. It
+         holds nothing focusable at that width, so nothing is trapped
+         behind the attribute. */
+      if (isNarrow) { svg.setAttribute("aria-hidden", "true"); }
+      else { svg.removeAttribute("aria-hidden"); }
+    }
+
+    /* The marks are built per width, not restyled: at this one they are not
+       controls at all. */
+    renderMap(isNarrow);
   }
 
   function watchMapWidth() {
@@ -1631,37 +1843,37 @@
   }
 
   function init() {
-    document.querySelectorAll("[data-back]").forEach(function (button) {
-      button.addEventListener("click", function () {
-        var target = button.getAttribute("data-back");
-
-        /* Back from a record returns to the area it was opened from, not
-           to whichever area was rendered last. */
-        if (target === "screen-area" && currentArea) {
-          openArea(currentArea);
-          return;
-        }
-        show(target);
-      });
-    });
-
-    /* The header link, and anything else that opens a screen outright.
-       Mirrors the [data-back] wiring above rather than adding a second
-       navigation idea. */
-    document.querySelectorAll("[data-goto]").forEach(function (button) {
-      button.addEventListener("click", function () {
-        show(button.getAttribute("data-goto"));
-      });
-    });
+    /* Every Back and every header button names a screen; routeForScreen
+       turns that into the address for it, and the hash does the rest. One
+       navigation idea, as before - it just writes the address down now. */
+    document.querySelectorAll("[data-back], [data-goto]").forEach(
+      function (button) {
+        button.addEventListener("click", function () {
+          go(routeForScreen(
+            button.getAttribute("data-back") ||
+            button.getAttribute("data-goto")
+          ));
+        });
+      }
+    );
 
     applyBuildStatus();
     setupDisclosure();
 
     renderProvenanceSummary();
     renderGapSummary();
-    renderMap();
     renderMapLegend();
     watchMapWidth();
+
+    window.addEventListener("hashchange", renderRoute);
+
+    /* Only when the address asks for something. On a plain load the home
+       screen is already the one in the markup, and show() moves focus into
+       a screen - right after a click, wrong before the reader has made one.
+       A deep link is a click, so it gets the focus move. */
+    if (window.location.hash && window.location.hash !== ROUTE_HOME) {
+      renderRoute();
+    }
   }
 
   document.addEventListener("DOMContentLoaded", init);
