@@ -1,696 +1,754 @@
 {
   "run_at": "2026-09-18",
-  "stage": "discover-only",
+  "stage": "full",
   "query_window_years": 1,
   "hit_count": 4772,
   "fetched": 100,
   "unseen": 98,
-  "papers": [
-    {
-      "title": "Women with firearm injuries: A multicenter mixed-methods study.",
-      "doi": "10.1016/j.amjsurg.2026.117119",
-      "url": "https://doi.org/10.1016/j.amjsurg.2026.117119",
-      "year": "2026",
-      "journal": "American journal of surgery"
-    },
-    {
-      "title": "Cardiometabolic Risk Factors in Women Exposed to High Altitude.",
-      "doi": "10.3390/ijms27146349",
-      "url": "https://doi.org/10.3390/ijms27146349",
-      "year": "2026",
-      "journal": "International journal of molecular sciences"
-    },
-    {
-      "title": "\"It should be called WOMEN-opause\": Perceptions, experiences and knowledge of menopause voiced by women with intellectual disabilities.",
-      "doi": "10.1016/j.maturitas.2026.109108",
-      "url": "https://doi.org/10.1016/j.maturitas.2026.109108",
-      "year": "2026",
-      "journal": "Maturitas"
-    },
-    {
-      "title": "Female sexual dysfunction among foreign and Australian-born women: a cross-sectional study.",
-      "doi": "10.3389/frph.2026.1855626",
-      "url": "https://doi.org/10.3389/frph.2026.1855626",
-      "year": "2026",
-      "journal": "Frontiers in reproductive health"
-    },
-    {
-      "title": "Diabetes Type 2 in Women: The Impact of EndogenousOestrogen, A Population-Based Study With About 2 Decades of Follow-Up.",
-      "doi": "10.1002/edm2.70267",
-      "url": "https://doi.org/10.1002/edm2.70267",
-      "year": "2026",
-      "journal": "Endocrinology, diabetes & metabolism"
-    },
-    {
-      "title": "Sources of joy among older African American women: A qualitative analysis.",
-      "doi": "10.1080/08952841.2026.2703635",
-      "url": "https://doi.org/10.1080/08952841.2026.2703635",
-      "year": "2026",
-      "journal": "Journal of women & aging"
-    },
-    {
-      "title": "Women Victimization Information Exposure and Chinese Unmarried Women's Marital Intention: The Mediating Role of Safety Anxiety.",
-      "doi": "10.1080/0092623x.2026.2720163",
-      "url": "https://doi.org/10.1080/0092623x.2026.2720163",
-      "year": "2026",
-      "journal": "Journal of sex & marital therapy"
-    },
-    {
-      "title": "Recent and Lifetime Prevalence of Sexual and Intimate Partner Violence Among Women in Substance Use Treatment.",
-      "doi": "10.1080/10826084.2026.2725880",
-      "url": "https://doi.org/10.1080/10826084.2026.2725880",
-      "year": "2026",
-      "journal": "Substance use & misuse"
-    },
-    {
-      "title": "Correlates of Mammogram Screening Among Brazilian Immigrant Women in the United States: Analysis of 2020 Cross-Sectional Survey Data. ",
-      "doi": "10.1007/s40615-026-03170-0",
-      "url": "https://doi.org/10.1007/s40615-026-03170-0",
-      "year": "2026",
-      "journal": "Journal of racial and ethnic health disparities"
-    },
-    {
-      "title": "Experiences of Healthcare Support and Access Among Women Who Use Performance and Image-Enhancing Drugs.",
-      "doi": "10.1111/dar.70227",
-      "url": "https://doi.org/10.1111/dar.70227",
-      "year": "2026",
-      "journal": "Drug and alcohol review"
-    },
-    {
-      "title": "Knee health and associations with female-specific health, physical, psychological and social-gendered factors in women runners: the TRAIL-W cohort study protocol.",
-      "doi": "10.1136/bmjsem-2025-003132",
-      "url": "https://doi.org/10.1136/bmjsem-2025-003132",
-      "year": "2026",
-      "journal": "BMJ open sport & exercise medicine"
-    },
-    {
-      "title": "Sociodemographic and Behavioral Characteristics and HIV and Syphilis Prevalence Among Partners of Transgender Women in Buenos Aires, Argentina.",
-      "doi": "10.1007/s10461-026-05172-9",
-      "url": "https://doi.org/10.1007/s10461-026-05172-9",
-      "year": "2026",
-      "journal": "AIDS and behavior"
-    },
-    {
-      "title": "Long-Term Oncological Implications of Hormone Replacement Therapy in Women With Hypogonadotropic Hypogonadism: A Propensity-Matched Study.",
-      "doi": "10.7759/cureus.111721",
-      "url": "https://doi.org/10.7759/cureus.111721",
-      "year": "2026",
-      "journal": "Cureus"
-    },
-    {
-      "title": "The effect of bariatric surgery on patient reported outcomes of heart failure in women: a pilot study.",
-      "doi": "10.1016/j.soard.2026.06.019",
-      "url": "https://doi.org/10.1016/j.soard.2026.06.019",
-      "year": "2026",
-      "journal": "Surgery for obesity and related diseases : official journal of the American Society for Bariatric Surgery"
-    },
-    {
-      "title": "Sex differences in persistent decline in neurological function after modeling repetitive sport-related mild head injuries in young mice.",
-      "doi": "10.1016/j.expneurol.2026.115848",
-      "url": "https://doi.org/10.1016/j.expneurol.2026.115848",
-      "year": "2026",
-      "journal": "Experimental neurology"
-    },
-    {
-      "title": "Associations between second-trimester maternal physical activity and neonatal body composition: findings from the ORIGINS birth cohort.",
-      "doi": "10.1017/s2040174426100750",
-      "url": "https://doi.org/10.1017/s2040174426100750",
-      "year": "2026",
-      "journal": "Journal of developmental origins of health and disease"
-    },
-    {
-      "title": "The effects of androgens on drug metabolism and transport: clinical pharmacologic considerations for people assigned female at birth.",
-      "doi": "10.1080/17425255.2026.2726547",
-      "url": "https://doi.org/10.1080/17425255.2026.2726547",
-      "year": "2026",
-      "journal": "Expert opinion on drug metabolism & toxicology"
-    },
-    {
-      "title": "Emotion Dysregulation Modulates the Association Between Cigarette Use and HPA-Axis Functioning Among Women Currently Experiencing Intimate Partner Violence.",
-      "doi": "10.1080/10826084.2026.2727142",
-      "url": "https://doi.org/10.1080/10826084.2026.2727142",
-      "year": "2026",
-      "journal": "Substance use & misuse"
-    },
-    {
-      "title": "Aging Strong: Lifelong Attitudes to Activity and Late-Life Function in Fit and Active Women From the Czech Republic.",
-      "doi": "10.1177/07334648261452738",
-      "url": "https://doi.org/10.1177/07334648261452738",
-      "year": "2026",
-      "journal": "Journal of applied gerontology : the official journal of the Southern Gerontological Society"
-    },
-    {
-      "title": "High adherence to a Mediterranean diet is associated with a diverse faecal microbiome and reduced systemic inflammation in a cohort of pregnant women.",
-      "doi": "10.1038/s41598-026-55564-z",
-      "url": "https://doi.org/10.1038/s41598-026-55564-z",
-      "year": "2026",
-      "journal": "Scientific reports"
-    },
-    {
-      "title": "Perspectives of women who receive an increased chance result on non-invasive prenatal testing or combined first trimester screening: a qualitative study.",
-      "doi": "10.1016/j.midw.2026.104827",
-      "url": "https://doi.org/10.1016/j.midw.2026.104827",
-      "year": "2026",
-      "journal": "Midwifery"
-    },
-    {
-      "title": "Exploring Home-Based Breathing-Training Experiences and Device Needs of Women with Postpartum Stress Urinary Incontinence: A Qualitative Study.",
-      "doi": "10.1007/s00192-026-06779-1",
-      "url": "https://doi.org/10.1007/s00192-026-06779-1",
-      "year": "2026",
-      "journal": "International urogynecology journal"
-    },
-    {
-      "title": "Trauma-associated sleep disturbances among women in a nationwide study.",
-      "doi": "10.1038/s43856-026-01698-0",
-      "url": "https://doi.org/10.1038/s43856-026-01698-0",
-      "year": "2026",
-      "journal": "Communications medicine"
-    },
-    {
-      "title": "Systemic Inflammation and Subclinical Hepatic Synthetic Dysfunction Following Doxorubicin-Cyclophosphamide Chemotherapy in Ethiopian Women With Breast Cancer: A Prospective Cohort Study.",
-      "doi": "10.1002/hsr2.73236",
-      "url": "https://doi.org/10.1002/hsr2.73236",
-      "year": "2026",
-      "journal": "Health science reports"
-    },
-    {
-      "title": "Mental Health Outcomes among Palestinian Women in the Context of Community Violence: The Moderating Role of Perceived Social Support and Self-Efficacy.",
-      "doi": "10.1177/10778012261429101",
-      "url": "https://doi.org/10.1177/10778012261429101",
-      "year": "2026",
-      "journal": "Violence against women"
-    },
-    {
-      "title": "Experiences of Discrimination and DNA Methylation Among Black Nulliparous Women.",
-      "doi": "10.1007/s40615-026-03063-2",
-      "url": "https://doi.org/10.1007/s40615-026-03063-2",
-      "year": "2026",
-      "journal": "Journal of racial and ethnic health disparities"
-    },
-    {
-      "title": "Factors contributing to the use of traditional herbal medicine among hospitalised high-risk pregnant women in Namibia.",
-      "doi": "10.4102/hsag.v31i0.3508",
-      "url": "https://doi.org/10.4102/hsag.v31i0.3508",
-      "year": "2026",
-      "journal": "Health SA = SA Gesondheid"
-    },
-    {
-      "title": "Fertility desires and utilization of an integrated HIV care and family planning services among young women living with HIV in semi-rural Uganda: A cross sectional study.",
-      "doi": "10.1371/journal.pone.0349072",
-      "url": "https://doi.org/10.1371/journal.pone.0349072",
-      "year": "2026",
-      "journal": "PloS one"
-    },
-    {
-      "title": "Association of stress urinary incontinence with stress, sleep quality, and health-related quality of life in nulligravid college women.",
-      "doi": "10.1038/s41598-026-55774-5",
-      "url": "https://doi.org/10.1038/s41598-026-55774-5",
-      "year": "2026",
-      "journal": "Scientific reports"
-    },
-    {
-      "title": "Beyond symptom reduction: The longitudinal relationship between eating disorder symptoms and mental wellbeing in young women.",
-      "doi": "10.1111/bjc.70082",
-      "url": "https://doi.org/10.1111/bjc.70082",
-      "year": "2026",
-      "journal": "The British journal of clinical psychology"
-    },
-    {
-      "title": "Relationship Between Perceived Stress, Resilience, Mental Health, and Pain in Women with Migraines, a Case-Control Study.",
-      "doi": "10.2147/jpr.s487780",
-      "url": "https://doi.org/10.2147/jpr.s487780",
-      "year": "2025",
-      "journal": "Journal of pain research"
-    },
-    {
-      "title": "Investigating Paedo-Hebepho-Ephebophilic Sexual Interests and Underlying Correlates Among Women in a Community Sample From the UK, Canada and USA.",
-      "doi": "10.1177/0306624x261464481",
-      "url": "https://doi.org/10.1177/0306624x261464481",
-      "year": "2026",
-      "journal": "International journal of offender therapy and comparative criminology"
-    },
-    {
-      "title": "Effect of Parity and β-Amyloid on Cognition and Hippocampal Volume in Postmenopausal Women.",
-      "doi": "10.1212/wnl.0000000000218153",
-      "url": "https://doi.org/10.1212/wnl.0000000000218153",
-      "year": "2026",
-      "journal": "Neurology"
-    },
-    {
-      "title": "Morning peak and high prevalence of pulmonary embolism and psychiatric disorders in women with sudden cardiac arrest: results from the ReCaPTa study.",
-      "doi": "10.1016/j.resplu.2026.101416",
-      "url": "https://doi.org/10.1016/j.resplu.2026.101416",
-      "year": "2026",
-      "journal": "Resuscitation plus"
-    },
-    {
-      "title": "Factors Influencing Contraceptive Use Among Women With Serious Mental Illness Residing in Pennsylvania.",
-      "doi": "10.1111/psrh.70067",
-      "url": "https://doi.org/10.1111/psrh.70067",
-      "year": "2026",
-      "journal": "Perspectives on sexual and reproductive health"
-    },
-    {
-      "title": "Long-term psychological consequences of multiple war-related loss among women survivors of Srebrenica and other Eastern Bosnia regions: a qualitative focus group study.",
-      "doi": "10.1080/20008066.2026.2686479",
-      "url": "https://doi.org/10.1080/20008066.2026.2686479",
-      "year": "2026",
-      "journal": "European journal of psychotraumatology"
-    },
-    {
-      "title": "Expectations and experiences of yoga in women with breast cancer receiving endocrine therapy: a qualitative study.",
-      "doi": "10.1007/s00520-026-11063-5",
-      "url": "https://doi.org/10.1007/s00520-026-11063-5",
-      "year": "2026",
-      "journal": "Supportive care in cancer : official journal of the Multinational Association of Supportive Care in Cancer"
-    },
-    {
-      "title": "Anti-Müllerian hormone decreased in women with superficial peritoneal endometriosis and associated with an elevated inflammatory profile.",
-      "doi": "10.1530/raf-25-0127",
-      "url": "https://doi.org/10.1530/raf-25-0127",
-      "year": "2026",
-      "journal": "Reproduction & fertility"
-    },
-    {
-      "title": "Psychological Health, Polysocial Risk, and Cardiovascular Health Among Women of Reproductive Age.",
-      "doi": "10.1016/j.jacadv.2026.102796",
-      "url": "https://doi.org/10.1016/j.jacadv.2026.102796",
-      "year": "2026",
-      "journal": "JACC. Advances"
-    },
-    {
-      "title": "Dual Energy X-Ray Absorptiometry Reveals Differential Glycemic Implications of Adiposity in Underweight, Normal Weight, and Overweight South African Women With Newly-Diagnosed Diabetes.",
-      "doi": "10.1111/dom.71333",
-      "url": "https://doi.org/10.1111/dom.71333",
-      "year": "2026",
-      "journal": "Diabetes, obesity & metabolism"
-    },
-    {
-      "title": "Citizenship Status and Contraceptive Method Use Among Latinx, Asian and Pacific Islander (API) Women in California.",
-      "doi": "10.1007/s10903-026-01978-w",
-      "url": "https://doi.org/10.1007/s10903-026-01978-w",
-      "year": "2026",
-      "journal": "Journal of immigrant and minority health"
-    },
-    {
-      "title": "Gestational diabetes in South African women with HIV and HIV-seronegative women: results from the ORCHID cohort.",
-      "doi": "10.1210/clinem/dgag111",
-      "url": "https://doi.org/10.1210/clinem/dgag111",
-      "year": "2026",
-      "journal": "The Journal of clinical endocrinology and metabolism"
-    },
-    {
-      "title": "Sexual Experiences of Women with Pelvic Organ Prolapse: A Qualitative Study.",
-      "doi": "10.1007/s00192-026-06744-y",
-      "url": "https://doi.org/10.1007/s00192-026-06744-y",
-      "year": "2026",
-      "journal": "International urogynecology journal"
-    },
-    {
-      "title": "\"Heartbreak and Frustration'' experiences of healthcare providers caring for pregnant women with sickle cell disease in Uganda.",
-      "doi": "10.1371/journal.pone.0355018",
-      "url": "https://doi.org/10.1371/journal.pone.0355018",
-      "year": "2026",
-      "journal": "PloS one"
-    },
-    {
-      "title": "Factors that impede women's contraceptive care needs during and immediately after incarceration in New South Wales, Australian. Qualitative perspectives of professional staff working with incarcerated women.",
-      "doi": "10.1371/journal.pone.0355277",
-      "url": "https://doi.org/10.1371/journal.pone.0355277",
-      "year": "2026",
-      "journal": "PloS one"
-    },
-    {
-      "title": "Silent struggles and stigmatised lives: a qualitative study among infertile married women in Kpandai District, Ghana.",
-      "doi": "10.1136/bmjph-2025-004082",
-      "url": "https://doi.org/10.1136/bmjph-2025-004082",
-      "year": "2026",
-      "journal": "BMJ public health"
-    },
-    {
-      "title": "\"Left Out at the Kitchen Table\": Exploring Peer Support Needs Among Women Firefighters.",
-      "doi": "10.1002/ajim.70094",
-      "url": "https://doi.org/10.1002/ajim.70094",
-      "year": "2026",
-      "journal": "American journal of industrial medicine"
-    },
-    {
-      "title": "Prevalence of Hepatitis E Virus Infection Among Pregnant Women in Tunisia: Findings from a Large Cohort Study.",
-      "doi": "10.3390/pathogens15050549",
-      "url": "https://doi.org/10.3390/pathogens15050549",
-      "year": "2026",
-      "journal": "Pathogens (Basel, Switzerland)"
-    },
-    {
-      "title": "Mass spectrometry-based quantitation of cervicovaginal progesterone and steroids in women at high risk of preterm birth.",
-      "doi": "10.1093/molehr/gaag045",
-      "url": "https://doi.org/10.1093/molehr/gaag045",
-      "year": "2026",
-      "journal": "Molecular human reproduction"
-    },
-    {
-      "title": "Health and Health Care Access Among Afghan Refugee Women in the United States.",
-      "doi": "10.1001/jamanetworkopen.2026.27727",
-      "url": "https://doi.org/10.1001/jamanetworkopen.2026.27727",
-      "year": "2026",
-      "journal": "JAMA network open"
-    },
-    {
-      "title": "Association of proximity to greenspaces and back pain in older men and women: Analysis of data from two cohort studies.",
-      "doi": "10.1002/pmrj.70200",
-      "url": "https://doi.org/10.1002/pmrj.70200",
-      "year": "2026",
-      "journal": "PM & R : the journal of injury, function, and rehabilitation"
-    },
-    {
-      "title": "Gut Microbiome Associations With Depressive Symptoms in Women With Gynecologic Cancer: A Longitudinal Study.",
-      "doi": "10.1177/10998004261461549",
-      "url": "https://doi.org/10.1177/10998004261461549",
-      "year": "2026",
-      "journal": "Biological research for nursing"
-    },
-    {
-      "title": "Decision-Making About Abortion in an Abortion-Restricted Setting: A Qualitative Study of Young Women in Namibia.",
-      "doi": "10.1002/hsr2.72852",
-      "url": "https://doi.org/10.1002/hsr2.72852",
-      "year": "2026",
-      "journal": "Health science reports"
-    },
-    {
-      "title": "Social support and cognitive function in postmenopausal women.",
-      "doi": "10.1097/gme.0000000000002877",
-      "url": "https://doi.org/10.1097/gme.0000000000002877",
-      "year": "2026",
-      "journal": "Menopause (New York, N.Y.)"
-    },
-    {
-      "title": "Looking through different lenses at meeting places in disadvantaged Dutch neighbourhoods: A qualitative participatory study assessing needs, barriers and success elements for women with non-Western migration backgrounds and teenage girls.",
-      "doi": "10.1371/journal.pone.0356072",
-      "url": "https://doi.org/10.1371/journal.pone.0356072",
-      "year": "2026",
-      "journal": "PloS one"
-    },
-    {
-      "title": "Examining the work experiences of women in healthcare leadership in Canada: a cross-sectional study.",
-      "doi": "10.1108/jhom-01-2026-0075",
-      "url": "https://doi.org/10.1108/jhom-01-2026-0075",
-      "year": "2026",
-      "journal": "Journal of health organization and management"
-    },
-    {
-      "title": "Association of microRNA SNP variations and SNP-SNP interactions with breast cancer in Yemeni women.",
-      "doi": "10.1080/17410541.2026.2725756",
-      "url": "https://doi.org/10.1080/17410541.2026.2725756",
-      "year": "2026",
-      "journal": "Personalized medicine"
-    },
-    {
-      "title": "Anxiety during perimenopause: a qualitative study of lived experiences.",
-      "doi": "10.1097/gme.0000000000002744",
-      "url": "https://doi.org/10.1097/gme.0000000000002744",
-      "year": "2026",
-      "journal": "Menopause (New York, N.Y.)"
-    },
-    {
-      "title": "Outbreak preparedness for women and girls in low- and middle-income countries: a qualitative study.",
-      "doi": "10.1186/s44263-026-00305-7",
-      "url": "https://doi.org/10.1186/s44263-026-00305-7",
-      "year": "2026",
-      "journal": "BMC global and public health"
-    },
-    {
-      "title": "Social comparison target selections as health information preferences: exploring contextual influences among women in midlife with elevated risk for cardiovascular disease.",
-      "doi": "10.1080/21642850.2026.2721026",
-      "url": "https://doi.org/10.1080/21642850.2026.2721026",
-      "year": "2026",
-      "journal": "Health psychology and behavioral medicine"
-    },
-    {
-      "title": "Physical Activity, Sitting Time, and Sleep Among Postpartum Women During the COVID-19 Pandemic.",
-      "doi": "10.1111/birt.70086",
-      "url": "https://doi.org/10.1111/birt.70086",
-      "year": "2026",
-      "journal": "Birth (Berkeley, Calif.)"
-    },
-    {
-      "title": "Male breast cancer: from extrapolated practice to evidence-based care.",
-      "doi": "10.1093/oncolo/oyag318",
-      "url": "https://doi.org/10.1093/oncolo/oyag318",
-      "year": "2026",
-      "journal": "The oncologist"
-    },
-    {
-      "title": "Hurting together: The gendered embodiment of pain in women ultrarunners.",
-      "doi": "10.1016/j.psychsport.2026.103142",
-      "url": "https://doi.org/10.1016/j.psychsport.2026.103142",
-      "year": "2026",
-      "journal": "Psychology of sport and exercise"
-    },
-    {
-      "title": "From dissociation to embodied memory through voice: music therapists' perspectives on vocal music therapy with women survivors of sexualized trauma.",
-      "doi": "10.3389/fpsyt.2026.1852780",
-      "url": "https://doi.org/10.3389/fpsyt.2026.1852780",
-      "year": "2026",
-      "journal": "Frontiers in psychiatry"
-    },
-    {
-      "title": "Cardiovascular Health in Women-Across the Lifespan.",
-      "doi": "10.1111/cen.70027",
-      "url": "https://doi.org/10.1111/cen.70027",
-      "year": "2026",
-      "journal": "Clinical endocrinology"
-    },
-    {
-      "title": "Differences in cortisol responding and post-stress affiliation among women who are naturally cycling, using oral contraceptives, and using IUDs.",
-      "doi": "10.1016/j.psyneuen.2026.107875",
-      "url": "https://doi.org/10.1016/j.psyneuen.2026.107875",
-      "year": "2026",
-      "journal": "Psychoneuroendocrinology"
-    },
-    {
-      "title": "Impact of fertility preservation on quality of life, recurrence and reproductive success in young female cancer survivors: a Korean prospective multicentre cohort study protocol (LIFE-Repro).",
-      "doi": "10.1136/bmjopen-2026-118696",
-      "url": "https://doi.org/10.1136/bmjopen-2026-118696",
-      "year": "2026",
-      "journal": "BMJ open"
-    },
-    {
-      "title": "Cannabis, Cocaine and Crack Before or During Sex and Inconsistent Condom Use with Casual Partners Among Transgender Women in Brazil: A Cross-Sectional Study.",
-      "doi": "10.1080/10826084.2026.2709655",
-      "url": "https://doi.org/10.1080/10826084.2026.2709655",
-      "year": "2026",
-      "journal": "Substance use & misuse"
-    },
-    {
-      "title": "Women's Experiences With Telemedicine: Predictors of Satisfaction in Ambulatory Care.",
-      "doi": "10.1097/jac.0000000000000563",
-      "url": "https://doi.org/10.1097/jac.0000000000000563",
-      "year": "2026",
-      "journal": "The Journal of ambulatory care management"
-    },
-    {
-      "title": "Clinical and Psychological Impacts of Social Media and Filtered Self-Images on Body Image Perception and Patient Satisfaction Following Aesthetic Procedures Among Jordanian Women: A Cross Sectional Study.",
-      "doi": "10.1007/s00266-026-05972-3",
-      "url": "https://doi.org/10.1007/s00266-026-05972-3",
-      "year": "2026",
-      "journal": "Aesthetic plastic surgery"
-    },
-    {
-      "title": "Engagement With Online Sexual Trauma-Related Content Among Women Who Have Experienced Sexual Trauma.",
-      "doi": "10.1002/jclp.70153",
-      "url": "https://doi.org/10.1002/jclp.70153",
-      "year": "2026",
-      "journal": "Journal of clinical psychology"
-    },
-    {
-      "title": "Urinary phthalate metabolite concentrations and oxidative stress biomarkers in pre- and perimenopausal women from the Midlife Women's Health Study.",
-      "doi": "10.1016/j.reprotox.2026.109287",
-      "url": "https://doi.org/10.1016/j.reprotox.2026.109287",
-      "year": "2026",
-      "journal": "Reproductive toxicology (Elmsford, N.Y.)"
-    },
-    {
-      "title": "Sexual experiences of women during and after pregnancy: a survey-based study.",
-      "doi": "10.1186/s12884-026-09648-3",
-      "url": "https://doi.org/10.1186/s12884-026-09648-3",
-      "year": "2026",
-      "journal": "BMC pregnancy and childbirth"
-    },
-    {
-      "title": "Accessing perinatal education in the Australian health system: A mixed-methods exploration of the experiences of migrant and refugee women.",
-      "doi": "10.1177/2752535x261456538",
-      "url": "https://doi.org/10.1177/2752535x261456538",
-      "year": "2026",
-      "journal": "Community health equity research & policy"
-    },
-    {
-      "title": "Risk factors for multimorbidity of cardiovascular diseases in the prospective Million Women Study.",
-      "doi": "10.1136/openhrt-2025-003950",
-      "url": "https://doi.org/10.1136/openhrt-2025-003950",
-      "year": "2026",
-      "journal": "Open heart"
-    },
-    {
-      "title": "A Comparison of College Women and Men on Types and Risks of Sexual Assault.",
-      "doi": "10.1891/vv-2024-0126",
-      "url": "https://doi.org/10.1891/vv-2024-0126",
-      "year": "2025",
-      "journal": "Violence and victims"
-    },
-    {
-      "title": "Poverty in the residential and surrounding counties and its impact on mortality in women with breast cancer.",
-      "doi": "10.1002/cncr.70414",
-      "url": "https://doi.org/10.1002/cncr.70414",
-      "year": "2026",
-      "journal": "Cancer"
-    },
-    {
-      "title": "Differences in physiological response to an oral glucose tolerance test in adult Maasai men and women.",
-      "doi": "10.1007/s00592-026-02710-8",
-      "url": "https://doi.org/10.1007/s00592-026-02710-8",
-      "year": "2026",
-      "journal": "Acta diabetologica"
-    },
-    {
-      "title": "Si po ndiheni?: Social media, body image, and mental health among Albanian young women.",
-      "doi": "10.1016/j.bodyim.2026.102132",
-      "url": "https://doi.org/10.1016/j.bodyim.2026.102132",
-      "year": "2026",
-      "journal": "Body image"
-    },
-    {
-      "title": "A longitudinal network analysis of pain, psychological processes and psychological and sexual distress in women with endometriosis.",
-      "doi": "10.1111/bjhp.70071",
-      "url": "https://doi.org/10.1111/bjhp.70071",
-      "year": "2026",
-      "journal": "British journal of health psychology"
-    },
-    {
-      "title": "There is no way back home: A phenomenological study of the fears and future uncertainty of Afghan female medical students in Iran.",
-      "doi": "10.1111/medu.70248",
-      "url": "https://doi.org/10.1111/medu.70248",
-      "year": "2026",
-      "journal": "Medical education"
-    },
-    {
-      "title": "Sphingosine-1-Phosphate Receptor and Kinase Expression in the Reproductive Tract Is Associated with HIV Infection and Preterm Birth in a Cohort of Pregnant Women in Zambia.",
-      "doi": "10.3390/v18050559",
-      "url": "https://doi.org/10.3390/v18050559",
-      "year": "2026",
-      "journal": "Viruses"
-    },
-    {
-      "title": "A Pilot Study to Describe Cardiometabolic Health Indicators and Prescription Medication Use in Postmenopausal Women with a Self-Reported History of PMOS.",
-      "doi": "10.3390/jcm15145533",
-      "url": "https://doi.org/10.3390/jcm15145533",
-      "year": "2026",
-      "journal": "Journal of clinical medicine"
-    },
-    {
-      "title": "Navigating sexual and reproductive health among Venezuelan women sex workers in Peru: Qualitative explorations of structural vulnerability and resistance.",
-      "doi": "10.1371/journal.pgph.0006906",
-      "url": "https://doi.org/10.1371/journal.pgph.0006906",
-      "year": "2026",
-      "journal": "PLOS global public health"
-    },
-    {
-      "title": "Digital health among forcibly displaced women in the MENA region: Risks of reproducing traumatic experiences through technological mediation.",
-      "doi": "10.1016/j.socscimed.2026.119274",
-      "url": "https://doi.org/10.1016/j.socscimed.2026.119274",
-      "year": "2026",
-      "journal": "Social science & medicine (1982)"
-    },
-    {
-      "title": "Delayed maturation of the milk microbiome in women with type 1 diabetes.",
-      "doi": "10.1007/s00125-026-06791-6",
-      "url": "https://doi.org/10.1007/s00125-026-06791-6",
-      "year": "2026",
-      "journal": "Diabetologia"
-    },
-    {
-      "title": "Trends and socioeconomic-spatial inequalities in hypertension among Muslim women in India, 2015-2021: evidence from the National Family Health Surveys.",
-      "doi": "10.3389/fpubh.2026.1828079",
-      "url": "https://doi.org/10.3389/fpubh.2026.1828079",
-      "year": "2026",
-      "journal": "Frontiers in public health"
-    },
-    {
-      "title": "Objects of Desire: The Role of Sexual Arousal in the Sexual Objectification of Women by Men.",
-      "doi": "10.1080/00224499.2026.2658752",
-      "url": "https://doi.org/10.1080/00224499.2026.2658752",
-      "year": "2026",
-      "journal": "Journal of sex research"
-    },
-    {
-      "title": "The Mediating Role of Sexual Assertiveness in the Relationship Between Sexual Mindfulness and Relational Quality in Married Iranian Women.",
-      "doi": "10.1080/0092623x.2026.2636277",
-      "url": "https://doi.org/10.1080/0092623x.2026.2636277",
-      "year": "2026",
-      "journal": "Journal of sex & marital therapy"
-    },
-    {
-      "title": "Protocol for a multicentre survey of sexual and reproductive health and fertility among unmarried women living in China's megacities.",
-      "doi": "10.1136/bmjopen-2025-113405",
-      "url": "https://doi.org/10.1136/bmjopen-2025-113405",
-      "year": "2026",
-      "journal": "BMJ open"
-    },
-    {
-      "title": "Interventions to Improve Breast Screening Uptake for Black African Women in High Income Countries: A Systematic Review.",
-      "doi": "10.1007/s40615-026-02999-9",
-      "url": "https://doi.org/10.1007/s40615-026-02999-9",
-      "year": "2026",
-      "journal": "Journal of racial and ethnic health disparities"
-    },
-    {
-      "title": "Gut microbiota dysbiosis in Indian women with PCOS may be linked to metabolic and hormonal dysregulation.",
-      "doi": "10.1080/17460913.2026.2634572",
-      "url": "https://doi.org/10.1080/17460913.2026.2634572",
-      "year": "2026",
-      "journal": "Future microbiology"
-    },
-    {
-      "title": "Wanting, Yet Doubting: Moderating Role of Gender on the Relationship Between Ambivalence and Childbearing Desires.",
-      "doi": "10.1002/ijop.70264",
-      "url": "https://doi.org/10.1002/ijop.70264",
-      "year": "2026",
-      "journal": "International journal of psychology : Journal international de psychologie"
-    },
-    {
-      "title": "Recurrent Cervical HPV16 DNA Detection in Unvaccinated Women According to Presumed HPV16 Exposure Based on IgG and IgM Seroreactivity.",
-      "doi": "10.1002/jmv.70889",
-      "url": "https://doi.org/10.1002/jmv.70889",
-      "year": "2026",
-      "journal": "Journal of medical virology"
-    },
-    {
-      "title": "Trends and projections of chronic obstructive pulmonary disease burden in postmenopausal women: a comparative study of four Western Pacific countries, 1990-2050.",
-      "doi": "10.1080/07853890.2026.2656516",
-      "url": "https://doi.org/10.1080/07853890.2026.2656516",
-      "year": "2026",
-      "journal": "Annals of medicine"
-    },
-    {
-      "title": "Women expert gamers: portrait of an understudied population.",
-      "doi": "10.3389/fpsyg.2025.1601425",
-      "url": "https://doi.org/10.3389/fpsyg.2025.1601425",
-      "year": "2025",
-      "journal": "Frontiers in psychology"
-    },
-    {
-      "title": "Feasibility of the \"Take Action\" Cognitive-Functional Program During Active Chemotherapy in Women With Breast Cancer.",
-      "doi": "10.1177/15394492261466170",
-      "url": "https://doi.org/10.1177/15394492261466170",
-      "year": "2026",
-      "journal": "OTJR : occupation, participation and health"
-    },
-    {
-      "title": "Non-Veterans Affairs primary care staff knowledge and attitudes regarding women veterans' cardiovascular health.",
-      "doi": "10.1080/08998280.2025.2559492",
-      "url": "https://doi.org/10.1080/08998280.2025.2559492",
-      "year": "2026",
-      "journal": "Proceedings (Baylor University. Medical Center)"
+  "passed_filter": 6,
+  "records": [
+    {
+      "paper": {
+        "title": "Cardiometabolic Risk Factors in Women Exposed to High Altitude.",
+        "doi": "10.3390/ijms27146349",
+        "url": "https://doi.org/10.3390/ijms27146349",
+        "year": "2026",
+        "journal": "International journal of molecular sciences"
+      },
+      "problem": {
+        "id": "high-altitude-cardiometabolic-women",
+        "title": "Women's cardiometabolic responses to high-altitude exposure are poorly understood, leaving them vulnerable to altitude-related illness.",
+        "area": "Cardiovascular health",
+        "summary": "An increasing number of women live, work, and engage in athletic activity at high altitude, yet little is known about how sex-specific factors such as the menstrual cycle, contraceptive use, pregnancy, and menopause interact with cardiometabolic risk in these environments. This lack of knowledge may contribute to impaired acclimatization and increased risk of altitude-related illness in women. The review synthesizes existing evidence to identify knowledge gaps and guide future research.",
+        "affected_women": "Women exposed to high altitude through occupational, athletic, or residential settings.",
+        "source": "https://doi.org/10.3390/ijms27146349",
+        "origin": "sourced",
+        "is_demo": false
+      },
+      "data_need": {
+        "id": "high-altitude-cardiometabolic-women-adaptation-data",
+        "problem_id": "high-altitude-cardiometabolic-women",
+        "area": "Cardiovascular health",
+        "description": "Data on physiological and cardiometabolic adaptations of women at high altitude, including how menstrual cycle, contraceptive use, pregnancy, and menopause affect acclimatization.",
+        "why_it_matters": "Without this data, prevention, acclimatization strategies, and clinical management for women at high altitude cannot be properly informed, potentially increasing their risk of altitude-related illness.",
+        "status": "partial",
+        "existing_data_note": "",
+        "gap_evidence": {
+          "source": "https://doi.org/10.3390/ijms27146349",
+          "note": "The abstract states 'little is known about the physiological adaptations experienced by women at high altitude, particularly regarding metabolic alterations that may contribute to impaired acclimatization,' and that the review aims to 'identify existing knowledge gaps' in this area.",
+          "region": null,
+          "claimed_date": "2026-07-17"
+        },
+        "dataset_source": {
+          "note": "Covers menstrual-cycle-phase effects on cardiorespiratory/exercise responses at high altitude (Sci Rep 2024) and menstrual cycle/menopause/progesterone effects on acute mountain sickness (Wilderness Environ Med 2024), plus a broader narrative review of hormonal life-course effects on hypoxia responses. Does NOT constitute a large-scale primary dataset on cardiometabolic adaptation across menstrual cycle, contraceptive use, pregnancy, and menopause combined; pregnancy-specific and chronic long-term acclimatization data at altitude remain limited.",
+          "source": "https://www.nature.com/articles/s41598-024-79702-7"
+        },
+        "collection_guidance": null,
+        "verification": {
+          "checked_at": "2026-09-18",
+          "method": "web search",
+          "findings": "This exact knowledge gap comes from the review 'Cardiometabolic Risk Factors in Women Exposed to High Altitude' (PubMed 42511692 / PMC13410897), which itself synthesizes existing evidence rather than reflecting a total void. Since related work has begun to fill parts of the gap: a 2024 Scientific Reports study examined menstrual-cycle-phase effects on cardiorespiratory responses to submaximal exercise at high altitude, a 2024 study in Wilderness & Environmental Medicine ('Women at Altitude') examined menstrual-cycle phase, menopause, and exogenous progesterone in relation to acute mountain sickness, and a newer review ('Hormonal status and reproductive life-course states as modulators of women's physiological responses to acute and chronic hypoxia') explicitly covers menstrual cycle, contraception, pregnancy, and menopause effects on hypoxic responses. These sources address menstrual cycle and menopause effects on acute responses and AMS risk fairly directly, but the deeper cardiometabolic and long-term acclimatization data - especially for pregnancy and for chronic/long-term high-altitude residents - remains comparatively sparse and is described in these same recent papers as still needing more research.",
+          "sources": [
+            {
+              "url": "https://www.sciencedirect.com/science/article/pii/S0026286225001177?via=ihub",
+              "title": "Impact of the menstrual cycle phase on microvascular function at high altitude - ScienceDirect"
+            },
+            {
+              "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13410897/",
+              "title": "Cardiometabolic Risk Factors in Women Exposed to High Altitude - PMC"
+            },
+            {
+              "url": "https://link.springer.com/article/10.1007/s40279-023-01954-6",
+              "title": "Women at Altitude: Sex-Related Physiological Responses to Exercise in Hypoxia | Sports Medicine | Springer Nature Link"
+            },
+            {
+              "url": "https://ouci.dntb.gov.ua/en/works/7pYRmAx4/",
+              "title": "Women at Altitude: Sex-Related Physiological Responses to Exercise in Hypoxia"
+            },
+            {
+              "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC10031815/",
+              "title": "Editorial: Women in environmental physiology 2022"
+            },
+            {
+              "url": "https://pubmed.ncbi.nlm.nih.gov/42511692/",
+              "title": "Cardiometabolic Risk Factors in Women Exposed to High Altitude - PubMed"
+            },
+            {
+              "url": "https://clinicaltrials.gov/study/NCT05001048",
+              "title": "Sex Differences in Sympathetic Activity and Vascular Reactivity During Acute and Chronic Hypoxia."
+            },
+            {
+              "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11052836/",
+              "title": "Recommendations for Women in Mountain Sports and Hypoxia Training/Conditioning - PMC"
+            },
+            {
+              "url": "https://journals.physiology.org/doi/abs/10.1152/jappl.1973.34.4.471",
+              "title": "Basal metabolic and cardiovascular function of women during altitude acclimatization. | Journal of Applied Physiology | American Physiological Society"
+            },
+            {
+              "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC11561278/",
+              "title": "Effect of menstrual cycle phase on physiological responses in healthy women at rest and during submaximal exercise at high altitude"
+            },
+            {
+              "url": "https://www.academia.edu/31405651/Hormone_profile_during_the_menstrual_cycle_at_high_altitude",
+              "title": "(PDF) Hormone profile during the menstrual cycle at high altitude"
+            },
+            {
+              "url": "https://www.nature.com/articles/s41598-024-79702-7",
+              "title": "Effect of menstrual cycle phase on physiological responses in healthy women at rest and during submaximal exercise at high altitude | Scientific Reports"
+            },
+            {
+              "url": "https://link.springer.com/article/10.1186/s13293-026-00954-1",
+              "title": "Hormonal status and reproductive life-course states as modulators of women’s physiological responses to acute and chronic hypoxia: insights, challenges, and perspectives | Biology of Sex Differences | Springer Nature Link"
+            },
+            {
+              "url": "https://pubmed.ncbi.nlm.nih.gov/42471728/",
+              "title": "Hormonal status and reproductive life-course states as modulators of women's physiological responses to acute and chronic hypoxia: insights, challenges, and perspectives - PubMed"
+            },
+            {
+              "url": "https://journals.sagepub.com/doi/full/10.1089/ham.2023.0100",
+              "title": "Women at Altitude: Menstrual-Cycle Phase, Menopause, and Exogenous Progesterone Are Not Associated with Acute Mountain Sickness - Laurel Gardner, Linda E. Keyes, Caleb Phillips, Elan Small, Tejaswi Adhikari, Nathan Barott, Ken Zafren, Rony Maharjan, James Marvel, 2024"
+            },
+            {
+              "url": "https://www.frontiersin.org/journals/global-womens-health/articles/10.3389/fgwh.2025.1544832/full",
+              "title": "Frontiers | Monitoring sexual hormones in women going to high altitude—a pilot study"
+            },
+            {
+              "url": "https://clinicaltrials.gov/study/NCT06894550",
+              "title": "Short-term Exposure to High Altitude in Patients With Asymptomatic Aortic Stenosis"
+            },
+            {
+              "url": "https://clinicaltrials.gov/study/NCT06446427",
+              "title": "The Effect of Acute High Altitude Exposure on Rescuer Performance and Patient Care"
+            },
+            {
+              "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC12832471/",
+              "title": "Acute high-altitude illness: risk factors, susceptibility prediction, and personalized prevention and treatment"
+            },
+            {
+              "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC12497735/",
+              "title": "A gender-integrated biopsychosocial model to understand cardiovascular risk in women working under environmental hazards: the case of chronic intermittent hypoxia"
+            },
+            {
+              "url": "https://clinicaltrials.gov/study/NCT06039475",
+              "title": "Risk Factors Associated With High Altitude Sickness: A Case-Control Study"
+            },
+            {
+              "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC12368545/",
+              "title": "Pregnancy at high altitude: the challenge of hypoxia"
+            },
+            {
+              "url": "https://www.frontiersin.org/journals/cardiovascular-medicine/articles/10.3389/fcvm.2022.1024263/pdf",
+              "title": "www.frontiersin.org"
+            }
+          ]
+        }
+      },
+      "validation": {
+        "ok": true,
+        "errors": [],
+        "warnings": []
+      }
+    },
+    {
+      "paper": {
+        "title": "Knee health and associations with female-specific health, physical, psychological and social-gendered factors in women runners: the TRAIL-W cohort study protocol.",
+        "doi": "10.1136/bmjsem-2025-003132",
+        "url": "https://doi.org/10.1136/bmjsem-2025-003132",
+        "year": "2026",
+        "journal": "BMJ open sport & exercise medicine"
+      },
+      "problem": {
+        "id": "knee-health-women-runners",
+        "title": "Women runners face higher risk of knee injury and worse outcomes after knee surgery than men, but the reasons are poorly understood.",
+        "area": "Cardiovascular health",
+        "summary": "Women runners are more likely than men to sustain running-related injuries such as bone stress and knee injuries, and after serious knee injury and surgery they experience worse knee and health-related outcomes. Little is known about how female-specific health, physical, psychological and social-gendered factors intersect with knee health in women runners, with or without a history of knee surgery.",
+        "affected_women": "Women runners, including those with and without a history of knee surgery.",
+        "source": "https://doi.org/10.1136/bmjsem-2025-003132",
+        "origin": "sourced",
+        "is_demo": false
+      },
+      "data_need": {
+        "id": "knee-health-women-runners-factors",
+        "problem_id": "knee-health-women-runners",
+        "area": "Cardiovascular health",
+        "description": "Data on how female-specific health, physical, psychological and social-gendered factors relate to knee symptoms, structural knee features, running load and running-related pain in women runners.",
+        "why_it_matters": "Without this data, clinicians and researchers cannot explain why women runners have higher injury rates and worse post-surgical outcomes, limiting the ability to design effective prevention or treatment approaches tailored to women.",
+        "status": "partial",
+        "existing_data_note": "",
+        "gap_evidence": {
+          "source": "https://doi.org/10.1136/bmjsem-2025-003132",
+          "note": "The abstract states that 'little is known about the intersection of female-specific health, physical, psychological and social-gendered factors with knee health in women runners with and without a history of knee surgery,' and that the study aims to 'address critical research gaps by describing and exploring the diverse factors that may influence women runners' knee health.'",
+          "region": null,
+          "claimed_date": "2026-03-11"
+        },
+        "dataset_source": {
+          "note": "TRAIL-W is a protocol for a nested cohort study within the TRAIL (TRAjectory of knee heaLth in runners) prospective cohort in Australia, designed to comprehensively collect the needed female-specific and gendered factors alongside knee health, running load and pain data in women runners. It covers only TRAIL cohort participants (Australia-based recruitment) and, as of the search, only the study protocol has been published — actual results/data analyses addressing the research questions had not yet appeared in the literature.",
+          "source": "https://pubmed.ncbi.nlm.nih.gov/41835327/"
+        },
+        "collection_guidance": {
+          "note": "Data to be collected from active TRAIL cohort female (and male, for comparison) participants via a once-off TRAIL-W survey covering psychological, social gendered and, for women, female-specific health factors, plus a laboratory assessment measuring body composition, bone mineral density and blood biomarkers, and qualitative interviews with a subset of women runners.",
+          "source": "https://doi.org/10.1136/bmjsem-2025-003132"
+        },
+        "verification": {
+          "checked_at": "2026-09-18",
+          "method": "web search",
+          "findings": "The exact gap has been addressed by the launch of the TRAIL-W cohort study protocol (published in BMJ Open Sport & Exercise Medicine), a nested study within the existing TRAIL prospective cohort of runners, explicitly designed to collect data on 'female-specific health, physical, psychological and social gendered' factors alongside knee symptoms, structural knee features, device-measured running load and running-related pain in women runners. This is the same research group's follow-up to the gap they identified, meaning data collection is now underway or planned via TRAIL-W's nested surveys and imaging alongside TRAIL's 6-monthly assessments, but this is a study protocol paper, not yet a results/findings paper, so the actual dataset and analysed findings are not yet published.",
+          "sources": [
+            {
+              "url": "https://pubmed.ncbi.nlm.nih.gov/41835327/",
+              "title": "Knee health and associations with female-specific health, physical, psychological and social-gendered factors in women runners: the TRAIL-W cohort study protocol - PubMed"
+            },
+            {
+              "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC12654048/",
+              "title": "The Immediate Effects of Instrument-Assisted Soft Tissue Mobilization on Pain and Function in Female Runners with Patellofemoral Pain"
+            },
+            {
+              "url": "https://cognit.ca/en/article/706600",
+              "title": "\"Knee health and associations with female-specific health, physical, psychological and social-gendered factors in women runners: the TRAIL-W cohort study protocol\""
+            },
+            {
+              "url": "https://www.sciencedirect.com/science/article/abs/pii/S0968016022000151",
+              "title": "Knee biomechanical factors associated with patellofemoral pain in recreational runners - ScienceDirect"
+            },
+            {
+              "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7073658/",
+              "title": "Analysis of Running-Related Injuries: The Vienna Study"
+            },
+            {
+              "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9923264/",
+              "title": "Trajectory of knee health in runners with and without heightened osteoarthritis risk: the TRAIL prospective cohort study protocol - PMC"
+            },
+            {
+              "url": "https://doi.org/10.1177/23259671261444314",
+              "title": "Common Risk Factors for Knee Injuries in Runners: A Systematic Review - Krithika Senthil, Sarah Whitaker, Muzaffar Nazarov, Benjamin Cassidy, Carl Edge, John Cyrus, Conor O’Neill, Jonathan Goodloe, 2026"
+            },
+            {
+              "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11822029/",
+              "title": "Comparative analysis of the effects of gender on lower extremity kinematics following a 5 km running time trial in collegiate recreational runners - PMC"
+            },
+            {
+              "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9539551/",
+              "title": "Sex-specific differences in biomechanics among runners: A systematic review with meta-analysis - PMC"
+            },
+            {
+              "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12481359/",
+              "title": "Cohort profile: trajectory of knee health in runners with and without heightened osteoarthritis risk (TRAIL) in Australia—prospective cohort study - PMC"
+            },
+            {
+              "url": "https://pubmed.ncbi.nlm.nih.gov/39566445/",
+              "title": "Incidence, severity, and risk factors for injuries in female trail runners - A retrospective cross-sectional study - PubMed"
+            },
+            {
+              "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC12481359/",
+              "title": "Cohort profile: trajectory of knee health in runners with and without heightened osteoarthritis risk (TRAIL) in Australia—prospective cohort study"
+            },
+            {
+              "url": "https://www.researchgate.net/publication/325326778_A_2-Year_Prospective_Cohort_Study_of_Overuse_Running_Injuries_The_Runners_and_Injury_Longitudinal_Study_TRAILS",
+              "title": "A 2-Year Prospective Cohort Study of Overuse Running Injuries: The Runners and Injury Longitudinal Study (TRAILS) | Request PDF"
+            },
+            {
+              "url": "https://pubmed.ncbi.nlm.nih.gov/29791183/",
+              "title": "A 2-Year Prospective Cohort Study of Overuse Running Injuries: The Runners and Injury Longitudinal Study (TRAILS) - PubMed"
+            },
+            {
+              "url": "https://www.researchgate.net/scientific-contributions/Indiana-Cooper-2212321166",
+              "title": "Indiana Cooper's research works | La Trobe University, Melbourne and other places"
+            },
+            {
+              "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC12862602/",
+              "title": "Female trail running: a systematic scoping review"
+            },
+            {
+              "url": "https://www.oarsijournal.com/article/S1063-4584(24)00434-5/pdf",
+              "title": "Methods: One-hundred-and-thirty-five runners (46% female, 18-50"
+            }
+          ]
+        }
+      },
+      "validation": {
+        "ok": true,
+        "errors": [],
+        "warnings": []
+      }
+    },
+    {
+      "paper": {
+        "title": "The effects of androgens on drug metabolism and transport: clinical pharmacologic considerations for people assigned female at birth.",
+        "doi": "10.1080/17425255.2026.2726547",
+        "url": "https://doi.org/10.1080/17425255.2026.2726547",
+        "year": "2026",
+        "journal": "Expert opinion on drug metabolism & toxicology"
+      },
+      "problem": {
+        "id": "androgen-drug-metabolism",
+        "title": "It is unclear how testosterone and androgen-rich conditions affect drug metabolism and transport in people assigned female at birth",
+        "area": "Autoimmune disease",
+        "summary": "Endogenous and exogenous androgens affect health outcomes across life in people assigned female at birth, but little is known about how exogenous testosterone or androgen-rich conditions like PCOS affect how drugs are metabolized and transported. A narrative synthesis of in vivo evidence found this area remains understudied.",
+        "affected_women": "Cisgender women and transgender people assigned female at birth, including those with polycystic ovary syndrome or using exogenous testosterone",
+        "source": "https://doi.org/10.1080/17425255.2026.2726547",
+        "origin": "sourced",
+        "is_demo": false
+      },
+      "data_need": {
+        "id": "androgen-drug-metabolism-probe-studies",
+        "problem_id": "androgen-drug-metabolism",
+        "area": "Autoimmune disease",
+        "description": "Clinical pharmacology data on how testosterone and androgen-rich conditions affect drug-metabolizing enzymes and transporters in people assigned female at birth",
+        "why_it_matters": "Without this data, clinicians lack evidence to guide drug dosing and safety for cisgender women and transgender people exposed to exogenous testosterone or androgen-rich conditions.",
+        "status": "missing",
+        "existing_data_note": "",
+        "gap_evidence": {
+          "source": "https://doi.org/10.1080/17425255.2026.2726547",
+          "note": "The abstract states that 'the effects of testosterone and other androgens on drug metabolism and transport remain understudied in people assigned female at birth' and calls for well-designed probe-substrate studies and use of prescribed medications as clinical probes of relevant enzymes and transporters.",
+          "region": null,
+          "claimed_date": "2026-09-02"
+        },
+        "dataset_source": null,
+        "collection_guidance": {
+          "note": "Investigators should use well-designed probe-substrate studies when feasible, and use prescribed medications as clinical probes of relevant drug-metabolizing enzymes and transporters, in cisgender women and transgender people.",
+          "source": "https://doi.org/10.1080/17425255.2026.2726547"
+        },
+        "verification": {
+          "checked_at": "2026-09-18",
+          "method": "web search",
+          "findings": "Web search tools were unavailable for this query in this session (repeated tool-limit errors prevented any live search from completing), so no confirmed new dataset can be verified. Based on prior knowledge of the field, dedicated clinical pharmacology studies systematically probing how testosterone or androgen-rich states (e.g., PCOS, gender-affirming hormone therapy) alter CYP450 enzyme activity or drug transporter function specifically in people assigned female at birth remain sparse and fragmented; most existing work on gender-affirming hormone therapy pharmacology focuses on hormone levels themselves rather than their downstream effects on other drugs' metabolism. No comprehensive, well-designed probe-substrate dataset addressing this exact gap could be identified or confirmed.",
+          "sources": [
+            {
+              "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12863264/",
+              "title": "Effect of Testosterone Therapy on Cytochrome P450 3A and P‐Glycoprotein Activities Using Midazolam and Digoxin as Probe Substrates Among Transgender Adults - PMC"
+            },
+            {
+              "url": "https://www.cell.com/trends/pharmacological-sciences/abstract/S0165-6147(22)00056-6",
+              "title": "Regulation of drug-metabolizing enzymes by sex-related hormones: clinical implications for transgender medicine: Trends in Pharmacological Sciences"
+            },
+            {
+              "url": "https://accpjournals.onlinelibrary.wiley.com/doi/10.1002/phar.70093",
+              "title": "Effect of Testosterone Therapy on Cytochrome P450 3A and P‐Glycoprotein Activities Using Midazolam and Digoxin as Probe Substrates Among Transgender Adults - Hunter - 2026 - Pharmacotherapy: The Journal of Human Pharmacology and Drug Therapy - Wiley Online Library"
+            },
+            {
+              "url": "https://doi.org/10.1080/17425255.2026.2726547",
+              "title": "Full article: The effects of androgens on drug metabolism and transport: clinical pharmacologic considerations for people assigned female at birth"
+            },
+            {
+              "url": "https://www.sciencedirect.com/science/article/abs/pii/S0165614722000566",
+              "title": "Regulation of drug-metabolizing enzymes by sex-related hormones: clinical implications for transgender medicine - ScienceDirect"
+            },
+            {
+              "url": "https://pubmed.ncbi.nlm.nih.gov/35487786/",
+              "title": "Regulation of drug-metabolizing enzymes by sex-related hormones: clinical implications for transgender medicine - PubMed"
+            },
+            {
+              "url": "https://pubmed.ncbi.nlm.nih.gov/37439842/",
+              "title": "Clinical Pharmacological Considerations in Transgender Medicine - PubMed"
+            },
+            {
+              "url": "https://ascpt.onlinelibrary.wiley.com/doi/10.1111/cts.70396",
+              "title": "Gender‐Affirming Hormone Therapy: Pharmacokinetic Considerations for Oncology in Transgender Patients - Carollo - 2025 - Clinical and Translational Science - Wiley Online Library"
+            },
+            {
+              "url": "https://ascpt.onlinelibrary.wiley.com/doi/10.1002/cpt.2234",
+              "title": "Sex and Gender Differences in Clinical Pharmacology: Implications for Transgender Medicine - Cirrincione - 2021 - Clinical Pharmacology & Therapeutics - Wiley Online Library"
+            },
+            {
+              "url": "https://www.tandfonline.com/doi/full/10.1080/17425255.2025.2481891",
+              "title": "Full article: The influence of female sex and estrogens on drug pharmacokinetics: what is the evidence?"
+            },
+            {
+              "url": "https://www.biorxiv.org/content/10.1101/2020.01.24.918920.full.pdf",
+              "title": "Role of CYP3A5 in modulating androgen receptor signaling and its relevance to African American men with prostate cancer"
+            },
+            {
+              "url": "https://www.biorxiv.org/content/10.1101/2024.10.01.616176.full.pdf",
+              "title": "CYP3A5 inhibition causes G1/S blockade and synergizes with CDK4/6 inhibitor to suppress prostate cancer cell growth: Implications in reducing health disparity"
+            },
+            {
+              "url": "https://clinicaltrials.gov/study/NCT06939608",
+              "title": "Kinetics of Yohimbine in Humans to Explore Sex and CYP2D6 Genotype Interactions"
+            },
+            {
+              "url": "https://www.medrxiv.org/content/10.1101/2021.03.13.21253531.full.pdf",
+              "title": "The effect of CYP3A4 genetic polymorphisms on the pharmacokinetics of calcineurin inhibitors in renal transplant recipients: a systematic review and meta-analysis protocol"
+            },
+            {
+              "url": "https://pubmed.ncbi.nlm.nih.gov/41452771/",
+              "title": "Effect of Testosterone Therapy on Cytochrome P450 3A and P-Glycoprotein Activities Using Midazolam and Digoxin as Probe Substrates Among Transgender Adults - PubMed"
+            },
+            {
+              "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC11975601/",
+              "title": "Exploring potential drug−drug interactions between masculinizing hormone therapy and oral pre‐exposure prophylaxis (F/TDF and F/TAF) among transgender men (iMACT study): a randomized, open‐label pharmacokinetic study in Thailand"
+            },
+            {
+              "url": "https://doi.org/10.1089/andro.2020.0002",
+              "title": "Pharmacokinetics of Testosterone Enanthate After Intramuscular Injection for Transgender Men - Koji Ichihara, Naoya Masumori, Satoshi Fujii, Takaki Toda, 2020"
+            },
+            {
+              "url": "https://clinicaltrials.gov/study/NCT04593680",
+              "title": "Assessment of Drug-drug Interactions Between Masculinizing Hormone Therapy and Antiretroviral Agents Concomitantly for Pre-exposure Prophylaxis Among Transgender Men"
+            },
+            {
+              "url": "https://myadlm.org/cln/articles/2020/september/laboratory-monitoring-in-transgender-people",
+              "title": "Laboratory Monitoring in Transgender People | myadlm.org"
+            },
+            {
+              "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12438667/",
+              "title": "Comprehensive Analysis of Hormone Formulations and Emotional Effects in Transgender Men Undergoing Hormone Replacement Therapy - PMC"
+            }
+          ]
+        }
+      },
+      "validation": {
+        "ok": true,
+        "errors": [],
+        "warnings": []
+      }
+    },
+    {
+      "paper": {
+        "title": "\"Left Out at the Kitchen Table\": Exploring Peer Support Needs Among Women Firefighters.",
+        "doi": "10.1002/ajim.70094",
+        "url": "https://doi.org/10.1002/ajim.70094",
+        "year": "2026",
+        "journal": "American journal of industrial medicine"
+      },
+      "problem": {
+        "id": "women-firefighter-peer-support",
+        "title": "Peer support programs in the fire service are not tailored to the mental health needs of women firefighters.",
+        "area": "Autoimmune disease",
+        "summary": "Women firefighters can have behavioral health outcomes similar to men in supportive environments, but rates of depression, anxiety, and PTSD rise sharply amid workplace discrimination and exclusion. These issues are often treated as HR matters rather than health and safety concerns. Little is known about how peer support resources, increasingly used in fire services, could be adapted to women's needs.",
+        "affected_women": "Women firefighters and fire service stakeholders in the United States",
+        "source": "https://doi.org/10.1002/ajim.70094",
+        "origin": "sourced",
+        "is_demo": false
+      },
+      "data_need": {
+        "id": "women-firefighter-peer-support-perceptions",
+        "problem_id": "women-firefighter-peer-support",
+        "area": "Autoimmune disease",
+        "description": "Systematic data on women firefighters' perceptions, barriers, and preferences regarding peer support programs",
+        "why_it_matters": "Without this data, peer support programs may fail to build trust and psychological safety for women firefighters, leaving mental health needs unmet and risks like depression, anxiety, and PTSD unaddressed.",
+        "status": "collected",
+        "existing_data_note": "",
+        "gap_evidence": {
+          "source": "https://doi.org/10.1002/ajim.70094",
+          "note": "The abstract states that 'despite the growing adoption of peer support programs in the fire service, little is known about how these resources can be tailored to the needs of women firefighters,' motivating the qualitative interview study described.",
+          "region": "United States",
+          "claimed_date": "2026-05-24"
+        },
+        "dataset_source": {
+          "note": "Qualitative interview study (35 participants: women firefighters across ranks plus fire service stakeholders) recruited via the Fire Fighter Cancer Cohort Study, covering perceptions of peer support, barriers to engagement, trust/comfort, and preferred communication strategies in the US fire service. It is qualitative rather than a large quantitative survey, so it may not capture prevalence rates or be generalizable to all departments, but it directly targets the identified gap.",
+          "source": "https://onlinelibrary.wiley.com/doi/10.1002/ajim.70094"
+        },
+        "collection_guidance": {
+          "note": "Researchers conducted semi-structured interviews with 35 women firefighters and key fire service stakeholders across the United States, exploring perceptions of peer support, barriers to engagement, trust and comfort, and preferred communication and messaging strategies.",
+          "source": "https://doi.org/10.1002/ajim.70094"
+        },
+        "verification": {
+          "checked_at": "2026-09-18",
+          "method": "web search",
+          "findings": "A qualitative study, published in 2026 in the American Journal of Industrial Medicine (Hollerbach et al., \"Left Out at the Kitchen Table\": Exploring Peer Support Needs Among Women Firefighters), directly addresses this gap. Researchers conducted 35 semi-structured interviews with women firefighters and fire service stakeholders across the United States, exploring \"perceptions of peer support, barriers to engagement, trust and comfort within peer support networks, and preferred communication and messaging strategies.\" Thematic analysis identified seven key domains including barriers to support, effective messaging, gendered workplace dynamics, resource needs, leadership influence, and stress relief strategies, providing the systematic data on perceptions, barriers, and preferences that the original paper called missing.",
+          "sources": [
+            {
+              "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13350290/",
+              "title": "“Left Out at the Kitchen Table”: Exploring Peer Support Needs Among Women Firefighters - PMC"
+            },
+            {
+              "url": "https://pubmed.ncbi.nlm.nih.gov/42178494/",
+              "title": "\"Left Out at the Kitchen Table\": Exploring Peer Support Needs Among Women Firefighters - PubMed"
+            },
+            {
+              "url": "https://onlinelibrary.wiley.com/doi/10.1002/ajim.70094",
+              "title": "“Left Out at the Kitchen Table”: Exploring Peer Support Needs Among Women Firefighters - Hollerbach - 2026 - American Journal of Industrial Medicine - Wiley Online Library"
+            },
+            {
+              "url": "https://doi.org/10.3390/occuphealth1010010",
+              "title": "Who Is the “Ideal” Peer Support Trainer? Peer Trainers’ Perceptions of Gender Dynamics in Resiliency Training for Firefighters and Correctional Officers"
+            },
+            {
+              "url": "https://nsuworks.nova.edu/tqr/vol30/iss5/5/",
+              "title": "A Qualitative Study on the Barriers and Facilitators of Integrating Women into the Firefighting Workforce: Perspectives of Men and Women"
+            },
+            {
+              "url": "https://nsuworks.nova.edu/cgi/viewcontent.cgi?article=6942&context=tqr",
+              "title": "A Qualitative Study on the Barriers and Facilitators of ..."
+            },
+            {
+              "url": "https://scholarworks.waldenu.edu/cgi/viewcontent.cgi?article=15877&context=dissertations",
+              "title": "Firefighters' Perceptions and Experiences of Seeking Mental ..."
+            },
+            {
+              "url": "https://www.researchgate.net/publication/233930200_A_qualitative_study_on_the_experiences_of_female_firefighters",
+              "title": "(PDF) A qualitative study on the experiences of female firefighters"
+            },
+            {
+              "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC9450402/",
+              "title": "A qualitative study of the impact of peer support on women’s mental health treatment experiences during the perinatal period"
+            },
+            {
+              "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11650798/",
+              "title": "Examination of Stress Among Recruit and Incumbent Women Firefighters - PMC"
+            },
+            {
+              "url": "https://guides.library.illinois.edu/c.php?g=897846&p=11067059",
+              "title": "Women's Health in the Fire Service - Women in the Fire Service - LibGuides at University of Illinois at Urbana-Champaign"
+            },
+            {
+              "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6586224/",
+              "title": "Current Female Firefighters’ Perceptions, Attitudes, and Experiences with Injury - PMC"
+            },
+            {
+              "url": "https://www.sciencedirect.com/science/article/pii/S2093791124000751",
+              "title": "Examination of Stress Among Recruit and Incumbent Women Firefighters - ScienceDirect"
+            },
+            {
+              "url": "https://www.oregon.gov/osfm/Docs/Women%20Firefighters%20Health%20and%20Wellness_Hollerbach_FINAL.pdf",
+              "title": "Protecting Our Heroes: Women Firefighters’ Health and Wellness"
+            },
+            {
+              "url": "https://jmde.com/index.php/jmde_1/article/view/1221",
+              "title": "Implementation of the Enhanced Stress First Aid Program in the Fire Service: A Case Study | Journal of MultiDisciplinary Evaluation"
+            }
+          ]
+        }
+      },
+      "validation": {
+        "ok": true,
+        "errors": [],
+        "warnings": []
+      }
+    },
+    {
+      "paper": {
+        "title": "Health and Health Care Access Among Afghan Refugee Women in the United States.",
+        "doi": "10.1001/jamanetworkopen.2026.27727",
+        "url": "https://doi.org/10.1001/jamanetworkopen.2026.27727",
+        "year": "2026",
+        "journal": "JAMA network open"
+      },
+      "problem": {
+        "id": "afghan-refugee-womens-health",
+        "title": "Afghan refugee women in the US face multilayered barriers to health and health care access after resettlement",
+        "area": "Maternal health",
+        "summary": "Afghan refugee women face compounded health risks from sociocultural restrictions, low literacy, forced displacement, and limited health care access, yet little is known about their experiences with health care after resettlement in the US. A qualitative study found barriers including inadequate interpretation, patriarchal norms limiting autonomy, structural barriers leading to home remedy use, sociocultural barriers to sexual and reproductive health, and unmet mental health needs.",
+        "affected_women": "Afghan refugee women resettled in the US, in this study aged 19-55 and residing in the San Francisco Bay Area",
+        "source": "https://doi.org/10.1001/jamanetworkopen.2026.27727",
+        "origin": "sourced",
+        "is_demo": false
+      },
+      "data_need": {
+        "id": "afghan-refugee-womens-health-experience-data",
+        "problem_id": "afghan-refugee-womens-health",
+        "area": "Maternal health",
+        "description": "Systematic data on Afghan refugee women's health care experiences and access barriers after US resettlement is missing",
+        "why_it_matters": "Without understanding these barriers, culturally sensitive and linguistically appropriate interventions cannot be designed, leaving structural deficiencies in access unaddressed.",
+        "status": "partial",
+        "existing_data_note": "",
+        "gap_evidence": {
+          "source": "https://doi.org/10.1001/jamanetworkopen.2026.27727",
+          "note": "The abstract states that 'yet little is known about their experiences with health care after resettlement in the US,' motivating this qualitative exploration of health and health care access issues among Afghan refugee women.",
+          "region": "United States (San Francisco Bay Area, California)",
+          "claimed_date": "2026-08-03"
+        },
+        "dataset_source": {
+          "note": "CDC's Afghan refugee health guidance/profile and RAND Corporation surveys of Afghan evacuees cover general refugee health and resettlement experiences, including some health system contact points, but do not provide the qualitative, gender-specific data on Afghan women's health care experiences, cultural/linguistic access barriers, or maternal health needs that the original study sought to fill. They are broader population surveys, not focused qualitative research on women's care-seeking barriers.",
+          "source": "https://www.cdc.gov/immigrantrefugeehealth/guidance/afghan-refugee-health.html"
+        },
+        "collection_guidance": {
+          "note": "Semistructured interviews in Dari or English with self-identified Afghan women born outside the US, aged 18 or older, recruited via convenience and purposive sampling through refugee-serving community organizations and word of mouth until data saturation was reached; Dari interviews interpreted and validated by bilingual investigators and reviewed with an Afghan immigrant community member for accuracy.",
+          "source": "https://doi.org/10.1001/jamanetworkopen.2026.27727"
+        },
+        "verification": {
+          "checked_at": "2026-09-18",
+          "method": "web search",
+          "findings": "A fresh web search could not be completed in this session due to a tool-use limit, so this answer relies on knowledge of publicly known post-2021 resettlement research rather than a live confirmed search. Following the 2021 Operation Allies Welcome evacuation, RAND Corporation and other resettlement-focused organizations produced broader surveys (e.g., RAND's 'Life After Resettlement' work on Afghan evacuees) and CDC published an Afghan refugee health profile/screening guidance, but these are largely quantitative or clinical-screening focused rather than qualitative studies specifically on Afghan refugee women's health care experiences and access barriers. No dataset specifically replicating or systematically extending the qualitative Bay Area study on Afghan refugee women's health care access barriers was confirmed.",
+          "sources": [
+            {
+              "url": "https://www.eurekalert.org/news-releases/1139038",
+              "title": "Health and health care access among Afghan refugee women in the united states | EurekAlert!"
+            },
+            {
+              "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13451972/",
+              "title": "Health and Health Care Access Among Afghan Refugee Women in the United States - PMC"
+            },
+            {
+              "url": "https://pubmed.ncbi.nlm.nih.gov/42566213/",
+              "title": "Health and Health Care Access Among Afghan Refugee Women in the United States - PubMed"
+            },
+            {
+              "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11251342/",
+              "title": "“It’s different here” Afghan refugee maternal health experiences in the United States - PMC"
+            },
+            {
+              "url": "https://www.facebook.com/JAMANetworkOpen/posts/in-this-qualitative-study-afghan-refugee-women-in-the-us-describe-barriers-spann/1575844554552483/",
+              "title": "In this qualitative study, Afghan refugee women in the US describe barriers spanning language, autonomy, mental health, and reproductive care, and what and how systems must change to improve refugee health."
+            },
+            {
+              "url": "https://jamanetwork.com/journals/jamanetworkopen/fullarticle/2852535",
+              "title": "Health and Health Care Access Among Afghan Refugee Women in the United States | Equity, Diversity, and Inclusion | JAMA Network Open | JAMA Network"
+            },
+            {
+              "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC11329121/",
+              "title": "A qualitative study exploring the factors influencing maternal healthcare access and utilization among Muslim refugee women resettled in the United States"
+            },
+            {
+              "url": "https://www.miragenews.com/afghan-refugee-womens-health-access-in-us-1723901/",
+              "title": "Afghan Refugee Women's Health Access in U.S | Mirage News"
+            },
+            {
+              "url": "https://bioengineer.org/afghan-refugee-women-in-u-s-face-health-and-healthcare-access-challenges/",
+              "title": "Afghan Refugee Women in U.S. Face Health and Healthcare Access Challenges"
+            },
+            {
+              "url": "https://pubmed.ncbi.nlm.nih.gov/39150938/",
+              "title": "A qualitative study exploring the factors influencing maternal healthcare access and utilization among Muslim refugee women resettled in the United States - PubMed"
+            },
+            {
+              "url": "https://link.springer.com/article/10.1186/s12884-024-06678-7",
+              "title": "“It’s different here” Afghan refugee maternal health experiences in the United States | BMC Pregnancy and Childbirth | Springer Nature Link"
+            },
+            {
+              "url": "https://bmcpregnancychildbirth.biomedcentral.com/articles/10.1186/s12884-024-06678-7",
+              "title": "“It’s different here” Afghan refugee maternal health experiences in the United States | BMC Pregnancy and Childbirth | Full Text"
+            },
+            {
+              "url": "https://pubmed.ncbi.nlm.nih.gov/39014313/",
+              "title": "\"It's different here\" Afghan refugee maternal health experiences in the United States - PubMed"
+            },
+            {
+              "url": "https://ouci.dntb.gov.ua/en/works/4arOw3Ql/",
+              "title": "“It’s different here” Afghan refugee maternal health experiences in the United States"
+            }
+          ]
+        }
+      },
+      "validation": {
+        "ok": true,
+        "errors": [],
+        "warnings": []
+      }
+    },
+    {
+      "paper": {
+        "title": "Male breast cancer: from extrapolated practice to evidence-based care.",
+        "doi": "10.1093/oncolo/oyag318",
+        "url": "https://doi.org/10.1093/oncolo/oyag318",
+        "year": "2026",
+        "journal": "The oncologist"
+      },
+      "problem": {
+        "id": "male-breast-cancer-care",
+        "title": "Men with breast cancer are treated using evidence extrapolated from studies of women, with no dedicated evidence base for their care.",
+        "area": "Autoimmune disease",
+        "summary": "Male breast cancer makes up about 1% of all breast cancer cases and remains understudied. Its management continues to rely on evidence extrapolated from female-focused studies. Men are typically diagnosed later, with more advanced disease, and experience worse outcomes than women, with underutilization of guideline-recommended therapies.",
+        "affected_women": "Not applicable; this source concerns male breast cancer patients.",
+        "source": "https://doi.org/10.1093/oncolo/oyag318",
+        "origin": "sourced",
+        "is_demo": false
+      },
+      "data_need": {
+        "id": "male-breast-cancer-care-prospective-data",
+        "problem_id": "male-breast-cancer-care",
+        "area": "Autoimmune disease",
+        "description": "Prospective, male-specific clinical trial data on breast cancer diagnosis, treatment sequencing, and outcomes.",
+        "why_it_matters": "Without male-specific data, treatment decisions rely on extrapolation from female patients, leaving uncertainty about systemic therapy choice and sequencing and contributing to worse outcomes for men.",
+        "status": "partial",
+        "existing_data_note": "",
+        "gap_evidence": {
+          "source": "https://doi.org/10.1093/oncolo/oyag318",
+          "note": "The abstract states there is a 'paucity of male-specific prospective data' and highlights 'the need to significantly improve male representation in future BC trials,' noting that management 'continues to rely on evidence extrapolated from studies focused on female patients.'",
+          "region": null,
+          "claimed_date": "2026-08-01"
+        },
+        "dataset_source": {
+          "note": "The International Male Breast Cancer Program (EORTC 10085/TBCRC/BIG/NABCG) prospective cohort collects real-world data on newly diagnosed male breast cancer patients' characteristics, treatment, and outcomes internationally. It does not cover randomized comparisons of treatment sequencing/systemic therapy choice, and enrollment numbers remain small relative to female breast cancer trial populations, so it only partially addresses the identified gap.",
+          "source": "https://clinicaltrials.gov/study/NCT01101425"
+        },
+        "collection_guidance": null,
+        "verification": {
+          "checked_at": "2026-09-18",
+          "method": "web search",
+          "findings": "Search access was unavailable for verification this session, but based on established knowledge, the International Male Breast Cancer Program (a collaboration of EORTC, BIG, TBCRC, and NABCG) includes a prospective observational component that has enrolled newly diagnosed male breast cancer patients since around 2014, collecting data on tumor characteristics, treatment patterns, and outcomes. This program has published findings (e.g., in JCO and related journals) on systemic therapy use and adjuvant endocrine therapy adherence in men, partially filling the evidence gap described. However, this is an international observational registry rather than a randomized or interventional clinical trial, has a much smaller sample size than female breast cancer trials, and does not provide the kind of prospective trial data on treatment sequencing (e.g., head-to-head comparisons of systemic therapy regimens) that would be needed to resolve uncertainty in treatment decision-making for men.",
+          "sources": [
+            {
+              "url": "https://oncologytube.com/male-breast-cancer-treatment-insights/",
+              "title": "Male Breast Cancer Treatment: New Advances In 2025 - OncologyTube"
+            },
+            {
+              "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12279442/",
+              "title": "Commentary and Updates on the Management of Male Breast Cancer - PMC"
+            },
+            {
+              "url": "https://www.komen.org/blog/spotlight-on-ethan-clinical-trial/",
+              "title": "Shining a Spotlight on Expanding Treatment Options for Male Breast Cancer - Susan G. Komen®"
+            },
+            {
+              "url": "https://ascopubs.org/doi/10.1200/JCO.2024.42.16_suppl.TPS632",
+              "title": "ETHAN: A phase II study comparing different endocrine therapies for male breast cancer. | Journal of Clinical Oncology"
+            },
+            {
+              "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12239999/",
+              "title": "Male Breast Cancer: Evaluating the Current Landscape of Diagnosis and Treatment - PMC"
+            },
+            {
+              "url": "https://www.aptitudehealth.com/oncology-news/male-breast-cancer-clinical-trials/",
+              "title": "Including Male Patients With Breast Cancer in Clinical Trials - Aptitude Health"
+            },
+            {
+              "url": "https://clinicaltrials.gov/study/NCT06217874",
+              "title": "Collection of Specimens and Clinical Data for Patients With Recurrent or Metastatic Breast Cancer or Male Breast Cancer"
+            },
+            {
+              "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC11775920/",
+              "title": "Global, Regional, and National Burden of Male Breast Cancer, 1990–2021: A Systematic Analysis for the Global Burden of Disease Study 2021"
+            },
+            {
+              "url": "https://www.mskcc.org/cancer-care/types/breast-male/clinical-trials",
+              "title": "Male Breast Cancer Clinical Trials & Research | Memorial Sloan Kettering Cancer Center"
+            },
+            {
+              "url": "https://academic.oup.com/oncolo/article/28/10/e877/7197065",
+              "title": "Quality of Life in Male Breast Cancer: Prospective Study of the International Male Breast Cancer Program (EORTC10085/TBCRC029/BIG2-07/NABCG) | The Oncologist | Oxford Academic"
+            },
+            {
+              "url": "https://www.annalsofoncology.org/article/S0923-7534(19)35037-9/fulltext",
+              "title": "Characterization of male breast cancer: results of the EORTC 10085/TBCRC/BIG/NABCG International Male Breast Cancer Program - Annals of Oncology"
+            },
+            {
+              "url": "https://bigagainstbreastcancer.org/clinical-trials/male-breast-cancer/",
+              "title": "Male Breast Cancer - Breast International Group"
+            },
+            {
+              "url": "https://www.researchgate.net/publication/371538029_Quality_of_Life_in_Male_Breast_Cancer_Prospective_Study_of_the_International_Male_Breast_Cancer_Program_EORTC10085TBCRC029BIG2-07NABCG",
+              "title": "(PDF) Quality of Life in Male Breast Cancer: Prospective Study of the International Male Breast Cancer Program (EORTC10085/TBCRC029/BIG2-07/NABCG)"
+            },
+            {
+              "url": "https://bigagainstbreastcancer.org/1-of-patients-with-breast-cancer-are-male/",
+              "title": "1% of patients with breast cancer are male - Breast International Group"
+            },
+            {
+              "url": "https://www.mdedge.com/familymedicine/article/89632/mens-health/international-study-characterizes-male-breast-cancer",
+              "title": "International study characterizes male breast cancer | MDedge"
+            },
+            {
+              "url": "https://clinicaltrials.gov/study/NCT01101425",
+              "title": "Male Breast Cancer: Understanding the Biology for Improved Patient Care"
+            },
+            {
+              "url": "https://en.wikipedia.org/wiki/List_of_EORTC_trials",
+              "title": "List of EORTC trials"
+            },
+            {
+              "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC2860409",
+              "title": "pmc.ncbi.nlm.nih.gov"
+            }
+          ]
+        }
+      },
+      "validation": {
+        "ok": true,
+        "errors": [],
+        "warnings": []
+      }
     }
   ]
 }

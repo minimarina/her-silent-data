@@ -16,11 +16,16 @@ import {
 import { mappableAreas } from "./validate.mjs";
 import { today } from "./lib.mjs";
 
-/* Constrained to the areas that have a hand-measured coordinate, so every
-   record the run produces lands on the map. A genuinely new area would
-   list without a pin, which is honest but reads as a bug in a demo — so
-   the filter rejects papers that do not fit one of these, rather than the
-   extractor inventing a sixth. */
+/* The areas that already have a hand-measured coordinate. These are
+   PREFERRED, not required: a coordinate takes a few minutes to measure
+   against the silhouette, so a genuinely new area is a small piece of
+   work rather than a dead end.
+
+   Version 2 of the filter forced every paper into one of these five, and
+   the result was a knee-health study filed under Autoimmune disease. A
+   record in a new area lists without a pin until its coordinate exists,
+   which the validator warns about — visible and honest, where a wrong
+   area is neither. */
 export const AREAS = [...mappableAreas()];
 
 /* ---------- 1 · filter ---------- */
@@ -28,7 +33,7 @@ export const AREAS = [...mappableAreas()];
 /* Bump this whenever the prompt below changes in a way that would change
    a verdict. Rejections carry the version that produced them, and a
    rejection from an older version is reopened — see ledgerJudged. */
-export const FILTER_VERSION = 2;
+export const FILTER_VERSION = 3;
 
 /* Spelled out because "Maternal health" alone is not enough to judge
    membership by: version 1 filed a paper about bacterial vaginosis under
@@ -54,12 +59,17 @@ const FILTER_SYSTEM =
   "Answer YES only if ALL of these hold.\n\n" +
   "1. The abstract points to a gap in what has been MEASURED or " +
   "COLLECTED — not merely that a mechanism is poorly understood.\n\n" +
-  "2. The gap concerns women, female patients or female subjects " +
-  "specifically.\n\n" +
-  "3. The subject falls squarely inside one of these areas:\n" +
+  "2. The MISSING DATA is about women, female patients or female " +
+  "subjects. Read this strictly: it is the subject of the absent data " +
+  "that matters, not the subject of the paper. A paper about a condition " +
+  "in men, noting that the evidence was extrapolated from studies of " +
+  "women, is a NO — the gap it names is a gap in data about men.\n\n" +
+  "3. The subject is women's health, anywhere in it. These areas are " +
+  "already in the register:\n" +
   AREAS.map((area) => "   - " + area + ": " + (AREA_GLOSS[area] || "")).join("\n") +
-  "\n   A paper that is merely adjacent to one of these is a NO. There is " +
-  "no other-category, so a loose fit becomes a miscategorised record.\n\n" +
+  "\n   A paper outside all of them is still a YES if it is squarely " +
+  "about women's health — bone and joint health, mental health, " +
+  "occupational health, access to care and others are all in scope.\n\n" +
   "4. The paper does not itself close the gap it names. An introduction " +
   "often states a gap to justify the work that follows — 'data are " +
   "lacking, therefore we conducted…' — and that describes the past, not " +
@@ -105,7 +115,15 @@ const EXTRACT_SCHEMA = {
           type: "string",
           description: "One sentence naming the problem, not the paper."
         },
-        area: { type: "string", enum: AREAS },
+        area: {
+          type: "string",
+          description:
+            "Use one of these exactly if the paper sits squarely inside " +
+            "it: " + AREAS.join("; ") + ". If none of them fits, name a " +
+            "new area in one or two words, as a field of health rather " +
+            "than a disease (e.g. 'Bone and joint health', 'Mental " +
+            "health'). A forced fit is worse than a new area."
+        },
         summary: {
           type: "string",
           description:
