@@ -709,6 +709,17 @@
   /* The map groups problems by area: one pin per area of the body, with
      however many problems sit inside it. Order follows the seed, so the
      numbered legend under 640px matches the order of the list below. */
+  /* An area is on the map only if somebody measured a coordinate for it.
+     Both lists are derived from the same order, so pins, their numbers and
+     the legend cannot drift apart. */
+  function pinnedGroups() {
+    return areaGroups().filter(function (g) { return MAP_POINTS[g.area]; });
+  }
+
+  function unpinnedGroups() {
+    return areaGroups().filter(function (g) { return !MAP_POINTS[g.area]; });
+  }
+
   function areaGroups() {
     var order = [];
     var byArea = {};
@@ -738,7 +749,8 @@
   /* ---------- navigation ---------- */
 
   var SCREENS = [
-    "screen-problems", "screen-detail", "screen-request", "screen-about"
+    "screen-problems", "screen-area", "screen-detail", "screen-request",
+    "screen-about"
   ];
 
   /* Shows one screen and hides the others, then moves focus into the new
@@ -758,74 +770,76 @@
     window.scrollTo(0, 0);
   }
 
-  /* ---------- screen 1: problem list ---------- */
+  /* ---------- screen 1a: one area's problems ---------- */
 
-  function renderProblemList() {
-    var list = el("problem-list");
+  /* The home screen is the map and nothing else, so the list lives here,
+     one area at a time. Three levels, each saying only what is needed to
+     choose the next: the map says where the gaps are, this screen says
+     which problems sit in one place, and the record says everything.
+
+     The card carries two things — the problem, and whether the data
+     exists. The affected-women sentence, the source and the origin badge
+     are on the record, where the source is a link a researcher can follow;
+     inside a button it could only ever be printed, because a link may not
+     be nested in one. §8.1 asks that every claim show where it came from,
+     and the claim is the record, not the card that points at it. */
+
+  var currentArea = null;
+
+  function findArea(area) {
+    return areaGroups().filter(function (group) {
+      return group.area === area;
+    })[0];
+  }
+
+  function openArea(area) {
+    var group = findArea(area);
+    if (!group) { return; }
+
+    currentArea = area;
+
+    var point = MAP_POINTS[area];
+    setValue(el("area-kind"), point && point.kind === "systemic"
+      ? "Whole body — not located in one place"
+      : "Area of the body");
+
+    setValue(el("area-heading"), group.area);
+    el("area-count").textContent = gapSentenceFor(group.needs);
+
+    var list = el("area-problem-list");
     list.textContent = "";
 
-    /* Grouped by area, matching the map above it: an area is a heading,
-       and the problems inside it are the cards beneath. A map pin brings
-       the reader here rather than choosing a problem for them. */
-    areaGroups().forEach(function (group) {
-      var block = document.createElement("li");
-      block.className = "area-block";
+    group.problems.forEach(function (problem) {
+      var item = document.createElement("li");
 
-      var heading = make("h3", "area-heading", group.area);
-      heading.id = "area-" + slug(group.area);
-      /* Focusable so a pin can hand focus here, but not in the tab order:
-         the cards below are the real stops. */
-      heading.tabIndex = -1;
-      heading.appendChild(make("span", "area-heading-count",
-        gapSentenceFor(group.needs)));
-      block.appendChild(heading);
+      /* A real button, so it is tab-reachable, works on Enter and Space,
+         and gets the global focus ring without extra code (§8.2). */
+      var card = make("button", "problem-card");
+      card.type = "button";
 
-      var cards = document.createElement("ul");
-      cards.className = "card-list area-cards";
+      /* Spans, not paragraphs: a button may only contain phrasing
+         content. They are laid out as blocks in CSS. */
+      card.appendChild(makeValue("span", "card-title", problem.title));
+      card.appendChild(make("span", "count", gapSentence(problem)));
 
-      group.problems.forEach(function (problem) {
-        var item = document.createElement("li");
+      /* The badge marks the exception rather than the rule. Every record
+         in the seed is "sourced", so a badge on every card would say the
+         same thing and distinguish nothing. A placeholder, or a gap this
+         platform inferred itself, is what a reader has to be warned
+         about, and that still carries its badge. */
+      if (flaggedOrigin(problem)) {
+        card.appendChild(originBadge(problem));
+      }
 
-        /* A real button, so it is tab-reachable, works on Enter and Space,
-           and gets the global focus ring without extra code (§8.2). */
-        var card = make("button", "problem-card");
-        card.type = "button";
-        /* Spans, not paragraphs: a button may only contain phrasing
-           content. They are laid out as blocks in CSS. */
-        /* Two things: what the problem is, and whether the data exists.
-           That is everything a reader needs to decide whether to open it,
-           and the home screen's job is to be scanned (§6).
-
-           What used to be here as well: the affected-women sentence, an
-           origin badge and a source line, on every one of eleven cards.
-           All three are on the record itself, one click away, where the
-           source is a link a researcher can actually follow — inside a
-           button it could only ever be printed, because a link may not be
-           nested in one. §8.1 asks that every claim show where it came
-           from; the card is a pointer to the claim, not the claim. */
-        card.appendChild(makeValue("span", "card-title", problem.title));
-        card.appendChild(make("span", "count", gapSentence(problem)));
-
-        /* The badge marks the exception rather than the rule. Every record
-           in the seed is "sourced", so a badge on each card said the same
-           thing eleven times and distinguished nothing. A placeholder or a
-           gap this platform inferred itself is what a reader has to be
-           warned about, and that still carries its badge. */
-        if (flaggedOrigin(problem)) {
-          card.appendChild(originBadge(problem));
-        }
-
-        card.addEventListener("click", function () {
-          openProblem(problem.id);
-        });
-
-        item.appendChild(card);
-        cards.appendChild(item);
+      card.addEventListener("click", function () {
+        openProblem(problem.id);
       });
 
-      block.appendChild(cards);
-      list.appendChild(block);
+      item.appendChild(card);
+      list.appendChild(item);
     });
+
+    show("screen-area");
   }
 
 
@@ -1351,13 +1365,11 @@
     var marks = el("map-marks");
     marks.textContent = "";
 
-    areaGroups().forEach(function (group, index) {
+    /* Pinned areas only, so the number a pin carries is its position among
+       the pins and not among all areas. An area with no measured
+       coordinate is not an error — renderUnpinned() lists it instead. */
+    pinnedGroups().forEach(function (group, index) {
       var point = MAP_POINTS[group.area];
-
-      /* An area with no measured coordinate is not an error: it is simply
-         not on the map yet, and the list below still carries it. */
-      if (!point) { return; }
-
       var radius = point.r || 8;
       var sentence = gapSentenceFor(group.needs);
       var anchor = point.side === "left" ? "end" : "start";
@@ -1413,14 +1425,14 @@
         point.label_y + 28
       ));
 
-      mark.addEventListener("click", function () { revealArea(group.area); });
+      mark.addEventListener("click", function () { openArea(group.area); });
 
       /* A <g> is not a button, so Enter and Space are wired by hand to
          match what the problem cards get for free. */
       mark.addEventListener("keydown", function (event) {
         if (event.key === "Enter" || event.key === " ") {
           event.preventDefault();
-          revealArea(group.area);
+          openArea(group.area);
         }
       });
 
@@ -1428,50 +1440,70 @@
     });
   }
 
-  /* An area can hold several problems, so a pin cannot open one of them:
-     it would have to pick, and picking would hide the rest. Instead the
-     list below is brought to that area and its heading takes focus, so
-     the keyboard path and the mouse path end in the same place. */
-  function revealArea(area) {
-    var heading = document.getElementById("area-" + slug(area));
-    if (!heading) { return; }
+  /* An area can hold several problems, so a pin still cannot open one of
+     them — it would have to pick, and picking would hide the rest. It
+     opens the AREA, which is the thing the pin actually stands for.
 
-    heading.scrollIntoView({
-      behavior: reduceMotion() ? "auto" : "smooth",
-      block: "start"
-    });
-    heading.focus();
-  }
-
-  function slug(text) {
-    return String(text).toLowerCase().replace(/[^a-z0-9]+/g, "-");
-  }
-
-  /* §8.2 — a scroll is motion, and prefers-reduced-motion means jump. */
-  function reduceMotion() {
-    return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  }
+     This used to scroll to a heading in a list below the map. The list is
+     gone: the home screen is the map, and a pin is a route rather than an
+     anchor. The mouse path and the keyboard path still end in the same
+     place, because they call the same function. */
 
   /* Under 640px the side labels do not fit. The pins carry numbers and
      this list carries the words — the same areas, in the same order. */
+  function legendButton(group) {
+    var button = make("button", "legend-item");
+    button.type = "button";
+    button.appendChild(make("span", "legend-area", group.area));
+    button.appendChild(make("span", "legend-count",
+      gapSentenceFor(group.needs)));
+
+    button.addEventListener("click", function () { openArea(group.area); });
+    return button;
+  }
+
   function renderMapLegend() {
     var list = el("map-legend");
     list.textContent = "";
 
-    areaGroups().forEach(function (group) {
-      if (!MAP_POINTS[group.area]) { return; }
-
+    /* Pinned areas only, in the same order and therefore with the same
+       numbers as the pins. An unpinned area used to consume a number here
+       and on the figure without drawing anything, so the pins could count
+       1, 2, 4 — invisible today because every area has a coordinate, and
+       wrong the moment one does not. */
+    pinnedGroups().forEach(function (group) {
       var item = document.createElement("li");
-      var button = make("button", "legend-item");
-      button.type = "button";
-      button.appendChild(make("span", "legend-area", group.area));
-      button.appendChild(make("span", "legend-count", gapSentenceFor(group.needs)));
-
-      button.addEventListener("click", function () { revealArea(group.area); });
-
-      item.appendChild(button);
+      item.appendChild(legendButton(group));
       list.appendChild(item);
     });
+
+    renderUnpinned();
+  }
+
+  /* The map is now the only way in, so an area with no measured
+     coordinate would be unreachable rather than merely unpinned — the app
+     would silently hide records, which §8.1 does not allow. These are
+     listed at every width, under a line that says why they are there.
+     Empty today, and it renders nothing when empty. */
+  function renderUnpinned() {
+    var slot = el("map-unpinned");
+    slot.textContent = "";
+
+    var groups = unpinnedGroups();
+    slot.hidden = groups.length === 0;
+    if (!groups.length) { return; }
+
+    slot.appendChild(make("p", "unpinned-note",
+      "Not yet placed on the figure — no measured coordinate for " +
+      (groups.length === 1 ? "this area" : "these areas") + " yet:"));
+
+    var list = make("ul", "unpinned-list");
+    groups.forEach(function (group) {
+      var item = document.createElement("li");
+      item.appendChild(legendButton(group));
+      list.appendChild(item);
+    });
+    slot.appendChild(list);
   }
 
   /* The wide viewBox is built around the label columns either side of the
@@ -1536,6 +1568,13 @@
           openProblem(currentProblemId);
           return;
         }
+
+        /* Same rule one level up: back from a record returns to the area
+           it was opened from, not to whichever area was rendered last. */
+        if (target === "screen-area" && currentArea) {
+          openArea(currentArea);
+          return;
+        }
         show(target);
       });
     });
@@ -1557,7 +1596,6 @@
     renderMap();
     renderMapLegend();
     watchMapWidth();
-    renderProblemList();
   }
 
   document.addEventListener("DOMContentLoaded", init);

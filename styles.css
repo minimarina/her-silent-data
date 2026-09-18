@@ -1218,29 +1218,16 @@ a:hover { text-decoration: none; }
 
 .check-toggle:hover { color: var(--navy-deep); }
 
-/* ---------- areas on the home screen ---------- */
+/* ---------- screen 1a: one area ---------- */
 
-/* The list mirrors the map: an area is a heading, and the problems inside
-   it are the cards beneath. A map pin scrolls here and focuses the
-   heading rather than choosing a problem for the reader. */
-.area-block { margin-bottom: 32px; }
-.area-block:last-child { margin-bottom: 0; }
-
-.area-heading {
-  font-size: 1.05rem;
-  margin: 0 0 12px;
-  padding-bottom: 8px;
-  border-bottom: 1px solid var(--border);
-  display: flex;
-  flex-wrap: wrap;
-  align-items: baseline;
-  gap: 4px 12px;
-}
-
-.area-heading-count {
-  font-size: 0.85rem;
-  font-weight: 400;
+/* The home screen is the map alone, so an area opens as its own screen
+   rather than as a heading in a list below the figure. This is the hint
+   that says so, and it is the only prose left on the home screen. */
+.map-hint {
+  margin: 12px 0 0;
+  text-align: center;
+  font-size: 0.9375rem;
   color: var(--muted);
 }
 
-.area-cards { margin: 0; }
+#screen-area .count { margin-bottom: var(--space-section); }

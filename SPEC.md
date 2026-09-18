@@ -14,6 +14,16 @@ data is missing and which women it should come from.
 
 **Positioning:** research intelligence for the gender data gap.
 
+This is the *positioning* line — what the product is, for a write-up or a
+pitch. It is deliberately no longer the on-screen tagline. In the header
+it sat directly under the name and said "data gap" twice in two lines,
+restating the brand instead of adding to it, and it left the lede to
+carry the audience, where it landed as a category label straight after
+the hero's claim and deflated it. The header now reads **"For researchers
+in women's health"**, the `<title>` and the meta description match it, and
+the lede answers the hero instead of introducing the product a second
+time. Four lines, one job each: name, audience, claim, answer.
+
 **One-sentence problem statement:**
 Researchers who want to close the gender data gap don't know which data is
 missing most, or which women it has to come from.
@@ -224,13 +234,10 @@ focus ring is the teal ring on a white backing that the About link
 already uses, because teal alone holds 2.3:1 on `navy-deep`, under the
 3:1 non-text floor (§8.2).
 
-**Screen 1 — Home: body map, then the problem list**
+**Screen 1 — Home: the body map, and nothing else**
 
-The screen opens with the gap as a picture and states the totals, then
-gives the same problems as cards, grouped by area. One screen, not two:
-the map is a second way into the list, never a replacement for it. The
-count is whatever the seed holds — eleven at the time of writing — and
-every figure on the screen is computed from it, never written here.
+The gap as a picture, the totals in words, and the figure. No list. Every
+figure on the screen is computed from the seed, never written here.
 
 - A hero line, and a counts strip over the whole seed: how many data
   needs exist, and how many are missing, partial and collected. Its bar
@@ -239,21 +246,42 @@ every figure on the screen is computed from it, never written here.
   boundary is the only thing the bar exists to show. A status with no
   records renders no segment, so a gap never appears with nothing beside
   it.
-- A female silhouette with one marker per problem (§7.6).
-- Each marker carries the area, the same "X of Y data needs missing"
-  sentence the card below carries, and a three-part status bar.
-- A marker opens the same Screen 2 the card opens.
+- A female silhouette with one marker per AREA (§7.6), each carrying the
+  area name, its "X of Y data needs missing" sentence and a three-part
+  status bar.
+- One line of prose, under the figure: *select an area to see its
+  problems.* The map is the only route in, so it has to say so once.
+- Banner: shown only while placeholder records exist, and it counts them.
+  With the seed fully sourced it does not render.
 
-Then the list:
+**The list moved off this screen entirely, on 18 Sep.** It used to sit
+under the figure, grouped by area, and a pin scrolled to the matching
+heading. Eleven cards made the home screen 4,552 characters long and
+6,348px tall to say eleven titles and eleven statuses; it is now 565
+characters and 1,378px. The home screen's job is to be understood in one
+look, and it now is one.
 
+**Screen 1a — one area's problems**
+
+A pin opens the area it stands for. The pin never opens a *problem* — an
+area can hold several, it would have to pick, and picking would hide the
+rest — so what it opens is the level between the map and the record.
+
+- The area name as the heading, with its kind above it: *area of the
+  body*, or *whole body — not located in one place* for a systemic area
+  (§7.6).
+- The same gap sentence the pin carries, computed by the same function,
+  so the two cannot disagree.
 - One card per problem, carrying **two things**: the title, and the gap
-  indicator ("X of Y data needs missing", or "Data missing" where a
-  problem has one need). That is what a reader needs to decide whether to
-  open it, and the home screen's job is to be scanned.
-- Banner: shown only while placeholder records exist, and it counts
-  them. With the seed fully sourced it does not render.
+  indicator. That is what a reader needs to decide which to open.
 - Origin badge **only where the origin is an exception** — a placeholder,
   a gap this platform proposed, an origin nobody has assessed.
+- Back returns to the map.
+
+**Three levels, each saying only what is needed to choose the next.** The
+map says where the gaps are; the area says which problems sit in one
+place; the record says everything. Returning from a record goes back to
+the area it was opened from, not to whichever area was rendered last.
 
 **What the card deliberately does not carry.** The affected-women
 sentence, the source line and a "Published research request" badge used
@@ -458,9 +486,29 @@ rather than as two different gaps.
 
 Because a pin can stand for several problems, it cannot open one of them
 — it would have to pick, and picking would hide the rest. Activating a
-marker scrolls to that area's heading in the list below and gives it
-focus, so the mouse path and the keyboard path end in the same place.
-The list is grouped by area to match.
+marker opens that AREA (Screen 1a), which is the thing the pin actually
+stands for. Mouse and keyboard call the same function and end in the same
+place.
+
+Until 18 Sep this scrolled to a heading in a list below the figure, and
+this section read *"the map is a second way into the list, never a
+replacement for it."* That is now reversed: the map **is** the route, and
+there is no list under it. The reason the old rule existed was that a
+pin-only home could hide records — which is still true, and is handled
+below rather than by keeping a list of all eleven on the front page.
+
+**An area with no coordinate is listed, not dropped.** When the map was a
+second route, an unpinned area still appeared in the list. Now the map is
+the only route, so an unpinned area would be genuinely unreachable and
+the app would silently hide records, which §8.1 forbids. Those areas
+render under the figure at every width, under a line saying why. Empty
+today, because all six areas are measured.
+
+**Pin numbers count pins.** The numbers shown under 640px are the
+position among *pinned* areas. They used to be the position among all
+areas, so a single unpinned area would have made the pins count 1, 2, 4 —
+invisible while every area has a coordinate, and wrong the moment one
+does not.
 
 **Site markers against ring markers is a claim, not styling.**
 Cardiovascular, maternal, pelvic and reproductive gaps sit in one place
@@ -668,7 +716,9 @@ Core flow:
 
 1. The app opens by double-clicking `index.html` — no server, no install,
    no build.
-2. Screen 1 lists all problems from the seed file.
+2. Every problem in the seed is reachable from Screen 1 — through its
+   area's pin, or, for an area with no measured coordinate, through the
+   list under the figure. No record can be unreachable.
 3. Each card shows the correct count of missing data needs.
 4. Clicking a card opens Screen 2 for that problem.
 5. Each data need shows exactly one status badge matching the seed file.
@@ -680,7 +730,8 @@ Core flow:
    check missed.
 8. The demo banner renders on every screen while any record is a
    placeholder, and does not render when none is. It states the count.
-9. Returning from detail to the list works without reloading.
+9. Returning from a record lands on the area it was opened from, and from
+   there on the map, without reloading.
 10. The full demo flow (1 → 4 in section 3) takes under 90 seconds.
 
 Design and accessibility:
@@ -692,22 +743,23 @@ Design and accessibility:
 14. No horizontal scroll at 360px width.
 15. With `prefers-reduced-motion: reduce`, no transition exceeds an
     opacity change.
-16. Every count shown on Screen 1 agrees with the statuses on Screen 2
-    for the same problem.
+16. Every count shown on Screen 1 and Screen 1a agrees with the statuses
+    on Screen 2 for the same problem.
 
 Body map (§7.6). Numbered after the original sixteen on purpose: the
 code cites these by number, so existing criteria keep theirs.
 
-17. Screen 1 shows one marker per area in the seed, and an area with no
-    `MAP_POINTS` entry is skipped rather than breaking the map.
+17. Screen 1 shows one marker per mapped area in the seed. An area with no
+    `MAP_POINTS` entry draws no marker, does not consume a pin number, and
+    is listed under the figure instead, so it stays reachable.
 18. Every site marker sits on the figure — centre and all eight edge
     points inside the fill — and every ring marker sits off it.
 19. Each marker's sentence counts every data need in its area, and
-    agrees with the heading above that area's cards.
+    agrees with the heading on that area's screen.
 20. The counts strip totals agree with the sum of the card counts.
-21. A marker scrolls to its area's heading and focuses it, by click,
-    Enter and Space alike.
-22. Returning from detail lands on the home screen with the map intact.
+21. A marker opens its area's screen, by click, Enter and Space alike, and
+    focus lands in the new screen.
+22. Returning from an area lands on the home screen with the map intact.
 23. Below 640px the labels are gone, the numbered legend is present, and
     there is no horizontal scroll.
 

@@ -3,8 +3,14 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Women's Data Gap — research intelligence for the gender data gap</title>
-<meta name="description" content="For a given problem women face, which data is missing and which women it should come from.">
+<!-- The tab title and the link preview. Kept in step with the tagline and
+     the lede below, so the browser tab, a shared link and the page itself
+     all say the same thing. The description used to promise "which women
+     it should come from", which was the old collection_request written
+     into every record; nothing is stored that says that any more (§5a),
+     so it described a product that no longer exists. -->
+<title>Women's Data Gap — for researchers in women's health</title>
+<meta name="description" content="Which data on women's health is missing, who said so, and whether anyone has collected it since — then a draft of the study that would collect it.">
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -25,7 +31,15 @@
     <button type="button" class="site-home" data-goto="screen-problems"
             aria-label="Women&rsquo;s Data Gap &mdash; back to the map">
       <span class="site-name">Women&rsquo;s Data Gap</span>
-      <span class="site-tagline">Research intelligence for the gender data gap</span>
+      <!-- Four lines open this site: the name, this tagline, the hero and
+           the lede. Each does one job and none repeats another. This used
+           to read "Research intelligence for the gender data gap", which
+           said the name again — "data gap" twice in adjacent lines — and
+           left the lede to carry the audience, where it landed as a
+           category label straight after the hero's claim and deflated it.
+           The audience belongs here, in chrome that shows on every
+           screen, so the lede can answer the hero instead. -->
+      <span class="site-tagline">For researchers in women&rsquo;s health</span>
     </button>
 
     <!-- The only way to Screen 4. About is never in front of the demo flow,
@@ -49,10 +63,15 @@
       <h1 id="hero-heading" class="hero-line">
         Medicine knows less about women than about men.
       </h1>
+      <!-- The home screen's only prose, so it carries the whole flow in
+           the order a reader meets it: what is missing, who said so (the
+           claim is always borrowed, §5a), whether it has been collected
+           since (§11), and the drafted study. Earlier versions stopped
+           after the first or the third of those. -->
       <p class="lede hero-lede">
-        The questions aren&rsquo;t hard. Nobody collected the answers. This map
-        shows what is missing, who said so, and whether anyone has collected
-        it since.
+        This map shows which data is missing, who said so, and whether
+        anyone has collected it since &mdash; then drafts the study that
+        would collect it.
       </p>
       <div id="gap-summary" class="gap-summary"></div>
     </div>
@@ -86,24 +105,40 @@
       </svg>
 
       <!-- Under 640px the side labels do not fit. The pins carry numbers and
-           this list carries the words — the same sentence either way. -->
+           this list carries the words — the same sentence either way. It
+           also appears at any width for an area with no measured pin, so
+           the map being the only route home can never hide a record. -->
       <ol id="map-legend" class="map-legend"></ol>
+
+      <!-- Areas with no measured coordinate. Shown at every width, because
+           the map is the only route and an unpinned area would otherwise
+           be unreachable. Empty and hidden while every area has a pin. -->
+      <div id="map-unpinned" class="map-unpinned" hidden></div>
+
+      <!-- The map is the only way in now, so it has to say so once. -->
+      <p class="map-hint">Select an area to see its problems.</p>
     </div>
 
-    <h2 id="problems-heading">Problems women face</h2>
-    <!-- One line, not a paragraph. The cards below say the rest, and the
-         hero has already said what the platform is for. -->
-    <p class="lede">
-      Open one to see what is missing, who said so, and the study that
-      would close it.
-    </p>
-    <ul id="problem-list" class="card-list"></ul>
+  </section>
+
+  <!-- Screen 1a — one area's problems. The home screen is the map and
+       nothing else, so this is where the list went: a pin opens the area
+       it stands for, and the cards here carry the minimum needed to pick
+       one. Everything about a record is on Screen 2, behind the card. -->
+  <section id="screen-area" class="screen" aria-labelledby="area-heading" tabindex="-1" hidden>
+    <button type="button" class="back" data-back="screen-problems">
+      &larr; Back to the map
+    </button>
+    <p class="eyebrow" id="area-kind"></p>
+    <h1 id="area-heading"></h1>
+    <p class="count" id="area-count"></p>
+    <ul id="area-problem-list" class="card-list"></ul>
   </section>
 
   <!-- Screen 2 — problem detail -->
   <section id="screen-detail" class="screen" aria-labelledby="detail-heading" tabindex="-1" hidden>
-    <button type="button" class="back" data-back="screen-problems">
-      &larr; All problems
+    <button type="button" class="back" data-back="screen-area">
+      &larr; Back to the area
     </button>
     <p class="eyebrow" id="detail-area"></p>
     <div id="detail-origin" class="origin-slot"></div>
