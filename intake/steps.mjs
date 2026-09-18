@@ -266,6 +266,9 @@ const VERIFY_SCHEMA = {
 const VERIFY_SYSTEM =
   "You check whether data that a paper called missing has been collected " +
   "since. Search the live web before answering — do not rely on memory.\n\n" +
+  "You get ONE search, so build the query carefully before you spend it: " +
+  "the condition or exposure, the population, and the kind of data " +
+  "(cohort, registry, trial, survey). Then answer from what comes back.\n\n" +
   "This is the step that protects a researcher from being sent to collect " +
   "data that already exists. Missing a gap costs nothing; publishing a " +
   "false gap wastes someone's work.\n\n" +
@@ -296,14 +299,17 @@ export async function verifyRecord(extracted) {
       `Region: ${need.region || "not specified"}\n\n` +
       "Has this data been collected since? Search, then answer.",
     maxTokens: 16000,
-    /* Search results come back as input tokens, so max_uses is the cost
-       dial for the whole run — this call is most of the bill. Three
-       searches and medium effort answered the test record as well as six
-       and high did; "has anyone collected this" is a lookup, not a
-       reasoning problem. */
-    effort: "medium",
+    /* max_uses is the cost dial for the entire run. Search results arrive
+       as input tokens and the model re-reads them on every tool turn, so
+       the bill grows faster than the number of searches: three searches
+       cost roughly 87,000 input tokens per record.
+
+       One search, with the prompt asking for a single well-built query,
+       is the floor that still performs a real check. Below this there is
+       nothing left to cut that is not the check itself. */
+    effort: "low",
     schema: VERIFY_SCHEMA,
-    tools: [{ type: "web_search_20260209", name: "web_search", max_uses: 3 }]
+    tools: [{ type: "web_search_20260209", name: "web_search", max_uses: 1 }]
   });
 
   const result = jsonOf(response);
