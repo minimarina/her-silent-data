@@ -22,6 +22,7 @@ import { FILTER_MODEL, spendLine } from "./model.mjs";
 import { validateRecord, mappableAreas } from "./validate.mjs";
 
 const CANDIDATES = join(HERE, "candidates.json");
+const PREVIEW = join(HERE, "preview.json");
 const DESIGNS_JS = join(REPO, "research-designs.js");
 
 /* Designs accumulate across runs: a second run must not drop the design
@@ -37,16 +38,39 @@ const DESIGNS_JSON = join(HERE, "designs.json");
    a gap is a sentence, and these are the sentences researchers actually
    write when they have found one. Adding a phrase here changes what the
    platform is able to see, so it is a deliberate edit, not a setting. */
+/* These are CONCLUSION phrases, not introduction phrases, and that
+   distinction is the whole point. Version 1 searched for "data are
+   lacking" and "little is known about" — the sentences a paper writes to
+   justify the study it then reports. Those gaps are usually closed by the
+   very paper that named them, which is why the first six records came
+   back mostly "partial" and "collected".
+
+   A systematic review that looked and found nothing is a different kind
+   of claim: the absence was searched for by people whose job was to find
+   it, and they published the negative. That is as close to a verified gap
+   as published literature gets. */
 const GAP_PHRASES = [
+  "no studies met the inclusion criteria",
+  "no eligible studies",
+  "we found no studies",
+  "no randomised controlled trials were identified",
+  "no trials were identified",
+  "insufficient evidence to determine",
+  "insufficient evidence to support",
   "no studies have examined",
-  "data are lacking",
-  "data is lacking",
-  "remains understudied",
-  "have not been studied",
-  "has not been investigated",
-  "little is known about",
-  "evidence is lacking",
-  "no data exist"
+  "no data exist",
+  "evidence gap"
+];
+
+/* Paired with the phrases above: the document types whose genre is
+   naming an open question rather than answering one. Without this, the
+   conclusion phrases still match primary studies quoting a review. */
+const GAP_GENRES = [
+  'PUB_TYPE:"systematic review"',
+  'PUB_TYPE:"Review"',
+  'PUB_TYPE:"Meta-Analysis"',
+  'PUB_TYPE:"Guideline"',
+  'PUB_TYPE:"Practice Guideline"'
 ];
 
 function europePmcQuery() {
@@ -57,6 +81,7 @@ function europePmcQuery() {
 
   return [
     "(" + phrases + ")",
+    "AND (" + GAP_GENRES.join(" OR ") + ")",
     'AND (ABSTRACT:"women" OR TITLE:"women" OR ABSTRACT:"female")',
     "AND (PUB_YEAR:[" + (year - YEARS_BACK) + " TO " + year + "])",
     'AND (LANG:"eng")'
@@ -153,7 +178,10 @@ if (discoverOnly) {
   for (const paper of fresh) { ledgerNote(ledger, paper.doi, "seen", paper.title); }
   saveLedger(ledger);
 
-  writeJson(CANDIDATES, {
+  /* A preview writes to its own file. candidates.json holds records that
+     cost real money and are waiting for review — a free, read-only run
+     must not be able to touch it, and twice now it could. */
+  writeJson(PREVIEW, {
     run_at: today(),
     stage: "discover-only",
     query_window_years: YEARS_BACK,
@@ -166,7 +194,7 @@ if (discoverOnly) {
   });
 
   console.log("");
-  console.log("Wrote intake/candidates.json and updated intake/ledger.json.");
+  console.log("Wrote intake/preview.json and updated intake/ledger.json.");
   console.log("No model was called and no key was needed.");
   process.exit(0);
 }
