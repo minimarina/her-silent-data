@@ -60,7 +60,6 @@ const DATA = {
         "https://doi.org/10.3390/ijms27146349",
       origin: "sourced",
       is_demo: false,
-      map_point: { kind: "site", x: 390, y: 153, side: "left",  label_y: 150 },
       data_needs: [
         {
           id: "high-altitude-cardiometabolic-women-adaptation-data",
@@ -159,7 +158,6 @@ const DATA = {
         "https://doi.org/10.1016/j.yebeh.2026.111210",
       origin: "sourced",
       is_demo: false,
-      map_point: { kind: "site", x: 380, y: 270, side: "left",  label_y: 300 },
       data_needs: [
         {
           id: "epilepsy-fertility-treatment-larger-studies",
