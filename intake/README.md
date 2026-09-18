@@ -68,6 +68,7 @@ requires the record id.
 ```bash
 node intake/check-key.mjs              # is the key working? never prints it
 node intake/run.mjs --discover-only    # search only — no model, no key
+node intake/run.mjs --want=60          # gather more phrase matches first
 node intake/run.mjs --limit=4          # the full run — needs a key
 node intake/run.mjs --doi=10.1234/x    # reprocess one named paper
 node intake/validate.mjs --self-test   # the acceptance tests
@@ -134,6 +135,60 @@ behind it, so bumping `FILTER_VERSION` in `steps.mjs` reopens every paper
 an older filter rejected. Without this, each prompt change quietly burned
 the corpus.
 
+## How discovery actually works
+
+**Europe PMC does not phrase-match.** It drops stop words, so
+`ABSTRACT:"no studies met the inclusion criteria"` is really a search for
+*studies met inclusion criteria* — a sentence in almost every systematic
+review, with the negation that carries the entire meaning thrown away.
+Measured 18 Sep: 6,654 hits, nought of five sampled abstracts containing
+the phrase. For as long as the query looked like it was searching for
+sentences, it was not, and the filter was doing all the selection.
+
+So discovery is in two halves:
+
+1. **The query is a recall net.** Reviews, meta-analyses and guidelines
+   about women, within the window. About 20,000 papers. It selects on
+   genre and population only, because that is all Europe PMC can be
+   trusted to do.
+2. **The phrase match happens here, in `run.mjs`,** against the abstract
+   text the search already returned. Exact, free, and deterministic. It
+   pages through the net until enough abstracts have survived — `--want`
+   (default 40) and `--max-pages` control that.
+
+Only phrase-matched abstracts reach the filter, so no model is ever paid
+to read a paper that never claimed anything was missing.
+
+## Tuning the search
+
+`GAP_PHRASES` in `run.mjs` is the quality of the whole system. A gap is a
+sentence, and the choice of sentence decides what the platform can see.
+Adding one is a deliberate edit, not a setting.
+
+**The phrases are measured, not guessed.** They were mined from 8,000
+women's-health review abstracts, counting how researchers actually write
+absence. The first hand-written list was full sentences — "no studies met
+the inclusion criteria" — and matched 9 abstracts in 12,000, because
+almost nobody writes the whole sentence. Short fragments are what they
+write: *no studies* (82 in 8,000), *none of the studies* (21), *no data*
+(20), *lack of data* (16). Rewriting the list against those counts took
+the yield from 9 in 12,000 to 48 in 1,000.
+
+**What is deliberately excluded** is the *limited evidence* (116), *few
+studies* (78), *limited data* (67), *insufficient evidence* (34) family.
+Those say data exists and is sparse, which is status `partial`. They
+produced every partial record in the early runs. Leaving them out is how
+the register fills with `missing` rather than `partial`.
+
+**Sex-disaggregation phrases were tried and dropped.** Conceptually they
+are the closest thing to the gender data gap — data collected, women
+invisible inside it because nobody broke the results down. But they
+barely occur in this corpus, and mechanically they would produce the
+wrong status: the underlying data *was* collected, so the verify step
+finds it and returns `partial`. Making that work needs the extract and
+verify prompts to reason about disaggregated versus raw data. It is a
+different pipeline, not a different phrase.
+
 ## What the search can and cannot do
 
 Europe PMC indexes published literature, filtered here to the window in
@@ -145,27 +200,3 @@ That limit is stated on every affected card, with a link for anyone who
 knows of data the check missed. The platform never asserts that data does
 not exist — it reports that an authority named it missing, and what the
 check could and could not reach.
-
-## Tuning the search
-
-`GAP_PHRASES` in `run.mjs` is the quality of the whole system. Europe PMC
-has no field for "this is a data gap" — a gap is a sentence, and the
-choice of sentence decides what the platform can see. Adding one is a
-deliberate edit, not a setting.
-
-**They are conclusion phrases, not introduction phrases, and that is the
-whole point.** The first version searched for "data are lacking" and
-"little is known about" — the sentences a paper writes to justify the
-study it then reports. Those gaps are usually closed by the very paper
-that named them, and the first six records came back mostly `partial` and
-`collected` as a result.
-
-The phrases now match what a systematic review writes when it looked and
-found nothing — "no studies met the inclusion criteria", "insufficient
-evidence to determine" — and `GAP_GENRES` restricts the search to
-reviews, meta-analyses and guidelines. The absence was searched for by
-people whose job was to find it, and they published the negative. That is
-as close to a verified gap as published literature gets.
-
-The change moved the yield from one `missing` record in six to three in
-four.

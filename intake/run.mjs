@@ -50,48 +50,51 @@ const DESIGNS_JSON = join(HERE, "designs.json");
    they published the negative. That is as close to a verified gap as
    published literature gets. */
 const GAP_PHRASES = [
-  /* Tier 1 — the empty review. A team searched thousands of records and
-     included none. This is the strongest evidence of absence published
-     literature produces, and it is what yields status "missing". */
-  "no studies met the inclusion criteria",
-  "no studies fulfilled the inclusion criteria",
-  "no eligible studies were identified",
-  "no eligible studies were found",
-  "we found no studies",
-  "we identified no studies",
-  "no relevant studies were found",
-  "no randomised controlled trials were identified",
-  "no trials were identified",
+  /* MEASURED, not guessed. Mined from 8,000 women's-health review
+     abstracts on 18 Sep; the number after each phrase is how many of
+     those abstracts contained it. An earlier hand-written list of full
+     sentences ("no studies met the inclusion criteria") matched 9
+     abstracts in 12,000, because researchers rarely write the whole
+     sentence that way. Short fragments are what they actually write.
+
+     Included: phrasings that assert ABSENCE.
+     Excluded, deliberately: the "limited evidence" (116), "few studies"
+     (78), "limited data" (67) and "insufficient evidence" (34) family.
+     Those mean data exists and is sparse, which is status "partial".
+     They were the whole reason earlier runs returned partial records. */
+
+  "no studies",                    /* 82 */
+  "none of the studies",           /* 21 */
+  "no data",                       /* 20 */
+  "no trials",                     /* 16 */
+  "lack of data",                  /* 16 */
+  "lack of evidence",              /* 12 */
+  "lack of studies",               /* 11 */
+  "lack of information",           /* 10 */
+  "lack of research",              /*  7 */
+  "none of the included studies",  /*  7 */
+  "no randomized controlled trials",
+  "no randomised controlled trials",
   "no published data",
-  "no data exist",
+  "no eligible studies",
 
-  /* Tier 2 — the disaggregation gap, and the closest phrasing to what
-     this platform is about. The data was collected; women are invisible
-     inside it because nobody broke the results down. A review that finds
-     this is naming a gap it cannot fill itself. */
-  "not disaggregated by sex",
-  "sex-disaggregated data were not",
-  "were not reported separately for women",
-  "not reported separately by sex",
-  "were not stratified by sex",
-  "did not report outcomes by sex",
+  /* Ambiguous on its own — "no evidence of harm" is a finding, not a gap
+     — but it is the second most common absence phrasing in the corpus and
+     the filter exists to make exactly this distinction. Kept, and the
+     filter earns its keep on it. */
+  "no evidence",                   /* 95 */
 
-  /* Tier 3 — exclusion. Women, and pregnant women in particular, left out
-     of the studies that produced the evidence base now used to treat
-     them. Paired with the genre filter below so that the paper naming the
-     exclusion is not the trial that practised it. */
-  "women were excluded from",
-  "pregnant women were excluded",
-  "women of childbearing potential were excluded"
+  /* Women left out of the studies that produced the evidence base now
+     used to treat them. Rare, and worth having when it appears. */
+  "women were excluded",
+  "pregnant women were excluded"
 
-  /* Removed 18 Sep, with reasons:
-     "insufficient evidence to determine" / "...to support" — these mean
-     some data exists and is inconclusive, which is "partial", not a gap.
-     They produced every partial record in the first two runs.
-     "evidence gap" — too vague to carry a claim.
-     "no studies have examined" — introduction phrasing. The paper that
-     writes it is usually the paper that closes it, so it costs filter
-     calls and returns nothing. */
+  /* Dropped after measuring: the sex-disaggregation phrases. Two reasons.
+     They barely occur in this corpus, and mechanically they would produce
+     the wrong status — a disaggregation gap means the data WAS collected,
+     so the verify step finds it and returns "partial". Making that work
+     needs the extract and verify prompts to reason about disaggregated
+     versus raw data, which is a different pipeline, not a phrase. */
 ];
 
 /* Paired with the phrases above: the document types whose genre is
@@ -107,22 +110,23 @@ const GAP_GENRES = [
 
 function europePmcQuery() {
   const year = new Date().getFullYear();
-  const phrases = GAP_PHRASES
-    .map((phrase) => 'ABSTRACT:"' + phrase + '"')
-    .join(" OR ");
 
+  /* A RECALL NET, not a filter. Europe PMC drops stop words, so no phrase
+     clause here can carry a negation — see abstractContainsGapPhrase.
+     This asks only for the genre and the population, and every abstract it
+     returns is phrase-matched locally before anything is spent. */
   return [
-    "(" + phrases + ")",
-    "AND (" + GAP_GENRES.join(" OR ") + ")",
+    "(" + GAP_GENRES.join(" OR ") + ")",
     'AND (ABSTRACT:"women" OR TITLE:"women" OR ABSTRACT:"female")',
     "AND (PUB_YEAR:[" + (year - YEARS_BACK) + " TO " + year + "])",
     'AND (LANG:"eng")'
   ].join(" ");
 }
 
-async function search(query, pageSize) {
+async function search(query, pageSize, cursor) {
   const url = "https://www.ebi.ac.uk/europepmc/webservices/rest/search" +
     "?format=json&resultType=core&pageSize=" + pageSize +
+    (cursor ? "&cursorMark=" + encodeURIComponent(cursor) : "") +
     "&query=" + encodeURIComponent(query);
 
   const response = await fetch(url);
@@ -135,6 +139,7 @@ async function search(query, pageSize) {
 
   return {
     hitCount: body.hitCount,
+    nextCursor: body.nextCursorMark || null,
     papers: results.map((paper) => ({
       title: paper.title,
       doi: paper.doi || null,
@@ -157,7 +162,57 @@ async function search(query, pageSize) {
   };
 }
 
-const discover = (pageSize) => search(europePmcQuery(), pageSize);
+/* Pages the recall net, phrase-matching each page as it arrives and
+   stopping as soon as enough abstracts have survived. Europe PMC is free
+   and keyless, so this costs nothing but seconds — and every abstract it
+   discards here is one the filter is not paid to read. */
+async function discover(want, pageSize, maxPages) {
+  const query = europePmcQuery();
+  const matched = [];
+  let cursor = "*";
+  let scanned = 0;
+  let hitCount = 0;
+
+  for (let page = 0; page < maxPages; page += 1) {
+    const found = await search(query, pageSize, cursor);
+    hitCount = found.hitCount;
+    scanned += found.papers.length;
+
+    for (const paper of found.papers) {
+      if (abstractContainsGapPhrase(paper)) { matched.push(paper); }
+    }
+
+    console.log("  scanned " + scanned + ", matched " + matched.length);
+
+    if (matched.length >= want) { break; }
+    if (!found.nextCursor || found.nextCursor === cursor) { break; }
+    if (found.papers.length === 0) { break; }
+    cursor = found.nextCursor;
+  }
+
+  console.log("");
+  return { hitCount, scanned, papers: matched };
+}
+
+/* Europe PMC does not phrase-match. It drops stop words, so
+   ABSTRACT:"no studies met the inclusion criteria" is really a search for
+   "studies met inclusion criteria" — a sentence in almost every
+   systematic review, with the negation that carries the whole meaning
+   thrown away. Measured 18 Sep: 6,654 hits, nought of five sampled
+   abstracts containing the phrase.
+
+   So the query is a recall net, and the phrase match happens here, on the
+   abstract text the search already returned. It is free, it is exact, and
+   it is what makes GAP_PHRASES mean what intake/README.md says it means.
+   Everything downstream now sees only abstracts that really do contain a
+   sentence about absence. */
+function abstractContainsGapPhrase(paper) {
+  const text = " " + String(paper.abstract || "")
+    .toLowerCase()
+    .replace(/\s+/g, " ") + " ";
+
+  return GAP_PHRASES.some((phrase) => text.includes(phrase.toLowerCase()));
+}
 
 /* One named paper, straight past discovery and the filter. For putting
    back a record that was dismissed by mistake, and for re-running a
@@ -172,7 +227,13 @@ function arg(name, fallback) {
 }
 
 const discoverOnly = process.argv.includes("--discover-only");
-const pageSize = Number(arg("page-size", 100));
+/* One page of the recall net. 1000 is Europe PMC's maximum. */
+const pageSize = Number(arg("page-size", 1000));
+
+/* How many phrase-matched abstracts to gather before stopping, and how
+   many pages to spend looking. Both free — this is the keyless half. */
+const want = Number(arg("want", 40));
+const maxPages = Number(arg("max-pages", 12));
 
 /* How many papers may reach the expensive steps. The default is the floor
    from the plan — six records across four areas is what the map needs to
@@ -202,9 +263,10 @@ if (onlyDoi) {
   console.log("Query window: last " + YEARS_BACK + " years");
   console.log("Phrases:      " + GAP_PHRASES.length);
 
-  found = await discover(pageSize);
-  console.log("Europe PMC:   " + found.hitCount + " total, " +
-              found.papers.length + " fetched");
+  found = await discover(want, pageSize, maxPages);
+  console.log("Europe PMC:   " + found.hitCount + " reviews in scope, " +
+              found.scanned + " scanned, " + found.papers.length +
+              " contain a gap sentence");
 }
 
 /* Anything already on a card, or already judged in a previous run, is
@@ -244,7 +306,8 @@ if (discoverOnly) {
     stage: "discover-only",
     query_window_years: YEARS_BACK,
     hit_count: found.hitCount,
-    fetched: found.papers.length,
+    scanned: found.scanned,
+    phrase_matched: found.papers.length,
     unseen: fresh.length,
     papers: fresh.map((p) => ({
       title: p.title, doi: p.doi, url: p.url, year: p.year, journal: p.journal
@@ -432,7 +495,8 @@ writeJson(CANDIDATES, {
   stage: "full",
   query_window_years: YEARS_BACK,
   hit_count: found.hitCount,
-  fetched: found.papers.length,
+  scanned: found.scanned,
+  phrase_matched: found.papers.length,
   unseen: fresh.length,
   passed_filter: passed.length,
   records
