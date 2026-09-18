@@ -703,6 +703,40 @@
     slot.appendChild(key);
   }
 
+  /* Every coordinate here was measured by hand, with isPointInFill()
+     hit-testing against the silhouette, and is valid only for the
+     transform in index.html. No agent can produce one, so they are kept
+     keyed by area rather than living only inside a record: a new record
+     that names a known area gets its marker for free, and clearing the
+     seed can no longer take the map with it.
+
+     A record that carries its own map_point still wins. An area that is
+     not in this table simply has no pin — the problem still appears in
+     the list below, which is the honest state, not a broken one. */
+  var MAP_POINTS = {
+    "Menopause":             { kind: "systemic", x: 334, y:  95, side: "left",  label_y:  80 },
+    "Maternal health":       { kind: "site",     x: 408, y: 248, side: "left",  label_y: 234 },
+    "Autoimmune disease":    { kind: "systemic", x: 545, y: 518, side: "right", label_y: 506 },
+    "Cardiovascular health": { kind: "site",     x: 447, y: 188, side: "right", label_y: 170 },
+    "Endometriosis":         { kind: "site",     x: 430, y: 283, side: "left",  label_y: 372, r: 10.5 }
+  };
+
+  /* A record's own point first, then its area's. Only the first record in
+     an area may borrow the shared coordinate — two pins on one spot would
+     overlap and read as a single problem. */
+  function mapPoint(problem) {
+    if (problem.map_point) { return problem.map_point; }
+
+    var shared = MAP_POINTS[problem.area];
+    if (!shared) { return null; }
+
+    var first = DATA.problems.filter(function (other) {
+      return !other.map_point && other.area === problem.area;
+    })[0];
+
+    return first && first.id === problem.id ? shared : null;
+  }
+
   /* Where a leader line turns before running out to its label. Computed,
      not stored: only the side varies. */
   function elbowX(side) { return side === "left" ? 345 : 556; }
@@ -759,7 +793,7 @@
     marks.textContent = "";
 
     DATA.problems.forEach(function (problem, index) {
-      var point = problem.map_point;
+      var point = mapPoint(problem);
 
       /* A problem with no point is not an error: it simply is not on the
          map yet, and the list below still carries it. */
@@ -844,7 +878,7 @@
     list.textContent = "";
 
     DATA.problems.forEach(function (problem) {
-      if (!problem.map_point) { return; }
+      if (!mapPoint(problem)) { return; }
 
       var item = document.createElement("li");
       var button = make("button", "legend-item");
