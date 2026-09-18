@@ -260,16 +260,19 @@
               <h4>Validate</h4>
               <p class="build-chip" data-build="validate"></p>
               <p>
-                Ordinary JavaScript, no model: schema, status against the
-                presence of <code>gap_evidence</code>, duplicates by DOI.
+                Ordinary JavaScript, no model. Guidance with no source is
+                rejected, so is a record nobody checked, and so is a claim
+                that data exists without saying where. Duplicates go by DOI.
               </p>
             </li>
             <li>
               <h4>Review</h4>
               <p class="build-chip" data-build="review"></p>
               <p>
-                A pull request with a diff of <code>data.js</code>. A human
-                merges.
+                The run stops. The record waits until a human opens the
+                citation and confirms the source says what the record
+                claims, then merges it by hand. Approved or rejected, the
+                paper is logged and never offered again.
               </p>
             </li>
           </ol>

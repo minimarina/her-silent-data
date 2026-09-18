@@ -35,10 +35,10 @@
     stage4: "planned",
     stage5: "planned",
 
-    discover: "planned",
+    discover: "built",
     filter:   "planned",
     extract:  "planned",
-    validate: "planned",
+    validate: "built",
     review:   "planned"
   };
 
