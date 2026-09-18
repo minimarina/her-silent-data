@@ -2032,7 +2032,8 @@
       "first_seen": "2026-09-18",
       "last_seen": "2026-09-18",
       "title": "Reproductive and menopausal factors and risk of systemic lupus erythematosus in women.",
-      "outcome": "candidate"
+      "outcome": "dismissed",
+      "reason": "published 2007, outside the search window; fetched by a mistyped DOI"
     }
   }
 }

@@ -319,6 +319,14 @@ const VERIFY_SYSTEM =
   "You get ONE search, so build the query carefully before you spend it: " +
   "the condition or exposure, the population, and the kind of data " +
   "(cohort, registry, trial, survey). Then answer from what comes back.\n\n" +
+  "IF A SECOND SEARCH IS REFUSED with a limit or quota error, that is " +
+  "expected and is not a failure. You have one search by design. Answer " +
+  "from the results you already received.\n\n" +
+  "Report `search_outcome: \"failed\"` ONLY if you received no usable " +
+  "results at all — not because you wanted another search and could not " +
+  "have one, and not because the results were inconclusive. Results that " +
+  "show nothing relevant are a successful search with the answer " +
+  "`missing`.\n\n" +
   "This is the step that protects a researcher from being sent to collect " +
   "data that already exists. Missing a gap costs nothing; publishing a " +
   "false gap wastes someone's work.\n\n" +
@@ -359,7 +367,14 @@ export async function verifyRecord(extracted) {
        nothing left to cut that is not the check itself. */
     effort: "low",
     schema: VERIFY_SCHEMA,
-    tools: [{ type: "web_search_20260209", name: "web_search", max_uses: 1 }]
+    /* Two, not one. With a ceiling of one the model makes its search,
+       tries a second, receives max_uses_exceeded, and reports the whole
+       check as failed — twice on the same paper, with nine usable sources
+       already in context. The prompt now says a refused second search is
+       expected, and this gives a little room besides. The model stops
+       when it has an answer, so the cost is paid only where it is
+       needed. */
+    tools: [{ type: "web_search_20260209", name: "web_search", max_uses: 2 }]
   });
 
   const result = jsonOf(response);
