@@ -31,5 +31,28 @@ const RESEARCH_DESIGNS = {
     "instrument_source": null,
     "generated_at": "2026-09-18",
     "model": "claude-opus-5"
+  },
+  "penile-microbiome-bv-risk-exchange-and-definition-data": {
+    "target_women": "Recruit 400 women aged 18–45 attending sexual health, family planning, or antenatal clinics in two or three urban sites (ideally one high-BV-prevalence setting such as a South African or US southern city plus one lower-prevalence comparator), each enrolled together with her current male sex partner as a couple; oversample women presenting with symptomatic or recurrent BV (target 200 of the 400) and enrol 200 women with no BV history as a comparison group.",
+    "variables": [
+      "Vaginal microbiota composition by 16S rRNA sequencing plus quantitative PCR for key taxa (Gardnerella, Fannyhessea/Atopobium vaginae, Prevotella, Lactobacillus crispatus, L. iners), reported as community state type at each visit",
+      "Penile microbiota from the male partner at each matched visit, sampled separately from the coronal sulcus/glans and distal urethra, using the same sequencing and qPCR panel so taxa can be matched between partners",
+      "Strain-level concordance between partners for shared taxa (whole-genome or strain-resolved sequencing on the subset of couples sharing a taxon), recorded as same-strain / different-strain",
+      "Nugent score and Amsel criteria at each visit, and date of each incident BV episode (symptomatic or asymptomatic)",
+      "Laboratory-confirmed incident chlamydia, gonorrhoea, trichomonas and Mycoplasma genitalium in both partners at each visit",
+      "Sexual and hygiene exposure diary between visits: number of coital acts, condom use per act, receptive oral and anal sex, new partners outside the couple, vaginal washing/douching, and antibiotic use",
+      "Male circumcision status, penile moisture/smegma presence on examination, and self-reported penile symptoms (discharge, irritation, odour)"
+    ],
+    "stratifiers": [
+      "Woman's age band (18–24, 25–34, 35–45)",
+      "Male circumcision status",
+      "Race/ethnicity and study site",
+      "Pregnancy status and hormonal contraception use (none, combined oral, progestin injectable, IUD)",
+      "Household income or education band as a socioeconomic proxy"
+    ],
+    "form": "Prospective couple cohort followed for 12 months. Clinic visits for both partners at baseline, then months 1, 3, 6, 9 and 12, with self-collected vaginal swabs and partner-collected penile swabs mailed in every 2 weeks in between (26 self-collection kits per couple) to capture short-term shifts and exchange after individual sex acts. Behavioural diary completed weekly on a phone-based form. Nested within the cohort, an intensive sub-study of 60 couples collects daily self-swabs from both partners for 28 consecutive days plus a swab within 12 hours after each coital act, to measure how quickly taxa transfer and how long they persist. A further embedded open-label arm randomises 120 couples in which the woman has recurrent BV to woman-only metronidazole versus concurrent treatment of both partners, with microbiome and BV recurrence followed to 6 months post-treatment to test durability of clearance.",
+    "instrument_source": "Nugent score for vaginal Gram stain; Amsel criteria for clinical BV diagnosis",
+    "generated_at": "2026-09-18",
+    "model": "claude-opus-5"
   }
 };

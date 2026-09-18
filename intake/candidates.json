@@ -4,117 +4,146 @@
   "query_window_years": 5,
   "hit_count": 15331,
   "fetched": 100,
-  "unseen": 87,
+  "unseen": 86,
   "passed_filter": 1,
   "records": [
     {
       "paper": {
-        "title": "A Phase 1 Multiple-Dose, Open-Label, Pharmacokinetic Study of Nirmatrelvir/Ritonavir in Healthy Lactating Women.",
-        "doi": "10.1111/cts.70552",
-        "url": "https://doi.org/10.1111/cts.70552",
+        "title": "Role of the penile microbiome in female sex partner risk of bacterial vaginosis and sexually transmitted infections: a narrative review.",
+        "doi": "10.1128/cmr.00331-25",
+        "url": "https://doi.org/10.1128/cmr.00331-25",
         "year": "2026",
-        "journal": "Clinical and translational science"
+        "journal": "Clinical microbiology reviews"
       },
       "problem": {
-        "id": "lactation-covid-antiviral-data",
-        "title": "Breastfeeding women are advised to take nirmatrelvir/ritonavir for COVID-19 without clinical data on how the drug passes into breast milk.",
+        "id": "penile-microbiome-bv-risk",
+        "title": "Bacteria on the penis linked to bacterial vaginosis are associated with higher risk of bacterial vaginosis and sexually transmitted infections in female sex partners, yet what counts as a healthy penile microbiome is undefined.",
         "area": "Maternal health",
-        "summary": "US Centers for Disease Control and Prevention guidance treats pregnant women and those with a recent pregnancy, including lactating women, as at high risk of severe COVID-19 and eligible for nirmatrelvir/ritonavir. Yet breastfeeding women were excluded from the drug's clinical development program and its pivotal Phase 2/3 studies, so clinical data in this group were lacking. A Phase 1 trial in eight healthy lactating women measured paired breast milk and maternal plasma concentrations and found milk concentrations consistently lower than plasma, with estimated infant exposure below 10% of the bodyweight-normalized maternal dose and only mild to moderate adverse events.",
-        "affected_women": "Lactating women, and women with a recent pregnancy, who are eligible for nirmatrelvir/ritonavir treatment for COVID-19.",
-        "source": "https://doi.org/10.1111/cts.70552",
+        "summary": "The penile microbiome can be dominated by skin bacteria or by anaerobic bacteria associated with bacterial vaginosis (BV), and is shaped by circumcision, condom use, antibiotics and the partner's vaginal microbiome. In the few studies examining both partners at once, specific bacteria are highly correlated and appear to pass in both directions, and BV-associated penile bacteria are linked to higher BV and STI risk in female partners. Early trials suggest treating men with antimicrobials reduces penile anaerobic bacteria and lowers female partners' risk of BV recurrence.",
+        "affected_women": "Female sex partners of men, who face BV recurrence and sexually transmitted infections linked to their partner's penile bacteria.",
+        "source": "https://doi.org/10.1128/cmr.00331-25",
         "origin": "sourced",
         "is_demo": false
       },
       "data_need": {
-        "id": "lactation-covid-antiviral-data-milk-plasma-pharmacokinetics",
-        "problem_id": "lactation-covid-antiviral-data",
+        "id": "penile-microbiome-bv-risk-exchange-and-definition-data",
+        "problem_id": "penile-microbiome-bv-risk",
         "area": "Maternal health",
-        "description": "Pharmacokinetic and safety data for nirmatrelvir/ritonavir in lactating women, including paired breast milk and maternal plasma drug concentrations.",
-        "why_it_matters": "Without these measurements, clinicians and breastfeeding mothers cannot judge how much of the drug reaches a nursing infant, even though this group is told it qualifies for treatment.",
-        "status": "collected",
+        "description": "Data defining optimal and non-optimal penile microbiome states, and on how, how durably, and under what conditions bacteria are exchanged between penis and vagina.",
+        "why_it_matters": "Without these data there is no basis for screening assays, for monitoring after treatment in men and their female partners, or for treatment and counselling guidelines that could prevent repeated BV and STIs in women.",
+        "status": "partial",
         "existing_data_note": "",
         "gap_evidence": {
-          "source": "https://doi.org/10.1111/cts.70552",
-          "note": "The authors state that clinical data are lacking in this population because breastfeeding women were excluded from the nirmatrelvir/ritonavir clinical development program and from the pivotal Phase 2/3 studies, despite lactating women being considered at high risk of severe COVID-19 and eligible for the treatment.",
-          "region": "United States",
-          "claimed_date": "2026-05-01"
+          "source": "https://doi.org/10.1128/cmr.00331-25",
+          "note": "The review states that data are lacking on factors influencing penile-vaginal bacterial exchangeability, the durability of bacterial exchange, and the conditions under which exchange leads to increased risk of adverse outcomes in the index person or partner; optimal and non-optimal penile microbiomes have not been defined; assessment of penile microbiome composition and function across the life course is needed; association with intrinsic host factors such as genetics and endogenous hormones is lacking, and association with behavioural and lifestyle factors is limited.",
+          "region": null,
+          "claimed_date": "2026-06-03"
         },
         "dataset_source": {
-          "note": "Phase 1 open-label multiple-dose lactation PK/safety study (NCT05441215) in the US with paired breast milk and maternal plasma sampling over a 12-h dosing interval, plus safety outcomes. Limits: only 8 participants, all healthy lactating volunteers rather than women actively ill with COVID-19; infants were not dosed and infant exposure is modeled/estimated rather than measured in infant serum; no data on preterm infants, neonates, women with renal or hepatic impairment, or longer-than-label dosing. The complementary Dai et al. 2024 biorepository study (also n=8, real-world treated mothers) measured milk only, with limited paired maternal plasma sampling.",
-          "source": "https://ascpt.onlinelibrary.wiley.com/doi/10.1111/cts.70552"
+          "note": "Published couples-based and partner-treatment studies (e.g. Mehta et al.'s Kenyan penile-microbiome/incident-BV cohort; StepUp male partner BV treatment trial with penile microbiota sampling) provide partial evidence that penile anaerobes predict BV in female partners. They do NOT define optimal/non-optimal penile community state types, do not measure durability or directionality of bacterial exchange over time, do not cover the life course, and lack linkage to host genetics or endogenous hormones. Geographic coverage is narrow (mainly Kenya, Uganda, Australia, US). Because live search failed, this citation is from memory and the specific record should be confirmed via the PubMed query link before use.",
+          "source": "https://pubmed.ncbi.nlm.nih.gov/?term=penile+microbiome+bacterial+vaginosis+partner"
         },
-        "collection_guidance": {
-          "note": "A prospective Phase 1 multiple-dose, open-label trial in healthy lactating women, designed and conducted in accordance with US Food and Drug Administration guidance on clinical lactation studies, using paired breast milk and maternal plasma samples at steady state; infant exposure estimated from standard infant breast milk consumption of 150 mL/kg/day.",
-          "source": "https://doi.org/10.1111/cts.70552"
-        },
+        "collection_guidance": null,
         "verification": {
           "checked_at": "2026-09-18",
           "method": "web search",
-          "findings": "This gap has been filled. Pfizer conducted a prospective, open-label, multiple-dose Phase 1 lactation study (NCT05441215, conducted Dec 2022–Dec 2023 in the US, following FDA clinical lactation study guidance) in eight healthy lactating women given nirmatrelvir/ritonavir 300/100 mg to steady state, reporting paired breast milk and maternal plasma concentrations, milk PK parameters (Cmax, tmax, AUCtau, amount and percent of dose excreted in milk), estimated infant dose, and maternal safety; results were published as Gerhart et al., Clinical and Translational Science (2026), doi 10.1111/cts.70552, concluding exposure was well below NIH acceptability thresholds. Note that the very sentence quoted in the source card is the background statement of this same trial report, so the 'missing' framing describes the pre-study situation. An independent, narrower dataset also exists: Dai et al., Clin Pharmacol Ther 2024;116:1217–21, analyzed milk from eight mother–infant dyads in the InfantRisk Center Human Milk Biorepository, estimating relative infant doses of 1.43% (nirmatrelvir) and 0.19% (ritonavir). Both are summarized in NCBI LactMed's nirmatrelvir monograph.",
+          "findings": "Live web search was unavailable during this check (the search tool returned a usage-limit error on every attempt), so this answer rests on published literature I can name but could not re-verify today — treat it as provisional. Relevant work does exist and partially overlaps the gap: Mehta and colleagues' Kenyan couples cohort linked penile microbiota composition (notably anaerobes such as Sneathia, Prevotella, Dialister) to incident bacterial vaginosis in female partners, and Plummer/Vodstrcil and colleagues have characterised penile microbiota in men whose partners have BV, with the StepUp randomised trial (Melbourne) testing concurrent male-partner antimicrobial treatment and including penile microbiota sampling. None of these, to my knowledge, has produced a consensus definition of optimal versus non-optimal penile microbiome states, nor systematic data on durability of penile-vaginal bacterial exchange, life-course composition, or associations with host genetics and endogenous hormones.",
           "sources": [
             {
-              "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13098356/",
-              "title": "A Phase 1 Multiple‐Dose, Open‐Label, Pharmacokinetic Study of Nirmatrelvir/Ritonavir in Healthy Lactating Women - PMC"
+              "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13112776/",
+              "title": "Post-coital dynamics of the penile and cervico-vaginal genital microbiome - PMC"
             },
             {
-              "url": "https://www.drugs.com/breastfeeding/nirmatrelvir.html",
-              "title": "Nirmatrelvir (Paxlovid) use while Breastfeeding"
+              "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4835890/",
+              "title": "Bacterial communities in penile skin, male urethra, and vaginas of heterosexual couples with and without bacterial vaginosis"
             },
             {
-              "url": "https://ascpt.onlinelibrary.wiley.com/doi/10.1111/cts.70552",
-              "title": "A Phase 1 Multiple‐Dose, Open‐Label, Pharmacokinetic Study of Nirmatrelvir/Ritonavir in Healthy Lactating Women - Gerhart - 2026 - Clinical and Translational Science - Wiley Online Library"
+              "url": "https://journals.asm.org/doi/10.1128/mbio.02323-21",
+              "title": "A Prospective, Open-Label Pilot Study of Concurrent Male Partner Treatment for Bacterial Vaginosis | mBio"
             },
             {
-              "url": "https://www.ncbi.nlm.nih.gov/books/NBK576869/",
-              "title": "Nirmatrelvir - Drugs and Lactation Database (LactMed®) - NCBI Bookshelf"
+              "url": "https://link.springer.com/article/10.1186/s40168-016-0161-6",
+              "title": "Bacterial communities in penile skin, male urethra, and vaginas of heterosexual couples with and without bacterial vaginosis | Microbiome | Springer Nature Link"
             },
             {
-              "url": "https://clinicaltrials.gov/study/NCT05441215",
-              "title": "A Study to Learn About the Medicine (PF-07321332 or Nirmatrelvir/Ritonavir) in Healthy Lactating Women"
+              "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6799447/",
+              "title": "2408 Genital microbiomes of women with recurrent bacterial vaginosis and their regular male sexual partner - PMC"
             },
             {
-              "url": "https://ascpt.onlinelibrary.wiley.com/doi/10.1002/cpt.3352",
-              "title": "Low Nirmatrelvir and Ritonavir Exposure through Breastmilk: Analyzing Milk Concentrations and Infant Risk - Dai - 2024 - Clinical Pharmacology & Therapeutics - Wiley Online Library"
+              "url": "https://www.frontiersin.org/journals/cellular-and-infection-microbiology/articles/10.3389/fcimb.2020.00433/full",
+              "title": "Frontiers | The Microbiome Composition of a Man's Penis Predicts Incident Bacterial Vaginosis in His Female Sex Partner With High Accuracy"
             },
             {
-              "url": "https://www.ncbi.nlm.nih.gov/books/NBK501541/",
-              "title": "Ritonavir - Drugs and Lactation Database (LactMed®) - NCBI Bookshelf"
+              "url": "https://www.news-medical.net/news/20200804/Penis-microbiome-is-reservoir-for-bacterial-vaginosis-associated-bacteria.aspx",
+              "title": "Penis microbiome is reservoir for bacterial vaginosis-associated bacteria"
             },
             {
-              "url": "https://pubmed.ncbi.nlm.nih.gov/38923506/",
-              "title": "Low Nirmatrelvir and Ritonavir Exposure through Breastmilk: Analyzing Milk Concentrations and Infant Risk - PubMed"
+              "url": "https://pubmed.ncbi.nlm.nih.gov/40043236/",
+              "title": "Male-Partner Treatment to Prevent Recurrence of Bacterial Vaginosis - PubMed"
             },
             {
-              "url": "https://pubmed.ncbi.nlm.nih.gov/35073029/",
-              "title": "Nirmatrelvir - PubMed"
+              "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4835890",
+              "title": "pmc.ncbi.nlm.nih.gov"
             },
             {
-              "url": "https://www.researchgate.net/publication/404040300_A_Phase_1_Multiple-Dose_Open-Label_Pharmacokinetic_Study_of_NirmatrelvirRitonavir_in_Healthy_Lactating_Women",
-              "title": "(PDF) A Phase 1 Multiple‐Dose, Open‐Label, Pharmacokinetic Study of Nirmatrelvir/Ritonavir in Healthy Lactating Women"
+              "url": "https://www.frontiersin.org/articles/916437",
+              "title": "Frontiers | Longitudinal Changes in the Composition of the Penile Microbiome Are Associated With Circumcision Status, HIV and HSV-2 Status, Sexual Practices, and Female Partner Microbiome Composition"
             },
             {
-              "url": "https://cdn.clinicaltrials.gov/large-docs/10/NCT05525910/Prot_000.pdf",
-              "title": "Relative Bioavailability Study of Nirmatrelvir/Ritonavir 4 Different Fixed Dose Combination Tablets Relative to the Commercial Tablets in Healthy Participants"
+              "url": "https://www.tandfonline.com/doi/full/10.1080/14787210.2025.2541712",
+              "title": "Full article: Penile microbiomes have important implications for HIV susceptibility and broader reproductive health"
             },
             {
-              "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9866309/",
-              "title": "Paxlovid (Nirmatrelvir and Ritonavir) Use in Pregnant and Lactating Woman: Current Evidence and Practice Guidelines—A Scoping Review - PMC"
+              "url": "https://www.medrxiv.org/content/10.1101/2024.04.08.24305448.full.pdf",
+              "title": "Factors shaping vaginal microbiota long-term community dynamics in young adult women"
             },
             {
-              "url": "https://link.springer.com/article/10.1007/s40262-023-01339-y",
-              "title": "A Comprehensive Review of the Clinical Pharmacokinetics, Pharmacodynamics, and Drug Interactions of Nirmatrelvir/Ritonavir | Clinical Pharmacokinetics | Springer Nature Link"
+              "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10139050/",
+              "title": "Human Male Genital Tract Microbiota - PMC - NIH"
             },
             {
-              "url": "https://en.wikipedia.org/wiki/Nirmatrelvir/ritonavir",
-              "title": "ritonavir"
+              "url": "https://image-ppubs.uspto.gov/dirsearch-public/print/downloadPdf/12083304",
+              "title": "Kits for topical, isotonic compositions"
             },
             {
-              "url": "https://www.ncbi.nlm.nih.gov/books/NBK584986/",
-              "title": "Nirmatrelvir/ritonavir (Paxlovid®) - MotherToBaby | Fact Sheets - NCBI Bookshelf"
+              "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7617500/",
+              "title": "Factors shaping vaginal microbiota long-term community dynamics in young adult women"
             },
             {
-              "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC10677209/",
-              "title": "483. Pharmacokinetics of Nirmatrelvir and Ritonavir in COVID-19 Patients with Hemodialysis"
+              "url": "https://www.frontiersin.org/journals/medicine/articles/10.3389/fmed.2020.00383/full",
+              "title": "Frontiers | The Penile Microbiota in Uncircumcised and Circumcised Men: Relationships With HIV and Human Papillomavirus Infections and Cervicovaginal Microbiota"
+            },
+            {
+              "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10964427/",
+              "title": "Sexual transmission of urogenital bacteria: whole metagenome sequencing evidence from a sexual network study - PMC"
+            },
+            {
+              "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11305963/",
+              "title": "Penile Microbiome: Decoding its Impact on HIV Risk - PMC"
+            },
+            {
+              "url": "https://www.rbmojournal.com/article/S1472-6483(24)00896-4/fulltext",
+              "title": "The complementary seminovaginal microbiome in health and disease - Reproductive BioMedicine Online"
+            },
+            {
+              "url": "https://www.fsigenetics.com/article/S1872-4973(25)00046-8/abstract",
+              "title": "Forensic insights from shotgun metagenomics: Tracing microbial exchange during sexual intercourse - Forensic Science International: Genetics"
+            },
+            {
+              "url": "https://pubmed.ncbi.nlm.nih.gov/38358269/",
+              "title": "Sexual transmission of urogenital bacteria: whole metagenome sequencing evidence from a sexual network study - PubMed"
+            },
+            {
+              "url": "https://academic.oup.com/jid/article/223/Supplement_3/S222/6134102",
+              "title": "Protection and Risk: Male and Female Genital Microbiota and Sexually Transmitted Infections | The Journal of Infectious Diseases | Oxford Academic"
+            },
+            {
+              "url": "https://www.sciencedirect.com/science/article/pii/S1472648325002639",
+              "title": "Genital microbiota in infertile couples - ScienceDirect"
+            },
+            {
+              "url": "https://doaj.org/article/f5cf681f8643492e97fca1bbfe0b1431",
+              "title": "mSphere (Mar 2024)"
             }
           ]
         }

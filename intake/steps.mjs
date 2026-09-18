@@ -25,30 +25,50 @@ export const AREAS = [...mappableAreas()];
 
 /* ---------- 1 · filter ---------- */
 
+/* Bump this whenever the prompt below changes in a way that would change
+   a verdict. Rejections carry the version that produced them, and a
+   rejection from an older version is reopened — see ledgerJudged. */
+export const FILTER_VERSION = 2;
+
+/* Spelled out because "Maternal health" alone is not enough to judge
+   membership by: version 1 filed a paper about bacterial vaginosis under
+   it, and the extractor then had no better option in the enum. */
+const AREA_GLOSS = {
+  "Menopause":
+    "perimenopause, menopause, postmenopause; their symptoms and treatment",
+  "Maternal health":
+    "pregnancy, birth, the postnatal period, breastfeeding",
+  "Autoimmune disease":
+    "lupus, rheumatoid arthritis, MS, thyroid and other autoimmune " +
+    "conditions in women, including diagnostic delay",
+  "Cardiovascular health":
+    "heart disease and stroke in women; symptoms, diagnosis, treatment",
+  "Endometriosis":
+    "endometriosis and adenomyosis; diagnosis, pain, treatment response"
+};
+
 const FILTER_SYSTEM =
-  "You screen medical abstracts for one narrow thing: an explicit " +
-  "statement by the authors that specific data about women or female " +
-  "subjects has not been collected, studied or reported.\n\n" +
-  "Answer YES only if ALL of these hold:\n" +
-  "1. The abstract states a gap in what has been MEASURED or COLLECTED — " +
-  "not merely that a mechanism is poorly understood.\n" +
+  "You screen medical abstracts for one narrow thing: a statement that " +
+  "specific data about women or female subjects has not been collected, " +
+  "studied or reported.\n\n" +
+  "Answer YES only if ALL of these hold.\n\n" +
+  "1. The abstract points to a gap in what has been MEASURED or " +
+  "COLLECTED — not merely that a mechanism is poorly understood.\n\n" +
   "2. The gap concerns women, female patients or female subjects " +
-  "specifically.\n" +
-  "3. The subject fits one of these areas: " + AREAS.join("; ") + ".\n" +
-  "4. The paper is NOT ITSELF the study that fills the gap.\n\n" +
-  "Criterion 4 is the one that is easy to get wrong, and the most " +
-  "expensive. A paper's introduction states a gap in order to justify the " +
-  "work it then reports — 'data are lacking in this population, therefore " +
-  "we conducted...'. That sentence is a description of the past, not of " +
-  "the present, and a register built from it would publish gaps that were " +
-  "closed by the very paper cited. If the abstract goes on to report " +
-  "collecting, measuring or analysing the data it called missing, answer " +
-  "NO.\n\n" +
-  "Answer YES only for a paper that names a gap it leaves open: a review, " +
-  "a guideline, a commentary, or a study whose findings expose an absence " +
-  "it did not fill.\n\n" +
-  "Answer NO if the paper only calls for more research in general, if the " +
-  "gap is not sex-specific, or if it falls outside those areas.\n\n" +
+  "specifically.\n\n" +
+  "3. The subject falls squarely inside one of these areas:\n" +
+  AREAS.map((area) => "   - " + area + ": " + (AREA_GLOSS[area] || "")).join("\n") +
+  "\n   A paper that is merely adjacent to one of these is a NO. There is " +
+  "no other-category, so a loose fit becomes a miscategorised record.\n\n" +
+  "4. The paper does not itself close the gap it names. An introduction " +
+  "often states a gap to justify the work that follows — 'data are " +
+  "lacking, therefore we conducted…' — and that describes the past, not " +
+  "the present. If the abstract goes on to report collecting or analysing " +
+  "the very data it called missing, answer NO.\n\n" +
+  "A paper that names a gap it leaves open is a YES whatever its type: a " +
+  "review, a guideline, a commentary, a cohort study whose limitations " +
+  "expose an absence, or a study that answers one question and reports " +
+  "that a neighbouring one has no data.\n\n" +
   "Reply with exactly one word: YES or NO.";
 
 export async function filterAbstract(paper) {

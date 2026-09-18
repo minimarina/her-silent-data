@@ -15,7 +15,9 @@ import {
   HERE, REPO, today, writeJson, readJson, loadSeed, seedUrls,
   loadLedger, saveLedger, ledgerJudged, ledgerNote
 } from "./lib.mjs";
-import { filterAbstract, extractRecord, verifyRecord, designFor } from "./steps.mjs";
+import {
+  filterAbstract, extractRecord, verifyRecord, designFor, FILTER_VERSION
+} from "./steps.mjs";
 import { FILTER_MODEL, spendLine } from "./model.mjs";
 import { validateRecord, mappableAreas } from "./validate.mjs";
 
@@ -134,7 +136,7 @@ console.log("Europe PMC:   " + found.hitCount + " total, " +
    judged — see ledgerJudged. */
 const fresh = found.papers.filter((paper) => {
   if (!paper.doi) { return false; }
-  if (ledgerJudged(ledger, paper.doi)) { return false; }
+  if (ledgerJudged(ledger, paper.doi, FILTER_VERSION)) { return false; }
   if (known.has(("https://doi.org/" + paper.doi).toLowerCase())) { return false; }
   if (!paper.abstract) { return false; }
   return true;
@@ -196,7 +198,7 @@ for (const paper of fresh) {
   if (keep) {
     passed.push(paper);
   } else {
-    ledgerNote(ledger, paper.doi, "rejected-by-filter", paper.title);
+    ledgerNote(ledger, paper.doi, "rejected-by-filter", paper.title, FILTER_VERSION);
   }
 
   if (passed.length >= limit) { break; }

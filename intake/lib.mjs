@@ -69,20 +69,38 @@ export function ledgerHas(ledger, doi) {
    consume everything it previewed. */
 const JUDGED = ["rejected-by-filter", "candidate", "approved", "dismissed"];
 
-export function ledgerJudged(ledger, doi) {
+/* A judgement a human made is permanent. A judgement the filter made is
+   only as good as the prompt that made it, and that prompt gets tuned —
+   so a rejection carries the filter version that produced it, and a
+   rejection from an older filter is reopened rather than trusted.
+   Without this, every prompt change silently burns the corpus. */
+export function ledgerJudged(ledger, doi, filterVersion) {
   if (!ledgerHas(ledger, doi)) { return false; }
-  return JUDGED.indexOf(ledger.entries[doi.toLowerCase()].outcome) !== -1;
+
+  const entry = ledger.entries[doi.toLowerCase()];
+  if (JUDGED.indexOf(entry.outcome) === -1) { return false; }
+
+  if (entry.outcome === "rejected-by-filter" && filterVersion !== undefined) {
+    return entry.filter_version === filterVersion;
+  }
+  return true;
 }
 
-export function ledgerNote(ledger, doi, outcome, title) {
+export function ledgerNote(ledger, doi, outcome, title, filterVersion) {
   if (!doi) { return; }
   const key = doi.toLowerCase();
   const existing = ledger.entries[key];
 
-  ledger.entries[key] = {
+  const entry = {
     first_seen: (existing && existing.first_seen) || today(),
     last_seen: today(),
     title: title || (existing && existing.title) || "",
     outcome
   };
+
+  if (outcome === "rejected-by-filter" && filterVersion !== undefined) {
+    entry.filter_version = filterVersion;
+  }
+
+  ledger.entries[key] = entry;
 }
