@@ -1,0 +1,368 @@
+/* The four model steps: filter, extract, verify, design.
+
+   The prompts live here rather than in run.mjs because they are the part
+   worth reading. Each one exists to enforce a rule the platform states
+   about itself, and the rules are repeated to the model in the words the
+   validator uses, so that what is asked for and what is checked are the
+   same sentence.
+
+   The rule underneath all of them: NOTHING IS INVENTED AND STORED. What
+   a record carries came from its source, or it is null. */
+
+import {
+  callModel, textOf, jsonOf, searchSourcesOf,
+  FILTER_MODEL, WORK_MODEL
+} from "./model.mjs";
+import { mappableAreas } from "./validate.mjs";
+import { today } from "./lib.mjs";
+
+/* Constrained to the areas that have a hand-measured coordinate, so every
+   record the run produces lands on the map. A genuinely new area would
+   list without a pin, which is honest but reads as a bug in a demo — so
+   the filter rejects papers that do not fit one of these, rather than the
+   extractor inventing a sixth. */
+export const AREAS = [...mappableAreas()];
+
+/* ---------- 1 · filter ---------- */
+
+const FILTER_SYSTEM =
+  "You screen medical abstracts for one narrow thing: an explicit " +
+  "statement by the authors that specific data about women or female " +
+  "subjects has not been collected, studied or reported.\n\n" +
+  "Answer YES only if ALL of these hold:\n" +
+  "1. The abstract states a gap in what has been MEASURED or COLLECTED — " +
+  "not merely that a mechanism is poorly understood.\n" +
+  "2. The gap concerns women, female patients or female subjects " +
+  "specifically.\n" +
+  "3. The subject fits one of these areas: " + AREAS.join("; ") + ".\n" +
+  "4. The paper is NOT ITSELF the study that fills the gap.\n\n" +
+  "Criterion 4 is the one that is easy to get wrong, and the most " +
+  "expensive. A paper's introduction states a gap in order to justify the " +
+  "work it then reports — 'data are lacking in this population, therefore " +
+  "we conducted...'. That sentence is a description of the past, not of " +
+  "the present, and a register built from it would publish gaps that were " +
+  "closed by the very paper cited. If the abstract goes on to report " +
+  "collecting, measuring or analysing the data it called missing, answer " +
+  "NO.\n\n" +
+  "Answer YES only for a paper that names a gap it leaves open: a review, " +
+  "a guideline, a commentary, or a study whose findings expose an absence " +
+  "it did not fill.\n\n" +
+  "Answer NO if the paper only calls for more research in general, if the " +
+  "gap is not sex-specific, or if it falls outside those areas.\n\n" +
+  "Reply with exactly one word: YES or NO.";
+
+export async function filterAbstract(paper) {
+  const response = await callModel({
+    model: FILTER_MODEL,
+    system: FILTER_SYSTEM,
+    user: `Title: ${paper.title}\n\nAbstract: ${paper.abstract}`,
+    maxTokens: 16
+  });
+
+  return textOf(response).toUpperCase().startsWith("YES");
+}
+
+/* ---------- 2 · extract ---------- */
+
+/* Strict schema: every field required, nothing extra, nullable where the
+   source may simply not say. `collection_guidance` is the field the whole
+   rebuild turns on, so it is nullable and the prompt says null is normal. */
+const EXTRACT_SCHEMA = {
+  type: "object",
+  additionalProperties: false,
+  required: ["problem", "data_need"],
+  properties: {
+    problem: {
+      type: "object",
+      additionalProperties: false,
+      required: ["id", "title", "area", "summary", "affected_women"],
+      properties: {
+        id: {
+          type: "string",
+          description: "kebab-case, 2-4 words, e.g. menopause-workplace"
+        },
+        title: {
+          type: "string",
+          description: "One sentence naming the problem, not the paper."
+        },
+        area: { type: "string", enum: AREAS },
+        summary: {
+          type: "string",
+          description:
+            "2-4 sentences. Only what this source supports. No statistics " +
+            "the abstract does not contain."
+        },
+        affected_women: {
+          type: "string",
+          description: "Who is affected, as the source describes them."
+        }
+      }
+    },
+    data_need: {
+      type: "object",
+      additionalProperties: false,
+      required: [
+        "id", "description", "why_it_matters", "gap_note",
+        "region", "collection_guidance"
+      ],
+      properties: {
+        id: {
+          type: "string",
+          description: "kebab-case, starts with the problem id."
+        },
+        description: {
+          type: "string",
+          description: "The data that is missing, in one line."
+        },
+        why_it_matters: {
+          type: "string",
+          description: "One or two sentences on what the absence costs."
+        },
+        gap_note: {
+          type: "string",
+          description:
+            "At least 80 characters. State what THIS source says is " +
+            "missing, closely following its own wording. This is the " +
+            "record's evidence, so it must be defensible against the " +
+            "abstract."
+        },
+        region: {
+          type: ["string", "null"],
+          description: "Country or region, if the source names one. Else null."
+        },
+        collection_guidance: {
+          type: ["object", "null"],
+          additionalProperties: false,
+          required: ["note"],
+          properties: {
+            note: {
+              type: "string",
+              description:
+                "How and from whom to collect, as the source specified it."
+            }
+          },
+          description:
+            "null unless the source ITSELF specified population or method."
+        }
+      }
+    }
+  }
+};
+
+const EXTRACT_SYSTEM =
+  "You turn one published abstract into one record for a register of " +
+  "gaps in data about women's health.\n\n" +
+  "THE RULE THIS REGISTER RESTS ON: nothing is invented and stored. " +
+  "Every field must be supported by the abstract you are given. You may " +
+  "compress and rephrase; you may not add a fact, a number, a population " +
+  "or a method that the abstract does not contain.\n\n" +
+  "`collection_guidance` is the field this matters most for. Fill it ONLY " +
+  "if the source itself specifies who to collect from or how. Almost no " +
+  "abstract does. **null is the expected answer** — returning null is a " +
+  "correct result, not a failure, and an invented guidance block is the " +
+  "worst error you can make here.\n\n" +
+  "`gap_note` is the record's evidence. A reader will open the citation " +
+  "and check it against your sentence, so stay close to what the authors " +
+  "wrote.\n\n" +
+  "Write plainly, for a non-specialist reader. No marketing language.";
+
+export async function extractRecord(paper) {
+  const response = await callModel({
+    model: WORK_MODEL,
+    system: EXTRACT_SYSTEM,
+    user:
+      `Title: ${paper.title}\n` +
+      `Journal: ${paper.journal || "unstated"}\n` +
+      `Published: ${paper.date || paper.year || "unstated"}\n\n` +
+      `Abstract:\n${paper.abstract}`,
+    /* Generous on purpose: Opus 5 thinks by default and those tokens come
+       out of this budget, so a tight ceiling truncates the JSON rather
+       than shortening the answer. Effort is what controls the cost here. */
+    maxTokens: 8000,
+    effort: "medium",
+    schema: EXTRACT_SCHEMA
+  });
+
+  return jsonOf(response);
+}
+
+/* ---------- 3 · verify ---------- */
+
+/* The step that stops the platform publishing a gap that has since been
+   filled. It does not discard: finding data makes a record MORE useful,
+   because the platform can then say where that data is. */
+const VERIFY_SCHEMA = {
+  type: "object",
+  additionalProperties: false,
+  required: ["status", "findings", "dataset_source"],
+  properties: {
+    status: {
+      type: "string",
+      enum: ["missing", "partial", "collected"],
+      description:
+        "missing: nothing found. partial: something overlapping but " +
+        "narrower. collected: this data now exists."
+    },
+    findings: {
+      type: "string",
+      description:
+        "What the search found, or the words 'Nothing found.' Two to " +
+        "four sentences. Name datasets and studies where they exist."
+    },
+    dataset_source: {
+      type: ["object", "null"],
+      additionalProperties: false,
+      required: ["note", "source"],
+      properties: {
+        note: { type: "string", description: "What the dataset covers, and its limits." },
+        source: { type: "string", description: "A URL for it." }
+      },
+      description:
+        "Required when status is partial or collected. null when missing."
+    }
+  }
+};
+
+const VERIFY_SYSTEM =
+  "You check whether data that a paper called missing has been collected " +
+  "since. Search the live web before answering — do not rely on memory.\n\n" +
+  "This is the step that protects a researcher from being sent to collect " +
+  "data that already exists. Missing a gap costs nothing; publishing a " +
+  "false gap wastes someone's work.\n\n" +
+  "Set the status from what you find:\n" +
+  "- `collected` — a dataset now exists that answers this need. Give its " +
+  "URL in dataset_source.\n" +
+  "- `partial` — something overlapping exists but is narrower, older, or " +
+  "covers a different population. Give it, and say in the note what it " +
+  "does NOT cover.\n" +
+  "- `missing` — your search found nothing that answers this. Set " +
+  "dataset_source to null.\n\n" +
+  "You cannot prove a negative and you are not asked to. `missing` here " +
+  "means 'a search of published sources found nothing', and the platform " +
+  "says exactly that on the card. Do not overstate it, and do not stretch " +
+  "a loosely related study into a match to avoid saying nothing was found.";
+
+export async function verifyRecord(extracted) {
+  const need = extracted.data_need;
+
+  const response = await callModel({
+    model: WORK_MODEL,
+    system: VERIFY_SYSTEM,
+    user:
+      `Area: ${extracted.problem.area}\n` +
+      `The data called missing: ${need.description}\n` +
+      `Why it matters: ${need.why_it_matters}\n` +
+      `What the source said: ${need.gap_note}\n` +
+      `Region: ${need.region || "not specified"}\n\n` +
+      "Has this data been collected since? Search, then answer.",
+    maxTokens: 16000,
+    effort: "high",
+    schema: VERIFY_SCHEMA,
+    tools: [{ type: "web_search_20260209", name: "web_search", max_uses: 6 }]
+  });
+
+  const result = jsonOf(response);
+
+  return {
+    status: result.status,
+    dataset_source: result.dataset_source,
+    verification: {
+      checked_at: today(),
+      method: "web search",
+      findings: result.findings,
+      sources: searchSourcesOf(response)
+    }
+  };
+}
+
+/* ---------- 4 · design ---------- */
+
+/* Generated on request and kept OUT of the register: a design is an
+   answer, not a record. It lands in research-designs.js, which the app
+   loads separately and works fully without.
+
+   The shape is not free prose — designNode() in app.js renders four named
+   fields, two of them lists, so the schema is that card. */
+const DESIGN_SCHEMA = {
+  type: "object",
+  additionalProperties: false,
+  required: [
+    "target_women", "variables", "stratifiers", "form", "instrument_source"
+  ],
+  properties: {
+    target_women: {
+      type: "string",
+      description:
+        "Who to recruit, how many, and where from. One or two sentences, " +
+        "concrete enough to act on."
+    },
+    /* Counts live in the descriptions, not in minItems/maxItems: structured
+       outputs reject a minItems other than 0 or 1. */
+    variables: {
+      type: "array",
+      items: { type: "string" },
+      description:
+        "Three to seven entries. What to find out from them — one " +
+        "measurable thing per entry, phrased as the thing recorded, not " +
+        "as a research question."
+    },
+    stratifiers: {
+      type: "array",
+      items: { type: "string" },
+      description:
+        "Two to five entries. The breakdowns without which the result " +
+        "hides who it happens to — age band, ethnicity, income, " +
+        "occupation, comorbidity."
+    },
+    form: {
+      type: "string",
+      description:
+        "How it is collected and over what period: instrument, cadence, " +
+        "duration."
+    },
+    instrument_source: {
+      type: ["string", "null"],
+      description:
+        "A named, existing validated instrument if a suitable one exists " +
+        "(e.g. a published symptom scale). null if none fits — do not " +
+        "invent a name."
+    }
+  }
+};
+
+const DESIGN_SYSTEM =
+  "You draft a possible study design for collecting data that is " +
+  "currently missing. The reader is a researcher deciding whether this " +
+  "is worth pursuing.\n\n" +
+  "This is explicitly YOUR proposal, not something any source published. " +
+  "The platform labels it AI-generated and unverified and keeps it out of " +
+  "the register, so you may specify freely here — the opposite of the " +
+  "rule everywhere else in this system, and it holds only because this " +
+  "never becomes a record.\n\n" +
+  "The one thing you may NOT invent is `instrument_source`. A named " +
+  "instrument must be one that really exists; if none fits, return null.\n\n" +
+  "Be concrete. A sample size, a cadence, a duration. Plain language for " +
+  "a reader who is not a methodologist.";
+
+export async function designFor(extracted) {
+  const need = extracted.data_need;
+
+  const response = await callModel({
+    model: WORK_MODEL,
+    system: DESIGN_SYSTEM,
+    user:
+      `Area: ${extracted.problem.area}\n` +
+      `Problem: ${extracted.problem.title}\n` +
+      `The data that is missing: ${need.description}\n` +
+      `Why it matters: ${need.why_it_matters}\n` +
+      `Population affected: ${extracted.problem.affected_women}`,
+    maxTokens: 6000,
+    effort: "medium",
+    schema: DESIGN_SCHEMA
+  });
+
+  const design = jsonOf(response);
+  design.generated_at = today();
+  design.model = WORK_MODEL;
+  return design;
+}

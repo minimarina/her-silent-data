@@ -1,9 +1,129 @@
 {
   "run_at": "2026-09-18",
-  "stage": "discover-only",
+  "stage": "full",
   "query_window_years": 5,
-  "hit_count": 15325,
-  "fetched": 40,
-  "unseen": 0,
-  "papers": []
+  "hit_count": 15331,
+  "fetched": 100,
+  "unseen": 87,
+  "passed_filter": 1,
+  "records": [
+    {
+      "paper": {
+        "title": "A Phase 1 Multiple-Dose, Open-Label, Pharmacokinetic Study of Nirmatrelvir/Ritonavir in Healthy Lactating Women.",
+        "doi": "10.1111/cts.70552",
+        "url": "https://doi.org/10.1111/cts.70552",
+        "year": "2026",
+        "journal": "Clinical and translational science"
+      },
+      "problem": {
+        "id": "lactation-covid-antiviral-data",
+        "title": "Breastfeeding women are advised to take nirmatrelvir/ritonavir for COVID-19 without clinical data on how the drug passes into breast milk.",
+        "area": "Maternal health",
+        "summary": "US Centers for Disease Control and Prevention guidance treats pregnant women and those with a recent pregnancy, including lactating women, as at high risk of severe COVID-19 and eligible for nirmatrelvir/ritonavir. Yet breastfeeding women were excluded from the drug's clinical development program and its pivotal Phase 2/3 studies, so clinical data in this group were lacking. A Phase 1 trial in eight healthy lactating women measured paired breast milk and maternal plasma concentrations and found milk concentrations consistently lower than plasma, with estimated infant exposure below 10% of the bodyweight-normalized maternal dose and only mild to moderate adverse events.",
+        "affected_women": "Lactating women, and women with a recent pregnancy, who are eligible for nirmatrelvir/ritonavir treatment for COVID-19.",
+        "source": "https://doi.org/10.1111/cts.70552",
+        "origin": "sourced",
+        "is_demo": false
+      },
+      "data_need": {
+        "id": "lactation-covid-antiviral-data-milk-plasma-pharmacokinetics",
+        "problem_id": "lactation-covid-antiviral-data",
+        "area": "Maternal health",
+        "description": "Pharmacokinetic and safety data for nirmatrelvir/ritonavir in lactating women, including paired breast milk and maternal plasma drug concentrations.",
+        "why_it_matters": "Without these measurements, clinicians and breastfeeding mothers cannot judge how much of the drug reaches a nursing infant, even though this group is told it qualifies for treatment.",
+        "status": "collected",
+        "existing_data_note": "",
+        "gap_evidence": {
+          "source": "https://doi.org/10.1111/cts.70552",
+          "note": "The authors state that clinical data are lacking in this population because breastfeeding women were excluded from the nirmatrelvir/ritonavir clinical development program and from the pivotal Phase 2/3 studies, despite lactating women being considered at high risk of severe COVID-19 and eligible for the treatment.",
+          "region": "United States",
+          "claimed_date": "2026-05-01"
+        },
+        "dataset_source": {
+          "note": "Phase 1 open-label multiple-dose lactation PK/safety study (NCT05441215) in the US with paired breast milk and maternal plasma sampling over a 12-h dosing interval, plus safety outcomes. Limits: only 8 participants, all healthy lactating volunteers rather than women actively ill with COVID-19; infants were not dosed and infant exposure is modeled/estimated rather than measured in infant serum; no data on preterm infants, neonates, women with renal or hepatic impairment, or longer-than-label dosing. The complementary Dai et al. 2024 biorepository study (also n=8, real-world treated mothers) measured milk only, with limited paired maternal plasma sampling.",
+          "source": "https://ascpt.onlinelibrary.wiley.com/doi/10.1111/cts.70552"
+        },
+        "collection_guidance": {
+          "note": "A prospective Phase 1 multiple-dose, open-label trial in healthy lactating women, designed and conducted in accordance with US Food and Drug Administration guidance on clinical lactation studies, using paired breast milk and maternal plasma samples at steady state; infant exposure estimated from standard infant breast milk consumption of 150 mL/kg/day.",
+          "source": "https://doi.org/10.1111/cts.70552"
+        },
+        "verification": {
+          "checked_at": "2026-09-18",
+          "method": "web search",
+          "findings": "This gap has been filled. Pfizer conducted a prospective, open-label, multiple-dose Phase 1 lactation study (NCT05441215, conducted Dec 2022–Dec 2023 in the US, following FDA clinical lactation study guidance) in eight healthy lactating women given nirmatrelvir/ritonavir 300/100 mg to steady state, reporting paired breast milk and maternal plasma concentrations, milk PK parameters (Cmax, tmax, AUCtau, amount and percent of dose excreted in milk), estimated infant dose, and maternal safety; results were published as Gerhart et al., Clinical and Translational Science (2026), doi 10.1111/cts.70552, concluding exposure was well below NIH acceptability thresholds. Note that the very sentence quoted in the source card is the background statement of this same trial report, so the 'missing' framing describes the pre-study situation. An independent, narrower dataset also exists: Dai et al., Clin Pharmacol Ther 2024;116:1217–21, analyzed milk from eight mother–infant dyads in the InfantRisk Center Human Milk Biorepository, estimating relative infant doses of 1.43% (nirmatrelvir) and 0.19% (ritonavir). Both are summarized in NCBI LactMed's nirmatrelvir monograph.",
+          "sources": [
+            {
+              "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13098356/",
+              "title": "A Phase 1 Multiple‐Dose, Open‐Label, Pharmacokinetic Study of Nirmatrelvir/Ritonavir in Healthy Lactating Women - PMC"
+            },
+            {
+              "url": "https://www.drugs.com/breastfeeding/nirmatrelvir.html",
+              "title": "Nirmatrelvir (Paxlovid) use while Breastfeeding"
+            },
+            {
+              "url": "https://ascpt.onlinelibrary.wiley.com/doi/10.1111/cts.70552",
+              "title": "A Phase 1 Multiple‐Dose, Open‐Label, Pharmacokinetic Study of Nirmatrelvir/Ritonavir in Healthy Lactating Women - Gerhart - 2026 - Clinical and Translational Science - Wiley Online Library"
+            },
+            {
+              "url": "https://www.ncbi.nlm.nih.gov/books/NBK576869/",
+              "title": "Nirmatrelvir - Drugs and Lactation Database (LactMed®) - NCBI Bookshelf"
+            },
+            {
+              "url": "https://clinicaltrials.gov/study/NCT05441215",
+              "title": "A Study to Learn About the Medicine (PF-07321332 or Nirmatrelvir/Ritonavir) in Healthy Lactating Women"
+            },
+            {
+              "url": "https://ascpt.onlinelibrary.wiley.com/doi/10.1002/cpt.3352",
+              "title": "Low Nirmatrelvir and Ritonavir Exposure through Breastmilk: Analyzing Milk Concentrations and Infant Risk - Dai - 2024 - Clinical Pharmacology & Therapeutics - Wiley Online Library"
+            },
+            {
+              "url": "https://www.ncbi.nlm.nih.gov/books/NBK501541/",
+              "title": "Ritonavir - Drugs and Lactation Database (LactMed®) - NCBI Bookshelf"
+            },
+            {
+              "url": "https://pubmed.ncbi.nlm.nih.gov/38923506/",
+              "title": "Low Nirmatrelvir and Ritonavir Exposure through Breastmilk: Analyzing Milk Concentrations and Infant Risk - PubMed"
+            },
+            {
+              "url": "https://pubmed.ncbi.nlm.nih.gov/35073029/",
+              "title": "Nirmatrelvir - PubMed"
+            },
+            {
+              "url": "https://www.researchgate.net/publication/404040300_A_Phase_1_Multiple-Dose_Open-Label_Pharmacokinetic_Study_of_NirmatrelvirRitonavir_in_Healthy_Lactating_Women",
+              "title": "(PDF) A Phase 1 Multiple‐Dose, Open‐Label, Pharmacokinetic Study of Nirmatrelvir/Ritonavir in Healthy Lactating Women"
+            },
+            {
+              "url": "https://cdn.clinicaltrials.gov/large-docs/10/NCT05525910/Prot_000.pdf",
+              "title": "Relative Bioavailability Study of Nirmatrelvir/Ritonavir 4 Different Fixed Dose Combination Tablets Relative to the Commercial Tablets in Healthy Participants"
+            },
+            {
+              "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9866309/",
+              "title": "Paxlovid (Nirmatrelvir and Ritonavir) Use in Pregnant and Lactating Woman: Current Evidence and Practice Guidelines—A Scoping Review - PMC"
+            },
+            {
+              "url": "https://link.springer.com/article/10.1007/s40262-023-01339-y",
+              "title": "A Comprehensive Review of the Clinical Pharmacokinetics, Pharmacodynamics, and Drug Interactions of Nirmatrelvir/Ritonavir | Clinical Pharmacokinetics | Springer Nature Link"
+            },
+            {
+              "url": "https://en.wikipedia.org/wiki/Nirmatrelvir/ritonavir",
+              "title": "ritonavir"
+            },
+            {
+              "url": "https://www.ncbi.nlm.nih.gov/books/NBK584986/",
+              "title": "Nirmatrelvir/ritonavir (Paxlovid®) - MotherToBaby | Fact Sheets - NCBI Bookshelf"
+            },
+            {
+              "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC10677209/",
+              "title": "483. Pharmacokinetics of Nirmatrelvir and Ritonavir in COVID-19 Patients with Hemodialysis"
+            }
+          ]
+        }
+      },
+      "validation": {
+        "ok": true,
+        "errors": [],
+        "warnings": []
+      }
+    }
+  ]
 }

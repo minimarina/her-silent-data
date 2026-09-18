@@ -63,6 +63,17 @@ export function ledgerHas(ledger, doi) {
   return Boolean(doi) && Object.hasOwn(ledger.entries, doi.toLowerCase());
 }
 
+/* "seen" means discovered, not judged: --discover-only records what the
+   search returned without spending a token on any of it. Only a judged
+   outcome removes a paper from the queue, or a preview run would silently
+   consume everything it previewed. */
+const JUDGED = ["rejected-by-filter", "candidate", "approved", "dismissed"];
+
+export function ledgerJudged(ledger, doi) {
+  if (!ledgerHas(ledger, doi)) { return false; }
+  return JUDGED.indexOf(ledger.entries[doi.toLowerCase()].outcome) !== -1;
+}
+
 export function ledgerNote(ledger, doi, outcome, title) {
   if (!doi) { return; }
   const key = doi.toLowerCase();
