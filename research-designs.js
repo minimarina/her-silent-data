@@ -147,28 +147,5 @@ const RESEARCH_DESIGNS = {
     "instrument_source": "Health Care Access Barriers (HCAB) Model survey instrument",
     "generated_at": "2026-09-18",
     "model": "claude-sonnet-5"
-  },
-  "male-breast-cancer-care-prospective-data": {
-    "target_women": "Recruit approximately 400 men newly diagnosed with primary invasive breast cancer (stage I-III) across 25-30 cancer centers participating in a national or international consortium (e.g., NCI community oncology network sites plus academic centers), enrolled within 8 weeks of diagnosis over a 3-year accrual window.",
-    "variables": [
-      "Tumor pathology profile (ER/PR/HER2 status, grade, Ki-67, histologic subtype)",
-      "Systemic therapy regimen selected (chemotherapy, endocrine agent and duration, HER2-targeted therapy) and sequencing relative to surgery/radiation",
-      "Adherence to and discontinuation of endocrine therapy, with reasons recorded",
-      "Treatment-related toxicities graded by CTCAE at each visit",
-      "Time to recurrence (local, regional, distant) and disease-free survival",
-      "Overall survival and cause of death",
-      "Patient-reported quality of life, sexual/body-image concerns, and psychosocial distress"
-    ],
-    "stratifiers": [
-      "Age band (under 50, 50-64, 65-74, 75+)",
-      "Race/ethnicity",
-      "BRCA1/BRCA2 or other germline mutation status",
-      "Comorbidity burden (Charlson Comorbidity Index category)",
-      "Tumor stage at diagnosis and receptor subtype"
-    ],
-    "form": "A prospective multicenter cohort embedded within a clinical trial registry: baseline clinical/pathology data collected at diagnosis, treatment and toxicity data collected at each oncology visit (approximately every 3 months) for 5 years, patient-reported outcomes collected via electronic survey at baseline, 6 months, 12 months, and annually thereafter, with survival follow-up continuing to 10 years via registry linkage.",
-    "instrument_source": "EORTC QLQ-C30 (with breast cancer module QLQ-BR23)",
-    "generated_at": "2026-09-18",
-    "model": "claude-sonnet-5"
   }
 };
