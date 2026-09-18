@@ -118,7 +118,7 @@ search is therefore the cost dial for the whole run.
 ## What the validator enforces
 
 Rules the platform states about itself are checked in code rather than
-promised. `node intake/validate.mjs --self-test` runs them as nine
+promised. `node intake/validate.mjs --self-test` runs them as fifteen
 acceptance tests.
 
 - **A claim must quote its source.** `gap_evidence.note` has to contain a
@@ -135,6 +135,18 @@ acceptance tests.
   nobody established. On 18 Sep a record was marked `missing` on the back
   of a search the model itself described as failed — `checked_at` was
   present and sources had been captured, so nothing downstream could tell.
+- **A record may not cite the gap paper as the data.** A `partial` or
+  `collected` record whose `dataset_source` leads back to the source that
+  reported the absence is rejected. On 18 Sep a disability-inclusive
+  maternity record was written `partial` with `dataset_source` pointing at
+  the PMC page of the very review it quoted saying "no eligible studies
+  identified from 22,719 publications". The earlier rule only asked
+  whether a `dataset_source` was present, so it passed. A plain URL
+  comparison would still have missed it — the gap claim cited `doi.org`
+  and the dataset cited PMC, two addresses for one paper — so the check
+  compares document identity: the same URL, the record's own DOI inside
+  the dataset URL, or a dataset URL matching a verification source whose
+  title is the paper's own.
 - Guidance with no source URL is rejected. Sourced, or null.
 - A record with no `verification.checked_at` is rejected.
 - `collected` or `partial` without a `dataset_source` is rejected.

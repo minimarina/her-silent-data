@@ -49,6 +49,76 @@ export function quotedSpans(text) {
     .filter((span) => span.length >= 20);
 }
 
+/* One paper reachable by several addresses: a DOI, a PMC page, a
+   publisher link. Compared as text so the check stays offline.
+
+   A URL carrying an identifier is compared on the identifier, because
+   the host in front of it varies without the paper changing —
+   ncbi.nlm.nih.gov/pmc/articles/PMC123 and pmc.ncbi.nlm.nih.gov/
+   articles/PMC123 are one article, and so are doi.org and dx.doi.org. */
+const PMC_ID = /pmc\d{5,}/i;
+const DOI_IN_URL = /10\.\d{4,9}\/[^\s?#]+/i;
+
+function documentId(value) {
+  const url = String(value || "").toLowerCase().replace(/\/+$/, "");
+  const pmc = url.match(PMC_ID);
+  if (pmc) { return pmc[0]; }
+
+  const doi = url.match(DOI_IN_URL);
+  if (doi) { return doi[0].replace(/\/(full|abstract|pdf)$/, ""); }
+
+  return url.replace(/^https?:\/\//, "").replace(/^www\./, "");
+}
+
+function sameUrl(a, b) {
+  const id = documentId(a);
+  return id !== "" && id === documentId(b);
+}
+
+/* Titles arrive with a trailing full stop, or a " - PMC" suffix, and a
+   containment test in either direction survives both. The length floor
+   stops two short titles matching on a shared opening. */
+function sameTitle(a, b) {
+  const x = normalise(a);
+  const y = normalise(b);
+  if (x.length < 30 || y.length < 30) { return false; }
+  return x.includes(y) || y.includes(x);
+}
+
+/* A record that claims data partly exists must point at the data, not
+   back at the paper reporting its absence.
+
+   Found on 18 Sep on the disability-inclusive maternity record: status
+   "partial", and dataset_source cited the PMC page of the very review
+   whose quoted claim was "no eligible studies identified from 22,719
+   publications". Nothing caught it, because the rule above only asks
+   whether a dataset_source is present.
+
+   A plain URL comparison would have missed that one — the gap claim
+   cited doi.org and the dataset cited PMC, two addresses for one paper.
+   So three ways in, all offline: the same URL, the record's own DOI
+   appearing inside the dataset URL, and the dataset URL matching a
+   verification source whose title is the paper's own. */
+function citesSamePaper(need, paper) {
+  const dataset = need.dataset_source;
+  if (!dataset || !isUrl(dataset.source)) { return false; }
+
+  const url = String(dataset.source).toLowerCase();
+
+  if (sameUrl(dataset.source, need.gap_evidence && need.gap_evidence.source)) {
+    return true;
+  }
+
+  const doi = paper && paper.doi;
+  if (has(doi) && url.includes(String(doi).toLowerCase())) { return true; }
+
+  const sources = (need.verification && need.verification.sources) || [];
+  return sources.some((entry) =>
+    sameUrl(entry && entry.url, dataset.source) &&
+    sameTitle(entry && entry.title, paper && paper.title)
+  );
+}
+
 export function validateRecord(record, context) {
   const ctx = context || {};
   const areas = ctx.areas || new Set();
@@ -108,6 +178,12 @@ export function validateRecord(record, context) {
       errors.push(
         "status is " + status + " but dataset_source says nothing. " +
         "A record may not claim data exists without naming where."
+      );
+    } else if (citesSamePaper(need, record.paper)) {
+      errors.push(
+        "dataset_source cites the same paper as the gap claim. A record " +
+        "may not use the source that reported the absence as evidence " +
+        "that the data exists."
       );
     }
   }
@@ -265,6 +341,56 @@ function selfTest() {
   const stale = base();
   stale.data_need.gap_evidence.claimed_date = "2014-01-01";
   cases.push(["a claim older than the window is rejected", stale, false]);
+
+  /* The circularity rule, on the shape that produced it: a partial
+     record whose dataset_source leads back to the paper that said
+     nothing had been collected. */
+  const partial = () => {
+    const record = base();
+    record.paper.title =
+      "A lack of evidence for disability-inclusive maternal health " +
+      "interventions and promising progress: an updated systematic review.";
+    record.data_need.status = "partial";
+    record.data_need.gap_evidence.source = "https://doi.org/10.0000/test";
+    record.data_need.dataset_source = {
+      note: "Some adjacent work exists but does not fill the gap.",
+      source: "https://example.org/registry"
+    };
+    return record;
+  };
+
+  const other = partial();
+  cases.push(["a dataset_source naming another source passes", other, true]);
+
+  const repeated = partial();
+  repeated.data_need.dataset_source.source = "https://doi.org/10.0000/test/";
+  cases.push([
+    "a dataset_source repeating the gap URL is rejected", repeated, false
+  ]);
+
+  const byDoi = partial();
+  byDoi.data_need.dataset_source.source =
+    "https://www.frontiersin.org/articles/10.0000/test/full";
+  cases.push([
+    "a dataset_source carrying the record's own DOI is rejected", byDoi, false
+  ]);
+
+  /* The real one. Two addresses for a single paper, so the URLs differ
+     and only the title reached through verification.sources gives it
+     away. This case is why the rule is not a string comparison. */
+  const byTitle = partial();
+  byTitle.data_need.dataset_source.source =
+    "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC12748227/";
+  byTitle.data_need.verification.sources = [{
+    url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC12748227/",
+    title: "A lack of evidence for disability-inclusive maternal health " +
+           "interventions and promising progress: an updated systematic " +
+           "review - PMC"
+  }];
+  cases.push([
+    "a dataset_source reaching the gap paper by another URL is rejected",
+    byTitle, false
+  ]);
 
   const sourced = base();
   sourced.data_need.collection_guidance = {

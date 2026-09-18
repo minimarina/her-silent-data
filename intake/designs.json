@@ -557,5 +557,30 @@
     "instrument_source": "SLEDAI (Systemic Lupus Erythematosus Disease Activity Index)",
     "generated_at": "2026-09-18",
     "model": "claude-sonnet-5"
+  },
+  "disability-maternal-health-intervention-evidence": {
+    "target_women": "Recruit 200 pregnant women (aged 18+, gestational age under 20 weeks at enrollment) who self-identify as having a physical, sensory, intellectual, or psychiatric disability, drawn from obstetric, disability service, and community clinics across at least 3 regions (urban and rural) to capture varied access to care.",
+    "variables": [
+      "Type and severity of disability (self-reported, categorized)",
+      "Specific disability-related barriers encountered in prenatal visits (e.g. exam table inaccessibility, communication gaps, transport difficulty), recorded per visit",
+      "Receipt and content of any accommodation or adapted care plan (yes/no, description)",
+      "Maternal pregnancy outcomes (gestational diabetes, hypertensive disorders, preterm birth, mode of delivery)",
+      "Birth experience and perceived respect/autonomy during labor and delivery",
+      "Postpartum physical and mental health status at 6 weeks",
+      "Patient-reported satisfaction with prenatal and intrapartum care"
+    ],
+    "stratifiers": [
+      "Disability type (mobility, sensory, intellectual/developmental, psychiatric, multiple)",
+      "Disability severity/functional level",
+      "Age band (18-24, 25-34, 35+)",
+      "Race/ethnicity",
+      "Household income or insurance status",
+      "Parity (first pregnancy vs. subsequent)",
+      "Urban vs. rural residence"
+    ],
+    "form": "A prospective observational cohort study following each woman from enrollment (before 20 weeks gestation) through 6 weeks postpartum. Data collected via structured interviews and chart review at three timepoints (enrollment, 32 weeks gestation, 6-week postpartum visit), supplemented by a brief barrier-tracking diary completed after each prenatal visit (paper or app-based, taking under 5 minutes). Total study duration per participant is approximately 9-10 months; full study enrollment window is 18 months.",
+    "instrument_source": null,
+    "generated_at": "2026-09-18",
+    "model": "claude-sonnet-5"
   }
 }
