@@ -35,31 +35,63 @@ const DESIGNS_JSON = join(HERE, "designs.json");
 
 /* These phrases are the quality of the whole system and are tuned by
    hand, never generated. Europe PMC has no "this is a data gap" field —
-   a gap is a sentence, and these are the sentences researchers actually
-   write when they have found one. Adding a phrase here changes what the
-   platform is able to see, so it is a deliberate edit, not a setting. */
-/* These are CONCLUSION phrases, not introduction phrases, and that
-   distinction is the whole point. Version 1 searched for "data are
-   lacking" and "little is known about" — the sentences a paper writes to
-   justify the study it then reports. Those gaps are usually closed by the
-   very paper that named them, which is why the first six records came
-   back mostly "partial" and "collected".
+   a gap is a sentence, and the choice of sentence decides what the
+   platform can see. Adding one is a deliberate edit, not a setting.
 
-   A systematic review that looked and found nothing is a different kind
-   of claim: the absence was searched for by people whose job was to find
-   it, and they published the negative. That is as close to a verified gap
-   as published literature gets. */
+   They are CONCLUSION phrases, not introduction phrases, and that
+   distinction is the whole point. The first version searched for "data
+   are lacking" and "little is known about" — the sentences a paper writes
+   to justify the study it then reports. Those gaps are usually closed by
+   the very paper that named them, and the first six records came back
+   mostly "partial" and "collected" as a result.
+
+   A review that looked and found nothing is a different kind of claim:
+   the absence was searched for by people whose job was to find it, and
+   they published the negative. That is as close to a verified gap as
+   published literature gets. */
 const GAP_PHRASES = [
+  /* Tier 1 — the empty review. A team searched thousands of records and
+     included none. This is the strongest evidence of absence published
+     literature produces, and it is what yields status "missing". */
   "no studies met the inclusion criteria",
-  "no eligible studies",
+  "no studies fulfilled the inclusion criteria",
+  "no eligible studies were identified",
+  "no eligible studies were found",
   "we found no studies",
+  "we identified no studies",
+  "no relevant studies were found",
   "no randomised controlled trials were identified",
   "no trials were identified",
-  "insufficient evidence to determine",
-  "insufficient evidence to support",
-  "no studies have examined",
+  "no published data",
   "no data exist",
-  "evidence gap"
+
+  /* Tier 2 — the disaggregation gap, and the closest phrasing to what
+     this platform is about. The data was collected; women are invisible
+     inside it because nobody broke the results down. A review that finds
+     this is naming a gap it cannot fill itself. */
+  "not disaggregated by sex",
+  "sex-disaggregated data were not",
+  "were not reported separately for women",
+  "not reported separately by sex",
+  "were not stratified by sex",
+  "did not report outcomes by sex",
+
+  /* Tier 3 — exclusion. Women, and pregnant women in particular, left out
+     of the studies that produced the evidence base now used to treat
+     them. Paired with the genre filter below so that the paper naming the
+     exclusion is not the trial that practised it. */
+  "women were excluded from",
+  "pregnant women were excluded",
+  "women of childbearing potential were excluded"
+
+  /* Removed 18 Sep, with reasons:
+     "insufficient evidence to determine" / "...to support" — these mean
+     some data exists and is inconclusive, which is "partial", not a gap.
+     They produced every partial record in the first two runs.
+     "evidence gap" — too vague to carry a claim.
+     "no studies have examined" — introduction phrasing. The paper that
+     writes it is usually the paper that closes it, so it costs filter
+     calls and returns nothing. */
 ];
 
 /* Paired with the phrases above: the document types whose genre is
