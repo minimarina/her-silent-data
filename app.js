@@ -124,14 +124,6 @@
     return source;
   }
 
-  /* Plain text version, for use inside a card button: a link may not be
-     nested inside a button. */
-  function sourceText(source) {
-    var span = make("span", "provenance", "Source: " + sourceLabel(source));
-    if (!hasText(source)) { span.classList.add("unknown"); }
-    return span;
-  }
-
   /* Linked version, for the screens where the record stands alone. */
   function sourceNode(source) {
     var line = make("p", "provenance");
@@ -182,6 +174,16 @@
     var badge = make(tag || "span", "origin", originWord(problem));
     badge.setAttribute("data-origin", originState(problem));
     return badge;
+  }
+
+  /* Whether the origin is worth saying on a list. A record whose gap was
+     published by an authority is the normal case and the footer states it
+     once for the whole seed; anything else — a placeholder, a gap this
+     platform proposed, an origin nobody has assessed — is a warning, and
+     a warning is worth repeating per card. The record's own screens show
+     the badge either way. */
+  function flaggedOrigin(problem) {
+    return Boolean(problem.is_demo) || problem.origin !== "sourced";
   }
 
   /* Evidence that somebody looked and named the hole. A missing need
@@ -790,15 +792,28 @@
         card.type = "button";
         /* Spans, not paragraphs: a button may only contain phrasing
            content. They are laid out as blocks in CSS. */
+        /* Two things: what the problem is, and whether the data exists.
+           That is everything a reader needs to decide whether to open it,
+           and the home screen's job is to be scanned (§6).
+
+           What used to be here as well: the affected-women sentence, an
+           origin badge and a source line, on every one of eleven cards.
+           All three are on the record itself, one click away, where the
+           source is a link a researcher can actually follow — inside a
+           button it could only ever be printed, because a link may not be
+           nested in one. §8.1 asks that every claim show where it came
+           from; the card is a pointer to the claim, not the claim. */
         card.appendChild(makeValue("span", "card-title", problem.title));
-        card.appendChild(
-          hasText(problem.affected_women)
-            ? make("span", "affected-line", "Affected: " + problem.affected_women)
-            : makeValue("span", "affected-line", "")
-        );
         card.appendChild(make("span", "count", gapSentence(problem)));
-        card.appendChild(originBadge(problem));
-        card.appendChild(sourceText(problem.source));
+
+        /* The badge marks the exception rather than the rule. Every record
+           in the seed is "sourced", so a badge on each card said the same
+           thing eleven times and distinguished nothing. A placeholder or a
+           gap this platform inferred itself is what a reader has to be
+           warned about, and that still carries its badge. */
+        if (flaggedOrigin(problem)) {
+          card.appendChild(originBadge(problem));
+        }
 
         card.addEventListener("click", function () {
           openProblem(problem.id);
@@ -1188,15 +1203,21 @@
     var bar = make("div", "summary-bar");
     bar.setAttribute("aria-hidden", "true");
 
-    /* An empty seed divides by zero and paints every segment "NaN%". The
+    /* Only statuses that have records get a segment. The segments are
+       separated by a gap so the boundary between two dark warm colours is
+       visible at all, and a zero-width segment would still take its gap —
+       a stray 2px notch at the end of the bar with nothing on either side
+       of it. Same filter, and the same reason, as statusBar() on the map.
+
+       An empty seed divides by zero and paints every segment "NaN%". The
        seed is never empty today, but the banner and the counts strip are
        the two things written to survive one. */
     ["missing", "partial", "collected"].forEach(function (status) {
+      if (!sum[status] || !sum.needs) { return; }
+
       var seg = make("span", "summary-seg");
       seg.setAttribute("data-status", status);
-      seg.style.width = sum.needs
-        ? (sum[status] / sum.needs * 100) + "%"
-        : "0%";
+      seg.style.width = (sum[status] / sum.needs * 100) + "%";
       bar.appendChild(seg);
     });
     slot.appendChild(bar);
@@ -1228,12 +1249,12 @@
      not in this table simply has no pin — the problem still appears in
      the list below, which is the honest state, not a broken one. */
   var MAP_POINTS = {
-    "Maternal health":       { kind: "site",     x: 408, y: 248, side: "left",  label_y: 234 },
+    "Maternal health":       { kind: "site",     x: 408, y: 248, side: "right", label_y: 330 },
     "Cardiovascular health": { kind: "site",     x: 447, y: 188, side: "right", label_y: 170 },
-    "Pelvic health":         { kind: "site",     x: 400, y: 306, side: "right", label_y: 265 },
-    "Chronic pain":          { kind: "site",     x: 455, y: 340, side: "right", label_y: 340 },
-    "Pharmacology":          { kind: "systemic", x: 334, y: 555, side: "left",  label_y: 545 },
-    "Reproductive health":   { kind: "site",     x: 436, y: 312, side: "left",  label_y: 325 }
+    "Pelvic health":         { kind: "site",     x: 400, y: 306, side: "left",  label_y: 250 },
+    "Chronic pain":          { kind: "site",     x: 455, y: 340, side: "right", label_y: 490 },
+    "Pharmacology":          { kind: "systemic", x: 334, y: 555, side: "left",  label_y: 570 },
+    "Reproductive health":   { kind: "site",     x: 436, y: 312, side: "left",  label_y: 410 }
   };
 
   /* Re-measured 18 Sep. Two markers had been placed by eye and failed the
@@ -1252,12 +1273,25 @@
      Moving a pin moves its leader line, and a leader is as capable of
      running straight through a neighbouring pin as a pin is of sitting
      off the body. The first attempt at this fix did exactly that, twice.
-     So label_y is measured too: every leader now clears every other pin's
-     centre by at least 13px, against a pin radius of 8. Reproductive
-     health sits on the left column rather than the right because that is
-     what clears Chronic pain — its pin is on the centreline, so neither
-     side is a claim about the body. Re-check both rules together after
-     any change here. */
+     So label_y and side are measured too, against two rules: every leader
+     clears every other pin's centre by at least 14px (a pin's radius is
+     8), and two labels in the same column never sit closer than 62px,
+     which is the height of a label block.
+
+     WITHIN those rules the labels are laid out for composition, because
+     five of the six pins are anatomically crowded into the torso and
+     labels placed next to their own pins bunch into the top third of the
+     frame with Pharmacology stranded at the bottom. Each column now
+     carries three labels 160px apart, and the two columns are staggered
+     by 80px, so the eye reads them as one alternating sequence down the
+     figure. The search that produced these values hit every target
+     exactly, with 31px of leader clearance to spare.
+
+     A pin labels to whichever side keeps it clear, not to the side it
+     sits on: Pelvic health is left of the centreline and labels left,
+     Maternal health labels right. Neither is a claim about the body — the
+     pin is the claim, the label is just typography. Re-check both rules
+     together after any change here. */
 
   /* Where a leader line turns before running out to its label. Computed,
      not stored: only the side varies. */

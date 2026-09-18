@@ -13,8 +13,20 @@
 
 <header class="site-header">
   <div class="wrap">
-    <p class="site-name">Women&rsquo;s Data Gap</p>
-    <p class="site-tagline">Research intelligence for the gender data gap</p>
+    <!-- The masthead is the way home from every screen, which is what a
+         reader expects of one and the app did not do. A real <button>, so
+         Enter and Space arrive for free; spans and not <p>, because a
+         button may only contain phrasing content. Same [data-goto] wiring
+         as About — one navigation idea, not two.
+
+         aria-label names the destination: the concatenation of both lines
+         reads as a slogan rather than as a link, and a link should say
+         where it goes. -->
+    <button type="button" class="site-home" data-goto="screen-problems"
+            aria-label="Women&rsquo;s Data Gap &mdash; back to the map">
+      <span class="site-name">Women&rsquo;s Data Gap</span>
+      <span class="site-tagline">Research intelligence for the gender data gap</span>
+    </button>
 
     <!-- The only way to Screen 4. About is never in front of the demo flow,
          so it is a header link rather than anything on the home screen.
@@ -39,8 +51,8 @@
       </h1>
       <p class="lede hero-lede">
         The questions aren&rsquo;t hard. Nobody collected the answers. This map
-        shows which data is missing, who said so, and whether anyone has
-        collected it since &mdash; then drafts the study that would close it.
+        shows what is missing, who said so, and whether anyone has collected
+        it since.
       </p>
       <div id="gap-summary" class="gap-summary"></div>
     </div>
@@ -79,10 +91,11 @@
     </div>
 
     <h2 id="problems-heading">Problems women face</h2>
+    <!-- One line, not a paragraph. The cards below say the rest, and the
+         hero has already said what the platform is for. -->
     <p class="lede">
-      Each problem lists the data needed to solve it, what is still
-      missing, and when that was last checked. Open one and ask for a
-      research design &mdash; which women, what to measure, in what form.
+      Open one to see what is missing, who said so, and the study that
+      would close it.
     </p>
     <ul id="problem-list" class="card-list"></ul>
   </section>

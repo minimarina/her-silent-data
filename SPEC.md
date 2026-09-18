@@ -210,6 +210,20 @@ than inventing a questionnaire.
 
 ## 6. Screens
 
+**The masthead is the way home, from everywhere.** The site name and
+tagline are one button that shows Screen 1, on every screen including
+Screen 1 itself. A reader expects a masthead to do this and the app did
+not, which left Screen 3 reachable only by two Backs. It uses the same
+`[data-goto]` wiring as the About link — one navigation idea, not two —
+and it is a real `<button>`, so Enter and Space arrive for free.
+
+Its accessible name is *"Women's Data Gap — back to the map"* rather than
+the two lines read out in sequence: a link should say where it goes, and
+the tagline read aloud after the name is a slogan, not a destination. The
+focus ring is the teal ring on a white backing that the About link
+already uses, because teal alone holds 2.3:1 on `navy-deep`, under the
+3:1 non-text floor (§8.2).
+
 **Screen 1 — Home: body map, then the problem list**
 
 The screen opens with the gap as a picture and states the totals, then
@@ -219,20 +233,48 @@ count is whatever the seed holds — eleven at the time of writing — and
 every figure on the screen is computed from it, never written here.
 
 - A hero line, and a counts strip over the whole seed: how many data
-  needs exist, and how many are missing, partial and collected.
+  needs exist, and how many are missing, partial and collected. Its bar
+  separates its segments by a 2px gap, as the map's marker bars do: clay
+  and amber butted together read as one bar with a smudge in it, and the
+  boundary is the only thing the bar exists to show. A status with no
+  records renders no segment, so a gap never appears with nothing beside
+  it.
 - A female silhouette with one marker per problem (§7.6).
 - Each marker carries the area, the same "X of Y data needs missing"
   sentence the card below carries, and a three-part status bar.
 - A marker opens the same Screen 2 the card opens.
 
-Then, unchanged:
+Then the list:
 
-- One card per problem: title, area, affected women.
-- Gap indicator on each card: "X of Y data needs missing".
+- One card per problem, carrying **two things**: the title, and the gap
+  indicator ("X of Y data needs missing", or "Data missing" where a
+  problem has one need). That is what a reader needs to decide whether to
+  open it, and the home screen's job is to be scanned.
 - Banner: shown only while placeholder records exist, and it counts
   them. With the seed fully sourced it does not render.
+- Origin badge **only where the origin is an exception** — a placeholder,
+  a gap this platform proposed, an origin nobody has assessed.
 
-- Origin badge on each card (§5a), and the record's source.
+**What the card deliberately does not carry.** The affected-women
+sentence, the source line and a "Published research request" badge used
+to sit on every one of eleven cards, which made the home screen 4,552
+characters long and 6,348px tall to say eleven titles and eleven
+statuses. All three are on the record itself, one click away.
+
+This is not a retreat from §8.1. That rule asks that every claim show
+where it came from, and the claim is the record — Screen 2 and Screen 3,
+where the source is a **link a researcher can follow**. On a card it could
+only ever be printed, never linked, because a link may not be nested
+inside a button, so it was non-actionable text duplicating the screen
+behind it. The aggregate claim is made once, in the footer: *every record
+is sourced from published research.*
+
+The origin badge follows the same logic in reverse. Every record in the
+seed is `sourced`, so a badge on each card said the same thing eleven
+times and distinguished nothing. What a reader must be warned about is
+the record that is *not* sourced, and that one still carries its badge —
+verified by flipping a record to `is_demo` and watching exactly one
+badge, the banner and the footer sentence all change together.
 
 **Screen 2 — Problem detail**
 - Problem title, summary, affected women (question 1).
@@ -443,6 +485,23 @@ the fill; both ring markers are fully outside it. The coordinates live in
 transform in `index.html` — if that moves, re-measure. An area with no
 entry lists without a pin, which is honest and visible; an entry no area
 uses is deleted rather than kept.
+
+**A pin is teal, and a pin is not a status.** Pins were clay — the colour
+of `missing` — until 18 Sep. Two things were wrong with that. Dark red
+dots clustered on a woman's torso read as bullet wounds, which is an
+unfortunate picture for a product about women's health and was noticed
+straight away by the first person to look at it. And the colour was
+making a claim the pin does not make: a pin means "this area has data
+needs, open it", it is a button, and four of the six areas are *Partly
+covered* with no missing need at all — so the pin asserted in colour the
+opposite of the sentence printed next to it. §6 says the status
+vocabularies stay apart; the map was the one place they had not.
+
+Pins are now `teal-accent`, the palette's interactive colour (§7.1), at
+5.0:1 on the figure's `teal-soft` fill against a 3:1 non-text floor.
+Status stays where it always lived on this screen: the three-part bar and
+the sentence beside each label, which are the only things on the map still
+allowed to use the three status colours.
 
 **Nothing on the map is authored twice.** Labels and the counts strip are
 computed from the same `countStatus()` and `gapSentence()` as the cards,
@@ -699,6 +758,11 @@ renumbered.
     appears at all.
 38. An instrument named but not linked is shown as text, at the same size
     as a linked one.
+39. The masthead returns to Screen 1 from the detail screen, the data need
+    screen, About and Screen 1 itself, by mouse, Enter and Space. It is
+    the first tab stop after the skip link, its focus ring is visible
+    against `navy-deep`, and its click target is the words rather than the
+    width of the bar.
 
 ## 13. Tech
 

@@ -103,13 +103,6 @@ a:hover { text-decoration: none; }
 }
 .provenance .is-demo { color: var(--muted); }
 
-/* On a card the source is the last line, and plain text rather than a
-   link, because a link may not sit inside a button. */
-.problem-card .provenance {
-  margin-top: 12px;
-  padding-top: 12px;
-  border-top: 1px solid var(--border);
-}
 
 /* ---------- header, banner, footer ---------- */
 
@@ -222,7 +215,6 @@ a:hover { text-decoration: none; }
   font-weight: 700;
 }
 
-.problem-card .affected-line { margin-bottom: 8px; }
 .problem-card .count { margin-bottom: 0; }
 
 /* ---------- screen 2: data needs ---------- */
@@ -395,6 +387,8 @@ a:hover { text-decoration: none; }
   font-style: italic;
 }
 
+/* Only rendered on a card that is a placeholder or a gap this platform
+   proposed — the exception, not every card. */
 .problem-card .origin {
   margin-top: 10px;
 }
@@ -499,9 +493,16 @@ a:hover { text-decoration: none; }
 
 .home-hero { margin-bottom: var(--space-section); }
 
+/* 20ch broke the hero into three short lines 345px wide, under a lede
+   604px wide, inside an 848px column — a heading narrower than its own
+   paragraph reads as text that got clipped rather than as a measure
+   somebody chose. 34ch puts the two within a few pixels of each other, so
+   the block has one right edge and the rag looks deliberate. Still capped
+   rather than full-width: §7.2 keeps prose around 70 characters, and a
+   30px line running the whole column would be worse than either. */
 .hero-line {
   font-size: 1.875rem;
-  max-width: 20ch;
+  max-width: 34ch;
   margin-bottom: 12px;
 }
 
@@ -520,15 +521,27 @@ a:hover { text-decoration: none; }
 .summary-count { margin: 0; }
 .summary-count strong { font-size: 1.25rem; }
 
+/* Clay and amber are both dark warm colours, and butted straight against
+   each other they read as one bar with a smudge in it — the boundary,
+   which is the only thing this bar exists to show, was invisible. A 2px
+   gap of page background separates them, which is what the map's marker
+   bars have always done (statusBar() in app.js uses the same 2). The
+   segments carry percentage widths and may shrink by that gap; over a
+   300px bar that is well under one percent, and a visible boundary is
+   worth more than the third decimal place of a proportion. */
 .summary-bar {
   display: flex;
+  gap: 2px;
   height: 9px;
   min-width: 220px;
   max-width: 300px;
   flex: 1;
   border-radius: 5px;
-  overflow: hidden;
 }
+
+/* A zero-count status renders no segment at all (renderGapSummary skips
+   it), so a gap never appears with nothing on the other side of it. */
+.summary-seg { border-radius: 5px; }
 
 .summary-seg[data-status="missing"]   { background: var(--status-missing); }
 .summary-seg[data-status="partial"]   { background: var(--status-partial); }
@@ -587,14 +600,30 @@ a:hover { text-decoration: none; }
   stroke-width: 1;
 }
 
+/* Teal, not clay, and the reason is not only that dark red dots on a
+   woman's torso read as bullet wounds — though they did, which is reason
+   enough for a product about women's health.
+
+   A pin does not mean "missing". It means "this area has data needs, open
+   it", and it is a button. Clay is the colour of `missing` everywhere
+   else, and four of the six areas are Partly covered with no missing need
+   at all — so a clay pin was asserting, in colour, the opposite of the
+   sentence printed beside it. §6 says the status vocabularies stay apart;
+   this was the one place they had not.
+
+   teal-accent is the palette's interactive colour (§7.1: links, focus
+   ring, primary action), which is what these are. It holds 5.0:1 on the
+   figure's teal-soft fill, against a 3:1 non-text floor (§8.2), and the
+   white stroke keeps the pin off the body at any size. Status is carried
+   where it always was: the bar and the sentence beside the label. */
 .mark-halo {
-  fill: var(--status-missing);
-  opacity: 0.14;
+  fill: var(--teal-accent);
+  opacity: 0.18;
   transition: opacity 0.15s ease;
 }
 
 .mark-pin {
-  fill: var(--status-missing);
+  fill: var(--teal-accent);
   stroke: var(--surface);
   stroke-width: 2.5;
   transform-box: fill-box;
@@ -703,20 +732,48 @@ a:hover { text-decoration: none; }
 
 /* ---------- screen 4: about ---------- */
 
-/* The header link is the only route in. The name keeps its own line and
-   the tagline and the link share the next one, so nothing has to be
-   restructured and nothing wraps badly at 360px. */
+/* Two items: the masthead, which is the way home, and the About link,
+   which is the only route into screen 4. They sit on one row and wrap to
+   two at 360px. Centred rather than baseline-aligned, because the
+   masthead is two lines tall and there is no shared baseline to align a
+   one-line button to. */
 .site-header .wrap {
   display: flex;
   flex-wrap: wrap;
-  align-items: baseline;
+  align-items: center;
   gap: 8px 16px;
 }
-.site-name { flex: 1 0 100%; }
-.site-tagline { flex: 1 1 auto; margin-top: 0; }
+/* The masthead is one button holding both lines, so the two are no longer
+   flex children of .wrap — the button is. It is content-sized rather than
+   growing, so the click target is the words and not the empty half of the
+   bar; About is pushed to the right edge by its own auto margin. */
+.site-home {
+  flex: 0 1 auto;
+  padding: 0;
+  background: none;
+  border: 0;
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.site-home .site-name,
+.site-home .site-tagline { display: block; }
+
+.site-home:hover .site-name { text-decoration: underline; }
+
+/* Same backing as .header-link below, and for the same reason. */
+.site-home:focus-visible {
+  outline: 2px solid var(--teal-accent);
+  outline-offset: 3px;
+  box-shadow: 0 0 0 2px var(--surface);
+  border-radius: 2px;
+}
 
 .header-link {
   flex: 0 0 auto;
+  margin-left: auto;
   padding: 6px 14px;
   background: none;
   border: 1px solid #C9D8E6;   /* 8.3:1 on --navy-deep, same as the tagline */
