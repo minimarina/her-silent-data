@@ -22,8 +22,11 @@
  *    claimed_date and no verification block, and the card says "Not
  *    established" rather than inventing one.
  *
- * 2. Six records from intake/run.mjs, approved one at a time against the
- *    cited abstract. Each carries gap_evidence.claimed_date, a
+ * 2. Six records from intake/run.mjs. Each abstract was fetched and
+ *    compared against the record's claim by an AI, and each record was
+ *    then admitted or rejected by a person, one at a time. See
+ *    intake/README.md for exactly how that ran. Each carries
+ *    gap_evidence.claimed_date, a
  *    verification block with the date of a live web search, and
  *    collection_guidance that is either sourced or null.
  *
@@ -959,7 +962,8 @@ const DATA = {
 
 
     /* ---- Below: produced by the intake run (intake/run.mjs) and
-       approved one at a time against the cited abstract. Each record
+       admitted one at a time by a person, after an AI compared each
+       abstract against the claim made from it. Each record
        carries the date its gap was claimed and the date it was checked
        against the live web. ---- */
 

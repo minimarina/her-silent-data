@@ -452,7 +452,8 @@ The seed has **two generations**, and they are visibly different:
 - **Five hand-sourced problems**, each with 2–5 data needs, written
   before the intake run existed.
 - **Six intake records**, one data need each, produced by
-  `intake/run.mjs` and approved one at a time against the citation.
+  `intake/run.mjs`. An AI compared each abstract against the claim made
+  from it; a person then admitted or rejected each record. See §14.
   These carry `claimed_date` and a `verification` block; the older five
   do not, and the card says "Not established" rather than inventing one.
 
@@ -689,8 +690,15 @@ it reads as judgment rather than as a gap.
   models used are named in `intake/model.mjs`. Every study design shown
   in the app is model output and is labelled *AI-generated —
   unverified* on screen with its generation date. No gap claim is ever
-  model-authored: claims are quoted from cited sources, and each record
-  was approved by a person against that source before entering `data.js`.
+  model-authored: claims are quoted from cited sources, and no record
+  enters `data.js` without a person deciding to admit it.
+- **How the review actually ran, 18 Sep.** The AI fetched all nine
+  candidate abstracts and compared each quoted claim against its source,
+  and recommended a verdict; the maintainer decided on each record and ran
+  the approve and dismiss commands; the AI then merged the six approved
+  blocks into `data.js` and corrected three `area` fields. The comparison
+  was machine-made and the decision human. `intake/README.md` records this
+  in full, including a dismissal made in error and recovered.
 - **The limit stated on the product itself:** no search proves a
   negative. A `missing` record reports that a search of published sources
   found nothing, not that the data does not exist.

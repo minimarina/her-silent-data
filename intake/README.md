@@ -16,19 +16,45 @@ A study design is generated on request, kept in `research-designs.js`,
 and is never part of a record.
 
 **No record enters the seed unreviewed.** The run writes to
-`candidates.json` and stops. A human then opens each citation, checks the
-source against what the record claims, and approves or dismisses it one
-at a time with `review.mjs` — which records the decision, and the reason
-for a dismissal, in the ledger.
+`candidates.json` and stops. Nothing reaches `data.js` until a decision
+has been recorded for it, one record at a time, in the ledger.
 
-Only approved records are merged into `data.js`, and the approval is the
-step that matters: it is a person deciding, against the source, that the
-claim is honest. `review.mjs` never writes `data.js` itself; it emits the
-block, and the merge is a separate, deliberate act.
+### Exactly how the first six records were reviewed, 18 Sep 2026
 
-Of the first nine candidates, three were dismissed — each one a paper
-that collected the very data it called missing. That is the review step
-doing its job, and it is why it cannot be automated away.
+Stated plainly, because a vaguer version of this paragraph would flatter
+the process:
+
+1. `run.mjs` produced nine candidates.
+2. **An AI (Claude) fetched all nine abstracts from Europe PMC** and
+   compared each record's quoted gap claim against its source, then
+   recommended approve or dismiss for each, with reasons.
+3. **The maintainer decided** on every record and ran the
+   `review.mjs --approve` / `--dismiss` commands herself. Six approved,
+   three dismissed.
+4. **The AI merged** the six approved blocks into `data.js` and corrected
+   three `area` fields that the extractor had got wrong.
+
+So the comparison against the source was machine-made and the decision
+was human. That is a weaker claim than "a person read every paper", and
+it is the true one. What the human step contributes is a veto that an
+automated pipeline does not have: nothing enters the seed that a person
+did not choose to admit.
+
+`review.mjs` still never writes `data.js` itself. It emits a block, and
+merging is a separate act — done here by the AI, on instruction.
+
+Of those nine candidates, three were dismissed: each was a paper that
+collected the very data it called missing, which the search finds because
+a paper's introduction names a gap in order to justify the study that
+closes it.
+
+**One correction to the record.** A fourth dismissal was made in error —
+index-based commands renumbered the list as records were removed, so the
+wrong record was dismissed. It was recovered by reprocessing its DOI, and
+its ledger entry was deleted by hand so the run would accept it again.
+The ledger therefore does not show that mistake; this paragraph is where
+it is recorded instead. `review.mjs` now refuses decisions by number and
+requires the record id.
 
 ## Running it
 
