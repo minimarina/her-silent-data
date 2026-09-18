@@ -236,10 +236,16 @@ for (const paper of passed) {
        the app to work with research-designs.js absent. So a design
        failure must not discard a record that extract and verify already
        paid for — it is caught here rather than by the outer catch. */
-    console.log("  design…");
+    /* A record whose data turned out to exist does not need a study
+       design — the study has been done, and the card points at it. */
     let design = null;
     try {
-      design = await designFor(extracted);
+      if (checked.status === "collected") {
+        console.log("  design skipped (data exists)");
+      } else {
+        console.log("  design…");
+        design = await designFor(extracted);
+      }
     } catch (designError) {
       console.log("  design failed (record kept): " +
                   designError.message.split("\n")[0]);

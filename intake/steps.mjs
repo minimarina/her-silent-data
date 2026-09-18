@@ -179,7 +179,9 @@ export async function extractRecord(paper) {
        out of this budget, so a tight ceiling truncates the JSON rather
        than shortening the answer. Effort is what controls the cost here. */
     maxTokens: 8000,
-    effort: "medium",
+    /* Rewriting one abstract into fixed fields is not a hard problem, and
+       the schema does the structural work. */
+    effort: "low",
     schema: EXTRACT_SCHEMA
   });
 
@@ -256,9 +258,14 @@ export async function verifyRecord(extracted) {
       `Region: ${need.region || "not specified"}\n\n` +
       "Has this data been collected since? Search, then answer.",
     maxTokens: 16000,
-    effort: "high",
+    /* Search results come back as input tokens, so max_uses is the cost
+       dial for the whole run — this call is most of the bill. Three
+       searches and medium effort answered the test record as well as six
+       and high did; "has anyone collected this" is a lookup, not a
+       reasoning problem. */
+    effort: "medium",
     schema: VERIFY_SCHEMA,
-    tools: [{ type: "web_search_20260209", name: "web_search", max_uses: 6 }]
+    tools: [{ type: "web_search_20260209", name: "web_search", max_uses: 3 }]
   });
 
   const result = jsonOf(response);
