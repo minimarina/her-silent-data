@@ -124,7 +124,12 @@ export function ledgerNote(ledger, doi, outcome, title, filterVersion) {
    dismissed is dead weight on the public site, and dismissals include
    papers rejected as out of scope, whose designs have no business being
    served from a register of gaps in women's health. */
-export function publishableDesigns(designs, seed, candidates) {
+/* `isPublishable` is the safety gate, passed in rather than imported:
+   validate.mjs imports this file, so this file may not import it back.
+   Omitted, nothing is filtered, which is what the tests want. */
+export function publishableDesigns(designs, seed, candidates, isPublishable) {
+  /* `isPublishable` returns validateDesign's verdict, not a boolean, so the
+     reason can travel to the card with the refusal. */
   const live = new Set();
 
   for (const problem of seed.problems) {
@@ -136,12 +141,36 @@ export function publishableDesigns(designs, seed, candidates) {
     live.add(record.data_need.id);
   }
 
+  const check = isPublishable || (() => ({ ok: true }));
   const kept = {};
+  const withheld = [];
+
   for (const id of Object.keys(designs)) {
-    if (live.has(id)) { kept[id] = designs[id]; }
+    if (!live.has(id)) { continue; }
+
+    const verdict = check(designs[id], id);
+
+    if (verdict.ok) {
+      kept[id] = designs[id];
+      continue;
+    }
+
+    /* Withheld, and the record says so rather than quietly offering
+       nothing: 8.1 asks the app never to leave a silent blank, and "no
+       design here" is a thing the platform knows and should state. The
+       design itself is not published \u2014 only the reason it was refused. */
+    kept[id] = { withheld: (verdict.errors && verdict.errors[0]) || "Withheld." };
+    withheld.push(id);
   }
+
+  kept[WITHHELD] = withheld;
+  Object.defineProperty(kept, WITHHELD, { enumerable: false });
   return kept;
 }
+
+/* The ids the gate refused, carried back on the result without becoming
+   one of its entries. */
+export const WITHHELD = Symbol("withheld");
 
 /* research-designs.js is a script, not a module, so the app can load it
    from file:// with no fetch — the same shape as data.js. Built from an
@@ -155,9 +184,19 @@ export function renderDesigns(designs) {
     " * an answer, not a record: it is never merged into data.js, and the",
     " * app works fully with this file absent (SPEC 11).",
     " *",
-    " * Only designs whose record is live are published here. The full",
-    " * archive, including designs for records that were dismissed, stays",
-    " * in intake/designs.json.",
+    " * Only designs whose record is live are published here, AND only",
+    " * those that pass the design rules in intake/validate.mjs. A design",
+    " * that assigns an intervention to a vulnerable population without",
+    " * naming its oversight, that doses a participant with something it",
+    " * does not name, or that restricts eating without screening for",
+    " * eating disorders, is withheld: the record still stands and simply",
+    " * offers no design. The app renders that case already (SPEC 11).",
+    " *",
+    " * The full archive, including designs that were withheld and designs",
+    " * for records that were dismissed, stays in intake/designs.json.",
+    " * Nothing here is hand-edited or hand-corrected \u2014 a design is model",
+    " * output in full or it is not published, so what is on screen is",
+    " * always what the model wrote.",
     " *",
     " * Every entry is model output and is labelled unverified on screen.",
     " */",

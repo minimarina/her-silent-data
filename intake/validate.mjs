@@ -119,6 +119,146 @@ function citesSamePaper(need, paper) {
   );
 }
 
+
+/* ---------- the design rules ---------- */
+
+/* A design is not a record and never becomes one, so nothing here is about
+   provenance. It is about what the platform is willing to hand a researcher
+   under its own name.
+
+   Ordinary JavaScript, like every other rule in this file. These are string
+   rules over prose and they will misfire in both directions; that is
+   tolerable in ONE direction only, and the direction is chosen deliberately.
+   A design is optional by construction (SPEC 11) - the app renders a record
+   with no design and loses nothing the register claims - so a rule that
+   withholds a good design costs a convenience, and a rule that publishes a
+   harmful one costs the thing this platform exists to be. When in doubt the
+   design is withheld and the record still stands.
+
+   Errors withhold the design. Warnings are for the person at step 7. */
+
+/* Groups whose capacity to consent, or whose exposure to harm, is not an
+   ordinary adult volunteer's. */
+const VULNERABLE =
+  /\bpregnan\w*|\bin lab(o|ou)r\b|\bbreast-?feed\w*|\blactating\b|\bneonat\w*|\bfoetal\b|\bfetal\b|\bchildren\b|\badolescent\w*|\bminors\b|\bprisoner\w*|\brefugee\w*|\basylum\b/i;
+
+/* Language that assigns an exposure rather than observing one. The
+   distinction is the whole ethical difference between the pregnancy designs
+   in this seed: a cohort of women already taking a drug is not a trial that
+   puts them on it. */
+const INTERVENTIONAL =
+  /\brandomi[sz]\w*|\brandomly assigned?\b|\ballocat\w+ to\b|\btrial arm\b|\btreatment arm\b|\bintervention (group|arm)\b|\bplacebo\b|\bcontrolled trial\b|\bassigned to receive\b|\bcross-?over trial\b/i;
+
+/* The machinery that makes assigning an exposure legitimate. */
+const OVERSIGHT =
+  /\bethics (approval|committee|review|board)\b|\bIRB\b|\binstitutional review\b|\bdata (and )?safety monitoring\b|\bDSMB\b|\bindependent (monitoring|oversight)\b|\binformed consent\b|\bequipoise\b/i;
+
+/* Administering something to a participant without saying what. */
+const UNNAMED_EXPOSURE =
+  /\ba panel of\b[^.]{0,80}\b(drugs?|medications?|agents?)\b|\bcommonly prescribed (drugs?|medications?)\b|\bvarious (drugs?|medications?)\b|\ba range of (drugs?|medications?)\b|\bother (drugs?|medications?) as (needed|appropriate|indicated)\b/i;
+
+/* Interventions that restrict eating. */
+const RESTRICTION =
+  /\btime-?restricted\b|\bintermittent fasting\b|\bfasting (window|protocol|intervention)\b|\bcalorie[- ]restrict\w*|\benergy[- ]restrict\w*|\beating window\b|\bweight[- ]loss (intervention|programme|program|trial)\b/i;
+
+const EATING_SAFEGUARD =
+  /\beating disorder\w*\b|\bdisordered eating\b|\bEDE-?Q\b|\bSCOFF\b|\bbinge[- ]eating\b/i;
+
+/* Whether a breakdown by race or ethnicity says what it stands for. */
+const RACE = /\brace\b|\bracial\b|\bethnicit\w*|\bethnic group\b/i;
+const RACE_RATIONALE =
+  /\bstructural\b|\bdisparit\w*|\binequit\w*|\bsocio-?economic\b|\baccess to care\b|\bracism\b|\bproxy for\b|\bunder-?served\b/i;
+
+const POWERED =
+  /\bpower(ed)?\b|\bsample size\b|\bprecision\b|\bdetect an?\b|\beffect size\b|\balpha\b/i;
+
+function designText(design) {
+  const d = design || {};
+  return [
+    d.target_women,
+    d.form,
+    ...(Array.isArray(d.variables) ? d.variables : []),
+    ...(Array.isArray(d.stratifiers) ? d.stratifiers : [])
+  ].filter(has).join(" \n ");
+}
+
+export function validateDesign(design) {
+  const errors = [];
+  const warnings = [];
+
+  if (!design || typeof design !== "object") {
+    return { ok: false, errors: ["No design."], warnings };
+  }
+
+  const text = designText(design);
+  const assigns = INTERVENTIONAL.test(text);
+  const vulnerable = VULNERABLE.test(design.target_women || "");
+
+  /* The one that matters. A trial arm handed to pregnant women in an
+     endemic low-resource region, with no ethics approval, no consent
+     procedure and no monitoring board named anywhere in it, is not a
+     starting point for a researcher - it is a liability with a citation
+     attached, and "AI-generated, unverified" does not cover it. */
+  if (assigns && vulnerable && !OVERSIGHT.test(text)) {
+    errors.push(
+      "This design assigns an intervention to a vulnerable population and " +
+      "names no oversight. An interventional design on pregnant women, " +
+      "women in labour, children or a comparable group must name its " +
+      "ethics approval, its consent procedure and its independent safety " +
+      "monitoring, or it is not publishable here."
+    );
+  }
+
+  /* What exactly is being given to the participant. */
+  if (UNNAMED_EXPOSURE.test(text)) {
+    errors.push(
+      "This design administers something it does not name. Every substance " +
+      "given to a participant is named, or the design is withheld: a " +
+      "reader cannot weigh a risk described as \"a panel of commonly " +
+      "prescribed drugs\"."
+    );
+  }
+
+  /* Restricting what a young woman eats, for months, is an intervention
+     with a known harm, and screening for it is standard rather than
+     optional. */
+  if (RESTRICTION.test(text) && !EATING_SAFEGUARD.test(text)) {
+    errors.push(
+      "This design restricts eating and says nothing about disordered " +
+      "eating. A dietary-restriction intervention names its screening and " +
+      "exclusion for eating disorders, and monitors for them, or it is " +
+      "withheld."
+    );
+  }
+
+  /* Warnings: the design is published, and the person at step 7 is told. */
+  const stratifiers = Array.isArray(design.stratifiers) ? design.stratifiers : [];
+  if (stratifiers.some((s) => RACE.test(String(s))) && !RACE_RATIONALE.test(text)) {
+    warnings.push(
+      "Breaks results down by race or ethnicity without saying what it " +
+      "stands for. A breakdown that does not say whether it is tracking " +
+      "structural factors or is being read as biology invites the second."
+    );
+  }
+
+  if (/\d/.test(design.target_women || "") && !POWERED.test(text)) {
+    warnings.push(
+      "States a sample size and does not say where it came from. It is a " +
+      "figure, not a calculation, and a reader will take it for one."
+    );
+  }
+
+  if (!OVERSIGHT.test(text)) {
+    warnings.push(
+      "Names no ethics approval, consent procedure or data protection. " +
+      "True of every design this pipeline has produced; the app says so on " +
+      "the card rather than letting each design imply it is complete."
+    );
+  }
+
+  return { ok: errors.length === 0, errors, warnings };
+}
+
 export function validateRecord(record, context) {
   const ctx = context || {};
   const areas = ctx.areas || new Set();
@@ -318,6 +458,112 @@ function base() {
   };
 }
 
+
+/* ---------- the design acceptance tests ---------- */
+
+function baseDesign() {
+  return {
+    target_women:
+      "Recruit 300 women aged 40-75 with symptoms of urinary incontinence " +
+      "from 8-10 primary care practices.",
+    variables: ["Symptom severity at baseline and 3 months"],
+    stratifiers: ["Age band (40-54 vs 55-69 vs 70+)"],
+    form:
+      "Prospective observational cohort with follow-up at 3 and 12 months.",
+    instrument_source: "ICIQ-UI Short Form"
+  };
+}
+
+function designSelfTest() {
+  const cases = [];
+
+  cases.push(["an observational design passes", baseDesign(), true]);
+
+  /* The shape that started this: a randomised trial in pregnant women in
+     endemic low-resource regions, with no oversight named anywhere. */
+  const trial = baseDesign();
+  trial.target_women =
+    "Recruit 300 pregnant women diagnosed with active brucellosis from " +
+    "obstetric clinics in endemic regions, any gestational age.";
+  trial.form =
+    "A multi-site randomized controlled trial comparing at least two " +
+    "antibiotic regimens considered plausibly safe in pregnancy.";
+  cases.push([
+    "a trial on pregnant women with no oversight is withheld", trial, false
+  ]);
+
+  const supervised = JSON.parse(JSON.stringify(trial));
+  supervised.form +=
+    " Ethics approval at every site, written informed consent before " +
+    "enrolment, and an independent data safety monitoring board.";
+  cases.push([
+    "the same trial naming its oversight passes", supervised, true
+  ]);
+
+  /* An interventional design on adults who are not a vulnerable group is
+     not caught by that rule, and should not be. */
+  const ordinary = baseDesign();
+  ordinary.form =
+    "A pragmatic randomized controlled trial of a decision aid versus " +
+    "usual care.";
+  cases.push(["a trial on ordinary adults passes", ordinary, true]);
+
+  const unnamed = baseDesign();
+  unnamed.variables = [
+    "Plasma concentration-time curve for a panel of commonly prescribed " +
+    "drugs metabolized by these pathways"
+  ];
+  cases.push([
+    "a design dosing unnamed drugs is withheld", unnamed, false
+  ]);
+
+  const named = baseDesign();
+  named.variables = [
+    "CYP3A4 activity measured via midazolam probe drug clearance"
+  ];
+  cases.push(["a design naming its probe drug passes", named, true]);
+
+  const fasting = baseDesign();
+  fasting.target_women = "Recruit 160 women aged 18-40 with PCOS.";
+  fasting.form =
+    "Two-arm randomised trial: the intervention group follows an 8-hour " +
+    "daily eating window for 12 months.";
+  cases.push([
+    "a dietary-restriction trial with no eating-disorder safeguard is " +
+    "withheld", fasting, false
+  ]);
+
+  const screened = JSON.parse(JSON.stringify(fasting));
+  screened.form +=
+    " Women with a current or past eating disorder are excluded at " +
+    "screening and disordered eating is monitored throughout.";
+  cases.push([
+    "the same trial screening for eating disorders passes", screened, true
+  ]);
+
+  /* Warnings do not withhold. */
+  const raced = baseDesign();
+  raced.stratifiers = ["Ethnicity"];
+  const racedResult = validateDesign(raced);
+  cases.push(["an unexplained ethnicity breakdown still publishes", raced, true]);
+
+  let failed = 0;
+  for (const entry of cases) {
+    const result = validateDesign(entry[1]);
+    const pass = result.ok === entry[2];
+    if (!pass) { failed += 1; }
+    console.log((pass ? "  ok   " : "  FAIL ") + entry[0]);
+    if (!pass) { result.errors.forEach((e) => console.log("         " + e)); }
+  }
+
+  const warned = racedResult.warnings.length > 0;
+  if (!warned) { failed += 1; }
+  console.log((warned ? "  ok   " : "  FAIL ") +
+              "an unexplained ethnicity breakdown warns the reviewer");
+
+  return { failed, total: cases.length + 1 };
+}
+
 function selfTest() {
   const ctx = { areas: mappableAreas() };
   const cases = [];
@@ -450,10 +696,15 @@ function selfTest() {
   }
 
   console.log("");
+  const designs = designSelfTest();
+  failed += designs.failed;
+
+  const total = cases.length + designs.total;
+  console.log("");
   if (failed === 0) {
-    console.log("All " + cases.length + " acceptance tests pass.");
+    console.log("All " + total + " acceptance tests pass.");
   } else {
-    console.log(failed + " of " + cases.length + " failed.");
+    console.log(failed + " of " + total + " failed.");
   }
   process.exit(failed === 0 ? 0 : 1);
 }
@@ -467,6 +718,31 @@ if (!invokedDirectly) {
   /* imported — nothing runs */
 } else if (process.argv.includes("--self-test")) {
   selfTest();
+} else if (process.argv.includes("--designs")) {
+  /* Reports; it never writes. research-designs.js is rendered by run.mjs
+     from intake/designs.json and is not hand-edited, so the way to change
+     what the app serves is to change a rule here and render again. */
+  const archive = readJson(join(HERE, "designs.json"), {});
+  const ids = Object.keys(archive);
+
+  if (!ids.length) {
+    console.log("No designs in intake/designs.json.");
+    process.exit(0);
+  }
+
+  let withheld = 0;
+  for (const id of ids) {
+    const result = validateDesign(archive[id]);
+    if (!result.ok) { withheld += 1; }
+    console.log((result.ok ? "ok       " : "WITHHELD ") + id);
+    result.errors.forEach((e) => console.log("     error:   " + e));
+    result.warnings.forEach((w) => console.log("     warning: " + w));
+  }
+
+  console.log("");
+  console.log(ids.length - withheld + " of " + ids.length +
+              " designs publishable; " + withheld + " withheld.");
+  process.exit(0);
 } else {
   const seed = loadSeed();
   const ctx = {

@@ -1281,6 +1281,40 @@ a:hover { text-decoration: none; }
 
 .legacy-origin { margin: var(--space-section) 0 var(--space-card); }
 
+/* What a design does not contain. Not quieter than the fields above it:
+   a reader who skims the study design and misses this is exactly the
+   reader it is for. */
+.design-limits {
+  margin: var(--space-card) 0 0;
+  padding: 12px var(--space-card);
+  border-left: 3px solid var(--status-partial);
+  background: var(--surface);
+  font-size: 1rem;
+  line-height: 1.5;
+  color: var(--navy-ink);
+  max-width: 70ch;
+}
+
+/* A design the intake rules refused. The record stands; this says what is
+   missing from it and why, rather than showing nothing at all. */
+.design-withheld {
+  border-top: 1px solid var(--border);
+}
+
+.design-withheld-head {
+  margin: var(--space-card) 0 6px;
+  font-weight: 600;
+  color: var(--navy-ink);
+}
+
+.design-withheld-why {
+  margin: 0;
+  max-width: 70ch;
+  color: var(--muted);
+  font-size: 0.875rem;
+  line-height: 1.5;
+}
+
 /* ---------- copy the design out ---------- */
 
 /* The platform ends where study design begins, so the last thing on the

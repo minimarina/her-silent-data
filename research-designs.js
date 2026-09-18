@@ -4,9 +4,19 @@
  * an answer, not a record: it is never merged into data.js, and the
  * app works fully with this file absent (SPEC 11).
  *
- * Only designs whose record is live are published here. The full
- * archive, including designs for records that were dismissed, stays
- * in intake/designs.json.
+ * Only designs whose record is live are published here, AND only
+ * those that pass the design rules in intake/validate.mjs. A design
+ * that assigns an intervention to a vulnerable population without
+ * naming its oversight, that doses a participant with something it
+ * does not name, or that restricts eating without screening for
+ * eating disorders, is withheld: the record still stands and simply
+ * offers no design. The app renders that case already (SPEC 11).
+ *
+ * The full archive, including designs that were withheld and designs
+ * for records that were dismissed, stays in intake/designs.json.
+ * Nothing here is hand-edited or hand-corrected — a design is model
+ * output in full or it is not published, so what is on screen is
+ * always what the model wrote.
  *
  * Every entry is model output and is labelled unverified on screen.
  */
@@ -36,27 +46,7 @@ const RESEARCH_DESIGNS = {
     "model": "claude-sonnet-5"
   },
   "androgen-drug-metabolism-probe-studies": {
-    "target_women": "Recruit 90 people assigned female at birth aged 18-50 from endocrinology and gender-affirming care clinics, split into three groups of 30: transgender men on stable exogenous testosterone therapy for at least 6 months, cisgender women with polycystic ovary syndrome and biochemical hyperandrogenism, and cisgender women with normal androgen levels as controls.",
-    "variables": [
-      "Serum free and total testosterone level",
-      "CYP3A4 activity measured via midazolam probe drug clearance",
-      "CYP2D6 activity measured via dextromethorphan probe metabolite ratio",
-      "P-glycoprotein transporter activity measured via digoxin pharmacokinetics or probe substrate",
-      "Plasma concentration-time curve (AUC) for a panel of commonly prescribed drugs metabolized by these pathways",
-      "Self-reported adverse drug reactions or unexpected drug effects in the prior 6 months",
-      "Concurrent medications and hormonal therapy dose/duration"
-    ],
-    "stratifiers": [
-      "Age band (18-25, 26-35, 36-50)",
-      "Group type (testosterone therapy vs PCOS vs control)",
-      "Duration and dose of exogenous testosterone exposure",
-      "Body mass index category",
-      "Presence of liver or kidney comorbidity"
-    ],
-    "form": "Single-visit clinical pharmacokinetic study using a validated cocktail probe drug approach (low-dose midazolam and dextromethorphan administered orally), with blood draws at baseline and at 1, 2, 4, 8, and 24 hours post-dose; hormone panels drawn at the same visit; a follow-up questionnaire on medication history and adverse effects administered at baseline and repeated at 6 months to capture any new drug-related issues.",
-    "instrument_source": null,
-    "generated_at": "2026-09-18",
-    "model": "claude-sonnet-5"
+    "withheld": "This design administers something it does not name. Every substance given to a participant is named, or the design is withheld: a reader cannot weigh a risk described as \"a panel of commonly prescribed drugs\"."
   },
   "epilepsy-fertility-treatment-larger-studies": {
     "target_women": "Recruit 250 women aged 25-46 with a confirmed epilepsy diagnosis who are beginning infertility treatment (ovulation induction, IUI, or IVF with hormonal stimulation) at reproductive endocrinology and epilepsy clinics across 8-10 collaborating fertility and neurology centers; enroll consecutively over 18 months.",
@@ -106,27 +96,7 @@ const RESEARCH_DESIGNS = {
     "model": "claude-sonnet-5"
   },
   "brucellosis-pregnancy-treatment-controlled-trials": {
-    "target_women": "Recruit 300 pregnant women (aiming for ~50-60 per treatment arm across at least 5 sites) diagnosed with active brucellosis (positive blood culture or serology consistent with acute infection, e.g. Rose Bengal plus SAT titer ≥1:160) from obstetric and infectious disease clinics in brucellosis-endemic regions (e.g. rural Middle East, Central Asia, Mediterranean basin), recruited at first antenatal presentation with confirmed diagnosis, any gestational age at enrollment.",
-    "variables": [
-      "Maternal clearance of Brucella infection (repeat blood culture/serology negativity at 3 and 6 months post-treatment)",
-      "Relapse of brucellosis within 12 months postpartum",
-      "Pregnancy loss (spontaneous abortion before 20 weeks, stillbirth after 20 weeks)",
-      "Preterm birth (delivery before 37 weeks gestation)",
-      "Birth weight and Apgar score at delivery",
-      "Maternal adverse drug reactions by organ system and severity (graded using CTCAE)",
-      "Congenital anomalies or neonatal infection with Brucella at birth and 6-week follow-up"
-    ],
-    "stratifiers": [
-      "Gestational age at treatment initiation (first, second, third trimester)",
-      "Antibiotic regimen assigned (e.g. rifampicin monotherapy vs rifampicin+trimethoprim-sulfamethoxazole vs other combination)",
-      "Maternal age band (under 20, 20-34, 35+)",
-      "Rural vs urban residence and access to antenatal care",
-      "Presence of comorbid conditions (anemia, diabetes, prior pregnancy loss)"
-    ],
-    "form": "A multi-site randomized controlled trial comparing at least two antibiotic regimens considered plausibly safe in pregnancy, with women followed from enrollment through 6 weeks postpartum via structured antenatal visits every 4 weeks, telephone symptom check-ins every 2 weeks during treatment, and a structured delivery/neonatal outcome form completed at birth; total study duration approximately 3 years to allow for recruitment, follow-up, and staggered enrollment across sites.",
-    "instrument_source": null,
-    "generated_at": "2026-09-18",
-    "model": "claude-sonnet-5"
+    "withheld": "This design assigns an intervention to a vulnerable population and names no oversight. An interventional design on pregnant women, women in labour, children or a comparable group must name its ethics approval, its consent procedure and its independent safety monitoring, or it is not publishable here."
   },
   "pelvic-neuropathy-aetiology-standardised-diagnosis": {
     "target_women": "300 women aged 18-55 presenting to specialist pelvic pain or endometriosis clinics (aim for 5-6 centres) with chronic pelvic pain of at least 6 months' duration, recruited consecutively regardless of suspected cause (endometriosis, obstetric injury, prior pelvic/abdominal surgery, trauma, or unexplained), to build a cohort broad enough to identify neuropathic subtypes rather than only clear-cut cases.",
@@ -175,28 +145,7 @@ const RESEARCH_DESIGNS = {
     "model": "claude-sonnet-5"
   },
   "tre-reproductive-hormones-rct-pcos": {
-    "target_women": "Recruit 160 women aged 18-40 (80 with PCOS per Rotterdam criteria, 80 with obesity but no PCOS as comparator) from endocrinology and gynaecology clinics, reproductive health centres, and community advertising in 3-4 cities, via referral from primary care and social media screening.",
-    "variables": [
-      "Serum total and free testosterone",
-      "Serum LH and FSH, and LH:FSH ratio",
-      "Sex hormone-binding globulin (SHBG)",
-      "Menstrual cycle regularity and length (self-logged)",
-      "Body weight and waist circumference",
-      "Insulin resistance (HOMA-IR) and fasting glucose",
-      "Self-reported adherence to eating window (hours/day)",
-      "Hirsutism score and acne severity"
-    ],
-    "stratifiers": [
-      "PCOS phenotype (classic vs ovulatory vs non-hyperandrogenic)",
-      "Baseline BMI category (obese class I/II/III)",
-      "Age band (18-25, 26-32, 33-40)",
-      "Ethnicity",
-      "Baseline insulin resistance status"
-    ],
-    "form": "Two-arm parallel randomised controlled trial: intervention group follows an 8-hour daily eating window (e.g. 12pm-8pm) with no calorie counting; control group follows usual eating pattern with matched dietary advice. Duration 12 months, with hormone panels, weight, and cycle data collected at baseline, 3, 6, and 12 months; menstrual cycle and adherence logged weekly via app or diary.",
-    "instrument_source": "Ferriman-Gallwey score for hirsutism",
-    "generated_at": "2026-09-18",
-    "model": "claude-sonnet-5"
+    "withheld": "This design restricts eating and says nothing about disordered eating. A dietary-restriction intervention names its screening and exclusion for eating disorders, and monitors for them, or it is withheld."
   },
   "type-2b-vwd-pregnancy-clinical-evidence": {
     "target_women": "Pregnant women aged 18-45 with laboratory-confirmed type 2B von Willebrand disease, recruited from hemophilia treatment centers and high-risk obstetric clinics in a multi-site network (target n=100-150, given rarity, over a 3-4 year enrollment window, ideally coordinated internationally through existing bleeding disorder registries).",

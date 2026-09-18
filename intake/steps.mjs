@@ -470,7 +470,37 @@ const DESIGN_SYSTEM =
   "The one thing you may NOT invent is `instrument_source`. A named " +
   "instrument must be one that really exists; if none fits, return null.\n\n" +
   "Be concrete. A sample size, a cadence, a duration. Plain language for " +
-  "a reader who is not a methodologist.";
+  "a reader who is not a methodologist.\n\n" +
+
+  /* The design rules in validate.mjs withhold a design that breaks any of
+     these, and a withheld design helps nobody. Saying it here is cheaper
+     than catching it there, and it is also simply what a competent
+     methodologist would have written in the first place. */
+  "SAFETY. A design that breaks any of the following is refused by this " +
+  "platform and never reaches a reader:\n" +
+  "1. Do not assign an exposure where observing one answers the question. " +
+  "If the women you need are already taking the drug, already at " +
+  "altitude, already having the operation, then it is a cohort and not a " +
+  "trial. Randomisation is for questions that observation cannot settle.\n" +
+  "2. If you do assign an intervention, and the population is pregnant " +
+  "women, women in labour, breastfeeding women, children, prisoners, " +
+  "refugees, or people in a low-resource setting, then say in `form` what " +
+  "makes that legitimate: ethics approval at every site, written informed " +
+  "consent, an independent data safety monitoring board, and why there is " +
+  "genuine equipoise between the arms.\n" +
+  "3. Name every substance given to a participant. Never write 'a panel " +
+  "of commonly prescribed drugs' or 'various medications'. If you cannot " +
+  "name them, do not administer them.\n" +
+  "4. Respect contraindications. If an arm is unsafe in the first " +
+  "trimester, or near term, or under a given age, say so and exclude it.\n" +
+  "5. An intervention that restricts what someone eats names its " +
+  "screening and exclusion for eating disorders and monitors for them.\n" +
+  "6. Where you break results down by race or ethnicity, say what the " +
+  "breakdown stands for — structural factors, access to care — so it is " +
+  "not read as biology.\n" +
+  "7. Say where a sample size came from, or say plainly that it is an " +
+  "estimate and not a power calculation. Do not let a figure pass for a " +
+  "calculation.";
 
 export async function designFor(extracted) {
   const need = extracted.data_need;

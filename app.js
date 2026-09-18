@@ -582,9 +582,36 @@
     return (typeof RESEARCH_DESIGNS === "object" && RESEARCH_DESIGNS) || {};
   }
 
+  /* What no design in this file contains. Said once per card rather than
+     left for each design to imply it is complete: every one of them states
+     a sample size it did not calculate, and none of them has been near an
+     ethics committee. A researcher reading a plausible-looking protocol
+     needs to know which parts are not there. */
+  function designLimits() {
+    return make("p", "design-limits",
+      "No design here includes an ethics approval, a consent procedure, a " +
+      "data protection plan or a sample size calculation. Those are yours " +
+      "to write, and a study does not begin without them.");
+  }
+
+  /* A design the intake rules refused. The record keeps its claim, its date
+     and its check; what it does not get is a study design, and it says so.
+     The refused design itself is never shown and never repaired by hand —
+     a card labelled AI-generated may not carry a sentence a person wrote. */
+  function withheldNode(reason) {
+    var box = make("div", "design design-withheld");
+
+    box.appendChild(make("p", "design-withheld-head",
+      "No study design is offered for this record."));
+    box.appendChild(make("p", "design-withheld-why", reason));
+
+    return box;
+  }
+
   function designNode(problem, need) {
     var design = designs()[need.id];
     if (!design) { return null; }
+    if (hasText(design.withheld)) { return withheldNode(design.withheld); }
 
     var wrap = make("div", "design");
     var panelId = "design-panel-" + need.id;
@@ -645,6 +672,7 @@
       "In what form", design.form, design.instrument_source
     ));
     panel.appendChild(fields);
+    panel.appendChild(designLimits());
 
     /* The platform ends where study design begins (§6, stage 3), and until
        now it ended by asking the reader to retype it. This hands the whole

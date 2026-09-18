@@ -14,14 +14,14 @@ import { writeFileSync } from "node:fs";
 import {
   HERE, REPO, today, writeJson, readJson, loadSeed, seedUrls,
   loadLedger, saveLedger, ledgerJudged, ledgerNote, YEARS_BACK,
-  publishableDesigns, renderDesigns
+  publishableDesigns, renderDesigns, WITHHELD
 } from "./lib.mjs";
 import {
   filterAbstract, extractRecord, verifyRecord, designFor, FILTER_VERSION,
   SearchFailedError
 } from "./steps.mjs";
 import { FILTER_MODEL, spendLine } from "./model.mjs";
-import { validateRecord, mappableAreas } from "./validate.mjs";
+import { validateRecord, validateDesign, mappableAreas } from "./validate.mjs";
 
 const CANDIDATES = join(HERE, "candidates.json");
 const PREVIEW = join(HERE, "preview.json");
@@ -559,8 +559,22 @@ writeJson(CANDIDATES, {
 
 writeJson(DESIGNS_JSON, designs);
 
-const published = publishableDesigns(designs, seed, { records });
+/* The safety gate. A design that fails it is not published and not
+   repaired: repairing it by hand would put words on a card labelled
+   AI-generated that no model wrote. The record keeps its claim, its date
+   and its check, and offers no design \u2014 which the app has always been
+   built to render. */
+const published = publishableDesigns(designs, seed, { records },
+  (design) => validateDesign(design));
+
 writeFileSync(DESIGNS_JS, renderDesigns(published), "utf8");
+
+for (const id of published[WITHHELD]) {
+  console.log("  design withheld: " + id);
+  validateDesign(designs[id]).errors.forEach(
+    (e) => console.log("      " + e)
+  );
+}
 
 /* The distribution is worth printing: a run returning mostly "collected"
    or "partial" means the phrases are finding sparse data rather than
@@ -581,7 +595,8 @@ console.log("Areas:  " + (Object.keys(byArea).length + " — " +
 console.log("");
 console.log("Wrote " + records.length + " records to intake/candidates.json");
 console.log("Wrote " + Object.keys(published).length + " designs to research-designs.js" +
-            " (" + Object.keys(designs).length + " in the archive)");
+            " (" + Object.keys(designs).length + " in the archive, " +
+            published[WITHHELD].length + " withheld by the design rules)");
 console.log("Spend: " + spendLine());
 console.log("");
 console.log("Nothing has been written to data.js. Open each citation, confirm");
