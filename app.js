@@ -1,4 +1,4 @@
-/* Unasked — renders the three screens from the seed in data.js.
+/* Her Silent Data — renders the three screens from the seed in data.js.
  * No framework, no build step (SPEC §13). */
 
 (function () {
@@ -386,7 +386,7 @@
      the correction history ends up public, which is better provenance
      than a form that mails one person. */
   var REPO_ISSUES =
-    "https://github.com/minimarina/women-data-gap-map/issues/new";
+    "https://github.com/minimarina/her-silent-data/issues/new";
 
   function issueUrl(problem, need) {
     return REPO_ISSUES +
@@ -750,13 +750,13 @@
     /* The address of the record itself, not of the site. A design pasted
        into a protocol or an email now carries the way back to the claim it
        answers, which is what the provenance rule was reaching for. */
-    lines.push("From Unasked — " + SITE_URL +
+    lines.push("From Her Silent Data — " + SITE_URL +
       recordRoute(problem));
 
     return lines.join("\n");
   }
 
-  var SITE_URL = "https://minimarina.github.io/women-data-gap-map/";
+  var SITE_URL = "https://minimarina.github.io/her-silent-data/";
 
   /* navigator.clipboard is unavailable in some file:// contexts, and the
      app is built to open from file:// (§13). The textarea fallback is the

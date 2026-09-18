@@ -879,13 +879,13 @@ works identically from `file://` and from Pages. The contents stay
 JSON-shaped and hand-editable.
 
 - Hosting: **GitHub Pages**, served from `main` at the repo root.
-  Repo `minimarina/women-data-gap-map` is already public.
-  Public URL: `https://minimarina.github.io/women-data-gap-map/`
+  Repo `minimarina/her-silent-data` is already public.
+  Public URL: `https://minimarina.github.io/her-silent-data/`
   Enable once via Settings → Pages → Source: *Deploy from a branch* →
   `main` → `/ (root)`. No build workflow, because there is no build.
 - `index.html` therefore lives at the repo root, beside `README.md`.
 - **All asset paths must be relative** (`styles.css`, not `/styles.css`),
-  because the site is served from the `/women-data-gap-map/` subpath.
+  because the site is served from the `/her-silent-data/` subpath.
   An absolute path works locally and 404s on Pages — the one mistake
   this setup can make.
 - Every push to `main` republishes the site, so the public URL is always

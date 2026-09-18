@@ -1,13 +1,11 @@
-# Unasked
+# Her Silent Data
 
 **The gender data gap, turned into your next study.**
 
 A platform for researchers who want to help close the data gap on women,
-but don't know which data to collect first. The name is the cause: the
-data is missing because nobody asked the women it would have come from.
-
-(The repository and site keep their original `women-data-gap-map` path —
-the public URL was in circulation before the product had its name.)
+but don't know which data to collect first. The name is the subject: data
+that exists in women's lives and was never recorded, so medicine cannot
+hear it.
 
 For each problem, it answers five questions:
 
@@ -29,7 +27,7 @@ come from.
 ## Run it
 
 Open `index.html` — double-click the file, or visit
-<https://minimarina.github.io/women-data-gap-map/>.
+<https://minimarina.github.io/her-silent-data/>.
 
 There is no build step, no install and no server. Plain HTML, CSS and
 JavaScript with no dependencies: three screens and one seed file do not
