@@ -215,7 +215,18 @@ if (passed.length === 0) {
 
 /* ---------- 3 · extract, verify, design ---------- */
 
-const records = [];
+/* Candidates accumulate, like designs do. A run that overwrote this file
+   would throw away records still waiting to be reviewed — the same bug
+   the designs file already had, in the file next to it. Records already
+   merged into data.js are removed by hand along with the merge. */
+const previous = readJson(CANDIDATES, null);
+const records = (previous && Array.isArray(previous.records))
+  ? previous.records.slice()
+  : [];
+const alreadyHeld = new Set(
+  records.map((record) => record.paper && record.paper.doi).filter(Boolean)
+);
+
 const designs = readJson(DESIGNS_JSON, {});
 
 for (const paper of passed) {
@@ -299,7 +310,10 @@ for (const paper of passed) {
     });
 
     record.validation = result;
-    records.push(record);
+    if (!alreadyHeld.has(paper.doi)) {
+      records.push(record);
+      alreadyHeld.add(paper.doi);
+    }
     if (design) { designs[need.id] = design; }
 
     ledgerNote(ledger, paper.doi, "candidate", paper.title);
