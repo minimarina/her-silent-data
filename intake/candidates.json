@@ -1,0 +1,9 @@
+{
+  "run_at": "2026-09-18",
+  "stage": "discover-only",
+  "query_window_years": 5,
+  "hit_count": 15325,
+  "fetched": 40,
+  "unseen": 0,
+  "papers": []
+}
