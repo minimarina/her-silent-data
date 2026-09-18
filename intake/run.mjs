@@ -17,7 +17,8 @@ import {
   publishableDesigns, renderDesigns
 } from "./lib.mjs";
 import {
-  filterAbstract, extractRecord, verifyRecord, designFor, FILTER_VERSION
+  filterAbstract, extractRecord, verifyRecord, designFor, FILTER_VERSION,
+  SearchFailedError
 } from "./steps.mjs";
 import { FILTER_MODEL, spendLine } from "./model.mjs";
 import { validateRecord, mappableAreas } from "./validate.mjs";
@@ -510,6 +511,13 @@ for (const paper of passed) {
     result.warnings.forEach((w) => console.log("    warning: " + w));
 
   } catch (error) {
+    /* A verification that could not be carried out leaves the paper
+       unjudged rather than rejected: nothing was decided about it, so the
+       ledger must not claim anything was. A later run picks it up again. */
+    if (error instanceof SearchFailedError) {
+      console.log("  skipped: " + error.message + " — left for a later run");
+      continue;
+    }
     console.log("  failed: " + error.message.split("\n")[0]);
   }
 }

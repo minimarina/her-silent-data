@@ -84,6 +84,19 @@ export function validateRecord(record, context) {
     errors.push("verification.checked_at is not an ISO date.");
   }
 
+  /* A date is not a result. A record was marked "missing" on 18 Sep on
+     the back of a search the model itself reported as failed — its
+     findings read "I cannot confirm or deny" — and it passed, because
+     checked_at was present and sources had been captured. A status is a
+     claim about what a search found, so a search that found nothing
+     usable may not produce one. */
+  if (check && check.search_outcome && check.search_outcome !== "reviewed") {
+    errors.push(
+      "verification.search_outcome is " + JSON.stringify(check.search_outcome) +
+      ". A status may not be set from a check that did not happen."
+    );
+  }
+
   /* --- a claim that data exists must say where --- */
   const status = need.status;
   if (["missing", "partial", "collected"].indexOf(status) === -1) {
@@ -280,6 +293,16 @@ function selfTest() {
     "The review suggests that follow-up after birth is probably too " +
     "short to detect the outcomes that matter to women over a year.";
   cases.push(["a note that quotes nothing is rejected", unquoted, false]);
+
+  const unchecked2 = base();
+  unchecked2.data_need.verification.search_outcome = "failed";
+  cases.push([
+    "a status from a failed search is rejected", unchecked2, false
+  ]);
+
+  const checked = base();
+  checked.data_need.verification.search_outcome = "reviewed";
+  cases.push(["a status from a completed search passes", checked, true]);
 
   const misquoted = base();
   misquoted.paper.abstract = ABSTRACT;

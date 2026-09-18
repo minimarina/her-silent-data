@@ -129,6 +129,12 @@ acceptance tests.
   were rejected by hand, and passed all three that were approved. It
   cannot catch the third kind of error — a quotation that is accurate and
   misread — which is why the human step stays.
+- **A status may not come from a check that did not happen.** The verify
+  step declares `search_outcome` separately from the status, and a record
+  whose search failed is left unjudged rather than written with a status
+  nobody established. On 18 Sep a record was marked `missing` on the back
+  of a search the model itself described as failed — `checked_at` was
+  present and sources had been captured, so nothing downstream could tell.
 - Guidance with no source URL is rejected. Sourced, or null.
 - A record with no `verification.checked_at` is rejected.
 - `collected` or `partial` without a `dataset_source` is rejected.

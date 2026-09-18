@@ -268,8 +268,24 @@ export async function extractRecord(paper) {
 const VERIFY_SCHEMA = {
   type: "object",
   additionalProperties: false,
-  required: ["status", "findings", "dataset_source"],
+  required: ["search_outcome", "status", "findings", "dataset_source"],
   properties: {
+    /* Asked first, and separately from the status, because a check that
+       did not happen must not be able to produce one. On 18 Sep a record
+       was marked "missing" on the back of a search the model reported as
+       failed — its own findings read "I cannot confirm or deny" — and
+       nothing downstream could tell, because checked_at was present and
+       sources had been captured. */
+    search_outcome: {
+      type: "string",
+      enum: ["reviewed", "failed"],
+      description:
+        "'reviewed' only if you actually read search results and can " +
+        "answer from them. 'failed' if the search errored, returned " +
+        "nothing usable, or you cannot say either way. Answering " +
+        "'failed' is a correct outcome and costs nothing; guessing a " +
+        "status without having looked is the one unacceptable result."
+    },
     status: {
       type: "string",
       enum: ["missing", "partial", "collected"],
@@ -348,17 +364,29 @@ export async function verifyRecord(extracted) {
 
   const result = jsonOf(response);
 
+  /* A failed check is not a result. Raising it here means the record is
+     never written with a status nobody established — run.mjs catches it,
+     leaves the paper unjudged, and a later run can try again. */
+  if (result.search_outcome !== "reviewed") {
+    throw new SearchFailedError(
+      "the verification search did not return usable results"
+    );
+  }
+
   return {
     status: result.status,
     dataset_source: result.dataset_source,
     verification: {
       checked_at: today(),
       method: "web search",
+      search_outcome: result.search_outcome,
       findings: result.findings,
       sources: searchSourcesOf(response)
     }
   };
 }
+
+export class SearchFailedError extends Error {}
 
 /* ---------- 4 · design ---------- */
 

@@ -970,7 +970,7 @@
       "first_seen": "2026-09-18",
       "last_seen": "2026-09-18",
       "title": "Ultra-processed food consumption and risk of infertility in adults: a systematic review and meta-analysis.",
-      "outcome": "seen"
+      "outcome": "candidate"
     },
     "10.1186/s12889-026-28037-1": {
       "first_seen": "2026-09-18",
@@ -1601,13 +1601,14 @@
       "first_seen": "2026-09-18",
       "last_seen": "2026-09-18",
       "title": "Urinary Incontinence in Women Athletes: Umbrella Review and Meta-analysis of Sport-Related Factors.",
-      "outcome": "seen"
+      "outcome": "rejected-by-filter",
+      "filter_version": 4
     },
     "10.1093/ejendo/lvag033": {
       "first_seen": "2026-09-18",
       "last_seen": "2026-09-18",
       "title": "GLP-1 receptor agonist treatment in women with polycystic ovary syndrome-a systematic review and meta-analysis.",
-      "outcome": "seen"
+      "outcome": "candidate"
     },
     "10.1016/j.ijgc.2026.104850": {
       "first_seen": "2026-09-18",
@@ -1824,13 +1825,14 @@
       "first_seen": "2026-09-18",
       "last_seen": "2026-09-18",
       "title": "Altered reproductive hormone profiles in systemic lupus erythematosus - A systematic review and meta-analysis.",
-      "outcome": "seen"
+      "outcome": "candidate"
     },
     "10.1002/14651858.cd009881.pub3": {
       "first_seen": "2026-09-18",
       "last_seen": "2026-09-18",
       "title": "Progesterone receptor modulators for endometriosis.",
-      "outcome": "seen"
+      "outcome": "rejected-by-filter",
+      "filter_version": 4
     },
     "10.1016/j.midw.2026.104960": {
       "first_seen": "2026-09-18",

@@ -267,5 +267,51 @@ const RESEARCH_DESIGNS = {
     "instrument_source": "Pasero Opioid-induced Sedation Scale (POSS)",
     "generated_at": "2026-09-18",
     "model": "claude-sonnet-5"
+  },
+  "sle-hormone-profiles-flare-longitudinal": {
+    "target_women": "Recruit 150 women aged 18-45 with a confirmed SLE diagnosis (ACR/EULAR criteria), regular menstrual cycles (not on hormonal contraception or GnRH therapy), followed at 3-5 lupus/rheumatology clinics, enrolled regardless of current disease activity so both flare and quiescent periods can be captured over follow-up.",
+    "variables": [
+      "Serum estradiol, progesterone, LH, FSH, prolactin, and DHEA levels",
+      "SLEDAI-2K disease activity score at each visit",
+      "Timing of blood draw relative to menstrual cycle day",
+      "Occurrence, date, and severity of clinically defined flare (per treating physician and standardized flare criteria)",
+      "Current medications including corticosteroid dose and immunosuppressants",
+      "Complement levels (C3, C4) and anti-dsDNA titer",
+      "Self-reported menstrual cycle regularity and symptoms"
+    ],
+    "stratifiers": [
+      "Age band (18-25, 26-35, 36-45)",
+      "Race/ethnicity",
+      "Lupus nephritis status (renal vs non-renal involvement)",
+      "Baseline disease duration (new-onset vs established >5 years)",
+      "Current corticosteroid/immunosuppressant use"
+    ],
+    "form": "Prospective cohort study with monthly blood draws and clinical assessments for 12 months, with additional unscheduled visits within 72 hours of any physician-confirmed flare; blood samples timed to a known menstrual cycle day using urinary LH tracking; data collected via structured clinic visit forms plus a daily symptom/menstrual diary app.",
+    "instrument_source": "SLEDAI-2K (Systemic Lupus Erythematosus Disease Activity Index 2000)",
+    "generated_at": "2026-09-18",
+    "model": "claude-sonnet-5"
+  },
+  "pcos-glp1-treatment-outcomes": {
+    "target_women": "Recruit 240 women aged 18-40 with PCOS (Rotterdam criteria) and BMI ≥27 kg/m2, from outpatient endocrinology/gynecology and reproductive medicine clinics across 4-6 sites, plus referrals from primary care; exclude those on fertility treatment seeking pregnancy within 6 months or already on GLP-1 agonists.",
+    "variables": [
+      "Fasting glucose and insulin levels (mg/dL, HOMA-IR calculated)",
+      "Menstrual cycle regularity (self-reported cycle length and frequency of periods over prior 3 months, tracked monthly)",
+      "Hirsutism severity (modified Ferriman-Gallwey score)",
+      "Health-related quality of life score",
+      "Depression and anxiety symptom scores",
+      "Direct medical costs and out-of-pocket spending on PCOS-related care (drug cost, visits, labs) over the study period",
+      "Body weight and BMI"
+    ],
+    "stratifiers": [
+      "Baseline BMI category (overweight vs obesity class I/II/III)",
+      "Age band (18-25, 26-32, 33-40)",
+      "Ethnicity/race",
+      "Household income or insurance coverage type",
+      "Baseline insulin resistance status (HOMA-IR above/below clinical threshold)"
+    ],
+    "form": "Prospective observational cohort (or pragmatic trial if feasible) comparing women newly started on a GLP-1 receptor agonist versus matched women on standard PCOS care (metformin/lifestyle only); data collected at baseline, 3, 6, and 12 months via clinic visits (labs, exam for hirsutism) and self-administered questionnaires (quality of life, mental health, menstrual diary, cost diary); total duration 12 months per participant with staggered enrollment over 18 months.",
+    "instrument_source": "PCOSQ (Polycystic Ovary Syndrome Quality of Life Questionnaire) for quality of life; Patient Health Questionnaire-9 (PHQ-9) for depression; Generalized Anxiety Disorder 7-item scale (GAD-7) for anxiety; modified Ferriman-Gallwey scale for hirsutism",
+    "generated_at": "2026-09-18",
+    "model": "claude-sonnet-5"
   }
 };
