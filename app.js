@@ -4,9 +4,13 @@
 (function () {
   "use strict";
 
+  /* One word per status, everywhere it appears: the badge, the counts key
+     on the home screen, and the copied design all read from here. "Partial"
+     on the badge against "Partly covered" in the sentence beside it was one
+     status wearing two names within 40px. */
   var STATUS_WORD = {
     collected: "Collected",
-    partial: "Partial",
+    partial: "Partly covered",
     missing: "Missing"
   };
 
@@ -70,6 +74,39 @@
 
   function hasText(value) {
     return typeof value === "string" && value.trim() !== "";
+  }
+
+  var MONTHS = [
+    "January", "February", "March", "April", "May", "June",
+    "July", "August", "September", "October", "November", "December"
+  ];
+
+  var ISO_DATE = /^(\d{4})-(\d{2})-(\d{2})$/;
+
+  /* "2026-07-23" → "23 July 2026". Parsed by hand rather than through Date:
+     new Date("2026-07-23") reads a bare ISO date as UTC and prints it in
+     local time, so west of Greenwich every claim renders a day early. A
+     value that is not a plain ISO date is passed through untouched. */
+  function longDate(value) {
+    var parts = ISO_DATE.exec(hasText(value) ? value.trim() : "");
+
+    if (!parts) { return value; }
+    return Number(parts[3]) + " " + MONTHS[Number(parts[2]) - 1] + " " +
+      parts[1];
+  }
+
+  /* Whole days from one ISO date to another, or null if either is not one.
+     Date.UTC on both sides, so no timezone and no daylight saving. */
+  function daysBetween(from, to) {
+    var a = ISO_DATE.exec(hasText(from) ? from.trim() : "");
+    var b = ISO_DATE.exec(hasText(to) ? to.trim() : "");
+
+    if (!a || !b) { return null; }
+
+    var start = Date.UTC(Number(a[1]), Number(a[2]) - 1, Number(a[3]));
+    var end = Date.UTC(Number(b[1]), Number(b[2]) - 1, Number(b[3]));
+
+    return Math.round((end - start) / 86400000);
   }
 
   /* Like make(), but an empty value becomes "Not established" rather than
@@ -219,10 +256,24 @@
 
     box.appendChild(make("span", null, evidence.note));
 
+    /* When the claim was made. The check below says when the platform last
+       looked; without this, "collected since" has no since, and the reader
+       cannot tell a gap named last month from one named four years ago.
+       Every record in the seed carries it and none of them showed it. */
+    if (hasText(evidence.claimed_date)) {
+      box.appendChild(make("span", "gap-claimed",
+        "Gap claimed " + longDate(evidence.claimed_date)));
+    }
+
     /* §8.1 — the source sits on the record. Inside a button it can only
        be named, because a link may not be nested in one; everywhere else
-       it is the link a researcher actually follows. */
-    if (isUrl(evidence.source)) {
+       it is the link a researcher actually follows.
+
+       Not when it is the record's own source, which it is on all eleven
+       seed records: the Source line sits a few centimetres above this one,
+       and the same DOI printed twice on one screen reads as two references
+       until the reader compares the strings. */
+    if (isUrl(evidence.source) && evidence.source !== problem.source) {
       var cite = make("span", "gap-cite");
       cite.appendChild(make("span", "label", "Read it: "));
 
@@ -346,8 +397,16 @@
     if (split[1]) {
       var moreId = "check-more-" + need.id;
 
-      var ellipsis = make("span", "check-ellipsis", "…");
-      box.appendChild(ellipsis);
+      /* The cut falls after a sentence's own full stop, so appending an
+         ellipsis to it printed four dots on every truncated check. An
+         ellipsis marks an omission mid-sentence; after a closed one the
+         toggle below is already the signal that there is more. */
+      var ellipsis = null;
+
+      if (!/[.!?]["'’”)]?$/.test(split[0])) {
+        ellipsis = make("span", "check-ellipsis", "…");
+        box.appendChild(ellipsis);
+      }
 
       var more = make("span", "check-more", " " + split[1]);
       more.id = moreId;
@@ -364,15 +423,27 @@
 
         toggle.setAttribute("aria-expanded", open ? "false" : "true");
         more.hidden = open;
-        ellipsis.hidden = !open;
+        if (ellipsis) { ellipsis.hidden = !open; }
         toggle.textContent = open ? "Show the full check" : "Show less";
       });
       box.appendChild(toggle);
     }
 
-    box.appendChild(make("span", "region",
-      "Searched " + check.checked_at +
-      (hasText(check.method) ? " — " + check.method : "")));
+    /* The interval is the sentence a researcher is actually weighing, and
+       it is arithmetic on two stored dates rather than anything new. */
+    var searched = "Searched " + longDate(check.checked_at) +
+      (hasText(check.method) ? " — " + check.method : "");
+
+    var days = need.gap_evidence
+      ? daysBetween(need.gap_evidence.claimed_date, check.checked_at)
+      : null;
+
+    if (days !== null && days >= 0) {
+      searched += " · " + days + (days === 1 ? " day" : " days") +
+        " after the claim";
+    }
+
+    box.appendChild(make("span", "region", searched));
 
     return box;
   }
@@ -434,25 +505,28 @@
      when the published text specifies a population or a method; null is
      the normal case, and the screen says so plainly rather than filling
      the space with the platform's own invention. */
-  function guidanceNode(need) {
+  function guidanceNode(problem, need) {
+    var guidance = need.collection_guidance;
+
+    /* The usual answer, on eight of the eleven seed records. It was a
+       labelled block with a left rule — the same shape and weight as the
+       quotation above it — whose whole content was that there is nothing
+       here. The sentence stays, because §8.1 asks the app to say what it
+       does not know; it no longer looks like a finding. */
+    if (!guidance || !hasText(guidance.note)) {
+      return make("p", "guidance-none",
+        "The source does not say how to collect it. Nothing is invented here.");
+    }
+
     var box = make("div", "guidance");
     box.appendChild(make(
       "span", "label", "What the source says about collecting it: "
     ));
-
-    var guidance = need.collection_guidance;
-    if (!guidance || !hasText(guidance.note)) {
-      box.appendChild(make(
-        "span",
-        "unknown",
-        "The source does not say. Nothing is invented here."
-      ));
-      return box;
-    }
-
     box.appendChild(make("span", null, guidance.note));
 
-    if (isUrl(guidance.source)) {
+    /* Same rule as the gap evidence: not when it is the record's own
+       source, which is already linked at the top of the screen. */
+    if (isUrl(guidance.source) && guidance.source !== problem.source) {
       var cite = make("span", "gap-cite");
       cite.appendChild(make("span", "label", "Read it: "));
       var link = make("a", null, sourceLabel(guidance.source));
@@ -486,8 +560,20 @@
        button used to say Generate, which described the pipeline rather
        than the click, and was the one place the product overstated
        itself. §11 says so in prose; the label now says it too. */
-    var button = make("button", "design-toggle", "Show research design");
+    var button = make("button", "design-toggle");
     button.type = "button";
+
+    /* The same rotating mark the intake disclosure carries, and a label
+       that says what the next click does. It used to do neither: the panel
+       it opens runs to several hundred words and the button went on
+       reading "Show research design" the whole time it was open. */
+    var mark = make("span", "toggle-mark");
+    mark.setAttribute("aria-hidden", "true");
+
+    var label = make("span", null, "Show research design");
+
+    button.appendChild(mark);
+    button.appendChild(label);
     button.setAttribute("aria-expanded", "false");
     button.setAttribute("aria-controls", panelId);
 
@@ -534,8 +620,11 @@
 
     button.addEventListener("click", function () {
       var open = button.getAttribute("aria-expanded") === "true";
+
       button.setAttribute("aria-expanded", open ? "false" : "true");
       panel.hidden = open;
+      label.textContent = open
+        ? "Show research design" : "Hide research design";
     });
 
     wrap.appendChild(button);
@@ -691,9 +780,12 @@
     }
 
     /* "Nothing is missing" and "everything is collected" are different
-       claims, and partial data must not be reported as data in hand. */
+       claims, and partial data must not be reported as data in hand — which
+       "partly covered" says without opening on a denial. The old string led
+       with "No data needs missing", so a register of gaps began the line by
+       arguing against itself. */
     if (partial > 0) {
-      return "No data needs missing, " + partial + " of " + total + " partial";
+      return partial + " of " + total + " partly covered";
     }
     return "All " + total + " data needs collected";
   }
@@ -712,8 +804,17 @@
   /* An area is on the map only if somebody measured a coordinate for it.
      Both lists are derived from the same order, so pins, their numbers and
      the legend cannot drift apart. */
+  /* Sorted down the figure, not in seed order. The hint under the map says
+     the numbers match the list below, and a reader checks that by scanning
+     the figure — where seed order ran 1, 3, 4, 6, 5, 2 and looked shuffled.
+     renderMap() and renderMapLegend() both read this, so the pins, their
+     numbers and the legend still cannot drift apart. */
   function pinnedGroups() {
-    return areaGroups().filter(function (g) { return MAP_POINTS[g.area]; });
+    return areaGroups()
+      .filter(function (g) { return MAP_POINTS[g.area]; })
+      .sort(function (a, b) {
+        return MAP_POINTS[a.area].y - MAP_POINTS[b.area].y;
+      });
   }
 
   function unpinnedGroups() {
@@ -760,13 +861,23 @@
      above the heading, so focusing the heading would put Back behind the
      user and out of reach of a forward Tab. The section is labelled by
      its heading, so a screen reader still announces the screen name. */
+  /* Where the map was left. Every navigation used to scroll to zero,
+     including the way back — and on a phone the figure is some 700px tall
+     with the legend underneath it, so returning from a record meant
+     scrolling all of it again to reach the row you had just left. */
+  var mapScroll = 0;
+
   function show(screenId) {
+    var leaving = SCREENS.filter(function (id) { return !el(id).hidden; })[0];
+
+    if (leaving === "screen-problems") { mapScroll = window.pageYOffset; }
+
     SCREENS.forEach(function (id) {
       el(id).hidden = (id !== screenId);
     });
 
     el(screenId).focus();
-    window.scrollTo(0, 0);
+    window.scrollTo(0, screenId === "screen-problems" ? mapScroll : 0);
   }
 
   /* ---------- screen 1a: one area's problems ---------- */
@@ -803,7 +914,14 @@
       : "Area of the body");
 
     setValue(el("area-heading"), group.area);
-    el("area-count").textContent = gapSentenceFor(group.needs);
+
+    /* One problem means the card below prints this very sentence, a few
+       lines lower — two identical strings 40px apart read as a fault. The
+       line earns its place only when it is totalling several cards up. */
+    var areaCount = el("area-count");
+    areaCount.hidden = group.problems.length === 1;
+    areaCount.textContent = areaCount.hidden
+      ? "" : gapSentenceFor(group.needs);
 
     var list = el("area-problem-list");
     list.textContent = "";
@@ -852,7 +970,11 @@
     setValue(el("detail-heading"), problem.title);
     setValue(el("detail-summary"), problem.summary);
     setValue(el("detail-affected"), problem.affected_women);
-    el("detail-count").textContent = gapSentence(problem);
+    /* Same rule one level down: with a single need the badge on the block
+       below says this, and it was the third place on the screen to do so. */
+    var detailCount = el("detail-count");
+    detailCount.hidden = problem.data_needs.length === 1;
+    detailCount.textContent = detailCount.hidden ? "" : gapSentence(problem);
 
     var originSlot = el("detail-origin");
     originSlot.textContent = "";
@@ -925,7 +1047,7 @@
 
     /* What the source said about collecting it, which is usually nothing.
        An empty answer here is the honest one and is never filled in. */
-    item.appendChild(guidanceNode(need));
+    item.appendChild(guidanceNode(problem, need));
 
     var design = designNode(problem, need);
     if (design) { item.appendChild(design); }
@@ -1160,7 +1282,7 @@
       var item = make("span", "summary-key-item");
       item.setAttribute("data-status", status);
       item.appendChild(make("strong", null, String(sum[status])));
-      item.appendChild(make("span", null, " " + status));
+      item.appendChild(make("span", null, " " + STATUS_WORD[status].toLowerCase()));
       key.appendChild(item);
     });
     slot.appendChild(key);
@@ -1334,6 +1456,15 @@
       attrs(title, {
         x: labelX(point.side), y: point.label_y, "text-anchor": anchor
       });
+
+      /* The qualifier the legend has carried under 640px since the ring
+         caption was dropped. At desktop width nothing said it, so the one
+         pin on the ring sat beside the ankles looking like an ankle.
+         Non-breaking spaces: SVG collapses ordinary leading whitespace. */
+      if (point.kind === "systemic") {
+        title.appendChild(svgMake("tspan", "mark-systemic",
+          " · whole body"));
+      }
       mark.appendChild(title);
 
       var line = svgMake("text", "mark-count", sentence);

@@ -300,21 +300,10 @@ a:hover { text-decoration: none; }
 
 /* Where existing data lives. Same shape as gap evidence, because they
    are the two halves of one idea; teal rule rather than grey, because
-   this one is a thing you can go and use. */
-.dataset {
-  display: block;
-  margin-top: 10px;
-  padding-left: var(--space-card);
-  border-left: 3px solid var(--teal-accent);
-  font-size: 1rem;
-  line-height: 1.5;
-  color: var(--muted);
-}
-
-.dataset .label {
-  font-weight: 600;
-  color: var(--navy-ink);
-}
+   this one is a thing you can go and use. The box, the ink body and the
+   muted label all come from the shared rule further down this file, and
+   the teal rule is set there too — same specificity, so it has to be
+   stated after the rule it overrides, not before it. */
 
 .dataset .gap-cite {
   display: block;
@@ -390,24 +379,55 @@ a:hover { text-decoration: none; }
    cannot cite data that does not exist. */
 
 /* This is substantive prose, not a caption, so it keeps the §7.2 body
-   floor of 16px. --muted holds 5.9:1 on white (§12.12). */
+   floor of 16px — and it is the claim itself, so it is set in ink.
+   It used to be --muted under a --navy-ink label, which made the loudest
+   thing in the block the word "label" and the quietest the quotation a
+   sceptic came to read. The label is now the caption and the evidence is
+   the text, which is also the one convention the whole app uses: every
+   label on a record is muted, every value is ink. */
 .gap-evidence,
 .verification,
-.guidance {
+.guidance,
+.dataset {
   display: block;
   margin-top: 10px;
   padding-left: var(--space-card);
   border-left: 3px solid var(--border);
   font-size: 1rem;
   line-height: 1.5;
-  color: var(--muted);
+  color: var(--navy-ink);
 }
 
 .gap-evidence .label,
 .verification .label,
-.guidance .label {
+.guidance .label,
+.dataset .label {
   font-weight: 600;
-  color: var(--navy-ink);
+  color: var(--muted);
+}
+
+/* Teal rather than grey, because existing data is a thing you can go and
+   use. After the shared rule above, which sets the border it replaces. */
+.dataset { border-left-color: var(--teal-accent); }
+
+/* Usually there is no guidance, and saying so took a labelled block with a
+   left rule — the same weight as the quotation above it, on 8 of the 11
+   records. The sentence is kept, because §8.1 asks the app to state what it
+   does not know; it is no longer given the shape of a finding. */
+.guidance-none {
+  margin: 12px 0 0;
+  color: var(--muted);
+  font-size: 0.875rem;
+  font-style: italic;
+}
+
+/* When the gap was named. The check below says when the platform last
+   looked; without this line "collected since" has no since. */
+.gap-claimed {
+  display: block;
+  margin-top: 4px;
+  font-size: 0.875rem;
+  color: var(--muted);
 }
 
 .gap-evidence .gap-cite,
@@ -633,6 +653,16 @@ a:hover { text-decoration: none; }
 
 .mark-count {
   font-size: 13px;
+  fill: var(--muted);
+}
+
+/* Why one pin sits off the body, said where the words are. The legend has
+   carried this under 640px since the ring caption was dropped; at desktop
+   width the same pin sat on a faint dashed ellipse beside the ankles with
+   nothing to explain it until after the click. */
+.mark-systemic {
+  font-size: 13px;
+  font-weight: 400;
   fill: var(--muted);
 }
 
@@ -1009,7 +1039,8 @@ a:hover { text-decoration: none; }
 }
 .intake-toggle:hover { text-decoration: underline; }
 
-.intake-toggle-mark {
+.intake-toggle-mark,
+.toggle-mark {
   width: 0;
   height: 0;
   flex: 0 0 auto;
@@ -1019,7 +1050,8 @@ a:hover { text-decoration: none; }
   transition: transform 150ms ease;
   transform-origin: 30% 50%;
 }
-.intake-toggle[aria-expanded="true"] .intake-toggle-mark {
+.intake-toggle[aria-expanded="true"] .intake-toggle-mark,
+.design-toggle[aria-expanded="true"] .toggle-mark {
   transform: rotate(90deg);
 }
 
@@ -1107,9 +1139,9 @@ a:hover { text-decoration: none; }
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: 4px;
-  font-size: 0.875rem;
+  font-size: 1rem;
   line-height: 1.5;
-  color: var(--muted);
+  color: var(--navy-ink);
 }
 
 .check-note p { margin: 0; }
@@ -1129,8 +1161,12 @@ a:hover { text-decoration: none; }
   border-top: 1px solid var(--border);
 }
 
+/* Inline-flex rather than inline-block, so the disclosure mark sits on the
+   button's centreline. */
 .design-toggle {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
   padding: 8px 14px;
   background: var(--teal-accent);
   border: 0;
