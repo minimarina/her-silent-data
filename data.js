@@ -253,7 +253,6 @@ const DATA = {
         "https://doi.org/10.1590/s1678-9946202668032",
       origin: "sourced",
       is_demo: false,
-      map_point: { kind: "site", x: 455, y: 262, side: "right", label_y: 230 },
       data_needs: [
         {
           id: "brucellosis-pregnancy-treatment-controlled-trials",
@@ -352,7 +351,6 @@ const DATA = {
         "https://doi.org/10.1093/ecco-jcc/jjag045",
       origin: "sourced",
       is_demo: false,
-      map_point: { kind: "systemic", x: 334, y: 95, side: "left",  label_y: 80 },
       data_needs: [
         {
           id: "advanced-therapies-pregnancy-highquality-data",

@@ -374,14 +374,27 @@ the label columns and without them the figure renders about 90px across.
 ### 7.6 The body map
 
 **Decided:** the home screen leads with a figure, because the platform's
-claim is anatomical before it is statistical. Five red markers on a body
-say in one glance what the card list takes a paragraph to say, and the
-same image is what a judge meets as a thumbnail.
+claim is anatomical before it is statistical. A handful of red markers on
+a body say in one glance what the card list takes a paragraph to say, and
+the same image is what a judge meets as a thumbnail.
+
+**One marker per AREA, not per problem.** An area holds however many
+problems sit in it, and the marker's sentence and bar count every data
+need across them: two problems in Maternal health are one pin reading
+"2 of 2 data needs missing". Pinning problems instead produced two
+markers labelled "Maternal health", which reads as a rendering fault
+rather than as two different gaps.
+
+Because a pin can stand for several problems, it cannot open one of them
+— it would have to pick, and picking would hide the rest. Activating a
+marker scrolls to that area's heading in the list below and gives it
+focus, so the mouse path and the keyboard path end in the same place.
+The list is grouped by area to match.
 
 **Site markers against ring markers is a claim, not styling.**
-Endometriosis, cardiac and postnatal gaps sit in one place in the body.
-Menopause and autoimmune disease do not — they are whole-body, so their
-markers sit on a dashed ring around the figure, captioned
+Cardiovascular, maternal, pelvic and reproductive gaps sit in one place
+in the body. Pharmacology does not — drug metabolism is whole-body, so
+its marker sits on a dashed ring around the figure, captioned
 `WHOLE-BODY · NOT LOCATED IN ONE PLACE`. Putting a systemic condition on
 a single organ would be a false claim made in pictures, which §8.1
 forbids in words.
@@ -397,8 +410,10 @@ hips at 300, legs separating at 310. Below 310 the centreline is the gap
 between the legs, not the body, and a pelvic marker placed by eye lands
 in it. Every site marker has its centre and all eight edge points inside
 the fill; both ring markers are fully outside it. The coordinates live in
-`data.js` as `map_point` and are valid only for the transform in
-`index.html` — if that moves, re-measure.
+`app.js` as `MAP_POINTS`, keyed by area, and are valid only for the
+transform in `index.html` — if that moves, re-measure. An area with no
+entry lists without a pin, which is honest and visible; an entry no area
+uses is deleted rather than kept.
 
 **Nothing on the map is authored twice.** Labels and the counts strip are
 computed from the same `countStatus()` and `gapSentence()` as the cards,
@@ -574,14 +589,15 @@ Design and accessibility:
 Body map (§7.6). Numbered after the original sixteen on purpose: the
 code cites these by number, so existing criteria keep theirs.
 
-17. Screen 1 shows one marker per problem in the seed, and a problem
-    with no `map_point` is skipped rather than breaking the map.
+17. Screen 1 shows one marker per area in the seed, and an area with no
+    `MAP_POINTS` entry is skipped rather than breaking the map.
 18. Every site marker sits on the figure — centre and all eight edge
     points inside the fill — and every ring marker sits off it.
-19. Each marker's label states the same sentence as that problem's card.
+19. Each marker's sentence counts every data need in its area, and
+    agrees with the heading above that area's cards.
 20. The counts strip totals agree with the sum of the card counts.
-21. A marker opens the same Screen 2 the card opens, by click, Enter
-    and Space alike.
+21. A marker scrolls to its area's heading and focuses it, by click,
+    Enter and Space alike.
 22. Returning from detail lands on the home screen with the map intact.
 23. Below 640px the labels are gone, the numbered legend is present, and
     there is no horizontal scroll.

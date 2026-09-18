@@ -1090,3 +1090,30 @@ a.instrument {
 }
 
 .legacy-origin { margin: var(--space-section) 0 var(--space-card); }
+
+/* ---------- areas on the home screen ---------- */
+
+/* The list mirrors the map: an area is a heading, and the problems inside
+   it are the cards beneath. A map pin scrolls here and focuses the
+   heading rather than choosing a problem for the reader. */
+.area-block { margin-bottom: 32px; }
+.area-block:last-child { margin-bottom: 0; }
+
+.area-heading {
+  font-size: 1.05rem;
+  margin: 0 0 12px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 4px 12px;
+}
+
+.area-heading-count {
+  font-size: 0.85rem;
+  font-weight: 400;
+  color: var(--muted);
+}
+
+.area-cards { margin: 0; }

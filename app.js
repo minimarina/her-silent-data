@@ -454,9 +454,13 @@
   /* §8.3 — numbers are always framed in words, and always computed from
      the statuses so Screen 1 cannot disagree with Screen 2 (§12.16). */
   function gapSentence(problem) {
-    var total = problem.data_needs.length;
-    var missing = countStatus(problem, "missing");
-    var partial = countStatus(problem, "partial");
+    return gapSentenceFor(problem.data_needs);
+  }
+
+  function gapSentenceFor(needs) {
+    var total = needs.length;
+    var missing = countIn(needs, "missing");
+    var partial = countIn(needs, "partial");
 
     /* One need per problem is the normal case now that records come from
        the intake run, and "1 of 1 data needs missing" reads like a bug.
@@ -480,9 +484,31 @@
   }
 
   function countStatus(problem, status) {
-    return problem.data_needs.filter(function (n) {
-      return n.status === status;
-    }).length;
+    return countIn(problem.data_needs, status);
+  }
+
+  function countIn(needs, status) {
+    return needs.filter(function (n) { return n.status === status; }).length;
+  }
+
+  /* The map groups problems by area: one pin per area of the body, with
+     however many problems sit inside it. Order follows the seed, so the
+     numbered legend under 640px matches the order of the list below. */
+  function areaGroups() {
+    var order = [];
+    var byArea = {};
+
+    DATA.problems.forEach(function (problem) {
+      if (!byArea[problem.area]) {
+        byArea[problem.area] = { area: problem.area, problems: [], needs: [] };
+        order.push(byArea[problem.area]);
+      }
+      byArea[problem.area].problems.push(problem);
+      byArea[problem.area].needs = byArea[problem.area].needs.concat(
+        problem.data_needs
+      );
+    });
+    return order;
   }
 
   /* Status badge: colour, shape and word together, so the status survives
@@ -523,34 +549,57 @@
     var list = el("problem-list");
     list.textContent = "";
 
-    DATA.problems.forEach(function (problem) {
-      var item = document.createElement("li");
+    /* Grouped by area, matching the map above it: an area is a heading,
+       and the problems inside it are the cards beneath. A map pin brings
+       the reader here rather than choosing a problem for them. */
+    areaGroups().forEach(function (group) {
+      var block = document.createElement("li");
+      block.className = "area-block";
 
-      /* A real button, so it is tab-reachable, works on Enter and Space,
-         and gets the global focus ring without extra code (§8.2). */
-      var card = make("button", "problem-card");
-      card.type = "button";
-      /* Spans, not paragraphs: a button may only contain phrasing
-         content. They are laid out as blocks in CSS. */
-      card.appendChild(makeValue("span", "eyebrow", problem.area));
-      card.appendChild(makeValue("span", "card-title", problem.title));
-      card.appendChild(
-        hasText(problem.affected_women)
-          ? make("span", "affected-line", "Affected: " + problem.affected_women)
-          : makeValue("span", "affected-line", "")
-      );
-      card.appendChild(make("span", "count", gapSentence(problem)));
-      card.appendChild(originBadge(problem));
-      card.appendChild(sourceText(problem.source));
+      var heading = make("h3", "area-heading", group.area);
+      heading.id = "area-" + slug(group.area);
+      /* Focusable so a pin can hand focus here, but not in the tab order:
+         the cards below are the real stops. */
+      heading.tabIndex = -1;
+      heading.appendChild(make("span", "area-heading-count",
+        gapSentenceFor(group.needs)));
+      block.appendChild(heading);
 
-      card.addEventListener("click", function () {
-        openProblem(problem.id);
+      var cards = document.createElement("ul");
+      cards.className = "card-list area-cards";
+
+      group.problems.forEach(function (problem) {
+        var item = document.createElement("li");
+
+        /* A real button, so it is tab-reachable, works on Enter and Space,
+           and gets the global focus ring without extra code (§8.2). */
+        var card = make("button", "problem-card");
+        card.type = "button";
+        /* Spans, not paragraphs: a button may only contain phrasing
+           content. They are laid out as blocks in CSS. */
+        card.appendChild(makeValue("span", "card-title", problem.title));
+        card.appendChild(
+          hasText(problem.affected_women)
+            ? make("span", "affected-line", "Affected: " + problem.affected_women)
+            : makeValue("span", "affected-line", "")
+        );
+        card.appendChild(make("span", "count", gapSentence(problem)));
+        card.appendChild(originBadge(problem));
+        card.appendChild(sourceText(problem.source));
+
+        card.addEventListener("click", function () {
+          openProblem(problem.id);
+        });
+
+        item.appendChild(card);
+        cards.appendChild(item);
       });
 
-      item.appendChild(card);
-      list.appendChild(item);
+      block.appendChild(cards);
+      list.appendChild(block);
     });
   }
+
 
   /* ---------- screen 2: problem detail ---------- */
 
@@ -929,22 +978,6 @@
     "Reproductive health":   { kind: "site",     x: 480, y: 300, side: "right", label_y: 460 }
   };
 
-  /* A record's own point first, then its area's. Only the first record in
-     an area may borrow the shared coordinate — two pins on one spot would
-     overlap and read as a single problem. */
-  function mapPoint(problem) {
-    if (problem.map_point) { return problem.map_point; }
-
-    var shared = MAP_POINTS[problem.area];
-    if (!shared) { return null; }
-
-    var first = DATA.problems.filter(function (other) {
-      return !other.map_point && other.area === problem.area;
-    })[0];
-
-    return first && first.id === problem.id ? shared : null;
-  }
-
   /* Where a leader line turns before running out to its label. Computed,
      not stored: only the side varies. */
   function elbowX(side) { return side === "left" ? 345 : 556; }
@@ -963,20 +996,20 @@
 
   /* The three statuses as one 90px bar. Widths come from the same counts as
      the sentence beside them, so the bar cannot contradict the words. */
-  function statusBar(problem, x, y) {
+  function statusBar(needs, x, y) {
     var group = svgMake("g", "mark-bar");
-    var total = problem.data_needs.length;
+    var total = needs.length;
     var gap = 2;
 
     var present = ["missing", "partial", "collected"].filter(function (status) {
-      return countStatus(problem, status) > 0;
+      return countIn(needs, status) > 0;
     });
 
     var span = 90 - gap * Math.max(0, present.length - 1);
     var offset = 0;
 
     present.forEach(function (status) {
-      var width = countStatus(problem, status) / total * span;
+      var width = countIn(needs, status) / total * span;
       var rect = svgMake("rect");
 
       attrs(rect, {
@@ -993,30 +1026,35 @@
     return group;
   }
 
-  /* One group per problem: pin, leader line and label highlight and
-     activate together. Every mark is a real tab stop with a real name, and
-     opens the same screen the problem card below it opens (§12.9). */
+  /* One group per AREA: pin, leader line and label highlight and activate
+     together. An area holds however many problems sit in it, and the
+     sentence and bar count every data need across them — so two problems
+     in Maternal health are one pin reading "2 of 2 data needs missing",
+     not two pins with the same name. Every mark is a real tab stop.
+     Activating it reveals that area's problems in the list below. */
   function renderMap() {
     var marks = el("map-marks");
     marks.textContent = "";
 
-    DATA.problems.forEach(function (problem, index) {
-      var point = mapPoint(problem);
+    areaGroups().forEach(function (group, index) {
+      var point = MAP_POINTS[group.area];
 
-      /* A problem with no point is not an error: it simply is not on the
-         map yet, and the list below still carries it. */
+      /* An area with no measured coordinate is not an error: it is simply
+         not on the map yet, and the list below still carries it. */
       if (!point) { return; }
 
       var radius = point.r || 8;
-      var sentence = gapSentence(problem);
+      var sentence = gapSentenceFor(group.needs);
       var anchor = point.side === "left" ? "end" : "start";
+      var count = group.problems.length;
 
       var mark = svgMake("g", "map-mark");
       attrs(mark, {
         role: "button",
         tabindex: "0",
         "data-kind": point.kind,
-        "aria-label": problem.area + " — " + sentence
+        "aria-label": group.area + " — " + count +
+          (count === 1 ? " problem, " : " problems, ") + sentence
       });
 
       var start = leaderStart(point, radius);
@@ -1039,39 +1077,35 @@
       /* Shown only under 640px, where the labels are gone and the numbered
          legend takes over. */
       var number = svgMake("text", "mark-num", String(index + 1));
-      attrs(number, {
-        x: point.x, y: point.y + 4, "text-anchor": "middle"
-      });
+      attrs(number, { x: point.x, y: point.y + 4, "text-anchor": "middle" });
       mark.appendChild(number);
 
-      var title = svgMake("text", "mark-title", problem.area);
+      var title = svgMake("text", "mark-title", group.area);
       attrs(title, {
         x: labelX(point.side), y: point.label_y, "text-anchor": anchor
       });
       mark.appendChild(title);
 
-      var count = svgMake("text", "mark-count", sentence);
-      attrs(count, {
+      var line = svgMake("text", "mark-count", sentence);
+      attrs(line, {
         x: labelX(point.side), y: point.label_y + 20, "text-anchor": anchor
       });
-      mark.appendChild(count);
+      mark.appendChild(line);
 
       mark.appendChild(statusBar(
-        problem,
+        group.needs,
         point.side === "left" ? labelX(point.side) - 90 : labelX(point.side),
         point.label_y + 28
       ));
 
-      mark.addEventListener("click", function () {
-        openProblem(problem.id);
-      });
+      mark.addEventListener("click", function () { revealArea(group.area); });
 
       /* A <g> is not a button, so Enter and Space are wired by hand to
          match what the problem cards get for free. */
       mark.addEventListener("keydown", function (event) {
         if (event.key === "Enter" || event.key === " ") {
           event.preventDefault();
-          openProblem(problem.id);
+          revealArea(group.area);
         }
       });
 
@@ -1079,24 +1113,46 @@
     });
   }
 
-  /* Under 640px the side labels do not fit. The pins carry numbers and this
-     list carries the words — the same sentence, in the same order. */
+  /* An area can hold several problems, so a pin cannot open one of them:
+     it would have to pick, and picking would hide the rest. Instead the
+     list below is brought to that area and its heading takes focus, so
+     the keyboard path and the mouse path end in the same place. */
+  function revealArea(area) {
+    var heading = document.getElementById("area-" + slug(area));
+    if (!heading) { return; }
+
+    heading.scrollIntoView({
+      behavior: reduceMotion() ? "auto" : "smooth",
+      block: "start"
+    });
+    heading.focus();
+  }
+
+  function slug(text) {
+    return String(text).toLowerCase().replace(/[^a-z0-9]+/g, "-");
+  }
+
+  /* §8.2 — a scroll is motion, and prefers-reduced-motion means jump. */
+  function reduceMotion() {
+    return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  }
+
+  /* Under 640px the side labels do not fit. The pins carry numbers and
+     this list carries the words — the same areas, in the same order. */
   function renderMapLegend() {
     var list = el("map-legend");
     list.textContent = "";
 
-    DATA.problems.forEach(function (problem) {
-      if (!mapPoint(problem)) { return; }
+    areaGroups().forEach(function (group) {
+      if (!MAP_POINTS[group.area]) { return; }
 
       var item = document.createElement("li");
       var button = make("button", "legend-item");
       button.type = "button";
-      button.appendChild(make("span", "legend-area", problem.area));
-      button.appendChild(make("span", "legend-count", gapSentence(problem)));
+      button.appendChild(make("span", "legend-area", group.area));
+      button.appendChild(make("span", "legend-count", gapSentenceFor(group.needs)));
 
-      button.addEventListener("click", function () {
-        openProblem(problem.id);
-      });
+      button.addEventListener("click", function () { revealArea(group.area); });
 
       item.appendChild(button);
       list.appendChild(item);
