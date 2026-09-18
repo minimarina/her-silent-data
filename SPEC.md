@@ -55,12 +55,12 @@ field and is short on time.
 
 ## 3. Demo moment (the one thing that must work)
 
-1. Researcher opens the app and sees a list of problems.
-2. She opens one problem.
-3. She sees the data needed to solve it, each marked
+1. Researcher opens the app and sees the body map.
+2. She opens an area, and sees the problems in it.
+3. She opens one problem, and sees the data needed to solve it, marked
    **collected / partial / missing**.
-4. She opens a missing item and sees **what the source said, when it said
-   it, and when the platform last checked whether the data exists now**.
+4. On the same screen she sees **what the source said, when it said it,
+   and when the platform last checked whether the data exists now**.
 5. She presses **Show research design** and watches a possible study
    design appear — which women, what to find out from them, in which
    breakdowns, in what form — labelled AI-generated and unverified.
@@ -223,7 +223,7 @@ than inventing a questionnaire.
 **The masthead is the way home, from everywhere.** The site name and
 tagline are one button that shows Screen 1, on every screen including
 Screen 1 itself. A reader expects a masthead to do this and the app did
-not, which left Screen 3 reachable only by two Backs. It uses the same
+not, which left the record reachable only by two Backs. It uses the same
 `[data-goto]` wiring as the About link — one navigation idea, not two —
 and it is a real `<button>`, so Enter and Space arrive for free.
 
@@ -290,7 +290,7 @@ characters long and 6,348px tall to say eleven titles and eleven
 statuses. All three are on the record itself, one click away.
 
 This is not a retreat from §8.1. That rule asks that every claim show
-where it came from, and the claim is the record — Screen 2 and Screen 3,
+where it came from, and the claim is the record — Screen 2,
 where the source is a **link a researcher can follow**. On a card it could
 only ever be printed, never linked, because a link may not be nested
 inside a button, so it was non-actionable text duplicating the screen
@@ -315,12 +315,24 @@ badge, the banner and the footer sentence all change together.
   data that does exist lives, and what its coverage limit is.
 - Missing/partial items are visually distinct and clickable.
 
-**Screen 3 — The data need** (panel or separate view)
-- Which women, what to find out from them, in which breakdowns, in what
-  form (question 4), with the instrument named or linked where one exists.
-- Why this data matters.
-- The gap evidence and, for partial needs, the dataset pointer.
-- This is the climax of the demo; it gets the most visual care.
+**Screen 2 carries the data need in full. There is no Screen 3.**
+
+Each data need renders as a block on the record: status badge, the need
+itself as a heading, why it matters, who says it is missing, what the
+check found, the limit of that check or the dataset that exists, what the
+source said about collecting it, and the generated design behind its
+button. Several needs stack as blocks.
+
+Until 18 Sep this was a screen of its own, reached by clicking a summary
+in a list on Screen 2. Every problem in the seed carries exactly one data
+need, so that list was a list of one, and opening it showed the reader
+the expanded form of the thing they had just clicked — a level with
+nothing in it. Reading three needs in a row is also less work than
+opening and closing three screens, so the shape holds if a problem ever
+carries several (§5).
+
+This is still the climax of the demo and gets the most visual care; it is
+now the bottom of the tree rather than one level above it.
 
 **The check is summarised, not dumped.** The verify step writes 150 words
 and more. The first sentences carry the verdict and the rest sits behind
@@ -513,10 +525,18 @@ does not.
 **Site markers against ring markers is a claim, not styling.**
 Cardiovascular, maternal, pelvic and reproductive gaps sit in one place
 in the body. Pharmacology does not — drug metabolism is whole-body, so
-its marker sits on a dashed ring around the figure, captioned
-`WHOLE-BODY · NOT LOCATED IN ONE PLACE`. Putting a systemic condition on
-a single organ would be a false claim made in pictures, which §8.1
-forbids in words.
+its marker sits on a dashed ring around the figure rather than on it.
+Putting a systemic condition on a single organ would be a false claim
+made in pictures, which §8.1 forbids in words.
+
+**The ring carried a caption, `WHOLE-BODY · NOT LOCATED IN ONE PLACE`,
+until 18 Sep.** It was removed once a pin opened its area: the area
+screen's first line now says *whole body — not located in one place*, so
+the explanation reaches the reader who asked for it instead of sitting
+under the figure permanently to account for one pin. The frame was
+trimmed with it — `MAP_WIDE` from 672 to 650 and `MAP_NARROW` from 650 to
+620 — because the caption's line was what the extra height was for, and
+without it the figure sat 47px off centre.
 
 **The figure is recognisably a woman's body, by proportion and not by
 detail.** No face, no hair, no anatomical detail. The product's claim is
@@ -722,9 +742,9 @@ Core flow:
 3. Each card shows the correct count of missing data needs.
 4. Clicking a card opens Screen 2 for that problem.
 5. Each data need shows exactly one status badge matching the seed file.
-6. Clicking a need shows what its source said, the date the gap was
+6. Each data need shows what its source said, the date the gap was
    claimed, and the date the platform last checked — or "Not established"
-   where a record predates those fields.
+   where a record predates those fields, without a further click.
 7. A `missing` need carries the disclaimer that the check was a search of
    published sources and is not proof, with a link to report data the
    check missed.
@@ -791,7 +811,7 @@ it: 24–25 belong to §11 and are not renumbered.
 33. Built and Planned are identifiable in greyscale, and use none of the
     three data-status colours.
 
-Carrying the design out, and the summarised check (§6, Screen 3). Appended
+Carrying the design out, and the summarised check (§6, Screen 2). Appended
 after 33 for the same reason as every block before it: nothing is
 renumbered.
 

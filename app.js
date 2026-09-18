@@ -749,8 +749,7 @@
   /* ---------- navigation ---------- */
 
   var SCREENS = [
-    "screen-problems", "screen-area", "screen-detail", "screen-request",
-    "screen-about"
+    "screen-problems", "screen-area", "screen-detail", "screen-about"
   ];
 
   /* Shows one screen and hides the others, then moves focus into the new
@@ -843,15 +842,11 @@
   }
 
 
-  /* ---------- screen 2: problem detail ---------- */
-
-  var currentProblemId = null;
+  /* ---------- screen 2: the record, in full ---------- */
 
   function openProblem(problemId) {
     var problem = findProblem(problemId);
     if (!problem) { return; }
-
-    currentProblemId = problemId;
 
     setValue(el("detail-area"), problem.area);
     setValue(el("detail-heading"), problem.title);
@@ -869,17 +864,73 @@
     show("screen-detail");
   }
 
+  /* Every data need, in full, on the record itself.
+
+     There used to be a screen between these two: this list held one
+     clickable summary per need, and opening one showed the claim, the
+     check and the design on a screen of its own. Every problem in the
+     seed carries exactly one data need, so that list was a list of one
+     and the click revealed what the reader had already been shown the top
+     of — a level with nothing in it.
+
+     A problem may carry several needs (§5), and several stack here as
+     blocks rather than becoming a menu. Reading three in a row is less
+     work than opening and closing three screens. */
   function renderNeeds(problem) {
     var list = el("need-list");
     list.textContent = "";
 
     problem.data_needs.forEach(function (need) {
-      list.appendChild(
-        need.status === "collected"
-          ? collectedNeed(need)
-          : openableNeed(problem, need)
-      );
+      list.appendChild(needBlock(problem, need));
     });
+  }
+
+  function needBlock(problem, need) {
+    var item = document.createElement("li");
+    item.className = "need-block";
+    item.setAttribute("data-status", need.status);
+
+    item.appendChild(statusBadge(need.status));
+    item.appendChild(makeValue("h3", "need-description", need.description));
+
+    var why = document.createElement("dl");
+    why.appendChild(field("Why this data matters", need.why_it_matters));
+    item.appendChild(why);
+
+    /* A collected need has no gap to answer for: the data exists, and the
+       only thing worth saying is where. */
+    if (need.status === "collected") {
+      var exists = existingDataLine(need);
+      if (exists) { item.appendChild(exists); }
+      item.appendChild(datasetNode(need));
+      item.appendChild(
+        make("p", "need-note", "No new collection needed for this item.")
+      );
+      return item;
+    }
+
+    /* Provenance in the order a reader challenges it: who said the data is
+       missing, then whether anyone has collected it since, then the limit
+       of that check. */
+    item.appendChild(gapEvidenceNode(problem, need));
+    item.appendChild(verificationNode(need));
+
+    if (need.status === "missing") {
+      item.appendChild(shallowCheckNote(problem, need));
+    } else {
+      var note = existingDataLine(need);
+      if (note) { item.appendChild(note); }
+      item.appendChild(datasetNode(need));
+    }
+
+    /* What the source said about collecting it, which is usually nothing.
+       An empty answer here is the honest one and is never filled in. */
+    item.appendChild(guidanceNode(need));
+
+    var design = designNode(problem, need);
+    if (design) { item.appendChild(design); }
+
+    return item;
   }
 
   /* "What exists" for a need that has some data behind it. The label
@@ -902,143 +953,6 @@
     line.appendChild(make("span", null, "What exists: "));
     line.appendChild(make("span", null, need.existing_data_note));
     return line;
-  }
-
-  /* A collected need has no collection request and says so plainly
-     (§12.7). It is not a button: there is nothing to open. */
-  function collectedNeed(need) {
-    var item = document.createElement("li");
-
-    item.appendChild(statusBadge(need.status));
-    item.appendChild(makeValue("p", "need-description", need.description));
-    item.appendChild(makeValue("p", "need-why", need.why_it_matters));
-
-    /* Shown only where the seed says something. Where it does not,
-       datasetNode() below carries the answer and says so itself (§8.1). */
-    var exists = existingDataLine(need);
-    if (exists) { item.appendChild(exists); }
-    item.appendChild(datasetNode(need));
-    item.appendChild(
-      make("p", "need-note", "No new collection needed for this item.")
-    );
-
-    return item;
-  }
-
-  /* Missing and partial needs open the data-need card. */
-  function openableNeed(problem, need) {
-    var item = document.createElement("li");
-    item.className = "is-open";
-
-    var button = make("button", "need-open");
-    button.type = "button";
-    button.setAttribute("data-status", need.status);
-
-    /* Spans again — phrasing content only inside a button. */
-    button.appendChild(statusBadge(need.status));
-    button.appendChild(makeValue("span", "need-description", need.description));
-    button.appendChild(makeValue("span", "need-why", need.why_it_matters));
-
-    /* A partial need has some data, so where it is gets stated. A missing
-       need has none, and there is nothing to describe. */
-    if (need.status === "partial") {
-      var exists = existingDataLine(need, "span");
-      if (exists) { button.appendChild(exists); }
-      button.appendChild(datasetNode(need, "span"));
-    }
-    /* The status badge says "Missing". This says who established that,
-       which is the claim a reader is entitled to challenge. */
-    button.appendChild(gapEvidenceNode(problem, need, "span"));
-
-    button.appendChild(
-      make("span", "need-action", "See what it would take →")
-    );
-
-    button.addEventListener("click", function () {
-      openRequest(problem.id, need.id);
-    });
-
-    item.appendChild(button);
-    return item;
-  }
-
-  /* ---------- screen 3: the data need ---------- */
-
-  function openRequest(problemId, needId) {
-    var problem = findProblem(problemId);
-    var need = problem && findNeed(problem, needId);
-    if (!need) { return; }
-
-    setValue(el("request-problem"), problem.title);
-
-    var card = el("request-card");
-    card.textContent = "";
-
-    var heading = makeValue("p", "request-need", need.description);
-    heading.appendChild(document.createElement("br"));
-    heading.appendChild(statusBadge(need.status));
-    card.appendChild(heading);
-
-    var why = document.createElement("dl");
-    why.appendChild(field("Why this data matters", need.why_it_matters));
-    card.appendChild(why);
-
-    /* Provenance in the order a reader challenges it: who said the data is
-       missing, then whether anyone has collected it since, then the limit
-       of that check. */
-    card.appendChild(gapEvidenceNode(problem, need));
-    card.appendChild(verificationNode(need));
-
-    if (need.status === "missing") {
-      card.appendChild(shallowCheckNote(problem, need));
-    } else {
-      card.appendChild(datasetNode(need));
-    }
-
-    /* What the source said about collecting it, which is usually nothing.
-       An empty answer here is the honest one and is never filled in. */
-    card.appendChild(guidanceNode(need));
-
-    /* Records written before the rule changed carry a collection request
-       specified by this platform rather than by a source. It stays
-       labelled as the platform's own, and it leaves with the old seed. */
-    if (need.collection_request) {
-      var request = need.collection_request;
-
-      var legacy = make(
-        "p", "origin legacy-origin", "Specified by this platform — unverified"
-      );
-      legacy.setAttribute("data-origin", "proposed");
-      card.appendChild(legacy);
-
-      var fields = document.createElement("dl");
-      fields.appendChild(field("Which women", request.target_women));
-      fields.appendChild(listField(
-        "What to find out from them", request.variables
-      ));
-      fields.appendChild(listField(
-        "Broken down by",
-        request.stratifiers,
-        "Data collected without these cannot show what happens to which " +
-        "women. The missing breakdown is the gap as often as the missing " +
-        "study is."
-      ));
-      fields.appendChild(field(
-        "In what form", request.form, request.instrument_source
-      ));
-      card.appendChild(fields);
-    }
-
-    var design = designNode(problem, need);
-    if (design) { card.appendChild(design); }
-
-    var requestOrigin = el("request-origin");
-    requestOrigin.textContent = "";
-    requestOrigin.appendChild(originBadge(problem, "p"));
-
-    fillSourceSlot("request-source", problem.source);
-
-    show("screen-request");
   }
 
   /* A field whose value is a list of things to collect. An empty or
@@ -1510,8 +1424,14 @@
      figure. Under 640px those are gone, so the frame crops to the ring —
      left wide, the figure renders about 90px across and reads as nothing.
      Kept in JS because a viewBox is an attribute, not a style. */
-  var MAP_WIDE = "0 0 880 672";
-  var MAP_NARROW = "265 15 330 650";
+  /* Content runs from y 25 to y 625. The frame was 672 tall to leave room
+     for the ring caption underneath; with the caption gone that was 47px
+     of dead space under the figure against 25px above it, which reads as
+     the map having sagged. 650 puts 25 above and 25 below. */
+  var MAP_WIDE = "0 0 880 650";
+  /* Same trim as MAP_WIDE, for the same reason: the caption's old line at
+     y 650 left 40px under the figure against 10px above it. */
+  var MAP_NARROW = "265 15 330 620";
 
   function fitMap(isNarrow) {
     var svg = document.querySelector(".map-svg");
@@ -1562,15 +1482,8 @@
       button.addEventListener("click", function () {
         var target = button.getAttribute("data-back");
 
-        /* Coming back from the request card, re-enter the problem that
-           was open rather than whatever was rendered last. */
-        if (target === "screen-detail" && currentProblemId) {
-          openProblem(currentProblemId);
-          return;
-        }
-
-        /* Same rule one level up: back from a record returns to the area
-           it was opened from, not to whichever area was rendered last. */
+        /* Back from a record returns to the area it was opened from, not
+           to whichever area was rendered last. */
         if (target === "screen-area" && currentArea) {
           openArea(currentArea);
           return;
