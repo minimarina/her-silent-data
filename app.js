@@ -1,4 +1,4 @@
-/* Women's Data Gap — renders the three screens from the seed in data.js.
+/* Unasked — renders the three screens from the seed in data.js.
  * No framework, no build step (SPEC §13). */
 
 (function () {
@@ -750,7 +750,7 @@
     /* The address of the record itself, not of the site. A design pasted
        into a protocol or an email now carries the way back to the claim it
        answers, which is what the provenance rule was reaching for. */
-    lines.push("From Women's Data Gap — " + SITE_URL +
+    lines.push("From Unasked — " + SITE_URL +
       recordRoute(problem));
 
     return lines.join("\n");

@@ -1,7 +1,13 @@
-# Women Data Gap Platform
+# Unasked
+
+**The gender data gap, turned into your next study.**
 
 A platform for researchers who want to help close the data gap on women,
-but don't know which data to collect first.
+but don't know which data to collect first. The name is the cause: the
+data is missing because nobody asked the women it would have come from.
+
+(The repository and site keep their original `women-data-gap-map` path —
+the public URL was in circulation before the product had its name.)
 
 For each problem, it answers five questions:
 
