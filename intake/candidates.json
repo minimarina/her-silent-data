@@ -2,10 +2,10 @@
   "run_at": "2026-09-18",
   "stage": "full",
   "query_window_years": 1,
-  "hit_count": 1487,
-  "fetched": 100,
-  "unseen": 100,
-  "passed_filter": 4,
+  "hit_count": 1,
+  "fetched": 1,
+  "unseen": 1,
+  "passed_filter": 1,
   "records": [
     {
       "paper": {
@@ -283,120 +283,6 @@
     },
     {
       "paper": {
-        "title": "\"Left Out at the Kitchen Table\": Exploring Peer Support Needs Among Women Firefighters.",
-        "doi": "10.1002/ajim.70094",
-        "url": "https://doi.org/10.1002/ajim.70094",
-        "year": "2026",
-        "journal": "American journal of industrial medicine"
-      },
-      "problem": {
-        "id": "women-firefighter-peer-support",
-        "title": "Peer support programs in the fire service are not tailored to the mental health needs of women firefighters.",
-        "area": "Autoimmune disease",
-        "summary": "Women firefighters can have behavioral health outcomes similar to men in supportive environments, but rates of depression, anxiety, and PTSD rise sharply amid workplace discrimination and exclusion. These issues are often treated as HR matters rather than health and safety concerns. Little is known about how peer support resources, increasingly used in fire services, could be adapted to women's needs.",
-        "affected_women": "Women firefighters and fire service stakeholders in the United States",
-        "source": "https://doi.org/10.1002/ajim.70094",
-        "origin": "sourced",
-        "is_demo": false
-      },
-      "data_need": {
-        "id": "women-firefighter-peer-support-perceptions",
-        "problem_id": "women-firefighter-peer-support",
-        "area": "Autoimmune disease",
-        "description": "Systematic data on women firefighters' perceptions, barriers, and preferences regarding peer support programs",
-        "why_it_matters": "Without this data, peer support programs may fail to build trust and psychological safety for women firefighters, leaving mental health needs unmet and risks like depression, anxiety, and PTSD unaddressed.",
-        "status": "collected",
-        "existing_data_note": "",
-        "gap_evidence": {
-          "source": "https://doi.org/10.1002/ajim.70094",
-          "note": "The abstract states that 'despite the growing adoption of peer support programs in the fire service, little is known about how these resources can be tailored to the needs of women firefighters,' motivating the qualitative interview study described.",
-          "region": "United States",
-          "claimed_date": "2026-05-24"
-        },
-        "dataset_source": {
-          "note": "Qualitative interview study (35 participants: women firefighters across ranks plus fire service stakeholders) recruited via the Fire Fighter Cancer Cohort Study, covering perceptions of peer support, barriers to engagement, trust/comfort, and preferred communication strategies in the US fire service. It is qualitative rather than a large quantitative survey, so it may not capture prevalence rates or be generalizable to all departments, but it directly targets the identified gap.",
-          "source": "https://onlinelibrary.wiley.com/doi/10.1002/ajim.70094"
-        },
-        "collection_guidance": {
-          "note": "Researchers conducted semi-structured interviews with 35 women firefighters and key fire service stakeholders across the United States, exploring perceptions of peer support, barriers to engagement, trust and comfort, and preferred communication and messaging strategies.",
-          "source": "https://doi.org/10.1002/ajim.70094"
-        },
-        "verification": {
-          "checked_at": "2026-09-18",
-          "method": "web search",
-          "findings": "A qualitative study, published in 2026 in the American Journal of Industrial Medicine (Hollerbach et al., \"Left Out at the Kitchen Table\": Exploring Peer Support Needs Among Women Firefighters), directly addresses this gap. Researchers conducted 35 semi-structured interviews with women firefighters and fire service stakeholders across the United States, exploring \"perceptions of peer support, barriers to engagement, trust and comfort within peer support networks, and preferred communication and messaging strategies.\" Thematic analysis identified seven key domains including barriers to support, effective messaging, gendered workplace dynamics, resource needs, leadership influence, and stress relief strategies, providing the systematic data on perceptions, barriers, and preferences that the original paper called missing.",
-          "sources": [
-            {
-              "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13350290/",
-              "title": "“Left Out at the Kitchen Table”: Exploring Peer Support Needs Among Women Firefighters - PMC"
-            },
-            {
-              "url": "https://pubmed.ncbi.nlm.nih.gov/42178494/",
-              "title": "\"Left Out at the Kitchen Table\": Exploring Peer Support Needs Among Women Firefighters - PubMed"
-            },
-            {
-              "url": "https://onlinelibrary.wiley.com/doi/10.1002/ajim.70094",
-              "title": "“Left Out at the Kitchen Table”: Exploring Peer Support Needs Among Women Firefighters - Hollerbach - 2026 - American Journal of Industrial Medicine - Wiley Online Library"
-            },
-            {
-              "url": "https://doi.org/10.3390/occuphealth1010010",
-              "title": "Who Is the “Ideal” Peer Support Trainer? Peer Trainers’ Perceptions of Gender Dynamics in Resiliency Training for Firefighters and Correctional Officers"
-            },
-            {
-              "url": "https://nsuworks.nova.edu/tqr/vol30/iss5/5/",
-              "title": "A Qualitative Study on the Barriers and Facilitators of Integrating Women into the Firefighting Workforce: Perspectives of Men and Women"
-            },
-            {
-              "url": "https://nsuworks.nova.edu/cgi/viewcontent.cgi?article=6942&context=tqr",
-              "title": "A Qualitative Study on the Barriers and Facilitators of ..."
-            },
-            {
-              "url": "https://scholarworks.waldenu.edu/cgi/viewcontent.cgi?article=15877&context=dissertations",
-              "title": "Firefighters' Perceptions and Experiences of Seeking Mental ..."
-            },
-            {
-              "url": "https://www.researchgate.net/publication/233930200_A_qualitative_study_on_the_experiences_of_female_firefighters",
-              "title": "(PDF) A qualitative study on the experiences of female firefighters"
-            },
-            {
-              "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC9450402/",
-              "title": "A qualitative study of the impact of peer support on women’s mental health treatment experiences during the perinatal period"
-            },
-            {
-              "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11650798/",
-              "title": "Examination of Stress Among Recruit and Incumbent Women Firefighters - PMC"
-            },
-            {
-              "url": "https://guides.library.illinois.edu/c.php?g=897846&p=11067059",
-              "title": "Women's Health in the Fire Service - Women in the Fire Service - LibGuides at University of Illinois at Urbana-Champaign"
-            },
-            {
-              "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6586224/",
-              "title": "Current Female Firefighters’ Perceptions, Attitudes, and Experiences with Injury - PMC"
-            },
-            {
-              "url": "https://www.sciencedirect.com/science/article/pii/S2093791124000751",
-              "title": "Examination of Stress Among Recruit and Incumbent Women Firefighters - ScienceDirect"
-            },
-            {
-              "url": "https://www.oregon.gov/osfm/Docs/Women%20Firefighters%20Health%20and%20Wellness_Hollerbach_FINAL.pdf",
-              "title": "Protecting Our Heroes: Women Firefighters’ Health and Wellness"
-            },
-            {
-              "url": "https://jmde.com/index.php/jmde_1/article/view/1221",
-              "title": "Implementation of the Enhanced Stress First Aid Program in the Fire Service: A Case Study | Journal of MultiDisciplinary Evaluation"
-            }
-          ]
-        }
-      },
-      "validation": {
-        "ok": true,
-        "errors": [],
-        "warnings": []
-      }
-    },
-    {
-      "paper": {
         "title": "Infertility treatment in women with epilepsy: A systematic review.",
         "doi": "10.1016/j.yebeh.2026.111210",
         "url": "https://doi.org/10.1016/j.yebeh.2026.111210",
@@ -642,6 +528,96 @@
             {
               "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC2276295",
               "title": "pmc.ncbi.nlm.nih.gov"
+            }
+          ]
+        }
+      },
+      "validation": {
+        "ok": true,
+        "errors": [],
+        "warnings": []
+      }
+    },
+    {
+      "paper": {
+        "title": "Aetiology of pelvic neuropathies in women: a narrative review.",
+        "doi": "10.52054/fvvo.2026.363",
+        "url": "https://doi.org/10.52054/fvvo.2026.363",
+        "year": "2026",
+        "journal": "Facts, views & vision in ObGyn"
+      },
+      "problem": {
+        "id": "pelvic-neuropathy-aetiology",
+        "title": "Pelvic neuropathy is an under-recognised and often late-diagnosed cause of chronic pelvic pain in women",
+        "area": "Endometriosis",
+        "summary": "A narrative review of 306 studies covering 2,413 women found five recurring causes of pelvic neuropathy: iatrogenic injury, nerve invasion or traction by disease such as endometriosis or tumours, pregnancy- and childbirth-related injury, external trauma, and compression by muscular, vascular, benign or malignant structures. Specific syndromes like piriformis, May-Thurner, pelvic congestion and Alcock's canal syndrome were inconsistently defined. Neuropathy was frequently recognised late, and no randomised controlled trials existed on the topic.",
+        "affected_women": "Women with chronic pelvic pain due to nerve injury, including those with endometriosis, obstetric injuries, iatrogenic surgical injury, trauma or compressive structural causes",
+        "source": "https://doi.org/10.52054/fvvo.2026.363",
+        "origin": "sourced",
+        "is_demo": false
+      },
+      "data_need": {
+        "id": "pelvic-neuropathy-aetiology-standardised-diagnosis",
+        "problem_id": "pelvic-neuropathy-aetiology",
+        "area": "Endometriosis",
+        "description": "Standardised diagnostic criteria and higher-quality evidence (beyond case reports) for defining and identifying specific pelvic neuropathic syndromes in women",
+        "why_it_matters": "Inconsistent definitions and reliance on small case series or case reports mean neuropathy is frequently recognised late, delaying treatment and worsening outcomes for women with pelvic pain.",
+        "status": "partial",
+        "existing_data_note": "",
+        "gap_evidence": {
+          "source": "https://doi.org/10.52054/fvvo.2026.363",
+          "note": "The review states that specific neuropathic syndromes were 'inconsistently defined across studies,' that 'diagnostic strategies and reporting quality varied widely,' that the evidence base was 'dominated by case reports and small series,' the overall certainty of evidence is low, and 'no randomised controlled trials were identified.'",
+          "region": null,
+          "claimed_date": "2026-09-01"
+        },
+        "dataset_source": {
+          "note": "Retrospective single-center cohort (Sept 2019–Jan 2023) at University Hospital Center of Limoges using DN4 and PPSC scores to estimate neuropathic pain and central sensitization prevalence in endometriosis patients; does not provide standardized diagnostic criteria for distinct pelvic neuropathic syndromes, nor RCT-level evidence, and is limited to one center's population.",
+          "source": "https://www.ejog.org/article/S0301-2115(24)00348-8/fulltext"
+        },
+        "collection_guidance": {
+          "note": "The review calls for 'standardised diagnostic pathways' and greater awareness of nerve-specific injury mechanisms, particularly endometriosis-related and obstetric neuropathies, to improve recognition and outcomes.",
+          "source": "https://doi.org/10.52054/fvvo.2026.363"
+        },
+        "verification": {
+          "checked_at": "2026-09-18",
+          "method": "web search",
+          "findings": "A 2024 retrospective single-center cohort study (Limoges, France) applied the validated DN4 questionnaire to endometriosis patients, finding a 44.1% prevalence of neuropathic pain and 39.4% positive central sensitization scores, associating factors like younger age and laparoscopy. This represents a step toward standardized screening tools for neuropathic pain in endometriosis, but it addresses general neuropathic pain prevalence via a validated screening score rather than defining specific pelvic neuropathic syndromes (e.g., pudendal neuralgia, obturator neuropathy) with diagnostic criteria, and remains a single-center retrospective cohort, not the higher-quality multi-site or RCT evidence the original review found lacking.",
+          "sources": [
+            {
+              "url": "https://www.ejog.org/article/S0301-2115(24)00348-8/fulltext",
+              "title": "Prevalence of neuropathic pain in patients with symptomatic endometriosis: Assessment using the DN4 score - European Journal of Obstetrics and Gynecology and Reproductive Biology"
+            },
+            {
+              "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC11727753/",
+              "title": "Nociplastic Pain in Endometriosis: A Scoping Review"
+            },
+            {
+              "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11753943/",
+              "title": "Prevalence and Clinical Correlates of Endometriosis in Patients with IC/BPS - PMC"
+            },
+            {
+              "url": "https://pubmed.ncbi.nlm.nih.gov/41517280/",
+              "title": "Non-Invasive Diagnosis of Endometriosis by Questionnaires in Patients Using Contraception - PubMed"
+            },
+            {
+              "url": "https://pubmed.ncbi.nlm.nih.gov/39025040/",
+              "title": "Prevalence of neuropathic pain in patients with symptomatic endometriosis: Assessment using the DN4 score - PubMed"
+            },
+            {
+              "url": "https://clinicaltrials.gov/study/NCT02911090",
+              "title": "Endometriosis Pelvic Pain Interdisciplinary Cohort Data Registry"
+            },
+            {
+              "url": "https://pubmed.ncbi.nlm.nih.gov/42088810/",
+              "title": "Contemporary Diagnostic and Therapeutic Approaches in Endometriosis: A Systematic Review - PubMed"
+            },
+            {
+              "url": "https://www.guidelinecentral.com/guideline/4543736/",
+              "title": "NICE Endometriosis: Diagnosis and Management Guideline Summary - Guideline Central"
+            },
+            {
+              "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11228648/",
+              "title": "Endometriosis: Improvements and challenges in diagnosis and symptom management - PMC"
             }
           ]
         }

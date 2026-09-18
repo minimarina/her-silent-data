@@ -331,7 +331,8 @@
       "first_seen": "2026-09-18",
       "last_seen": "2026-09-18",
       "title": "\"Left Out at the Kitchen Table\": Exploring Peer Support Needs Among Women Firefighters.",
-      "outcome": "candidate"
+      "outcome": "dismissed",
+      "reason": "the paper is the qualitative study that collected this data"
     },
     "10.3390/pathogens15050549": {
       "first_seen": "2026-09-18",
@@ -1256,6 +1257,12 @@
       "last_seen": "2026-09-18",
       "title": "Effectiveness and Safety of Plasmapheresis in MOGAD Attacks: A Systematic Review and Meta-Analysis.",
       "outcome": "seen"
+    },
+    "10.52054/fvvo.2026.363": {
+      "first_seen": "2026-09-18",
+      "last_seen": "2026-09-18",
+      "title": "Aetiology of pelvic neuropathies in women: a narrative review.",
+      "outcome": "candidate"
     }
   }
 }

@@ -240,5 +240,28 @@ const RESEARCH_DESIGNS = {
     "instrument_source": null,
     "generated_at": "2026-09-18",
     "model": "claude-sonnet-5"
+  },
+  "pelvic-neuropathy-aetiology-standardised-diagnosis": {
+    "target_women": "300 women aged 18-55 presenting to specialist pelvic pain or endometriosis clinics (aim for 5-6 centres) with chronic pelvic pain of at least 6 months' duration, recruited consecutively regardless of suspected cause (endometriosis, obstetric injury, prior pelvic/abdominal surgery, trauma, or unexplained), to build a cohort broad enough to identify neuropathic subtypes rather than only clear-cut cases.",
+    "variables": [
+      "Presence and location of pain in a dermatomal or peripheral nerve distribution (mapped on standardised body diagram)",
+      "Score on a validated neuropathic pain screening tool (e.g. DN4 or painDETECT) at baseline",
+      "Findings on clinical neurological exam of the pelvis and perineum (allodynia, hyperalgesia, altered sensation, Tinel's sign at named nerve sites)",
+      "Response to diagnostic nerve block (percentage pain reduction and duration of relief)",
+      "History of plausible causal event (surgery type, obstetric injury, trauma, endometriosis lesion site on imaging or laparoscopy)",
+      "Time from symptom onset to neuropathic diagnosis",
+      "Pain, function and quality-of-life scores at baseline and follow-up"
+    ],
+    "stratifiers": [
+      "Suspected underlying cause (endometriosis vs obstetric vs iatrogenic surgical vs traumatic vs compressive/other)",
+      "Age band (18-30, 31-40, 41-55)",
+      "Duration of pain prior to enrolment (<1 year, 1-3 years, >3 years)",
+      "Prior number of surgeries for pelvic pain",
+      "Ethnicity"
+    ],
+    "form": "Prospective multicentre observational cohort: baseline structured clinical assessment (history, standardised neuro exam, screening questionnaire, imaging/surgical record review) plus diagnostic nerve block where clinically indicated, with follow-up assessments at 3, 6 and 12 months to track diagnostic stability and treatment response; total recruitment and follow-up window of about 24 months.",
+    "instrument_source": "DN4 (Douleur Neuropathique 4 Questions)",
+    "generated_at": "2026-09-18",
+    "model": "claude-sonnet-5"
   }
 };

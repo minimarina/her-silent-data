@@ -15,12 +15,17 @@
        --why="the abstract does not support the note"                    */
 
 import { join } from "node:path";
+import { appendFileSync } from "node:fs";
 import {
-  HERE, readJson, writeJson, loadLedger, saveLedger, ledgerNote
+  HERE, today, readJson, writeJson, loadLedger, saveLedger, ledgerNote
 } from "./lib.mjs";
 import { mappableAreas } from "./validate.mjs";
 
 const CANDIDATES = join(HERE, "candidates.json");
+
+/* Every approved block, in order, so the merge is one copy rather than
+   six. Not data.js — the seed is still merged by hand. */
+const APPROVED = join(HERE, "approved-blocks.js");
 
 const file = readJson(CANDIDATES, null);
 const records = (file && file.records) || [];
@@ -177,8 +182,8 @@ function show(record, index) {
   console.log("  3. The paper does not itself fill the gap it names.");
   console.log("  4. The area is right. Fix it in the block below if not.");
   console.log("");
-  console.log("  node intake/review.mjs " + (index + 1) + " --approve");
-  console.log("  node intake/review.mjs " + (index + 1) + ' --dismiss --why="..."');
+  console.log("  node intake/review.mjs " + need.id + " --approve");
+  console.log("  node intake/review.mjs " + need.id + ' --dismiss --why="..."');
 }
 
 /* ---------- approving ---------- */
@@ -297,10 +302,19 @@ function decide(record, index, outcome) {
   console.log("");
   console.log("Approved in the ledger: " + record.data_need.id);
   console.log(file.records.length + " candidates left.");
+  /* Also appended to one file, so six approvals do not mean six copies
+     out of terminal scrollback. Still not data.js: the seed stays
+     hand-merged, which is the claim intake/README.md makes. */
+  const text = block(record);
+  const header = "\n/* ---- " + record.data_need.id + " · approved " +
+                 today() + " ---- */\n";
+  appendFileSync(APPROVED, header + text + "\n", "utf8");
+
   console.log("");
   console.log("Paste this into the problems array in data.js:");
+  console.log("(also appended to intake/approved-blocks.js)");
   console.log("");
-  console.log(block(record));
+  console.log(text);
   console.log("");
 
   if (!areas.has(record.problem.area)) {
