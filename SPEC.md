@@ -166,7 +166,9 @@ which §4 question 4 — which women to study, what to find out from them,
 in what form — was the platform's own specification written into every
 record and labelled unverified.
 
-It no longer is. A record carries what its source said and nothing more.
+It no longer is, anywhere in the seed: the records written under the old
+rule were removed on 18 Sep (§9). A record carries what its source said
+and nothing more.
 Where the source itself specified population or method, that is recorded
 as `collection_guidance`, because it is sourced; otherwise the field is
 `null`, and `null` is the normal case. The validator rejects a guidance
@@ -442,47 +444,39 @@ Three principles, each with a concrete rule that can be checked.
 
 ## 9. Seed data rules
 
-**The swap is done.** Every problem is sourced, `is_demo` is false
-throughout, and the demo banner no longer renders. The rules below now
-govern sourced records; the demo rules they replace are kept in git
-history, not here.
+**One generation, one shape.** Every record in `data.js` was produced by
+`intake/run.mjs` and admitted by a person. `is_demo` is false throughout
+and the demo banner does not render.
 
-The seed has **two generations**, and they are visibly different:
-
-- **Five hand-sourced problems**, each with 2–5 data needs, written
-  before the intake run existed.
-- **Six intake records**, one data need each, produced by
-  `intake/run.mjs`. An AI compared each abstract against the claim made
-  from it; a person then admitted or rejected each record. See §14.
-  These carry `claimed_date` and a `verification` block; the older five
-  do not, and the card says "Not established" rather than inventing one.
+The five hand-sourced problems that seeded this project were **removed on
+18 Sep**, with their 17 data needs. They predated the "nothing invented
+and stored" rule (§5a) and carried `collection_request` blocks — this
+platform's own specification of which women and which variables. They
+could not be brought into the current shape: `claimed_date` cannot be
+invented, and their sources predate the search window. Showing a reader
+two generations of record, one carrying an unsourced specification and
+one not, was the worse option. They are in the git history.
 
 Rules that hold for every record:
 
+- One data need per problem, as the intake run produces them.
 - Every problem carries a real `source` URL and `origin: "sourced"`.
-- Every `missing` or `partial` need carries `gap_evidence` **or** the
-  screen says no published source names that gap. One need is in the
-  second state (`maternal-postnatal-unpaid-care`) and that is a correct
-  state, not a hole to be filled.
+- Every data need carries `gap_evidence` with a `claimed_date`, and a
+  `verification` block. The validator rejects a record without them.
+- `collection_guidance` is sourced or `null`. `null` is the normal case.
 - `is_demo` and the banner stay in the code. They cost nothing, and a
   future problem added faster than it can be sourced needs them.
 
-**The "at least one `missing` need per problem" rule no longer holds, on
-purpose.** Three intake records came back `partial`: the verify step
-searched, found overlapping data, and said what it does not cover. A rule
-requiring every problem to show a gap would have meant overriding a check
-that did its job. The map's counts strip and `gapSentence()` already
-handle a problem with no missing need, which is why the rule could go.
+**No record has `status: "collected"`.** A register of gaps that lists
+data which exists is listing the wrong thing, so a `collected` verdict
+from the verify step means the candidate is not a gap and is not merged.
+The capability stays visible on `partial` records, which name the dataset
+that does exist and say what it does not cover.
 
-**Sources by problem**
-
-| Problem | Problem statement | Gap evidence |
-|---|---|---|
-| Menopause at work | WHO menopause fact sheet | HEAF study; NICE NG23 |
-| Postnatal follow-up | WHO 2022 postnatal guideline | NICE NG194; WHO exec summary |
-| Autoimmune delay | J Rheumatology | J Rheumatology; Cureus 2025; SAGER |
-| Cardiac recognition | Lancet CVD Commission 2021 | Lancet CVD Commission |
-| Endometriosis | WHO endometriosis fact sheet | NICE NG73 |
+**There is no "every problem has a missing need" rule.** Three records
+are `partial`: the verify step searched, found overlapping data, and said
+what it does not cover. A rule requiring every problem to show a gap
+would mean overriding a check that did its job.
 
 **Sources from the intake run.** Each is a systematic or narrative review
 published within the last twelve months, found by searching for the
@@ -498,16 +492,6 @@ brackets are new to the map and have hand-measured coordinates.
 | Brucellosis in pregnancy [Maternal] | Rev Inst Med Trop São Paulo | missing |
 | Pelvic neuropathies [Chronic pain] | Facts Views Vis Obgyn, narrative review | partial |
 
-- Geographic honesty: global sources carry the problem statement, and
-  national priority-setting sources (NICE) carry the gap claim, so
-  `gap_evidence.region` states the coverage rather than implying the
-  finding is worldwide.
-- **Nothing in a record is unsourced.** The five hand-written problems
-  predate that rule and carry `collection_request` blocks labelled as
-  this platform's own specification; they are history from before the
-  rule rather than an exception to it, and the card says which they are.
-  No record produced by the intake run may carry unsourced guidance —
-  the validator rejects it.
 
 ## 10. Out of scope (hackathon)
 
@@ -708,10 +692,8 @@ it reads as judgment rather than as a gap.
 - [ ] Project name. ("Research intelligence for the gender data gap"
       works as the Kaggle subtitle; the title is still open.)
 - [ ] Demo day time in PDT (confirm 4:00 vs 16:00 Lisbon in WhatsApp)
-- [ ] Whether to retire the five hand-written `collection_request`
-      blocks. They predate the "nothing invented and stored" rule (§5a)
-      and are labelled as this platform's own specification. Honest as
-      history; inconsistent with the rule as a design.
+(Resolved 18 Sep: the five hand-written `collection_request` blocks were
+retired with the records that carried them. One generation, one shape.)
 
 Resolved since 0.1: tech stack (§13), hosting and public URL (§13),
 charts (§7.4), several problem areas rather than one

@@ -19,6 +19,13 @@ and is never part of a record.
 `candidates.json` and stops. Nothing reaches `data.js` until a decision
 has been recorded for it, one record at a time, in the ledger.
 
+Every record now in `data.js` came through this path. The five
+hand-sourced problems that seeded the project were removed on 18 Sep, so
+that a reader never sees two generations of record side by side.
+
+A candidate whose check comes back `collected` is not merged: the data
+exists, so it is not a gap. The ledger records it all the same.
+
 ### Exactly how the first six records were reviewed, 18 Sep 2026
 
 Stated plainly, because a vaguer version of this paragraph would flatter

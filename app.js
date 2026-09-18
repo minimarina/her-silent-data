@@ -458,14 +458,21 @@
     var missing = countStatus(problem, "missing");
     var partial = countStatus(problem, "partial");
 
+    /* One need per problem is the normal case now that records come from
+       the intake run, and "1 of 1 data needs missing" reads like a bug.
+       The plural form is kept for problems that carry several. */
+    if (total === 1) {
+      if (missing > 0) { return "Data missing"; }
+      if (partial > 0) { return "Partly covered"; }
+      return "Data collected";
+    }
+
     if (missing > 0) {
       return missing + " of " + total + " data needs missing";
     }
 
-    /* §9 guarantees every problem has a missing need, so the branches
-       below do not show in the seed. They exist because "nothing is
-       missing" and "everything is collected" are different claims, and
-       partial data must not be reported as data in hand. */
+    /* "Nothing is missing" and "everything is collected" are different
+       claims, and partial data must not be reported as data in hand. */
     if (partial > 0) {
       return "No data needs missing, " + partial + " of " + total + " partial";
     }
@@ -887,8 +894,13 @@
     });
     slot.appendChild(bar);
 
+    /* A status with no records is left out. No record is "collected" any
+       more (SPEC §9), and a permanent "0 collected" is noise rather than
+       information. */
     var key = make("p", "summary-key");
     ["missing", "partial", "collected"].forEach(function (status) {
+      if (!sum[status]) { return; }
+
       var item = make("span", "summary-key-item");
       item.setAttribute("data-status", status);
       item.appendChild(make("strong", null, String(sum[status])));

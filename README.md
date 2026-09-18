@@ -31,15 +31,11 @@ need a framework, and this way nothing can fail to build on submission day.
 
 ## Data
 
-Every problem cites a published source, and every missing or partial data
-need cites the authority that named the gap — WHO fact sheets and
-guidelines, NICE research recommendations, the Lancet women and
-cardiovascular disease Commission, the SAGER reporting guidelines, and
-peer-reviewed systematic reviews. Sources are listed per problem in
-`SPEC.md` §9, and every claim links to its source on the record itself.
-
-One data need carries no gap citation, because no published source names
-it. The app says so on that record rather than leaving it blank.
+Every problem cites a published source, and every data need cites the
+review or guideline that named the gap — systematic reviews, narrative
+reviews and guidelines published within the last twelve months. Sources
+are listed per record in `SPEC.md` §9, and every claim links to its
+source on the record itself.
 
 **The rule the register rests on: nothing is invented and stored.** A
 record carries what its source said and nothing more. Where a source
@@ -57,14 +53,21 @@ deleting that file leaves the app fully working.
 
 **Every record carries a check, and states its limit.** A gap claim is
 dated, and a live web search records whether the data has been collected
-since. Finding it does not discard the record — the status becomes
-`partial` or `collected` and the card says where the data is. No search
+since. Where the check finds partial coverage the card names the dataset
+and says what it does not cover; where it finds the data in full, the
+candidate is not a gap and is not merged at all. No search
 proves a negative, so a `missing` record says on its face that this was a
 search of published sources, not proof, and invites a correction from
 anyone who knows of data it missed.
 
-Five problems were sourced by hand before the intake pipeline existed;
-six came from it. Both are visible as such in the app.
+**Every record has the same shape and arrived the same way.** Five
+hand-sourced problems seeded this project and were removed on 18 Sep:
+they predated the rule above, carried an unsourced specification, and
+could not be brought into the current shape, so a reader would have seen
+two generations of record. They are in the git history.
+
+No record has status `collected`. A register of gaps that lists data
+which exists is listing the wrong thing.
 
 ## Third-party assets
 
