@@ -1978,11 +1978,17 @@
        read as a claim about the whole page when the study designs on it are
        generated rather than sourced. This says only what the records
        themselves say, and it cannot drift from them. */
-    el("footer-provenance").textContent = demo === 0
-      ? total + " records, last checked against the literature on " +
-        longDate(lastCheckedAt()) + "."
+    var checked = lastCheckedAt();
+    var line = el("footer-provenance");
+
+    line.textContent = demo === 0
+      ? (checked
+          ? "Records last checked against the literature on " +
+            longDate(checked) + "."
+          : "")
       : demo + " of " + total + " records are generated demo data; the rest " +
         "cite published sources.";
+    line.hidden = !line.textContent;
   }
 
   function init() {
