@@ -12,8 +12,9 @@
  *
  * THE RULE, from SPEC §5a: nothing is invented and stored. A record
  * carries what its source said and nothing more. A study design is
- * generated on request, kept in research-designs.js, and never enters
- * this file. intake/validate.mjs enforces this rather than trusting it.
+ * drafted after the record is approved, kept in research-designs.js, and
+ * never enters this file. intake/validate.mjs enforces this rather than
+ * trusting it.
  *
  * Loaded by a <script> tag, not fetch(), so the app opens from file://
  * with no server (SPEC §13). Contents stay JSON-shaped and hand-editable:

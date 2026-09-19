@@ -12,8 +12,8 @@ the source also said *how* and *from whom* to collect, that is recorded
 too, because it is sourced. Otherwise `collection_guidance` is `null` and
 the card says so.
 
-A study design is generated on request, kept in `research-designs.js`,
-and is never part of a record.
+A study design is drafted after a record is approved, kept in
+`research-designs.js`, and is never part of a record.
 
 **No design is drafted before a record is approved.** The run used to
 draft one for every candidate at the moment it was extracted, and about a

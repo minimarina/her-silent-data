@@ -190,10 +190,18 @@ as `collection_guidance`, because it is sourced; otherwise the field is
 block with no source URL, so the rule is enforced in code rather than
 promised in prose.
 
-The answer to question 4 is still offered — generated on request as a
-**ResearchDesign** (§5), kept outside the register, and labelled
-AI-generated. Generation moved out of storage and into the request, which
-is what makes it impossible to mistake for data.
+The answer to question 4 is still offered as a **ResearchDesign** (§5),
+kept outside the register and labelled AI-generated. Generation moved out
+of storage, which is what makes it impossible to mistake for data.
+
+**Update, 19 Sep.** It also moved *behind the human decision*. A design
+used to be drafted for every candidate the moment it was extracted, and
+about a third of those candidates were then dismissed — so a third of the
+design spend bought nothing, and the answer was written before the record
+existed. `intake/design.mjs` refuses any id that is not already in
+`data.js`. The app still says *Show*, not *Generate*, for the same reason
+as before: by the time anyone clicks, the design is already in
+`research-designs.js`.
 
 **Every record carries a check.** A gap claim is a statement about a
 moment in time, so `gap_evidence.claimed_date` records when it was made
@@ -470,6 +478,14 @@ an instrument rather than decoration.
 
 The no-charts rule itself stands. There is still no chart in the app.
 
+**Update, 19 Sep.** The seed is now twenty-four records across six areas,
+so the *arithmetic* in this section is out of date — twenty-four is no
+longer "4–6 problems", and the collection requests it counts were removed
+on 18 Sep (§9). The decision is unchanged and the reason has simply moved:
+the register holds statuses and claims, not findings, however many of them
+there are. A chart of findings would still be decoration pretending to be
+analysis, and the body map is still the only view of the structure.
+
 ### 7.5 Responsive
 
 Works from 360px to desktop. Single column on mobile; the matrix becomes
@@ -513,10 +529,10 @@ the same image is what a judge meets as a thumbnail.
 
 **One marker per AREA, not per problem.** An area holds however many
 problems sit in it, and the marker's sentence and bar count every data
-need across them: two problems in Maternal health are one pin reading
-"2 of 2 data needs missing". Pinning problems instead produced two
+need across them: the ten problems in Maternal health are one pin reading
+"5 of 10 data needs missing". Pinning problems instead produced ten
 markers labelled "Maternal health", which reads as a rendering fault
-rather than as two different gaps.
+rather than as ten different gaps.
 
 Because a pin can stand for several problems, it cannot open one of them
 — it would have to pick, and picking would hide the rest. Activating a
@@ -582,9 +598,10 @@ dots clustered on a woman's torso read as bullet wounds, which is an
 unfortunate picture for a product about women's health and was noticed
 straight away by the first person to look at it. And the colour was
 making a claim the pin does not make: a pin means "this area has data
-needs, open it", it is a button, and four of the six areas are *Partly
-covered* with no missing need at all — so the pin asserted in colour the
-opposite of the sentence printed next to it. §6 says the status
+needs, open it", it is a button, and areas with no missing need at all
+are *Partly covered* — two of the six today, four of six when this was
+written — so the pin asserted in colour the opposite of the sentence
+printed next to it. §6 says the status
 vocabularies stay apart; the map was the one place they had not.
 
 Pins are now `teal-accent`, the palette's interactive colour (§7.1), at
@@ -666,10 +683,17 @@ from the verify step means the candidate is not a gap and is not merged.
 The capability stays visible on `partial` records, which name the dataset
 that does exist and say what it does not cover.
 
-**There is no "every problem has a missing need" rule.** Six records are
-`partial`: the verify step searched, found overlapping data, and said
-what it does not cover. A rule requiring every problem to show a gap
-would mean overriding a check that did its job.
+**There is no "every problem has a missing need" rule.** Sixteen of the
+twenty-four records are `partial`: the verify step searched, found
+overlapping data, and said what it does not cover. A rule requiring every
+problem to show a gap would mean overriding a check that did its job.
+
+That the majority are `partial` is itself a finding, not a failure.
+Published gaps are far oftener "the data is thin and does not cover these
+women" than "nobody has collected anything", because the sentences
+researchers write about absence are mostly sentences about sparseness.
+`intake/run.mjs --absence-only` restricts a run to the absence family of
+phrases when the register needs pulling back the other way.
 
 The sixth arrived by re-check rather than by intake. The androgen record
 was written `missing` on 18 Sep from a search that never ran — the model
@@ -678,7 +702,7 @@ nothing downstream could tell, because `search_outcome` is set by the
 verify step and a merged record no longer carries the candidate that
 would have failed. Re-run on the same day, the check completed and found
 the gap partly filled. The record now carries `search_outcome:
-"reviewed"`; the other ten predate the field and do not.
+"reviewed"`; the other twenty-three predate the field and do not.
 
 **Sources from the intake run.** Each is a systematic or narrative review
 published within the last twelve months, found by searching for the

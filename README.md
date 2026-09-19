@@ -37,9 +37,9 @@ need a framework, and this way nothing can fail to build on submission day.
 
 Every problem cites a published source, and every data need cites the
 review or guideline that named the gap — systematic reviews, narrative
-reviews and guidelines published within the last twelve months. Sources
-are listed per record in `SPEC.md` §9, and every claim links to its
-source on the record itself.
+reviews and guidelines published within the last twelve months. Every
+claim links to its source on the record itself; the rules every record
+must satisfy are in `SPEC.md` §9.
 
 **The rule the register rests on: nothing is invented and stored.** A
 record carries what its source said and nothing more. Where a source
@@ -87,18 +87,36 @@ which exists is listing the wrong thing.
 
 ## Third-party assets
 
-One, and only one: the female silhouette on the home screen.
+Two.
 
 - **Female body silhouette** — OpenClipart #71126, dedicated to the public
   domain under CC0. <https://freesvg.org/female-body-silhouette>
+- **The GitHub mark** in the footer — GitHub's trademark, used unaltered
+  and in a single colour to link to GitHub, which is what their logo
+  guidelines permit. Not covered by this repository's licence.
 
-Its single `<path>` is pasted inline into `index.html` so the app still
-opens from `file://` with no server and no network. The path itself is
-unaltered; only its fill and stroke are set, from the palette in
+The silhouette's single `<path>` is pasted inline into `index.html` so the
+app still opens from `file://` with no server and no network. The path
+itself is unaltered; only its fill and stroke are set, from the palette in
 `SPEC.md` §7.1.
 
 Everything else — the layout, the markers, the ring, the data and all
 the code — is original work.
+
+## Licence
+
+The code is MIT. The register — the selection, descriptions, verification
+notes and generated designs — is CC BY 4.0. The **quoted sentences are
+not ours to license**: each record reproduces one sentence from the paper
+it cites, to report what that paper claimed, and those stay the copyright
+of their publishers and authors. `intake/validate.mjs` rejects a
+quotation longer than 300 characters. See `LICENSE`.
+
+## Not medical advice
+
+This is a research tool, written for researchers. Nothing in it is
+medical advice, and the study designs are generated, unreviewed model
+output.
 
 ## Hackathon
 
@@ -110,17 +128,29 @@ All work in this repository was done during the Hackathon Period
 
 Built to the rules in `SPEC.md` §8.2: every status carries a colour, a
 shape and a word, so it survives greyscale; the whole flow is keyboard
-reachable with a visible focus ring; body text is 16px, captions and
-field hints 14px, and every one of them was measured at 4.5:1 contrast or
-better against its own background; no horizontal scroll at 360px;
+reachable with a visible focus ring; body text starts at 16px and steps
+to 18px above 820px and 20px above 1180px, with captions at 14px and
+field labels at 13px, every one measured at 4.5:1 contrast or better
+against its own background; no horizontal scroll at 360px;
 `prefers-reduced-motion` is honoured.
+
+The type scale is on `:root`, so it also follows the reader's own browser
+font-size setting rather than overriding it.
 
 ## How records arrive
 
-`intake/` holds the pipeline: discover, filter, extract, verify, design,
-validate, review. It is not part of the app — `index.html` loads nothing
-from it — and the app still opens from `file://` with no server and no
-dependencies. See `intake/README.md`.
+`intake/` holds the pipeline: discover, filter, extract, verify,
+validate, review — and then, only for records a person has approved and
+merged, design. Drafting a study for a candidate nobody admitted was
+money spent on an answer to a record that did not exist, so the design
+step is behind the human decision and refuses any id that is not already
+in `data.js`.
 
-Status: the core flow works end to end on sourced data, and the intake
-pipeline is built and has produced records now in the seed.
+It is not part of the app — `index.html` loads nothing from it — and the
+app still opens from `file://` with no server and no dependencies. See
+`intake/README.md`.
+
+Status: the register holds **24 records across 6 areas** — 8 where the
+data is missing, 16 where it is only partly covered — each with a dated
+check, and 21 carrying a generated study design. Three designs were
+refused by the safety rules and say so on their record.
