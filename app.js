@@ -40,22 +40,18 @@
   /* Six stages since 19 Sep. Stage 4 is the funding step, which the loop
      did not have: a researcher designed a study and women joined it with
      nobody paying for either. Women and the closing of the gap moved down
-     to 5 and 6. */
+     to 5 and 6.
+
+     The seven intake steps used to have entries here too. They are all of
+     stage 1, which this object already marks built, and the chain that
+     draws them says who decides each step instead. */
   var BUILD_STATUS = {
     stage1: "built",
     stage2: "built",
     stage3: "planned",
     stage4: "planned",
     stage5: "planned",
-    stage6: "planned",
-
-    discover: "built",
-    filter:   "built",
-    extract:  "built",
-    verify:   "built",
-    design:   "built",
-    validate: "built",
-    review:   "built"
+    stage6: "planned"
   };
 
   /* The word is the carrier; the colour and the border style repeat it
@@ -1940,6 +1936,23 @@
      demo data. Once one problem is sourced that sentence is false, so it
      is computed from the seed and disappears when the swap is finished
      (§8.1: demo data is labelled on every screen, and only while true). */
+  /* The most recent verification date in the seed. Not today's date: the
+     register is only as fresh as its last run, and a footer that printed
+     today would claim a check nobody made. */
+  function lastCheckedAt() {
+    var dates = [];
+
+    DATA.problems.forEach(function (problem) {
+      (problem.data_needs || []).forEach(function (need) {
+        if (need.verification && hasText(need.verification.checked_at)) {
+          dates.push(need.verification.checked_at);
+        }
+      });
+    });
+
+    return dates.sort().pop() || "";
+  }
+
   function renderProvenanceSummary() {
     var total = DATA.problems.length;
     var demo = DATA.problems.filter(function (p) {
@@ -1958,13 +1971,16 @@
       ));
     }
 
-    /* Nothing is said when no record is demo data. The line that used to
-       stand here — "every record is sourced from published research" —
-       read as a claim about the whole page, and the study designs on it
-       are generated, not sourced. The footer stays silent rather than
-       saying something true of the records and false of the designs. */
+    /* How big the register is and when it was last checked against the
+       literature — computed from the seed, on every screen.
+
+       It replaced "every record is sourced from published research", which
+       read as a claim about the whole page when the study designs on it are
+       generated rather than sourced. This says only what the records
+       themselves say, and it cannot drift from them. */
     el("footer-provenance").textContent = demo === 0
-      ? ""
+      ? total + " records, last checked against the literature on " +
+        longDate(lastCheckedAt()) + "."
       : demo + " of " + total + " records are generated demo data; the rest " +
         "cite published sources.";
   }

@@ -400,8 +400,17 @@
          steps that do would give away the thing this pipeline is for. The
          word carries it and the colour repeats it (SPEC 8.2), so the
          distinction survives being printed in grey. -->
-    <svg class="about-svg" viewBox="0 0 880 310" role="img"
-         aria-label="Seven steps, all built. Discover runs on plain code; filter, extract, verify and design are decided by AI; validate is plain code again; and review, the last step, is decided by a person. Then the record enters the register.">
+    <!-- Who decides, on the face of each step. Three actors and not two:
+         Validate runs no model at all, and lumping it in with the four
+         steps that do would give away the thing this pipeline is for. The
+         word carries it and the colour repeats it (SPEC 8.2), so the
+         distinction survives being printed in grey.
+
+         No Built/Planned line here. All seven steps are stage 1, and the
+         loop diagram above already marks stage 1 Built — saying it seven
+         more times crowded the one thing these boxes are for. -->
+    <svg class="about-svg" viewBox="0 0 880 270" role="img"
+         aria-label="Seven steps. Discover runs on plain code; filter, extract, verify and design are decided by AI; validate is plain code again; and review, the last step, is decided by a person. Then the record enters the register.">
       <defs>
         <marker id="intake-arrow" viewBox="0 0 10 10" refX="9" refY="5"
                 markerWidth="6" markerHeight="6" orient="auto-start-reverse">
@@ -410,97 +419,83 @@
       </defs>
 
       <g class="about-node">
-        <rect x="5" y="30" width="186" height="112" rx="6" data-build-shape="discover"/>
-        <text class="about-node-title" x="25" y="70">Discover</text>
-        <text class="about-node-actor" x="25" y="98" data-actor="code">Plain code</text>
-        <text class="about-node-status" x="25" y="124" data-build="discover"></text>
+        <rect x="5" y="30" width="186" height="88" rx="6" data-build-shape="discover"/>
+        <text class="about-node-title" x="25" y="68">Discover</text>
+        <text class="about-node-actor" x="25" y="96" data-actor="code">Plain code</text>
       </g>
 
       <g class="about-node">
-        <rect x="233" y="30" width="186" height="112" rx="6" data-build-shape="filter"/>
-        <text class="about-node-title" x="253" y="70">Filter</text>
-        <text class="about-node-actor" x="253" y="98" data-actor="ai">AI</text>
-        <text class="about-node-status" x="253" y="124" data-build="filter"></text>
+        <rect x="233" y="30" width="186" height="88" rx="6" data-build-shape="filter"/>
+        <text class="about-node-title" x="253" y="68">Filter</text>
+        <text class="about-node-actor" x="253" y="96" data-actor="ai">AI</text>
       </g>
 
       <g class="about-node">
-        <rect x="461" y="30" width="186" height="112" rx="6" data-build-shape="extract"/>
-        <text class="about-node-title" x="481" y="70">Extract</text>
-        <text class="about-node-actor" x="481" y="98" data-actor="ai">AI</text>
-        <text class="about-node-status" x="481" y="124" data-build="extract"></text>
+        <rect x="461" y="30" width="186" height="88" rx="6" data-build-shape="extract"/>
+        <text class="about-node-title" x="481" y="68">Extract</text>
+        <text class="about-node-actor" x="481" y="96" data-actor="ai">AI</text>
       </g>
 
       <g class="about-node">
-        <rect x="689" y="30" width="186" height="112" rx="6" data-build-shape="verify"/>
-        <text class="about-node-title" x="709" y="70">Verify</text>
-        <text class="about-node-actor" x="709" y="98" data-actor="ai">AI</text>
-        <text class="about-node-status" x="709" y="124" data-build="verify"></text>
+        <rect x="689" y="30" width="186" height="88" rx="6" data-build-shape="verify"/>
+        <text class="about-node-title" x="709" y="68">Verify</text>
+        <text class="about-node-actor" x="709" y="96" data-actor="ai">AI</text>
       </g>
 
       <g class="about-node">
-        <rect x="5" y="180" width="186" height="112" rx="6" data-build-shape="design"/>
-        <text class="about-node-title" x="25" y="220">Design</text>
-        <text class="about-node-actor" x="25" y="248" data-actor="ai">AI</text>
-        <text class="about-node-status" x="25" y="274" data-build="design"></text>
+        <rect x="5" y="160" width="186" height="88" rx="6" data-build-shape="design"/>
+        <text class="about-node-title" x="25" y="198">Design</text>
+        <text class="about-node-actor" x="25" y="226" data-actor="ai">AI</text>
       </g>
 
       <g class="about-node">
-        <rect x="233" y="180" width="186" height="112" rx="6" data-build-shape="validate"/>
-        <text class="about-node-title" x="253" y="220">Validate</text>
-        <text class="about-node-actor" x="253" y="248" data-actor="code">Plain code</text>
-        <text class="about-node-status" x="253" y="274" data-build="validate"></text>
+        <rect x="233" y="160" width="186" height="88" rx="6" data-build-shape="validate"/>
+        <text class="about-node-title" x="253" y="198">Validate</text>
+        <text class="about-node-actor" x="253" y="226" data-actor="code">Plain code</text>
       </g>
 
       <g class="about-node is-person">
-        <rect x="461" y="180" width="186" height="112" rx="6" data-build-shape="review"/>
-        <text class="about-node-title" x="481" y="220">Review</text>
-        <text class="about-node-actor" x="481" y="248" data-actor="person">A person</text>
-        <text class="about-node-status" x="481" y="274" data-build="review"></text>
+        <rect x="461" y="160" width="186" height="88" rx="6" data-build-shape="review"/>
+        <text class="about-node-title" x="481" y="198">Review</text>
+        <text class="about-node-actor" x="481" y="226" data-actor="person">A person</text>
       </g>
 
-      <line class="about-flow" x1="195" y1="86" x2="227" y2="86"/>
-      <line class="about-flow" x1="423" y1="86" x2="455" y2="86"/>
-      <line class="about-flow" x1="651" y1="86" x2="683" y2="86"/>
+      <line class="about-flow" x1="195" y1="74" x2="227" y2="74"/>
+      <line class="about-flow" x1="423" y1="74" x2="455" y2="74"/>
+      <line class="about-flow" x1="651" y1="74" x2="683" y2="74"/>
 
       <!-- The wrap, drawn like a line of text running on to the next. -->
-      <path class="about-flow-wrap" d="M782,142 V162 H98 V176"/>
+      <path class="about-flow-wrap" d="M782,118 V139 H98 V156"/>
 
-      <line class="about-flow" x1="195" y1="236" x2="227" y2="236"/>
-      <line class="about-flow" x1="423" y1="236" x2="455" y2="236"/>
-      <line class="about-flow-loop" x1="651" y1="236" x2="683" y2="236"/>
-      <text class="about-loop-label" x="695" y="232">Into the</text>
-      <text class="about-loop-label" x="695" y="252">register.</text>
+      <line class="about-flow" x1="195" y1="204" x2="227" y2="204"/>
+      <line class="about-flow" x1="423" y1="204" x2="455" y2="204"/>
+      <line class="about-flow-loop" x1="651" y1="204" x2="683" y2="204"/>
+      <text class="about-loop-label" x="695" y="200">Into the</text>
+      <text class="about-loop-label" x="695" y="220">register.</text>
     </svg>
 
     <!-- The seven steps as text: assistive technology above 640px, and the
          diagram itself below it, where the figure is dropped. -->
     <ol class="intake-steps diagram-text">
-      <li><h3>Discover</h3><p class="build-chip" data-build="discover"></p>
-        <p class="step-actor" data-actor="code">Decided by: Plain code</p>
+      <li><h3>Discover</h3><p class="step-actor" data-actor="code">Decided by: Plain code</p>
         <p>Europe PMC, searched for the sentences a review writes when it
         looked and found nothing.</p></li>
-      <li><h3>Filter</h3><p class="build-chip" data-build="filter"></p>
-        <p class="step-actor" data-actor="ai">Decided by: AI</p>
+      <li><h3>Filter</h3><p class="step-actor" data-actor="ai">Decided by: AI</p>
         <p>One yes/no question per abstract: does this name missing data
         about women that the paper does not itself go on to collect?</p></li>
-      <li><h3>Extract</h3><p class="build-chip" data-build="extract"></p>
-        <p class="step-actor" data-actor="ai">Decided by: AI</p>
+      <li><h3>Extract</h3><p class="step-actor" data-actor="ai">Decided by: AI</p>
         <p>Structured output against the record schema. What the source does
         not support comes back null, not a guess.</p></li>
-      <li><h3>Verify</h3><p class="build-chip" data-build="verify"></p>
-        <p class="step-actor" data-actor="ai">Decided by: AI</p>
+      <li><h3>Verify</h3><p class="step-actor" data-actor="ai">Decided by: AI</p>
         <p>A live search for data collected since the gap was named. The
         check is dated, and no search proves a negative.</p></li>
-      <li><h3>Design</h3><p class="build-chip" data-build="design"></p>
-        <p class="step-actor" data-actor="ai">Decided by: AI</p>
+      <li><h3>Design</h3><p class="step-actor" data-actor="ai">Decided by: AI</p>
         <p>A possible study, generated and kept out of the register —
         and withheld entirely where the safety rules refuse it.</p></li>
-      <li><h3>Validate</h3><p class="build-chip" data-build="validate"></p>
-        <p class="step-actor" data-actor="code">Decided by: Plain code</p>
+      <li><h3>Validate</h3><p class="step-actor" data-actor="code">Decided by: Plain code</p>
         <p>Ordinary JavaScript, no model. A claim that does not quote its
         source word for word is rejected.</p></li>
-      <li><h3>Review</h3><p class="build-chip" data-build="review"></p>
-        <p class="step-actor" data-actor="person">Decided by: A person</p>
+      <li><h3>Review</h3><p class="step-actor" data-actor="person">Decided by: A person</p>
         <p>The run stops. Nothing reaches the register until a person has
         decided on it, and every decision and its reason is logged.</p></li>
     </ol>
@@ -554,11 +549,20 @@
 <!-- The footer is the same navy band as the masthead, so the page closes
      on the colour it opened with. The band is full-bleed and .wrap sits
      inside it, which is why this is a div and not the footer itself. -->
+<!-- The footer carries what belongs on every screen rather than only on
+     About: who made it, where the source and the decision history are, and
+     how fresh the register is. The provenance line is computed from the
+     seed in app.js, so it cannot drift from what the records say. -->
 <footer class="site-footer">
   <div class="wrap">
-    <p>
-      Built for the Elevate Women Global Hackathon 2026.
+    <p class="footer-line">
+      Built by Marina for the Elevate Women Global Hackathon 2026.
       <span id="footer-provenance"></span>
+    </p>
+    <p class="footer-line">
+      <a href="https://github.com/minimarina/her-silent-data"
+         target="_blank" rel="noopener noreferrer">Source, and every intake
+      decision, on GitHub</a>
     </p>
   </div>
 </footer>

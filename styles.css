@@ -170,6 +170,12 @@ a:hover { text-decoration: none; }
   font-size: 0.9375rem;
 }
 .site-footer p { margin: 0; }
+.footer-line + .footer-line { margin-top: 6px; }
+
+/* Teal on navy is under the contrast floor, so the footer's links take the
+   footer's own colour — 8.3:1 — and the underline carries the affordance
+   that colour would otherwise have to (SPEC 8.2). */
+.site-footer a { color: #C9D8E6; }
 
 /* ---------- screens ---------- */
 
