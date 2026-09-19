@@ -605,5 +605,189 @@
     "instrument_source": "Cooperstown 5+1 cocktail (validated CYP phenotyping probe drug panel)",
     "generated_at": "2026-09-18",
     "model": "claude-sonnet-5"
+  },
+  "cvd-sex-hormones-mortality-women-data": {
+    "target_women": "Approximately 1,800 women aged 40 and older with established cardiovascular disease (prior myocardial infarction, documented coronary artery disease, heart failure, or ischemic stroke), recruited consecutively from cardiology and cardiac rehabilitation clinics at 8-10 collaborating hospitals, oversampling postmenopausal and racially/ethnically diverse women to correct prior underrepresentation.",
+    "variables": [
+      "Baseline serum total and free estradiol concentration",
+      "Baseline serum total and free testosterone concentration",
+      "Baseline sex hormone-binding globulin (SHBG) concentration",
+      "Baseline follicle-stimulating hormone (FSH) concentration and self-reported menopausal status",
+      "All-cause mortality (date and cause, from death certificates/registry linkage)",
+      "Cardiovascular mortality specifically (adjudicated cause of death)",
+      "Incident major adverse cardiovascular events during follow-up (recurrent MI, stroke, heart failure hospitalization)"
+    ],
+    "stratifiers": [
+      "Age band (40-54, 55-64, 65-74, 75+)",
+      "Menopausal status (pre-, peri-, post-menopausal, and surgical menopause)",
+      "Race/ethnicity, analyzed as a marker of structural factors such as differential access to cardiac care and diagnostic delay rather than biological difference",
+      "Type of established cardiovascular disease (coronary artery disease, heart failure, cerebrovascular disease)",
+      "Comorbidity burden (diabetes, chronic kidney disease, obesity)"
+    ],
+    "form": "Purely observational prospective cohort study: no intervention or exposure is assigned, since the exposure of interest (endogenous hormone levels) already exists in this population and is simply measured. A single fasting morning blood draw is taken at enrollment for hormone and SHBG assay via liquid chromatography-mass spectrometry, alongside a structured interview covering menopausal history and cardiovascular risk factors. Participants are then followed annually for 10 years via clinic visits or telephone follow-up, with mortality and event ascertainment cross-checked against national death and hospitalization registries. Standard ethics approval and written informed consent are obtained at each site; because this is observational with no assigned treatment, no data safety monitoring board or equipoise justification is required.",
+    "instrument_source": null,
+    "generated_at": "2026-09-19",
+    "model": "claude-sonnet-5"
+  },
+  "fertility-interventions-30-42-safety-reporting": {
+    "target_women": "Approximately 2,500 women aged 30-42 presenting for infertility treatment (any etiology: ovulatory dysfunction, tubal factor, male factor, unexplained, diminished ovarian reserve) at 15-20 fertility clinics across a mix of academic and community settings, recruited consecutively over a 24-month enrollment window as they begin a treatment cycle (IUI, conventional IVF/ICSI, or IVF with donor eggs), each followed to pregnancy outcome.",
+    "variables": [
+      "Live birth (yes/no) per treatment cycle and cumulatively across up to 3 cycles per woman",
+      "Clinical pregnancy and biochemical pregnancy rates per cycle",
+      "Incidence and severity grade of ovarian hyperstimulation syndrome (mild/moderate/severe, per ASRM/ESHRE criteria) among stimulated cycles",
+      "Multiple gestation rate (twin, triplet+) among clinical pregnancies",
+      "Gestational age at delivery and preterm birth (<37 weeks) rate",
+      "Neonatal outcomes: birth weight, NICU admission, major congenital anomaly, and neonatal death within 28 days",
+      "Maternal obstetric complications during pregnancy (gestational diabetes, preeclampsia, postpartum hemorrhage)",
+      "Specific intervention type and protocol used (e.g., named gonadotropin agents, letrozole, clomiphene citrate, GnRH agonist/antagonist protocol, number of embryos transferred)"
+    ],
+    "stratifiers": [
+      "Maternal age band (30-34, 35-37, 38-40, 41-42)",
+      "Infertility etiology (ovulatory dysfunction, tubal, male factor, diminished ovarian reserve, unexplained)",
+      "Body mass index category (underweight, normal, overweight, obese)",
+      "Race/ethnicity, recorded to examine differences in access to care, insurance coverage, and clinic referral patterns rather than to imply biological difference",
+      "Number of prior treatment cycles/failed attempts before enrollment"
+    ],
+    "form": "Prospective observational cohort with data captured via a standardized electronic case report form completed by clinic staff at four fixed points: (1) baseline/enrollment, (2) end of each stimulation cycle, (3) pregnancy confirmation (or cycle failure), and (4) delivery/neonatal outcome, with the last woman followed for up to 12 months post-enrollment to capture a full pregnancy course. No exposure is assigned by the study; women and clinicians choose their treatment as part of usual care, and the cohort simply standardizes what is measured and how, since randomizing women already selecting an infertility treatment pathway would not answer the question and is not appropriate here. Sample size of 2,500 is a pragmatic estimate based on typical clinic volumes and expected event rates, not a formal power calculation. All sites obtain local ethics/IRB approval and written informed consent from participants prior to data collection; no experimental intervention is administered, so no DSMB is required, but a data quality and safety oversight committee reviews adverse event reports (OHSS, maternal complications) quarterly.",
+    "instrument_source": "ASRM/ESHRE consensus criteria for OHSS classification (Golan/Rizk criteria as adopted in ASRM Practice Committee guidance)",
+    "generated_at": "2026-09-19",
+    "model": "claude-sonnet-5"
+  },
+  "urinary-retention-older-women-trial-data": {
+    "target_women": "Approximately 150 women aged 65 and older with confirmed chronic urinary retention (post-void residual >150mL on two occasions), recruited from urogynecology, urology, and geriatric medicine clinics at 3-4 academic medical centers, including those with neurogenic bladder, diabetic bladder dysfunction, or pelvic organ prolapse as underlying causes.",
+    "variables": [
+      "post-void residual urine volume (mL) measured by bladder scan or catheterization",
+      "incidence of urinary tract infection over follow-up",
+      "need for escalation to clean intermittent catheterization or indwelling catheter",
+      "patient-reported voiding symptom score (ICIQ-FLUTS voiding subscale)",
+      "adverse events attributable to assigned treatment, named individually",
+      "health-related quality of life score",
+      "treatment discontinuation and reasons"
+    ],
+    "stratifiers": [
+      "age band (65-74, 75-84, 85+)",
+      "underlying cause (neurogenic disease, diabetic bladder dysfunction, pelvic organ prolapse, idiopathic)",
+      "race and ethnicity, tracked as a marker of differential access to specialist urogynecologic care and prior diagnostic workup, not biological difference",
+      "baseline severity (post-void residual volume tertile)",
+      "frailty status (using a validated frailty index)"
+    ],
+    "form": "A randomized, three-arm, open-label trial comparing (1) pharmacologic treatment with bethanechol chloride, (2) supervised pelvic floor and bladder retraining behavioral therapy, and (3) patient education plus clean intermittent self-catheterization, all as add-ons to usual urologic care. Genuine equipoise exists because no arm has established superiority for retention specifically in older women, and current guidance is extrapolated from younger or male populations. Women are excluded if they have bladder outlet obstruction requiring immediate surgical correction, active untreated urinary tract infection, or contraindications to bethanechol (bradycardia, asthma, hyperthyroidism, active peptic ulcer disease, seizure disorder, Parkinsonism). Follow-up visits occur at 4, 8, and 12 weeks, then at 6 and 12 months, with bladder scans and symptom questionnaires at each visit. The trial requires ethics approval at every participating site, written informed consent from each participant (with assessment of decision-making capacity given the neurologic comorbidities in this population), and an independent data safety monitoring board reviewing adverse events, particularly UTI rates and cardiac or gastrointestinal events related to bethanechol, at quarterly intervals with authority to halt any arm. The total duration is 18 months including recruitment. Sample size of 150 (50 per arm) is an estimate based on feasibility and prior observational retention studies, not a formal power calculation.",
+    "instrument_source": "International Consultation on Incontinence Questionnaire - Female Lower Urinary Tract Symptoms (ICIQ-FLUTS), voiding/obstructive subscale",
+    "generated_at": "2026-09-19",
+    "model": "claude-sonnet-5"
+  },
+  "fertility-preservation-chemo-comparative-trials": {
+    "target_women": "1,000 premenopausal women (aged 18-40) newly diagnosed with early-stage breast cancer, planning to undergo chemotherapy and wishing to pursue fertility preservation, recruited from ~20 oncofertility referral centers across multiple countries over a 3-year enrollment window.",
+    "variables": [
+      "Number of mature oocytes or embryos cryopreserved per cycle",
+      "Time from cancer diagnosis to start of chemotherapy (days)",
+      "Anti-Müllerian hormone (AMH) level at baseline, 6 months, and 24 months post-chemotherapy",
+      "Live birth rate among women who later attempt pregnancy, followed for up to 10 years",
+      "Disease-free survival at 5 years",
+      "Overall survival at 5 and 10 years",
+      "Rate of treatment-related adverse events (e.g., ovarian hyperstimulation syndrome, thromboembolism)"
+    ],
+    "stratifiers": [
+      "Age band (18-30, 31-35, 36-40)",
+      "Cancer stage at diagnosis (I-II vs III)",
+      "Chemotherapy regimen type (anthracycline-based vs other)",
+      "Race/ethnicity (recorded to examine structural differences in access to fertility clinics and insurance coverage for preservation, not biological difference)",
+      "Baseline ovarian reserve (AMH tertile)"
+    ],
+    "form": "Multicenter randomized controlled trial with 1:1 allocation to (a) controlled ovarian hyperstimulation using recombinant FSH plus letrozole (an aromatase inhibitor used as the protective co-treatment to limit estrogen exposure) for oocyte or embryo cryopreservation, versus (b) GnRH agonist (goserelin) ovarian suppression administered monthly starting before and continuing through chemotherapy. All participants have histologically confirmed hormone-receptor-status-documented breast cancer and are excluded if pregnant, less than 3 months postpartum, or breastfeeding, since letrozole and goserelin are contraindicated in pregnancy and lactation. Both arms are followed with clinic visits before, during, and after chemotherapy, then annual follow-up for 10 years capturing fertility attempts, pregnancy, live birth, and survival status. Genuine equipoise exists because no trial has directly compared live birth and survival outcomes between these two widely used but never head-to-head-tested strategies. The trial requires ethics approval at every participating site, written informed consent from each participant (with counseling on the experimental nature of the comparison given some sites currently favor one method by convention), and an independent data safety monitoring board reviewing adverse events (including cancer recurrence) at 6-month intervals with pre-specified stopping rules. Women with active eating disorders or severe malnutrition are excluded from the hyperstimulation arm's dietary and hormonal monitoring protocol, and all participants are screened at baseline using clinician assessment for disordered eating given the hormonal manipulation involved.",
+    "instrument_source": null,
+    "generated_at": "2026-09-19",
+    "model": "claude-sonnet-5"
+  },
+  "sjogrens-ovarian-reserve-evidence-base": {
+    "target_women": "Recruit 300 reproductive-age women (18-40 years) with a confirmed diagnosis of primary Sjögren's disease (per 2016 ACR/EULAR classification criteria) from rheumatology clinics at 5-8 collaborating hospitals, plus 300 age-matched healthy controls (within 2-year age bands) recruited from the same hospitals' general gynaecology or primary care clinics.",
+    "variables": [
+      "Serum anti-Müllerian hormone (AMH) level (ng/mL)",
+      "Serum follicle-stimulating hormone (FSH) level on cycle day 2-4 (IU/L)",
+      "Antral follicle count (AFC) via transvaginal ultrasound",
+      "Ovarian volume (OV) via transvaginal ultrasound",
+      "Sjögren's disease duration and current disease activity score (ESSDAI)",
+      "Current and past immunosuppressive/DMARD medication use (name each drug used, e.g. hydroxychloroquine, methotrexate, cyclophosphamide, rituximab)",
+      "Self-reported menstrual cycle regularity and any prior fertility diagnosis or treatment"
+    ],
+    "stratifiers": [
+      "Age band (18-24, 25-30, 31-35, 36-40)",
+      "Disease duration since Sjögren's diagnosis (<2 years, 2-5 years, 5-10 years, >10 years)",
+      "History of cyclophosphamide exposure (yes/no), given its known gonadotoxicity",
+      "Ethnicity (recorded to explore differential access to rheumatology/fertility care and diagnostic delay, not biological difference)",
+      "Body mass index category (underweight, normal, overweight, obese), as this affects AMH and ultrasound-based AFC readings"
+    ],
+    "form": "Cross-sectional observational cohort study with a single baseline measurement (blood draw and transvaginal ultrasound scheduled on cycle day 2-4) for each participant, plus a linked medical record review of disease history and medication exposure. No intervention or exposure is assigned — this is a purely observational comparison between women who already have Sjögren's disease and matched controls, so randomisation does not apply. Recruitment and data collection conducted over 18 months, with optional annual follow-up for 2 years for a subset of 100 case-control pairs to assess change in ovarian reserve markers over time. All participating sites obtain local ethics committee approval; all participants give written informed consent; a data monitoring board is not required since no intervention is administered, but a data safety and confidentiality officer oversees handling of sensitive reproductive and health data. Women who are pregnant, breastfeeding, or post-menopausal at enrollment are excluded, as are women with other known causes of diminished ovarian reserve (e.g. prior oophorectomy, pelvic radiotherapy) to reduce confounding.",
+    "instrument_source": "ESSDAI (EULAR Sjögren's Syndrome Disease Activity Index)",
+    "generated_at": "2026-09-19",
+    "model": "claude-sonnet-5"
+  },
+  "caffeine-female-athletes-menstrual-tracking": {
+    "target_women": "Recruit 48 competitive female team-sport athletes (soccer, basketball, netball, or similar) aged 18-35, training at least 4 times/week, from university and club teams via coach referral and sports-science department mailing lists; exclude pregnant women, those with cardiac arrhythmia, anxiety disorders, or caffeine allergy.",
+    "variables": [
+      "Sport-specific skill test performance (e.g. sprint, agility, shooting/passing accuracy) pre- and post-dose",
+      "Cognitive test performance (reaction time, decision-making accuracy) via a standard cognitive battery",
+      "Self-reported habitual daily caffeine intake (mg/day) via food-frequency/caffeine intake questionnaire",
+      "Menstrual cycle phase at test session confirmed by urinary LH test and self-reported cycle day, or hormonal contraceptive type and phase of pill pack",
+      "Adverse symptoms after dosing (jitteriness, GI upset, palpitations, headache, insomnia) via structured symptom checklist",
+      "Perceived exertion and subjective alertness/mood ratings post-exercise"
+    ],
+    "stratifiers": [
+      "Menstrual cycle phase (early follicular, late follicular/ovulatory, mid-luteal) or hormonal contraceptive status (combined pill, progestin-only, none)",
+      "Habitual caffeine intake tertile (low <100mg/day, moderate 100-200mg/day, high >200mg/day)",
+      "Sport/discipline type",
+      "Age band (18-24, 25-35)"
+    ],
+    "form": "Randomised, double-blind, placebo-controlled crossover trial. Each participant completes two identical test sessions (caffeine 3mg/kg body mass, capsule form, vs identical placebo capsule with matching taste-masking), at least one week apart, timed to the same self-reported cycle phase where possible or matched by contraceptive pill-pack day. Naturally cycling women are scheduled using LH-confirmed timing for follicular vs luteal sessions; hormonal contraceptive users are tested during active-pill and placebo-pill weeks. Each session: baseline symptom and alertness questionnaire, cognitive battery, sport-specific skill circuit, 60 minutes post-dose testing repeat of cognitive and skill battery, symptom checklist at 30, 60, 120 minutes. Total participation spans one full menstrual cycle or one contraceptive pack cycle (about 4-5 weeks) per participant. This is a randomised crossover intervention in a non-pregnant, non-labouring, non-paediatric, non-institutionalised adult population with genuine equipoise (optimal caffeine dosing strategy for female athletes is unknown), so standard ethics approval, written informed consent, and a data safety monitoring board are sufficient; no additional vulnerable-population safeguards are required. Sample size of 48 is a pragmatic estimate based on typical crossover caffeine-performance study sizes, not a formal power calculation.",
+    "instrument_source": "Profile of Mood States (POMS) for subjective mood/alertness; Borg Rating of Perceived Exertion (RPE) scale for exertion; menstrual phase confirmed via urinary LH ovulation test kits",
+    "generated_at": "2026-09-19",
+    "model": "claude-sonnet-5"
+  },
+  "vbac-outcomes-standardized-neonatal-reporting": {
+    "target_women": "Recruit approximately 3,000 pregnant women with exactly one prior low-transverse cesarean delivery, singleton gestation, and no contraindication to labor, from 10-15 hospital obstetric units across varied urban, suburban, and rural settings; enroll at 36-38 weeks gestation once they have made an informed choice (with their clinician) between attempting TOLAC or scheduling ERCD, and follow through delivery and 6 weeks postpartum.",
+    "variables": [
+      "Mode of delivery achieved (successful vaginal birth, emergency cesarean during labor, or scheduled repeat cesarean)",
+      "Neonatal 5-minute Apgar score",
+      "Umbilical cord arterial blood gas pH and base excess at birth",
+      "Admission to neonatal intensive care unit and length of stay",
+      "Diagnosis of hypoxic-ischemic encephalopathy (any grade) confirmed by neonatologist",
+      "Uterine rupture or dehiscence occurrence and timing relative to labor",
+      "Neonatal birth trauma (fracture, brachial plexus injury, or significant laceration) recorded by attending pediatrician"
+    ],
+    "stratifiers": [
+      "Maternal age band (under 25, 25-34, 35 and older)",
+      "Race and ethnicity, recorded to examine differences in access to trial-of-labor units, midwifery support, and induction protocols rather than biological difference",
+      "Household income or insurance status (as a proxy for access to prenatal care and choice of delivery setting)",
+      "Number of prior vaginal deliveries (none vs one or more)",
+      "Indication for the original cesarean (e.g., failure to progress, breech, fetal distress)",
+      "Gestational age at delivery (37-38 weeks, 39-40 weeks, 41+ weeks)"
+    ],
+    "form": "Prospective multicenter observational cohort study, not a randomized trial, because women and clinicians are already making the TOLAC-versus-ERCD choice based on clinical circumstances and preference, so there is no ethical basis to assign one option experimentally. Data collected via structured case report forms completed by labor-and-delivery staff at the time of birth, supplemented by chart abstraction of neonatal records, with a single follow-up phone survey at 6 weeks postpartum for late-onset complications. Enrollment runs continuously for 24 months to capture seasonal and staffing variation across sites. All participating sites obtain local ethics (IRB) approval, and all women give written informed consent to have their delivery and neonatal outcome data recorded and linked; no experimental intervention is given, so no data safety monitoring board is required, but a study steering committee reviews data quality quarterly.",
+    "instrument_source": "American College of Obstetricians and Gynecologists (ACOG) Practice Bulletin on Vaginal Birth After Cesarean outcome definitions, used to standardize case report form categories (not a scored instrument, but the closest existing standardized definitional framework).",
+    "generated_at": "2026-09-19",
+    "model": "claude-sonnet-5"
+  },
+  "afghan-refugee-srh-long-term-interventions": {
+    "target_women": "600 Afghan refugee women of reproductive age (15-49) living in Pakistan, recruited from a mix of UNHCR-registered refugee villages in Khyber Pakhtunkhwa (e.g. Peshawar-area camps) and undocumented/urban Afghan communities in Peshawar and Quetta, via community health workers and women's community organisations already working with these populations.",
+    "variables": [
+      "Use of any sexual or reproductive health service in the past 3 months (ANC visit, contraceptive counselling, postnatal check, skilled birth attendance) - self-report",
+      "Current contraceptive method in use, if any, and reason for choice or non-use",
+      "Score on a resilience scale measuring perceived ability to cope with adversity",
+      "Self-reported autonomy in health decisions (who decides on care-seeking, spacing, delivery location)",
+      "Exposure to and duration of participation in any existing SRH program or NGO intervention",
+      "Maternal health outcome in the reporting period (pregnancy complication, mode of delivery, referral for emergency care)",
+      "Score on a brief depression/anxiety screening instrument"
+    ],
+    "stratifiers": [
+      "Age band (15-19, 20-34, 35-49)",
+      "Registration status (UNHCR-registered vs undocumented) - a proxy for legal access to public health facilities, not a biological category",
+      "Residence type (camp/refugee village vs urban informal settlement)",
+      "Parity (nulliparous, 1-2 children, 3+ children)",
+      "Duration of prior exposure to any SRH program (none, under 1 year, 1+ years)"
+    ],
+    "form": "Prospective observational cohort study following the same 600 women over 24 months with structured face-to-face interviews every 3 months (8 waves total), conducted by trained female Dari/Pashto-speaking interviewers in participants' homes or at community health centres, using a mix of validated scales and structured questions. This is observational because the women's exposure to programs, contraceptive use, and coping strategies already exist in the population and are not assigned by the researchers - randomising women into 'gets intervention' vs 'does not' would be both impractical and ethically unjustifiable given unequal existing access. Written informed consent obtained in participant's own language; study protocol and consent procedures approved by an independent ethics review board in Pakistan and by the researchers' home institution; given this is a low-resource, refugee population, an independent data safety and community advisory board reviews the study every 6 months and can pause data collection if any distress or safety issue (e.g. disclosure of violence) arises without an established, pre-agreed referral pathway. Sample size of 600 is an estimate based on feasibility of quarterly follow-up over 24 months and expected attrition of refugee populations (~30%), not a formal power calculation.",
+    "instrument_source": "Connor-Davidson Resilience Scale (CD-RISC-25)",
+    "generated_at": "2026-09-19",
+    "model": "claude-sonnet-5"
   }
 }
