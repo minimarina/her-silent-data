@@ -785,13 +785,14 @@
       "first_seen": "2026-09-18",
       "last_seen": "2026-09-19",
       "title": "Supplemental imaging modalities for breast cancer screening in women with dense breasts: A systematic review with economic considerations.",
-      "outcome": "seen"
+      "outcome": "rejected-by-filter",
+      "filter_version": 4
     },
     "10.3389/fgwh.2026.1645605": {
       "first_seen": "2026-09-18",
       "last_seen": "2026-09-19",
       "title": "Sexual and reproductive health and maternal welfare among Afghan refugee women in Pakistan: a systematic review.",
-      "outcome": "candidate"
+      "outcome": "approved"
     },
     "10.1016/j.ijnurstu.2026.105616": {
       "first_seen": "2026-09-18",
@@ -815,7 +816,8 @@
       "first_seen": "2026-09-18",
       "last_seen": "2026-09-19",
       "title": "Gambling in women: A systematic review of interventions and prevention approaches.",
-      "outcome": "candidate"
+      "outcome": "dismissed",
+      "reason": "the description claims a gap in prevention and treatment, but the source's statement is about prevention only; the treatment studies it synthesised did report female-specific outcomes"
     },
     "10.1080/16549716.2026.2721051": {
       "first_seen": "2026-09-18",
@@ -1244,7 +1246,8 @@
       "first_seen": "2026-09-18",
       "last_seen": "2026-09-19",
       "title": "Prevalence of Cam and Pincer Morphology in the Young Athlete's Hip: A Systematic Review With Meta-Analysis.",
-      "outcome": "candidate"
+      "outcome": "dismissed",
+      "reason": "the source says 'few studies reported findings in females', which is sparse rather than missing, and no dataset_source exists to support a partial status instead"
     },
     "10.1111/ans.70489": {
       "first_seen": "2026-09-18",
@@ -1286,7 +1289,8 @@
       "first_seen": "2026-09-18",
       "last_seen": "2026-09-19",
       "title": "Prevalence of Insomnia by Sex in U.S. Service Members: A Systematic Review and Meta-Analysis.",
-      "outcome": "seen"
+      "outcome": "rejected-by-filter",
+      "filter_version": 4
     },
     "10.1007/s00127-026-03175-4": {
       "first_seen": "2026-09-18",
@@ -1406,7 +1410,8 @@
       "first_seen": "2026-09-18",
       "last_seen": "2026-09-19",
       "title": "Deinfibulation for improving obstetric, neonatal, gynecologic, and sexual health outcomes in women and girls with type III female genital mutilation: A systematic review and meta-analysis.",
-      "outcome": "candidate"
+      "outcome": "dismissed",
+      "reason": "the review's search closed in May 2023 but the claim date is 2026-01-01, so the card would present a nearly three-year-old absence as current"
     },
     "10.3389/fonc.2026.1813942": {
       "first_seen": "2026-09-18",
@@ -1645,85 +1650,97 @@
       "first_seen": "2026-09-18",
       "last_seen": "2026-09-19",
       "title": "Premature ovarian insufficiency in patients with systemic lupus erythematosus on cyclophosphamide: a systematic review and meta-analysis.",
-      "outcome": "seen"
+      "outcome": "rejected-by-filter",
+      "filter_version": 4
     },
     "10.1002/ijgo.70977": {
       "first_seen": "2026-09-18",
       "last_seen": "2026-09-19",
       "title": "Rapid tests for detecting group B streptococcus colonization in pregnant women: A systematic review and meta-analysis of diagnostic accuracy.",
-      "outcome": "seen"
+      "outcome": "dismissed",
+      "reason": "the source says applicability is limited, not that data is missing; the review analysed delivery-room processing and a 2024 Uganda point-of-care study covers the intrapartum LMIC setting"
     },
     "10.1002/14651858.cd013643.pub2": {
       "first_seen": "2026-09-18",
       "last_seen": "2026-09-19",
       "title": "Vaginal lasers for treating stress urinary incontinence in women.",
-      "outcome": "seen"
+      "outcome": "rejected-by-filter",
+      "filter_version": 4
     },
     "10.3389/fimmu.2026.1784688": {
       "first_seen": "2026-09-18",
       "last_seen": "2026-09-19",
       "title": "Sex-based heterogeneity in response to first-line immunotherapy plus chemotherapy in advanced esophageal squamous-cell carcinoma: a meta-analysis.",
-      "outcome": "seen"
+      "outcome": "rejected-by-filter",
+      "filter_version": 4
     },
     "10.1001/jamanetworkopen.2026.27595": {
       "first_seen": "2026-09-18",
       "last_seen": "2026-09-19",
       "title": "Mental Health Symptom Changes by Sex or Gender Before and During the COVID-19 Pandemic: A Systematic Review and Meta-Analysis.",
-      "outcome": "seen"
+      "outcome": "rejected-by-filter",
+      "filter_version": 4
     },
     "10.1093/humupd/dmaf030": {
       "first_seen": "2026-09-18",
       "last_seen": "2026-09-19",
       "title": "Prevalence of polycystic ovary syndrome: a global and regional systematic review and meta-analysis.",
-      "outcome": "seen"
+      "outcome": "rejected-by-filter",
+      "filter_version": 4
     },
     "10.3390/medicina62071286": {
       "first_seen": "2026-09-18",
       "last_seen": "2026-09-19",
       "title": "Trial of Labor After Cesarean and Vaginal Birth After Cesarean: A Systematic Review and Meta-Analysis of Maternal and Neonatal Outcomes.",
-      "outcome": "seen"
+      "outcome": "approved"
     },
     "10.1016/j.neubiorev.2026.106828": {
       "first_seen": "2026-09-18",
       "last_seen": "2026-09-19",
       "title": "Executive function in adolescents with obesity: A systematic review and meta-analysis.",
-      "outcome": "seen"
+      "outcome": "rejected-by-filter",
+      "filter_version": 4
     },
     "10.5603/gpl.105472": {
       "first_seen": "2026-09-18",
       "last_seen": "2026-09-19",
       "title": "Congenital long QT syndrome in the pregnant women: a systematic review.",
-      "outcome": "seen"
+      "outcome": "dismissed",
+      "reason": "the review searched 1984-2022 but is dated 2026-06-09, so the claim date overstates how current the absence is; dataset_source is a 1998 paper"
     },
     "10.1016/j.diabres.2025.112981": {
       "first_seen": "2026-09-18",
       "last_seen": "2026-09-19",
       "title": "Effects of carnitine supplementation on glycemic markers in women with overweight and obesity: A systematic review and meta-analysis of randomized controlled trials.",
-      "outcome": "seen"
+      "outcome": "rejected-by-filter",
+      "filter_version": 4
     },
     "10.1002/14651858.cd012891.pub2": {
       "first_seen": "2026-09-18",
       "last_seen": "2026-09-19",
       "title": "Interventions for fertility preservation in women with cancer undergoing chemotherapy.",
-      "outcome": "seen"
+      "outcome": "approved"
     },
     "10.1002/14651858.cd003511.pub6": {
       "first_seen": "2026-09-18",
       "last_seen": "2026-09-19",
       "title": "Progestogen for preventing miscarriage in women with recurrent miscarriage of unclear etiology.",
-      "outcome": "seen"
+      "outcome": "rejected-by-filter",
+      "filter_version": 4
     },
     "10.3389/fphys.2026.1903705": {
       "first_seen": "2026-09-18",
       "last_seen": "2026-09-19",
       "title": "Effects of exercise interventions on fall-related functional performance in postmenopausal women with osteoporosis or low bone mass: a systematic review and meta-analysis with an exploratory analysis of reported consistency with ACSM recommendations.",
-      "outcome": "seen"
+      "outcome": "rejected-by-filter",
+      "filter_version": 4
     },
     "10.1111/jog.70411": {
       "first_seen": "2026-09-18",
       "last_seen": "2026-09-19",
       "title": "Conization With Lymph Node Assessment in Early-Stage Cervical Cancer: A Systematic Review and Meta-Analysis.",
-      "outcome": "seen"
+      "outcome": "rejected-by-filter",
+      "filter_version": 4
     },
     "10.1016/j.ejogrb.2025.114784": {
       "first_seen": "2026-09-18",
@@ -1901,73 +1918,82 @@
       "first_seen": "2026-09-18",
       "last_seen": "2026-09-19",
       "title": "Effects of Acute Caffeine Supplementation on Physical, Sport-Specific, Physiological, Perceptual, and Cognitive Outcomes in Female Team-Sport Athletes: A Three-Level Meta-Analysis.",
-      "outcome": "seen"
+      "outcome": "approved"
     },
     "10.1080/20533691.2026.2690376": {
       "first_seen": "2026-09-18",
       "last_seen": "2026-09-19",
       "title": "Systematic review- hormone replacement therapy in postmenopausal women with medical co-morbidities.",
-      "outcome": "seen"
+      "outcome": "rejected-by-filter",
+      "filter_version": 4
     },
     "10.3389/fimmu.2025.1627514": {
       "first_seen": "2026-09-18",
       "last_seen": "2026-09-19",
       "title": "Comparing the circulating immune profile of women with and without recurrent implantation failure: a systematic review and meta-analysis.",
-      "outcome": "seen"
+      "outcome": "rejected-by-filter",
+      "filter_version": 4
     },
     "10.1007/s40266-026-01323-8": {
       "first_seen": "2026-09-18",
       "last_seen": "2026-09-19",
       "title": "Management of Urinary Retention in Older Women.",
-      "outcome": "seen"
+      "outcome": "approved"
     },
     "10.1186/s12884-026-08808-9": {
       "first_seen": "2026-09-18",
       "last_seen": "2026-09-19",
       "title": "Sleep disturbances and assisted reproduction outcomes in women undergoing IVF/ICSI: a systematic review and meta-analysis.",
-      "outcome": "seen"
+      "outcome": "rejected-by-filter",
+      "filter_version": 4
     },
     "10.55563/clinexprheumatol/28g31m": {
       "first_seen": "2026-09-18",
       "last_seen": "2026-09-19",
       "title": "The impact of Sjögren's disease on ovarian reserve: a systematic review and meta-analysis.",
-      "outcome": "seen"
+      "outcome": "approved"
     },
     "10.1371/journal.pmed.1005114": {
       "first_seen": "2026-09-18",
       "last_seen": "2026-09-19",
       "title": "Differences in tuberculosis prevalence by sex in low- and middle-income countries over 1993-2025: A systematic review and meta-analysis.",
-      "outcome": "seen"
+      "outcome": "rejected-by-filter",
+      "filter_version": 4
     },
     "10.3389/fnut.2026.1818813": {
       "first_seen": "2026-09-18",
       "last_seen": "2026-09-19",
       "title": "The effects of intermittent fasting on BMI, fasting blood glucose, and blood pressure in women with overweight or obesity: a systematic review and meta-analysis with dose-response relationships.",
-      "outcome": "seen"
+      "outcome": "rejected-by-filter",
+      "filter_version": 4
     },
     "10.1097/ju.0000000000004691": {
       "first_seen": "2026-09-18",
       "last_seen": "2026-09-19",
       "title": "Vaginal Lasers for Treating Stress Urinary Incontinence in Women: An Abridged Cochrane Systematic Review and Meta-Analysis.",
-      "outcome": "seen"
+      "outcome": "rejected-by-filter",
+      "filter_version": 4
     },
     "10.1002/14651858.cd015376.pub2": {
       "first_seen": "2026-09-18",
       "last_seen": "2026-09-19",
       "title": "Interventions for treating urinary incontinence in older women: a network meta-analysis.",
-      "outcome": "seen"
+      "outcome": "dismissed",
+      "reason": "dataset_source cites the same Cochrane review that reported the absence"
     },
     "10.1038/s41416-025-03266-0": {
       "first_seen": "2026-09-18",
       "last_seen": "2026-09-19",
       "title": "Sex and gender influence on adverse events for melanoma patients: a comprehensive review and meta-analysis.",
-      "outcome": "seen"
+      "outcome": "dismissed",
+      "reason": "status collected, and dataset_source cites the same paper as the gap claim"
     },
     "10.1177/03635465251376649": {
       "first_seen": "2026-09-18",
       "last_seen": "2026-09-19",
       "title": "Anterior Cruciate Ligament Reconstruction With a Quadriceps Tendon Autograft in Female Patients Shows Equivalent Graft Failure But Lower Activity Scores and Slower Quadriceps Strength Recovery Compared With Male Patients: A Systematic Review and Meta-analysis.",
-      "outcome": "seen"
+      "outcome": "dismissed",
+      "reason": "status collected, and dataset_source cites the same paper as the gap claim"
     },
     "10.29063/ajrh2026/v30i9.12": {
       "first_seen": "2026-09-18",
@@ -2059,7 +2085,8 @@
       "first_seen": "2026-09-19",
       "last_seen": "2026-09-19",
       "title": "Mortality in people experiencing homelessness: a systematic review and meta-analysis.",
-      "outcome": "seen"
+      "outcome": "rejected-by-filter",
+      "filter_version": 4
     }
   }
 }

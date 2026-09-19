@@ -677,5 +677,308 @@ const DATA = {
         }
       ]
     },
+    {
+      id: "urinary-retention-older-women",
+      title:
+        "Urinary retention in older women is underdiagnosed and poorly managed due to complex, multifactorial causes",
+      area: "Pelvic health",
+      summary:
+        "Urinary retention in older women results from age-related bladder changes, comorbidities like neurologic disease, diabetic bladder dysfunction, and pelvic organ prolapse, and is often caused by common medications such as anticholinergics and antidepressants. Symptoms are often non-specific in women, complicating diagnosis and management. Treatment options remain poorly studied in this population.",
+      affected_women:
+        "Older women, particularly those with comorbidities such as neurologic disease, diabetic bladder dysfunction, or pelvic organ prolapse",
+      source:
+        "https://doi.org/10.1007/s40266-026-01323-8",
+      origin: "sourced",
+      is_demo: false,
+      data_needs: [
+        {
+          id: "urinary-retention-older-women-trial-data",
+          problem_id: "urinary-retention-older-women",
+          description:
+            "Lack of sex-specific and age-specific clinical trial data on pharmacologic and other therapeutic options for urinary retention in older women",
+          why_it_matters:
+            "Without dedicated trials in older women, clinicians must extrapolate from data not representative of this population, risking suboptimal or unsafe treatment decisions",
+          status: "partial",
+          existing_data_note: "",
+          gap_evidence: {
+            source:
+              "https://doi.org/10.1007/s40266-026-01323-8",
+            note:
+              "The abstract states that 'broader therapeutic options remain poorly studied in older female populations' and concludes by highlighting 'the critical need for sex-specific and age-specific trials to guide evidence-based patient-centered management of urinary retention in older women.'",
+            region: null,
+            claimed_date: "2026-08-31"
+          },
+          dataset_source: {
+            note:
+              "A 2025 retrospective single-institution case series (n=9, median age 79) evaluating colpocleisis for POP-associated urinary retention in elderly women. It covers only one surgical intervention, is small and retrospective, and does not address pharmacologic or other non-surgical therapeutic options, nor does it constitute the sex-specific/age-specific clinical trial data called for; the broader gap for pharmacologic/therapeutic trials in urinary retention (distinct from incontinence) in older women remains largely unaddressed.",
+            source:
+              "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC12776221/"
+          },
+          collection_guidance: {
+            note:
+              "The review calls for sex-specific and age-specific trials to guide evidence-based, patient-centered management of urinary retention in older women.",
+            source:
+              "https://doi.org/10.1007/s40266-026-01323-8"
+          },
+          verification: {
+            checked_at: "2026-09-19",
+            method: "web search",
+            findings:
+              "The search found extensive recent RCT and cohort activity on urinary incontinence in older women (e.g., Cochrane network meta-analysis 2025, OnabotulinumtoxinA dose trials, PFMT/androgen trials, telehealth and multidisciplinary intervention trials), but this is a distinct condition from urinary retention. For urinary retention specifically, the only recent dedicated study found is a small retrospective case series (n=9) on colpocleisis for retention in elderly women with pelvic organ prolapse (2025), which is surgical, single-center, and not a sex/age-specific pharmacologic or broader therapeutic trial. No dedicated pharmacologic or broader therapeutic RCT registry/cohort specifically targeting urinary retention (as opposed to incontinence) in older women was identified.",
+            sources: ["https://www.tandfonline.com/doi/pdf/10.2147/CIA.S550792","https://www.ncbi.nlm.nih.gov/pmc/articles/PMC12776221/","https://cochranelibrary.com/web/cochrane/content?contentLanguage=&doi=10.1002%2F14651858.CD015376.pub2&templateType=references&type=cdsr&urlTitle=%2Fcdsr%2Fdoi%2F10.1002%2F14651858.CD015376.pub2","https://pubmed.ncbi.nlm.nih.gov/42531564/","https://www.sciencedirect.com/org/science/article/pii/S1195947926000170","https://link.springer.com/article/10.1007/s00192-025-06159-1","https://today.uconn.edu/2025/08/could-simply-taking-a-supplement-prevent-many-older-womens-urgent-need-to-urinate/","https://doi.org/10.1093/geroni/igy023.1710","https://journals.plos.org/plosone/article?id=10.1371%2Fjournal.pone.0322742"]
+          }
+        }
+      ]
+    },
+    {
+      id: "fertility-preservation-chemo",
+      title:
+        "Women with cancer undergoing chemotherapy lack clear evidence on which fertility preservation strategy works best",
+      area: "Reproductive health",
+      summary:
+        "Premenopausal women with cancer, especially breast cancer, face risk of ovarian damage and premature ovarian insufficiency from chemotherapy. Two main preservation strategies exist: controlled ovarian hyperstimulation with a protective agent followed by freezing of oocytes/embryos, or ovarian suppression with GnRH agonists. A Cochrane review of 23 RCTs found evidence ranging from very low to moderate certainty, with major gaps on live birth, survival, and head-to-head comparisons.",
+      affected_women:
+        "Premenopausal women with cancer undergoing chemotherapy, primarily those with breast cancer",
+      source:
+        "https://doi.org/10.1002/14651858.cd012891.pub2",
+      origin: "sourced",
+      is_demo: false,
+      data_needs: [
+        {
+          id: "fertility-preservation-chemo-comparative-trials",
+          problem_id: "fertility-preservation-chemo",
+          description:
+            "Direct comparative trial data between controlled ovarian hyperstimulation with a protective agent and GnRH agonist ovarian suppression, and long-term outcome data on live birth and survival for both strategies",
+          why_it_matters:
+            "Without this evidence, women and clinicians cannot make informed choices between fertility preservation methods, and long-term reproductive and survival outcomes remain unknown.",
+          status: "partial",
+          existing_data_note: "",
+          gap_evidence: {
+            source:
+              "https://doi.org/10.1002/14651858.cd012891.pub2",
+            note:
+              "The review states there was 'no evidence available for our primary outcomes: ovarian insufficiency, live birth and overall survival' for controlled ovarian hyperstimulation, and separately reports 'No evidence was available for this comparison' between the two main strategies head-to-head.",
+            region: null,
+            claimed_date: "2025-06-19"
+          },
+          dataset_source: {
+            note:
+              "Individual patient-level meta-analysis of 5 RCTs (n=873) on GnRH agonists during chemotherapy for premenopausal early breast cancer patients, reporting premature ovarian insufficiency and some pregnancy outcomes; does not include a comparator arm of controlled ovarian hyperstimulation with protective agent, and does not report long-term overall survival or live birth data across both fertility preservation strategies.",
+            source:
+              "https://ascopubs.org/doi/10.1200/JCO.2018.78.0858"
+          },
+          collection_guidance: null,
+          verification: {
+            checked_at: "2026-09-19",
+            method: "web search",
+            findings:
+              "No direct head-to-head randomized trial comparing controlled ovarian hyperstimulation (with a protective agent) versus GnRH agonist ovarian suppression, nor long-term live birth/overall survival data for both strategies, was found. The closest related evidence is a JCO individual patient-level meta-analysis of GnRH agonists during chemotherapy for ovarian function preservation in breast cancer, which pooled five trials (873 patients) and found lower premature ovarian insufficiency rates with GnRHa (14.1%) versus control (30.9%), plus some pregnancy outcome data, but this compares GnRHa-suppression to no suppression during chemotherapy rather than to ovarian stimulation/cryopreservation, and does not report overall survival or long-term live birth across both strategies head-to-head.",
+            sources: ["https://doi.org/10.1093/humrep/deae286","https://pmc.ncbi.nlm.nih.gov/articles/PMC13432987/","https://pmc.ncbi.nlm.nih.gov/articles/PMC3987498/","https://www.nature.com/articles/s41467-026-70964-5","https://pubmed.ncbi.nlm.nih.gov/42425545/","https://www.tandfonline.com/doi/full/10.1080/14647273.2024.2316005","https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2259311/","https://www.oncpracticemanagement.com/ofs-summit/rationale-and-evidence-for-ovarian-function-suppression-as-a-fertility-preservation-strategy-beyond-the-poems-trial","https://ascopubs.org/doi/10.1200/JCO.2018.78.0858","https://pmc.ncbi.nlm.nih.gov/articles/PMC12229283/"]
+          }
+        }
+      ]
+    },
+    {
+      id: "sjogrens-ovarian-reserve",
+      title:
+        "Sjögren's disease may reduce ovarian reserve in reproductive-age women",
+      area: "Reproductive health",
+      summary:
+        "A systematic review and meta-analysis found that women with Sjögren's disease had significantly lower AMH levels than disease-free controls, with a trend toward higher FSH, though no significant differences in antral follicle count or ovarian volume. The evidence base was limited to four observational studies.",
+      affected_women:
+        "Reproductive-age women with Sjögren's disease",
+      source:
+        "https://doi.org/10.55563/clinexprheumatol/28g31m",
+      origin: "sourced",
+      is_demo: false,
+      data_needs: [
+        {
+          id: "sjogrens-ovarian-reserve-evidence-base",
+          problem_id: "sjogrens-ovarian-reserve",
+          description:
+            "Larger, more numerous observational studies directly measuring ovarian reserve markers (AMH, FSH, AFC, OV) in women with Sjögren's disease versus controls",
+          why_it_matters:
+            "Without a robust evidence base, clinicians cannot give definitive fertility counselling or make confident clinical management decisions for women with Sjögren's disease.",
+          status: "partial",
+          existing_data_note: "",
+          gap_evidence: {
+            source:
+              "https://doi.org/10.55563/clinexprheumatol/28g31m",
+            note:
+              "The authors state that 'limited data prevent definitive confirmation of how SjD affects ovarian reserve', based on only four observational studies involving 410 participants total.",
+            region: null,
+            claimed_date: "2026-06-01"
+          },
+          dataset_source: {
+            note:
+              "Cross-sectional study comparing AMH levels between primary Sjögren's syndrome patients and healthy controls; adds to but does not resolve the small total evidence base (previously ~410 participants across 4 studies), and does not comprehensively cover all ovarian reserve markers (FSH, AFC, OV) across larger cohorts.",
+            source:
+              "https://pubmed.ncbi.nlm.nih.gov/39576415/"
+          },
+          collection_guidance: null,
+          verification: {
+            checked_at: "2026-09-19",
+            method: "web search",
+            findings:
+              "A new cross-sectional study (Mandosi et al., Clin Rheumatol 2025) found significantly lower serum AMH in primary Sjögren's syndrome patients versus controls, adding one more observational study to the evidence base. However, this is a single additional study and does not by itself constitute the 'larger, more numerous' body of evidence called for; sample sizes remain modest and other markers (FSH, AFC, OV) are not fully addressed in this new report, so the overall evidence base is still limited.",
+            sources: ["https://pubmed.ncbi.nlm.nih.gov/39576415/","https://journals.sagepub.com/doi/10.1177/20503121251405020","https://pubmed.ncbi.nlm.nih.gov/41403577/","https://www.tandfonline.com/doi/pdf/10.1080/09513590.2025.2530568","https://www.ncbi.nlm.nih.gov/pmc/articles/PMC11729113/","https://pubmed.ncbi.nlm.nih.gov/42370514/","https://www.clinexprheumatol.org/abstract.asp?a=23627","https://pubmed.ncbi.nlm.nih.gov/27987339/","https://clinicaltrials.gov/study/NCT05858307","https://pmc.ncbi.nlm.nih.gov/articles/PMC11729113"]
+          }
+        }
+      ]
+    },
+    {
+      id: "caffeine-female-athletes",
+      title:
+        "Effects of acute caffeine on female team-sport athletes are poorly quantified for sport-specific skills and cognitive outcomes",
+      area: "Pharmacology",
+      summary:
+        "This meta-analysis of 26 crossover trials found that acute caffeine intake shows small favorable effects on physical performance and reduced perceived exertion in female team-sport athletes, but evidence for sport-specific skills and cognitive performance remained uncertain due to few studies per outcome. Moderator analyses did not reliably show effects of dose, timing, formulation, sport type, competitive level, or habitual caffeine intake. The authors note that current data cannot support population- or protocol-stratified recommendations.",
+      affected_women:
+        "Female team-sport athletes",
+      source:
+        "https://doi.org/10.3390/nu18152429",
+      origin: "sourced",
+      is_demo: false,
+      data_needs: [
+        {
+          id: "caffeine-female-athletes-menstrual-tracking",
+          problem_id: "caffeine-female-athletes",
+          description:
+            "Trials of caffeine's acute effects in female athletes rarely record menstrual-cycle phase, hormonal-contraceptive use, habitual caffeine intake, or adverse symptoms",
+          why_it_matters:
+            "Without this information, researchers cannot determine whether hormonal status or habitual intake changes caffeine's effects, limiting the ability to give tailored, evidence-based recommendations for female athletes.",
+          status: "partial",
+          existing_data_note: "",
+          gap_evidence: {
+            source:
+              "https://doi.org/10.3390/nu18152429",
+            note:
+              "The abstract states that 'Future trials should be adequately powered, prospectively report menstrual-cycle phase, hormonal-contraceptive use, habitual caffeine intake, and adverse symptoms, and verify the integrity of blinding,' indicating these factors are currently missing from the evidence base.",
+            region: null,
+            claimed_date: "2026-07-24"
+          },
+          dataset_source: {
+            note:
+              "Covers acute caffeine ingestion and exercise/cognitive performance in women with menstrual-cycle phase and hormonal-contraceptive status now tracked in newer primary trials and synthesized in a 2026 meta-analysis; however, habitual caffeine intake and adverse symptom reporting remain inconsistently captured, and the pilot trial is small (limited power), so the underlying evidence base is still not fully compliant with the original recommendations.",
+            source:
+              "https://www.frontiersin.org/journals/nutrition/articles/10.3389/fnut.2026.1876198/full"
+          },
+          collection_guidance: {
+            note:
+              "Future trials should be adequately powered and should prospectively report menstrual-cycle phase, hormonal-contraceptive use, habitual caffeine intake, and adverse symptoms, and verify the integrity of blinding.",
+            source:
+              "https://doi.org/10.3390/nu18152429"
+          },
+          verification: {
+            checked_at: "2026-09-19",
+            method: "web search",
+            findings:
+              "New evidence has emerged: a 2026 Frontiers in Nutrition systematic review/meta-analysis specifically examined acute caffeine effects in women by menstrual-cycle phase and hormonal-contraceptive status, and a 2025 randomized double-blind pilot trial (Nutrients) tested caffeine's cognitive and neuromuscular effects across menstrual-cycle phases in eumenorrheic female athletes. These begin to address the reporting gap by prospectively tracking cycle phase and contraceptive use, though the meta-analysis notes most included trials still don't consistently report habitual caffeine intake or adverse symptoms, and blinding integrity verification remains inconsistent across the literature.",
+            sources: ["https://www.frontiersin.org/journals/nutrition/articles/10.3389/fnut.2026.1876198/full","https://doi.org/10.3390/nu18101512","https://pubmed.ncbi.nlm.nih.gov/42591203/","https://pubmed.ncbi.nlm.nih.gov/42500255/","https://www.frontiersin.org/journals/nutrition/articles/10.3389/fnut.2026.1876198/pdf","https://www.frontiersin.org/journals/nutrition/articles/10.3389/fnut.2026.1876198/xml","https://pmc.ncbi.nlm.nih.gov/articles/PMC13395651/","https://clinicaltrials.gov/study/NCT07591818","https://pubmed.ncbi.nlm.nih.gov/42355449/"]
+          }
+        }
+      ]
+    },
+    {
+      id: "vbac-outcomes",
+      title:
+        "Women considering vaginal birth after cesarean lack clear evidence on maternal and neonatal risks",
+      area: "Maternal health",
+      summary:
+        "A systematic review and meta-analysis found that while VBAC has an overall success rate of about 68%, comparative risks between trial of labor after cesarean (TOLAC) and elective repeat cesarean delivery (ERCD) remain imprecisely estimated, especially for uterine rupture. Neonatal outcomes could not be reliably pooled due to inconsistent reporting across studies.",
+      affected_women:
+        "Women with a prior cesarean section who are considering vaginal birth in a subsequent pregnancy",
+      source:
+        "https://doi.org/10.3390/medicina62071286",
+      origin: "sourced",
+      is_demo: false,
+      data_needs: [
+        {
+          id: "vbac-outcomes-standardized-neonatal-reporting",
+          problem_id: "vbac-outcomes",
+          description:
+            "Standardized, consistently reported neonatal outcome data for comparing TOLAC versus ERCD",
+          why_it_matters:
+            "Without consistent neonatal outcome reporting, women and clinicians cannot reliably weigh the risks of attempting vaginal birth after cesarean versus scheduling a repeat cesarean.",
+          status: "partial",
+          existing_data_note: "",
+          gap_evidence: {
+            source:
+              "https://doi.org/10.3390/medicina62071286",
+            note:
+              "The abstract states that 'Neonatal outcomes were reported inconsistently and could not be reliably pooled,' and concludes that the evidence is based predominantly on observational studies with 'certainty of evidence for most comparative outcomes remains low or very low.'",
+            region: null,
+            claimed_date: "2026-07-03"
+          },
+          dataset_source: {
+            note:
+              "A 2025 cohort study (Chatzistergiou et al., BMC Pregnancy and Childbirth) and a 2025 systematic review/meta-analysis report TOLAC vs ERCD maternal and neonatal outcomes, but these are individual studies using their own outcome definitions, not a standardized reporting system or pooled registry; certainty of neonatal outcome comparisons remains limited by inconsistent definitions across the literature.",
+            source:
+              "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC12667123/"
+          },
+          collection_guidance: {
+            note:
+              "The findings support the need for larger, well-designed comparative studies with standardized outcome reporting.",
+            source:
+              "https://doi.org/10.3390/medicina62071286"
+          },
+          verification: {
+            checked_at: "2026-09-19",
+            method: "web search",
+            findings:
+              "No standardized core outcome set or registry specifically for TOLAC vs ERCD neonatal outcomes was found. Individual new cohort studies and systematic reviews/meta-analyses continue to be published (e.g., a 2025 cohort study of 2,424 women and a systematic review/meta-analysis of TOLAC vs ERCD), but these still rely on heterogeneous, non-standardized neonatal outcome definitions across studies rather than a consistent reporting framework. This means the underlying inconsistency the original paper flagged has not been resolved by any harmonization effort or unified dataset.",
+            sources: ["https://pubmed.ncbi.nlm.nih.gov/41327054/","https://www.ncbi.nlm.nih.gov/pmc/articles/PMC12667123/","https://pubmed.ncbi.nlm.nih.gov/42512828/","https://www.frontiersin.org/journals/medicine/articles/10.3389/fmed.2025.1643142/xml","https://pmc.ncbi.nlm.nih.gov/articles/PMC5376362/","https://doi.org/10.3390/medicina62071286","https://pmc.ncbi.nlm.nih.gov/articles/PMC13413987/","https://pubmed.ncbi.nlm.nih.gov/41605508/","https://www.ncbi.nlm.nih.gov/pmc/articles/PMC9796916/"]
+          }
+        }
+      ]
+    },
+    {
+      id: "afghan-refugee-srh",
+      title:
+        "Afghan refugee women in Pakistan face major barriers to sexual and reproductive health and maternal care",
+      area: "Maternal health",
+      summary:
+        "Afghan refugee women in Pakistan face barriers including distance, cost, stigma, and inadequate education around sexual and reproductive health services. High illiteracy rates limit access to pregnancy risk information, and most maternal deaths in this population are considered preventable. Long-term interventions and women's resilience have rarely been studied.",
+      affected_women:
+        "Afghan refugee women of reproductive age living in Pakistan",
+      source:
+        "https://doi.org/10.3389/fgwh.2026.1645605",
+      origin: "sourced",
+      is_demo: false,
+      data_needs: [
+        {
+          id: "afghan-refugee-srh-long-term-interventions",
+          problem_id: "afghan-refugee-srh",
+          description:
+            "Lack of research on long-term sexual and reproductive health interventions and on Afghan refugee women's resilience and self-agency",
+          why_it_matters:
+            "Without evidence on what sustained interventions work, programs cannot be designed to durably improve maternal outcomes or build on women's existing coping strategies.",
+          status: "partial",
+          existing_data_note: "",
+          gap_evidence: {
+            source:
+              "https://doi.org/10.3389/fgwh.2026.1645605",
+            note:
+              "The review states 'Few studies examined the effects of long-term SRH interventions, and only one study analyzed how Afghan women in Pakistan exhibit resilience and self-agency in the face of structural oppression.'",
+            region: "Pakistan",
+            claimed_date: "2026-07-07"
+          },
+          dataset_source: {
+            note:
+              "Related but not equivalent studies: a qualitative study on health-system resilience for MNCH among Afghan refugees (Shafiq et al., 2025), a health-system resilience exploratory case study (Memon et al., 2025), a 2026 scoping review on SRH among Afghan refugee women, and a 2025 cross-sectional study on telehealth SRH access in Pakistan. These touch on resilience and SRH access but do not deliver long-term intervention effectiveness data or a focused resilience/self-agency analysis matching the identified gap.",
+            source:
+              "https://doi.org/10.1177/11786329241310733"
+          },
+          collection_guidance: null,
+          verification: {
+            checked_at: "2026-09-19",
+            method: "web search",
+            findings:
+              "The original review's exact gap statement still appears verbatim in the cited systematic review itself (confirming the gap was noted, not yet closed as of that paper's publication). However, newer related work has emerged: a qualitative study on resilient maternal/neonatal/child health among Afghan refugees in Pakistan, a health system resilience exploratory study, a 2026 scoping review on SRH among Afghan refugee women, and a 2025 cross-sectional telehealth SRH access study. None of these specifically provide long-term (longitudinal/sustained) SRH intervention outcome data or a dedicated study of Afghan women's resilience/self-agency against structural oppression comparable to what the review flagged as needed.",
+            sources: ["https://pubmed.ncbi.nlm.nih.gov/42483314/","https://pmc.ncbi.nlm.nih.gov/articles/PMC13384941/","https://www.frontiersin.org/journals/global-womens-health/articles/10.3389/fgwh.2026.1645605/full","https://www.frontiersin.org/journals/global-womens-health/articles/10.3389/fgwh.2026.1645605/pdf","https://www.frontiersin.org/journals/global-womens-health/articles/10.3389/fgwh.2026.1645605/xml","https://doi.org/10.1177/11786329241310733","https://onlinelibrary.wiley.com/doi/10.1002/hpm.70113","https://doi.org/10.1177/10436596251366108","https://pjph.org/pjph/article/view/1918"]
+          }
+        }
+      ]
+    },
   ]
 };
