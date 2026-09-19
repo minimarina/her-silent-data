@@ -6,6 +6,8 @@
 
    Approving does NOT write data.js. It prints the block to paste, and
    intake/README.md's rule holds: the seed is never written by a machine.
+   It also prints the design command, because a study design is drafted
+   only after this decision — never for a candidate nobody has admitted.
 
    Usage:
      node intake/review.mjs                 list what is waiting
@@ -346,6 +348,12 @@ function decide(record, index, outcome) {
   console.log("(also appended to intake/approved-blocks.js)");
   console.log("");
   console.log(text);
+  console.log("");
+  /* The design is drafted only now, and only if this record is really
+     merged — which is why the instruction is "then", not "and". Money is
+     spent on answers to records that exist. */
+  console.log("Once it is merged, draft its study design:");
+  console.log("  node intake/design.mjs --id=" + record.data_need.id);
   console.log("");
 
   if (!areas.has(record.problem.area)) {

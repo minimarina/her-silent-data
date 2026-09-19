@@ -15,6 +15,13 @@ the card says so.
 A study design is generated on request, kept in `research-designs.js`,
 and is never part of a record.
 
+**No design is drafted before a record is approved.** The run used to
+draft one for every candidate at the moment it was extracted, and about a
+third of those candidates were then dismissed — so about a third of the
+design spend bought nothing, and the answer was written before the record
+existed. Designs are now `intake/design.mjs`, run on data needs already
+in `data.js`. Approval is what unlocks the spend.
+
 **No record enters the seed unreviewed.** The run writes to
 `candidates.json` and stops. Nothing reaches `data.js` until a decision
 has been recorded for it, one record at a time, in the ledger.
@@ -92,7 +99,16 @@ node intake/review.mjs                 # what is waiting for a decision
 node intake/review.mjs 1               # read candidate 1 in full
 node intake/review.mjs <id> --approve  # approve, and print the data.js block
 node intake/review.mjs <id> --dismiss --why="..."
+
+node intake/design.mjs                 # which approved records want a design
+node intake/design.mjs --id=<need id>  # draft one — needs a key
+node intake/design.mjs --limit=2       # draft the next two
+node intake/design.mjs --render        # re-render the app's file, free
 ```
+
+The order is: run → review → merge → design. `design.mjs` refuses an id
+that is not in `data.js`, so there is no way to pay for a design for a
+record nobody approved.
 
 Decisions take the record **id**, never its number: removing a candidate
 renumbers the rest, so a sequence of index-based commands acts on the
@@ -107,20 +123,24 @@ $env:ANTHROPIC_API_KEY = "sk-ant-..."
 ```
 
 `--limit` is the spend control as much as the scope control: it caps how
-many papers reach the expensive steps. Roughly **$0.08 per record**,
+many papers reach the expensive steps. Roughly **$0.06 per record**,
 nearly all of it the verify call, because live search results arrive as
 input tokens and are re-read on every tool turn. `max_uses` on that
 search is therefore the cost dial for the whole run.
+
+A design is about **$0.02** on top, and is only ever spent on a record
+that was approved and merged.
 
 ## The files
 
 | | |
 |---|---|
-| `run.mjs` | discover → filter → extract → verify → design → write |
+| `run.mjs` | discover → filter → extract → verify → write |
 | `steps.mjs` | the four prompts and their schemas |
 | `model.mjs` | the only place that calls the API: retries, refusals, spend |
 | `validate.mjs` | deterministic checks, no model. Also the test suite |
 | `review.mjs` | the human step: read, approve, dismiss |
+| `design.mjs` | designs for approved records, and the only writer of `research-designs.js` |
 | `check-key.mjs` | confirms the key works without printing it |
 | `lib.mjs` | shared pieces: the seed reader, the ledger, the year window |
 | `ledger.json` | every DOI ever looked at, and what happened to it |

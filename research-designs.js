@@ -1,6 +1,7 @@
 /* AI-generated study designs. NOT part of the register.
  *
- * Written by intake/run.mjs, one entry per data need id. A design is
+ * Written by intake/design.mjs, one entry per data need id, and only
+ * for records already approved and merged into data.js. A design is
  * an answer, not a record: it is never merged into data.js, and the
  * app works fully with this file absent (SPEC 11).
  *

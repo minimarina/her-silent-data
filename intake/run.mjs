@@ -2,6 +2,10 @@
    missing, checks whether anyone has collected it since, and stops.
    Nothing here writes to data.js: the seed is never written by a machine.
 
+   No study design is drafted here. That step costs money and belongs
+   after the human decision, so it lives in intake/design.mjs and is run
+   on records that have been approved and merged.
+
    Usage:
      node intake/run.mjs --discover-only     search only, no model, no key
      node intake/run.mjs                     the full run
@@ -10,28 +14,19 @@
    SPEC §13 holds for the tooling too: no dependencies, no build step. */
 
 import { join } from "node:path";
-import { writeFileSync } from "node:fs";
 import {
-  HERE, REPO, today, writeJson, readJson, loadSeed, seedUrls,
-  loadLedger, saveLedger, ledgerJudged, ledgerNote, YEARS_BACK,
-  publishableDesigns, renderDesigns, WITHHELD
+  HERE, today, writeJson, readJson, loadSeed, seedUrls,
+  loadLedger, saveLedger, ledgerJudged, ledgerNote, YEARS_BACK
 } from "./lib.mjs";
 import {
-  filterAbstract, extractRecord, verifyRecord, designFor, FILTER_VERSION,
+  filterAbstract, extractRecord, verifyRecord, FILTER_VERSION,
   SearchFailedError
 } from "./steps.mjs";
 import { FILTER_MODEL, spendLine } from "./model.mjs";
-import { validateRecord, validateDesign, mappableAreas } from "./validate.mjs";
+import { validateRecord, mappableAreas } from "./validate.mjs";
 
 const CANDIDATES = join(HERE, "candidates.json");
 const PREVIEW = join(HERE, "preview.json");
-const DESIGNS_JS = join(REPO, "research-designs.js");
-
-/* Designs accumulate across runs: a second run must not drop the design
-   for a record still waiting to be reviewed. This JSON file is where they
-   are kept between runs; research-designs.js is rendered from it, so the
-   file the app loads is always derived and never hand-edited. */
-const DESIGNS_JSON = join(HERE, "designs.json");
 
 /* ---------- 1 · discover ---------- */
 
@@ -286,8 +281,8 @@ if (onlyDoi) {
 
   /* Checked before anything is spent. A DOI typed by hand is easy to get
      wrong — a search result copied instead of the paper it was found for,
-     say — and the validator only catches that after extract, verify and
-     design have been paid for. */
+     say — and the validator only catches that after extract and verify
+     have been paid for. */
   const paper = found.papers[0];
   const floor = new Date().getFullYear() - YEARS_BACK;
   const year = Number(String(paper.date || paper.year || "").slice(0, 4));
@@ -413,12 +408,12 @@ if (passed.length === 0) {
   process.exit(0);
 }
 
-/* ---------- 3 · extract, verify, design ---------- */
+/* ---------- 3 · extract, verify ---------- */
 
-/* Candidates accumulate, like designs do. A run that overwrote this file
-   would throw away records still waiting to be reviewed — the same bug
-   the designs file already had, in the file next to it. Records already
-   merged into data.js are removed by hand along with the merge. */
+/* Candidates accumulate. A run that overwrote this file would throw away
+   records still waiting to be reviewed — the same bug the designs file
+   once had, in the file next to it. Records already merged into data.js
+   are removed by hand along with the merge. */
 const previous = readJson(CANDIDATES, null);
 const records = (previous && Array.isArray(previous.records))
   ? previous.records.slice()
@@ -426,8 +421,6 @@ const records = (previous && Array.isArray(previous.records))
 const alreadyHeld = new Set(
   records.map((record) => record.paper && record.paper.doi).filter(Boolean)
 );
-
-const designs = readJson(DESIGNS_JSON, {});
 
 for (const paper of passed) {
   console.log("");
@@ -440,24 +433,12 @@ for (const paper of passed) {
     console.log("  verify (live search)…");
     const checked = await verifyRecord(extracted);
 
-    /* The design is the one optional product of this loop: §11 requires
-       the app to work with research-designs.js absent. So a design
-       failure must not discard a record that extract and verify already
-       paid for — it is caught here rather than by the outer catch. */
-    /* A record whose data turned out to exist does not need a study
-       design — the study has been done, and the card points at it. */
-    let design = null;
-    try {
-      if (checked.status === "collected") {
-        console.log("  design skipped (data exists)");
-      } else {
-        console.log("  design…");
-        design = await designFor(extracted);
-      }
-    } catch (designError) {
-      console.log("  design failed (record kept): " +
-                  designError.message.split("\n")[0]);
-    }
+    /* No design is drafted here. It used to be, for every candidate, at
+       the moment of extraction — and about a third of those candidates
+       were then dismissed, so about a third of the design spend bought
+       nothing. It also put the answer before the record. Designs are now
+       drafted by intake/design.mjs, for records already approved and
+       merged into data.js. */
 
     const need = extracted.data_need;
 
@@ -519,7 +500,6 @@ for (const paper of passed) {
       records.push(record);
       alreadyHeld.add(paper.doi);
     }
-    if (design) { designs[need.id] = design; }
 
     ledgerNote(ledger, paper.doi, "candidate", paper.title);
 
@@ -557,24 +537,9 @@ writeJson(CANDIDATES, {
   records
 });
 
-writeJson(DESIGNS_JSON, designs);
-
-/* The safety gate. A design that fails it is not published and not
-   repaired: repairing it by hand would put words on a card labelled
-   AI-generated that no model wrote. The record keeps its claim, its date
-   and its check, and offers no design \u2014 which the app has always been
-   built to render. */
-const published = publishableDesigns(designs, seed, { records },
-  (design) => validateDesign(design));
-
-writeFileSync(DESIGNS_JS, renderDesigns(published), "utf8");
-
-for (const id of published[WITHHELD]) {
-  console.log("  design withheld: " + id);
-  validateDesign(designs[id]).errors.forEach(
-    (e) => console.log("      " + e)
-  );
-}
+/* Designs are not this file's business any more, so neither
+   intake/designs.json nor research-designs.js is touched by a run.
+   intake/design.mjs owns both, and runs after approval. */
 
 /* The distribution is worth printing: a run returning mostly "collected"
    or "partial" means the phrases are finding sparse data rather than
@@ -594,10 +559,10 @@ console.log("Areas:  " + (Object.keys(byArea).length + " — " +
   Object.keys(byArea).join(", ")));
 console.log("");
 console.log("Wrote " + records.length + " records to intake/candidates.json");
-console.log("Wrote " + Object.keys(published).length + " designs to research-designs.js" +
-            " (" + Object.keys(designs).length + " in the archive, " +
-            published[WITHHELD].length + " withheld by the design rules)");
 console.log("Spend: " + spendLine());
 console.log("");
 console.log("Nothing has been written to data.js. Open each citation, confirm");
 console.log("the note is honest, and merge by hand.");
+console.log("");
+console.log("No designs were drafted. After a record is approved and merged:");
+console.log("  node intake/design.mjs");

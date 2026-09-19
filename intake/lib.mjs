@@ -127,18 +127,18 @@ export function ledgerNote(ledger, doi, outcome, title, filterVersion) {
 /* `isPublishable` is the safety gate, passed in rather than imported:
    validate.mjs imports this file, so this file may not import it back.
    Omitted, nothing is filtered, which is what the tests want. */
-export function publishableDesigns(designs, seed, candidates, isPublishable) {
+export function publishableDesigns(designs, seed, isPublishable) {
   /* `isPublishable` returns validateDesign's verdict, not a boolean, so the
      reason can travel to the card with the refusal. */
+  /* Live means in the seed, and nothing else. Candidates waiting for a
+     decision used to count too, from when the run drafted a design for
+     every candidate — that is no longer a thing that happens, and a
+     record nobody has approved has no business carrying a published
+     design. */
   const live = new Set();
 
   for (const problem of seed.problems) {
     for (const need of problem.data_needs || []) { live.add(need.id); }
-  }
-  /* Records waiting for a decision are included, so that approving one
-     and merging it does not need another run to render its design. */
-  for (const record of (candidates && candidates.records) || []) {
-    live.add(record.data_need.id);
   }
 
   const check = isPublishable || (() => ({ ok: true }));
@@ -180,7 +180,8 @@ export function renderDesigns(designs) {
   const header = [
     "/* AI-generated study designs. NOT part of the register.",
     " *",
-    " * Written by intake/run.mjs, one entry per data need id. A design is",
+    " * Written by intake/design.mjs, one entry per data need id, and only",
+    " * for records already approved and merged into data.js. A design is",
     " * an answer, not a record: it is never merged into data.js, and the",
     " * app works fully with this file absent (SPEC 11).",
     " *",

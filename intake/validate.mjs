@@ -719,9 +719,10 @@ if (!invokedDirectly) {
 } else if (process.argv.includes("--self-test")) {
   selfTest();
 } else if (process.argv.includes("--designs")) {
-  /* Reports; it never writes. research-designs.js is rendered by run.mjs
-     from intake/designs.json and is not hand-edited, so the way to change
-     what the app serves is to change a rule here and render again. */
+  /* Reports; it never writes. research-designs.js is rendered by
+     design.mjs from intake/designs.json and is not hand-edited, so the
+     way to change what the app serves is to change a rule here and run
+     `node intake/design.mjs --render` — free, no model. */
   const archive = readJson(join(HERE, "designs.json"), {});
   const ids = Object.keys(archive);
 
