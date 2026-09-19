@@ -177,6 +177,25 @@ a:hover { text-decoration: none; }
    that colour would otherwise have to (SPEC 8.2). */
 .site-footer a { color: #C9D8E6; }
 
+/* A 16px glyph is not a touch target, so the anchor carries the padding
+   and a negative margin keeps the icon optically aligned with the text
+   above it (SPEC 7.5 asks 44px). */
+.footer-repo {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  margin: -10px 0 -10px -11px;
+  text-decoration: none;
+}
+.footer-icon {
+  width: 22px;
+  height: 22px;
+  fill: currentColor;
+}
+.footer-repo:hover .footer-icon { fill: var(--surface); }
+
 /* ---------- screens ---------- */
 
 .screen { padding: var(--space-section) 0; }
