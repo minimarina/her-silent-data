@@ -980,5 +980,250 @@ const DATA = {
         }
       ]
     },
+    {
+      id: "preconception-calcium-preeclampsia",
+      title:
+        "Uncertainty about whether calcium supplementation started before pregnancy prevents hypertensive disorders of pregnancy",
+      area: "Maternal health",
+      summary:
+        "Hypertensive disorders of pregnancy, including pre-eclampsia, are a leading cause of maternal and perinatal illness and death. This review examined whether starting calcium supplementation before conception reduces pre-eclampsia, pregnancy loss, and related outcomes. Evidence from a single trial suggests little to no difference for most outcomes, and the effect remains uncertain.",
+      affected_women:
+        "Parous women whose most recent planned pregnancy had been complicated by pre-eclampsia or eclampsia, and women considering pregnancy generally",
+      source:
+        "https://doi.org/10.1002/14651858.cd011192.pub4",
+      origin: "sourced",
+      is_demo: false,
+      data_needs: [
+        {
+          id: "preconception-calcium-perinatal-loss-data",
+          problem_id: "preconception-calcium-preeclampsia",
+          description:
+            "No trial data exist measuring perinatal loss, neonatal death, early neonatal death, neonatal death or severe morbidity, or maternal adverse effects in women taking preconception calcium supplementation",
+          why_it_matters:
+            "Without this data, it is impossible to know whether preconception calcium supplementation affects critical infant survival outcomes or causes harm to mothers, leaving clinical guidance unable to weigh benefits against risks.",
+          status: "missing",
+          existing_data_note: "",
+          gap_evidence: {
+            source:
+              "https://doi.org/10.1002/14651858.cd011192.pub4",
+            note:
+              "The abstract states: 'The included trial did not measure perinatal loss, maternal adverse effects, neonatal death or severe morbidity, neonatal death, or early neonatal death.' This means these critical child and maternal outcomes have never been assessed in this context.",
+            region: null,
+            claimed_date: "2025-09-18"
+          },
+          dataset_source: null,
+          collection_guidance: null,
+          verification: {
+            checked_at: "2026-09-19",
+            method: "web search",
+            findings:
+              "The exact source cited (Cochrane review CD011192.pub4, 'Calcium supplementation commenced before pregnancy') remains the current, most recent Cochrane review on preconception calcium supplementation and explicitly still states that the included trial did not measure perinatal loss, maternal adverse effects, neonatal death or severe morbidity, neonatal death, or early neonatal death. This differs from the related but separate review on calcium supplementation started during pregnancy (CD001059.pub6), which does report on these outcomes but is not preconception-specific. No new trial data on preconception calcium supplementation covering these critical infant survival and maternal harm outcomes was found.",
+            sources: ["https://www.medscape.com/viewarticle/calcium-supplementation-does-not-reduce-preeclampsia-risk-2025a1000yhj","https://www.cochranelibrary.com/cdsr/doi/10.1002/14651858.CD001059.pub6/full","https://www.cochranelibrary.com/cdsr/doi/10.1002/14651858.CD011192.pub4/full","https://www.cochrane.org/evidence/CD001059_taking-calcium-supplements-during-pregnancy-effective-way-prevent-blood-pressure-disorders-and","https://www.ncbi.nlm.nih.gov/books/NBK556338/","https://www.cochranelibrary.com/cdsr/doi/10.1002/14651858.CD011192.pub3/full","https://clinicaltrials.gov/study/NCT00920621","https://pubmed.ncbi.nlm.nih.gov/31523806/","https://www.nejm.org/doi/full/10.1056/NEJMoa2307212","https://pmc.ncbi.nlm.nih.gov/articles/PMC6745517"]
+          }
+        }
+      ]
+    },
+    {
+      id: "mht-dementia-risk",
+      title:
+        "It is unclear whether menopause hormone therapy affects the risk of mild cognitive impairment or dementia",
+      area: "Reproductive health",
+      summary:
+        "Dementia disproportionately affects women, and changes in sex steroids during the menopause transition may contribute to this. Menopause hormone therapy (MHT) is widely used for menopausal symptoms, but its effect on later cognitive decline or dementia risk is uncertain. A systematic review and meta-analysis of ten studies found no significant association between MHT use and mild cognitive impairment or dementia risk.",
+      affected_women:
+        "Peri-menopausal and post-menopausal women, including those with premature ovarian insufficiency or early menopause",
+      source:
+        "https://doi.org/10.1016/j.lanhl.2025.100803",
+      origin: "sourced",
+      is_demo: false,
+      data_needs: [
+        {
+          id: "mht-dementia-testosterone-poi-data",
+          problem_id: "mht-dementia-risk",
+          description:
+            "Lack of studies on testosterone-based MHT and on MHT use specifically in women with premature ovarian insufficiency, in relation to dementia or cognitive impairment risk",
+          why_it_matters:
+            "Without this evidence, women who experience menopause early or use testosterone therapy cannot be given reliable guidance on whether MHT affects their long-term cognitive health.",
+          status: "missing",
+          existing_data_note: "",
+          gap_evidence: {
+            source:
+              "https://doi.org/10.1016/j.lanhl.2025.100803",
+            note:
+              "The review states: 'No included studies examined testosterone or use in premature ovarian insufficiency.' This means an entire population and treatment type has no evidence base to draw on, leaving clinical guidance for these groups unsupported by data.",
+            region: "UK",
+            claimed_date: "2025-12-22"
+          },
+          dataset_source: null,
+          collection_guidance: {
+            note:
+              "High-quality, long-term studies are needed to clarify the role of MHT and dementia risk, particularly regarding formulation, dose, route, timing, and duration of treatment, with a focus on women with premature ovarian insufficiency, early menopause, or mild cognitive impairment.",
+            source:
+              "https://doi.org/10.1016/j.lanhl.2025.100803"
+          },
+          verification: {
+            checked_at: "2026-09-19",
+            method: "web search",
+            findings:
+              "The search returned the very review this gap is drawn from (Lancet Healthy Longevity, Dec 2025, UCL-led umbrella/systematic review) plus related commentary, all confirming that no studies to date have examined testosterone-based MHT or MHT use in women with premature ovarian insufficiency in relation to dementia/cognitive impairment risk. Coverage pieces (Pharmacy Times, Contemporary OB/GYN) explicitly state these subgroups and interventions remain unaddressed evidence gaps. A WHO guideline update process (PROSPERO CRD42025639384) is asking this exact question but has not yet produced completed primary data.",
+            sources: ["https://www.pharmacytimes.com/view/study-finds-no-evidence-that-hormone-therapy-use-affects-dementia-risk-in-postmenopausal-women","https://www.thelancet.com/journals/lanhl/article/PIIS2666-7568(25)00122-9/fulltext","https://www.contemporaryobgyn.net/view/no-evidence-links-menopause-hormone-therapy-to-dementia-risk","https://www.gbhi.org/news-publications/menopause-hormone-therapy-and-risk-mild-cognitive-impairment-or-dementia","https://pubmed.ncbi.nlm.nih.gov/41448220/","https://www.sciencedirect.com/science/article/pii/S2666756825001229","https://www.ncbi.nlm.nih.gov/pmc/articles/PMC9789006/","https://www.sciencedirect.com/science/article/abs/pii/S0378512224000987","https://www.ncbi.nlm.nih.gov/pmc/articles/PMC12726735/"]
+          }
+        }
+      ]
+    },
+    {
+      id: "cervical-length-screening-ptb",
+      title:
+        "It is uncertain whether universal cervical length screening plus progesterone reduces preterm birth",
+      area: "Maternal health",
+      summary:
+        "A systematic review and meta-analysis compared universal mid-trimester cervical length screening with vaginal progesterone treatment for short cervix versus no screening, in asymptomatic women with singleton pregnancies. Randomized trials showed no significant reduction in preterm birth or neonatal outcomes, while cohort studies showed a significant reduction in preterm birth, but evidence certainty was very low in both cases. The authors conclude it remains uncertain whether this screening strategy reduces preterm birth or improves neonatal outcomes.",
+      affected_women:
+        "Asymptomatic women with singleton pregnancies undergoing mid-trimester cervical length screening",
+      source:
+        "https://doi.org/10.1111/aogs.70253",
+      origin: "sourced",
+      is_demo: false,
+      data_needs: [
+        {
+          id: "cervical-length-screening-ptb-neonatal-outcomes",
+          problem_id: "cervical-length-screening-ptb",
+          description:
+            "Neonatal outcome data from cohort studies evaluating universal cervical length screening and progesterone treatment",
+          why_it_matters:
+            "Without neonatal outcome data from large cohort studies, it is impossible to know whether this widely proposed screening strategy actually improves infant health, only whether it shifts preterm birth rates.",
+          status: "partial",
+          existing_data_note: "",
+          gap_evidence: {
+            source:
+              "https://doi.org/10.1111/aogs.70253",
+            note:
+              "The abstract states plainly: 'The cohort studies presented no data on neonatal outcomes.' This means the larger, more statistically significant body of evidence cannot speak to whether babies actually fare better.",
+            region: null,
+            claimed_date: "2026-05-20"
+          },
+          dataset_source: {
+            note:
+              "Retrospective cohort study of vaginal progesterone in women with prior preterm birth and short cervical length (24-34 weeks), assessing maternal and neonatal outcomes. It does NOT cover universal (unselected/low-risk) cervical length screening populations, which is what the original review flagged as lacking neonatal data.",
+            source:
+              "https://pmc.ncbi.nlm.nih.gov/articles/PMC10017734/"
+          },
+          collection_guidance: {
+            note:
+              "More adequately powered trials are needed before a recommendation can be made.",
+            source:
+              "https://doi.org/10.1111/aogs.70253"
+          },
+          verification: {
+            checked_at: "2026-09-19",
+            method: "web search",
+            findings:
+              "The 2026 Zethelius et al. systematic review confirms the gap is still current: cohort studies of universal cervical length screening with vaginal progesterone still report no neonatal outcome data. A separate retrospective cohort study (PMC10017734) does assess neonatal outcomes with progesterone in short-cervix patients, but it is limited to women with a history of preterm birth diagnosed after 24 weeks, not a universal-screening population, so it does not close the identified gap.",
+            sources: ["https://pubmed.ncbi.nlm.nih.gov/42161360/","https://obgyn.onlinelibrary.wiley.com/doi/10.1111/aogs.70253","https://www.sciencedirect.com/science/article/abs/pii/S0002937816002854","https://pmc.ncbi.nlm.nih.gov/articles/PMC10017734/","https://www.ncbi.nlm.nih.gov/pmc/articles/PMC12401501/","https://www.ajog.org/article/S0002-9378(17)32721-7/fulltext","https://www.ncbi.nlm.nih.gov/pmc/articles/PMC10017734/","https://pubmed.ncbi.nlm.nih.gov/29792058/","https://www.sciencedirect.com/science/article/abs/pii/S0002937816002155"]
+          }
+        }
+      ]
+    },
+    {
+      id: "caesarean-myomectomy",
+      title:
+        "Uncertainty about the safety and benefits of removing uterine fibroids during caesarean section",
+      area: "Maternal health",
+      summary:
+        "Caesarean myomectomy is the removal of uterine fibroids during a caesarean section, historically avoided due to haemorrhage risk. A Cochrane review of 23 non-randomised studies with 7504 women found very low-certainty evidence for all critical outcomes, including blood transfusion, haemorrhage, hospitalisation, operation length, and postpartum fever. No studies reported fertility outcomes after the procedure.",
+      affected_women:
+        "Pregnant women with uterine fibroids undergoing caesarean section",
+      source:
+        "https://doi.org/10.1002/14651858.cd016119",
+      origin: "sourced",
+      is_demo: false,
+      data_needs: [
+        {
+          id: "caesarean-myomectomy-fertility-outcomes",
+          problem_id: "caesarean-myomectomy",
+          description:
+            "No studies report on future fertility outcomes for women who undergo caesarean myomectomy",
+          why_it_matters:
+            "Without fertility outcome data, women and clinicians cannot weigh the potential fertility benefit of removing fibroids at caesarean section against the surgical risks, undermining informed decision-making.",
+          status: "partial",
+          existing_data_note: "",
+          gap_evidence: {
+            source:
+              "https://doi.org/10.1002/14651858.cd016119",
+            note:
+              "The abstract states plainly: 'Fertility outcome No studies reported data on future fertility outcomes.' This means there is no evidence base at all on whether the procedure helps or harms later fertility.",
+            region: null,
+            claimed_date: "2025-01-27"
+          },
+          dataset_source: {
+            note:
+              "Retrospective cohort of 29 women who underwent caesarean myomectomy, reporting subsequent pregnancy and mode-of-delivery outcomes; very small sample, no control group, single-center, and not a large-scale registry.",
+            source:
+              "https://pubmed.ncbi.nlm.nih.gov/19065366/"
+          },
+          collection_guidance: null,
+          verification: {
+            checked_at: "2026-09-19",
+            method: "web search",
+            findings:
+              "A small retrospective cohort study (n=29) directly addresses caesarean myomectomy and future fertility, finding subsequent pregnancy/vaginal birth after caesarean myomectomy occurred and concluding fertility appeared unaffected, but the sample is tiny and lacks a comparison group. A larger 2024/2025 retrospective cohort comparing caesarean myomectomy vs. fibroid-conservative caesarean explicitly states long-term maternal outcomes including future fertility 'could not be assessed,' confirming the gap largely persists. Other fertility-after-myomectomy studies (e.g., COMPARE-UF, laparotomic/laparoscopic myomectomy cohorts) address non-caesarean myomectomy routes, not the caesarean-specific population.",
+            sources: ["https://pubmed.ncbi.nlm.nih.gov/19065366/","https://pmc.ncbi.nlm.nih.gov/articles/PMC13543858/","https://www.sciencedirect.com/science/article/abs/pii/S0301211526000308","https://www.medrxiv.org/content/10.1101/2024.09.24.24314170.full.pdf","https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7985481/","https://pubmed.ncbi.nlm.nih.gov/41554226/","https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7863687/","https://www.fertstert.org/article/S0015-0282(22)00048-6/fulltext","https://www.ncbi.nlm.nih.gov/pmc/articles/PMC10464282/"]
+          }
+        }
+      ]
+    },
+    {
+      id: "preconception-gdm-prevention",
+      title:
+        "It is unclear whether preconception interventions can reduce the risk of gestational diabetes in high-risk women",
+      area: "Maternal health",
+      summary:
+        "Gestational diabetes mellitus is a common pregnancy complication, and interventions during pregnancy have only modest benefit, shifting focus to the preconception period. A systematic review found only six RCTs testing preconception behavioural, supplement, or drug interventions in women at high risk of GDM, and none showed a significant effect, though most were underpowered.",
+      affected_women:
+        "Women at high risk of developing gestational diabetes mellitus, in the pre-pregnancy period",
+      source:
+        "https://doi.org/10.1007/s10995-026-04236-5",
+      origin: "sourced",
+      is_demo: false,
+      data_needs: [
+        {
+          id: "preconception-gdm-prevention-adequately-powered-trials",
+          problem_id: "preconception-gdm-prevention",
+          description:
+            "Well-designed, adequately powered randomised controlled trials testing preconception behaviour change and pharmacotherapy interventions to prevent gestational diabetes in high-risk women",
+          why_it_matters:
+            "Without adequately powered trials, it cannot be determined whether preconception interventions actually reduce GDM risk, leaving preconception care guidelines uninformed and potentially missing an opportunity to improve maternal and infant health.",
+          status: "partial",
+          existing_data_note: "",
+          gap_evidence: {
+            source:
+              "https://doi.org/10.1007/s10995-026-04236-5",
+            note:
+              "The review states that 'No studies reported a significant effect of preconception behaviour change intervention on GDM development; however, five of the trials were underpowered to do so,' and concludes that 'Limited evidence fitted this review's inclusion criteria, highlighting a considerable research gap.'",
+            region: null,
+            claimed_date: "2026-02-19"
+          },
+          dataset_source: {
+            note:
+              "Covers a single-centre RCT (n=167) of preconception lifestyle (exercise + time-restricted eating) intervention in women at high GDM risk, with published primary and secondary outcome papers; does not represent a large, multi-site, adequately powered trial, and pharmacotherapy preconception trials remain essentially absent.",
+            source:
+              "https://pmc.ncbi.nlm.nih.gov/articles/PMC12608746/"
+          },
+          collection_guidance: {
+            note:
+              "Future well designed, adequately powered RCTs of behaviour change and/or pharmacotherapy in women at higher risk for developing GDM are necessary to inform preconception care guidelines.",
+            source:
+              "https://doi.org/10.1007/s10995-026-04236-5"
+          },
+          verification: {
+            checked_at: "2026-09-19",
+            method: "web search",
+            findings:
+              "Since the review, a completed single-centre RCT ('BEFORE THE BEGINNING', published in BMJ 2025;390:e083398) tested a preconception exercise plus time-restricted eating intervention in 167 women at increased GDM risk, with results and secondary neonatal outcomes now published (PMC12608746). Another RCT protocol (Gestational Diabetes Prevention/Prevención de la Diabetes Gestacional, Trials 2021) targets ~252 women with prior GDM planning pregnancy for a pre-pregnancy lifestyle intervention. A 2023 systematic review/meta-analysis (Diabetology & Metabolic Syndrome) found only two RCTs conducted specifically in the preconception window among 84 GDM-prevention RCTs overall, confirming the field remains sparse even after these additions.",
+            sources: ["https://www.medrxiv.org/content/10.1101/2023.07.18.23292734v1","https://pmc.ncbi.nlm.nih.gov/articles/PMC10765912/","https://link.springer.com/article/10.1186/s13098-023-01217-4","https://pmc.ncbi.nlm.nih.gov/articles/PMC12608746/","https://link.springer.com/article/10.1186/s13063-021-05204-w","https://pubmed.ncbi.nlm.nih.gov/41712055/","https://doaj.org/article/57c3923b8c2646fab494b5bf8c2af8bc","https://doaj.org/article/864b9a2ea58b49ecb73aa0aee3129cc9","https://www.frontiersin.org/journals/immunology/articles/10.3389/fimmu.2023.1191184/epub"]
+          }
+        }
+      ]
+    },
   ]
 };

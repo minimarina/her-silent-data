@@ -3,9 +3,9 @@
   "stage": "full",
   "query_window_years": 1,
   "hit_count": 20112,
-  "scanned": 1000,
-  "phrase_matched": 91,
-  "unseen": 57,
+  "scanned": 7000,
+  "phrase_matched": 263,
+  "unseen": 227,
   "passed_filter": 10,
   "records": []
 }

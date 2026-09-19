@@ -1180,7 +1180,8 @@
       "first_seen": "2026-09-18",
       "last_seen": "2026-09-19",
       "title": "What is the evidence for abdominal and pelvic floor muscle training to treat diastasis recti abdominis postpartum? An updated systematic review and meta-analysis of randomized clinical trials and trial sequential analysis.",
-      "outcome": "seen"
+      "outcome": "rejected-by-filter",
+      "filter_version": 4
     },
     "10.1007/s00701-026-06891-7": {
       "first_seen": "2026-09-18",
@@ -1746,97 +1747,112 @@
       "first_seen": "2026-09-18",
       "last_seen": "2026-09-19",
       "title": "The effect of pelvic floor exercises on the quality of life in postmenopausal women: a meta-analysis of randomized controlled trials.",
-      "outcome": "seen"
+      "outcome": "rejected-by-filter",
+      "filter_version": 4
     },
     "10.1111/aogs.70253": {
       "first_seen": "2026-09-18",
       "last_seen": "2026-09-19",
       "title": "Can universal cervical length screening with vaginal progesterone for a short cervix reduce preterm birth? A systematic review and meta-analyses.",
-      "outcome": "seen"
+      "outcome": "approved"
     },
     "10.1002/14651858.cd015988": {
       "first_seen": "2026-09-18",
       "last_seen": "2026-09-19",
       "title": "Physical activity for the management of obesity in children up to the age of 9 years.",
-      "outcome": "seen"
+      "outcome": "rejected-by-filter",
+      "filter_version": 4
     },
     "10.1111/dme.70183": {
       "first_seen": "2026-09-18",
       "last_seen": "2026-09-19",
       "title": "Associations of modifiable preconception, pregnancy and postpartum factors with health outcomes for women with type 2 diabetes and their children: A systematic review and meta-analysis of observational studies.",
-      "outcome": "seen"
+      "outcome": "rejected-by-filter",
+      "filter_version": 4
     },
     "10.1002/14651858.cd016347": {
       "first_seen": "2026-09-18",
       "last_seen": "2026-09-19",
       "title": "Lenacapavir as pre-exposure prophylaxis for HIV prevention.",
-      "outcome": "seen"
+      "outcome": "rejected-by-filter",
+      "filter_version": 4
     },
     "10.1016/j.archger.2026.106267": {
       "first_seen": "2026-09-18",
       "last_seen": "2026-09-19",
       "title": "Care navigation for older adults after stroke - A systematic review and meta-analyses to guide social prescribing.",
-      "outcome": "seen"
+      "outcome": "rejected-by-filter",
+      "filter_version": 4
     },
     "10.1002/14651858.cd010001.pub4": {
       "first_seen": "2026-09-18",
       "last_seen": "2026-09-19",
       "title": "Vasodilators for women undergoing fertility treatment.",
-      "outcome": "seen"
+      "outcome": "rejected-by-filter",
+      "filter_version": 4
     },
     "10.1080/10408363.2026.2640949": {
       "first_seen": "2026-09-18",
       "last_seen": "2026-09-19",
       "title": "The sex difference in plasma cystatin C is age-dependent: a systematic review and meta-analysis.",
-      "outcome": "seen"
+      "outcome": "dismissed",
+      "reason": "a methods gap, not a data gap: the review pooled 46,000 adults and age- and sex-specific reference values already exist; what is missing is equations built on them. Area was also wrong — a kidney-function marker filed under Pharmacology"
     },
     "10.3389/fpubh.2025.1655639": {
       "first_seen": "2026-09-18",
       "last_seen": "2026-09-19",
       "title": "The association between body image and depressive symptoms in pregnant and postpartum women: a meta-analysis.",
-      "outcome": "seen"
+      "outcome": "rejected-by-filter",
+      "filter_version": 4
     },
     "10.1186/s12883-026-04981-8": {
       "first_seen": "2026-09-18",
       "last_seen": "2026-09-19",
       "title": "Prevalence of restless legs syndrome in Pakistan: a systematic review and meta-analysis across diverse study populations.",
-      "outcome": "seen"
+      "outcome": "rejected-by-filter",
+      "filter_version": 4
     },
     "10.1371/journal.pone.0354911": {
       "first_seen": "2026-09-18",
       "last_seen": "2026-09-19",
       "title": "Primary cesarean section in Sub-Saharan Africa: A systematic review and meta-analysis using the Robson Ten-Group Classification System.",
-      "outcome": "seen"
+      "outcome": "rejected-by-filter",
+      "filter_version": 4
     },
     "10.5935/1518-0557.20250012": {
       "first_seen": "2026-09-18",
       "last_seen": "2026-09-19",
       "title": "Utility of GnRH Agonists before embryo transfer in women with adenomyosis: Systematic review and meta-analysis.",
-      "outcome": "seen"
+      "outcome": "rejected-by-filter",
+      "filter_version": 4
     },
     "10.1186/s12884-025-08404-3": {
       "first_seen": "2026-09-18",
       "last_seen": "2026-09-19",
       "title": "Global incidence and risk factors of pregnancy-related stroke: a systematic review and meta-analysis of over 270 million women.",
-      "outcome": "seen"
+      "outcome": "dismissed",
+      "reason": "dataset_source cites the same paper as the gap claim"
     },
     "10.1002/14651858.cd009532.pub3": {
       "first_seen": "2026-09-18",
       "last_seen": "2026-09-19",
       "title": "Oral or parenteral iron supplementation to reduce deferral, iron deficiency and/or anaemia in blood donors.",
-      "outcome": "seen"
+      "outcome": "dismissed",
+      "reason": "status collected: the FORTE trial stratified by sex and baseline ferritin, so the data exists and it is not a gap"
     },
     "10.1002/14651858.cd009252.pub2": {
       "first_seen": "2026-09-18",
       "last_seen": "2026-09-19",
       "title": "Pelvic floor muscle training with feedback or biofeedback for urinary incontinence in women.",
-      "outcome": "seen"
+      "outcome": "rejected-by-filter",
+      "filter_version": 4
     },
     "10.1002/14651858.cd001059.pub6": {
       "first_seen": "2026-09-18",
       "last_seen": "2026-09-19",
       "title": "Calcium supplementation during pregnancy for preventing hypertensive disorders and related problems.",
-      "outcome": "seen"
+      "outcome": "rejected-by-filter",
+      "filter_version": 4
     },
     "10.1016/j.ejogrb.2026.115312": {
       "first_seen": "2026-09-18",
@@ -2092,121 +2108,137 @@
       "first_seen": "2026-09-19",
       "last_seen": "2026-09-19",
       "title": "Transversus abdominis plane (TAP) blocks for prevention of postoperative pain in women undergoing laparoscopic and robotic gynaecological surgery.",
-      "outcome": "seen"
+      "outcome": "rejected-by-filter",
+      "filter_version": 4
     },
     "10.1002/14651858.cd015264.pub2": {
       "first_seen": "2026-09-19",
       "last_seen": "2026-09-19",
       "title": "Vitamin B12 supplementation for growth, development, and cognition in children.",
-      "outcome": "seen"
+      "outcome": "rejected-by-filter",
+      "filter_version": 4
     },
     "10.1002/14651858.cd010290.pub4": {
       "first_seen": "2026-09-19",
       "last_seen": "2026-09-19",
       "title": "Gonadotropins for ovulation induction in women with polycystic ovary syndrome.",
-      "outcome": "seen"
+      "outcome": "rejected-by-filter",
+      "filter_version": 4
     },
     "10.1002/14651858.cd011192.pub4": {
       "first_seen": "2026-09-19",
       "last_seen": "2026-09-19",
       "title": "Calcium supplementation commenced before pregnancy for preventing hypertensive disorders and related problems.",
-      "outcome": "seen"
+      "outcome": "approved"
     },
     "10.1016/j.jpain.2026.106205": {
       "first_seen": "2026-09-19",
       "last_seen": "2026-09-19",
       "title": "Electrophysical resources for the treatment of acute perineal pain after vaginal delivery: A systematic review with meta-analysis.",
-      "outcome": "seen"
+      "outcome": "rejected-by-filter",
+      "filter_version": 4
     },
     "10.1016/j.yhbeh.2026.105921": {
       "first_seen": "2026-09-19",
       "last_seen": "2026-09-19",
       "title": "Little evidence for group differences in 2D:4D ratios based on sexual orientation after adjusting for publication bias.",
-      "outcome": "seen"
+      "outcome": "rejected-by-filter",
+      "filter_version": 4
     },
     "10.1002/14651858.cd015096.pub2": {
       "first_seen": "2026-09-19",
       "last_seen": "2026-09-19",
       "title": "Perioperative use of disease-modifying anti-rheumatic drugs (DMARDs) in people with inflammatory arthritis.",
-      "outcome": "seen"
+      "outcome": "rejected-by-filter",
+      "filter_version": 4
     },
     "10.1002/14651858.cd016119": {
       "first_seen": "2026-09-19",
       "last_seen": "2026-09-19",
       "title": "Caesarean myomectomy in pregnant women with uterine fibroids.",
-      "outcome": "seen"
+      "outcome": "approved"
     },
     "10.1016/j.lanhl.2025.100803": {
       "first_seen": "2026-09-19",
       "last_seen": "2026-09-19",
       "title": "Menopause hormone therapy and risk of mild cognitive impairment or dementia: a systematic review and meta-analysis.",
-      "outcome": "seen"
+      "outcome": "approved"
     },
     "10.1002/14651858.cd008626.pub4": {
       "first_seen": "2026-09-19",
       "last_seen": "2026-09-19",
       "title": "Botulinum toxin type A for subacute/chronic neck pain.",
-      "outcome": "seen"
+      "outcome": "rejected-by-filter",
+      "filter_version": 4
     },
     "10.2196/88887": {
       "first_seen": "2026-09-19",
       "last_seen": "2026-09-19",
       "title": "Tailored and Interactive Mobile Telehealth Contraceptive Counseling Compared With In-Person Care: Systematic Review and Meta-Analysis of Randomized Controlled Trials.",
-      "outcome": "seen"
+      "outcome": "rejected-by-filter",
+      "filter_version": 4
     },
     "10.1016/j.gerinurse.2025.03.060": {
       "first_seen": "2026-09-19",
       "last_seen": "2026-09-19",
       "title": "Visit rates and risk factors of healthcare-seeking behavior for urinary incontinence, fecal incontinence, and pelvic organ prolapse among women: A systematic review and meta-analysis.",
-      "outcome": "seen"
+      "outcome": "rejected-by-filter",
+      "filter_version": 4
     },
     "10.1186/s12875-026-03327-0": {
       "first_seen": "2026-09-19",
       "last_seen": "2026-09-19",
       "title": "Barriers and facilitators to contraception access for South Asian women in high-income, English-speaking countries: a systematic review.",
-      "outcome": "seen"
+      "outcome": "dismissed",
+      "reason": "the quote is a scope statement about where the eleven included studies were set, not a claim that data is missing elsewhere; the absence is the record's inference, not the source's"
     },
     "10.1016/j.tcm.2026.02.003": {
       "first_seen": "2026-09-19",
       "last_seen": "2026-09-19",
       "title": "Pulse field ablation versus thermal ablation: A systematic review and meta analysis of randomized controlled trials.",
-      "outcome": "seen"
+      "outcome": "rejected-by-filter",
+      "filter_version": 4
     },
     "10.1007/s10995-026-04236-5": {
       "first_seen": "2026-09-19",
       "last_seen": "2026-09-19",
       "title": "Preconception Interventions in Women at High Risk of Developing Gestational Diabetes: A Systematic Review.",
-      "outcome": "seen"
+      "outcome": "approved"
     },
     "10.1002/14651858.cd014217.pub2": {
       "first_seen": "2026-09-19",
       "last_seen": "2026-09-19",
       "title": "Folic acid supplementation and malaria susceptibility and severity among people taking antifolate antimalarial drugs in endemic areas.",
-      "outcome": "seen"
+      "outcome": "rejected-by-filter",
+      "filter_version": 4
     },
     "10.1002/14651858.cd006606.pub5": {
       "first_seen": "2026-09-19",
       "last_seen": "2026-09-19",
       "title": "In vitro maturation in subfertile women with polycystic ovarian syndrome undergoing assisted reproduction.",
-      "outcome": "seen"
+      "outcome": "rejected-by-filter",
+      "filter_version": 4
     },
     "10.1016/j.ejogrb.2025.113978": {
       "first_seen": "2026-09-19",
       "last_seen": "2026-09-19",
       "title": "Respiratory syncytial virus vaccination in pregnancy - Position statement by the European board and college of obstetrics and gynaecology (EBCOG).",
-      "outcome": "seen"
+      "outcome": "rejected-by-filter",
+      "filter_version": 4
     },
     "10.1016/j.maturitas.2025.108271": {
       "first_seen": "2026-09-19",
       "last_seen": "2026-09-19",
       "title": "Effect of physical activity on sleep in women experiencing vasomotor symptoms during menopause: a systematic review and meta-analysis.",
-      "outcome": "seen"
+      "outcome": "rejected-by-filter",
+      "filter_version": 4
     },
     "10.1111/inm.70166": {
       "first_seen": "2026-09-19",
       "last_seen": "2026-09-19",
       "title": "Factors Influencing Exercise Engagement Among Women With Depression: A Systematic Review.",
-      "outcome": "seen"
+      "outcome": "dismissed",
+      "reason": "status missing is unsupported: six studies with 139 participants exist, all reporting findings separately for women, and the quoted sentence is about risk of bias rather than absence. The accurate status is partial, which this record cannot carry without a dataset_source"
     },
     "10.1002/ijgo.70011": {
       "first_seen": "2026-09-19",
