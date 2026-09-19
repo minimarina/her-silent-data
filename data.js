@@ -581,5 +581,101 @@ const DATA = {
         }
       ]
     },
+    {
+      id: "cvd-sex-hormones-mortality",
+      title:
+        "Uncertainty about whether endogenous sex hormones predict mortality in people with established cardiovascular disease",
+      area: "Cardiovascular health",
+      summary:
+        "A systematic review and meta-analysis of 12 prospective studies (5,981 patients with established cardiovascular disease) examined links between endogenous sex steroid hormones, SHBG, and mortality. No significant association was found between total testosterone and all-cause or cardiovascular mortality in men, and most studies had high risk of bias. The review found no evidence for an association overall and noted a lack of sufficient evidence, especially concerning women.",
+      affected_women:
+        "Women with established cardiovascular disease, who were underrepresented in the studies analyzed",
+      source:
+        "https://doi.org/10.3389/fendo.2026.1878347",
+      origin: "sourced",
+      is_demo: false,
+      data_needs: [
+        {
+          id: "cvd-sex-hormones-mortality-women-data",
+          problem_id: "cvd-sex-hormones-mortality",
+          description:
+            "Prospective studies on endogenous sex hormones, SHBG, and mortality risk specifically in women with established cardiovascular disease",
+          why_it_matters:
+            "Without sufficient evidence in women, clinicians and researchers cannot determine whether hormone levels have prognostic value for mortality in women with cardiovascular disease, potentially leading to care guidelines based only on male data.",
+          status: "missing",
+          existing_data_note: "",
+          gap_evidence: {
+            source:
+              "https://doi.org/10.3389/fendo.2026.1878347",
+            note:
+              "The review concludes 'This study underscored the lack of sufficient evidence on this topic, especially concerning women,' indicating that existing prospective studies have not adequately examined this population.",
+            region: null,
+            claimed_date: "2026-07-27"
+          },
+          dataset_source: null,
+          collection_guidance: null,
+          verification: {
+            checked_at: "2026-09-19",
+            method: "web search",
+            findings:
+              "A 2026 systematic review and meta-analysis (Frontiers in Endocrinology / PMC13454103) pooling prospective studies on endogenous sex hormones, SHBG, and mortality in patients with established cardiovascular disease found sufficient data only to analyze men (testosterone and mortality), explicitly noting insufficient evidence in women with established CVD. Related work exists on sex hormones and cardiovascular disease in postmenopausal women generally (e.g., Ann Transl Med review, PMC11765893 Swedish stroke-risk cohort, PubMed 29852978 on incident CVD), but these study hormones as predictors of incident CVD or stroke risk in generally healthy postmenopausal women, not mortality risk in women who already have established cardiovascular disease. No prospective study or registry was found that specifically examines endogenous sex hormones/SHBG and mortality outcomes in women with pre-existing CVD.",
+            sources: ["https://pmc.ncbi.nlm.nih.gov/articles/PMC13454103/","https://www.frontiersin.org/journals/endocrinology/articles/10.3389/fendo.2026.1878347/full","https://atm.amegroups.org/article/view/22436/html","https://pubmed.ncbi.nlm.nih.gov/42577268/","https://www.frontiersin.org/journals/endocrinology/articles/10.3389/fendo.2026.1878347/xml","https://pubmed.ncbi.nlm.nih.gov/25550203/","https://www.ncbi.nlm.nih.gov/pmc/articles/PMC11765893/","https://pmc.ncbi.nlm.nih.gov/articles/PMC13227368/","https://pubmed.ncbi.nlm.nih.gov/29852978/"]
+          }
+        }
+      ]
+    },
+    {
+      id: "fertility-interventions-30-42",
+      title:
+        "Women aged 30-42 with infertility lack clear evidence on which interventions actually improve live birth and are safe",
+      area: "Reproductive health",
+      summary:
+        "Female infertility affects about one in six couples worldwide and disproportionately impacts women aged 30-42. A systematic review found many interventions—hormonal therapies, ART strategies, surgery, lifestyle and psychosocial programs—improved pregnancy-related outcomes, but evidence for live birth and safety was limited by small samples, heterogeneity, and indirectness.",
+      affected_women:
+        "Women aged 30-42 years experiencing infertility, across multiple etiologies",
+      source:
+        "https://doi.org/10.3389/fendo.2026.1741198",
+      origin: "sourced",
+      is_demo: false,
+      data_needs: [
+        {
+          id: "fertility-interventions-30-42-safety-reporting",
+          problem_id: "fertility-interventions-30-42",
+          description:
+            "Consistent reporting of live birth outcomes and maternal-neonatal safety data (e.g., ovarian hyperstimulation syndrome, multiple gestation, neonatal outcomes) across fertility intervention studies",
+          why_it_matters:
+            "Without standardized live birth and safety reporting, clinicians and patients cannot judge which interventions are truly effective and safe, undermining informed, shared decision-making.",
+          status: "partial",
+          existing_data_note: "",
+          gap_evidence: {
+            source:
+              "https://doi.org/10.3389/fendo.2026.1741198",
+            note:
+              "The review states that 'Safety reporting was limited; few studies reported ovarian hyperstimulation syndrome, multiple gestation, or neonatal outcomes, and patient-reported outcomes were seldom assessed.' This shows a systematic absence of safety and patient-centered data in the existing evidence base.",
+            region: null,
+            claimed_date: "2026-06-09"
+          },
+          dataset_source: {
+            note:
+              "Tracks uptake of the Core Outcome Set (including pregnancy/live birth and neonatal domains) in IVF RCTs 2004-2024, but shows reporting compliance remains very low (<15%) for most outcomes including safety measures; does not itself constitute the missing safety/live-birth dataset, only documents the persistence of the gap.",
+            source:
+              "https://pmc.ncbi.nlm.nih.gov/articles/PMC11700894/"
+          },
+          collection_guidance: {
+            note:
+              "Future trials must center on live birth, adopt standardized core outcomes, and consistently report maternal-neonatal safety.",
+            source:
+              "https://doi.org/10.3389/fendo.2026.1741198"
+          },
+          verification: {
+            checked_at: "2026-09-19",
+            method: "web search",
+            findings:
+              "A 2024/2025 study (PMC11700894) assessed uptake of the infertility Core Outcome Set (COS) across IVF RCTs from 2004-2024, finding that reporting of core outcomes like pregnancy and neonatal domains remains low (13.6% and 5.7% respectively), with most other core outcomes (including safety-related ones) reported in under 7% of trials, though showing a slowly rising trend over time. This confirms that a standardized outcome framework (the COS) exists and is being tracked, but actual consistent reporting of live birth, OHSS, multiple gestation, and neonatal safety data across fertility studies is still largely absent in practice. This is not a new dataset providing the missing safety data itself, but rather ongoing monitoring showing the gap persists.",
+            sources: ["https://pmc.ncbi.nlm.nih.gov/articles/PMC11700894/","https://doi.org/10.1093/humrep/deaa241","https://pmc.ncbi.nlm.nih.gov/articles/PMC7744160/","https://academic.oup.com/humrep/article/40/1/85/7915049","https://www.frontiersin.org/journals/endocrinology/articles/10.3389/fendo.2026.1741198/xml","https://www.ncbi.nlm.nih.gov/pubmed/33252685","https://pubmed.ncbi.nlm.nih.gov/39673431/","https://academic.oup.com/humrep/article/35/12/2735/6010637","https://www.comet-initiative.org/studies/details/1023"]
+          }
+        }
+      ]
+    },
   ]
 };

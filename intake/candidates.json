@@ -1,10 +1,376 @@
 {
-  "run_at": "2026-09-18",
+  "run_at": "2026-09-19",
   "stage": "full",
   "query_window_years": 1,
-  "hit_count": 1,
-  "phrase_matched": 1,
-  "unseen": 1,
-  "passed_filter": 1,
-  "records": []
+  "hit_count": 20112,
+  "scanned": 1000,
+  "phrase_matched": 91,
+  "unseen": 74,
+  "passed_filter": 6,
+  "records": [
+    {
+      "paper": {
+        "title": "Sexual and reproductive health and maternal welfare among Afghan refugee women in Pakistan: a systematic review.",
+        "doi": "10.3389/fgwh.2026.1645605",
+        "url": "https://doi.org/10.3389/fgwh.2026.1645605",
+        "year": "2026",
+        "journal": "Frontiers in global women's health",
+        "abstract": "<h4>Introduction</h4>Women and children make up over 70% of Afghan refugees worldwide. Sexual and reproductive health (SRH) is essential for overall well-being, yet Afghan refugee women living in Pakistan face significant barriers to accessing health services. Limited access to this care contributes to numerous negative health outcomes and can have potentially lasting effects on subsequent generations. This review synthesizes evidence on the experiences, knowledge, and challenges faced by Afghan refugee women in accessing SRH services, focusing on maternal welfare.<h4>Materials and methods</h4>Following Preferred Reporting Items for Systematic Reviews and Meta-Analyses (PRISMA) guidelines, this systematic review includes qualitative, quantitative, and mixed-methods studies from January 2000 to January 2026. Searches were conducted in databases including Boston University Online Library Database, PubMed, Science Direct, Web of Science, Embase, and EBSCOhost. Two authors independently screened titles, abstracts, and full-texts followed by completing data extraction. The quality of the study was assessed using the Mixed Methods Appraisal Tool.<h4>Results</h4>The search yielded 679 initial search results, of which 21 studies met the inclusion criteria. Findings highlight a lack of education and awareness regarding medical and pharmaceutical contraceptives and reproductive tract infections. Afghan refugee women were found to face significant barriers to accessing healthcare, including distance, cost, stigma, and inadequate SRH education. 67% of maternal deaths were deemed preventable, and 81% of women who died from maternal-related causes faced barriers to accessing care. This population group experiences a high rate of illiteracy (93.3%), which contributes to difficulties accessing educational materials about pregnancy risk factors, leading to increased instances of pregnancy loss. Few studies examined the effects of long-term SRH interventions, and only one study analyzed how Afghan women in Pakistan exhibit resilience and self-agency in the face of structural oppression.<h4>Conclusion</h4>This review identified key areas of limited research on SRH services and maternal welfare for commonly overlooked demographics within Afghan refugees in Pakistan, such as women of reproductive age. While maternal health outcomes of Afghan refugees have improved since 2000, women still face limited access to essential SRH services, ultimately impacting their well-being and that of future generations.<h4>Systematic review registration</h4>https://www.crd.york.ac.uk/PROSPERO/view/CRD42024577910, PROSPERO CRD42024577910."
+      },
+      "problem": {
+        "id": "afghan-refugee-srh",
+        "title": "Afghan refugee women in Pakistan face major barriers to sexual and reproductive health and maternal care",
+        "area": "Maternal health",
+        "summary": "Afghan refugee women in Pakistan face barriers including distance, cost, stigma, and inadequate education around sexual and reproductive health services. High illiteracy rates limit access to pregnancy risk information, and most maternal deaths in this population are considered preventable. Long-term interventions and women's resilience have rarely been studied.",
+        "affected_women": "Afghan refugee women of reproductive age living in Pakistan",
+        "source": "https://doi.org/10.3389/fgwh.2026.1645605",
+        "origin": "sourced",
+        "is_demo": false
+      },
+      "data_need": {
+        "id": "afghan-refugee-srh-long-term-interventions",
+        "problem_id": "afghan-refugee-srh",
+        "area": "Maternal health",
+        "description": "Lack of research on long-term sexual and reproductive health interventions and on Afghan refugee women's resilience and self-agency",
+        "why_it_matters": "Without evidence on what sustained interventions work, programs cannot be designed to durably improve maternal outcomes or build on women's existing coping strategies.",
+        "status": "partial",
+        "existing_data_note": "",
+        "gap_evidence": {
+          "source": "https://doi.org/10.3389/fgwh.2026.1645605",
+          "note": "The review states 'Few studies examined the effects of long-term SRH interventions, and only one study analyzed how Afghan women in Pakistan exhibit resilience and self-agency in the face of structural oppression.'",
+          "region": "Pakistan",
+          "claimed_date": "2026-07-07"
+        },
+        "dataset_source": {
+          "note": "Related but not equivalent studies: a qualitative study on health-system resilience for MNCH among Afghan refugees (Shafiq et al., 2025), a health-system resilience exploratory case study (Memon et al., 2025), a 2026 scoping review on SRH among Afghan refugee women, and a 2025 cross-sectional study on telehealth SRH access in Pakistan. These touch on resilience and SRH access but do not deliver long-term intervention effectiveness data or a focused resilience/self-agency analysis matching the identified gap.",
+          "source": "https://doi.org/10.1177/11786329241310733"
+        },
+        "collection_guidance": null,
+        "verification": {
+          "checked_at": "2026-09-19",
+          "method": "web search",
+          "search_outcome": "reviewed",
+          "findings": "The original review's exact gap statement still appears verbatim in the cited systematic review itself (confirming the gap was noted, not yet closed as of that paper's publication). However, newer related work has emerged: a qualitative study on resilient maternal/neonatal/child health among Afghan refugees in Pakistan, a health system resilience exploratory study, a 2026 scoping review on SRH among Afghan refugee women, and a 2025 cross-sectional telehealth SRH access study. None of these specifically provide long-term (longitudinal/sustained) SRH intervention outcome data or a dedicated study of Afghan women's resilience/self-agency against structural oppression comparable to what the review flagged as needed.",
+          "sources": [
+            {
+              "url": "https://pubmed.ncbi.nlm.nih.gov/42483314/",
+              "title": "Sexual and reproductive health and maternal welfare among Afghan refugee women in Pakistan: a systematic review - PubMed"
+            },
+            {
+              "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13384941/",
+              "title": "Sexual and reproductive health and maternal welfare among Afghan refugee women in Pakistan: a systematic review - PMC"
+            },
+            {
+              "url": "https://www.frontiersin.org/journals/global-womens-health/articles/10.3389/fgwh.2026.1645605/full",
+              "title": "Frontiers | Sexual and reproductive health and maternal welfare among Afghan refugee women in Pakistan: a systematic review"
+            },
+            {
+              "url": "https://www.frontiersin.org/journals/global-womens-health/articles/10.3389/fgwh.2026.1645605/pdf",
+              "title": "EDITED BY Robert Kokou Dowou, University of Health and Allied Sciences, Ghana"
+            },
+            {
+              "url": "https://www.frontiersin.org/journals/global-womens-health/articles/10.3389/fgwh.2026.1645605/xml",
+              "title": "Introduction"
+            },
+            {
+              "url": "https://doi.org/10.1177/11786329241310733",
+              "title": "Toward Resilient Maternal, Neonatal and Child Health Care: A Qualitative Study Involving Afghan Refugee Women in Pakistan - Yasir Shafiq, Ameer Muhammad, Kantesh Kumar, Zabin Wajid Ali, Saba Noor, Zamir Hussain Suhag, Rehman Tahir, Abdullah Jan, Luca Ragazzoni, Francesco Barone-Adesi, Martina Valente, 2025"
+            },
+            {
+              "url": "https://onlinelibrary.wiley.com/doi/10.1002/hpm.70113",
+              "title": "Health System Resilience and Afghan Refugee Health in Pakistan: An Exploratory Study of Challenges and Pathways to Inclusion - Memon - The International Journal of Health Planning and Management - Wiley Online Library"
+            },
+            {
+              "url": "https://doi.org/10.1177/10436596251366108",
+              "title": "Sexual and Reproductive Health Among Afghan Refugee Women: A Scoping Review - Diana Namumbejja Abwoye, Samuel Akyirem, Janene Batten, Michelle Telfer, Olivia N. Kachingwe, 2026"
+            },
+            {
+              "url": "https://pjph.org/pjph/article/view/1918",
+              "title": "Sexual and Reproductive Health Access Among Afghan Refugee Women Using Telehealth in Pakistan | Pakistan Journal of Public Health"
+            }
+          ]
+        }
+      },
+      "validation": {
+        "ok": true,
+        "errors": [],
+        "warnings": []
+      }
+    },
+    {
+      "paper": {
+        "title": "Deinfibulation for improving obstetric, neonatal, gynecologic, and sexual health outcomes in women and girls with type III female genital mutilation: A systematic review and meta-analysis.",
+        "doi": "10.1002/ijgo.70759",
+        "url": "https://doi.org/10.1002/ijgo.70759",
+        "year": "2026",
+        "journal": "International journal of gynaecology and obstetrics: the official organ of the International Federation of Gynaecology and Obstetrics",
+        "abstract": "<h4>Background</h4>Type III female genital mutilation (FGM) is corrected by the scar tissue removal of the vaginal opening, known as deinfibulation.<h4>Objectives</h4>To determine the current evidence on whether deinfibulation leads to improved obstetric, neonatal, gynecologic, and sexual health outcomes.<h4>Search strategy</h4>The following databases were searched from inception to May 18, 2023: CINAHL Plus (EBSCOhost), MEDLINE (Ovid), PsycINFO (EBSCOhost), SCOPUS, and Web of Science.<h4>Selection criteria</h4>Two review authors independently screened the titles and abstracts, extracted data, and performed the risk of bias assessment.<h4>Data collection and analysis</h4>Meta-analysis was conducted with RevMan, and the quality of evidence was assessed using the GRADE approach.<h4>Main results</h4>Eight studies with serious risk of bias involving 3166 women were included. Very low-certainty evidence indicates that deinfibulation for women with type III FGM reduced the odds of an emergency cesarean birth (odds ratio [OR] 0.16, 95% confidence interval [CI] 0.06-0.42) and genital tract lacerations (OR 0.48, 95% CI 0.29-0.79) when compared to women with type III FGM without deinfibulation. Reduced odds of an emergency cesarean birth apply when compared to women without FGM (OR 0.59, 95% CI 0.37-0.93). Antepartum deinfibulation, compared to intrapartum deinfibulation, may lead to a reduction in the duration of labor, with little or no difference in the risk of prolonged labor (low-certainty evidence). Antepartum deinfibulation may increase the likelihood of postpartum hemorrhage and cesarean births in pregnant women with type III FGM (low-certainty evidence). We found no studies for inclusion on gynecologic, urologic, and sexual health outcomes for this update.<h4>Conclusions</h4>The evidence of deinfibulation for women with type III FGM is available only for obstetrics outcomes. Larger observational studies in settings where type III FGM is predominantly practiced are required to improve the certainty of the evidence in these findings."
+      },
+      "problem": {
+        "id": "deinfibulation-outcomes",
+        "title": "Lack of robust evidence on whether deinfibulation improves health outcomes for women with type III female genital mutilation",
+        "area": "Reproductive health",
+        "summary": "Type III female genital mutilation is treated by deinfibulation, surgical removal of scar tissue at the vaginal opening. A systematic review found only very low- to low-certainty evidence, mostly from studies with serious risk of bias, on whether this procedure improves obstetric outcomes such as emergency cesarean birth, genital lacerations, and labor duration. No eligible studies existed for gynecologic, urologic, or sexual health outcomes.",
+        "affected_women": "Women and girls who have undergone type III female genital mutilation, particularly in settings where this form of FGM is predominantly practiced",
+        "source": "https://doi.org/10.1002/ijgo.70759",
+        "origin": "sourced",
+        "is_demo": false
+      },
+      "data_need": {
+        "id": "deinfibulation-outcomes-gynecologic-sexual-data",
+        "problem_id": "deinfibulation-outcomes",
+        "area": "Reproductive health",
+        "description": "Data on gynecologic, urologic, and sexual health outcomes of deinfibulation, and larger, higher-quality observational studies on obstetric outcomes",
+        "why_it_matters": "Without this evidence, clinicians and women affected by type III FGM cannot be confident about the full benefits or risks of deinfibulation beyond obstetric outcomes, limiting informed care decisions.",
+        "status": "partial",
+        "existing_data_note": "",
+        "gap_evidence": {
+          "source": "https://doi.org/10.1002/ijgo.70759",
+          "note": "The review states: 'We found no studies for inclusion on gynecologic, urologic, and sexual health outcomes for this update,' and concludes that 'Larger observational studies in settings where type III FGM is predominantly practiced are required to improve the certainty of the evidence in these findings.'",
+          "region": null,
+          "claimed_date": "2026-01-01"
+        },
+        "dataset_source": {
+          "note": "Cross-sectional study of women who underwent deinfibulation at a single hospital in Kassala, Sudan (2023-2024), assessing quality of life, urinary tract infection, and sexual symptom outcomes. It does not provide the larger, multi-setting, higher-quality observational data on obstetric outcomes that the review called for, nor comprehensive gynecologic/urologic/sexual health data across diverse FGM-practicing populations.",
+          "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11828415/"
+        },
+        "collection_guidance": {
+          "note": "Larger observational studies are needed in settings where type III FGM is predominantly practiced, to improve the certainty of evidence on obstetric outcomes and to address the absence of data on gynecologic, urologic, and sexual health outcomes.",
+          "source": "https://doi.org/10.1002/ijgo.70759"
+        },
+        "verification": {
+          "checked_at": "2026-09-19",
+          "method": "web search",
+          "search_outcome": "reviewed",
+          "findings": "The original Cochrane-style review (Okusanya et al., 2025/2026 update) confirms it found no studies on gynecologic, urologic, or sexual health outcomes of deinfibulation and called for larger observational studies. However, a new cross-sectional study, 'Empowering change: A cross-sectional study on quality of life in deinfibulated women at Saudi Teaching Hospital, Kassala-Sudan 2023-2024' (PLOS Global Public Health, 2025), directly addresses this gap by assessing urinary tract infections, sexual symptoms, and quality of life outcomes among deinfibulated women with type III/IV FGM. This is a single-hospital cross-sectional study in Sudan, not a large multi-site observational cohort, so it only partially fills the identified evidence gap; obstetric outcome data also remain limited to low-certainty evidence per the same review update.",
+          "sources": [
+            {
+              "url": "https://obgyn.onlinelibrary.wiley.com/doi/full/10.1002/ijgo.70759",
+              "title": "Deinfibulation for improving obstetric, neonatal, gynecologic, and sexual health outcomes in women and girls with type III female genital mutilation: A systematic review and meta‐analysis - Okusanya - 2026 - International Journal of Gynecology & Obstetrics - Wiley Online Library"
+            },
+            {
+              "url": "https://scite.ai/reports/deinfibulation-for-improving-obstetric-neonatal-xXM8V2nA",
+              "title": "Deinfibulation for improving obstetric, neonatal, gynecologic, and sexual health outcomes in women and girls with type <scp>III</scp> female genital mutilation: A systematic review and meta‐analysis"
+            },
+            {
+              "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11828415/",
+              "title": "Empowering change: A cross-sectional study on quality of life in deinfibulated women at Saudi Teaching Hospital, Kassala-Sudan 2023–2024 - PMC"
+            },
+            {
+              "url": "https://pubmed.ncbi.nlm.nih.gov/41582683/",
+              "title": "Deinfibulation for improving obstetric, neonatal, gynecologic, and sexual health outcomes in women and girls with type III female genital mutilation: A systematic review and meta-analysis - PubMed"
+            },
+            {
+              "url": "https://journals.plos.org/globalpublichealth/article?id=10.1371%2Fjournal.pgph.0004096",
+              "title": "Empowering change: A cross-sectional study on quality of life in deinfibulated women at Saudi Teaching Hospital, Kassala-Sudan 2023–2024 | PLOS Global Public Health"
+            },
+            {
+              "url": "https://obgyn.onlinelibrary.wiley.com/doi/10.1002/ijgo.71094",
+              "title": "Risk factors for not proceeding to reconstructive surgery after female genital mutilation: A cohort study of 220 women in a specialized referral center - Joinau‐Zoulovits - International Journal of Gynecology & Obstetrics - Wiley Online Library"
+            },
+            {
+              "url": "https://pubmed.ncbi.nlm.nih.gov/39951464/",
+              "title": "Empowering change: A cross-sectional study on quality of life in deinfibulated women at Saudi Teaching Hospital, Kassala-Sudan 2023-2024 - PubMed"
+            },
+            {
+              "url": "https://obgyn.onlinelibrary.wiley.com/doi/full/10.1002/ijgo.12056",
+              "title": "Deinfibulation for preventing or treating complications in women living with type III female genital mutilation: A systematic review and meta‐analysis - Okusanya - 2017 - International Journal of Gynecology & Obstetrics - Wiley Online Library"
+            },
+            {
+              "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC11828415/",
+              "title": "Empowering change: A cross-sectional study on quality of life in deinfibulated women at Saudi Teaching Hospital, Kassala-Sudan 2023–2024"
+            }
+          ]
+        }
+      },
+      "validation": {
+        "ok": true,
+        "errors": [],
+        "warnings": []
+      }
+    },
+    {
+      "paper": {
+        "title": "Gambling in women: A systematic review of interventions and prevention approaches.",
+        "doi": "10.1556/2006.2025.00487",
+        "url": "https://doi.org/10.1556/2006.2025.00487",
+        "year": "2026",
+        "journal": "Journal of behavioral addictions",
+        "abstract": "<h4>Background</h4>Gambling disorder (GD) is a behavioral addiction with significant psychological, social, and economic consequences. Despite growing female participation and distinct gambling characteristics, research and interventions largely male-centered, overlooking women-specific factors.<h4>Objectives</h4>This systematic review synthesizes evidence on prevention and treatment interventions for women with GD, assessing their effectiveness on gambling behaviors, cognitive and psychological outcomes, and identifying barriers related to access, adherence, and gender-sensitive design.<h4>Method</h4>A systematic search in PubMed, PsycINFO, and Web of Science (up to September 2025) identified quantitative studies reporting female-specific outcomes in gambling prevention or treatment. Study quality was appraised using National Heart, Lung, and Blood Institute tools, and data on intervention characteristics, outcomes, and participant profiles were extracted.<h4>Results</h4>Eighteen studies met the inclusion criteria (five prevention, thirteen treatment). Prevention programs, mostly universal and adolescent-focused, improved gambling knowledge, cognitive distortions, and short term gambling frequency; however, socioemotional effects were inconsistent. Only one study included follow-up assessment. Treatment studies, predominantly cognitive behavioral therapy (CBT)-based, reduced gambling severity and psychological distress, although dropout and relapse rates were higher among women with greater psychopathology or limited support. Person-centered approaches benefited of tailoring interventions to individual profiles. No studies systematically applied gender-sensitive frameworks or disaggregated outcomes by sex in prevention.<h4>Discussion and conclusion</h4>Prevention and treatment programs can benefit women, but standard interventions insufficiently address their unique needs. Gender-sensitive, individualized strategies, inclusion of socioemotional factors, and long-term evaluations are essential to enhance outcomes and inform inclusive public health policies."
+      },
+      "problem": {
+        "id": "gambling-women-interventions",
+        "title": "Gambling prevention and treatment programs are not designed for women's specific needs",
+        "area": "Mental health",
+        "summary": "A systematic review of 18 studies found that gambling prevention and treatment interventions are largely male-centered, overlooking women-specific factors. While CBT-based treatments reduced gambling severity, women with greater psychopathology or less support had higher dropout and relapse rates, and no study applied a gender-sensitive framework in prevention.",
+        "affected_women": "Women with gambling disorder, including adolescent girls targeted by universal prevention programs",
+        "source": "https://doi.org/10.1556/2006.2025.00487",
+        "origin": "sourced",
+        "is_demo": false
+      },
+      "data_need": {
+        "id": "gambling-women-gender-sensitive-outcomes",
+        "problem_id": "gambling-women-interventions",
+        "area": "Mental health",
+        "description": "Outcome data on gambling prevention and treatment disaggregated by sex, using gender-sensitive frameworks, with long-term follow-up",
+        "why_it_matters": "Without sex-disaggregated, gender-sensitive evaluation, it is unclear which intervention components actually work for women, leaving programs poorly tailored and prone to high dropout and relapse among women.",
+        "status": "missing",
+        "existing_data_note": "",
+        "gap_evidence": {
+          "source": "https://doi.org/10.1556/2006.2025.00487",
+          "note": "The review states: 'No studies systematically applied gender-sensitive frameworks or disaggregated outcomes by sex in prevention,' and notes 'Only one study included follow-up assessment,' showing both the absence of gender-specific analysis and of long-term data.",
+          "region": null,
+          "claimed_date": "2026-03-26"
+        },
+        "dataset_source": null,
+        "collection_guidance": {
+          "note": "The authors state that 'Gender-sensitive, individualized strategies, inclusion of socioemotional factors, and long-term evaluations are essential to enhance outcomes and inform inclusive public health policies,' recommending future research incorporate these elements.",
+          "source": "https://doi.org/10.1556/2006.2025.00487"
+        },
+        "verification": {
+          "checked_at": "2026-09-19",
+          "method": "web search",
+          "search_outcome": "reviewed",
+          "findings": "The search finds the exact source review itself (Gambling in women: A systematic review of interventions and prevention approaches, Journal of Behavioral Addictions, 2026), confirming the gap is still current as of the newest published synthesis: \"No studies systematically applied gender-sensitive frameworks or disaggregated outcomes by sex in prevention.\" Other results are smaller individual studies on sex differences in gambling treatment outcomes (e.g., Türkiye national sample, Community Mental Health Journal sex-differences study) but none constitute a systematic, gender-sensitive-framework dataset with long-term follow-up. No new dataset specifically fulfilling sex-disaggregated, gender-sensitive, long-term follow-up outcome data for gambling prevention/treatment was found.",
+          "sources": [
+            {
+              "url": "https://www.akjournals.com/view/journals/2006/15/1/article-p135.xml",
+              "title": "Gambling in women: A systematic review of interventions and prevention approaches in: Journal of Behavioral Addictions Volume 15 Issue 1 (2026)"
+            },
+            {
+              "url": "https://pubmed.ncbi.nlm.nih.gov/41886003/",
+              "title": "Gambling in women: A systematic review of interventions and prevention approaches - PubMed"
+            },
+            {
+              "url": "https://pubmed.ncbi.nlm.nih.gov/42189605/",
+              "title": "A comparative analysis of sociodemographic and clinical characteristics of gambling disorder by sex among treatment-seeking individuals: A national sample from Türkiye - PubMed"
+            },
+            {
+              "url": "https://www.researchgate.net/publication/390154862_Addressing_gambling_harms_among_women_Leveraging_lessons_from_the_wider_field_of_gender_and_health",
+              "title": "(PDF) Addressing gambling harms among women: Leveraging lessons from the wider field of gender and health"
+            },
+            {
+              "url": "https://www.researchgate.net/publication/329648648_Women_and_Gambling_An_International_Female_Perspective_on_Treatment_and_Research",
+              "title": "Women and Gambling: An International Female Perspective on Treatment and Research | Request PDF"
+            },
+            {
+              "url": "https://link.springer.com/article/10.1007/s10597-009-9244-1",
+              "title": "Community Treatment for Problem Gambling: Sex Differences in Outcome and Process | Community Mental Health Journal | Springer Nature Link"
+            },
+            {
+              "url": "https://link.springer.com/article/10.1007/s10899-006-9027-3",
+              "title": "Treatment of Female Pathological Gambling: The Efficacy of a Cognitive-Behavioural Approach | Journal of Gambling Studies | Springer Nature Link"
+            },
+            {
+              "url": "https://pubmed.ncbi.nlm.nih.gov/35807202/",
+              "title": "Latent Classes for the Treatment Outcomes in Women with Gambling Disorder and Buying/Shopping Disorder - PubMed"
+            },
+            {
+              "url": "https://link.springer.com/doi/10.1007/s10597-009-9244-1",
+              "title": "s10597 009 9244 1"
+            }
+          ]
+        }
+      },
+      "validation": {
+        "ok": true,
+        "errors": [],
+        "warnings": [
+          "Area \"Mental health\" has no measured map coordinate. The record will list but not pin until one is added to MAP_POINTS."
+        ]
+      }
+    },
+    {
+      "paper": {
+        "title": "Prevalence of Cam and Pincer Morphology in the Young Athlete's Hip: A Systematic Review With Meta-Analysis.",
+        "doi": "10.2519/jospt.2026.13606",
+        "url": "https://doi.org/10.2519/jospt.2026.13606",
+        "year": "2026",
+        "journal": "The Journal of orthopaedic and sports physical therapy",
+        "abstract": "<b>OBJECTIVES:</b> To (1) examine the prevalence of cam and pincer morphologies in adolescent (ages 10-19 years) and young adult (ages 20-35 years) athletes, and (2) summarize diagnostic imaging and clinical assessment methods associated with femoroacetabular impingement (FAI) syndrome. <b>DESIGN:</b> Epidemiology systematic review with meta-analysis. <b>LITERATURE SEARCH:</b> The MEDLINE, Embase, SPORTDiscus, CINAHL, and Scopus databases were searched to February 2025. <b>STUDY SELECTION CRITERIA:</b> English studies reporting on prevalence of FAI syndrome morphologies, whether symptomatic or not, in male/female athletes (10-35 years) were eligible. Studies were excluded if they focused on adapted or parasports or included participants who had undergone corrective surgery. <b>DATA SYNTHESIS:</b> Two independent raters conducted screening, extracted data, and assessed quality/risk of bias. Meta-analyses were performed for cam and pincer morphology prevalence, stratified by age group. Methods of clinical assessment and diagnostic imaging were descriptively reported. The primary analysis compared morphologies between adolescent and young adult athletes with subgroup (hip vs participant) and factor (sex) analyses. <b>RESULTS:</b> Forty-seven studies reporting on 1241 adolescents (16% female) and 2462 young adults (20% female) were included. Primary analysis estimates for the prevalence of cam morphology (48%; 95% confidence interval [CI]: 38, 58) and pincer morphology (18%; 95% CI: 7, 32) indicated no difference between age groups. Many studies (n = 17, 35%) assessed FAI syndrome according to Warwick recommendations (signs, symptoms, imaging). Few studies stratified findings by symptomatic state. <b>CONCLUSION:</b> Cam morphology appeared to develop in early adolescence. Few studies reported findings in females, and diagnostic methods were inconsistent."
+      },
+      "problem": {
+        "id": "fai-morphology-youth-sex-gap",
+        "title": "Cam and pincer hip morphology prevalence in young athletes is poorly characterized in females",
+        "area": "Bone and joint health",
+        "summary": "A systematic review with meta-analysis of 47 studies found cam morphology in about 48% and pincer morphology in about 18% of young athletes, with no difference between adolescents and young adults. Most studies were heavily male-dominated, and diagnostic imaging and clinical assessment methods varied across studies.",
+        "affected_women": "Female adolescent (10-19) and young adult (20-35) athletes, who made up only 16-20% of participants across included studies",
+        "source": "https://doi.org/10.2519/jospt.2026.13606",
+        "origin": "sourced",
+        "is_demo": false
+      },
+      "data_need": {
+        "id": "fai-morphology-youth-sex-gap-female-prevalence-data",
+        "problem_id": "fai-morphology-youth-sex-gap",
+        "area": "Bone and joint health",
+        "description": "Sex-stratified prevalence data on cam and pincer hip morphology in female adolescent and young adult athletes",
+        "why_it_matters": "Without adequate female representation, it is unclear whether cam/pincer development, timing, and impact on FAI syndrome differ by sex, limiting screening and prevention guidance for young female athletes.",
+        "status": "missing",
+        "existing_data_note": "",
+        "gap_evidence": {
+          "source": "https://doi.org/10.2519/jospt.2026.13606",
+          "note": "The review included '1241 adolescents (16% female) and 2462 young adults (20% female)' and concluded that 'Few studies reported findings in females, and diagnostic methods were inconsistent.'",
+          "region": null,
+          "claimed_date": "2026-06-01"
+        },
+        "dataset_source": null,
+        "collection_guidance": null,
+        "verification": {
+          "checked_at": "2026-09-19",
+          "method": "web search",
+          "search_outcome": "reviewed",
+          "findings": "The search only returned the same source systematic review (JOSPT 2026, PubMed) that reported the original gap, noting 47 studies with only 16% female adolescents and 20% female young adults, and concluding that few studies reported findings in females with inconsistent diagnostic methods. No newer sex-stratified prevalence study or dataset specifically on female adolescent/young adult athletes' cam/pincer morphology was found.",
+          "sources": [
+            {
+              "url": "https://www.jospt.org/doi/10.2519/jospt.2026.13606",
+              "title": "Prevalence of Cam and Pincer Morphology in the Young Athlete’s Hip: A Systematic Review With Meta-Analysis | Journal of Orthopaedic & Sports Physical Therapy"
+            },
+            {
+              "url": "https://pubmed.ncbi.nlm.nih.gov/42224020/",
+              "title": "Prevalence of Cam and Pincer Morphology in the Young Athlete's Hip: A Systematic Review With Meta-Analysis - PubMed"
+            },
+            {
+              "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8448877/",
+              "title": "A longitudinal cohort study of adolescent elite footballers and controls investigating the development of cam morphology - PMC"
+            },
+            {
+              "url": "https://www.nature.com/articles/s41598-021-97957-2",
+              "title": "A longitudinal cohort study of adolescent elite footballers and controls investigating the development of cam morphology | Scientific Reports"
+            },
+            {
+              "url": "https://www.jospt.org/doi/10.2519/jospt.2018.7816",
+              "title": "The Prevalence of Cam and Pincer Morphology and Its Association With Development of Hip Osteoarthritis | Journal of Orthopaedic & Sports Physical Therapy"
+            },
+            {
+              "url": "https://clinicaltrials.gov/study/NCT04822571",
+              "title": "Investigating the Reliability of Highly Dynamic 3D Motion Analysis Protocol in Adolescence and Adult Males"
+            },
+            {
+              "url": "https://www.sciencedirect.com/science/article/pii/S1063458425008167",
+              "title": "The prevalence of primary cam morphology in early adolescents from the general population: A population-based study (Generation R) - ScienceDirect"
+            },
+            {
+              "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8448877/",
+              "title": "A longitudinal cohort study of adolescent elite footballers and controls investigating the development of cam morphology"
+            },
+            {
+              "url": "https://www.jospt.org/doi/pdf/10.2519/jospt.2018.7816",
+              "title": "The Prevalence of Cam and Pincer Morphology and Its ..."
+            },
+            {
+              "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12486972/",
+              "title": "The effect of exercise time and frequency on the development of cam morphology - PMC"
+            }
+          ]
+        }
+      },
+      "validation": {
+        "ok": true,
+        "errors": [],
+        "warnings": [
+          "Area \"Bone and joint health\" has no measured map coordinate. The record will list but not pin until one is added to MAP_POINTS."
+        ]
+      }
+    }
+  ]
 }
