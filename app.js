@@ -7,10 +7,15 @@
   /* One word per status, everywhere it appears: the badge, the counts key
      on the home screen, and the copied design all read from here. "Partial"
      on the badge against "Partly covered" in the sentence beside it was one
-     status wearing two names within 40px. */
+     status wearing two names within 40px.
+
+     "Only partly covered", not "Partly covered". Without the "only" the
+     phrase reads as a reassurance — some of it is there — when what the
+     status means is that the data does not cover what it should. The word
+     carrying that is "only", and it was missing. */
   var STATUS_WORD = {
     collected: "Collected",
-    partial: "Partly covered",
+    partial: "Only partly covered",
     missing: "Missing"
   };
 
@@ -839,7 +844,7 @@
        The plural form is kept for problems that carry several. */
     if (total === 1) {
       if (missing > 0) { return "Data missing"; }
-      if (partial > 0) { return "Partly covered"; }
+      if (partial > 0) { return "Only partly covered"; }
       return "Data collected";
     }
 
@@ -853,7 +858,7 @@
        with "No data needs missing", so a register of gaps began the line by
        arguing against itself. */
     if (partial > 0) {
-      return partial + " of " + total + " partly covered";
+      return partial + " of " + total + " only partly covered";
     }
     return "All " + total + " data needs collected";
   }

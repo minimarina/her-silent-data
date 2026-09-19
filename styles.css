@@ -1316,6 +1316,11 @@ a:hover { text-decoration: none; }
 /* What a design does not contain. Not quieter than the fields above it:
    a reader who skims the study design and misses this is exactly the
    reader it is for. */
+/* No max-width. 70ch here measured 604px against the 848px the design
+   fields beside it run to, so the disclaimer stopped two-thirds of the way
+   across and read as a stray block rather than the closing note of the
+   panel. Prose elsewhere is measured for reading length; this one is
+   measured against the panel it closes. */
 .design-limits {
   margin: var(--space-card) 0 0;
   padding: 12px var(--space-card);
@@ -1324,7 +1329,6 @@ a:hover { text-decoration: none; }
   font-size: 1rem;
   line-height: 1.5;
   color: var(--navy-ink);
-  max-width: 70ch;
 }
 
 /* A design the intake rules refused. The record stands; this says what is
