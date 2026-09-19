@@ -1086,16 +1086,39 @@ a:hover { text-decoration: none; }
 }
 
 .about-node-num {
-  font-size: 14px;
+  font-size: 15px;
   font-weight: 700;
   fill: var(--muted);
 }
 .about-node-title {
-  font-size: 17px;
+  font-size: 20px;
   font-weight: 600;
   fill: var(--navy-ink);
 }
-.about-node-status { font-size: 13px; font-weight: 600; }
+
+/* Who decides this step. The word is the carrier and the colour repeats
+   it (SPEC 8.2), so the diagram still works in grey or to a reader who
+   cannot separate teal from navy.
+
+   Deliberately none of the three data-status colours: those mean the
+   status of DATA everywhere else on the site and must keep meaning only
+   that. Plain code is muted because it is the quiet default; AI is the
+   accent because it is what a reader is here to scrutinise; a person is
+   the deep navy, the heaviest ink on the page, because that is the step
+   the whole pipeline exists to end on. */
+.about-node-actor { font-size: 15px; font-weight: 700; }
+.about-node-actor[data-actor="code"]   { fill: var(--muted); }
+.about-node-actor[data-actor="ai"]     { fill: var(--teal-accent); }
+.about-node-actor[data-actor="person"] { fill: var(--navy-deep); }
+
+/* The one step a person decides. Its actor word is navy, and so is the
+   "Built" line under it, so colour alone did not separate them — on the
+   very box where the distinction matters most. The heavier border is the
+   second channel, and it puts the emphasis where the pipeline's whole
+   claim rests. */
+.about-node.is-person rect { stroke-width: 3.5; }
+
+.about-node-status { font-size: 14px; font-weight: 600; }
 .about-node-status[data-build-state="built"],
 .about-node-status[data-build-state="partly"] { fill: var(--navy-deep); }
 .about-node-status[data-build-state="planned"] { fill: var(--muted); }
@@ -1132,7 +1155,7 @@ a:hover { text-decoration: none; }
 }
 
 .about-loop-label {
-  font-size: 13px;
+  font-size: 15px;
   font-weight: 600;
   fill: var(--teal-accent);
 }
@@ -1255,7 +1278,18 @@ a:hover { text-decoration: none; }
   line-height: 1.25;
 }
 .intake-steps p { margin-bottom: 0; }
-.intake-steps .build-chip { margin-bottom: 8px; }
+.intake-steps .build-chip { margin-bottom: 4px; }
+
+/* The diagram's actor label, in the text form of the same figure. Below
+   640px this IS the diagram, so it has to carry what the boxes carry. */
+.step-actor {
+  margin: 0 0 8px;
+  font-size: 0.9375rem;
+  font-weight: 700;
+}
+.step-actor[data-actor="code"]   { color: var(--muted); }
+.step-actor[data-actor="ai"]     { color: var(--teal-accent); }
+.step-actor[data-actor="person"] { color: var(--navy-deep); }
 
 /* The design rule the pipeline exists to protect. */
 .intake-principle {
