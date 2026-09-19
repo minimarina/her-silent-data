@@ -509,10 +509,13 @@
     </blockquote>
 
     <h2 id="about-built-heading">Who built it, and how</h2>
+    <!-- Only what the rules ask for, plus the two things a judge needs to
+         check it. "Built by Marina, solo" and "Nothing is invented and
+         stored" were dropped on 19 Sep: the first is not a disclosure —
+         competing solo is simply allowed — and the second is said in full
+         by the principle blockquote directly above this list. The
+         authorship moved into the disclosure, where it belongs. -->
     <ul class="about-facts">
-      <li>
-        Built by Marina, solo, for the Elevate Women Global Hackathon 2026.
-      </li>
       <li>
         Plain HTML, CSS and JavaScript. No framework, no build step, no
         dependencies &mdash; three screens and one seed file do not need one,
@@ -520,19 +523,26 @@
         opens by double-clicking <code>index.html</code>.
       </li>
       <li>
-        <strong>Nothing is invented and stored.</strong> A record carries
-        what its source said and nothing more, and the validator rejects
-        one that does not. A study design &mdash; which women, which
-        variables, which breakdowns, in what form &mdash; is generated
-        when a researcher asks for it, labelled AI-generated, and never
-        becomes a record.
-      </li>
-      <li>
-        <strong>Disclosure.</strong> Everything in this repository was
+        <strong>Disclosure.</strong> Built by Marina, solo, for the Elevate
+        Women Global Hackathon 2026. Everything in this repository was
         written during the Hackathon Period, 14&ndash;20 September 2026. No
         pre-existing code was used; an earlier personal project by the same
-        author shares no code with this one. Development was AI-assisted
-        throughout, using Claude Code; the git history is the record.
+        author shares no code with this one, and the git history is the
+        record.
+      </li>
+      <!-- Its own item, not a clause inside the one above, because a
+           reader checking for it should not have to read a paragraph about
+           dates to find it. Two uses, and the distinction matters: the
+           published site calls nothing. -->
+      <li>
+        <strong>Where AI is used.</strong> In two places, and they are not
+        the same. <em>The site calls no model</em> &mdash; it is static, holds
+        no key, and everything on screen was generated before it was
+        published. <em>The intake run</em>, which is not part of the site,
+        calls Claude Haiku 4.5 to screen abstracts and Claude Sonnet 5 to
+        extract a record, to run the verification search and to draft a
+        study design. Development was AI-assisted throughout, using Claude
+        Code.
       </li>
       <li>
         <strong>Third-party asset.</strong> The female silhouette is
