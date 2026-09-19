@@ -859,6 +859,9 @@ a:hover { text-decoration: none; }
    bar; About is pushed to the right edge by its own auto margin. */
 .site-home {
   flex: 0 1 auto;
+  display: flex;
+  align-items: center;
+  gap: 10px;
   padding: 0;
   background: none;
   border: 0;
@@ -867,6 +870,31 @@ a:hover { text-decoration: none; }
   text-align: left;
   cursor: pointer;
 }
+
+/* The mark. 32px — the wordmark beside it is two lines and about 40px
+   tall, and a mark much under that reads as a stray bullet rather than
+   as the thing the name sits against. The gap — the one point not
+   filled in — is drawn in white rather than teal: teal holds 2.3:1 on
+   --navy-deep, under the 3:1 floor (§8.2), and this is the one part of
+   the drawing that has to be seen for it to mean anything. */
+.site-mark {
+  flex: 0 0 auto;
+  width: 32px;
+  height: 32px;
+}
+.site-mark svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.site-mark circle { fill: #C9D8E6; }
+.site-mark .site-mark-gap {
+  fill: none;
+  stroke: var(--surface);
+  stroke-width: 1.1;
+}
+
+.site-words { min-width: 0; }
 
 .site-home .site-name,
 .site-home .site-tagline { display: block; }

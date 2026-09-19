@@ -11,6 +11,7 @@
      so it described a product that no longer exists. -->
 <title>Her Silent Data — from a gap in women's data to a study design</title>
 <meta name="description" content="Which data on women's health is missing, who said so, and whether anyone has collected it since — then a draft of the study that would collect it.">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -30,6 +31,23 @@
          where it goes. -->
     <button type="button" class="site-home" data-goto="screen-problems"
             aria-label="Her Silent Data &mdash; back to the map">
+      <!-- The mark. Six data points in a ring, one of them not filled in
+           — the register in one drawing, and the same shape the map makes
+           with its ring of pins. Decoration only: the words beside it say
+           everything it says, so it is aria-hidden and the button's label
+           is unchanged. favicon.svg is the same drawing on a navy tile. -->
+      <span class="site-mark" aria-hidden="true">
+        <svg viewBox="0 0 24 24" focusable="false">
+          <circle cx="18.24" cy="8.4" r="2.2"/>
+          <circle cx="18.24" cy="15.6" r="2.2"/>
+          <circle cx="12" cy="19.2" r="2.2"/>
+          <circle cx="5.76" cy="15.6" r="2.2"/>
+          <circle cx="5.76" cy="8.4" r="2.2"/>
+          <circle class="site-mark-gap" cx="12" cy="4.8" r="2"/>
+        </svg>
+      </span>
+
+      <span class="site-words">
       <span class="site-name">Her Silent Data</span>
       <!-- Four lines open this site: the name, this tagline, the hero and
            the lede. Each does one job and none repeats another. The name
@@ -48,6 +66,7 @@
            draft, withheld entirely on three of eleven. -->
 
       <span class="site-tagline">From a gap in women&rsquo;s data to a study design</span>
+      </span>
     </button>
 
     <!-- The only way to Screen 4. About is never in front of the demo flow,
