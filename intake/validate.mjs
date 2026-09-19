@@ -43,6 +43,19 @@ export function normalise(text) {
    match almost any abstract by accident. */
 const QUOTE = /['"‘’“”]([^'"‘’“”]{20,}?)['"‘’“”]/g;
 
+/* How much of a source one record may reproduce.
+
+   Every record quotes a sentence from a paper it does not own, to report
+   what that paper claimed, and cites it. That is a fair thing to do and a
+   short quotation is what makes it fair — but it held only because the
+   extractor happened to be brief. Measured across the seed on 19 Sep: 36
+   quoted spans, median 77 characters, longest 201. Nothing stopped a run
+   from producing one that reproduced half an abstract.
+
+   300 leaves room above the longest real quotation and is far short of
+   anything that could stand in for the source. */
+const QUOTE_MAX = 300;
+
 export function quotedSpans(text) {
   return [...String(text || "").matchAll(QUOTE)]
     .map((match) => normalise(match[1]))
@@ -372,6 +385,22 @@ export function validateRecord(record, context) {
       );
     }
   }
+
+  /* Enforced whether or not the abstract is still attached, because this
+     one is about how much of someone else's work the record carries and
+     that does not stop mattering once the record is merged. */
+  if (evidence && has(evidence.note)) {
+    const longest = quotedSpans(evidence.note)
+      .reduce((most, span) => Math.max(most, span.length), 0);
+
+    if (longest > QUOTE_MAX) {
+      errors.push(
+        "gap_evidence.note quotes " + longest + " characters. A record " +
+        "reports what its source said and cites it; at more than " +
+        QUOTE_MAX + " it starts reproducing the source instead."
+      );
+    }
+  }
   if (!has(evidence && evidence.claimed_date)) {
     errors.push("gap_evidence.claimed_date is missing.");
   } else {
@@ -665,6 +694,33 @@ function selfTest() {
     "The review suggests that follow-up after birth is probably too " +
     "short to detect the outcomes that matter to women over a year.";
   cases.push(["a note that quotes nothing is rejected", unquoted, false]);
+
+  /* The cap is about how much of someone else's paper a record carries,
+     so it is tested on a quotation that is accurate and verbatim — the
+     only thing wrong with it is its length. */
+  const LONG_SENTENCE =
+    "No studies reported outcomes beyond six weeks postpartum, and the " +
+    "certainty of evidence was low throughout, and the reviewers judged " +
+    "that the absence of longer follow-up data made it impossible to say " +
+    "anything at all about the outcomes that matter most to women in the " +
+    "year after birth, which is the period this review set out to cover.";
+
+  const overlong = base();
+  overlong.paper.abstract = "We searched four databases. " + LONG_SENTENCE;
+  overlong.data_need.gap_evidence.note =
+    "The review states: '" + LONG_SENTENCE + "'";
+  cases.push([
+    "a verbatim quotation longer than the cap is rejected", overlong, false
+  ]);
+
+  const withinCap = base();
+  withinCap.paper.abstract = ABSTRACT;
+  withinCap.data_need.gap_evidence.note =
+    "The review states that 'no studies reported outcomes beyond six " +
+    "weeks postpartum', so the gap stands.";
+  cases.push([
+    "a short verbatim quotation still passes", withinCap, true
+  ]);
 
   const unchecked2 = base();
   unchecked2.data_need.verification.search_outcome = "failed";

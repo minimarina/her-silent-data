@@ -1,0 +1,63 @@
+Her Silent Data
+
+Two different things live in this repository and they are licensed
+separately, because only one of them is the author's to license.
+
+
+1. THE CODE — MIT
+
+app.js, styles.css, index.html, favicon.svg, everything under intake/,
+and the documentation.
+
+Copyright (c) 2026 Marina (github.com/minimarina)
+
+Permission is hereby granted, free of charge, to any person obtaining a
+copy of this software and associated documentation files (the
+"Software"), to deal in the Software without restriction, including
+without limitation the rights to use, copy, modify, merge, publish,
+distribute, sublicense, and/or sell copies of the Software, and to permit
+persons to whom the Software is furnished to do so, subject to the
+following conditions:
+
+The above copyright notice and this permission notice shall be included
+in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
+OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
+CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
+TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
+SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+
+2. THE REGISTER — CC BY 4.0, WITH ONE CARVE-OUT
+
+data.js, research-designs.js and intake/ledger.json: the selection,
+arrangement, descriptions, verification notes and generated study
+designs are licensed under Creative Commons Attribution 4.0
+International (https://creativecommons.org/licenses/by/4.0/).
+
+THE CARVE-OUT. Each record quotes one sentence from a published paper,
+in gap_evidence.note, to report what that paper claimed. Those sentences
+are NOT the author's to license. They remain the copyright of their
+publishers and authors, are reproduced here in short quotation with a
+citation and a link to the source, and any reuse of them is a matter
+between you and the rights holder. intake/validate.mjs enforces a
+maximum length on them.
+
+
+3. THIRD-PARTY ASSETS
+
+The female silhouette in index.html is OpenClipart #71126, public domain
+under CC0, recoloured and otherwise unaltered.
+
+The GitHub mark in the footer is GitHub's trademark, used unaltered and
+in a single colour to link to GitHub. It is not covered by the licences
+above.
+
+
+4. NOT MEDICAL ADVICE
+
+This is a research tool. Nothing in it is medical advice, and the study
+designs in research-designs.js are generated, unreviewed model output.

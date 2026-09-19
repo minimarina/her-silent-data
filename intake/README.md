@@ -74,9 +74,9 @@ The ledger has been corrected to `dismissed`, with that reason. It matters
 because `approved` is permanent — the validator refuses a DOI already
 approved — so a wrong `approved` would have silently barred the paper
 forever while claiming a record existed that did not. The ledger and the
-seed now reconcile: eleven approvals, eleven records, nothing on one side
-missing from the other. That reconciliation is worth re-running after any
-merge.
+seed now reconcile: twenty-four approvals, twenty-four records, nothing
+on one side missing from the other. That reconciliation is worth
+re-running after any merge.
 
 **One correction to the record.** A fourth dismissal was made in error —
 index-based commands renumbered the list as records were removed, so the
@@ -155,8 +155,8 @@ that was approved and merged.
 ## What the validator enforces
 
 Rules the platform states about itself are checked in code rather than
-promised. `node intake/validate.mjs --self-test` runs them as twenty-five
-acceptance tests: fifteen on the record rules below, ten on the design
+promised. `node intake/validate.mjs --self-test` runs them as twenty-seven
+acceptance tests: seventeen on the record rules below, ten on the design
 rules that decide whether a design is published or withheld.
 
 - **A claim must quote its source.** `gap_evidence.note` has to contain a
@@ -185,6 +185,13 @@ rules that decide whether a design is published or withheld.
   compares document identity: the same URL, the record's own DOI inside
   the dataset URL, or a dataset URL matching a verification source whose
   title is the paper's own.
+- **A record may not reproduce its source.** A quoted span longer than
+  300 characters is rejected. Every record quotes a sentence it does not
+  own, to report what that paper claimed, and a short quotation with a
+  citation is what makes that fair — but nothing enforced it, so the
+  practice held only because the extractor happened to be brief. Measured
+  across the seed on 19 Sep: 36 quoted spans, median 77 characters,
+  longest 201.
 - Guidance with no source URL is rejected. Sourced, or null.
 - A record with no `verification.checked_at` is rejected.
 - `collected` or `partial` without a `dataset_source` is rejected.
