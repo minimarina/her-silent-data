@@ -962,7 +962,8 @@ it reads as judgment rather than as a gap.
 - [x] Project name — **resolved 18 Sep: Her Silent Data.** Tagline: *from a
       gap in women's data to a study design.* Repo slug moved to
       `her-silent-data`. Reasoning in `DECISIONS.md` under 18 Sep.
-- [ ] Demo day time in PDT (confirm 4:00 vs 16:00 Lisbon in WhatsApp)
+- [x] Demo day time — **08:00 PDT, Fri 25 Sep 2026** (16:00 Lisbon), per the
+      organizers' Google Calendar.
 (Resolved 18 Sep: the five hand-written `collection_request` blocks were
 retired with the records that carried them. One generation, one shape.)
 
