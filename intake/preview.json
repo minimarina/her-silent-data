@@ -1,110 +1,12 @@
 {
-  "run_at": "2026-09-18",
+  "run_at": "2026-09-19",
   "stage": "discover-only",
   "query_window_years": 1,
-  "hit_count": 20081,
+  "hit_count": 20112,
   "scanned": 1000,
   "phrase_matched": 91,
-  "unseen": 88,
+  "unseen": 74,
   "papers": [
-    {
-      "title": "Belgian guidance 2026 on management of pregnancy and breastfeeding in women living with HIV and their infants.",
-      "doi": "10.1016/j.ejogrb.2026.115312",
-      "url": "https://doi.org/10.1016/j.ejogrb.2026.115312",
-      "year": "2026",
-      "journal": "European journal of obstetrics, gynecology, and reproductive biology"
-    },
-    {
-      "title": "Alterations in cognitive function among reproductive-age women with polyendocrine metabolic ovarian syndrome: A systematic review and meta-analysis.",
-      "doi": "10.1111/jne.70225",
-      "url": "https://doi.org/10.1111/jne.70225",
-      "year": "2026",
-      "journal": "Journal of neuroendocrinology"
-    },
-    {
-      "title": "Effect of oral contraceptive use on cardiorespiratory and immune function in premenopausal women involved in exercise: a systematic review and meta-analysis.",
-      "doi": "10.3389/fphys.2026.1728032",
-      "url": "https://doi.org/10.3389/fphys.2026.1728032",
-      "year": "2026",
-      "journal": "Frontiers in physiology"
-    },
-    {
-      "title": "The effects of dietary and physical exercise interventions among women with a history of gestational diabetes mellitus on cardiometabolic risk: A systematic review and meta-analysis.",
-      "doi": "10.1016/j.diabres.2026.113335",
-      "url": "https://doi.org/10.1016/j.diabres.2026.113335",
-      "year": "2026",
-      "journal": "Diabetes research and clinical practice"
-    },
-    {
-      "title": "Psychosocial interventions for supporting women to stop smoking in pregnancy.",
-      "doi": "10.1002/14651858.cd001055.pub6",
-      "url": "https://doi.org/10.1002/14651858.cd001055.pub6",
-      "year": "2026",
-      "journal": "The Cochrane database of systematic reviews"
-    },
-    {
-      "title": "Breast Arterial Calcification on Mammography and Cardiovascular Outcomes in Women: A Meta-analysis.",
-      "doi": "10.1016/j.amjcard.2026.03.046",
-      "url": "https://doi.org/10.1016/j.amjcard.2026.03.046",
-      "year": "2026",
-      "journal": "The American journal of cardiology"
-    },
-    {
-      "title": "Gonadotropin-releasing hormone agonists during cyclophosphamide for ovarian protection in systemic lupus erythematosus.",
-      "doi": "10.1530/raf-25-0191",
-      "url": "https://doi.org/10.1530/raf-25-0191",
-      "year": "2026",
-      "journal": "Reproduction & fertility"
-    },
-    {
-      "title": "Remifentanil patient-controlled analgesia for labour analgesia: guidance from the obstetric anaesthetists' association: Recommendations for well tolerated provision of remifentanil PCA for labour analgesia.",
-      "doi": "10.1097/eja.0000000000002373",
-      "url": "https://doi.org/10.1097/eja.0000000000002373",
-      "year": "2026",
-      "journal": "European journal of anaesthesiology"
-    },
-    {
-      "title": "Association of oral contraceptives with depression symptoms, diagnosis, and treatment in healthy women: A meta-analysis.",
-      "doi": "10.1016/j.ejogrb.2026.115144",
-      "url": "https://doi.org/10.1016/j.ejogrb.2026.115144",
-      "year": "2026",
-      "journal": "European journal of obstetrics, gynecology, and reproductive biology"
-    },
-    {
-      "title": "Altered reproductive hormone profiles in systemic lupus erythematosus - A systematic review and meta-analysis.",
-      "doi": "10.1016/j.autrev.2026.104135",
-      "url": "https://doi.org/10.1016/j.autrev.2026.104135",
-      "year": "2026",
-      "journal": "Autoimmunity reviews"
-    },
-    {
-      "title": "Ultra-processed food consumption and risk of infertility in adults: a systematic review and meta-analysis.",
-      "doi": "10.3389/fpubh.2026.1906808",
-      "url": "https://doi.org/10.3389/fpubh.2026.1906808",
-      "year": "2026",
-      "journal": "Frontiers in public health"
-    },
-    {
-      "title": "Urinary Incontinence in Women Athletes: Umbrella Review and Meta-analysis of Sport-Related Factors.",
-      "doi": "10.1007/s40279-026-02438-z",
-      "url": "https://doi.org/10.1007/s40279-026-02438-z",
-      "year": "2026",
-      "journal": "Sports medicine (Auckland, N.Z.)"
-    },
-    {
-      "title": "Progesterone receptor modulators for endometriosis.",
-      "doi": "10.1002/14651858.cd009881.pub3",
-      "url": "https://doi.org/10.1002/14651858.cd009881.pub3",
-      "year": "2026",
-      "journal": "The Cochrane database of systematic reviews"
-    },
-    {
-      "title": "GLP-1 receptor agonist treatment in women with polycystic ovary syndrome-a systematic review and meta-analysis.",
-      "doi": "10.1093/ejendo/lvag033",
-      "url": "https://doi.org/10.1093/ejendo/lvag033",
-      "year": "2026",
-      "journal": "European journal of endocrinology"
-    },
     {
       "title": "Exploring the dose-response relationship between prenatal exercise and postpartum depression: A systematic review and meta-analysis of randomized controlled trials.",
       "doi": "10.1016/j.midw.2026.104960",
@@ -237,6 +139,13 @@
       "url": "https://doi.org/10.1002/ijgo.70977",
       "year": "2026",
       "journal": "International journal of gynaecology and obstetrics: the official organ of the International Federation of Gynaecology and Obstetrics"
+    },
+    {
+      "title": "Mortality in people experiencing homelessness: a systematic review and meta-analysis.",
+      "doi": "10.1093/ije/dyag129",
+      "url": "https://doi.org/10.1093/ije/dyag129",
+      "year": "2026",
+      "journal": "International journal of epidemiology"
     },
     {
       "title": "Effects of Acute Caffeine Supplementation on Physical, Sport-Specific, Physiological, Perceptual, and Cognitive Outcomes in Female Team-Sport Athletes: A Three-Level Meta-Analysis.",
@@ -477,18 +386,18 @@
       "journal": "Journal of neurology"
     },
     {
-      "title": "Associations of modifiable preconception, pregnancy and postpartum factors with health outcomes for women with type 2 diabetes and their children: A systematic review and meta-analysis of observational studies.",
-      "doi": "10.1111/dme.70183",
-      "url": "https://doi.org/10.1111/dme.70183",
-      "year": "2026",
-      "journal": "Diabetic medicine : a journal of the British Diabetic Association"
-    },
-    {
       "title": "Lenacapavir as pre-exposure prophylaxis for HIV prevention.",
       "doi": "10.1002/14651858.cd016347",
       "url": "https://doi.org/10.1002/14651858.cd016347",
       "year": "2026",
       "journal": "The Cochrane database of systematic reviews"
+    },
+    {
+      "title": "Associations of modifiable preconception, pregnancy and postpartum factors with health outcomes for women with type 2 diabetes and their children: A systematic review and meta-analysis of observational studies.",
+      "doi": "10.1111/dme.70183",
+      "url": "https://doi.org/10.1111/dme.70183",
+      "year": "2026",
+      "journal": "Diabetic medicine : a journal of the British Diabetic Association"
     },
     {
       "title": "Care navigation for older adults after stroke - A systematic review and meta-analyses to guide social prescribing.",
@@ -505,18 +414,18 @@
       "journal": "BMC public health"
     },
     {
-      "title": "The Effectiveness of Pelvic Floor Physiotherapy on Endometrial Thickness during Embryo Transfer in Infertile Women: A Systematic Review and Meta-analysis.",
-      "doi": "10.22074/ijfs.2025.2047467.1794",
-      "url": "https://doi.org/10.22074/ijfs.2025.2047467.1794",
-      "year": "2026",
-      "journal": "International journal of fertility & sterility"
-    },
-    {
       "title": "Vasodilators for women undergoing fertility treatment.",
       "doi": "10.1002/14651858.cd010001.pub4",
       "url": "https://doi.org/10.1002/14651858.cd010001.pub4",
       "year": "2025",
       "journal": "The Cochrane database of systematic reviews"
+    },
+    {
+      "title": "The Effectiveness of Pelvic Floor Physiotherapy on Endometrial Thickness during Embryo Transfer in Infertile Women: A Systematic Review and Meta-analysis.",
+      "doi": "10.22074/ijfs.2025.2047467.1794",
+      "url": "https://doi.org/10.22074/ijfs.2025.2047467.1794",
+      "year": "2026",
+      "journal": "International journal of fertility & sterility"
     },
     {
       "title": "The sex difference in plasma cystatin C is age-dependent: a systematic review and meta-analysis.",
@@ -540,18 +449,18 @@
       "journal": "Frontiers in public health"
     },
     {
-      "title": "Current evidence on the prospective predictors and trajectories of posttraumatic growth and depreciation in adult women with breast cancer: a systematic review of longitudinal studies.",
-      "doi": "10.1007/s00520-026-11095-x",
-      "url": "https://doi.org/10.1007/s00520-026-11095-x",
-      "year": "2026",
-      "journal": "Supportive care in cancer : official journal of the Multinational Association of Supportive Care in Cancer"
-    },
-    {
       "title": "Prevalence of restless legs syndrome in Pakistan: a systematic review and meta-analysis across diverse study populations.",
       "doi": "10.1186/s12883-026-04981-8",
       "url": "https://doi.org/10.1186/s12883-026-04981-8",
       "year": "2026",
       "journal": "BMC neurology"
+    },
+    {
+      "title": "Current evidence on the prospective predictors and trajectories of posttraumatic growth and depreciation in adult women with breast cancer: a systematic review of longitudinal studies.",
+      "doi": "10.1007/s00520-026-11095-x",
+      "url": "https://doi.org/10.1007/s00520-026-11095-x",
+      "year": "2026",
+      "journal": "Supportive care in cancer : official journal of the Multinational Association of Supportive Care in Cancer"
     },
     {
       "title": "Primary cesarean section in Sub-Saharan Africa: A systematic review and meta-analysis using the Robson Ten-Group Classification System.",
@@ -615,13 +524,6 @@
       "url": "https://doi.org/10.1016/j.ijgc.2025.102747",
       "year": "2026",
       "journal": "International journal of gynecological cancer : official journal of the International Gynecological Cancer Society"
-    },
-    {
-      "title": "Calcium supplementation during pregnancy for preventing hypertensive disorders and related problems.",
-      "doi": "10.1002/14651858.cd001059.pub6",
-      "url": "https://doi.org/10.1002/14651858.cd001059.pub6",
-      "year": "2025",
-      "journal": "The Cochrane database of systematic reviews"
     }
   ]
 }
