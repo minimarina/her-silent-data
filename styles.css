@@ -891,11 +891,21 @@ a:hover { text-decoration: none; }
    for the same reason: a 70ch lede inside a 38rem column is a second edge
    a few pixels off the first, which looks like a mistake rather than a
    measure. */
-/* Centred, not left-aligned. Capping the width without this left the
+/* The text screens share one column. The area screen is a single-column
+   list of record titles and the record screen is prose, so both are
+   reading and both take the measure; only the body map on the home screen
+   stays the full width of the wrap, because a figure is not a line of text.
+
+   Both, not just the record: with the cap on the record alone, clicking a
+   card moved the text 120px inward and narrowed it by 240px, so the app
+   appeared to change layout between a list and the thing in the list.
+
+   Centred, not left-aligned. Capping the width without this left the
    column against the left edge of an 880px wrap, so a record sat with an
    81px margin on the left and 336px on the right at 1024px — off-centre
    enough to read as an unfinished layout rather than as a measure. */
-#screen-detail {
+#screen-detail,
+#screen-area {
   max-width: var(--measure);
   margin-inline: auto;
 }
