@@ -1119,6 +1119,17 @@ a:hover { text-decoration: none; }
   marker-end: url(#about-arrow-loop);
 }
 #about-arrow-loop path { fill: var(--teal-accent); }
+#intake-arrow path { fill: var(--navy-ink); fill-opacity: 0.55; }
+
+/* The line that carries the intake chain on to its second row. A flow
+   arrow that happens to turn two corners, so it is drawn like one. */
+.about-flow-wrap {
+  fill: none;
+  stroke: var(--navy-ink);
+  stroke-opacity: 0.55;
+  stroke-width: 1.5;
+  marker-end: url(#intake-arrow);
+}
 
 .about-loop-label {
   font-size: 13px;
@@ -1126,8 +1137,27 @@ a:hover { text-decoration: none; }
   fill: var(--teal-accent);
 }
 
-/* The six stages as text — the version screen readers get, and the
-   version that survives below 640px. */
+/* The stages and the intake steps as text.
+
+   Above 640px they are for assistive technology only. A sighted reader
+   has the figure; printing the same six stages underneath it was the
+   page saying everything twice, which is what made the About screen
+   long. Below 640px the figures are dropped and these lists become the
+   diagram, so the content is never actually absent — only ever in one
+   form at a time. */
+@media (min-width: 641px) {
+  #screen-about .diagram-text {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+    border: 0;
+  }
+}
 .system-stages {
   list-style: none;
   margin: 0 0 44px;
@@ -1217,7 +1247,9 @@ a:hover { text-decoration: none; }
   padding-left: 1.5rem;
 }
 .intake-steps > li { margin-bottom: var(--space-card); }
-.intake-steps h4 {
+/* h3, not h4: the steps used to sit inside a stage-1 list item and are now
+   their own section under an h2. */
+.intake-steps h3 {
   margin: 0 0 6px;
   font-size: 1rem;
   line-height: 1.25;

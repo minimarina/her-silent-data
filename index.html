@@ -227,10 +227,6 @@
     </button>
 
     <h1 id="about-heading">About this platform</h1>
-    <p class="lede">
-      What the whole system is, which parts of it exist today, and who
-      built it.
-    </p>
 
     <h2 id="about-system-heading">How the system works</h2>
     <p class="lede">
@@ -338,7 +334,11 @@
       <text class="about-loop-label" x="456" y="216">The loop returns to stage 2.</text>
     </svg>
 
-    <ol class="system-stages">
+    <!-- The same six stages as the figure above, in text. Above 640px it
+         is for assistive technology only: a sighted reader has the diagram
+         and does not need it written out underneath as well. Below 640px
+         the figure is dropped and this becomes the diagram. -->
+    <ol class="system-stages diagram-text">
       <li>
         <h3>Gaps are found, one at a time</h3>
         <p class="build-chip" data-build="stage1"></p>
@@ -384,115 +384,113 @@
     </ol>
 
     <h2 id="about-intake-heading">How a record enters the system</h2>
-    <p class="lede">
-      Stage 1 in full &mdash; the part that is built. Seven steps, and
-      the last one is a person: nothing reaches the register until
-      somebody has read the claim against its source and admitted it.
+
+    <!-- Stage 1 in full. Seven steps, drawn rather than written out: the
+         prose under each one repeated what its name already said, and the
+         one thing it added — that the last step is a person — is the
+         sentence below the figure. -->
+    <p>
+      Stage 1 in full. The last step is a person: nothing reaches the
+      register until somebody has read the claim against its source and
+      admitted it.
     </p>
 
-    <ol class="intake-steps">
-      <li>
-        <h4>Discover</h4>
-        <p class="build-chip" data-build="discover"></p>
-        <p>
-          Europe PMC is searched for the sentences a systematic
-          review writes when it looked and found nothing &mdash;
-          &ldquo;no studies met the inclusion criteria&rdquo;,
-          &ldquo;insufficient evidence to determine&rdquo; &mdash;
-          restricted to reviews and guidelines, and to the last
-          twelve months. Searching what an introduction says instead
-          finds gaps the paper itself is about to close.
-        </p>
-      </li>
-      <li>
-        <h4>Filter</h4>
-        <p class="build-chip" data-build="filter"></p>
-        <p>
-          A cheap model answers one yes/no question per abstract: does
-          this name missing data about women that the paper does not
-          itself go on to collect?
-        </p>
-      </li>
-      <li>
-        <h4>Extract</h4>
-        <p class="build-chip" data-build="extract"></p>
-        <p>
-          Structured output strictly against the <code>data.js</code>
-          schema. Anything the source text does not support comes back
-          <code>null</code>, not a guess.
-        </p>
-      </li>
-      <li>
-        <h4>Verify</h4>
-        <p class="build-chip" data-build="verify"></p>
-        <p>
-          A live web search asks whether the data has been collected
-          since the gap was named. Where it finds partial coverage
-          the record becomes <code>partial</code> and names the
-          dataset that exists; where it finds the data in full, the
-          candidate is not a gap and never enters the register. The
-          check is dated, and no search proves a negative, which
-          every <code>missing</code> record says on its face.
-        </p>
-      </li>
-      <li>
-        <h4>Design</h4>
-        <p class="build-chip" data-build="design"></p>
-        <p>
-          A possible study design for the data need, generated and
-          kept out of the register. It is an answer, not a record: it
-          never reaches <code>data.js</code>, and it is labelled
-          AI-generated and unverified wherever it appears.
-        </p>
-        <p>
-          <strong>A design is not offered for every record.</strong>
-          Ordinary JavaScript rules in
-          <code>intake/validate.mjs</code> refuse one that assigns an
-          intervention to pregnant women, women in labour, children or
-          a comparable group without naming its ethics approval,
-          consent procedure and independent safety monitoring; one
-          that doses a participant with something it does not name;
-          or one that restricts eating without screening for eating
-          disorders. Three of the designs generated so far were
-          refused on those grounds.
-        </p>
-        <p>
-          A refused design is never repaired by hand and never shown.
-          The record keeps its claim, its date and its check, and says
-          on its face that no design is offered &mdash; because a card
-          labelled AI-generated may not carry a sentence a person
-          wrote, and because withholding a design costs a convenience
-          while publishing a harmful one costs the thing this platform
-          exists to be.
-        </p>
-      </li>
-      <li>
-        <h4>Validate</h4>
-        <p class="build-chip" data-build="validate"></p>
-        <p>
-          Ordinary JavaScript, no model. A record whose claim does
-          not quote its source word for word is rejected &mdash; the
-          quotation is checked against the abstract it came from. So
-          is guidance with no source, a record nobody checked, and a
-          claim that data exists without saying where. Duplicates go
-          by DOI.
-        </p>
-      </li>
-      <li>
-        <h4>Review</h4>
-        <p class="build-chip" data-build="review"></p>
-        <p>
-          The run stops. Nothing reaches the seed until a person
-          has decided on it. For the first six records the AI
-          fetched every abstract and compared it against the claim,
-          a person made the call on each one, and the AI merged the
-          approved blocks &mdash; so the comparison was machine-made
-          and the decision human. Three of the nine were dismissed,
-          each a paper that collected the very data it called
-          missing. Every decision and its reason is logged, and the
-          paper is never offered again.
-        </p>
-      </li>
+    <svg class="about-svg" viewBox="0 0 880 280" role="img"
+         aria-label="Seven steps, all built: discover, filter, extract, verify, design, validate, review — and then into the register.">
+      <defs>
+        <marker id="intake-arrow" viewBox="0 0 10 10" refX="9" refY="5"
+                markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M0,0 L10,5 L0,10 z"/>
+        </marker>
+      </defs>
+
+      <g class="about-node">
+        <rect x="5" y="30" width="186" height="92" rx="6" data-build-shape="discover"/>
+        <text class="about-node-num" x="25" y="54">1</text>
+        <text class="about-node-title" x="25" y="80">Discover</text>
+        <text class="about-node-status" x="25" y="106" data-build="discover"></text>
+      </g>
+
+      <g class="about-node">
+        <rect x="233" y="30" width="186" height="92" rx="6" data-build-shape="filter"/>
+        <text class="about-node-num" x="253" y="54">2</text>
+        <text class="about-node-title" x="253" y="80">Filter</text>
+        <text class="about-node-status" x="253" y="106" data-build="filter"></text>
+      </g>
+
+      <g class="about-node">
+        <rect x="461" y="30" width="186" height="92" rx="6" data-build-shape="extract"/>
+        <text class="about-node-num" x="481" y="54">3</text>
+        <text class="about-node-title" x="481" y="80">Extract</text>
+        <text class="about-node-status" x="481" y="106" data-build="extract"></text>
+      </g>
+
+      <g class="about-node">
+        <rect x="689" y="30" width="186" height="92" rx="6" data-build-shape="verify"/>
+        <text class="about-node-num" x="709" y="54">4</text>
+        <text class="about-node-title" x="709" y="80">Verify</text>
+        <text class="about-node-status" x="709" y="106" data-build="verify"></text>
+      </g>
+
+      <g class="about-node">
+        <rect x="5" y="170" width="186" height="92" rx="6" data-build-shape="design"/>
+        <text class="about-node-num" x="25" y="194">5</text>
+        <text class="about-node-title" x="25" y="220">Design</text>
+        <text class="about-node-status" x="25" y="246" data-build="design"></text>
+      </g>
+
+      <g class="about-node">
+        <rect x="233" y="170" width="186" height="92" rx="6" data-build-shape="validate"/>
+        <text class="about-node-num" x="253" y="194">6</text>
+        <text class="about-node-title" x="253" y="220">Validate</text>
+        <text class="about-node-status" x="253" y="246" data-build="validate"></text>
+      </g>
+
+      <g class="about-node">
+        <rect x="461" y="170" width="186" height="92" rx="6" data-build-shape="review"/>
+        <text class="about-node-num" x="481" y="194">7</text>
+        <text class="about-node-title" x="481" y="220">Review</text>
+        <text class="about-node-status" x="481" y="246" data-build="review"></text>
+      </g>
+
+      <line class="about-flow" x1="195" y1="76" x2="227" y2="76"/>
+      <line class="about-flow" x1="423" y1="76" x2="455" y2="76"/>
+      <line class="about-flow" x1="651" y1="76" x2="683" y2="76"/>
+
+      <!-- The wrap, drawn like a line of text running on to the next. -->
+      <path class="about-flow-wrap" d="M782,122 V146 H98 V166"/>
+
+      <line class="about-flow" x1="195" y1="216" x2="227" y2="216"/>
+      <line class="about-flow" x1="423" y1="216" x2="455" y2="216"/>
+      <line class="about-flow-loop" x1="651" y1="216" x2="683" y2="216"/>
+      <text class="about-loop-label" x="695" y="212">Into the</text>
+      <text class="about-loop-label" x="695" y="230">register.</text>
+    </svg>
+
+    <!-- The seven steps as text: assistive technology above 640px, and the
+         diagram itself below it, where the figure is dropped. -->
+    <ol class="intake-steps diagram-text">
+      <li><h3>Discover</h3><p class="build-chip" data-build="discover"></p>
+        <p>Europe PMC, searched for the sentences a review writes when it
+        looked and found nothing.</p></li>
+      <li><h3>Filter</h3><p class="build-chip" data-build="filter"></p>
+        <p>One yes/no question per abstract: does this name missing data
+        about women that the paper does not itself go on to collect?</p></li>
+      <li><h3>Extract</h3><p class="build-chip" data-build="extract"></p>
+        <p>Structured output against the record schema. What the source does
+        not support comes back null, not a guess.</p></li>
+      <li><h3>Verify</h3><p class="build-chip" data-build="verify"></p>
+        <p>A live search for data collected since the gap was named. The
+        check is dated, and no search proves a negative.</p></li>
+      <li><h3>Design</h3><p class="build-chip" data-build="design"></p>
+        <p>A possible study, generated and kept out of the register —
+        and withheld entirely where the safety rules refuse it.</p></li>
+      <li><h3>Validate</h3><p class="build-chip" data-build="validate"></p>
+        <p>Ordinary JavaScript, no model. A claim that does not quote its
+        source word for word is rejected.</p></li>
+      <li><h3>Review</h3><p class="build-chip" data-build="review"></p>
+        <p>The run stops. Nothing reaches the register until a person has
+        decided on it, and every decision and its reason is logged.</p></li>
     </ol>
 
     <blockquote class="intake-principle">
@@ -508,41 +506,23 @@
       </p>
     </blockquote>
 
-    <h2 id="about-built-heading">Who built it, and how</h2>
-    <!-- Only what the rules ask for, plus the two things a judge needs to
-         check it. "Built by Marina, solo" and "Nothing is invented and
-         stored" were dropped on 19 Sep: the first is not a disclosure —
-         competing solo is simply allowed — and the second is said in full
-         by the principle blockquote directly above this list. The
-         authorship moved into the disclosure, where it belongs. -->
+    <!-- Only the three disclosures the rules require, and the link a judge
+         needs to check them. Nothing else: "Built by Marina, solo" is not a
+         disclosure — competing solo is simply allowed — and the stack note
+         argued the project was simple, which is not a thing worth saying. -->
+    <h2 id="about-built-heading">Disclosures</h2>
     <ul class="about-facts">
       <li>
-        Plain HTML, CSS and JavaScript. No framework, no build step, no
-        dependencies &mdash; three screens and one seed file do not need one,
-        and a build is one more thing that can fail on submission day. It
-        opens by double-clicking <code>index.html</code>.
+        <strong>When it was built.</strong> Everything in this repository
+        was written during the Hackathon Period, 14&ndash;20 September 2026.
+        No pre-existing code was used, and the git history is the record.
       </li>
       <li>
-        <strong>Disclosure.</strong> Built by Marina, solo, for the Elevate
-        Women Global Hackathon 2026. Everything in this repository was
-        written during the Hackathon Period, 14&ndash;20 September 2026. No
-        pre-existing code was used; an earlier personal project by the same
-        author shares no code with this one, and the git history is the
-        record.
-      </li>
-      <!-- Its own item, not a clause inside the one above, because a
-           reader checking for it should not have to read a paragraph about
-           dates to find it. Two uses, and the distinction matters: the
-           published site calls nothing. -->
-      <li>
-        <strong>Where AI is used.</strong> In two places, and they are not
-        the same. <em>The site calls no model</em> &mdash; it is static, holds
-        no key, and everything on screen was generated before it was
-        published. <em>The intake run</em>, which is not part of the site,
-        calls Claude Haiku 4.5 to screen abstracts and Claude Sonnet 5 to
-        extract a record, to run the verification search and to draft a
-        study design. Development was AI-assisted throughout, using Claude
-        Code.
+        <strong>Where AI is used.</strong> Development was AI-assisted
+        throughout, using Claude Code. The intake run calls Claude Haiku 4.5
+        to screen abstracts and Claude Sonnet 5 to extract a record, run its
+        verification search and draft a study design. The published site
+        itself calls no model.
       </li>
       <li>
         <strong>Third-party asset.</strong> The female silhouette is
