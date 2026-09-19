@@ -37,12 +37,17 @@
      the words inside the diagram alike — is read from here, so a part that
      gets built is one edit in this object and nothing else. §8.1: nothing
      is marked built unless it is in this repository and running. */
+  /* Six stages since 19 Sep. Stage 4 is the funding step, which the loop
+     did not have: a researcher designed a study and women joined it with
+     nobody paying for either. Women and the closing of the gap moved down
+     to 5 and 6. */
   var BUILD_STATUS = {
     stage1: "built",
     stage2: "built",
     stage3: "planned",
     stage4: "planned",
     stage5: "planned",
+    stage6: "planned",
 
     discover: "built",
     filter:   "built",

@@ -234,16 +234,29 @@
 
     <h2 id="about-system-heading">How the system works</h2>
     <p class="lede">
-      The platform is one stage of a loop, not the whole of it. The loop is
-      drawn below, and each stage says whether it is built or planned.
+      A gap in women&rsquo;s data closes when three groups meet: a researcher
+      who will design the study, a fund that will pay for it, and the women
+      it is about. The platform is what puts a named gap in front of all
+      three. It is one stage of that loop, not the whole of it &mdash; the
+      loop is drawn below, and each stage says whether it is built or
+      planned.
     </p>
 
     <!-- The diagram. role="img" with a label, so assistive technology gets
          the summary and then the real <ol> below it, which carries every
          stage as text. Under 640px the SVG is dropped and that list is the
          diagram, stacked vertically. -->
+    <!-- Six stages, three across and three back. The funding stage was
+         added on 19 Sep: without it the loop had a researcher designing a
+         study and women joining it with nobody paying for any of it, which
+         is the step that actually decides whether a gap closes.
+
+         Stage 1 says "found, one at a time" rather than "collected". The
+         old wording read as a claim that the gaps had all been gathered,
+         and they have not been — 24 records against a literature nobody
+         has finished reading is a process, not a set. -->
     <svg class="about-svg" viewBox="0 0 880 400" role="img"
-         aria-label="A loop of five stages. Gaps are collected, which feeds the platform, which shows what is missing. A researcher picks up a request, women on the platform join the study, and the collected data closes the gap, which returns to the platform and starts the loop again.">
+         aria-label="A loop of six stages. Gaps are found one at a time, which feeds the platform, which shows what is missing. A researcher designs the study, a fund chooses a study to back, matching women join the study, and the collected data closes the gap, which returns to the platform and starts the loop again.">
       <defs>
         <marker id="about-arrow" viewBox="0 0 10 10" refX="9" refY="5"
                 markerWidth="6" markerHeight="6" orient="auto-start-reverse">
@@ -257,242 +270,243 @@
 
       <!-- 1 — feeds the loop -->
       <g class="about-node">
-        <rect x="10" y="40" width="200" height="120" rx="6" data-build-shape="stage1"/>
+        <rect x="10" y="40" width="260" height="120" rx="6" data-build-shape="stage1"/>
         <text class="about-node-num" x="30" y="70">1</text>
-        <text class="about-node-title" x="30" y="112">Gaps are collected</text>
+        <text class="about-node-title" x="30" y="102">Gaps are found,</text>
+        <text class="about-node-title" x="30" y="122">one at a time</text>
         <text class="about-node-status" x="30" y="146" data-build="stage1"></text>
       </g>
 
       <!-- 2 — this app -->
       <g class="about-node">
-        <rect x="250" y="40" width="280" height="120" rx="6" data-build-shape="stage2"/>
-        <text class="about-node-num" x="270" y="70">2</text>
-        <text class="about-node-title" x="270" y="102">The platform shows</text>
-        <text class="about-node-title" x="270" y="122">what is missing</text>
-        <text class="about-node-status" x="270" y="146" data-build="stage2"></text>
+        <rect x="310" y="40" width="260" height="120" rx="6" data-build-shape="stage2"/>
+        <text class="about-node-num" x="330" y="70">2</text>
+        <text class="about-node-title" x="330" y="102">The platform shows</text>
+        <text class="about-node-title" x="330" y="122">what is missing</text>
+        <text class="about-node-status" x="330" y="146" data-build="stage2"></text>
       </g>
 
       <!-- 3 -->
       <g class="about-node">
-        <rect x="580" y="40" width="280" height="120" rx="6" data-build-shape="stage3"/>
-        <text class="about-node-num" x="600" y="70">3</text>
-        <text class="about-node-title" x="600" y="102">A researcher picks</text>
-        <text class="about-node-title" x="600" y="122">up a request</text>
-        <text class="about-node-status" x="600" y="146" data-build="stage3"></text>
+        <rect x="610" y="40" width="260" height="120" rx="6" data-build-shape="stage3"/>
+        <text class="about-node-num" x="630" y="70">3</text>
+        <text class="about-node-title" x="630" y="102">A researcher designs</text>
+        <text class="about-node-title" x="630" y="122">the study</text>
+        <text class="about-node-status" x="630" y="146" data-build="stage3"></text>
       </g>
 
-      <!-- 4 -->
+      <!-- 4 — the money. New, and the reason the row below runs right to
+           left: the loop turns the corner here. -->
       <g class="about-node">
-        <rect x="580" y="240" width="280" height="120" rx="6" data-build-shape="stage4"/>
-        <text class="about-node-num" x="600" y="270">4</text>
-        <text class="about-node-title" x="600" y="302">Women on the platform</text>
-        <text class="about-node-title" x="600" y="322">join the study</text>
-        <text class="about-node-status" x="600" y="346" data-build="stage4"></text>
+        <rect x="610" y="240" width="260" height="120" rx="6" data-build-shape="stage4"/>
+        <text class="about-node-num" x="630" y="270">4</text>
+        <text class="about-node-title" x="630" y="302">A fund chooses</text>
+        <text class="about-node-title" x="630" y="322">a study to back</text>
+        <text class="about-node-status" x="630" y="346" data-build="stage4"></text>
       </g>
 
       <!-- 5 -->
       <g class="about-node">
-        <rect x="250" y="240" width="280" height="120" rx="6" data-build-shape="stage5"/>
-        <text class="about-node-num" x="270" y="270">5</text>
-        <text class="about-node-title" x="270" y="302">The collected data</text>
-        <text class="about-node-title" x="270" y="322">closes the gap</text>
-        <text class="about-node-status" x="270" y="346" data-build="stage5"></text>
+        <rect x="310" y="240" width="260" height="120" rx="6" data-build-shape="stage5"/>
+        <text class="about-node-num" x="330" y="270">5</text>
+        <text class="about-node-title" x="330" y="302">Matching women</text>
+        <text class="about-node-title" x="330" y="322">join the study</text>
+        <text class="about-node-status" x="330" y="346" data-build="stage5"></text>
       </g>
 
-      <line class="about-flow" x1="214" y1="100" x2="242" y2="100"/>
-      <line class="about-flow" x1="534" y1="100" x2="572" y2="100"/>
-      <line class="about-flow" x1="720" y1="164" x2="720" y2="232"/>
-      <line class="about-flow" x1="576" y1="300" x2="538" y2="300"/>
+      <!-- 6 -->
+      <g class="about-node">
+        <rect x="10" y="240" width="260" height="120" rx="6" data-build-shape="stage6"/>
+        <text class="about-node-num" x="30" y="270">6</text>
+        <text class="about-node-title" x="30" y="302">The collected data</text>
+        <text class="about-node-title" x="30" y="322">closes the gap</text>
+        <text class="about-node-status" x="30" y="346" data-build="stage6"></text>
+      </g>
 
-      <!-- The return. Stage 5 goes back to stage 2, and that arrow is the
-           point of the diagram, so it is the one line in the accent colour. -->
-      <line class="about-flow-loop" x1="390" y1="236" x2="390" y2="168"/>
-      <text class="about-loop-label" x="406" y="196">The record&rsquo;s status changes.</text>
-      <text class="about-loop-label" x="406" y="216">The loop returns to stage 2.</text>
+      <line class="about-flow" x1="274" y1="100" x2="302" y2="100"/>
+      <line class="about-flow" x1="574" y1="100" x2="602" y2="100"/>
+      <line class="about-flow" x1="740" y1="164" x2="740" y2="232"/>
+      <line class="about-flow" x1="606" y1="300" x2="578" y2="300"/>
+      <line class="about-flow" x1="306" y1="300" x2="278" y2="300"/>
+
+      <!-- The return. Stage 6 goes back to stage 2, and that arrow is the
+           point of the diagram, so it is the one line in the accent colour.
+           An L, because stage 6 no longer sits under stage 2 — it runs up
+           out of the last stage and along into the platform. -->
+      <path class="about-flow-loop" d="M140,236 V200 H440 V172"/>
+      <text class="about-loop-label" x="456" y="196">The record&rsquo;s status changes.</text>
+      <text class="about-loop-label" x="456" y="216">The loop returns to stage 2.</text>
     </svg>
 
     <ol class="system-stages">
       <li>
-        <h3>Gaps are collected</h3>
+        <h3>Gaps are found, one at a time</h3>
         <p class="build-chip" data-build="stage1"></p>
         <p>
-          Published reviews and guidelines naming data that is missing
-          about women are found, checked against the live web to see
-          whether it has been collected since, and added to the platform
-          once a person has confirmed the claim against its source.
+          Published reviews naming data that is missing about women are found, checked against the live web to see whether it has been collected since, and admitted only after a person confirms the claim against its source.
         </p>
-
-        <button type="button" class="intake-toggle" id="intake-toggle"
-                aria-expanded="false" aria-controls="intake-panel">
-          <span class="intake-toggle-mark" aria-hidden="true"></span>
-          How a record enters the system
-        </button>
-
-        <div class="intake-panel" id="intake-panel" hidden>
-          <p class="intake-lede">
-            Seven steps. A record passes all seven before it reaches the
-            seed, and the last one is a person.
-          </p>
-
-          <ol class="intake-steps">
-            <li>
-              <h4>Discover</h4>
-              <p class="build-chip" data-build="discover"></p>
-              <p>
-                Europe PMC is searched for the sentences a systematic
-                review writes when it looked and found nothing &mdash;
-                &ldquo;no studies met the inclusion criteria&rdquo;,
-                &ldquo;insufficient evidence to determine&rdquo; &mdash;
-                restricted to reviews and guidelines, and to the last
-                twelve months. Searching what an introduction says instead
-                finds gaps the paper itself is about to close.
-              </p>
-            </li>
-            <li>
-              <h4>Filter</h4>
-              <p class="build-chip" data-build="filter"></p>
-              <p>
-                A cheap model answers one yes/no question per abstract: does
-                this name missing data about women that the paper does not
-                itself go on to collect?
-              </p>
-            </li>
-            <li>
-              <h4>Extract</h4>
-              <p class="build-chip" data-build="extract"></p>
-              <p>
-                Structured output strictly against the <code>data.js</code>
-                schema. Anything the source text does not support comes back
-                <code>null</code>, not a guess.
-              </p>
-            </li>
-            <li>
-              <h4>Verify</h4>
-              <p class="build-chip" data-build="verify"></p>
-              <p>
-                A live web search asks whether the data has been collected
-                since the gap was named. Where it finds partial coverage
-                the record becomes <code>partial</code> and names the
-                dataset that exists; where it finds the data in full, the
-                candidate is not a gap and never enters the register. The
-                check is dated, and no search proves a negative, which
-                every <code>missing</code> record says on its face.
-              </p>
-            </li>
-            <li>
-              <h4>Design</h4>
-              <p class="build-chip" data-build="design"></p>
-              <p>
-                A possible study design for the data need, generated and
-                kept out of the register. It is an answer, not a record: it
-                never reaches <code>data.js</code>, and it is labelled
-                AI-generated and unverified wherever it appears.
-              </p>
-              <p>
-                <strong>A design is not offered for every record.</strong>
-                Ordinary JavaScript rules in
-                <code>intake/validate.mjs</code> refuse one that assigns an
-                intervention to pregnant women, women in labour, children or
-                a comparable group without naming its ethics approval,
-                consent procedure and independent safety monitoring; one
-                that doses a participant with something it does not name;
-                or one that restricts eating without screening for eating
-                disorders. Three of the designs generated so far were
-                refused on those grounds.
-              </p>
-              <p>
-                A refused design is never repaired by hand and never shown.
-                The record keeps its claim, its date and its check, and says
-                on its face that no design is offered &mdash; because a card
-                labelled AI-generated may not carry a sentence a person
-                wrote, and because withholding a design costs a convenience
-                while publishing a harmful one costs the thing this platform
-                exists to be.
-              </p>
-            </li>
-            <li>
-              <h4>Validate</h4>
-              <p class="build-chip" data-build="validate"></p>
-              <p>
-                Ordinary JavaScript, no model. A record whose claim does
-                not quote its source word for word is rejected &mdash; the
-                quotation is checked against the abstract it came from. So
-                is guidance with no source, a record nobody checked, and a
-                claim that data exists without saying where. Duplicates go
-                by DOI.
-              </p>
-            </li>
-            <li>
-              <h4>Review</h4>
-              <p class="build-chip" data-build="review"></p>
-              <p>
-                The run stops. Nothing reaches the seed until a person
-                has decided on it. For the first six records the AI
-                fetched every abstract and compared it against the claim,
-                a person made the call on each one, and the AI merged the
-                approved blocks &mdash; so the comparison was machine-made
-                and the decision human. Three of the nine were dismissed,
-                each a paper that collected the very data it called
-                missing. Every decision and its reason is logged, and the
-                paper is never offered again.
-              </p>
-            </li>
-          </ol>
-
-          <blockquote class="intake-principle">
-            <p>
-              Most tools point a model at a problem and let it generate the
-              answer. This one inverts that. Where the data gap is, is a
-              claim, and every claim here is borrowed from a published
-              source and attributed. AI is used for finding, extracting and
-              checking &mdash; never for making the claim. Nothing the
-              model composes is stored as a record: a study design is
-              generated when a researcher asks for one, labelled
-              AI-generated, and kept out of the register entirely.
-            </p>
-          </blockquote>
-        </div>
       </li>
-
       <li>
         <h3>The platform shows what is missing</h3>
         <p class="build-chip" data-build="stage2"></p>
         <p>
-          For each problem: which data is needed, what status it has,
-          who said it was missing and when, and when the platform last
-          checked whether it has been collected since.
+          Which data is needed, what status it has, who said it was missing and when, and when the platform last checked.
         </p>
       </li>
-
       <li>
-        <h3>A researcher picks up a request</h3>
+        <h3>A researcher designs the study</h3>
         <p class="build-chip" data-build="stage3"></p>
         <p>
-          The platform hands over a draft design — which women, which
-          variables, which breakdowns — labelled AI-generated and
-          unreviewed, and withheld where the rules refuse one. Reviewing
-          that draft and running the study is the researcher's work, and
-          none of that is built here.
+          The platform hands over a draft design &mdash; which women, which variables, which breakdowns &mdash; labelled AI-generated and unreviewed, and withheld where the rules refuse one. Reviewing it and running the study is the researcher&rsquo;s work.
         </p>
       </li>
-
       <li>
-        <h3>Women on the platform join the study</h3>
+        <h3>A fund chooses a study to back</h3>
         <p class="build-chip" data-build="stage4"></p>
         <p>
-          Women who want the gap in their own problem closed take part in
-          it.
+          A funder sees the gap, the published claim it rests on and the proposed study in one place, and decides what to pay for. Without this stage the loop has a study nobody funds.
         </p>
       </li>
-
       <li>
-        <h3>The collected data closes the gap</h3>
+        <h3>Matching women join the study</h3>
         <p class="build-chip" data-build="stage5"></p>
         <p>
-          And the record&rsquo;s status changes. The loop returns to stage 2.
+          Women whose own gap the study would close take part in it.
+        </p>
+      </li>
+      <li>
+        <h3>The collected data closes the gap</h3>
+        <p class="build-chip" data-build="stage6"></p>
+        <p>
+          The record&rsquo;s status changes, and the loop returns to stage 2.
         </p>
       </li>
     </ol>
+
+    <h2 id="about-intake-heading">How a record enters the system</h2>
+    <p class="lede">
+      Stage 1 in full &mdash; the part that is built. Seven steps, and
+      the last one is a person: nothing reaches the register until
+      somebody has read the claim against its source and admitted it.
+    </p>
+
+    <ol class="intake-steps">
+      <li>
+        <h4>Discover</h4>
+        <p class="build-chip" data-build="discover"></p>
+        <p>
+          Europe PMC is searched for the sentences a systematic
+          review writes when it looked and found nothing &mdash;
+          &ldquo;no studies met the inclusion criteria&rdquo;,
+          &ldquo;insufficient evidence to determine&rdquo; &mdash;
+          restricted to reviews and guidelines, and to the last
+          twelve months. Searching what an introduction says instead
+          finds gaps the paper itself is about to close.
+        </p>
+      </li>
+      <li>
+        <h4>Filter</h4>
+        <p class="build-chip" data-build="filter"></p>
+        <p>
+          A cheap model answers one yes/no question per abstract: does
+          this name missing data about women that the paper does not
+          itself go on to collect?
+        </p>
+      </li>
+      <li>
+        <h4>Extract</h4>
+        <p class="build-chip" data-build="extract"></p>
+        <p>
+          Structured output strictly against the <code>data.js</code>
+          schema. Anything the source text does not support comes back
+          <code>null</code>, not a guess.
+        </p>
+      </li>
+      <li>
+        <h4>Verify</h4>
+        <p class="build-chip" data-build="verify"></p>
+        <p>
+          A live web search asks whether the data has been collected
+          since the gap was named. Where it finds partial coverage
+          the record becomes <code>partial</code> and names the
+          dataset that exists; where it finds the data in full, the
+          candidate is not a gap and never enters the register. The
+          check is dated, and no search proves a negative, which
+          every <code>missing</code> record says on its face.
+        </p>
+      </li>
+      <li>
+        <h4>Design</h4>
+        <p class="build-chip" data-build="design"></p>
+        <p>
+          A possible study design for the data need, generated and
+          kept out of the register. It is an answer, not a record: it
+          never reaches <code>data.js</code>, and it is labelled
+          AI-generated and unverified wherever it appears.
+        </p>
+        <p>
+          <strong>A design is not offered for every record.</strong>
+          Ordinary JavaScript rules in
+          <code>intake/validate.mjs</code> refuse one that assigns an
+          intervention to pregnant women, women in labour, children or
+          a comparable group without naming its ethics approval,
+          consent procedure and independent safety monitoring; one
+          that doses a participant with something it does not name;
+          or one that restricts eating without screening for eating
+          disorders. Three of the designs generated so far were
+          refused on those grounds.
+        </p>
+        <p>
+          A refused design is never repaired by hand and never shown.
+          The record keeps its claim, its date and its check, and says
+          on its face that no design is offered &mdash; because a card
+          labelled AI-generated may not carry a sentence a person
+          wrote, and because withholding a design costs a convenience
+          while publishing a harmful one costs the thing this platform
+          exists to be.
+        </p>
+      </li>
+      <li>
+        <h4>Validate</h4>
+        <p class="build-chip" data-build="validate"></p>
+        <p>
+          Ordinary JavaScript, no model. A record whose claim does
+          not quote its source word for word is rejected &mdash; the
+          quotation is checked against the abstract it came from. So
+          is guidance with no source, a record nobody checked, and a
+          claim that data exists without saying where. Duplicates go
+          by DOI.
+        </p>
+      </li>
+      <li>
+        <h4>Review</h4>
+        <p class="build-chip" data-build="review"></p>
+        <p>
+          The run stops. Nothing reaches the seed until a person
+          has decided on it. For the first six records the AI
+          fetched every abstract and compared it against the claim,
+          a person made the call on each one, and the AI merged the
+          approved blocks &mdash; so the comparison was machine-made
+          and the decision human. Three of the nine were dismissed,
+          each a paper that collected the very data it called
+          missing. Every decision and its reason is logged, and the
+          paper is never offered again.
+        </p>
+      </li>
+    </ol>
+
+    <blockquote class="intake-principle">
+      <p>
+        Most tools point a model at a problem and let it generate the
+        answer. This one inverts that. Where the data gap is, is a
+        claim, and every claim here is borrowed from a published
+        source and attributed. AI is used for finding, extracting and
+        checking &mdash; never for making the claim. Nothing the
+        model composes is stored as a record: a study design is
+        generated when a researcher asks for one, labelled
+        AI-generated, and kept out of the register entirely.
+      </p>
+    </blockquote>
 
     <h2 id="about-built-heading">Who built it, and how</h2>
     <ul class="about-facts">

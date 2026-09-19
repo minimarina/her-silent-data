@@ -47,12 +47,7 @@ h2 { font-size: 1.25rem; }
 
 p { margin: 0 0 12px; }
 
-/* Prose measure — §7.2, about 70 characters. It holds where prose is the
-   screen: the record's summary, the About screen's ledes. It does not hold
-   on the home screen or in the footer, where a 70ch block sat 240px short
-   of a counts strip and a map that both run the full column, and the page
-   read as text that had been clipped rather than as a measure. */
-/* ONE measure for the record column.
+/* ONE measure, §7.2, about seventy characters.
 
    Measured on a record at 1024px before this existed: the h1, the affected
    line, the source, the h2 and the design fields ran to 848px; the lede and
@@ -64,6 +59,11 @@ p { margin: 0 0 12px; }
    38rem is about seventy characters at the body size, which is the measure
    §7.2 already asks for — it is stated here once instead of being repeated
    as a 70ch on each element and drifting.
+
+   It does not hold everywhere. The home screen's hero and the footer run
+   the full column on purpose: a 70ch block sat 240px short of a counts
+   strip and a map that both run the whole width, and read as text that had
+   been clipped rather than as a measure somebody chose.
 
    On a wide screen the column grows by making the TYPE bigger, not the
    line longer. Measured at 1024px: 608px holds 79 characters, already at
@@ -1139,7 +1139,10 @@ a:hover { text-decoration: none; }
 
 /* The return arrow is the point of the diagram, so it is the one line in
    the accent colour and the one drawn heavier. */
+/* fill:none because the return is a <path> now, not a <line> — an L out of
+   stage 6 and along into the platform. Without it the path fills black. */
 .about-flow-loop {
+  fill: none;
   stroke: var(--teal-accent);
   stroke-width: 2.5;
   marker-end: url(#about-arrow-loop);
@@ -1152,7 +1155,7 @@ a:hover { text-decoration: none; }
   fill: var(--teal-accent);
 }
 
-/* The five stages as text — the version screen readers get, and the
+/* The six stages as text — the version screen readers get, and the
    version that survives below 640px. */
 .system-stages {
   list-style: none;
@@ -1216,24 +1219,9 @@ a:hover { text-decoration: none; }
 .system-stages p { max-width: 70ch; }
 .system-stages > li > p:last-child { margin-bottom: 0; }
 
-/* Stage 1 expands. A disclosure inside the screen, not a fourth route. */
-.intake-toggle {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  margin-top: 4px;
-  padding: 6px 0;
-  background: none;
-  border: 0;
-  color: var(--teal-accent);
-  font: inherit;
-  font-weight: 600;
-  cursor: pointer;
-  text-align: left;
-}
-.intake-toggle:hover { text-decoration: underline; }
-
-.intake-toggle-mark,
+/* The rotating mark on the research-design disclosure. It was shared with
+   a stage-1 "How a record enters the system" toggle until that section was
+   given a heading of its own and opened. */
 .toggle-mark {
   width: 0;
   height: 0;
@@ -1244,24 +1232,14 @@ a:hover { text-decoration: none; }
   transition: transform 150ms ease;
   transform-origin: 30% 50%;
 }
-.intake-toggle[aria-expanded="true"] .intake-toggle-mark,
 .design-toggle[aria-expanded="true"] .toggle-mark {
   transform: rotate(90deg);
-}
-
-.intake-panel {
-  margin-top: var(--space-card);
-  padding: var(--space-card) 0 4px;
-  border-top: 1px solid var(--border);
-  animation: intake-in 150ms ease;
 }
 
 @keyframes intake-in {
   from { opacity: 0; }
   to   { opacity: 1; }
 }
-
-.intake-lede { color: var(--muted); }
 
 .intake-steps {
   margin: 0 0 var(--space-card);
