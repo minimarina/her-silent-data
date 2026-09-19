@@ -134,8 +134,9 @@ search is therefore the cost dial for the whole run.
 ## What the validator enforces
 
 Rules the platform states about itself are checked in code rather than
-promised. `node intake/validate.mjs --self-test` runs them as fifteen
-acceptance tests.
+promised. `node intake/validate.mjs --self-test` runs them as twenty-five
+acceptance tests: fifteen on the record rules below, ten on the design
+rules that decide whether a design is published or withheld.
 
 - **A claim must quote its source.** `gap_evidence.note` has to contain a
   span of 20 characters or more that appears **verbatim in the abstract
