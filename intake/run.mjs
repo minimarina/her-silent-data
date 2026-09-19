@@ -10,6 +10,7 @@
      node intake/run.mjs --discover-only     search only, no model, no key
      node intake/run.mjs                     the full run
      node intake/run.mjs --limit=3           how many to carry past the filter
+     node intake/run.mjs --absence-only      only "no studies", not "few studies"
 
    SPEC §13 holds for the tooling too: no dependencies, no build step. */
 
@@ -46,19 +47,25 @@ const PREVIEW = join(HERE, "preview.json");
    the absence was searched for by people whose job was to find it, and
    they published the negative. That is as close to a verified gap as
    published literature gets. */
-const GAP_PHRASES = [
-  /* MEASURED, not guessed. Mined from 8,000 women's-health review
-     abstracts on 18 Sep; the number after each phrase is how many of
-     those abstracts contained it. An earlier hand-written list of full
-     sentences ("no studies met the inclusion criteria") matched 9
-     abstracts in 12,000, because researchers rarely write the whole
-     sentence that way. Short fragments are what they actually write.
+/* MEASURED, not guessed. Mined from 8,000 women's-health review
+   abstracts on 18 Sep; the number after each phrase is how many of those
+   abstracts contained it. An earlier hand-written list of full sentences
+   ("no studies met the inclusion criteria") matched 9 abstracts in
+   12,000, because researchers rarely write the whole sentence that way.
+   Short fragments are what they actually write.
 
-     Two families, and the order matters. ABSENCE first — these produce
-     status "missing", the stronger claim. SPARSE second, at the end of
-     the list — these produce "partial", and are there because the gap a
-     woman would recognise is usually of that kind. */
+   Two families, and they are separate arrays rather than one list with a
+   comment in the middle, because which family an abstract matched decides
+   what kind of record it becomes. ABSENCE produces status "missing", the
+   stronger claim. SPARSE produces "partial".
 
+   Measured again 19 Sep, after two batches: the sparse family was
+   out-yielding the absence family badly enough that the register drifted
+   to 13 partial against 6 missing. --absence-only exists so a run can be
+   told to look for absence and nothing else, without editing this list.
+   Restricting a run to a subset is a scope control; adding a phrase is
+   still a deliberate edit, as intake/README.md says. */
+const ABSENCE_PHRASES = [
   "no studies",                    /* 82 */
   "none of the studies",           /* 21 */
   "no data",                       /* 20 */
@@ -83,24 +90,27 @@ const GAP_PHRASES = [
   /* Women left out of the studies that produced the evidence base now
      used to treat them. Rare, and worth having when it appears. */
   "women were excluded",
-  "pregnant women were excluded",
+  "pregnant women were excluded"
+];
 
-  /* SPARSE, not absent. These produce status "partial": data exists and
-     does not cover what it should. They were removed on 18 Sep for
-     flooding the register with partial records, and brought back the same
-     evening for a better reason than they were dropped.
+/* SPARSE, not absent. These produce status "partial": data exists and
+   does not cover what it should. They were removed on 18 Sep for
+   flooding the register with partial records, and brought back the same
+   evening for a better reason than they were dropped.
 
-     The gap they find is the one closest to this platform's problem
-     statement — menopause at work, postnatal follow-up, cardiac symptoms
-     are all topics where the data exists and women are invisible inside
-     it. Filter criterion 2b is what makes them safe to include: a paper
-     with sparse data on a rare disease is now rejected, while a paper
-     with sparse data BECAUSE women were excluded or never analysed
-     separately is exactly what this register is for.
+   The gap they find is the one closest to this platform's problem
+   statement — menopause at work, postnatal follow-up, cardiac symptoms
+   are all topics where the data exists and women are invisible inside
+   it. Filter criterion 2b is what makes them safe to include: a paper
+   with sparse data on a rare disease is now rejected, while a paper
+   with sparse data BECAUSE women were excluded or never analysed
+   separately is exactly what this register is for.
 
-     Kept last so their order in the list matches their standing: a
-     "missing" record is the stronger claim, and these must earn their
-     place through the filter. */
+   They are far commoner than the absence phrases — 116 abstracts in
+   8,000 say "limited evidence" where 82 say "no studies" — and because
+   the match is an OR across both families, a run that is not restricted
+   fills with them. */
+const SPARSE_PHRASES = [
   "limited evidence",              /* 116 */
   "few studies",                   /*  78 */
   "limited data",                  /*  67 */
@@ -115,6 +125,8 @@ const GAP_PHRASES = [
      needs the extract and verify prompts to reason about disaggregated
      versus raw data, which is a different pipeline, not a phrase. */
 ];
+
+const GAP_PHRASES = [...ABSENCE_PHRASES, ...SPARSE_PHRASES];
 
 /* Paired with the phrases above: the document types whose genre is
    naming an open question rather than answering one. Without this, the
@@ -185,7 +197,7 @@ async function search(query, pageSize, cursor) {
    stopping as soon as enough abstracts have survived. Europe PMC is free
    and keyless, so this costs nothing but seconds — and every abstract it
    discards here is one the filter is not paid to read. */
-async function discover(want, pageSize, maxPages) {
+async function discover(want, pageSize, maxPages, phrases) {
   const query = europePmcQuery();
   const matched = [];
   let cursor = "*";
@@ -198,7 +210,7 @@ async function discover(want, pageSize, maxPages) {
     scanned += found.papers.length;
 
     for (const paper of found.papers) {
-      if (abstractContainsGapPhrase(paper)) { matched.push(paper); }
+      if (abstractContainsGapPhrase(paper, phrases)) { matched.push(paper); }
     }
 
     console.log("  scanned " + scanned + ", matched " + matched.length);
@@ -225,12 +237,13 @@ async function discover(want, pageSize, maxPages) {
    it is what makes GAP_PHRASES mean what intake/README.md says it means.
    Everything downstream now sees only abstracts that really do contain a
    sentence about absence. */
-function abstractContainsGapPhrase(paper) {
+function abstractContainsGapPhrase(paper, phrases) {
   const text = " " + String(paper.abstract || "")
     .toLowerCase()
     .replace(/\s+/g, " ") + " ";
 
-  return GAP_PHRASES.some((phrase) => text.includes(phrase.toLowerCase()));
+  return (phrases || GAP_PHRASES)
+    .some((phrase) => text.includes(phrase.toLowerCase()));
 }
 
 /* One named paper, straight past discovery and the filter. For putting
@@ -263,6 +276,16 @@ const limit = Number(arg("limit", 6));
    filter entirely. It is the recovery path: a dismissal is meant to be
    permanent, but a dismissal made in error is just an error. */
 const onlyDoi = arg("doi", null);
+
+/* Restricts discovery to the absence family. The register drifted to 13
+   partial against 6 missing over two batches because "limited evidence"
+   and "few studies" are simply commoner sentences than "no studies", and
+   the match is an OR across both. This narrows what is looked at; it does
+   not touch the phrase list, and it does not touch the filter. A record's
+   status is still decided by the verify step, so this raises the odds of
+   a "missing" record rather than guaranteeing one. */
+const absenceOnly = process.argv.includes("--absence-only");
+const activePhrases = absenceOnly ? ABSENCE_PHRASES : GAP_PHRASES;
 
 const seed = loadSeed();
 const known = seedUrls(seed);
@@ -299,9 +322,10 @@ if (onlyDoi) {
   }
 } else {
   console.log("Query window: last " + YEARS_BACK + " years");
-  console.log("Phrases:      " + GAP_PHRASES.length);
+  console.log("Phrases:      " + activePhrases.length +
+              (absenceOnly ? " (absence only — sparse phrases off)" : ""));
 
-  found = await discover(want, pageSize, maxPages);
+  found = await discover(want, pageSize, maxPages, activePhrases);
   console.log("Europe PMC:   " + found.hitCount + " reviews in scope, " +
               found.scanned + " scanned, " + found.papers.length +
               " contain a gap sentence");

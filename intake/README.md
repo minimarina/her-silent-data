@@ -92,6 +92,7 @@ requires the record id.
 node intake/check-key.mjs              # is the key working? never prints it
 node intake/run.mjs --discover-only    # search only — no model, no key
 node intake/run.mjs --want=60          # gather more phrase matches first
+node intake/run.mjs --absence-only     # "no studies", never "few studies"
 node intake/run.mjs --limit=4          # the full run — needs a key
 node intake/run.mjs --doi=10.1234/x    # reprocess one named paper
 node intake/validate.mjs --self-test   # the acceptance tests
@@ -254,6 +255,29 @@ studies* (78), *limited data* (67), *insufficient evidence* (34) family.
 Those say data exists and is sparse, which is status `partial`. They
 produced every partial record in the early runs. Leaving them out is how
 the register fills with `missing` rather than `partial`.
+
+They were brought back on 18 Sep, and `--absence-only` is what makes that
+survivable. The two families are separate arrays, and the phrase match is
+an OR across both — so an unrestricted run fills with the sparse family
+simply because those sentences are commoner. Measured over two batches on
+19 Sep: the register reached **13 partial against 6 missing**, and one
+whole batch of ten returned no `missing` record at all.
+
+`--absence-only` restricts a run to the absence family. Measured the same
+day, over 7,000 abstracts: 263 matched on absence phrases alone, against
+91 per 1,000 for both families together — so absence is a little over half
+the matches, and the corpus is nowhere near exhausted.
+
+It raises the odds of a `missing` record; it cannot guarantee one, because
+status is decided by the verify step and not by the phrase that found the
+paper. Restricting a run to a subset is a scope control. **Adding** a
+phrase is still a deliberate edit.
+
+**Both batches so far only ever scanned page one.** `--want` counts
+matched abstracts, and the default of 40 is reached inside the first
+1,000 results, so every run re-scanned the same page and reported most of
+it as already known. Raising `--want` is what pages deeper: `--want=250`
+reached 7,000 abstracts and 227 unseen.
 
 **Sex-disaggregation phrases were tried and dropped.** Conceptually they
 are the closest thing to the gender data gap — data collected, women
