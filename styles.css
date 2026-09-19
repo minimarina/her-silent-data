@@ -1102,27 +1102,33 @@ a:hover { text-decoration: none; }
   fill: var(--navy-ink);
 }
 
-/* Who decides this step. The word is the carrier and the colour repeats
-   it (SPEC 8.2), so the diagram still works in grey or to a reader who
-   cannot separate teal from navy.
+/* Who runs this step. The word carries it; the FILL repeats it, not the
+   ink. Three shades of dark text on seven identical boxes was the first
+   attempt and the three were not tellable apart at a glance — muted grey,
+   teal and navy are close in value, which is exactly what makes them all
+   safe on white and all alike to each other.
 
-   Deliberately none of the three data-status colours: those mean the
-   status of DATA everywhere else on the site and must keep meaning only
-   that. Plain code is muted because it is the quiet default; AI is the
-   accent because it is what a reader is here to scrutinise; a person is
-   the deep navy, the heaviest ink on the page, because that is the step
-   the whole pipeline exists to end on. */
+   So the box itself says it. White is plain code, teal is AI, and the one
+   dark box is the person — which also puts the emphasis where the whole
+   pipeline is pointed. Deliberately none of the three data-status colours:
+   those mean the status of DATA everywhere else and must keep meaning only
+   that. */
 .about-node-actor { font-size: 15px; font-weight: 700; }
-.about-node-actor[data-actor="code"]   { fill: var(--muted); }
-.about-node-actor[data-actor="ai"]     { fill: var(--teal-accent); }
-.about-node-actor[data-actor="person"] { fill: var(--navy-deep); }
 
-/* The one step a person decides. Its actor word is navy, and so is the
-   "Built" line under it, so colour alone did not separate them — on the
-   very box where the distinction matters most. The heavier border is the
-   second channel, and it puts the emphasis where the pipeline's whole
-   claim rests. */
-.about-node.is-person rect { stroke-width: 3.5; }
+.intake-node rect {
+  stroke: var(--navy-deep);
+  stroke-width: 2;
+  stroke-dasharray: none;
+}
+.intake-node[data-actor="code"] rect { fill: var(--surface); }
+.intake-node[data-actor="code"] .about-node-actor { fill: var(--muted); }
+
+.intake-node[data-actor="ai"] rect { fill: var(--teal-soft); }
+.intake-node[data-actor="ai"] .about-node-actor { fill: var(--teal-accent); }
+
+.intake-node[data-actor="person"] rect { fill: var(--navy-deep); }
+.intake-node[data-actor="person"] .about-node-title { fill: var(--surface); }
+.intake-node[data-actor="person"] .about-node-actor { fill: #C9D8E6; }
 
 .about-node-status { font-size: 14px; font-weight: 600; }
 .about-node-status[data-build-state="built"],

@@ -409,55 +409,62 @@
          No Built/Planned line here. All seven steps are stage 1, and the
          loop diagram above already marks stage 1 Built — saying it seven
          more times crowded the one thing these boxes are for. -->
+    <!-- Who runs each step, on the face of it. Three actors and not two:
+         Validate runs no model at all, and lumping it in with the four
+         steps that do would give away the thing this pipeline is for.
+
+         The fill carries it, not just the ink: a white box is plain code,
+         a teal one is AI, and the one dark box is the person. Three shades
+         of dark text on identical boxes was the first attempt, and the
+         three were not tellable apart at a glance.
+
+         No data-build-shape here. These steps are all stage 1, which the
+         loop diagram above marks Built — while this chain carried the
+         attribute with no entry behind it, every box fell through to
+         "planned" and drew itself dashed, which said the opposite of the
+         truth about the one part of the system that is finished. -->
     <svg class="about-svg" viewBox="0 0 880 270" role="img"
-         aria-label="Seven steps. Discover runs on plain code; filter, extract, verify and design are decided by AI; validate is plain code again; and review, the last step, is decided by a person. Then the record enters the register.">
+         aria-label="Seven steps. Discover is run by plain code; filter, extract, verify and design are run by AI; validate is plain code again; and review, the last step, is done by a person. Then the record enters the register.">
       <defs>
         <marker id="intake-arrow" viewBox="0 0 10 10" refX="9" refY="5"
                 markerWidth="6" markerHeight="6" orient="auto-start-reverse">
           <path d="M0,0 L10,5 L0,10 z"/>
         </marker>
       </defs>
-
-      <g class="about-node">
-        <rect x="5" y="30" width="186" height="88" rx="6" data-build-shape="discover"/>
+      <g class="about-node intake-node" data-actor="code">
+        <rect x="5" y="30" width="186" height="88" rx="6"/>
         <text class="about-node-title" x="25" y="68">Discover</text>
-        <text class="about-node-actor" x="25" y="96" data-actor="code">Plain code</text>
+        <text class="about-node-actor" x="25" y="96">by plain code</text>
       </g>
-
-      <g class="about-node">
-        <rect x="233" y="30" width="186" height="88" rx="6" data-build-shape="filter"/>
+      <g class="about-node intake-node" data-actor="ai">
+        <rect x="233" y="30" width="186" height="88" rx="6"/>
         <text class="about-node-title" x="253" y="68">Filter</text>
-        <text class="about-node-actor" x="253" y="96" data-actor="ai">AI</text>
+        <text class="about-node-actor" x="253" y="96">by AI</text>
       </g>
-
-      <g class="about-node">
-        <rect x="461" y="30" width="186" height="88" rx="6" data-build-shape="extract"/>
+      <g class="about-node intake-node" data-actor="ai">
+        <rect x="461" y="30" width="186" height="88" rx="6"/>
         <text class="about-node-title" x="481" y="68">Extract</text>
-        <text class="about-node-actor" x="481" y="96" data-actor="ai">AI</text>
+        <text class="about-node-actor" x="481" y="96">by AI</text>
       </g>
-
-      <g class="about-node">
-        <rect x="689" y="30" width="186" height="88" rx="6" data-build-shape="verify"/>
+      <g class="about-node intake-node" data-actor="ai">
+        <rect x="689" y="30" width="186" height="88" rx="6"/>
         <text class="about-node-title" x="709" y="68">Verify</text>
-        <text class="about-node-actor" x="709" y="96" data-actor="ai">AI</text>
+        <text class="about-node-actor" x="709" y="96">by AI</text>
       </g>
-
-      <g class="about-node">
-        <rect x="5" y="160" width="186" height="88" rx="6" data-build-shape="design"/>
+      <g class="about-node intake-node" data-actor="ai">
+        <rect x="5" y="160" width="186" height="88" rx="6"/>
         <text class="about-node-title" x="25" y="198">Design</text>
-        <text class="about-node-actor" x="25" y="226" data-actor="ai">AI</text>
+        <text class="about-node-actor" x="25" y="226">by AI</text>
       </g>
-
-      <g class="about-node">
-        <rect x="233" y="160" width="186" height="88" rx="6" data-build-shape="validate"/>
+      <g class="about-node intake-node" data-actor="code">
+        <rect x="233" y="160" width="186" height="88" rx="6"/>
         <text class="about-node-title" x="253" y="198">Validate</text>
-        <text class="about-node-actor" x="253" y="226" data-actor="code">Plain code</text>
+        <text class="about-node-actor" x="253" y="226">by plain code</text>
       </g>
-
-      <g class="about-node is-person">
-        <rect x="461" y="160" width="186" height="88" rx="6" data-build-shape="review"/>
+      <g class="about-node intake-node" data-actor="person">
+        <rect x="461" y="160" width="186" height="88" rx="6"/>
         <text class="about-node-title" x="481" y="198">Review</text>
-        <text class="about-node-actor" x="481" y="226" data-actor="person">A person</text>
+        <text class="about-node-actor" x="481" y="226">by a person</text>
       </g>
 
       <line class="about-flow" x1="195" y1="74" x2="227" y2="74"/>
@@ -477,25 +484,25 @@
     <!-- The seven steps as text: assistive technology above 640px, and the
          diagram itself below it, where the figure is dropped. -->
     <ol class="intake-steps diagram-text">
-      <li><h3>Discover</h3><p class="step-actor" data-actor="code">Decided by: Plain code</p>
+      <li><h3>Discover</h3><p class="step-actor" data-actor="code">Run by plain code</p>
         <p>Europe PMC, searched for the sentences a review writes when it
         looked and found nothing.</p></li>
-      <li><h3>Filter</h3><p class="step-actor" data-actor="ai">Decided by: AI</p>
+      <li><h3>Filter</h3><p class="step-actor" data-actor="ai">Run by AI</p>
         <p>One yes/no question per abstract: does this name missing data
         about women that the paper does not itself go on to collect?</p></li>
-      <li><h3>Extract</h3><p class="step-actor" data-actor="ai">Decided by: AI</p>
+      <li><h3>Extract</h3><p class="step-actor" data-actor="ai">Run by AI</p>
         <p>Structured output against the record schema. What the source does
         not support comes back null, not a guess.</p></li>
-      <li><h3>Verify</h3><p class="step-actor" data-actor="ai">Decided by: AI</p>
+      <li><h3>Verify</h3><p class="step-actor" data-actor="ai">Run by AI</p>
         <p>A live search for data collected since the gap was named. The
         check is dated, and no search proves a negative.</p></li>
-      <li><h3>Design</h3><p class="step-actor" data-actor="ai">Decided by: AI</p>
+      <li><h3>Design</h3><p class="step-actor" data-actor="ai">Run by AI</p>
         <p>A possible study, generated and kept out of the register —
         and withheld entirely where the safety rules refuse it.</p></li>
-      <li><h3>Validate</h3><p class="step-actor" data-actor="code">Decided by: Plain code</p>
+      <li><h3>Validate</h3><p class="step-actor" data-actor="code">Run by plain code</p>
         <p>Ordinary JavaScript, no model. A claim that does not quote its
         source word for word is rejected.</p></li>
-      <li><h3>Review</h3><p class="step-actor" data-actor="person">Decided by: A person</p>
+      <li><h3>Review</h3><p class="step-actor" data-actor="person">Run by a person</p>
         <p>The run stops. Nothing reaches the register until a person has
         decided on it, and every decision and its reason is logged.</p></li>
     </ol>
