@@ -47,40 +47,29 @@ h2 { font-size: 1.25rem; }
 
 p { margin: 0 0 12px; }
 
-/* ONE measure, §7.2, about seventy characters.
+/* ONE width: every screen runs the full wrap, 848px inside an 880px
+   container. The record and area screens were capped at 38rem for a while
+   and the rest of the site was not, which put a visible step between a
+   page and the page it linked to.
 
-   Measured on a record at 1024px before this existed: the h1, the affected
-   line, the source, the h2 and the design fields ran to 848px; the lede and
-   the "why" to 604px; the AI badge to 754px; list items to 828px; the
-   guidance note to 528px. Five right edges in one column, so there was no
-   edge to follow down the page and the eye had to re-find the text on every
-   block.
+   The cost is line length. 848px holds about 110 characters at 16px,
+   against the 45–85 that reads comfortably, so the type scales up with
+   the viewport to pull that back: 18px from 820px wide, 20px from 1180px,
+   which brings 848px down to about 88 characters. The step is on :root,
+   not on body, so the measure, the headings and the prose keep their
+   proportions.
 
-   38rem is about seventy characters at the body size, which is the measure
-   §7.2 already asks for — it is stated here once instead of being repeated
-   as a 70ch on each element and drifting.
-
-   It does not hold everywhere. The home screen's hero and the footer run
-   the full column on purpose: a 70ch block sat 240px short of a counts
-   strip and a map that both run the whole width, and read as text that had
-   been clipped rather than as a measure somebody chose.
-
-   On a wide screen the column grows by making the TYPE bigger, not the
-   line longer. Measured at 1024px: 608px holds 79 characters, already at
-   the top of the comfortable band, so a longer line would have read worse
-   while looking fuller.
-
-   The step is on :root, not on body, so every rem in the sheet moves with
-   it — the measure, the headings and the body keep their proportions and
-   the column still holds 79 characters. Scaling body alone would have left
-   a 28px h1 over 18px prose and flattened the hierarchy. */
-:root { --measure: 38rem; }
-
-@media (min-width: 1180px) {
+   What the cap did fix stays fixed. Inside a record every block shares one
+   right edge — before this work there were five, from 528px to 848px — and
+   the sections have real headings. That was the readability problem; the
+   width was the part that made the site inconsistent. */
+@media (min-width: 820px) {
   :root { font-size: 112.5%; }   /* 18px */
 }
 
-.lede { max-width: var(--measure); }
+@media (min-width: 1180px) {
+  :root { font-size: 125%; }     /* 20px */
+}
 
 .wrap {
   max-width: 880px;
@@ -299,7 +288,6 @@ a:hover { text-decoration: none; }
   font-size: 1.125rem;
   font-weight: 600;
   line-height: 1.35;
-  max-width: 70ch;
 }
 
 .need-flat > .need-description {
@@ -313,10 +301,9 @@ a:hover { text-decoration: none; }
    letterspaced <dt>. */
 .need-why {
   margin-bottom: 0;
-  max-width: 70ch;
 }
 
-.need-note { color: var(--muted); margin-bottom: 0; max-width: 70ch; }
+.need-note { color: var(--muted); margin-bottom: 0; }
 .need-note { margin-top: 6px; }
 
 /* status badge — colour + shape + word (§8.2) */
@@ -891,25 +878,9 @@ a:hover { text-decoration: none; }
    for the same reason: a 70ch lede inside a 38rem column is a second edge
    a few pixels off the first, which looks like a mistake rather than a
    measure. */
-/* The text screens share one column. The area screen is a single-column
-   list of record titles and the record screen is prose, so both are
-   reading and both take the measure; only the body map on the home screen
-   stays the full width of the wrap, because a figure is not a line of text.
-
-   Both, not just the record: with the cap on the record alone, clicking a
-   card moved the text 120px inward and narrowed it by 240px, so the app
-   appeared to change layout between a list and the thing in the list.
-
-   Centred, not left-aligned. Capping the width without this left the
-   column against the left edge of an 880px wrap, so a record sat with an
-   81px margin on the left and 336px on the right at 1024px — off-centre
-   enough to read as an unfinished layout rather than as a measure. */
-#screen-detail,
-#screen-area {
-  max-width: var(--measure);
-  margin-inline: auto;
-}
-
+/* No per-element measure anywhere on a record: the column is the width,
+   and a 70ch paragraph inside an 848px column was one of the five right
+   edges this work removed. */
 #screen-detail .lede,
 #screen-detail .need-description,
 #screen-detail .need-why,
@@ -1216,7 +1187,7 @@ a:hover { text-decoration: none; }
   margin: 2px 0 8px;
   font-size: 1.0625rem;
 }
-.system-stages p { max-width: 70ch; }
+.system-stages p { max-width: none; }
 .system-stages > li > p:last-child { margin-bottom: 0; }
 
 /* The rotating mark on the research-design disclosure. It was shared with
@@ -1251,7 +1222,7 @@ a:hover { text-decoration: none; }
   font-size: 1rem;
   line-height: 1.25;
 }
-.intake-steps p { max-width: 70ch; margin-bottom: 0; }
+.intake-steps p { margin-bottom: 0; }
 .intake-steps .build-chip { margin-bottom: 8px; }
 
 /* The design rule the pipeline exists to protect. */
@@ -1262,14 +1233,13 @@ a:hover { text-decoration: none; }
   border-left: 3px solid var(--teal-accent);
   border-radius: 0 4px 4px 0;
 }
-.intake-principle p { max-width: 70ch; margin: 0; }
+.intake-principle p { margin: 0; }
 
 .about-facts {
   margin: 0;
   padding-left: 1.25rem;
 }
 .about-facts > li {
-  max-width: 70ch;
   margin-bottom: 12px;
 }
 
@@ -1369,7 +1339,6 @@ a:hover { text-decoration: none; }
 
 .record-footnote p {
   margin: 0;
-  max-width: 70ch;
   color: var(--muted);
   font-size: 0.875rem;
   font-style: italic;
