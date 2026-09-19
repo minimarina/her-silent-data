@@ -137,14 +137,18 @@ a:hover { text-decoration: none; }
   font-size: 0.9375rem;
 }
 
+/* Same band as the masthead. It used to be a hairline rule and grey text
+   on white, which left the page trailing off rather than ending; the navy
+   closes it. #C9D8E6 is the tagline's colour — 8.3:1 on --navy-deep. */
 .site-footer {
   margin-top: 48px;
   padding-top: var(--space-section);
-  padding-bottom: 48px;
-  border-top: 1px solid var(--border);
-  color: var(--muted);
+  padding-bottom: var(--space-section);
+  background: var(--navy-deep);
+  color: #C9D8E6;
   font-size: 0.9375rem;
 }
+.site-footer p { margin: 0; }
 
 /* ---------- screens ---------- */
 

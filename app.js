@@ -1933,8 +1933,13 @@
       ));
     }
 
+    /* Nothing is said when no record is demo data. The line that used to
+       stand here — "every record is sourced from published research" —
+       read as a claim about the whole page, and the study designs on it
+       are generated, not sourced. The footer stays silent rather than
+       saying something true of the records and false of the designs. */
     el("footer-provenance").textContent = demo === 0
-      ? "Every record is sourced from published research."
+      ? ""
       : demo + " of " + total + " records are generated demo data; the rest " +
         "cite published sources.";
   }
