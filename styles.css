@@ -28,12 +28,16 @@
 
 html { -webkit-text-size-adjust: 100%; }
 
+/* 1rem, not 16px. The px value pinned body text to 16 while every heading
+   was in rem, so the wide-screen step on :root scaled the headings and
+   left the prose behind — 684px of column holding 89 characters of 16px
+   text, which is the long line this step exists to avoid. */
 body {
   margin: 0;
   background: var(--surface);
   color: var(--navy-ink);
   font-family: var(--font-sans);
-  font-size: 16px;
+  font-size: 1rem;
   line-height: 1.5;
 }
 
@@ -59,8 +63,22 @@ p { margin: 0 0 12px; }
 
    38rem is about seventy characters at the body size, which is the measure
    §7.2 already asks for — it is stated here once instead of being repeated
-   as a 70ch on each element and drifting. */
+   as a 70ch on each element and drifting.
+
+   On a wide screen the column grows by making the TYPE bigger, not the
+   line longer. Measured at 1024px: 608px holds 79 characters, already at
+   the top of the comfortable band, so a longer line would have read worse
+   while looking fuller.
+
+   The step is on :root, not on body, so every rem in the sheet moves with
+   it — the measure, the headings and the body keep their proportions and
+   the column still holds 79 characters. Scaling body alone would have left
+   a 28px h1 over 18px prose and flattened the hierarchy. */
 :root { --measure: 38rem; }
+
+@media (min-width: 1180px) {
+  :root { font-size: 112.5%; }   /* 18px */
+}
 
 .lede { max-width: var(--measure); }
 
@@ -873,7 +891,14 @@ a:hover { text-decoration: none; }
    for the same reason: a 70ch lede inside a 38rem column is a second edge
    a few pixels off the first, which looks like a mistake rather than a
    measure. */
-#screen-detail { max-width: var(--measure); }
+/* Centred, not left-aligned. Capping the width without this left the
+   column against the left edge of an 880px wrap, so a record sat with an
+   81px margin on the left and 336px on the right at 1024px — off-centre
+   enough to read as an unfinished layout rather than as a measure. */
+#screen-detail {
+  max-width: var(--measure);
+  margin-inline: auto;
+}
 
 #screen-detail .lede,
 #screen-detail .need-description,
