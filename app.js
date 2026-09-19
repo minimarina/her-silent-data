@@ -233,9 +233,14 @@
      a different object, not a weaker version of the same one (§5a).
      Where nothing names the gap, the §8.1 rule applies and the record
      says the gap is this platform's own assessment. */
+  /* A heading, not a grey run-in. The three things a reader has to tell
+     apart on a record — the claim, the check, the design — were marked
+     only by a muted <span> set into the paragraph it introduced, so the
+     card had no heading below the h2 and nothing for the eye to land on
+     while skimming. */
   function gapEvidenceNode(problem, need, tag) {
     var box = make(tag || "div", "gap-evidence");
-    box.appendChild(make("span", "label", "Who says it is missing: "));
+    box.appendChild(make("h3", "section-head", "Who says it is missing"));
 
     /* A placeholder has not been assessed by anyone, so it must not
        claim to have been assessed here. The three cases are different
@@ -410,7 +415,7 @@
      four years ago may simply have been answered since. */
   function verificationNode(need, tag) {
     var box = make(tag || "div", "verification");
-    box.appendChild(make("span", "label", "Checked for existing data: "));
+    box.appendChild(make("h3", "section-head", "Checked for existing data"));
 
     var check = need.verification;
     if (!check || !hasText(check.checked_at)) {
@@ -606,8 +611,10 @@
   function withheldNode(reason) {
     var box = make("div", "design design-withheld");
 
-    box.appendChild(make("p", "design-withheld-head",
-      "No study design is offered for this record."));
+    /* A heading, like the design section it stands in for, so a record with
+       a withheld design has the same outline as one with a design. */
+    box.appendChild(make("h3", "section-head design-withheld-head",
+      "No study design is offered for this record"));
     box.appendChild(make("p", "design-withheld-why", reason));
 
     return box;
@@ -643,6 +650,14 @@
     button.appendChild(label);
     button.setAttribute("aria-expanded", "false");
     button.setAttribute("aria-controls", panelId);
+
+    /* The button is the section's heading as well as its control, so it is
+       wrapped in one rather than given a second heading above it that would
+       say the same words twice. This is the standard disclosure pattern,
+       and it puts the design on the outline beside the claim and the
+       check — three peers, which is what they are. */
+    var head = make("h3", "section-head design-head");
+    head.appendChild(button);
 
     var panel = make("div", "design-panel");
     panel.id = panelId;
@@ -696,7 +711,7 @@
         ? "Show research design" : "Hide research design";
     });
 
-    wrap.appendChild(button);
+    wrap.appendChild(head);
     wrap.appendChild(panel);
     return wrap;
   }
