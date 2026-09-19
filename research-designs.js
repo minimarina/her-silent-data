@@ -401,5 +401,124 @@ const RESEARCH_DESIGNS = {
     "instrument_source": "Connor-Davidson Resilience Scale (CD-RISC-25)",
     "generated_at": "2026-09-19",
     "model": "claude-sonnet-5"
+  },
+  "preconception-calcium-perinatal-loss-data": {
+    "target_women": "Recruit approximately 3,000 parous women aged 18-45 who are planning a future pregnancy and whose most recent pregnancy was complicated by pre-eclampsia or eclampsia, drawn from antenatal/postnatal follow-up clinics, maternal-fetal medicine referral centres, and primary care preconception counselling services across multiple sites (aiming for a mix of high- and low-dietary-calcium-intake settings).",
+    "variables": [
+      "Perinatal loss (stillbirth plus death in first week of life)",
+      "Neonatal death (death within 28 days of birth)",
+      "Early neonatal death (death within 7 days of birth)",
+      "Composite of neonatal death or severe neonatal morbidity (e.g. seizures, need for resuscitation, NICU admission >48h)",
+      "Recurrence of pre-eclampsia or eclampsia in the index pregnancy",
+      "Maternal adverse effects (hypercalcemia symptoms, renal stone formation, gastrointestinal intolerance) recorded at each visit",
+      "Adherence to supplement/placebo (pill count, self-report)",
+      "Time from randomisation to conception and gestational age at delivery"
+    ],
+    "stratifiers": [
+      "Maternal age band (18-24, 25-34, 35-45)",
+      "Severity and gestational age of onset of the prior pre-eclampsia/eclampsia episode (early-onset <34 weeks vs late-onset)",
+      "Pre-pregnancy BMI category",
+      "Baseline dietary calcium intake (low <500mg/day vs adequate, measured by food frequency questionnaire)",
+      "Site/setting (high-resource vs low-resource, to reflect differences in antenatal care access rather than biology)"
+    ],
+    "form": "Randomised, double-blind, placebo-controlled trial. Women who consent and meet eligibility are randomised 1:1 to daily oral calcium carbonate (1500mg elemental calcium/day, the WHO-recommended dose for pre-eclampsia prevention) or an identical-appearing placebo, started before conception is confirmed and continued through pregnancy until delivery. Women are excluded if they have a personal history of hypercalcemia, hyperparathyroidism, or nephrolithiasis, since calcium supplementation is contraindicated in these conditions; supplementation is stopped immediately if hypercalcemia is detected on routine bloods. Follow-up is monthly during the preconception phase, then at standard antenatal visits, through delivery and to 42 days postpartum for maternal outcomes and 28 days for neonatal outcomes. This is an intervention trial in women who may become pregnant during follow-up, so it requires: ethics approval at every participating site; written informed consent obtained before preconception randomisation with re-consent/reconfirmation once pregnancy is confirmed; an independent data safety monitoring board reviewing unblinded maternal and perinatal safety data at prespecified intervals with a stopping rule for excess harm; and genuine equipoise, since no trial has yet measured perinatal death, neonatal death, or maternal adverse effects for preconception (as opposed to antenatal) calcium supplementation, so current guidance cannot say whether starting earlier helps or harms. The target sample size of ~3,000 is a rough estimate based on expected pre-eclampsia recurrence rates of 15-20% in this high-risk group and anticipated event rates for perinatal death of 1-3%, not a formal power calculation, and would need refinement with a biostatistician before funding.",
+    "instrument_source": null,
+    "generated_at": "2026-09-19",
+    "model": "claude-sonnet-5"
+  },
+  "mht-dementia-testosterone-poi-data": {
+    "target_women": "Recruit approximately 1,500 women aged 30-60 with premature ovarian insufficiency (diagnosis before age 40) or early menopause (before age 45), drawn from reproductive endocrinology clinics, menopause specialty clinics, and POI patient registries across multiple sites; include women currently on testosterone-based MHT, women on estrogen-only or estrogen-progestogen MHT, and women using no hormone therapy, to allow comparison across naturally occurring exposure groups.",
+    "variables": [
+      "Cognitive test score at each annual visit (validated instrument)",
+      "Type, dose, route, and duration of MHT used (e.g., transdermal testosterone, oral estradiol, combined regimens), self-reported and confirmed via pharmacy/prescription records",
+      "Serum testosterone and estradiol levels at baseline and annually",
+      "APOE genotype (from a single baseline blood draw)",
+      "Cause of ovarian insufficiency (surgical, autoimmune, chemotherapy/radiation-induced, idiopathic, genetic)",
+      "Cardiovascular risk factors (blood pressure, lipid panel, diabetes status, smoking status)",
+      "Depression and anxiety symptom scores at each annual visit",
+      "Years of education and occupational cognitive demand level",
+      "Age at menopause onset and total duration of hormone exposure to date"
+    ],
+    "stratifiers": [
+      "Age band at enrollment (30-39, 40-49, 50-60)",
+      "Cause of ovarian insufficiency (surgical vs autoimmune vs chemotherapy-induced vs idiopathic), since this reflects different underlying health pathways rather than a single biological category",
+      "Type of MHT exposure (testosterone-containing vs estrogen-only vs combined vs none)",
+      "Race and ethnicity, tracked as a proxy for differences in healthcare access, diagnostic delay, and prescribing patterns rather than biological difference",
+      "APOE4 carrier status"
+    ],
+    "form": "This is a prospective observational cohort study, not a trial, because the exposure (choice of MHT type, including testosterone-based regimens) is already occurring in clinical practice and is driven by patient and clinician choice, not something ethical to randomly assign given existing guidance and patient preference. Women are enrolled at baseline and followed annually for 10 years with in-person or telehealth cognitive assessment, blood draw, and structured questionnaires. Multi-site ethics approval and written informed consent are obtained at every site; given the vulnerability of some participants (early diagnosis, potential distress around fertility and cognitive concerns), a participant support and referral pathway to counselling is built into the protocol, and an independent data monitoring committee reviews adverse findings (e.g., any signal of harm) annually. Sample size of 1,500 is an estimate based on expected event rates for mild cognitive impairment in this age range and anticipated attrition over 10 years, not a formal power calculation.",
+    "instrument_source": "Montreal Cognitive Assessment (MoCA)",
+    "generated_at": "2026-09-19",
+    "model": "claude-sonnet-5"
+  },
+  "cervical-length-screening-ptb-neonatal-outcomes": {
+    "target_women": "Approximately 6,000 asymptomatic women with singleton pregnancies recruited at their routine 18–24 week anatomy scan visit across 8–10 maternity hospitals that already perform universal transvaginal cervical length screening as standard care, followed prospectively through delivery and infant discharge; this is an estimate based on expecting ~10% to have a short cervix (<25mm) and needing enough short-cervix cases to detect meaningful differences in neonatal composite outcomes, not a formal power calculation.",
+    "variables": [
+      "Mid-trimester transvaginal cervical length in millimetres",
+      "Whether vaginal progesterone was prescribed, and if so the formulation, dose, and gestational age started (recorded as given in usual care, not assigned by the study)",
+      "Gestational age at birth in completed weeks",
+      "NICU admission (yes/no) and length of stay",
+      "Neonatal composite adverse outcome (any of: respiratory distress syndrome, necrotizing enterocolitis, intraventricular hemorrhage grade \\u2265III, confirmed sepsis, neonatal death before discharge)",
+      "Neurodevelopmental status at 18\\u201324 months corrected age",
+      "Prior spontaneous preterm birth history"
+    ],
+    "stratifiers": [
+      "Maternal age band (<20, 20\\u201334, \\u226535)",
+      "Race/ethnicity, recorded to examine structural factors such as access to prenatal care and screening uptake rather than biological difference",
+      "Parity (nulliparous vs multiparous)",
+      "Insurance/payer status or area-level deprivation index as a proxy for access to care",
+      "Prior spontaneous preterm birth (yes/no)"
+    ],
+    "form": "Prospective multicenter observational cohort. Women are enrolled at their routine 18\\u201324 week ultrasound where cervical length screening is already standard practice at the site (this is a cohort, not a trial, because the screening and progesterone use already occur in usual care and the question is about outcomes of an existing practice, not about assigning an exposure). Cervical length, progesterone use, and pregnancy course are abstracted from medical records at delivery. Neonatal outcomes are recorded at hospital discharge. A neurodevelopmental follow-up visit or questionnaire is conducted at 18\\u201324 months corrected age. Total study duration approximately 4 years (18 months recruitment, birth outcomes as they occur, plus 2 years follow-up for the youngest infants). Standard institutional ethics approval and written informed consent at each site; no drug is administered by the study protocol itself, all progesterone use reflects each site's own clinical care.",
+    "instrument_source": "Ages and Stages Questionnaire, Third Edition (ASQ-3)",
+    "generated_at": "2026-09-19",
+    "model": "claude-sonnet-5"
+  },
+  "caesarean-myomectomy-fertility-outcomes": {
+    "target_women": "Recruit approximately 300 women retrospectively and prospectively from 5-10 collaborating obstetric centres: women aged 18-45 who underwent caesarean section with documented uterine fibroids between 3 and 7 years ago, split roughly evenly between those who had concurrent caesarean myomectomy and those who had caesarean alone (fibroids left in situ), matched where possible on fibroid number, size, and location. This is an observational cohort, not a trial, because caesarean myomectomy is already being performed in practice by clinician and patient choice; the question is what happens to fertility afterward, which requires following existing decisions rather than assigning them.",
+    "variables": [
+      "Time to subsequent pregnancy after the index caesarean, if desired",
+      "Whether a subsequent pregnancy occurred and its outcome (live birth, miscarriage, stillbirth)",
+      "Uterine rupture or dehiscence in a subsequent pregnancy",
+      "Mode of delivery and any peripartum complications in a subsequent pregnancy",
+      "Postoperative complications from the index surgery (haemorrhage, transfusion, infection, hysterectomy)",
+      "Fibroid recurrence or regrowth on follow-up imaging",
+      "Self-reported fertility intentions and any use of fertility treatment"
+    ],
+    "stratifiers": [
+      "Fibroid characteristics at index surgery (size, number, location - submucosal/intramural/subserosal)",
+      "Maternal age band at index caesarean",
+      "Parity at index caesarean",
+      "Ethnicity - noting that fibroid prevalence and severity differ by ethnicity due to documented disparities in access to gynaecological care and delayed diagnosis, not biological race",
+      "Body mass index category"
+    ],
+    "form": "A mixed retrospective-prospective cohort study: baseline data (index surgery details, fibroid characteristics, complications) extracted from hospital records going back up to 7 years, then participants contacted for structured telephone or clinic interviews at enrolment and annually for 3 years to capture subsequent pregnancy attempts and outcomes. Follow-up imaging (ultrasound) requested if clinically indicated rather than mandated for research purposes. Total study duration approximately 4 years including retrospective data collection and 3 years of prospective follow-up. Written informed consent obtained from all participants for record review and follow-up contact; ethics approval required at each participating site given the population includes women recently pregnant, but no intervention is assigned so no data safety monitoring board is needed.",
+    "instrument_source": null,
+    "generated_at": "2026-09-19",
+    "model": "claude-sonnet-5"
+  },
+  "preconception-gdm-prevention-adequately-powered-trials": {
+    "target_women": "1,200 women aged 18-40 planning pregnancy within 12 months who are at high risk of gestational diabetes (BMI ≥30, prior GDM, PCOS, first-degree relative with type 2 diabetes, or prediabetes/HbA1c 5.7-6.4%), recruited through primary care and fertility clinics across multiple sites (aiming for socioeconomic and ethnic diversity), before conception.",
+    "variables": [
+      "Development of gestational diabetes mellitus (diagnosed by standard oral glucose tolerance test criteria in the index pregnancy)",
+      "Pre-pregnancy weight and BMI change from baseline to conception",
+      "HbA1c and fasting glucose at baseline, at conception, and each trimester",
+      "Time to conception and live birth rate",
+      "Gestational weight gain",
+      "Neonatal outcomes: birth weight, large-for-gestational-age status, NICU admission",
+      "Adherence to assigned intervention (session attendance, medication adherence self-report and pill count)",
+      "Adverse events, including hypoglycaemia and gastrointestinal side effects"
+    ],
+    "stratifiers": [
+      "BMI category (30-34.9, 35-39.9, ≥40 kg/m2)",
+      "Ethnicity/race (grouped to reflect known disparities in access to preconception care and structural barriers, not biological difference)",
+      "Prior history of GDM vs no prior pregnancy",
+      "Household income or area deprivation index",
+      "Age band (18-29, 30-34, 35-40)"
+    ],
+    "form": "A multi-site, parallel-group randomised controlled trial with three arms: (1) structured preconception lifestyle programme (dietitian-led counselling plus supervised exercise sessions, weekly for 3 months then monthly until conception, aiming for 5-7% weight loss in women with BMI ≥30), (2) metformin 1500mg/day (started preconception, continued until a positive pregnancy test at which point it is stopped unless the woman has pre-existing type 2 diabetes, in which case management reverts to her treating physician), (3) usual preconception care (standard advice pamphlet, no additional contact). Recruitment continues until conception or 18 months, whichever comes first, with all women followed through pregnancy to 6 weeks postpartum. Exclusions: women with pre-existing type 1 or type 2 diabetes (already indicated for treatment), women with a history of eating disorders (screened at baseline using a validated tool, referred to specialist care and excluded from the lifestyle arm), women with contraindications to metformin (renal impairment, current pregnancy). Ethics approval required at every site, written informed consent obtained prior to any preconception exposure, and an independent data safety monitoring board reviews unblinded safety data every 6 months given the vulnerable preconception-to-pregnancy transition population; genuine equipoise exists because current guidelines do not establish superiority of either lifestyle or pharmacological preconception intervention over usual care for GDM prevention. Sample size of 1,200 (400 per arm) is a rough estimate based on assumed 25% GDM incidence in usual care versus a hoped-for 30% relative risk reduction, 80% power, alpha 0.05, and 20% attrition allowance — this is not a formal power calculation and would need refinement with a biostatistician once baseline incidence data from the specific recruitment sites is available.",
+    "instrument_source": "Eating Disorder Examination Questionnaire (EDE-Q)",
+    "generated_at": "2026-09-19",
+    "model": "claude-sonnet-5"
   }
 };
