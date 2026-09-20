@@ -99,8 +99,8 @@ Open `index.html` — double-click the file, or visit
 <https://minimarina.github.io/her-silent-data/>.
 
 There is no build step, no install and no server. Plain HTML, CSS and
-JavaScript with no dependencies: three screens and one seed file do not
-need a framework, and this way nothing can fail to build on submission day.
+JavaScript, no dependencies — four screens and one seed file do not need a
+framework.
 
 ## Data
 
